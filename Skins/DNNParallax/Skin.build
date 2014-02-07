@@ -1,0 +1,41 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SkinPath>DNNParallax</SkinPath>
+    <DNNFileName>DNNParallax Manifest</DNNFileName>
+    <PackageName>Skin.DNNParallax</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
+    <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>
+    <WebsiteInstallPath>$(WebsitePath)\Install\Skin</WebsiteInstallPath>
+    <FullSkinPath>$(WebsitePath)\Portals\_default\Skins\$(SkinPath)</FullSkinPath>
+    <FullContainerPath>$(WebsitePath)\Portals\_default\Containers\$(SkinPath)</FullContainerPath>
+  </PropertyGroup>
+  <Import Project="$(BuildScriptsPath)\SkinPackage.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="GetSkinFiles;DebugProject;PackageSkin">
+  </Target>
+  <Target Name="GetSkinFiles">
+    <ItemGroup>
+      <SkinManifest Include="Skins\*.dnn;Skins\*.dnn5;Skins\*.dnn6" />
+      <SkinSourceFiles Include="Skins\*.ascx;Skins\*.css;Skins\*.htm;Skins\*.html;Skins\*.js;Skins\*.xml;Skins\*.gif;Skins\*.jpg;Skins\*.png;Skins\*.txt" />
+      <SkinResourceFiles Include="Skins\App_LocalResources/*.resx" />
+      <SkinImages Include="Skins\Images\*.*" />
+      <SkinGraphics Include="Skins\graphics\*.*" />
+      <SkinJsFiles Include="Skins\Scripts\*.*" />
+      <SkinMenuFiles Include="Skins\tidyMenu\*.*" />
+      <SkinStyles Include="Skins\Styles\*.*" />
+      <Resources Include="@(SkinResourceFiles);@(SkinImages);@(SkinSourceFiles);@(SkinJsFiles);@(SkinManifest);@(SkinStyles);@();" />
+    </ItemGroup>
+  </Target>
+  <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullSkinPath)" />
+    <Copy SourceFiles="@(SkinImages)" DestinationFolder="$(FullSkinPath)\Images" />
+    <Copy SourceFiles="@(SkinJsFiles)" DestinationFolder="$(FullSkinPath)\Scripts" />
+    <Copy SourceFiles="@(SkinMenuFiles)" DestinationFolder="$(FullSkinPath)\tidyMenu" />
+    <Copy SourceFiles="@(SkinGraphics)" DestinationFolder="$(FullSkinPath)\graphics" />
+    <Copy SourceFiles="@(SkinStyles)" DestinationFolder="$(FullSkinPath)\Styles" />
+    <Copy SourceFiles="@(SkinSourceFiles)" DestinationFolder="$(FullSkinPath)" />
+    <Copy SourceFiles="@(SkinResourceFiles)" DestinationFolder="$(FullSkinPath)\App_LocalResources" />
+  </Target>
+</Project>

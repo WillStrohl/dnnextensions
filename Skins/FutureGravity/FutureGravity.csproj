@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3AA05F81-F470-434B-81D4-CF65DA69CD5E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FutureGravity</RootNamespace>
+    <AssemblyName>FutureGravity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Containers\container.css" />
+    <Content Include="Containers\NoTitle.ascx" />
+    <Content Include="Containers\noTitle.jpg" />
+    <Content Include="Containers\Title_h2.ascx" />
+    <Content Include="Containers\Title_h2.jpg" />
+    <Content Include="Containers\Title_h3.ascx" />
+    <Content Include="Containers\Title_h3.jpg" />
+    <Content Include="Containers\Title_h4.ascx" />
+    <Content Include="Containers\Title_h4.jpg" />
+    <Content Include="FutureGravity Manifest.dnn" />
+    <Content Include="license.htm" />
+    <Content Include="release_notes.htm" />
+    <Content Include="Skins\2-Col.ascx" />
+    <Content Include="Skins\2-Col.doctype.xml" />
+    <Content Include="Skins\2-Col.jpg" />
+    <Content Include="Skins\3-Col-Social.ascx" />
+    <Content Include="Skins\3-Col-Social.doctype.xml" />
+    <Content Include="Skins\3-col-social.jpg" />
+    <Content Include="Skins\3-Col.ascx" />
+    <Content Include="Skins\3-Col.doctype.xml" />
+    <Content Include="Skins\3-col.jpg" />
+    <Content Include="Skins\groups.ascx" />
+    <Content Include="Skins\groups.css" />
+    <Content Include="Skins\groups.doctype.xml" />
+    <Content Include="Skins\groups.jpg" />
+    <Content Include="Skins\Home.ascx" />
+    <Content Include="Skins\Home.doctype.xml" />
+    <Content Include="Skins\home.jpg" />
+    <Content Include="Skins\Images\arrow.png" />
+    <Content Include="Skins\Images\breadcrumb.png" />
+    <Content Include="Skins\Images\futuregravity_icon.png" />
+    <Content Include="Skins\Images\globe.png" />
+    <Content Include="Skins\Images\header_background.jpg" />
+    <Content Include="Skins\Images\icon_bin.png" />
+    <Content Include="Skins\Images\icon_message.png" />
+    <Content Include="Skins\Images\icon_notification.png" />
+    <Content Include="Skins\Images\left-arrow.png" />
+    <Content Include="Skins\Images\pagination.png" />
+    <Content Include="Skins\Images\right-arrow.png" />
+    <Content Include="Skins\Images\search.png" />
+    <Content Include="Skins\Includes\Awesome-Cycles-Logo.png" />
+    <Content Include="Skins\Includes\Banner1.png" />
+    <Content Include="Skins\Includes\Banner2.png" />
+    <Content Include="Skins\Includes\Banner3.png" />
+    <Content Include="Skins\Includes\Banner4.png" />
+    <Content Include="Skins\Includes\bike01.png" />
+    <Content Include="Skins\Includes\bike02.png" />
+    <Content Include="Skins\Includes\button_contactUs.png" />
+    <Content Include="Skins\Includes\connect_facebook.png" />
+    <Content Include="Skins\Includes\connect_googleplus.png" />
+    <Content Include="Skins\Includes\connect_linkedin.png" />
+    <Content Include="Skins\Includes\connect_twitter.png" />
+    <Content Include="Skins\Includes\connect_twitter_t.png" />
+    <Content Include="Skins\Includes\Home-Ad1.png" />
+    <Content Include="Skins\Includes\Home-Ad2.png" />
+    <Content Include="Skins\Includes\Home-Ad3.png" />
+    <Content Include="Skins\Includes\Product-Junior.png" />
+    <Content Include="Skins\Includes\Product-Road.png" />
+    <Content Include="Skins\Includes\Products-BMX.png" />
+    <Content Include="Skins\Includes\Products-City.png" />
+    <Content Include="Skins\Includes\Products-Gravity.png" />
+    <Content Include="Skins\Includes\Products-Trail.png" />
+    <Content Include="Skins\Includes\product_WP2GDownhill.png" />
+    <Content Include="Skins\Includes\storeFront.png" />
+    <Content Include="Skins\Includes\storeNews1.png" />
+    <Content Include="Skins\Includes\storeNews2.png" />
+    <Content Include="Skins\Includes\team_Alejandro.png" />
+    <Content Include="Skins\Includes\team_Beck.png" />
+    <Content Include="Skins\Includes\team_chris.png" />
+    <Content Include="Skins\Includes\team_Drew-Paul.png" />
+    <Content Include="Skins\Includes\team_Ivan.png" />
+    <Content Include="Skins\Includes\team_Jose.png" />
+    <Content Include="Skins\Includes\team_ken.png" />
+    <Content Include="Skins\Includes\team_Kip.png" />
+    <Content Include="Skins\Includes\team_Lynn.png" />
+    <Content Include="Skins\Includes\team_Max.png" />
+    <Content Include="Skins\Includes\team_Mitch.png" />
+    <Content Include="Skins\Includes\team_Myles.png" />
+    <Content Include="Skins\Includes\team_Nathan.png" />
+    <Content Include="Skins\Includes\team_noPic.png" />
+    <Content Include="Skins\Includes\team_Oliver.png" />
+    <Content Include="Skins\Includes\team_Robert Juarez.png" />
+    <Content Include="Skins\Includes\team_Tracey.png" />
+    <Content Include="Skins\Includes\team_Wiley.png" />
+    <Content Include="Skins\Includes\team_Will.png" />
+    <Content Include="Skins\Simple\menudef.xml" />
+    <Content Include="Skins\Simple\SimpleTokens.txt" />
+    <Content Include="Skins\skin.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Skin.build" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="Skin.Build" />
+</Project>

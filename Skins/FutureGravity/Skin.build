@@ -1,0 +1,56 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SkinPath>FutureGravity</SkinPath>
+    <DNNFileName>FutureGravity Manifest</DNNFileName>
+    <PackageName>Skin.FutureGravity</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
+    <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>
+    <WebsiteInstallPath>$(WebsitePath)\Install\Skin</WebsiteInstallPath>
+    <FullSkinPath>$(WebsitePath)\Portals\_default\Skins\$(SkinPath)</FullSkinPath>
+    <FullContainerPath>$(WebsitePath)\Portals\_default\Containers\$(SkinPath)</FullContainerPath>
+  </PropertyGroup>
+  <Import Project="$(BuildScriptsPath)\SkinPackage.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="GetSkinFiles;GetContainerFiles;DebugProject;PackageSkin">
+  </Target>
+  <Target Name="GetSkinFiles">
+    <ItemGroup>
+      <SkinManifest Include="Skins\*.dnn;Skins\*.dnn5;Skins\*.dnn6" />
+      <SkinSourceFiles Include="Skins\*.ascx;Skins\*.css;Skins\*.htm;Skins\*.html;Skins\*.js;Skins\*.xml;Skins\*.gif;Skins\*.jpg;Skins\*.png;Skins\*.txt" />
+      <SkinResourceFiles Include="Skins\App_LocalResources/*.resx" />
+      <SkinImages Include="Skins\Images\*.*" />
+      <SkinIncludes Include="Skins\Includes\*.*" />
+      <SkinJsFiles Include="Skins\Scripts\*.*" />
+      <SkinStyles Include="Skins\Styles\*.*" />
+      <SkinDDRMenu Include="Skins\Simple\*.*" />
+      <Resources Include="@(SkinResourceFiles);@(SkinImages);@(SkinSourceFiles);@(SkinJsFiles);@(SkinManifest);@(SkinStyles);@(SkinDDRMenu);@(SkinIncludes)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="GetContainerFiles">
+    <ItemGroup>
+      <ContainerSourceFiles Include="Containers\*.ascx;Containers\*.css;Containers\*.htm;Containers\*.html;Containers\*.js;Containers\*.xml;Containers\*.gif;Containers\*.jpg;Containers\*.png;Containers\*.txt" />
+      <ContainerResourceFiles Include="Containers\App_LocalResources\*.resx" />
+      <ContainerImages Include="Containers\Images\*.*" />
+      <ContainerJsFiles Include="Containers\Scripts\*.*" />
+      <ContainerStyles Include="Containers\Styles\*.*" />
+      <Resources Include="@(ContainerResourceFiles);@(ContainerImages);@(ContainerSourceFiles);@(ContainerJsFiles);@(ContainerStyles)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullSkinPath)" />
+    <Copy SourceFiles="@(SkinImages)" DestinationFolder="$(FullSkinPath)\Images" />
+    <Copy SourceFiles="@(SkinJsFiles)" DestinationFolder="$(FullSkinPath)\Scripts" />
+    <Copy SourceFiles="@(SkinStyles)" DestinationFolder="$(FullSkinPath)\Styles" />
+    <Copy SourceFiles="@(SkinDDRMenu)" DestinationFolder="$(FullSkinPath)\Simple" />
+    <Copy SourceFiles="@(SkinIncludes)" DestinationFolder="$(FullSkinPath)\Includes" />
+    <Copy SourceFiles="@(SkinSourceFiles)" DestinationFolder="$(FullSkinPath)" />
+    <Copy SourceFiles="@(SkinResourceFiles)" DestinationFolder="$(FullSkinPath)\App_LocalResources" />
+    <Copy SourceFiles="@(ContainerImages)" DestinationFolder="$(FullContainerPath)\Images" />
+    <Copy SourceFiles="@(ContainerJsFiles)" DestinationFolder="$(FullContainerPath)\Scripts" />
+    <Copy SourceFiles="@(ContainerStyles)" DestinationFolder="$(FullContainerPath)\Styles" />
+    <Copy SourceFiles="@(ContainerSourceFiles)" DestinationFolder="$(FullContainerPath)" />
+    <Copy SourceFiles="@(ContainerResourceFiles)" DestinationFolder="$(FullContainerPath)\App_LocalResources" />
+  </Target>
+</Project>

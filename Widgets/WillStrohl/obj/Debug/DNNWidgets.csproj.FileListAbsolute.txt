@@ -1,0 +1,4 @@
+C:\Websites\Development\Widgets\WillStrohl\bin\DNNWidgets.dll
+C:\Websites\Development\Widgets\WillStrohl\bin\DNNWidgets.pdb
+C:\Websites\Development\Widgets\WillStrohl\obj\Debug\DNNWidgets.dll
+C:\Websites\Development\Widgets\WillStrohl\obj\Debug\DNNWidgets.pdb

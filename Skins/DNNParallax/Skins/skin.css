@@ -1,0 +1,581 @@
+/*
+CSS for the demo: Recreating the Nikebetterworld.com Parallax Demo
+Demo: Recreating the Nikebetterworld.com Parallax Demo
+Author: Ian Lunn
+Author URL: http://www.ianlunn.co.uk/
+Demo URL: http://www.ianlunn.co.uk/demos/recreate-nikebetterworld-parallax/
+Tutorial URL: http://www.ianlunn.co.uk/blog/code-tutorials/recreate-nikebetterworld-parallax/
+
+License: http://creativecommons.org/licenses/by-sa/3.0/ (Attribution Share Alike). Please attribute work to Ian Lunn simply by leaving these comments in the source code or if you'd prefer, place a link on your website to http://www.ianlunn.co.uk/.
+
+Dual licensed under the MIT and GPL licenses:
+http://www.opensource.org/licenses/mit-license.php
+http://www.gnu.org/licenses/gpl.html
+*/
+
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin: 0;
+	min-width: 980px;
+	padding: 0;
+	
+	font-family: 'Overlock', cursive; Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:300;
+	font-style:normal;
+	line-height:1.5em;
+	-webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	
+}
+
+p{
+	margin: 0 0 20px 0;
+	color: #333;	
+}
+
+p, ul, li{
+	font-family: 'Overlock', cursive; Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:300;
+	font-style:normal;
+	line-height:1.5em;
+	-webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+img{
+	border: 0;
+}
+
+TitleH1, h1, #pixels{
+	font-family: 'Signika', Verdana, serif;
+	font-size:30;
+	font-weight:700;
+	font-style:normal;
+}
+
+TitleH2, H2{
+	font-family: 'Signika', Verdana, sans-serif;
+	font-size:30px;
+	font-weight:500;
+	font-style:normal;
+	color:#333;
+}
+
+TitleH4, H4{
+	font-family: 'Signika', Verdana, sans-serif;
+	font-size:30px;
+	font-weight:500;
+	font-style:normal;
+	color:#333;
+}
+
+#header h1, #pixels{
+	color: #48941A;
+}
+
+.float-left{
+	float: left;	
+	margin: 0 0 0 20px;
+}
+
+.float-right{
+	float: right;
+	margin: 0 20px 0 0;
+}
+
+.center{
+	font-size: 2.5em;
+	padding: 80px 0;
+	text-align: center;
+}
+
+#navv{
+	list-style: none;
+	position: fixed;
+	right: 20px;
+	top:200px;
+}
+
+#navv li{
+	margin: 0 0 15px 0;	
+}
+
+#header, #intro, #second{
+	width: 100%;
+}
+
+#header{
+	background: white;
+	height: 130px;	
+}
+
+#intro{
+	background:url(images/grass.jpg) 50% 0 no-repeat fixed;
+	color: white;
+	height: 600px;
+	margin: 0;
+	padding: 160px 0 0 0;
+
+}
+
+#second{
+	background: url(images/ladybug.jpg) 50% 0 no-repeat fixed;
+	color: white;
+	height: 1300px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0;
+	-moz-box-shadow: -5px -5px 5px #000;
+	-webkit-box-shadow: -5px -5px 5px #000;
+	box-shadow: -5px -5px 5px #000;}
+
+
+#second .bg{
+	background: url(images/dragonfly.png) 45% 0 no-repeat fixed;
+	height: 1260px;
+	margin: 0 0 0 auto;
+	padding: 0px 0 36px 0;
+	position: absolute;
+	width: 500px;
+	z-index: 200;
+}
+
+#third{
+	background: url(images/waterfall.jpg) 50% 0 no-repeat fixed;
+	color: white;
+	height: 650px;
+	padding: 100px 0 0 0;
+	-moz-box-shadow: -5px -5px 5px #000;
+	-webkit-box-shadow: -5px -5px 5px #000;
+	box-shadow: -5px -5px 5px #000;	
+}
+
+#fourth{
+	background: url(images/fish2.png), url(images/fish2.png), url(images/fish2.png), url(images/fourthBG.jpg);
+	background-position: 50% 0, 50% 0, 50% 0, 50% 0;
+	background-color: #036;
+	background-attachment: fixed;
+	background-repeat: no-repeat, repeat, repeat,no-repeat;
+	color: white;
+	height: 800px;
+	padding: 100px 0 0 0;
+	-moz-box-shadow: -5px -5px 5px #FFF;
+	-webkit-box-shadow: -5px -5px 5px #FFF;
+	box-shadow: -5px -5px 5px #FFF;	
+}
+
+#fourth .story .bg{
+	background: url(images/fish2.png) 50% 0 no-repeat fixed;
+	height: 800px;
+	margin: 0 auto;
+	padding: 0;
+	position: absolute;
+	z-index: 200;
+}
+#fourth .bg2{
+	background: url(images/fish2.png) 50% 0 no-repeat fixed;
+	height: 800px;
+	margin: 0 auto;
+	padding: 0;
+	position: absolute;
+	z-index: 300;
+}
+
+#fifth{
+	background: url(images/mountain.jpg) 50% 0 no-repeat fixed;
+	color: white;
+	height: 1000px;
+	padding: 100px 0 0 0;
+	-moz-box-shadow: -5px -5px 5px #000;
+	-webkit-box-shadow: -5px -5px 5px #000;
+	box-shadow: -5px -5px 5px #000;	
+}
+
+.story{
+	margin: 0 auto;
+	min-width: 980px;
+	width: 980px;
+}
+
+#header .story #logo {position:relative; margin-left:-100px;}
+#intro .story .float-left{
+	margin-top:-60px;
+	padding: 30px;
+	position: relative;
+	width: 850px;
+	max-height:500px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	border:1px #FFF solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px; /* future proofing */
+	-khtml-border-radius: 6px; /* for old Konqueror browsers */
+	background: rgba(214, 214, 214, 0.8);
+    -pie-background:  rgba(214, 214, 214, 0.8);
+    behavior: url(PIE.htc);		
+}
+
+.story .float-left, .story .float-right{
+	margin-top:100px;
+	padding: 30px;
+	position: relative;
+	width: 650px;
+	max-height:400px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	border:1px #FFF solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px; /* future proofing */
+	-khtml-border-radius: 6px; /* for old Konqueror browsers */
+	background: rgba(214, 214, 214, 0.8);
+    -pie-background:  rgba(214, 214, 214, 0.8);
+    behavior: url(PIE.htc);		
+}
+
+#second .story .float-right{
+	margin-top:100px;
+	left:150px;
+	padding: 30px;
+	position: relative;
+	width: 680px;
+	max-height:700px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	border:1px #FFF solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px; /* future proofing */
+	-khtml-border-radius: 6px; /* for old Konqueror browsers */
+	background: rgba(214, 214, 214, 0.8);
+    -pie-background:  rgba(214, 214, 214, 0.8);
+    behavior: url(PIE.htc);		
+}
+
+#third .story .float-left{
+	margin-top:10px;
+	padding: 30px;
+	position: relative;
+	width: 800px;
+	max-height:470px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	border:1px #FFF solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px; /* future proofing */
+	-khtml-border-radius: 6px; /* for old Konqueror browsers */
+	background: rgba(214, 214, 214, 0.8);
+    -pie-background:  rgba(214, 214, 214, 0.8);
+    behavior: url(PIE.htc);		
+}
+
+#fourth .story .float-left{
+	margin-top:30px;
+	padding: 30px;
+	position:absolute;
+	left:770px;
+	width: 700px;
+		max-height:470px;
+	border:1px #FFF solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px; /* future proofing */
+	-khtml-border-radius: 6px; /* for old Konqueror browsers */
+	background: rgba(214, 214, 214, 0.8);
+    -pie-background:  rgba(214, 214, 214, 0.8);
+    behavior: url(PIE.htc);		
+}
+
+.story .middle{
+	margin-top:100px;
+	padding: 30px;
+	width: 800px;
+	border:1px #FFF solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px; /* future proofing */
+	-khtml-border-radius: 6px; /* for old Konqueror browsers */
+	background: rgba(214, 214, 214, 0.8);
+    -pie-background:  rgba(214, 214, 214, 0.8);
+    behavior: url(PIE.htc);		
+}
+.buttonDiv {
+	display: block;
+}
+
+.loginLinks {
+	display: block;
+	float: right;
+	margin: 10px 10px 0 0;
+	border-top: 1px solid #DADADA;
+	border-bottom: 1px solid #DADADA;
+	border-left: 1px solid #DADADA;
+}
+
+.loginLinks .registerGroup,
+.loginLinks .registerGroup *,
+.loginLinks .loginGroup,
+.loginLinks .loginGroup * {
+	display: block;
+	float: left;
+	font-weight: normal;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.loginLinks .registerGroup .buttonGroup {
+	margin: 0;
+	padding: 0;
+}
+
+.loginLinks .registerGroup li {
+	border-right: none;
+}
+
+.loginLinks .registerGroup a,
+.loginLinks .loginGroup a,
+.button {
+	position: relative;
+	color: #666666;
+	border-right: 1px solid #DADADA;
+	border-left: 1px solid #FFFFFF;
+	padding: 2px 7px;
+	line-height: 26px;
+	font-weight: normal;
+	font-size: 11px;
+	background: #fafafa; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #e6e6e6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #e6e6e6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%, #e6e6e6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%, #e6e6e6 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%, #e6e6e6 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0 ); /* IE6-9 */
+	text-shadow: 1px 1px #FFFFFF;
+}
+
+.loginLinks .registerGroup a:hover,
+.loginLinks .loginGroup a:hover,
+.button:hover {
+	color: #000000;
+}
+
+.loginLinks .registerGroup .userNotifications a strong,
+.loginLinks .registerGroup .userMessages a strong {
+	display: block;
+	text-indent: -2000px;
+	top: 0px;
+	left: 0px;
+	height: 26px;
+	width: 26px;
+}
+
+.loginLinks .registerGroup .userNotifications a strong {
+	background: url(graphics/social_sprite.png) 5px -123px no-repeat;
+}
+
+.loginLinks .registerGroup .userNotifications a strong:hover {
+	background: url(graphics/social_sprite.png) 5px -155px no-repeat;
+}
+
+.loginLinks .registerGroup .userMessages a strong {
+	background: url(graphics/social_sprite.png) 5px -59px no-repeat;
+}
+
+.loginLinks .registerGroup .userMessages a strong:hover {
+	background: url(graphics/social_sprite.png) 5px -91px no-repeat;
+}
+
+.loginLinks .registerGroup .userProfileImg a {
+	padding: 0;
+}
+
+.loginLinks .registerGroup .userProfileImg img {
+	width: 30px;
+	height: 30px;
+	-moz-opacity: 0.70;
+	opacity: 0.70;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=70);
+}
+
+.loginLinks .registerGroup .userProfileImg img:hover {
+	-moz-opacity: 1;
+	opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=100);
+}
+
+.loginLinks .registerGroup a:hover,
+.loginLinks .loginGroup a:hover,
+.button:hover {
+	text-decoration: none;
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	
+}
+/*========================================================+
+|  Navigation                                             |
++========================================================*/
+
+.navDiv {margin:-40px 80px 0 0;background:#FFF; position: relative;
+	z-index: 1000;}
+
+#dnnMenuMobile {
+	display: none;
+}
+
+#dnnMenu {
+	display: block;
+	top: 10px;
+	right: 0px;
+	position: relative;
+	z-index: 1000;
+	background:#FFF;
+
+	
+}
+
+#dnnMenu .topLevel {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+
+#dnnMenu .topLevel li {
+	float: left;
+	margin: 0 15px 0 10px;
+	list-style-type: none;
+	position: relative;background: #FFF;
+}
+
+#dnnMenu .topLevel li.selected > a {
+	color: #FFF;
+}
+
+#dnnMenu .topLevel li a {
+	display: block;
+	color: #060;
+	padding-bottom: 25px;
+	text-transform: uppercase;
+	text-shadow: 
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 15px 15px rgba(0,0,0,.15);
+			   font-size:90%;
+			   font-family: Verdana, Geneva, sans-serif;
+			   text-decoration:none;
+}
+
+#dnnMenu .topLevel li a.disabled {
+	cursor:default;
+}
+
+#dnnMenu .topLevel a:hover {
+	text-decoration: none;
+	color: #FFF;
+}
+#dnnMenu .topLevel a:sctive {
+	text-decoration: none;
+	color: #FFF;
+	font-size:11px;
+}
+
+#dnnMenu .subLevel {
+	display: block;
+	display: none;
+	position: absolute;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	z-index: 1210;
+	border: 1px solid #E0E0E0;
+	top: 30px;
+	left: -15px;
+	background: #FFFFFF;
+	font-size: 11px;
+	font-size: .66em;
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#dnnMenu .moveLeft {
+    left:-80px;
+}
+
+#dnnMenu .subLevel ul {
+	width: 170px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 900;
+}
+
+#dnnMenu .subLevel li {
+	float: none;
+	clear: both;
+	width: auto;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#dnnMenu .subLevel li a {
+	margin: 0px;
+	padding: 10px 15px;
+	border-bottom: 1px solid #DADADA;
+	color: #777777;
+	line-height: normal;
+}
+
+#dnnMenu .subLevel .subLevelRight li a {
+	padding-left: 25px;
+}
+
+#dnnMenu .subLevel .subLevelRight .subLevelRight li a {
+	padding-left: 35px;
+}
+
+#login .userNotifications strong {
+  background-image:url(http://awesomecycles.loc/Portals/_default/Skins/Gravity/images/icon_notification.png);
+  background-position:50% 50%;
+  background-repeat:no-repeat no-repeat;
+  height:100%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

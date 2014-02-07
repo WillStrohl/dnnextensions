@@ -1,0 +1,1 @@
+// JavaScript for the menu is located in js/tidy.js
