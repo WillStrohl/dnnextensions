@@ -1,0 +1,21 @@
+﻿<h3>User Group Labs: User Group Data Module</h3>
+<p class="Contributor">
+	DNN Corp.<br />
+	<a href="mailto:community@dnnsoftware.com">community@dnnsoftware.com</a><br />
+	<a href=http://www.dnnsoftware.com>http://www.dnnsoftware.com</a><br />
+</p>
+<hr/>
+<div class="License">
+	<h3>About the User Group Labs: MetaData Module</h3>
+	<p class="Owner">
+		<b>Version 01.00.00</b><br /><br />
+	</p>
+	<p>This is an initial release with a minimal feature set. This module allows you to manage the properties of your user group.</p>
+	
+	<h4>Features and Updates:</h4>
+	<ul>
+			<li>Easy to use (just add to the social group details page)</li>
+			<li>Edit common user group properties</li>
+	</ul>
+	
+</div>

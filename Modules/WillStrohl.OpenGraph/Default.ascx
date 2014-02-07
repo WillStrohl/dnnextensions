@@ -1,0 +1,1 @@
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="Default.ascx.vb" Inherits="WillStrohl.Modules.OpenGraph.DefaultView" %>

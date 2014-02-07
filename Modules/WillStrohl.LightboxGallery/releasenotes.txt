@@ -1,0 +1,17 @@
+﻿<div style="width:100%;height:375px;overflow:auto;">
+
+	<p>Contributors of this open source and free project, include: 
+		<a href="http://www.willstrohl.com" target="_blank">Will Strohl (a.k.a hismightiness)</a>, 
+		<a href="http://www.schwingsoft.com/" target="_blank">Armand Datema (a.k.a nokiko)</a><br /><br />
+		For support, questions, or suggestions, please use the <a href="http://wnslightbox.codeplex.com" target="_blank">Lightbox Gallery Module for DotNetNuke</a> website.</p>
+
+	<h3>Version 01.11.00</h3>
+	<p><strong>Date Released:</strong> 04/02/2012</p>
+	<ul>
+		<li>Feature:  Read EXIF information from images</li>
+		<li>Bug Fix:  Output valid URLs for all folder providers</li>
+	</ul>
+
+	<p>For more information about this and previous releases of this module, <a href="http://wnslightbox.codeplex.com" target="_blank">visit the project website</a>.</p>
+
+</div>

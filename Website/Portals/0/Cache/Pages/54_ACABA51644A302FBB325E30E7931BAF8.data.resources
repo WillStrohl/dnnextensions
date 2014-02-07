@@ -1,0 +1,24 @@
+<div id="dnn_ctr365_HtmlModule_lblContent" class="Normal">
+	<div class="content_newslist">
+<ul>
+    <li>
+    <img alt="" src="/portals/0/Images/storeNews1.png" class="imgBorder" />
+    <div>
+    <h5><a href="#">2013 Models are in stock now</a></h5>
+    <span><em>Published by</em> Awesome Cycles - <strong>14 August 2012</strong></span>
+    <p>Introducing the new line up of Awesome Cycles for 2013. We have brought more new bikes to our line up this year. Come and get them!</p>
+    <a class="altButton" href="#">Read More</a>
+    </div>
+    </li>
+    <li class="last">
+    <img alt="" src="/portals/0/Images/storeNews2.png" class="imgBorder" />
+    <div>
+    <h5><a href="#">Awesome Cycles at Crankworx 2012</a></h5>
+    <span><em>Published by</em> Awesome Cycles - <strong>10 August 2012</strong></span>
+    <p>This year Awesome Cycles will make its first appearance at one of the largest mountain bike festivals in the world.</p>
+    <a class="altButton" href="#">Read More</a>
+    </div>
+    </li>
+</ul>
+</div>
+</div>

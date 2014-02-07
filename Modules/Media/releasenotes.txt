@@ -1,0 +1,14 @@
+﻿<div style="width:100%;height:275px;overflow:auto;">
+
+	<h3>Media Module Version 04.04.01</h3>
+	<p><strong>Date Released:</strong> 05/22/2013</p>
+
+	<ul>
+		<li>Windows Azure compatibility update</li>
+		<li>Added back the usability message for content editors upon module deploy</li>
+		<li>Removing the module when not configured and not in edit mode</li>
+	</ul>
+
+</div>
+
+<p>For more information, see the <a href="http://www.dotnetnuke.com/Community/Extensions-Forge/view/ProjectDetail/project/dnnmedia.aspx" target="_blank">Media Module project homepage</a>.</p>

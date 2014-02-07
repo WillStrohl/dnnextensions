@@ -1,0 +1,202 @@
+﻿<dotnetnuke type="Package" version="6.0">
+  <packages>
+    <package name="WillStrohl.ContentSlider" type="Module" version="01.02.01">
+      <friendlyName>Content Slider</friendlyName>
+      <description>
+        <![CDATA[<p>This module allows you to quickly and easily add the popular "content slider" functionality to your DotNetNuke website. This feature enables the ability to have banner and content dynamically cycle on your DNN web pages. This is completely a client-side solution, not Flash.</p>]]>
+      </description>
+      <owner>
+        <name>Will Strohl</name>
+        <organization>Will Strohl</organization>
+        <url><![CDATA[<a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a>]]></url>
+        <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+      </owner>
+      <license src="license.txt" />
+      <releaseNotes src="releasenotes.txt" />
+      <dependecies>
+        <dependency type="coreversion">07.00.02</dependency>
+      </dependecies>
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\WillStrohl.ContentSlider</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+              <version>01.00.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.01.SqlDataProvider</name>
+              <version>01.00.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.02.SqlDataProvider</name>
+              <version>01.00.02</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.00.SqlDataProvider</name>
+              <version>01.01.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.01.SqlDataProvider</name>
+              <version>01.01.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.02.SqlDataProvider</name>
+              <version>01.01.02</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.00.SqlDataProvider</name>
+              <version>01.02.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.01.SqlDataProvider</name>
+              <version>01.02.01</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>01.02.01</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>WillStrohl.ContentSlider</moduleName>
+            <foldername>WillStrohl.ContentSlider</foldername>
+            <businessControllerClass>WillStrohl.Modules.ContentSlider.SliderController, WillStrohl.Modules.ContentSlider</businessControllerClass>
+            <supportedFeatures>
+              <supportedFeature type="Portable" />
+            </supportedFeatures>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Content Slider</friendlyName>
+                <defaultCacheTime>-1</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/WillStrohl.ContentSlider/ViewSlider.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.ContentSlider/EditSlider.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>SliderOptions</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.ContentSlider/SliderOptions.ascx</controlSrc>
+                    <supportsPartialRendering>True</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Sliders</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.ContentSlider/Sliders.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+          <eventMessage>
+            <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+            <processorCommand>UpgradeModule</processorCommand>
+            <attributes>
+              <businessControllerClass>WillStrohl.Modules.ContentSlider.SliderController, WillStrohl.Modules.ContentSlider</businessControllerClass>
+              <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+              <upgradeVersionsList />
+            </attributes>
+          </eventMessage>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <basePath>bin</basePath>
+            <assembly>
+              <name>WillStrohl.Modules.ContentSlider.dll</name>
+              <version>01.02.01</version>
+            </assembly>
+            <assembly>
+              <name>WillStrohl.Modules.ContentSlider.SqlDataProvider.dll</name>
+              <version>01.02.01</version>
+            </assembly>
+          </assemblies>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>DesktopModules\WillStrohl.ContentSlider</basePath>
+            <file>
+              <name>WillStrohl.ContentSlider.dnn</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.02.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.02.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+            </file>
+          </files>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules\WillStrohl.ContentSlider</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

@@ -1,0 +1,10 @@
+/* the main wrapper for all content */
+.dgdMainContent { text-align: center; vertical-align: middle; }
+    /* the wrapper for the group avatars */
+    .divGroupAvatarWrap { padding: 0.5em; display: inline-block; }
+    /* individiual avatar objects */
+    .divGroupAvatarWrap .divAvatar { margin: 0.5em; }
+    /* avatar link */
+    .divGroupAvatarWrap .divAvatar a { border: none; }
+    /* avatar image */
+    .divGroupAvatarWrap .divAvatar a img { border: none; }

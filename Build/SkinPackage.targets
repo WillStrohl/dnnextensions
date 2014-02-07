@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="MSBuild.Community.Tasks.Targets" />
+  <Target Name="PackageSkin" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <XmlRead Prefix="n"
+                    Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
+                    XPath="dotnetnuke/packages/package[1]/@version"
+                    XmlFileName="$(DNNFileName).dnn">
+      <Output TaskParameter="Value" PropertyName="Version" />
+    </XmlRead>
+    
+    <PropertyGroup>
+      <ContainerPathName>Containers</ContainerPathName>
+      <SkinPathName>Skins</SkinPathName>
+      <PackageTempDir>$(MSBuildProjectDirectory)\SkinPackageTemp\</PackageTempDir>
+      <PackageContainerTempDir>$(MSBuildProjectDirectory)\SkinPackageContainerTemp\</PackageContainerTempDir>
+      <PackageSkinTempDir>$(MSBuildProjectDirectory)\SkinPackageSkinTemp\</PackageSkinTempDir>
+    </PropertyGroup>
+
+    <CreateItem Include="$(ContainerPathName)\**\*.*">
+      <Output TaskParameter="Include" ItemName="ContainerItem" />
+    </CreateItem>
+    <CreateItem Include="$(SkinPathName)\**\*.*">
+      <Output TaskParameter="Include" ItemName="SkinItem" />
+    </CreateItem>
+    
+    <CreateItem Include="$(DNNFileName).dnn">
+      <Output TaskParameter="Include" ItemName="PackageManifestFiles" />
+    </CreateItem>
+    <CreateItem Include="releasenotes.txt;license.txt">
+      <Output TaskParameter="Include" ItemName="PackageTextFiles" />
+    </CreateItem>
+
+    <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(PackageTempDir)" />
+    <Copy SourceFiles="@(PackageTextFiles)" DestinationFolder="$(PackageTempDir)" />
+
+    <!-- SKINS -->
+    <Copy SourceFiles="@(SkinItem)" DestinationFolder="$(FullSkinPath)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(SkinItem)" DestinationFolder="$(PackageSkinTempDir)\%(RecursiveDir)" />
+    <CreateItem Include="$(PackageSkinTempDir)\**\*.*">
+      <Output TaskParameter="Include" ItemName="SkinPackageFiles" />
+    </CreateItem>
+    <Zip Files="@(SkinPackageFiles)" WorkingDirectory="$(PackageSkinTempDir)" ZipFileName="resource-skin.$(Extension)" />
+    <Copy SourceFiles="resource-skin.$(Extension)" DestinationFolder="$(PackageTempDir)" />
+    
+    <!-- CONTAINERS -->
+    <Copy SourceFiles="@(ContainerItem)" DestinationFolder="$(FullContainerPath)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(ContainerItem)" DestinationFolder="$(PackageContainerTempDir)\%(RecursiveDir)" />
+    <CreateItem Include="$(PackageContainerTempDir)\**\*.*">
+      <Output TaskParameter="Include" ItemName="ContainerPackageFiles" />
+    </CreateItem>
+    <Zip Files="@(ContainerPackageFiles)" WorkingDirectory="$(PackageContainerTempDir)" ZipFileName="resource-container.$(Extension)" />
+    <Copy SourceFiles="resource-container.$(Extension)" DestinationFolder="$(PackageTempDir)" />
+
+    <!-- SKIN PACKAGE -->
+    <CreateItem Include="$(PackageTempDir)\**\*.*">
+      <Output TaskParameter="Include" ItemName="SkinPackageOutput" />
+    </CreateItem>
+    <Zip Files="@(SkinPackageOutput)" WorkingDirectory="$(PackageTempDir)" ZipFileName="$(PackageName)_SkinPackage_$(Version).$(Extension)" />
+    <Copy SourceFiles="$(PackageName)_SkinPackage_$(Version).$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
+
+    <!-- CLEAN UP -->
+    <Delete Files="$(PackageTempDir)\**\*.*" />
+    <Delete Files="$(PackageSkinTempDir)\**\*.*" />
+    <Delete Files="$(PackageContainerTempDir)\**\*.*" />
+    <Delete Files="resource-skin.$(Extension)" />
+    <Delete Files="resource-container.$(Extension)" />
+    <Delete Files="$(PackageName)_SkinPackage_$(Version).$(Extension)" />
+    <RemoveDir Directories ="$(PackageTempDir)" />
+    <RemoveDir Directories ="$(PackageSkinTempDir)" />
+    <RemoveDir Directories ="$(PackageContainerTempDir)" />
+
+  </Target>
+</Project>

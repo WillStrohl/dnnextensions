@@ -1,0 +1,15 @@
+﻿<div style="width:100%;height:375px;overflow:auto;">
+
+	<h3>Version 01.02.00</h3>
+	<p><strong>Date Released:</strong> 11/07/2012</p>
+	<ul>
+		<li>ENHANCEMENT: Compatible with DNN 7.0.2 and newer</li>
+		<li>ENHANCEMENT: Added a way to delete all OGP site settings</li>
+		<li>BUG: Fixed issue with homepages without page names</li>
+	</ul>
+
+	<p>For more information about this and previous releases or for 
+		support, please visit the <a href="http://dnnopengraph.codeplex.com" target="_blank">DNN 
+		Open Graph Module</a> website.</p>
+
+</div>

@@ -1,0 +1,30 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Lightbox Module for DotNetNuke
+Version: 1.00.01
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+Release Notes:
+  This version addresses a missing object qualifier.
+
+*/
+
+IF EXISTS (SELECT 1 
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+	WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_lightbox_moduleid' 
+	AND TABLE_NAME = N'{objectQualifier}wns_lightbox')
+BEGIN
+	ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP CONSTRAINT [FK_{objectQualifier}wns_lightbox_moduleid]
+END
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] WITH NOCHECK 
+	ADD CONSTRAINT [FK_{objectQualifier}wns_lightbox_moduleid] FOREIGN KEY ([ModuleId]) 
+	REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE
+GO
+

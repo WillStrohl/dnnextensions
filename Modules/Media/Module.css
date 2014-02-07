@@ -1,0 +1,49 @@
+﻿/*
+Default CSS for the DotNetNuke Media Module
+(C) Copyright 2002-2011 by DotNetNuke Corporation
+*/
+.dnnmedia_wrapper { width:98%; }
+.dnnMedia-Wrapper, .dnnMedia-Wrapper iframe, .dnnMedia-Wrapper object { position: relative; z-index: 899 !important; }
+.dnnmedia_image { border:0px solid #ffffff; }
+.dnnmedia_left, .dnnmedia_left * { text-align:left; }
+.dnnmedia_right, .dnnmedia_right * { text-align:right; }
+.dnnmedia_center, .dnnmedia_center * { text-align:center; }
+.dnnmedia_wmp, .dnnmedia_wmp * { position:relative !important; z-index:2 !important; }
+.dnnmedia_italic { font-style: italic; }
+
+/*
+media options view
+*/
+#dnnEditEntry { margin-top:3.2em; }
+#dnnmedia-filesupport-wrapper { margin-left:24em; }
+div.dnnForm.dnnTextEditor.dnnClear { min-width:570px !important; width:96%; }
+.dnnmedia-message { margin-top:0.5em; }
+.dnnmedia_textbox { width:275px; margin-right:1em !important; }
+.dnnmedia-audit { margin-top:0.5em; }
+
+fieldset, .dnnmedia-fieldset { margin-bottom:1em !important; }
+    fieldset ol, .dnnmedia-list { padding:1em 1em 0 1em; list-style:none; }
+    fieldset li, .dnnmedia-listitem { padding-bottom:1em; list-style:none; line-height:1.6em; }
+    fieldset.commands { border:none; }
+
+#divMediaCommands { margin-top:0.8em; text-align:left; }
+    ul#ulMediaCommands { list-style-type:none; }
+    ul#ulMediaCommands li { display:inline; margin-right:10px; }
+
+#pSupportedFileTypesLegend { margin-left:7em; }
+
+#tblMediaFileTypes { width:350px; border:1px solid #000000; margin-bottom:0.5em; margin-left:7em; }
+#tblMediaFileTypes tr td { border:1px solid #000000; padding:2px 2px 2px 6px; }
+    .dnnmedia-filetype-headrow td { font-weight:bold; background-color:#c0c0c0; }
+    .dnnmedia-filetype-altrow { background-color:#f0f0f0; }
+    .dnnmedia-filetype-filetype { width:150px; }
+    .dnnmedia-filetype-modulesupport, .dnnmedia-filetype-hostsupport { width: 100px; }
+
+.dnnmedia-hidden { display:none; }
+
+.dnnFormItem span label, .dnnFormItem div.urlControl label { width:inherit; }
+p.dnnmedia-form-message { margin:0 0 0 19em; }
+.dnnFormItem div.urlControl label { float:none !important; text-align:inherit !important; }
+
+div.dnnssStat { border-top:1px #ccc solid; padding:1em 0 4em; overflow:hidden; } 
+    .dnnssStat p { float:left; padding-right:2em; }

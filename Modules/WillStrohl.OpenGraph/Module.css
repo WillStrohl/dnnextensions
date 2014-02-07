@@ -1,0 +1,20 @@
+﻿/*
+
+WillStrohl.OpenGraph Module for DotNetNuke
+Version: 01.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2011 Will Strohl
+
+*/
+
+/* option settings */
+.wnsFormCheckbox input, .wnsFormCheckboxDisabled input { margin-left: 5px !important; }
+    .wnsFormCheckbox label { cursor: pointer !important; }
+    .wnsFormCheckboxDisabled input, .wnsFormCheckboxDisabled label { cursor: not-allowed !important; } 
+    .wnsFormCheckbox label, .wnsFormCheckboxDisabled label { display: inline !important;width: auto !important;text-align: left !important;font-weight: inherit !important;float: none !important;margin: 0 !important; }
+
+/* form settings */
+.wnsTallTextBox { height: 45px !important; }

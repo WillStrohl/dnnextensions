@@ -1,0 +1,25 @@
+/*
+
+WillStrohlDisqus Module for DotNetNuke
+Version: 01.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2011 Will Strohl
+
+*/
+
+fieldset, .wns-fieldset { margin:1.5em 0 0 0; padding:0; }
+    fieldset ol, .wns-list { padding:1em 1em 0 1em; list-style:none; }
+    fieldset li, .wns-listitem { padding-bottom:1em; list-style:none; line-height:1.6em; }
+    .wns-listitem { float:none; clear:both; }
+
+#dnnDisqusSettings, #dnnDisqusCommands { margin: 0 1em 0 1em; }
+
+.wns-disqus-comments { display: none; margin: 0;padding: 0; }
+
+.wns-clear:after {clear:both;content:".";display:block;height:0;visibility:hidden;font-size:0;}
+    *+html .wns-clear{min-height:1%;}
+
+.wns-login { margin-left: 1.0em; }

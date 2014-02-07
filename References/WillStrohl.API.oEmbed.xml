@@ -1,0 +1,983 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WillStrohl.API.oEmbed
+</name>
+</assembly>
+<members>
+<member name="M:WillStrohl.API.oEmbed.Providers.Embedly.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Embedly.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Embedly.GetRichContent(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Embedly.GetRichContentObject(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Embedly">
+	<summary>
+ This is the implementation wrapper for the Embed.Ly oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RequestInfo.Format">
+	<summary>
+ The required response format. When not specified, the provider can return any valid response format. When specified, the provider must return data in the request format, else return an error.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ ReadOnly. This API only supports JSON requests and responses at this time.
+ 
+ If there was an error, instead of the specified formatted content, oEmbed providers may return the following errors: 404 Not Found, 501 Not Implemented, 401 Not Authorized
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RequestInfo.MaxHeight">
+	<summary>
+ The maximum height of the embedded resource. For supported resource types, this parameter must be respected by providers.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be sent for video and photo oEmbed types.
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RequestInfo.MaxWidth">
+	<summary>
+ The maximum width of the embedded resource. For supported resource types, this parameter must be respected by providers.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be sent for video and photo oEmbed types.
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RequestInfo.URL">
+	<summary>
+ The URL to retrieve embedding information for.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.RequestInfo">
+	<summary>
+ This is the request object used to generate generic requests to oEmbed providers that are not included in this API.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.RequestController.GetOEmbedContent(System.String)">
+	<summary>
+ GetOEmbedContent - this method makes a GET request to the oEmbed provider, and returns their response.
+ </summary>
+	<param name="RequestUrl">String - this is the oEmbed formatted URL to call</param>
+	<returns></returns>
+	<remarks>
+ If an error occurs, the error message will be returned in the "title" parameter of the oEmbed object.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.RequestController.GetOEmbedContent(System.String,System.String,System.Int32)">
+	<summary>
+ GetOEmbedContent - this method makes a GET request to the oEmbed provider, and returns their response.
+ </summary>
+	<param name="RequestUrl">String - this is the oEmbed formatted URL to call</param>
+	<param name="ProxyAddress">String - this is the URL for the internet proxy to use for the oEmbed request</param>
+	<param name="ProxyPort">Integer - this is the http port for the internet proxy to use for the oEmbed request</param>
+	<returns></returns>
+	<remarks>
+ If an error occurs, the error message will be returned in the "title" parameter of the oEmbed object.
+ </remarks>
+</member><member name="T:WillStrohl.API.oEmbed.RequestController">
+	<summary>
+ RequestController - this class handles all of the remote GET requests centrally for all oEmbed types.
+ </summary>
+	<remarks>
+ This class is not inheritable.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Hulu.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Hulu.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Hulu.GetVideo(System.String)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Hulu.GetVideo(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Hulu.GetVideoObject(System.String)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks>
+ This method passes the DEFAULT_VIDEO_WIDTH and DEFAULT_VIDEO_HEIGHT parameters to the root method.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Hulu.GetVideoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Hulu">
+	<summary>
+ This is the implementation wrapper for the Hulu oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Viddler.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Viddler.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Viddler.GetVideo(System.String)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Viddler.GetVideo(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Viddler.GetVideoObject(System.String)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks>
+ This method passes the DEFAULT_VIDEO_WIDTH and DEFAULT_VIDEO_HEIGHT parameters to the root method.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Viddler.GetVideoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Viddler">
+	<summary>
+ This is the implementation wrapper for the Viddler oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="P:My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ClearspringWidgets.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ClearspringWidgets.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ClearspringWidgets.GetRichContent(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ClearspringWidgets.GetRichContentObject(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.ClearspringWidgets">
+	<summary>
+ This is the implementation wrapper for the Clearspring Widget oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Vimeo.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Vimeo.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Vimeo.GetVideo(System.String)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Vimeo.GetVideo(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Vimeo.GetVideoObject(System.String)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks>
+ This method passes the DEFAULT_VIDEO_WIDTH and DEFAULT_VIDEO_HEIGHT parameters to the root method.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Vimeo.GetVideoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Vimeo">
+	<summary>
+ This is the implementation wrapper for the Vimeo oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.DEFAULT_VIDEO_WIDTH">
+	<summary>
+ DEFAULT_VIDEO_WIDTH - This value is used for videos if a width is not specified
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.DEFAULT_VIDEO_HEIGHT">
+	<summary>
+ DEFAULT_VIDEO_HEIGHT - This value is used for videos if a height is not specified
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.YOUTUBE_FORMAT">
+	<summary>
+ URL EndPoint format for the YouTube oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.VIDDLER_FORMAT">
+	<summary>
+ URL EndPoint format for the Viddler oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.QIK_FORMAT">
+	<summary>
+ URL EndPoint format for the Qik oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.REVISION3_FORMAT">
+	<summary>
+ URL EndPoint format for the Revision3 oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.HULU_FORMAT">
+	<summary>
+ URL EndPoint format for the Hulu oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.VIMEO_FORMAT">
+	<summary>
+ URL EndPoint format for the Vimeo oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.FLICKR_FORMAT">
+	<summary>
+ URL EndPoint format for the Flickr oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.POLLEVERYWHERE_FORMAT">
+	<summary>
+ URL EndPoint format for the Poll Everywhere oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.OOHEMBED_FORMAT">
+	<summary>
+ URL EndPoint format for the oohEmbed oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.MYOPERA_FORMAT">
+	<summary>
+ URL EndPoint format for the MyOpera oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.CLEARSPRINGWIDGETS_FORMAT">
+	<summary>
+ URL EndPoint format for the Clearspring Widgets oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.API.oEmbed.Constants.EMBEDLY_FORMAT">
+	<summary>
+ URL EndPoint format for the Embed.ly oEmbed implementation
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.ApplicationError.GetAppliationErrorObject(System.String)">
+	<summary>
+ GetAppliationErrorObject - this object is used to report errors from oEmbed requests
+ </summary>
+	<param name="ErrorMessage">String - the error message to relay to the calling function</param>
+	<returns>String - the error object, in the form of a nearly empty oEmbed object</returns>
+	<remarks>
+ Look in the "title" parameter of the oEmbed object to see the error.
+ </remarks>
+</member><member name="T:WillStrohl.API.oEmbed.ApplicationError">
+	<summary>
+ ApplicationError - this class is used to help report errors that occur during oEmbed provider requests
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.oohEmbed.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.oohEmbed.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.oohEmbed.GetRichContent(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.oohEmbed.GetRichContentObject(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.oohEmbed">
+	<summary>
+ This is the implementation wrapper for the oohEmbed oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.PollEverywhere.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.PollEverywhere.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.PollEverywhere.GetRichContent(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.PollEverywhere.GetRichContentObject(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.PollEverywhere">
+	<summary>
+ This is the implementation wrapper for the Poll Everywhere oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Flickr.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Flickr.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Flickr.GetPhoto(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetPhotoObject - this method will return the photo URL to embed into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Flickr.GetPhotoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetPhotoObject - this method will return the photo oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Flickr">
+	<summary>
+ This is the implementation wrapper for the Flickr oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Qik.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Qik.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Qik.GetVideo(System.String)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Qik.GetVideo(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Qik.GetVideoObject(System.String)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks>
+ This method passes the DEFAULT_VIDEO_WIDTH and DEFAULT_VIDEO_HEIGHT parameters to the root method.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Qik.GetVideoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Qik">
+	<summary>
+ This is the implementation wrapper for the Qik oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetPhotoContent(System.String,WillStrohl.API.oEmbed.RequestInfo)">
+	<summary>
+ GetPhotoContent - this method makes a call to a photo oEmbed provider, and returns the image URL that you request
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<returns>String - the image URL to embed into your content</returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetPhotoContent(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])">
+	<summary>
+ GetPhotoContent - this method makes a call to a photo oEmbed provider, and returns the image URL that you request
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<param name="Args">String() - optional arguments that can be appended to the end of the oEmbed GET request URL</param>
+	<returns>String - the image URL to embed into your content</returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetVideoContent(System.String,WillStrohl.API.oEmbed.RequestInfo)">
+	<summary>
+ GetVideoContent - this method makes a call to a video oEmbed provider, and returns the video markup that you request
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<returns>String - the video markup to embed into your content</returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetVideoContent(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])">
+	<summary>
+ GetVideoContent - this method makes a call to a video oEmbed provider, and returns the video markup that you request
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<param name="Args">String() - optional arguments that can be appended to the end of the oEmbed GET request URL</param>
+	<returns>String - the video markup to embed into your content</returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetRichContent(System.String,WillStrohl.API.oEmbed.RequestInfo)">
+	<summary>
+ GetRichContent - this method makes a call to a rich content oEmbed provider, and returns the rich content markup that you request
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<returns>String - the rich content markup to embed into your content</returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetRichContent(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])">
+	<summary>
+ GetRichContent - this method makes a call to a rich content oEmbed provider, and returns the rich content markup that you request
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<param name="Args">String() - optional arguments that can be appended to the end of the oEmbed GET request URL</param>
+	<returns>String - the rich content markup to embed into your content</returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Wrapper.GetParsedURL(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])">
+	<summary>
+ GetParsedURL - this method parses the URL and makes the necessary updates to the URL to make it oEmbed compatible.
+ </summary>
+	<param name="EndPoint">String - the endpoint as specified by the oEmbed provider</param>
+	<param name="Request">RequestInfo - the request object required to pass information into the EndPoint URL</param>
+	<param name="Args">String() - optional arguments that can be appended to the end of the oEmbed GET request URL</param>
+	<returns></returns>
+	<remarks>
+ If you use the Args() argument, you need to specify it in the following format: 
+ Args = {"&amp;arg1=value1&amp;arg2=value2&amp;arg3=value3"}
+ </remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Wrapper">
+	<summary>
+ Wrapper - this is the main class to use for any provider that is not provided in this API.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.AuthorName">
+	<summary>
+ The name of the author/owner of the resource.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.AuthorUrl">
+	<summary>
+ A URL for the author/owner of the resource.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.CacheAge">
+	<summary>
+ The suggested cache lifetime for this resource, in seconds. Consumers may choose to use this value or not.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.ProviderName">
+	<summary>
+ The name of the resource provider.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.ProviderUrl">
+	<summary>
+ A URL for the author/owner of the resource.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.ThumbnailHeight">
+	<summary>
+ The height of the optional thumbnail. If this paramater is present, thumbnail_url and thumbnail_width must also be present.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.ThumbnailUrl">
+	<summary>
+ A URL to a thumbnail image representing the resource. The thumbnail must respect any maxwidth and maxheight parameters. If this paramater is present, thumbnail_width and thumbnail_height must also be present.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.ThumbnailWidth">
+	<summary>
+ The width of the optional thumbnail. If this paramater is present, thumbnail_url and thumbnail_height must also be present.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.Title">
+	<summary>
+ A text title, describing the resource.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Optionally returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.Type">
+	<summary>
+ The resource type.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Valid values are photo, video, link, and rich
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.oEmbedInfo.Version">
+	<summary>
+ The oEmbed version number. This must be 1.0.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.oEmbedInfo">
+	<summary>
+ oEmbedInfo - this is the base oEmbed response object that contains all of the universal oEmbed properties
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.YouTube.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.YouTube.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.YouTube.GetVideo(System.String)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.YouTube.GetVideo(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.YouTube.GetVideoObject(System.String)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks>
+ This method passes the DEFAULT_VIDEO_WIDTH and DEFAULT_VIDEO_HEIGHT parameters to the root method.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.YouTube.GetVideoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.YouTube">
+	<summary>
+ This is the implementation wrapper for the YouTube oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.VideoInfo.Height">
+	<summary>
+ The height in pixels required to display the HTML.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider.
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.VideoInfo.Html">
+	<summary>
+ The HTML required to embed a video player. The HTML should have no padding or margins. Consumers may wish to load the HTML in an off-domain iframe to avoid XSS vulnerabilities.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider.
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.VideoInfo.Width">
+	<summary>
+ The width in pixels required to display the HTML.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider.
+ </remarks>
+</member><member name="T:WillStrohl.API.oEmbed.VideoInfo">
+	<summary>
+ This type is used for representing playable videos. 
+ </summary>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.Providers.ProviderBase.Proxy">
+	<summary>
+ Proxy - the web address for an Internet proxy to use for oEmbed requests
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.Providers.ProviderBase.Port">
+	<summary>
+ Port - the http port number for an Internet proxy to use for oEmbed requests
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.Providers.ProviderBase.HasProxy">
+	<summary>
+ HasProxy - this property specifies if the proxy information has been properly assigned
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ProviderBase.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ProviderBase.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.ProviderBase.UseSSL(System.String)">
+	<summary>
+ UseSSL - this method returns a boolean status telling if the URL is an SSL one or not
+ </summary>
+	<param name="URL"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.ProviderBase">
+	<summary>
+ ProviderBase - this is the base class for all oEmbed providers
+ </summary>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.PhotoInfo.Height">
+	<summary>
+ The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.PhotoInfo.Url">
+	<summary>
+ The width in pixels of the image specified in the url parameter.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.PhotoInfo.Width">
+	<summary>
+ The height in pixels of the image specified in the url parameter.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider
+ </remarks>
+</member><member name="T:WillStrohl.API.oEmbed.PhotoInfo">
+	<summary>
+ PhotoInfo - This is the oEmbed type used for representing static photos.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.MyOpera.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.MyOpera.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.MyOpera.GetRichContent(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.MyOpera.GetRichContentObject(System.String)">
+	<summary>
+ GetRichContentObject - this method will return the rich content oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.MyOpera">
+	<summary>
+ This is the implementation wrapper for the MyOpera oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RichInfo.Height">
+	<summary>
+ The height in pixels required to display the HTML.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider.
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RichInfo.Html">
+	<summary>
+ The HTML required to display the resource. The HTML should have no padding or margins. Consumers may wish to load the HTML in an off-domain iframe to avoid XSS vulnerabilities. The markup should be valid XHTML 1.0 Basic.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider.
+ </remarks>
+</member><member name="P:WillStrohl.API.oEmbed.RichInfo.Width">
+	<summary>
+ The width in pixels required to display the HTML.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Required to be returned by the oEmbed provider.
+ </remarks>
+</member><member name="T:WillStrohl.API.oEmbed.RichInfo">
+	<summary>
+ This type is used for rich HTML content that does not fall under one of the other categories.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Revision3.#ctor">
+	<summary>
+ Instantiates the object (without using an internet proxy)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Revision3.#ctor(System.String,System.Int32)">
+	<summary>
+ Instantiates the object (using an internet proxy)
+ </summary>
+	<param name="ProxyAddress">String - the URL of a proxy server to use for oEmbed requests</param>
+	<param name="ProxyPort">Integer - the http port to use for the proxy server</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Revision3.GetVideo(System.String)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Revision3.GetVideo(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideo - this method will return the video oEmbed markup to be embedded into your content
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Revision3.GetVideoObject(System.String)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<returns></returns>
+	<remarks>
+ This method passes the DEFAULT_VIDEO_WIDTH and DEFAULT_VIDEO_HEIGHT parameters to the root method.
+ </remarks>
+</member><member name="M:WillStrohl.API.oEmbed.Providers.Revision3.GetVideoObject(System.String,System.Int32,System.Int32)">
+	<summary>
+ GetVideoObject - this method will return the video oEmbed object that is returned from the provider
+ </summary>
+	<param name="URL">The source URL of the image. Consumers should be able to insert this URL into an &lt;img&gt; element. Only HTTP and HTTPS URLs are valid.</param>
+	<param name="Width">The width in pixels of the image specified in the url parameter.</param>
+	<param name="Height">The height in pixels of the image specified in the url parameter.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:WillStrohl.API.oEmbed.Providers.Revision3">
+	<summary>
+ This is the implementation wrapper for the Revision3 oEmbed provider
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

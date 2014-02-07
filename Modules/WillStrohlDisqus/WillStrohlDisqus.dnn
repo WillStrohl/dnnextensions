@@ -1,0 +1,165 @@
+<dotnetnuke type="Package" version="6.0">
+    <packages>
+        <package name="WillStrohlDisqus" type="Module" version="02.00.00">
+            <friendlyName>Disqus Comments</friendlyName>
+            <description>A module that allows you to integrate Disqus Comments anywhere on your DotNetNuke website.</description>
+            <owner>
+                <name>Will Strohl</name>
+                <organization>WillStrohl.com</organization>
+                <url><![CDATA[<a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a>]]></url>
+                <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+            </owner>
+            <license src="license.txt" />
+            <releaseNotes src="releasenotes.txt" />
+            <dependencies>
+                <dependency type="CoreVersion">06.00.00</dependency>
+            </dependencies>
+            <components>
+                <component type="Script">
+                    <scripts>
+                        <basePath>DesktopModules\WillStrohl.ContentSlider</basePath>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>00.00.01.SqlDataProvider</name>
+                            <version>00.00.01</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.00.00.SqlDataProvider</name>
+                            <version>01.00.00</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.00.SqlDataProvider</name>
+                            <version>01.01.00</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.01.SqlDataProvider</name>
+                            <version>01.01.01</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.02.SqlDataProvider</name>
+                            <version>01.01.02</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.02.00.SqlDataProvider</name>
+                            <version>01.02.00</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>02.00.00.SqlDataProvider</name>
+                            <version>02.00.00</version>
+                        </script>
+                        <script type="UnInstall">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>Uninstall.SqlDataProvider</name>
+                            <version>02.00.00</version>
+                        </script>
+                    </scripts>
+                </component>
+                <component type="Assembly">
+                    <assemblies>
+                        <basePath>bin</basePath>
+                        <assembly>
+                            <name>WillStrohlDisqus.dll</name>
+                            <version>02.00.00</version>
+                        </assembly>
+                        <assembly>
+                            <name>Newtonsoft.Json.dll</name>
+                            <version>03.05.00</version>
+                        </assembly>
+                    </assemblies>
+                </component>
+                <component type="Module">
+                    <desktopModule>
+                        <moduleName>WillStrohlDisqus</moduleName>
+                        <foldername>WillStrohlDisqus</foldername>
+                        <businessControllerClass>DotNetNuke.Modules.WillStrohlDisqus.Components.FeatureController</businessControllerClass>
+                        <supportedFeatures />
+                        <moduleDefinitions>
+                            <moduleDefinition>
+                                <friendlyName>Disqus Comments</friendlyName>
+                                <defaultCacheTime>-1</defaultCacheTime>
+                                <moduleControls>
+                                    <moduleControl>
+                                        <controlKey />
+                                        <controlSrc>DesktopModules/WillStrohlDisqus/View.ascx</controlSrc>
+                                        <supportsPartialRendering>False</supportsPartialRendering>
+                                        <controlTitle />
+                                        <controlType>View</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                        <viewOrder>0</viewOrder>
+                                    </moduleControl>
+                                    <moduleControl>
+                                        <controlKey>Edit</controlKey>
+                                        <controlSrc>DesktopModules/WillStrohlDisqus/Edit.ascx</controlSrc>
+                                        <supportsPartialRendering>False</supportsPartialRendering>
+                                        <controlTitle>Edit Content</controlTitle>
+                                        <controlType>Edit</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                        <viewOrder>0</viewOrder>
+                                        <supportsPartialRendering>True</supportsPartialRendering>
+                                        <supportsPopUps>True</supportsPopUps>
+                                    </moduleControl>
+                                </moduleControls>
+                            </moduleDefinition>
+                        </moduleDefinitions>
+                    </desktopModule>
+                </component>
+                <component type="File">
+                    <files>
+                        <basePath>DesktopModules\WillStrohlDisqus</basePath>
+                        <file>
+                            <name>WillStrohlDisqus.dnn</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>00.00.01.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.00.00.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.00.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.01.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.02.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.02.00.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>02.00.00.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>Uninstall.SqlDataProvider</name>
+                        </file>
+                    </files>
+                </component>
+                <component type="ResourceFile">
+                    <resourceFiles>
+                        <basePath>DesktopModules/WillStrohlDisqus</basePath>
+                        <resourceFile>
+                            <name>Resources.zip</name>
+                        </resourceFile>
+                    </resourceFiles>
+                </component>
+            </components>
+        </package>
+    </packages>
+</dotnetnuke>

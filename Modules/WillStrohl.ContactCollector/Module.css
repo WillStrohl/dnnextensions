@@ -1,0 +1,20 @@
+/*
+
+WillStrohl.ContactCollector Module for DotNetNuke
+Version: 01.02.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2011 Will Strohl
+
+*/
+
+.cc_captcha { text-align:center; margin-left:auto; margin-right:auto; padding-top:6px; }
+#divCommands { margin-top:2.0em; }
+#divCaptchaWrapper { margin-left:290px; }
+#divRequiredFields { width:30%; }
+    #divRequiredFields span input { display:inline; float:left; clear:left; }
+    #divRequiredFields span label { display:inline; float:left; clear:right; width:80%; text-align:left; }
+
+.dnnTextEditor { width:inherit !important; min-width:inherit !important; }

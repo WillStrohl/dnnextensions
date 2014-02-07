@@ -1,0 +1,6 @@
+/* main view */
+.grpSettingsGrid { width: 100%; }
+    .grpSettingsGrid tr td a { margin-right: 0.5em; }
+
+/* edit view */
+.dnnMetadataForm { margin: 0 1.0em 0 1.0em; }

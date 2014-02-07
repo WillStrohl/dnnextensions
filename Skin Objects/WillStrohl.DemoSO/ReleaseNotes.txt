@@ -1,0 +1,17 @@
+﻿<div style="width:100%;height:375px;overflow:auto;">
+
+	<p>Contributors of this open source and free project, include: 
+		<a href="http://www.willstrohl.com" target="_blank">Will Strohl (a.k.a hismightiness)</a><br /><br />
+		For support, questions, or suggestions, please use the <a href="http://dnndemoso.codeplex.com" target="_blank">Demo Skin Objects for DotNetNuke</a> website.</p>
+
+	<h3>Version 01.01.01</h3>
+	<p><strong>Date Released:</strong> 08/02/2013</p>
+	<ul>
+		<li>Updated the styling of the persona bar on the bottom of the browser</li>
+		<li>Removed a dependency for Skin Object names to be specific</li>
+		<li>Implemented a work around that prevented user-switching in DNN 7.1</li>
+	</ul>
+
+	<p>For more information about this and previous releases of this skin object project, <a href="http://dnndemoso.codeplex.com" target="_blank">visit the project website</a>.</p>
+
+</div>

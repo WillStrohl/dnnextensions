@@ -1,0 +1,43 @@
+<dotnetnuke type="Package" version="6.0">
+    <packages>
+        <package name="WillStrohl.WidgetSuite" type="Widget" version="01.04.00">
+            <friendlyName>DNN Widget Suite</friendlyName>
+            <description>This is a suite of widgets that allows you to perform various functions within your DotNetNuke website, client-side, using the built-in widget framework.</description>
+            <owner>
+                <name>Will Strohl</name>
+                <organization><![CDATA[Widget Suite Team (<a href="http://www.willstrohl.com" target="_blank">Will Strohl</a>, <a href="http://www.dnngarden.com" target="_blank">Mark Allan</a>, <a href="http://www.schwingsoft.com" target="_blank">Armand Datema</a>)]]></organization>
+                <url><![CDATA[<a href="http://dnnwidgets.com" target="_blank">http://dnnwidgets.com</a>]]></url>
+                <email><![CDATA[<a href="mailto:contributors@dnnwidgets.com">contributors@dnnwidgets.com</a>]]></email>
+            </owner>
+            <license src="license.txt" />
+            <releaseNotes src="releasenotes.txt" />
+            <dependecies>
+                <dependency type="coreversion">06.00.00</dependency>
+            </dependecies>
+            <components>
+                <component type="Widget">
+                    <widgetFiles>
+                        <basePath>WillStrohl</basePath>
+                        <widgetFile>
+                            <name>DNNWidgetSuite.dnn</name>
+                        </widgetFile>
+                        <widgetFile>
+                            <name>license.txt</name>
+                        </widgetFile>
+                        <widgetFile>
+                            <name>releasenotes.txt</name>
+                        </widgetFile>
+                    </widgetFiles>
+                </component>
+                <component type="ResourceFile">
+                    <resourceFiles>
+                        <basePath>Resources\Widgets\User\WillStrohl</basePath>
+                        <resourceFile>
+                            <name>Resources.zip</name>
+                        </resourceFile>
+                    </resourceFiles>
+                </component>
+            </components>
+        </package>
+    </packages>
+</dotnetnuke>

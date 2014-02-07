@@ -1,0 +1,24 @@
+﻿/*
+
+WillStrohl.ContentSlider Module for DotNetNuke
+Version: 01.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2011 Will Strohl
+
+*/
+.dnnFormExpandContent { margin-top:2.0em; }
+
+.dnnTextEditor { width:inherit !important; min-width:inherit !important; }
+
+.wns-slideshow-wrapper { position:relative; z-index:850; }
+
+ol.wns-slider-list { margin: 0; padding: 0; }
+    ol.wns-slider-list li.wns-slider-list-item { display: inline; float: left; list-style-type: none; margin: 0 0.5em 0.5em 0; }
+
+.editSliderImage { border:none; }
+
+ol.wnsSliderPager { margin: 0.5em 0 0 0; padding: 0; display: block; clear: both; }
+    ol.wnsSliderPager li { list-style-type: none; display: inline; margin-right: 0.75em; }

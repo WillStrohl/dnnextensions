@@ -1,0 +1,165 @@
+<dotnetnuke type="Package" version="6.0">
+    <packages>
+        <package name="WillStrohl.ContactCollector" type="Module" version="1.2.1">
+            <friendlyName>Contact Collector</friendlyName>
+            <description>
+                <![CDATA[<p>This is the WillStrohl.ContactCollector module. It allows you to collect user-submitted contact information.</p>]]>
+            </description>
+            <owner>
+                <name>Will Strohl</name>
+                <organization>Will Strohl</organization>
+                <url><![CDATA[<a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a>]]></url>
+                <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+            </owner>
+            <license src="license.txt" />
+            <releaseNotes src="releasenotes.txt" />
+            <dependecies>
+                <dependency type="coreversion">07.00.02</dependency>
+            </dependecies>
+            <components>
+                <component type="Script">
+                    <scripts>
+                        <basePath>DesktopModules\WillStrohl.ContactCollector</basePath>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.00.00.SqlDataProvider</name>
+                            <version>01.00.00</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.00.01.SqlDataProvider</name>
+                            <version>01.00.01</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.00.SqlDataProvider</name>
+                            <version>01.01.00</version>
+                        </script>
+                        <script type="Install">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.02.00.SqlDataProvider</name>
+                            <version>01.02.00</version>
+                        </script>
+                      <script type="Install">
+                        <path>Providers\DataProviders\SqlDataProvider</path>
+                        <name>01.02.01.SqlDataProvider</name>
+                        <version>01.02.01</version>
+                      </script>
+                        <script type="UnInstall">
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>Uninstall.SqlDataProvider</name>
+                            <version>01.02.01</version>
+                        </script>
+                    </scripts>
+                </component>
+                <component type="Module">
+                    <desktopModule>
+                        <moduleName>WillStrohl.ContactCollector</moduleName>
+                        <foldername>WillStrohl.ContactCollector</foldername>
+                        <businessControllerClass>WillStrohl.Modules.ContactCollector.ContactCollectorController, WillStrohl.Modules.ContactCollector</businessControllerClass>
+                        <supportedFeatures>
+                            <supportedFeature type="Portable" />
+                        </supportedFeatures>
+                        <moduleDefinitions>
+                            <moduleDefinition>
+                                <friendlyName>Contact Collector</friendlyName>
+                                <defaultCacheTime>-1</defaultCacheTime>
+                                <moduleControls>
+                                    <moduleControl>
+                                        <controlKey />
+                                        <controlSrc>DesktopModules/WillStrohl.ContactCollector/ViewContactCollector.ascx</controlSrc>
+                                        <supportsPartialRendering>False</supportsPartialRendering>
+                                        <controlTitle />
+                                        <controlType>View</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                    </moduleControl>
+                                    <moduleControl>
+                                        <controlKey>Settings</controlKey>
+                                        <controlSrc>DesktopModules/WillStrohl.ContactCollector/Settings.ascx</controlSrc>
+                                        <supportsPartialRendering>False</supportsPartialRendering>
+                                        <controlTitle />
+                                        <controlType>Edit</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                    </moduleControl>
+                                    <moduleControl>
+                                        <controlKey>ViewContacts</controlKey>
+                                        <controlSrc>DesktopModules/WillStrohl.ContactCollector/ViewContacts.ascx</controlSrc>
+                                        <supportsPartialRendering>False</supportsPartialRendering>
+                                        <controlTitle />
+                                        <controlType>Edit</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                    </moduleControl>
+                                </moduleControls>
+                            </moduleDefinition>
+                        </moduleDefinitions>
+                    </desktopModule>
+                    <eventMessage>
+                        <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+                        <processorCommand>UpgradeModule</processorCommand>
+                        <attributes>
+                            <businessControllerClass>WillStrohl.Modules.ContactCollector.ContactCollectorController, WillStrohl.Modules.ContactCollector</businessControllerClass>
+                            <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+                            <upgradeVersionsList />
+                        </attributes>
+                    </eventMessage>
+                </component>
+                <component type="Assembly">
+                    <assemblies>
+                        <basePath>bin</basePath>
+                        <assembly>
+                            <name>WillStrohl.Modules.ContactCollector.dll</name>
+                            <version>01.02.01</version>
+                        </assembly>
+                        <assembly>
+                            <name>WillStrohl.Modules.ContactCollector.SqlDataProvider.dll</name>
+                            <version>01.02.01</version>
+                        </assembly>
+                    </assemblies>
+                </component>
+                <component type="File">
+                    <files>
+                        <basePath>DesktopModules\WillStrohl.ContactCollector</basePath>
+                        <file>
+                            <name>WillStrohl.ContactCollector.dnn</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.00.00.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.00.01.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.01.00.SqlDataProvider</name>
+                        </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.02.00.SqlDataProvider</name>
+                        </file>
+                      <file>
+                        <path>Providers\DataProviders\SqlDataProvider</path>
+                        <name>01.02.01.SqlDataProvider</name>
+                      </file>
+                        <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>Uninstall.SqlDataProvider</name>
+                        </file>
+                    </files>
+                </component>
+                <component type="ResourceFile">
+                    <resourceFiles>
+                        <basePath>DesktopModules\WillStrohl.ContactCollector</basePath>
+                        <resourceFile>
+                            <name>Resources.zip</name>
+                        </resourceFile>
+                    </resourceFiles>
+                </component>
+            </components>
+        </package>
+    </packages>
+</dotnetnuke>

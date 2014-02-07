@@ -1,0 +1,24 @@
+﻿<h3>User Ggroup Labs: Meta Data Module</h3>
+<p class="Contributor">
+	DotNetNuke Corporation <br />
+	<a href="mailto:community@dnncorp.com">community@dnncorp.com</a><br />
+	<a href=http://www.dotnetnuke.com>http://www.dotnetnuke.com</a><br />
+</p>
+<hr/>
+<div class="License">
+	<h3>About the User Group Labs: MetaData Module</h3>
+	<p class="Owner">
+		<b>Version 01.00.00</b><br /><br />
+	</p>
+	<p>This is an initial release with a minimal featureset. This module allows you to manage the Meta Data for the Social Groups in DotNetNuke.</p>
+	
+	<h4>Features and Updates:</h4>
+	<ul>
+			<li>Easy to use (just add to the group details page)</li>
+			<li>Lists all social group meta data</li>
+			<li>Edit existing meta data</li>
+			<li>Create new meta data</li>
+			<li>Intelligent parsing for common data types for usability</li>
+	</ul>
+	
+</div>

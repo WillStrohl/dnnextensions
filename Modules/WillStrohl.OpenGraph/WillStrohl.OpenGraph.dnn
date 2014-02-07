@@ -1,0 +1,109 @@
+﻿<dotnetnuke type="Package" version="6.0">
+    <packages>
+        <package name="WillStrohl.OpenGraph" type="Module" version="01.02.00">
+            <friendlyName>Open Graph Protocol</friendlyName>
+            <description>
+                <![CDATA[<p>This module allows you to quickly and easily add the Open Graph Protocol markup to your website. Doing so makes you compatible with sharing content with sites like Facebook.</p>]]>
+            </description>
+            <owner>
+                <name>Will Strohl</name>
+                <organization>Will Strohl</organization>
+                <url><![CDATA[<a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a>]]></url>
+                <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+            </owner>
+            <license src="license.txt" />
+            <releaseNotes src="releasenotes.txt" />
+            <dependencies>
+                <dependency type="coreversion">07.00.02</dependency>
+            </dependencies>
+            <components>
+                <component type="Module">
+                    <desktopModule>
+                        <moduleName>WillStrohl.OpenGraph</moduleName>
+                        <foldername>WillStrohl.OpenGraph</foldername>
+                        <businessControllerClass>WillStrohl.Modules.OpenGraph.OpenGraphController, WillStrohl.Modules.OpenGraph</businessControllerClass>
+                        <supportedFeatures/>
+                        <moduleDefinitions>
+                            <moduleDefinition>
+                                <friendlyName>Open Graph Protocol</friendlyName>
+                                <defaultCacheTime>-1</defaultCacheTime>
+                                <moduleControls>
+                                    <moduleControl>
+                                        <controlKey />
+                                        <controlSrc>DesktopModules/WillStrohl.OpenGraph/Default.ascx</controlSrc>
+                                        <supportsPartialRendering>False</supportsPartialRendering>
+                                        <controlTitle />
+                                        <controlType>View</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                    </moduleControl>
+                                    <moduleControl>
+                                        <controlKey>Edit</controlKey>
+                                        <controlSrc>DesktopModules/WillStrohl.OpenGraph/Settings.ascx</controlSrc>
+                                        <supportsPartialRendering>True</supportsPartialRendering>
+                                        <supportsPopUps>True</supportsPopUps>
+                                        <controlTitle />
+                                        <controlType>Edit</controlType>
+                                        <iconFile />
+                                        <helpUrl />
+                                    </moduleControl>
+                                </moduleControls>
+                            </moduleDefinition>
+                        </moduleDefinitions>
+                    </desktopModule>
+                    <eventMessage>
+                        <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+                        <processorCommand>UpgradeModule</processorCommand>
+                        <attributes>
+                            <businessControllerClass>WillStrohl.Modules.OpenGraph.OpenGraphController, WillStrohl.Modules.OpenGraph</businessControllerClass>
+                            <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+                            <upgradeVersionsList />
+                        </attributes>
+                    </eventMessage>
+                </component>
+                <component type="Assembly">
+                    <assemblies>
+                        <basePath>bin</basePath>
+                        <assembly>
+                            <name>WillStrohl.Modules.OpenGraph.dll</name>
+                            <version>01.02.00</version>
+                        </assembly>
+                    </assemblies>
+                </component>
+                <component type="File">
+                    <files>
+                        <basePath>DesktopModules\WillStrohl.OpenGraph</basePath>
+                        <file>
+                            <name>WillStrohl.OpenGraph.dnn</name>
+                        </file>
+                    </files>
+                </component>
+                <component type="ResourceFile">
+                    <resourceFiles>
+                        <basePath>DesktopModules\WillStrohl.OpenGraph</basePath>
+                        <resourceFile>
+                            <name>Resources.zip</name>
+                        </resourceFile>
+                    </resourceFiles>
+                </component>
+                <component type="Config">
+                    <config>
+                        <configFile>web.config</configFile>
+                        <install>
+                            <configuration>
+                                <nodes/>
+                            </configuration>
+                        </install>
+                        <uninstall>
+                            <configuration>
+                                <nodes>
+                                    <node path="/configuration/system.webServer/modules/add[@name = 'willStrohlOpenGraphRewriter']" action="remove" />
+                                </nodes>
+                            </configuration>
+                        </uninstall>
+                    </config>
+                </component>
+            </components>
+        </package>
+    </packages>
+</dotnetnuke>

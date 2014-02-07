@@ -1,0 +1,82 @@
+﻿/*
+
+Lightbox Gallery Module for DotNetNuke
+Version: 01.10.00
+Website: http://wnslightbox.codeplex.com
+
+Copyright 2011 Will Strohl
+
+*/
+.EditImage, .OrderImage { display:inline; padding-top:0.6em; margin:0px 5px 5px 0px; }
+
+ul.wns_lightbox { display:block; padding:0px; margin:0px; list-style-image:none; list-style-position:outside; }
+    li.listitem { display:inline; float:left; list-style-type:none; margin:.5em 2.0em 2.0em 0em; width:102px; height:102px; }
+    li.listitem span.wns_lightbox_span { width:102px; height:102px; }
+    li.listitem span.wns_lightbox_span a { margin:5px; padding:5px 5px 12px 5px; float:left; display:block; }
+    li.listitem span.wns_lightbox_span a img, #ulOrderImages img { 
+        background: none repeat scroll 0 0 white;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px silver;
+        cursor: pointer;
+        padding:8px;
+    }
+    #ulOrderImages.ui-sortable img { cursor: move; }
+
+li.listitem.editview, li.listitem.editview span.wns_lightbox_span { height:137px !important; }
+    li.listitem.editview span.wns_lightbox_image_edit_wrap { margin-top:15px; margin-left:0.5em; }
+    li.listitem.editview span.wns_lightbox_image_edit_wrap a { background:none; padding:0; margin:0; }
+
+.wns_lightbox_wrapper { clear:both; display:block; }
+    .wns_lightbox_head { padding-top:10px; }
+    .wns_lightbox_image_edit{display:inline-block;}
+    .wns_lightbox_description {  }
+    .wns_lightbox_image_edit_wrap {  }
+    .wns_lightbox_image_edit_wrap a { border:none !important; }
+    
+.wns-showlater { display:none; }
+.wns-image { border:none; }
+
+.wns-sortable { list-style-type:none; padding:0.9em; margin:0.7em 0 0.7em 0; cursor:pointer; color:#000000 !important; }
+    #ulOrder li { background-color: #ffffff; border: 1px solid #000000 !important; margin-bottom: auto; cursor: move; } 
+    #ulOrderImages li { display:inline; float:left; width:105px; height:105px; margin-right:1.0em; margin-bottom:1.0em; cursor: move; }
+
+fieldset, .wns-fieldset { margin:1.5em 0 0 0; padding:0; }
+    fieldset ol, .wns-list { padding:1em 1em 0 1em; list-style:none; }
+    fieldset li, .wns-listitem { padding-bottom:1em; list-style:none; line-height:1.6em; }
+    fieldset.commands { border:none; }
+    .wns-listitem { float:none; clear:both; }
+
+#divImagePreview p { text-align:center; }
+#divActions { margin-top:4em; }
+
+.wns_RadCombo { width:auto; min-width:35% !important; }
+
+.wns-sortable{border:0 !important;}
+
+.wnsExifTitle { text-transform: capitalize; }
+    .wnsExifInline { clear: none !important; display: inline !important; }
+
+/* Proposed for theme.css */
+
+#fancybox-outer { position: relative; width: 100%; height: 100%; background: white;
+    -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px;
+    -moz-box-shadow: 0 0 5px 5px grey; -webkit-box-shadow: 0 0 5px 5px grey;
+    box-shadow: 0 0 5px 5px grey;
+}
+#fancybox-content { width: 0; height: 0; padding: 0; outline: none; position: relative;
+    overflow: hidden; z-index: 1102; border: 0px solid #red; -webkit-border-radius: 12px;
+    -moz-border-radius: 12px; border-radius: 12px; -moz-box-shadow: 0 0 5px 5px grey;
+    -webkit-box-shadow: 0 0 5px 5px grey; box-shadow: 0 0 5px 5px grey;
+}
+    #fancybox-bg-n { top: -20px; left: 0; width: 100%; background-image: none; }
+    #fancybox-bg-ne { top: -20px;right: -20px; background-image: none; background-position: -40px -162px; }
+    #fancybox-bg-e { top: 0; right: -20px; height: 100%; background-image: none; background-position: -20px 0px; }
+    #fancybox-bg-se { bottom: -20px; right: -20px; background-image: none; background-position: -40px -182px; }
+    #fancybox-bg-s { bottom: -20px; left: 0; width: 100%; background-image: none; background-position: 0px -20px; }
+    #fancybox-bg-sw { bottom: -20px; left: -20px; background-image: none; background-position: -40px -142px; }
+    #fancybox-bg-w { top: 0; left: -20px; height: 100%; background-image: none; }
+    #fancybox-bg-nw { top: -20px; left: -20px; background-image: none; background-position: -40px -122px; }
+
+/* end theme.css */
