@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;p&gt;If you would like help with using this module, or need to report a bug, please visit the &lt;a href="http://dnnopengraph.codeplex.com" target="_blank"&gt;Open Graph module home page on codeplex&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Additional &lt;a href="http://dnnopengraph.codeplex.com/documentation" target="_blank"&gt;documentation&lt;/a&gt; can be found there as well.&lt;/p&gt;</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Open Graph Protocol Settings</value>
+  </data>
+  <data name="lnkCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="lnkSubmit.Text" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="chkDescription.Text" xml:space="preserve">
+    <value>Use Page Settings Description</value>
+  </data>
+  <data name="chkTitle.Text" xml:space="preserve">
+    <value>Use Page Settings Title</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cmdUpdate.Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="GlobalSettings.Text" xml:space="preserve">
+    <value>Site-Level Settings</value>
+  </data>
+  <data name="GlobalSettingsOverview.Text" xml:space="preserve">
+    <value>These settings will be applied to all instances of this module across your site.</value>
+  </data>
+  <data name="lblDescription.Help" xml:space="preserve">
+    <value>Enter the description of the page as you would like it to appear in the various social networks.</value>
+  </data>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Page Description</value>
+  </data>
+  <data name="lblFacebookAdmins.Help" xml:space="preserve">
+    <value>Enter the Facebook User ID(s) for the people that you would like to be administrator(s) for this content for on Facebook. This is required in order for you to be identified as a manager of this content on Facebook. For example: 1234567890 or 123456789, 987654321. You can find your Facebook ID by visiting the following URL: http://graph.facebook.com/[YOUR_FACEBOOK_USERNAME].</value>
+  </data>
+  <data name="lblFacebookAdmins.Text" xml:space="preserve">
+    <value>Facebook Admin ID(s)</value>
+  </data>
+  <data name="lblFacebookAppId.Help" xml:space="preserve">
+    <value>Enter the Facebook application ID for your website. This is obtained by creating a &lt;a href="http://developers.facebook.com/" target="_blank"&gt;Facebook application&lt;/a&gt; for your site. This is required if you want to monitor and manage this content on Facebook. For example: 1234567890.</value>
+  </data>
+  <data name="lblFacebookAppId.Text" xml:space="preserve">
+    <value>Facebook Application ID</value>
+  </data>
+  <data name="lblImage.Help" xml:space="preserve">
+    <value>Although some social networks will ignore this setting, you can choose a specific image to be used when this page is shared on sites like Facebook.</value>
+  </data>
+  <data name="lblImage.Text" xml:space="preserve">
+    <value>Preferred Thumbnail</value>
+  </data>
+  <data name="lblSiteName.Help" xml:space="preserve">
+    <value>Enter the name of your site as you would like it to appear in the various social networks.</value>
+  </data>
+  <data name="lblSiteName.Text" xml:space="preserve">
+    <value>Site Name</value>
+  </data>
+  <data name="lblTitle.Help" xml:space="preserve">
+    <value>Enter the title of the page as you would like it to appear in the various social networks.</value>
+  </data>
+  <data name="lblTitle.Text" xml:space="preserve">
+    <value>Page Title</value>
+  </data>
+  <data name="lblType.Help" xml:space="preserve">
+    <value>Choose the type of site that you would categorize your site as.</value>
+  </data>
+  <data name="lblType.Text" xml:space="preserve">
+    <value>Site Type</value>
+  </data>
+  <data name="lblUrl.Help" xml:space="preserve">
+    <value>Enter the preferred URL that you would like to be used when this content appears on other sites.</value>
+  </data>
+  <data name="lblUrl.Text" xml:space="preserve">
+    <value>Preferred URL</value>
+  </data>
+  <data name="OpenGraphSettings.Text" xml:space="preserve">
+    <value>Page-Level Settings</value>
+  </data>
+  <data name="revFacebookAdmins.ErrorMessage" xml:space="preserve">
+    <value>Facebook Admin can only be numeric. For example: 1234567890 or 123456789, 987654321.</value>
+  </data>
+  <data name="revFacebookAppId.ErrorMessage" xml:space="preserve">
+    <value>Facebook App ID can only be numeric. For example: 1234567890.</value>
+  </data>
+  <data name="rfvDescription.ErrorMessage" xml:space="preserve">
+    <value>Description is required</value>
+  </data>
+  <data name="rfvSiteName.ErrorMessage" xml:space="preserve">
+    <value>Site Name is required</value>
+  </data>
+  <data name="rfvTitle.ErrorMessage" xml:space="preserve">
+    <value>Title is required</value>
+  </data>
+  <data name="rfvType.ErrorMessage" xml:space="preserve">
+    <value>Site Type is required</value>
+  </data>
+  <data name="rfvUrl.ErrorMessage" xml:space="preserve">
+    <value>URL is required</value>
+  </data>
+  <data name="SettingsOverview.Text" xml:space="preserve">
+    <value>These settings will control how your content is shown on the various social media sites when it's shared to sites like Facebook, Google+, and more.</value>
+  </data>
+  <data name="chkSiteName.Text" xml:space="preserve">
+    <value>Use Default Site Settings Name</value>
+  </data>
+  <data name="chkUrl.Text" xml:space="preserve">
+    <value>Use Default Page URL</value>
+  </data>
+  <data name="cboSiteType.Item.0" xml:space="preserve">
+    <value>Activities: Activity</value>
+  </data>
+  <data name="cboSiteType.Item.1" xml:space="preserve">
+    <value>Activities: Sport</value>
+  </data>
+  <data name="cboSiteType.Item.10" xml:space="preserve">
+    <value>Organizations: Band</value>
+  </data>
+  <data name="cboSiteType.Item.11" xml:space="preserve">
+    <value>Organizations: Government</value>
+  </data>
+  <data name="cboSiteType.Item.12" xml:space="preserve">
+    <value>Organizations: Non-Profit</value>
+  </data>
+  <data name="cboSiteType.Item.13" xml:space="preserve">
+    <value>Organizations: School</value>
+  </data>
+  <data name="cboSiteType.Item.14" xml:space="preserve">
+    <value>Organizations: University</value>
+  </data>
+  <data name="cboSiteType.Item.15" xml:space="preserve">
+    <value>People: Actor</value>
+  </data>
+  <data name="cboSiteType.Item.16" xml:space="preserve">
+    <value>People: Athlete</value>
+  </data>
+  <data name="cboSiteType.Item.17" xml:space="preserve">
+    <value>People: Author</value>
+  </data>
+  <data name="cboSiteType.Item.18" xml:space="preserve">
+    <value>People: Director</value>
+  </data>
+  <data name="cboSiteType.Item.19" xml:space="preserve">
+    <value>People: Musician</value>
+  </data>
+  <data name="cboSiteType.Item.2" xml:space="preserve">
+    <value>Businesses: Bar</value>
+  </data>
+  <data name="cboSiteType.Item.20" xml:space="preserve">
+    <value>People: Politician</value>
+  </data>
+  <data name="cboSiteType.Item.21" xml:space="preserve">
+    <value>People: Public Figure</value>
+  </data>
+  <data name="cboSiteType.Item.22" xml:space="preserve">
+    <value>Places: City</value>
+  </data>
+  <data name="cboSiteType.Item.23" xml:space="preserve">
+    <value>Places: Country</value>
+  </data>
+  <data name="cboSiteType.Item.24" xml:space="preserve">
+    <value>Places: Landmark</value>
+  </data>
+  <data name="cboSiteType.Item.25" xml:space="preserve">
+    <value>Places: State/Province</value>
+  </data>
+  <data name="cboSiteType.Item.26" xml:space="preserve">
+    <value>Products &amp; Entertainment: Album</value>
+  </data>
+  <data name="cboSiteType.Item.27" xml:space="preserve">
+    <value>Products &amp; Entertainment: Book</value>
+  </data>
+  <data name="cboSiteType.Item.28" xml:space="preserve">
+    <value>Products &amp; Entertainment: Drink</value>
+  </data>
+  <data name="cboSiteType.Item.29" xml:space="preserve">
+    <value>Products &amp; Entertainment: Food</value>
+  </data>
+  <data name="cboSiteType.Item.3" xml:space="preserve">
+    <value>Businesses: Company</value>
+  </data>
+  <data name="cboSiteType.Item.30" xml:space="preserve">
+    <value>Products &amp; Entertainment: Game</value>
+  </data>
+  <data name="cboSiteType.Item.31" xml:space="preserve">
+    <value>Products &amp; Entertainment: Product</value>
+  </data>
+  <data name="cboSiteType.Item.32" xml:space="preserve">
+    <value>Products &amp; Entertainment: Song</value>
+  </data>
+  <data name="cboSiteType.Item.33" xml:space="preserve">
+    <value>Products &amp; Entertainment: Movie</value>
+  </data>
+  <data name="cboSiteType.Item.34" xml:space="preserve">
+    <value>Products &amp; Entertainment: TV Show</value>
+  </data>
+  <data name="cboSiteType.Item.35" xml:space="preserve">
+    <value>Websites: Blog</value>
+  </data>
+  <data name="cboSiteType.Item.36" xml:space="preserve">
+    <value>Websites: Website</value>
+  </data>
+  <data name="cboSiteType.Item.37" xml:space="preserve">
+    <value>Websites: Article</value>
+  </data>
+  <data name="cboSiteType.Item.4" xml:space="preserve">
+    <value>Businesses: Cafe</value>
+  </data>
+  <data name="cboSiteType.Item.5" xml:space="preserve">
+    <value>Businesses: Hotel</value>
+  </data>
+  <data name="cboSiteType.Item.6" xml:space="preserve">
+    <value>Businesses: Restaurant</value>
+  </data>
+  <data name="cboSiteType.Item.7" xml:space="preserve">
+    <value>Groups: Cause</value>
+  </data>
+  <data name="cboSiteType.Item.8" xml:space="preserve">
+    <value>Groups: Sports League</value>
+  </data>
+  <data name="cboSiteType.Item.9" xml:space="preserve">
+    <value>Groups: Sports Team</value>
+  </data>
+  <data name="revUrl.ErrorMessage" xml:space="preserve">
+    <value>URL is not in a valid internet website address format</value>
+  </data>
+  <data name="lblOverrideOpenGraph.Help" xml:space="preserve">
+    <value>Checking this option will allow the module to override any existing Open Graph Protocol tags that might have already been added to the page. This will not remove tags that this module doesn't yet support (i.e., video).</value>
+  </data>
+  <data name="lblOverrideOpenGraph.Text" xml:space="preserve">
+    <value>Override Existing Open Graph Tags</value>
+  </data>
+  <data name="lblLocale.Help" xml:space="preserve">
+    <value>Choose the default site locale for this page. This will be used by the social sites that your content is shared on. The drop down list shows all of the locales that are currently enabled for your site.</value>
+  </data>
+  <data name="lblLocale.Text" xml:space="preserve">
+    <value>Site Locale</value>
+  </data>
+  <data name="rfvLocale.ErrorMessage" xml:space="preserve">
+    <value>Site Locale is required</value>
+  </data>
+  <data name="lblDisableWarning.Text" xml:space="preserve">
+    <value>Please note that enabling or disabling Open Graph Protocol will affect all sites on the entire installation of DotNetNuke, not just the site you're looking at. Are you sure you want to continue?</value>
+  </data>
+  <data name="lnkDisable.0.Text" xml:space="preserve">
+    <value>Disable Open Graph Protocol</value>
+  </data>
+  <data name="lnkDisable.1.Text" xml:space="preserve">
+    <value>Enable Open Graph Protocol</value>
+  </data>
+  <data name="lblDebug.Help" xml:space="preserve">
+    <value>Check to troubleshoot how the open graph protocol module is working with your settings. WARNING! This option will degrade your page load performance!</value>
+  </data>
+  <data name="lblDebug.Text" xml:space="preserve">
+    <value>Enable Debugging?</value>
+  </data>
+  <data name="lblTwitterCard.Help" xml:space="preserve">
+    <value>There are 3 card types that can be attached to Tweets, each of which has a beautiful consumption experience built for Twitter's web and mobile clients. If your content is not a photo or video, choose Summary.</value>
+  </data>
+  <data name="lblTwitterCard.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lblTwitterCreator.Help" xml:space="preserve">
+    <value>The twitter @username for the content creator.</value>
+  </data>
+  <data name="lblTwitterCreator.Text" xml:space="preserve">
+    <value>Creator Username</value>
+  </data>
+  <data name="lblTwitterCreatorId.Help" xml:space="preserve">
+    <value>The twitter ID for the content creator. This value can be used as an alternative, since the twitter username can change, but the ID cannot.</value>
+  </data>
+  <data name="lblTwitterCreatorId.Text" xml:space="preserve">
+    <value>Creator Id</value>
+  </data>
+  <data name="lblTwitterPlayer.Help" xml:space="preserve">
+    <value>The URL of the video player IFrame. This value MUST be a secure URL beginning with HTTPS. Twitter cards are played using secure URLs only.</value>
+  </data>
+  <data name="lblTwitterPlayer.Text" xml:space="preserve">
+    <value>Player URL</value>
+  </data>
+  <data name="lblTwitterPlayerHeight.Help" xml:space="preserve">
+    <value>Height of the player IFrame in pixels.</value>
+  </data>
+  <data name="lblTwitterPlayerHeight.Text" xml:space="preserve">
+    <value>Player Height</value>
+  </data>
+  <data name="lblTwitterPlayerStream.Help" xml:space="preserve">
+    <value>The URL of the raw video or audio stream. This cannot be an IFrame.</value>
+  </data>
+  <data name="lblTwitterPlayerStream.Text" xml:space="preserve">
+    <value>Player Stream URL</value>
+  </data>
+  <data name="lblTwitterPlayerWidth.Help" xml:space="preserve">
+    <value>Width of the player IFrame in pixels.</value>
+  </data>
+  <data name="lblTwitterPlayerWidth.Text" xml:space="preserve">
+    <value>Player Width</value>
+  </data>
+  <data name="lblTwitterSite.Help" xml:space="preserve">
+    <value>The twitter @username for the website itself.</value>
+  </data>
+  <data name="lblTwitterSite.Text" xml:space="preserve">
+    <value>Site Username</value>
+  </data>
+  <data name="lblTwitterSiteId.Help" xml:space="preserve">
+    <value>The twitter ID for the website. This value can be used as an alternative, since the twitter username can change, but the ID cannot.</value>
+  </data>
+  <data name="lblTwitterSiteId.Text" xml:space="preserve">
+    <value>Site Id</value>
+  </data>
+  <data name="TwitterCardSettings.Text" xml:space="preserve">
+    <value>Twitter Card Settings</value>
+  </data>
+  <data name="lblClearSettingsWarning.Text" xml:space="preserve">
+    <value>Are you sure that you want to clear all Open Graph Protocol settings? This will clear out all configuration and cache that this module has saved.</value>
+  </data>
+  <data name="lnkClearSettings.Text" xml:space="preserve">
+    <value>Clear ALL Module Settings</value>
+  </data>
+</root>

@@ -1,0 +1,7 @@
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\bin\WillStrohl.SkinObjects.DemoSO.XML
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\bin\WillStrohl.SkinObjects.DemoSO.dll
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\bin\WillStrohl.SkinObjects.DemoSO.pdb
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\bin\DotNetNuke.dll
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\obj\Debug\WillStrohl.SkinObjects.DemoSO.csprojResolveAssemblyReference.cache
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\obj\Debug\WillStrohl.SkinObjects.DemoSO.dll
+C:\Websites\Development\Skin Objects\WillStrohl.DemoSO\obj\Debug\WillStrohl.SkinObjects.DemoSO.pdb

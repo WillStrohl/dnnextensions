@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <nodes configfile="Web.config">
+        <node path="/configuration/system.webServer/modules" action="add" name="willStrohlOpenGraphRewriter" collision="overwrite">
+            <add name="willStrohlOpenGraphRewriter" type="WillStrohl.Modules.OpenGraph.OpenGraphWriter, WillStrohl.Modules.OpenGraph" preCondition="managedHandler" />
+        </node>
+    </nodes>
+</configuration>

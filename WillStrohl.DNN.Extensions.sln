@@ -23,6 +23,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Widgets", "Widgets", "{C137
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNWidgets", "Widgets\WillStrohl\DNNWidgets.csproj", "{7D2DB282-5F48-44AB-9426-32E063049151}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduled Jobs", "Scheduled Jobs", "{E416BC7E-9F10-4A3D-881D-AC5FF3F850E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{94A23A1D-1AD4-4AC9-953E-E5205F980512}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Files", "Build Files", "{F84D698C-3163-472D-95E9-EC36712D597B}"
+	ProjectSection(SolutionItems) = preProject
+		Build\ModulePackage.targets = Build\ModulePackage.targets
+		Build\ModulePackageSource.targets = Build\ModulePackageSource.targets
+		Build\SkinPackage.targets = Build\SkinPackage.targets
+		Build\WidgetPackage.targets = Build\WidgetPackage.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,11 +74,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{7D61A32C-0F21-453F-A981-BD8E5A3A5304} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{520F475F-9F3D-4826-BDC4-7B2C903BCE97} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{E0C9E035-5254-4FF2-AAD3-AC632B3CB587} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{58D56768-8690-41D3-B30F-4003D12264C2} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38} = {7F8EF0B3-E868-4303-9A29-79DE3CF277CF}
 		{7D2DB282-5F48-44AB-9426-32E063049151} = {C137B0AB-EE66-482B-B3A6-EADD2E616208}
 	EndGlobalSection

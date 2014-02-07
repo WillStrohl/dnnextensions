@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ogConfig version="01.01.03">
+  <Sites>
+    <Site portalId="0" httpAlias="dev702.loc" lastModified="08/14/2013 10:38:24 AM" lastModifiedUtc="8/14/2013 5:38:24 PM" lastModifiedBy="1" lastModifiedUser="host" homeUrl="http://dev702.loc/Home.aspx" debug="true" />
+  </Sites>
+</ogConfig>

@@ -1,0 +1,58 @@
+.DemoPersonaWrapper {
+    z-index: 897; position: fixed; bottom: 0px; left: 0px; width: 100%; color: #fff;
+    background-color:#000000;
+    background-color:rgba(0, 0, 0, 0.50); padding: 1.0em 0 1.0em 2.0em;
+    height: 150px;
+}
+    .DemoPersonaWrapper span {
+        margin-right: 0.5em;
+    }
+
+.DemoPersonaSwitchWrap {
+    width: 500px;
+    z-index: 898;
+    position:fixed; top:7%; left:92%;
+}
+    .DemoPersonaSwitchInner {
+
+    }
+
+.DemoPersonaImg {
+        width: 106px; height: 139px; 
+        box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    }
+    .DemoPersonaTextWrap {
+        display: block;
+        width: 400px;
+        margin-left: 0.75em;
+    }
+        .DemoPersonaDisplayName {
+            color: #fff;
+            font-size: 14pt;
+            font-weight: bold;
+            display: inline;
+            -webkit-text-shadow: 2px 2px 4px #000000;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        .DemoPersonaBio {
+            color: #fff;
+            display: inline;
+            -webkit-text-shadow: 1px 1px #000000;
+            text-shadow: 1px 1px #000000;
+        }
+
+.DemoPersonaCircular {
+    width: 100px;
+    height: 100px;
+    border-radius: 17px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    margin-bottom: 1.5em;
+    cursor: pointer;
+    opacity: 0.5;
+}

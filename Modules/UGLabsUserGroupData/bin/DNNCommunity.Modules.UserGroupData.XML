@@ -1,0 +1,416 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DNNCommunity.Modules.UserGroupData</name>
+    </assembly>
+    <members>
+        <member name="T:DNNCommunity.Modules.UGLabsUserGroupData.Components.FeatureController">
+            -----------------------------------------------------------------------------
+            <summary>
+            The Controller class for UGLabsUserGroupData
+            
+            The FeatureController class is defined as the BusinessController in the manifest file (.dnn)
+            DotNetNuke will poll this class to find out which Interfaces the class implements. 
+            
+            The IPortable interface is used to import/export content from a DNN module
+            
+            The ISearchable interface is used by DNN to index the content of a module
+            
+            The IUpgradeable interface allows module developers to execute code during the upgrade 
+            process for a module.
+            
+            Below you will find stubbed out implementations of each, uncomment and populate with your own data
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="T:DNNCommunity.Modules.UGLabsUserGroupData.View">
+            -----------------------------------------------------------------------------
+            <summary>
+            The View class displays the content
+            
+            Typically your view control would be used to display content or functionality in your module.
+            
+            View may be the only control you have in your project depending on the complexity of your module
+            
+            Because the control inherits from UGLabsMetaDataModuleBase you have access to any custom properties
+            defined there, as well as properties from DNN such as PortalId, ModuleId, TabId, UserId and many more.
+            
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.pnlUserGroupData">
+            <summary>
+            pnlUserGroupData control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblGroupName">
+            <summary>
+            lblGroupName control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtGroupName">
+            <summary>
+            txtGroupName control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.rfvGroupName">
+            <summary>
+            rfvGroupName control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revGroupName">
+            <summary>
+            revGroupName control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblCountry">
+            <summary>
+            lblCountry control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.cboCountry">
+            <summary>
+            cboCountry control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.rfvCountry">
+            <summary>
+            rfvCountry control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblRegion">
+            <summary>
+            lblRegion control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.cboRegion">
+            <summary>
+            cboRegion control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtRegion">
+            <summary>
+            txtRegion control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.rfvRegion">
+            <summary>
+            rfvRegion control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblCity">
+            <summary>
+            lblCity control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtCity">
+            <summary>
+            txtCity control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.rfvCity">
+            <summary>
+            rfvCity control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblDefaultLanguage">
+            <summary>
+            lblDefaultLanguage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.cboDefaultLanguage">
+            <summary>
+            cboDefaultLanguage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.rfvDefaultLanguage">
+            <summary>
+            rfvDefaultLanguage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblWebsiteUrl">
+            <summary>
+            lblWebsiteUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtWebsiteUrl">
+            <summary>
+            txtWebsiteUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revWebsiteUrl">
+            <summary>
+            revWebsiteUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblFacebookUrl">
+            <summary>
+            lblFacebookUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtFacebookUrl">
+            <summary>
+            txtFacebookUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revFacebookUrl">
+            <summary>
+            revFacebookUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblTwitterUrl">
+            <summary>
+            lblTwitterUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtTwitterUrl">
+            <summary>
+            txtTwitterUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revTwitterUrl">
+            <summary>
+            revTwitterUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblLinkedInUrl">
+            <summary>
+            lblLinkedInUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtLinkedInUrl">
+            <summary>
+            txtLinkedInUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revLinkedInUrl">
+            <summary>
+            revLinkedInUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblGooglePlusUrl">
+            <summary>
+            lblGooglePlusUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtGooglePlusUrl">
+            <summary>
+            txtGooglePlusUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revGooglePlusUrl">
+            <summary>
+            revGooglePlusUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblMeetUpUrl">
+            <summary>
+            lblMeetUpUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtMeetUpUrl">
+            <summary>
+            txtMeetUpUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revMeetUpUrl">
+            <summary>
+            revMeetUpUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lblYouTubeUrl">
+            <summary>
+            lblYouTubeUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.txtYouTubeUrl">
+            <summary>
+            txtYouTubeUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.revYouTubeUrl">
+            <summary>
+            revYouTubeUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lnkSave">
+            <summary>
+            lnkSave control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.lnkReset">
+            <summary>
+            lnkReset control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="P:DNNCommunity.Modules.UGLabsUserGroupData.View.ModuleActions">
+            <summary>
+            ModuleActions - loads the actions menu with a custom menu item
+            </summary>
+        </member>
+    </members>
+</doc>

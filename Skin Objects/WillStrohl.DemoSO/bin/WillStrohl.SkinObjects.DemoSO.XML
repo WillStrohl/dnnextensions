@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WillStrohl.SkinObjects.DemoSO</name>
+    </assembly>
+    <members>
+        <member name="T:WillStrohl.SkinObjects.DemoSO.FeatureController">
+            -----------------------------------------------------------------------------
+            <summary>
+            
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="T:WillStrohl.SkinObjects.DemoSO.DemoPersonaSwitch">
+            -----------------------------------------------------------------------------
+            <summary>
+            
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:WillStrohl.SkinObjects.DemoSO.DemoPersonaSwitch.phTemplate">
+            <summary>
+            phTemplate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:WillStrohl.SkinObjects.DemoSO.DemoPersonaSwitch.litScript">
+            <summary>
+            litScript control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:WillStrohl.SkinObjects.DemoSO.DemoPersona">
+            -----------------------------------------------------------------------------
+            <summary>
+            
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:WillStrohl.SkinObjects.DemoSO.DemoPersona.phTemplate">
+            <summary>
+            phTemplate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+    </members>
+</doc>

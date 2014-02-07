@@ -1,0 +1,476 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WillStrohl.Modules.OpenGraph
+</name>
+</assembly>
+<members>
+<member name="M:WillStrohl.Modules.OpenGraph.OpenGraphWriter.OpenGraphStream.Write(System.Byte[],System.Int32,System.Int32)">
+	<summary>
+ Called by the parent OpenGraphWriter class to parse the HTML markup for the page being rendered
+ </summary>
+	<param name="buffer"></param>
+	<param name="offset"></param>
+	<param name="count"></param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphWriter.OpenGraphStream.IsInvalidPageRequest(System.String@,System.String@,System.String@,System.String@)">
+	<summary>
+ Compartmentalizes the parsing to determine is the page URL is matched
+ </summary>
+	<param name="Url">Requested URL</param>
+	<param name="FullUrl">Full URL from the server</param>
+	<param name="HomeUrl">Home page URL</param>
+	<param name="MultiLingualUrl">Localized URL</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphWriter.OpenGraphStream.FlushResults(System.Text.StringBuilder,System.String)">
+	<summary>
+ Returns the HTML markup to the parent class, and to the requesting web browser
+ </summary>
+	<param name="Buffer"></param>
+	<param name="DebugText"></param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphWriter.OpenGraphStream.InjectOpenGraphProtocol(System.Text.StringBuilder@,System.Xml.Linq.XElement@,System.String@,System.Boolean@)">
+	<summary>
+ Parses the HTML markup, the OGP settings, and inject the OGP tags into the page header
+ </summary>
+	<param name="NewMarkUp">New markup pending insertion into the page</param>
+	<param name="SiteElement">XElement for the Site/Page config</param>
+	<param name="HttpAlias">The specified domain name/alias for the site</param>
+	<param name="Debug">If true, debugging is turned on</param>
+	<remarks></remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblTitle">
+	<summary>
+lblTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.txtTitle">
+	<summary>
+txtTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.rfvTitle">
+	<summary>
+rfvTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.chkTitle">
+	<summary>
+chkTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblDescription">
+	<summary>
+lblDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.txtDescription">
+	<summary>
+txtDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.rfvDescription">
+	<summary>
+rfvDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.chkDescription">
+	<summary>
+chkDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblUrl">
+	<summary>
+lblUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.txtUrl">
+	<summary>
+txtUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.rfvUrl">
+	<summary>
+rfvUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.revUrl">
+	<summary>
+revUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.chkUrl">
+	<summary>
+chkUrl control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblLocale">
+	<summary>
+lblLocale control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.cboLocale">
+	<summary>
+cboLocale control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.rfvLocale">
+	<summary>
+rfvLocale control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblImage">
+	<summary>
+lblImage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.ctlImage">
+	<summary>
+ctlImage control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblSiteName">
+	<summary>
+lblSiteName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.txtSiteName">
+	<summary>
+txtSiteName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.rfvSiteName">
+	<summary>
+rfvSiteName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.chkSiteName">
+	<summary>
+chkSiteName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblType">
+	<summary>
+lblType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.cboType">
+	<summary>
+cboType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.rfvType">
+	<summary>
+rfvType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblFacebookAdmins">
+	<summary>
+lblFacebookAdmins control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.txtFacebookAdmins">
+	<summary>
+txtFacebookAdmins control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.revFacebookAdmins">
+	<summary>
+revFacebookAdmins control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblFacebookAppId">
+	<summary>
+lblFacebookAppId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.txtFacebookAppId">
+	<summary>
+txtFacebookAppId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.revFacebookAppId">
+	<summary>
+revFacebookAppId control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lblDebug">
+	<summary>
+lblDebug control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.chkDebug">
+	<summary>
+chkDebug control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lnkSubmit">
+	<summary>
+lnkSubmit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lnkCancel">
+	<summary>
+lnkCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lnkDisable">
+	<summary>
+lnkDisable control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:WillStrohl.Modules.OpenGraph.Settings.lnkClearSettings">
+	<summary>
+lnkClearSettings control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="P:WillStrohl.Modules.OpenGraph.OpenGraphController.HostConfigurationPath">
+	<summary>
+ Host configuration file path with a preceding tilde
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:WillStrohl.Modules.OpenGraph.OpenGraphController.PageConfigurationPath">
+	<summary>
+ Page configuration file path with a preceding tilde
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.EnableOpenGraphProtocolInjection">
+	<summary>
+ Enables the OGP process for the DNN site
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.DisableOpenGraphProtocolInjection">
+	<summary>
+ Disables the OGP process for the DNN site
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.RunXmlMerge(System.String)">
+	<summary>
+ RunXmlMerge - uses the XmlMerge feature to enable/disable OGP in the web.config
+ </summary>
+	<param name="XmlMergeFilePath">Path where the merge file is found</param>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.DoesHttpModuleExist">
+	<summary>
+ Checks to see if the OGP HttpModule is still specified in teh web.config
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetConfigurationFile(System.String@,System.String@)">
+	<summary>
+ Returns the XDocument representation of the OGP configuration files
+ </summary>
+	<param name="CacheKey">Cache key to check for and cache the config for performance</param>
+	<param name="ConfigurationPath">The path where the configuration file is found</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetOgpPageConfigurationPath(System.Int32,System.Int32)">
+	<summary>
+ This method returns a properly formatted path to use to access the page-level OGP configuration file
+ </summary>
+	<param name="PortalId">ID of the site</param>
+	<param name="TabId">ID of the page</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetOgpPageConfigurationPath(System.String,System.String)">
+	<summary>
+ This method returns a properly formatted path to use to access the page-level OGP configuration file
+ </summary>
+	<param name="PortalId">ID of the site</param>
+	<param name="TabId">ID of the page</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetOgpPageCacheKey(System.Int32,System.Int32)">
+	<summary>
+ This method returns a properly formatted key to use to save and read the page-level OGP settings from cache
+ </summary>
+	<param name="PortalId"></param>
+	<param name="TabId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetOgpPageCacheKey(System.String,System.String)">
+	<summary>
+ This method returns a properly formatted key to use to save and read the page-level OGP settings from cache
+ </summary>
+	<param name="PortalId"></param>
+	<param name="TabId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetOgpPageMarkUpCacheKey(System.Int32,System.Int32)">
+	<summary>
+ This method returns a properly formatted key to use to save and read the page OGP markup from cache
+ </summary>
+	<param name="PortalId"></param>
+	<param name="TabId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.OpenGraphController.GetOgpPageMarkUpCacheKey(System.String,System.String)">
+	<summary>
+ This method returns a properly formatted key to use to save and read the page OGP markup from cache
+ </summary>
+	<param name="PortalId"></param>
+	<param name="TabId"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.Settings.UpdateSettings">
+	<summary>
+ This is the inherited method that DNN uses to update the settings from the UI
+ </summary>
+	<remarks></remarks>
+	<history>
+	</history>
+</member><member name="M:WillStrohl.Modules.OpenGraph.Settings.LoadSettings">
+	<summary>
+ This is the inherited DNN method that loads saved settings into the settings UI
+ </summary>
+	<remarks></remarks>
+	<history>
+	</history>
+</member><member name="M:WillStrohl.Modules.OpenGraph.Settings.BindData">
+	<summary>
+ This method centralizes the binding and object assignment for all settings
+ </summary>
+	<remarks></remarks>
+	<history>
+	</history>
+</member><member name="M:WillStrohl.Modules.OpenGraph.DefaultView.DisplayUserMessages">
+	<summary>
+ These OGP tags are not required, but are highly recommended, so we let the user know
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.DefaultView.SettingsAvailable">
+	<summary>
+ Look for required OGP settings
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.DefaultView.CheckDependencies">
+	<summary>
+ This method looks for dependencies to ensure things can load properly and returns information if they cannot.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WillStrohl.Modules.OpenGraph.DefaultView.CheckCacheDependencies">
+	<summary>
+ Check to see if items can be loaded from cache to give more detailed results if the module is working properly
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

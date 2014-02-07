@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ogSettings>
+  <SiteName>My Website</SiteName>
+  <UsePortalTitle>true</UsePortalTitle>
+  <Title>Awesome Cycles Corporate Site</Title>
+  <UseTabTitle>true</UseTabTitle>
+  <Description>Home of the Awesome Cycles company online.</Description>
+  <UseTabDescription>true</UseTabDescription>
+  <Locale>en_US</Locale>
+  <SiteType>company</SiteType>
+  <Url>http://dev702.loc/Home.aspx</Url>
+  <UseTabUrl>true</UseTabUrl>
+  <Image>FileID=178</Image>
+  <FacebookAdmins>0000000000000</FacebookAdmins>
+  <FacebookAppId>9999999999999</FacebookAppId>
+  <SiteLocale>en_US</SiteLocale>
+  <PortalId>0</PortalId>
+  <ModuleId>3480</ModuleId>
+  <TabModuleId>3167</TabModuleId>
+  <TabId>56</TabId>
+  <HttpAlias>dev702.loc</HttpAlias>
+  <LastModified>07/01/2013 04:40:15 PM</LastModified>
+  <LastModifiedUtc>2013-07-01T23:40:15.3275667Z</LastModifiedUtc>
+  <LastModifiedBy>1</LastModifiedBy>
+  <LastModifiedUser>host</LastModifiedUser>
+</ogSettings>

@@ -1,0 +1,5 @@
+C:\Websites\Development\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.XML
+C:\Websites\Development\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.dll
+C:\Websites\Development\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.pdb
+C:\Websites\Development\Modules\UGLabsMyGroups\obj\Debug\DNNCommunity.Modules.MyGroups.dll
+C:\Websites\Development\Modules\UGLabsMyGroups\obj\Debug\DNNCommunity.Modules.MyGroups.pdb

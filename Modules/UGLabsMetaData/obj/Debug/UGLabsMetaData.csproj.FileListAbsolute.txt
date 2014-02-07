@@ -1,0 +1,5 @@
+C:\Websites\Development\Modules\UGLabsMetaData\Bin\DNNCommunity.Modules.MetaData.XML
+C:\Websites\Development\Modules\UGLabsMetaData\bin\DNNCommunity.Modules.MetaData.dll
+C:\Websites\Development\Modules\UGLabsMetaData\bin\DNNCommunity.Modules.MetaData.pdb
+C:\Websites\Development\Modules\UGLabsMetaData\obj\Debug\DNNCommunity.Modules.MetaData.dll
+C:\Websites\Development\Modules\UGLabsMetaData\obj\Debug\DNNCommunity.Modules.MetaData.pdb

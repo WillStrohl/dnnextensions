@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdReturn.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cmdSave.Text" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Edit Disqus Settings</value>
+  </data>
+  <data name="lblModuleList.Help" xml:space="preserve">
+    <value>This module requires that you "attach" it to another module on the page.  Just choose the module below. We'll do the rest of the work for you.</value>
+  </data>
+  <data name="lblModuleList.Text" xml:space="preserve">
+    <value>Attach Comments To Module</value>
+  </data>
+  <data name="NoName.Text" xml:space="preserve">
+    <value>&lt;no module title&gt;</value>
+  </data>
+  <data name="rfvModuleList.ErrorMessage" xml:space="preserve">
+    <value>A module must be chosen to attach to</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Module-Level Settings</value>
+  </data>
+  <data name="Disqus.AppName.Message" xml:space="preserve">
+    <value>You will need to login to your Disqus account and &lt;a href="http://disqus.com/admin/register/" target="_blank"&gt;register an application&lt;/a&gt; for each website that you use this module on. The process is easy. It takes about 10 seconds for each website.</value>
+  </data>
+  <data name="lblAppName.Help" xml:space="preserve">
+    <value>This is a value that you would have specified in your Disqus Account.</value>
+  </data>
+  <data name="lblAppName.Text" xml:space="preserve">
+    <value>Disqus Application Short Name</value>
+  </data>
+  <data name="rfvAppName.ErrorMessage" xml:space="preserve">
+    <value>The Application name is required</value>
+  </data>
+  <data name="cboAvatarSize.Items.Ginormous" xml:space="preserve">
+    <value>Ginormous</value>
+  </data>
+  <data name="cboAvatarSize.Items.Large" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="cboAvatarSize.Items.Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="cboAvatarSize.Items.Small" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="cboAvatarSize.Items.XLarge" xml:space="preserve">
+    <value>X-Large</value>
+  </data>
+  <data name="cboColorTheme.Items.Blue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="cboColorTheme.Items.Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="cboColorTheme.Items.Grey" xml:space="preserve">
+    <value>Grey</value>
+  </data>
+  <data name="cboColorTheme.Items.Orange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="cboColorTheme.Items.Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="cboDefaultTab.Items.People" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="cboDefaultTab.Items.Popular" xml:space="preserve">
+    <value>Popular</value>
+  </data>
+  <data name="cboDefaultTab.Items.Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="cboModuleView.Items.Combination" xml:space="preserve">
+    <value>Combination</value>
+  </data>
+  <data name="cboModuleView.Items.Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="cboModuleView.Items.PopularThreads" xml:space="preserve">
+    <value>Popular Threads</value>
+  </data>
+  <data name="cboModuleView.Items.RecentComments" xml:space="preserve">
+    <value>Recent Comments</value>
+  </data>
+  <data name="cboModuleView.Items.TopCommenters" xml:space="preserve">
+    <value>Top Commenters</value>
+  </data>
+  <data name="lblAvatarSize.Help" xml:space="preserve">
+    <value>Choose the size of the avatar images that you wish to display on your site.</value>
+  </data>
+  <data name="lblAvatarSize.Text" xml:space="preserve">
+    <value>Avatar Size</value>
+  </data>
+  <data name="lblColorTheme.Help" xml:space="preserve">
+    <value>Choose the color scheme that you want to use for Disqus to best match your site design.</value>
+  </data>
+  <data name="lblColorTheme.Text" xml:space="preserve">
+    <value>Color Scheme</value>
+  </data>
+  <data name="lblCommentLength.Help" xml:space="preserve">
+    <value>Enter the maximum number of characters that you want to display on your site.</value>
+  </data>
+  <data name="lblCommentLength.Text" xml:space="preserve">
+    <value>Comment Excerpt Length</value>
+  </data>
+  <data name="lblDefaultTab.Help" xml:space="preserve">
+    <value>Choose the default Disqus tab that you want to view.</value>
+  </data>
+  <data name="lblDefaultTab.Text" xml:space="preserve">
+    <value>Default Disqus Tab</value>
+  </data>
+  <data name="lblDisplayItems.Help" xml:space="preserve">
+    <value>This is the number of items that will be shown from Disqus (comments, threads, etc.).</value>
+  </data>
+  <data name="lblDisplayItems.Text" xml:space="preserve">
+    <value>Number of Items to Display</value>
+  </data>
+  <data name="lblModuleView.Help" xml:space="preserve">
+    <value>Choose the Disqus feature that you want to use and show.</value>
+  </data>
+  <data name="lblModuleView.Text" xml:space="preserve">
+    <value>Disqus View</value>
+  </data>
+  <data name="lblShowAvatar.Help" xml:space="preserve">
+    <value>Check if you want to display the avatar pictures of those that are commenting.</value>
+  </data>
+  <data name="lblShowAvatar.Text" xml:space="preserve">
+    <value>Show Avatars</value>
+  </data>
+  <data name="lblShowModerators.Help" xml:space="preserve">
+    <value>Check if you want to include comment moderators in the rankings in this view.</value>
+  </data>
+  <data name="lblShowModerators.Text" xml:space="preserve">
+    <value>Show Moderators in Ranking</value>
+  </data>
+  <data name="revCommentLength.ErrorMessage" xml:space="preserve">
+    <value>The Comment Excerpt Length can only be numeric, 200 by default.</value>
+  </data>
+  <data name="cmdReceiverFile.Text" xml:space="preserve">
+    <value>Create Cross-Domain Receiver File</value>
+  </data>
+  <data name="ReceiverFile.Text" xml:space="preserve">
+    <value>Cross-Domain Reveiver URL</value>
+  </data>
+  <data name="lblDisqusReceiver.Help" xml:space="preserve">
+    <value>This is a receiver file that can be used to enhance the usability of your Disqus integration. Copy and paste this into your Disqus Dashboard, in the Admin &gt; Settings area.</value>
+  </data>
+  <data name="lblDisqusReceiver.Text" xml:space="preserve">
+    <value>Disqus Receiver File</value>
+  </data>
+  <data name="lblRequireDnnLogin.Help" xml:space="preserve">
+    <value>If checked, your website will require a login from your users before comments are made available.</value>
+  </data>
+  <data name="lblRequireDnnLogin.Text" xml:space="preserve">
+    <value>Require Login for Comments?</value>
+  </data>
+  <data name="SiteSettings.Text" xml:space="preserve">
+    <value>Site-Level Settings</value>
+  </data>
+  <data name="lblApiSecret.Help" xml:space="preserve">
+    <value>Copy and paste the secret key from your Disqus account, to here.</value>
+  </data>
+  <data name="lblApiSecret.Text" xml:space="preserve">
+    <value>Disqus Application Secret Key</value>
+  </data>
+  <data name="rfvApiSecret.ErrorMessage" xml:space="preserve">
+    <value>The Disqus Application Secret is required</value>
+  </data>
+  <data name="HostScheduler.Text" xml:space="preserve">
+    <value>You can enable and disable the scheduler item here, but you must use the Scheduler page in the Host menu to edit the properties of the scheduled import.</value>
+  </data>
+  <data name="HostSettings.Text" xml:space="preserve">
+    <value>Host-Level Settings</value>
+  </data>
+  <data name="lblSchedule.Help" xml:space="preserve">
+    <value>Check this checkbox if you would like to have your comments imported on a regular basis, which would allow search engines to see them on the page. This is an installation-wide setting, and cannot be turned off for individual sites.</value>
+  </data>
+  <data name="lblSchedule.Text" xml:space="preserve">
+    <value>Enable Scheduled Disqus Comments Import?</value>
+  </data>
+  <data name="lblDeveloperMode.Help" xml:space="preserve">
+    <value>Check this checkbox if you are testing this module on a site that Disqus.com cannot reach. This is often necessary on development or staging servers, and on intranets.</value>
+  </data>
+  <data name="lblDeveloperMode.Text" xml:space="preserve">
+    <value>Developer Mode?</value>
+  </data>
+  <data name="lblSsoApiKey.Help" xml:space="preserve">
+    <value>REQUIRES A PAID DISQUS ACCOUNT.  This is a key that you can only get if you have a paid account with Disqus.</value>
+  </data>
+  <data name="lblSsoApiKey.Text" xml:space="preserve">
+    <value>Disqus OAuth Consumer Key (SSO)</value>
+  </data>
+  <data name="lblSsoEnabled.Help" xml:space="preserve">
+    <value>REQUIRES A PAID DISQUS ACCOUNT.  If you have a valid API key from Disqus, this will allow you to enable and disable single sign-on for your users on Disqus. This allows for a more seamless user experience when commenting.</value>
+  </data>
+  <data name="lblSsoEnabled.Text" xml:space="preserve">
+    <value>Disqus Single Sign-On (SSO) Enabled?</value>
+  </data>
+</root>

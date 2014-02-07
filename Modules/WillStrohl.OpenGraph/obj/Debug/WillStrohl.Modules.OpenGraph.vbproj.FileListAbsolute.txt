@@ -1,0 +1,6 @@
+C:\Websites\Development\Modules\WillStrohl.OpenGraph\bin\WillStrohl.Modules.OpenGraph.dll
+C:\Websites\Development\Modules\WillStrohl.OpenGraph\bin\WillStrohl.Modules.OpenGraph.pdb
+C:\Websites\Development\Modules\WillStrohl.OpenGraph\bin\WillStrohl.Modules.OpenGraph.xml
+C:\Websites\Development\Modules\WillStrohl.OpenGraph\obj\Debug\WillStrohl.Modules.OpenGraph.dll
+C:\Websites\Development\Modules\WillStrohl.OpenGraph\obj\Debug\WillStrohl.Modules.OpenGraph.xml
+C:\Websites\Development\Modules\WillStrohl.OpenGraph\obj\Debug\WillStrohl.Modules.OpenGraph.pdb

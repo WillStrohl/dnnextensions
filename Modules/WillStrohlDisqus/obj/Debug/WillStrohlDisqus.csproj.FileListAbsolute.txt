@@ -1,0 +1,5 @@
+C:\Websites\Development\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.xml
+C:\Websites\Development\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.dll
+C:\Websites\Development\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.pdb
+C:\Websites\Development\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.dll
+C:\Websites\Development\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.pdb
