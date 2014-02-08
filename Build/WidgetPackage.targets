@@ -18,30 +18,43 @@
       <SourceTempDir>$(MSBuildProjectDirectory)\WidgetSourcePackageTemp\</SourceTempDir>
       <PackageTempDir>$(MSBuildProjectDirectory)\WidgetPackageTemp\</PackageTempDir>
     </PropertyGroup>
-
-    <ItemGroup>
-      <WidgetFiles Include=".\**\*.js;.\**\*.css;.\**\*.png;.\**\*.jpg;.\**\*.gif;.\**\*.htc;.\**\*.html;.\**\*.htm;.\**\*.scss;.\**\*.rb;.\**\*.sh" />
-    </ItemGroup>    
-    <CreateItem Include="$(DNNFileName).dnn">
-      <Output TaskParameter="Include" ItemName="ManifestFiles" />
-    </CreateItem>
-    <CreateItem Include="releasenotes.txt;license.txt">
-      <Output TaskParameter="Include" ItemName="TextFiles" />
-    </CreateItem>
-    <CreateItem Include="*.sln;*.csproj;*.vbproj;*.build">
-      <Output TaskParameter="Include" ItemName="SourceFiles" />
-    </CreateItem>
-
-    <Copy SourceFiles="@(WidgetFiles)" DestinationFolder="$(SourceTempDir)\%(RecursiveDir)" />
-    <Copy SourceFiles="@(ManifestFiles)" DestinationFolder="$(SourceTempDir)" />
-    <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(SourceTempDir)" />
     
-    <Copy SourceFiles="$(SourceTempDir)\**\*.*" DestinationFolder="$(InstallTempDir)\%(SourceTempDir.RecursiveDir)" ContinueOnError="true" />
+    <Delete Files="Resources.$(Extension)" />
+    <Delete Files="$(InstallTempDir)\**\*.*" />
+    <Delete Files="$(SourceTempDir)\**\*.*" />
+    <Delete Files="$(PackageTempDir)\**\*.*" />
+    <Delete Files="$(PackageName)_Widgets_$(Version)_Install.$(Extension)" />
+    <Delete Files="$(PackageName)_Widgets_$(Version)_Source.$(Extension)" />
+    <RemoveDir Directories="$(InstallTempDir)" />
+    <RemoveDir Directories="$(SourceTempDir)" />
+    <RemoveDir Directories="$(PackageTempDir)" />
+    
+    <ItemGroup>
+      <InstallInclude Include=".\**\*.txt;.\**\*.js;.\**\*.css;.\**\*.png;.\**\*.jpg;.\**\*.gif;.\**\*.htc;.\**\*.html;.\**\*.htm;.\**\*.scss;.\**\*.rb;.\**\*.sh" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <SourceInclude Include=".\**\*.txt;.\**\*.js;.\**\*.css;.\**\*.png;.\**\*.jpg;.\**\*.gif;.\**\*.htc;.\**\*.html;.\**\*.htm;.\**\*.scss;.\**\*.rb;.\**\*.sh" />
+      <SourceInclude Include="*.sln;*.csproj;*.vbproj;*.build" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageInclude Include="$(DNNFileName).dnn" />
+      <PackageInclude Include="License.txt" />
+      <PackageInclude Include="ReleaseNotes.txt" />
+    </ItemGroup>
 
-    <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(SourceTempDir)" />
+    <Copy SourceFiles="@(SourceInclude)" DestinationFolder="$(SourceTempDir)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(InstallInclude)" DestinationFolder="$(InstallTempDir)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(PackageInclude)" DestinationFolder="$(PackageTempDir)" />
 
     <ItemGroup>
-      <WidgetJS Include="$(InstallTempDir)\**\*.js" />
+      <!--WidgetJS Include="$(InstallTempDir)**\*.js" Exclude="$(InstallTempDir)\**\SyntaxHighlighter\**\*.*" /-->
+      <WidgetJS Include="$(InstallTempDir)\*.js" />
+      <WidgetJS Include="$(InstallTempDir)\js\*.js" />
+      <WidgetJS Include="$(InstallTempDir)\js\CSS3PIE\*.js" />
+      <WidgetJS Include="$(InstallTempDir)\js\FlexSlider\*.js" />
+      <WidgetJS Include="$(InstallTempDir)\js\IEPNGFix\*.js" />
     </ItemGroup>
     <Message Text="Compresing Javascript files" Importance="high" />
     <JSCompress Files="@(WidgetJS)" />
@@ -74,6 +87,7 @@
     <Copy SourceFiles="$(PackageName)_Widgets_$(Version)_Source.$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
 
     <!-- CLEAN UP -->
+    <Delete Files="Resources.$(Extension)" />
     <Delete Files="$(InstallTempDir)\**\*.*" />
     <Delete Files="$(SourceTempDir)\**\*.*" />
     <Delete Files="$(PackageTempDir)\**\*.*" />
@@ -82,6 +96,6 @@
     <RemoveDir Directories="$(InstallTempDir)" />
     <RemoveDir Directories="$(SourceTempDir)" />
     <RemoveDir Directories="$(PackageTempDir)" />
-
+    
   </Target>
 </Project>

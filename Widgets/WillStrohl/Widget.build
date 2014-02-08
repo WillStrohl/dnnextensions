@@ -3,6 +3,8 @@
     <WidgetPath>WillStrohl</WidgetPath>
     <DNNFileName>DNNWidgetSuite</DNNFileName>
     <PackageName>WillStrohl.WidgetSuite</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
     <Extension>zip</Extension>
     <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
     <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>
@@ -16,24 +18,22 @@
       <Manifest Include="*.dnn;*.dnn5;*.dnn6" />
       <TextFiles Include="*.txt" Exclude="releasenotes.txt;license.txt" />
       <SourceFiles Include="*.css;*.htm" />
-      <Views Include="*.ascx;" />
       <ResourceFiles Include="App_LocalResources/*.resx" />
-      <Images Include="Images/**/*.*" />
+      <Images Include="images/**/*.*" />
       <Scripts Include="js/**/*.*" />
       <Styles Include="css/**/*.*" />
-      <Widgets Include="*.js;" />
-      <Resources Include="@(ResourceFiles);@(Views);@(Images);@(TextFiles);@(SourceFiles);@(Scripts);@(Manifest);@(Widgets);@(Styles)" />
+      <Widgets Include="*.js" />
+      <Resources Include="@(ResourceFiles);@(Images);@(TextFiles);@(SourceFiles);@(Scripts);@(Styles);@(Manifest);@(Widgets)" />
     </ItemGroup>
   </Target>
   <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullWidgetPath)" />
-    <Copy SourceFiles="@(Views)" DestinationFolder="$(FullWidgetPath)" />
-    <Copy SourceFiles="@(Images)" DestinationFolder="$(FullWidgetPath)\Images\%(RecursiveDir)" />
+    <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(FullWidgetPath)\App_LocalResources" />
+    <Copy SourceFiles="@(Images)" DestinationFolder="$(FullWidgetPath)\images\%(RecursiveDir)" />
     <Copy SourceFiles="@(Scripts)" DestinationFolder="$(FullWidgetPath)\js\%(RecursiveDir)" />
     <Copy SourceFiles="@(Styles)" DestinationFolder="$(FullWidgetPath)\css\%(RecursiveDir)" />
     <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(FullWidgetPath)" />
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(FullWidgetPath)" />
     <Copy SourceFiles="@(Widgets)" DestinationFolder="$(FullWidgetPath)" />
-    <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(FullWidgetPath)\App_LocalResources" />
+    <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullWidgetPath)" />
   </Target>
 </Project>

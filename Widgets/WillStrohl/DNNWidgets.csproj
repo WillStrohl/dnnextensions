@@ -780,7 +780,9 @@
     <Content Include="DNNWidgetSuite.dnn" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Widget.build" />
+    <Content Include="Widget.build">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,36 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Skin.DNNParallax" type="Skin" version="01.00.03">
+      <friendlyName>DNNParallax</friendlyName>
+      <iconFile>images/DNNParallax_icon.png</iconFile>
+      <description><![CDATA[The first ever known implementation of a Parallax site for DNN]]></description>
+      <owner>
+        <name>MichaelDoxsey</name>
+        <organization><![CDATA[Skin by Doxsey]]></organization>
+        <url><![CDATA[]]></url>
+        <email><![CDATA[<a href="mailto:michael.doxsey@dnncorp.com">michael.doxsey@dnncorp.com</a>]]></email>
+      </owner>
+      <license src="license.htm" />
+      <releaseNotes src="release_notes_skin.htm" />
+      <dependencies>
+        <dependency type="coreversion">07.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Skin">
+          <skinFiles>
+            <skinName>DNNParallax</skinName>
+            <basePath>Portals\_default\Skins\DNNParallax</basePath>
+          </skinFiles>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>Portals\_default\Skins\DNNParallax</basePath>
+            <resourceFile>
+              <name>resource-skin.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
