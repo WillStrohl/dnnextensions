@@ -1,0 +1,115 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Lightbox Module for DotNetNuke
+Version: 01.04.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2010 Will Strohl
+
+Release Notes:
+  Added support for hidden title/description.
+
+*/
+
+IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'HideTitleDescription' AND o.[name] LIKE N'%wns_lightbox')
+BEGIN
+	ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] ADD [HideTitleDescription] BIT 
+		CONSTRAINT [DF_{objectQualifier}wns_lightbox_hidetitledescription] DEFAULT ((0));
+END
+GO
+
+UPDATE {databaseOwner}[{objectQualifier}wns_lightbox] SET [HideTitleDescription] = 0;
+GO
+
+/* update the stored procedures */
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_AddLightbox]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_AddLightbox];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_AddLightbox] 
+	@ModuleId INT, @GalleryName NVARCHAR(50), @GalleryDescription NVARCHAR(500), @GalleryFolder NVARCHAR(50), @DisplayOrder INT, @HideTitleDescription BIT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_lightbox] ([ModuleId],[GalleryName],[GalleryDescription],[GalleryFolder],[DisplayOrder],[HideTitleDescription]) 
+	VALUES (@ModuleId, @GalleryName, @GalleryDescription, @GalleryFolder, @DisplayOrder, @HideTitleDescription);
+	SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_UpdateLightbox]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_UpdateLightbox];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_UpdateLightbox] 
+	@LightboxId INT, @ModuleId INT, @GalleryName NVARCHAR(50), @GalleryDescription NVARCHAR(500), @GalleryFolder NVARCHAR(50), @DisplayOrder INT, @HideTitleDescription BIT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	UPDATE {databaseOwner}[{objectQualifier}wns_lightbox] 
+	SET [ModuleId] = @ModuleId,
+		[GalleryName] = @GalleryName, 
+		[GalleryDescription] = @GalleryDescription, 
+		[GalleryFolder] = @GalleryFolder, 
+		[DisplayOrder] = @DisplayOrder, 
+		[HideTitleDescription] = @HideTitleDescription 
+	WHERE [LightboxId] = @LightboxId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_GetLightboxes]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightboxes];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightboxes] 
+	@ModuleId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	SELECT l.[LightboxId],l.[ModuleId],l.[GalleryName],l.[GalleryDescription],l.[GalleryFolder],l.[DisplayOrder],l.[HideTitleDescription] 
+	FROM {databaseOwner}[{objectQualifier}wns_lightbox] l 
+	WHERE l.[ModuleId] = @ModuleId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_GetLightbox]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightbox];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightbox] 
+	@LightboxId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT l.[LightboxId],l.[ModuleId],l.[GalleryName],l.[GalleryDescription],l.[GalleryFolder],l.[DisplayOrder],l.[HideTitleDescription] 
+	FROM {databaseOwner}[{objectQualifier}wns_lightbox] l 
+	WHERE l.[LightboxId] = @LightboxId;
+END
+GO
+
+/* END OF FILE */

@@ -1,0 +1,148 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Version: 01.01.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009-2011 Will Strohl
+
+Release Notes:
+  Placeholder
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContents') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents];
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents] 
+	@ModuleId INT 
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT wsi.[injection_id], wsi.[module_id], wsi.[inject_top], wsi.[inject_name], wsi.[inject_content], wsi.[is_enabled], wsi.[order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[module_id] = @ModuleId 
+	ORDER BY wsi.[order_shown], wsi.[inject_name];
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_ChangeOrder') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_ChangeOrder];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_ChangeOrder] 
+	@InjectionId INT, @Direction NVARCHAR(10) 
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	DECLARE @ModuleId INT, @CurrentOrder INT;
+	SELECT 
+		@ModuleId = i.[module_id], 
+		@CurrentOrder = i.[order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] i 
+	WHERE i.[injection_id] = @InjectionId;
+
+	DECLARE @PrevId INT, @NextId INT, @PrevOrder INT, @NextOrder INT;
+	SET @PrevOrder = @CurrentOrder - 1;
+	SET @NextOrder = @CurrentOrder + 1;
+
+	SELECT @PrevId = i.[injection_id] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] i 
+	WHERE i.[module_id] = @ModuleId AND i.[order_shown] = @PrevOrder;
+
+	SELECT @NextId = i.[injection_id] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] i 
+	WHERE i.[module_id] = @ModuleId AND i.[order_shown] = @NextOrder;
+
+	IF LOWER(@Direction) = N'moveup'
+	BEGIN
+		UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+		SET [order_shown] = @CurrentOrder 
+		WHERE [injection_id] = @PrevId;
+
+		UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+		SET [order_shown] = @PrevOrder 
+		WHERE [injection_id] = @InjectionId;
+	END
+	ELSE
+	BEGIN
+		UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+		SET [order_shown] = @CurrentOrder 
+		WHERE [injection_id] = @NextId;
+
+		UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+		SET [order_shown] = @NextOrder 
+		WHERE [injection_id] = @InjectionId;
+	END
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_DeleteInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DeleteInjectionContent] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DeleteInjectionContent] 
+	@InjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	DECLARE @ModuleId INT;
+	SELECT @ModuleId = i.[module_id] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] I 
+	WHERE i.[injection_id] = @InjectionId;
+
+	DELETE FROM {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	WHERE [injection_id] = @InjectionId;
+
+	DECLARE @CursorId INT, @Count INT;
+	SET @Count = 0;
+
+	DECLARE [cInj] CURSOR FOR 
+	SELECT i.[injection_id] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] i 
+	WHERE i.[module_id] = @ModuleId 
+	ORDER BY i.[order_shown], i.[inject_name];
+
+	OPEN [cInj];
+
+	FETCH NEXT FROM [cInj] INTO @CursorId;
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		SET @Count = @Count + 1;
+
+		UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+		SET [order_shown] = @Count 
+		WHERE [injection_id] = @CursorId;
+
+		FETCH NEXT FROM [cInj] INTO @CursorId;
+	END
+
+	CLOSE [cInj];
+	DEALLOCATE [cInj];
+END
+GO
+
+/* END OF FILE */

@@ -3,6 +3,8 @@
     <ModulePath>WillStrohl.ContentSlider</ModulePath>
     <DNNFileName>WillStrohl.ContentSlider</DNNFileName>
     <PackageName>WillStrohl.ContentSlider</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
     <Extension>zip</Extension>
     <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
     <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>

@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Appearance.Text" xml:space="preserve">
+    <value>Slider Appearance Settings</value>
+  </data>
+  <data name="Behavior.Text" xml:space="preserve">
+    <value>Behavior / Action Settings</value>
+  </data>
+  <data name="CommonSettings.Text" xml:space="preserve">
+    <value>Common Slider Settings</value>
+  </data>
+  <data name="ControlTitle_slideroptions.Text" xml:space="preserve">
+    <value>Content Slider Settings</value>
+  </data>
+  <data name="JavaScriptEvents.Text" xml:space="preserve">
+    <value>JavaScript Events</value>
+  </data>
+  <data name="lblActivePagerClass.Help" xml:space="preserve">
+    <value>class name used for the active pager element</value>
+  </data>
+  <data name="lblActivePagerClass.Text" xml:space="preserve">
+    <value>Active Pager Class</value>
+  </data>
+  <data name="lblAfter.Help" xml:space="preserve">
+    <value>transition callback (scope set to element that was shown):  function(currSlideElement, nextSlideElement, options, forwardFlag)</value>
+  </data>
+  <data name="lblAfter.Text" xml:space="preserve">
+    <value>After Transition Function</value>
+  </data>
+  <data name="lblAllowPagerClickBubble.Help" xml:space="preserve">
+    <value>allows or prevents click event on pager anchors from bubbling</value>
+  </data>
+  <data name="lblAllowPagerClickBubble.Text" xml:space="preserve">
+    <value>Allow Pager Click Bubble</value>
+  </data>
+  <data name="lblAnimIn.Help" xml:space="preserve">
+    <value>properties that define how the slide animates in</value>
+  </data>
+  <data name="lblAnimIn.Text" xml:space="preserve">
+    <value>Animation In</value>
+  </data>
+  <data name="lblAnimOut.Help" xml:space="preserve">
+    <value>properties that define how the slide animates out</value>
+  </data>
+  <data name="lblAnimOut.Text" xml:space="preserve">
+    <value>Animation Out</value>
+  </data>
+  <data name="lblAutoStop.Help" xml:space="preserve">
+    <value>Check to end slideshow after X transitions (where X == slide count)</value>
+  </data>
+  <data name="lblAutoStop.Text" xml:space="preserve">
+    <value>Auto Stop After Count</value>
+  </data>
+  <data name="lblAutoStopCount.Help" xml:space="preserve">
+    <value>number of transitions (optionally used with autostop to define X)</value>
+  </data>
+  <data name="lblAutoStopCount.Text" xml:space="preserve">
+    <value>Auto Stop Count</value>
+  </data>
+  <data name="lblBackwards.Help" xml:space="preserve">
+    <value>Check to start slideshow at last slide and move backwards through the stack</value>
+  </data>
+  <data name="lblBackwards.Text" xml:space="preserve">
+    <value>Start at Last Slide</value>
+  </data>
+  <data name="lblBefore.Help" xml:space="preserve">
+    <value>transition callback (scope set to element to be shown):     function(currSlideElement, nextSlideElement, options, forwardFlag)</value>
+  </data>
+  <data name="lblBefore.Text" xml:space="preserve">
+    <value>Before Transition Function</value>
+  </data>
+  <data name="lblContainerResize.Help" xml:space="preserve">
+    <value>resize container to fit largest slide</value>
+  </data>
+  <data name="lblContainerResize.Text" xml:space="preserve">
+    <value>Resize Container to Fit Slides</value>
+  </data>
+  <data name="lblContinuous.Help" xml:space="preserve">
+    <value>Check to start next transition immediately after current one completes</value>
+  </data>
+  <data name="lblContinuous.Text" xml:space="preserve">
+    <value>Continuous Transition</value>
+  </data>
+  <data name="lblCssAfter.Help" xml:space="preserve">
+    <value>properties that defined the state of the slide after transitioning out</value>
+  </data>
+  <data name="lblCssAfter.Text" xml:space="preserve">
+    <value>CSS Class After</value>
+  </data>
+  <data name="lblCssBefore.Help" xml:space="preserve">
+    <value>properties that define the initial state of the slide before transitioning in</value>
+  </data>
+  <data name="lblCssBefore.Text" xml:space="preserve">
+    <value>CSS Class Before</value>
+  </data>
+  <data name="lblDelay.Help" xml:space="preserve">
+    <value>additional delay (in ms) for first transition (hint: can be negative)</value>
+  </data>
+  <data name="lblDelay.Text" xml:space="preserve">
+    <value>First Transition Delay</value>
+  </data>
+  <data name="lblEaseIn.Help" xml:space="preserve">
+    <value>easing for "in" transition</value>
+  </data>
+  <data name="lblEaseIn.Text" xml:space="preserve">
+    <value>Ease In</value>
+  </data>
+  <data name="lblEaseOut.Help" xml:space="preserve">
+    <value>easing for "out" transition</value>
+  </data>
+  <data name="lblEaseOut.Text" xml:space="preserve">
+    <value>Ease Out</value>
+  </data>
+  <data name="lblEasing.Help" xml:space="preserve">
+    <value>easing method for both in and out transitions</value>
+  </data>
+  <data name="lblEasing.Text" xml:space="preserve">
+    <value>Easing</value>
+  </data>
+  <data name="lblEnd.Help" xml:space="preserve">
+    <value>callback invoked when the slideshow terminates (use with autostop or nowrap options): function(options)</value>
+  </data>
+  <data name="lblEnd.Text" xml:space="preserve">
+    <value>End Slideshow Function</value>
+  </data>
+  <data name="lblFastOnEvent.Help" xml:space="preserve">
+    <value>force fast transitions when triggered manually (via pager or prev/next); value == time in ms</value>
+  </data>
+  <data name="lblFastOnEvent.Text" xml:space="preserve">
+    <value>Force Fast Transition on Event</value>
+  </data>
+  <data name="lblFit.Help" xml:space="preserve">
+    <value>force slides to fit container</value>
+  </data>
+  <data name="lblFit.Text" xml:space="preserve">
+    <value>Fit Slides to Container</value>
+  </data>
+  <data name="lblFx.Help" xml:space="preserve">
+    <value>name of transition effect (or comma separated names, ex: 'fade,scrollUp,shuffle')</value>
+  </data>
+  <data name="lblFx.Text" xml:space="preserve">
+    <value>Transition Effect(s)</value>
+  </data>
+  <data name="lblFxFn.Help" xml:space="preserve">
+    <value>function used to control the transition: function(currSlideElement, nextSlideElement, options, afterCalback, forwardFlag)</value>
+  </data>
+  <data name="lblFxFn.Text" xml:space="preserve">
+    <value>Effects Function</value>
+  </data>
+  <data name="lblHeight.Help" xml:space="preserve">
+    <value>container height (if the 'fit' option is true, the slides will be set to this height as well)</value>
+  </data>
+  <data name="lblHeight.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="lblManualTrump.Help" xml:space="preserve">
+    <value>causes manual transition to stop an active transition instead of being ignored</value>
+  </data>
+  <data name="lblManualTrump.Text" xml:space="preserve">
+    <value>Stop Manual Transition</value>
+  </data>
+  <data name="lblMetaAttr.Help" xml:space="preserve">
+    <value>data- attribute that holds the option data for the slideshow</value>
+  </data>
+  <data name="lblMetaAttr.Text" xml:space="preserve">
+    <value>Meta-Attribute</value>
+  </data>
+  <data name="lblNext.Help" xml:space="preserve">
+    <value>element, jQuery object, or jQuery selector string for the element to use as event trigger for next slide</value>
+  </data>
+  <data name="lblNext.Text" xml:space="preserve">
+    <value>Next Element</value>
+  </data>
+  <data name="lblNoWrap.Help" xml:space="preserve">
+    <value>Check to prevent slideshow from wrapping</value>
+  </data>
+  <data name="lblNoWrap.Text" xml:space="preserve">
+    <value>Prevent Slideshow Wrap</value>
+  </data>
+  <data name="lblOnPagerEvent.Help" xml:space="preserve">
+    <value>callback fn for pager events: function(zeroBasedSlideIndex, slideElement)</value>
+  </data>
+  <data name="lblOnPagerEvent.Text" xml:space="preserve">
+    <value>Pager Event Function</value>
+  </data>
+  <data name="lblOnPrevNextEvent.Help" xml:space="preserve">
+    <value>callback fn for prev/next events: function(isNext, zeroBasedSlideIndex, slideElement)</value>
+  </data>
+  <data name="lblOnPrevNextEvent.Text" xml:space="preserve">
+    <value>On Prev/Next Event Function</value>
+  </data>
+  <data name="lblPager.Help" xml:space="preserve">
+    <value>Check the checkbox to include a pager element as part of your slider.</value>
+  </data>
+  <data name="lblPager.Text" xml:space="preserve">
+    <value>Include Pager?</value>
+  </data>
+  <data name="lblPagerAnchorBuilder.Help" xml:space="preserve">
+    <value>callback fn for building anchor links:  function(index, DOMelement)</value>
+  </data>
+  <data name="lblPagerAnchorBuilder.Text" xml:space="preserve">
+    <value>Pager Anchor Builder</value>
+  </data>
+  <data name="lblPagerEvent.Help" xml:space="preserve">
+    <value>name of event which drives the pager navigation</value>
+  </data>
+  <data name="lblPagerEvent.Text" xml:space="preserve">
+    <value>Pager Event Object</value>
+  </data>
+  <data name="lblPause.Help" xml:space="preserve">
+    <value>Check to enable "pause on hover"</value>
+  </data>
+  <data name="lblPause.Text" xml:space="preserve">
+    <value>Pause Slide on Hover</value>
+  </data>
+  <data name="lblPauseOnPagerHover.Help" xml:space="preserve">
+    <value>Check to pause when hovering over pager link</value>
+  </data>
+  <data name="lblPauseOnPagerHover.Text" xml:space="preserve">
+    <value>Pause on Pager Hover</value>
+  </data>
+  <data name="lblPrev.Help" xml:space="preserve">
+    <value>element, jQuery object, or jQuery selector string for the element to use as event trigger for previous slide</value>
+  </data>
+  <data name="lblPrev.Text" xml:space="preserve">
+    <value>Previous Element</value>
+  </data>
+  <data name="lblPrevNextEvent.Help" xml:space="preserve">
+    <value>event which drives the manual transition to the previous or next slide</value>
+  </data>
+  <data name="lblPrevNextEvent.Text" xml:space="preserve">
+    <value>Previous/Next Event Object</value>
+  </data>
+  <data name="lblRandom.Help" xml:space="preserve">
+    <value>Check for random, false for sequence (not applicable to shuffle fx)</value>
+  </data>
+  <data name="lblRandom.Text" xml:space="preserve">
+    <value>Randomize Slides</value>
+  </data>
+  <data name="lblRandomizeEffects.Help" xml:space="preserve">
+    <value>valid when multiple effects are used; true to make the effect sequence random</value>
+  </data>
+  <data name="lblRandomizeEffects.Text" xml:space="preserve">
+    <value>Randomize Effects</value>
+  </data>
+  <data name="lblRequeueOnImageNotLoaded.Help" xml:space="preserve">
+    <value>requeue the slideshow if any image slides are not yet loaded</value>
+  </data>
+  <data name="lblRequeueOnImageNotLoaded.Text" xml:space="preserve">
+    <value>Requeue on Image not Loaded</value>
+  </data>
+  <data name="lblRequeueTimeout.Help" xml:space="preserve">
+    <value>ms delay for requeue</value>
+  </data>
+  <data name="lblRequeueTimeout.Text" xml:space="preserve">
+    <value>Requeue Timeout</value>
+  </data>
+  <data name="lblRev.Help" xml:space="preserve">
+    <value>causes animations to transition in reverse (for effects that support it such as scrollHorz/scrollVert/shuffle)</value>
+  </data>
+  <data name="lblRev.Text" xml:space="preserve">
+    <value>Reverse Transition Effects</value>
+  </data>
+  <data name="lblShuffle.Help" xml:space="preserve">
+    <value>coords for shuffle animation, ex: { top:15, left: 200 }</value>
+  </data>
+  <data name="lblShuffle.Text" xml:space="preserve">
+    <value>Shuffle Animation Coordinates</value>
+  </data>
+  <data name="lblSlideExpr.Help" xml:space="preserve">
+    <value>expression for selecting slides (if something other than all children is required)</value>
+  </data>
+  <data name="lblSlideExpr.Text" xml:space="preserve">
+    <value>Slide Expression</value>
+  </data>
+  <data name="lblSlideResize.Help" xml:space="preserve">
+    <value>force slide width/height to fixed size before every transition</value>
+  </data>
+  <data name="lblSlideResize.Text" xml:space="preserve">
+    <value>Slide Resize</value>
+  </data>
+  <data name="lblSpeed.Help" xml:space="preserve">
+    <value>speed of the transition (any valid fx speed value)</value>
+  </data>
+  <data name="lblSpeed.Text" xml:space="preserve">
+    <value>Transition Speed</value>
+  </data>
+  <data name="lblSpeedIn.Help" xml:space="preserve">
+    <value>speed of the 'in' transition</value>
+  </data>
+  <data name="lblSpeedIn.Text" xml:space="preserve">
+    <value>Transition Speed In</value>
+  </data>
+  <data name="lblSpeedOut.Help" xml:space="preserve">
+    <value>speed of the 'out' transition</value>
+  </data>
+  <data name="lblSpeedOut.Text" xml:space="preserve">
+    <value>Transition Speed Out</value>
+  </data>
+  <data name="lblStartingSlide.Help" xml:space="preserve">
+    <value>zero-based index of the first slide to be displayed</value>
+  </data>
+  <data name="lblStartingSlide.Text" xml:space="preserve">
+    <value>Starting Slide</value>
+  </data>
+  <data name="lblSync.Help" xml:space="preserve">
+    <value>true if in/out transitions should occur simultaneously</value>
+  </data>
+  <data name="lblSync.Text" xml:space="preserve">
+    <value>Synchronize Transitions</value>
+  </data>
+  <data name="lblTimeout.Help" xml:space="preserve">
+    <value>milliseconds between slide transitions (0 to disable auto advance)</value>
+  </data>
+  <data name="lblTimeout.Text" xml:space="preserve">
+    <value>Transition Timeout</value>
+  </data>
+  <data name="lblTimeoutFn.Help" xml:space="preserve">
+    <value>callback for determining per-slide timeout value:  function(currSlideElement, nextSlideElement, options, forwardFlag)</value>
+  </data>
+  <data name="lblTimeoutFn.Text" xml:space="preserve">
+    <value>Timeout Function</value>
+  </data>
+  <data name="lblUpdateActivePagerLink.Help" xml:space="preserve">
+    <value>callback fn invoked to update the active pager link (adds/removes activePagerClass style)</value>
+  </data>
+  <data name="lblUpdateActivePagerLink.Text" xml:space="preserve">
+    <value>Update Active Pager Link Function</value>
+  </data>
+  <data name="lblWidth.Help" xml:space="preserve">
+    <value>container width (if the 'fit' option is true, the slides will be set to this width as well)</value>
+  </data>
+  <data name="lblWidth.Text" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="lnkCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="lnkReset.Text" xml:space="preserve">
+    <value>Reset to Default Settings</value>
+  </data>
+  <data name="lnkSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Pager.Text" xml:space="preserve">
+    <value>Pager Settings</value>
+  </data>
+  <data name="lblRequiredFields.Text" xml:space="preserve">
+    <value>Indicates Required Fields</value>
+  </data>
+  <data name="rfvFx.ErrorMessage" xml:space="preserve">
+    <value>The Transition Effect field is required</value>
+  </data>
+  <data name="rfvMetaAttr.ErrorMessage" xml:space="preserve">
+    <value>The Meta-Attribute field is required</value>
+  </data>
+  <data name="rfvPagerEvent.ErrorMessage" xml:space="preserve">
+    <value>The Pager Event field is required</value>
+  </data>
+  <data name="rfvPrevNextEvent.ErrorMessage" xml:space="preserve">
+    <value>The Previous/Next Event field is required</value>
+  </data>
+  <data name="rfvRequeueTimeout.ErrorMessage" xml:space="preserve">
+    <value>The Requeue Timeout field is required</value>
+  </data>
+  <data name="rfvTimeout.ErrorMessage" xml:space="preserve">
+    <value>The Transition Timeout is required</value>
+  </data>
+  <data name="Transition.Text" xml:space="preserve">
+    <value>Transition Settings</value>
+  </data>
+  <data name="revRequeueTimeout.ErrorMessage" xml:space="preserve">
+    <value>The Requeue Timeout can only be numbers (e.g., 250)</value>
+  </data>
+  <data name="revSpeed.ErrorMessage" xml:space="preserve">
+    <value>The Speed can only be numbers (e.g., 1000)</value>
+  </data>
+  <data name="rfvHeight.ErrorMessage" xml:space="preserve">
+    <value>The Height field is required (e.g., auto, or a numeric value)</value>
+  </data>
+  <data name="rfvSpeed.ErrorMessage" xml:space="preserve">
+    <value>The Speed field is required</value>
+  </data>
+  <data name="Message.Warning" xml:space="preserve">
+    <value>WARNING! All of the settings found here are very advanced. Be careful when editing them, as the wrong value can break the module. Details on each of these settings and examples of usage can be found on the &lt;a href="http://jquery.malsup.com/cycle/" target="_blank"&gt;plug-in website&lt;/a&gt;.</value>
+  </data>
+  <data name="lblExcludeCycle.Help" xml:space="preserve">
+    <value>Check if your site is already loading the jQuery.cycle() plugin to prevent conflicts.</value>
+  </data>
+  <data name="lblExcludeCycle.Text" xml:space="preserve">
+    <value>Exclude Cycle Plugin</value>
+  </data>
+  <data name="lblExcludeEasing.Help" xml:space="preserve">
+    <value>Check if your site is already loading the jQuery.easing() pluginn to prevent conflicts.</value>
+  </data>
+  <data name="lblExcludeEasing.Text" xml:space="preserve">
+    <value>Exclude Easing</value>
+  </data>
+  <data name="lnkDefaultPagerAnchorBuilder.Text" xml:space="preserve">
+    <value>Load Default</value>
+  </data>
+  <data name="lblCacheDuration.Help" xml:space="preserve">
+    <value>The slider content is cached to increase performance. By default it is cached for 5 minutes. Change this value to any number of minutes that you would like.</value>
+  </data>
+  <data name="lblCacheDuration.Text" xml:space="preserve">
+    <value>Cache Duration</value>
+  </data>
+  <data name="revCacheDuration.ErrorMessage" xml:space="preserve">
+    <value>The Cache Duration can only be numbers to represent minutes (e.g., 5)</value>
+  </data>
+  <data name="rfvCacheDuration.ErrorMessage" xml:space="preserve">
+    <value>The Cache Duration field is required</value>
+  </data>
+  <data name="cboFx.Items.0.Value" xml:space="preserve">
+    <value>blindX</value>
+  </data>
+  <data name="cboFx.Items.1.Value" xml:space="preserve">
+    <value>blindY</value>
+  </data>
+  <data name="cboFx.Items.10.Value" xml:space="preserve">
+    <value>none</value>
+  </data>
+  <data name="cboFx.Items.11.Value" xml:space="preserve">
+    <value>scrollUp</value>
+  </data>
+  <data name="cboFx.Items.12.Value" xml:space="preserve">
+    <value>scrollDown</value>
+  </data>
+  <data name="cboFx.Items.13.Value" xml:space="preserve">
+    <value>scrollLeft</value>
+  </data>
+  <data name="cboFx.Items.14.Value" xml:space="preserve">
+    <value>scrollRight</value>
+  </data>
+  <data name="cboFx.Items.15.Value" xml:space="preserve">
+    <value>scrollHorz</value>
+  </data>
+  <data name="cboFx.Items.16.Value" xml:space="preserve">
+    <value>scrollVert</value>
+  </data>
+  <data name="cboFx.Items.17.Value" xml:space="preserve">
+    <value>shuffle</value>
+  </data>
+  <data name="cboFx.Items.18.Value" xml:space="preserve">
+    <value>slideX</value>
+  </data>
+  <data name="cboFx.Items.19.Value" xml:space="preserve">
+    <value>slideY</value>
+  </data>
+  <data name="cboFx.Items.2.Value" xml:space="preserve">
+    <value>blindZ</value>
+  </data>
+  <data name="cboFx.Items.20.Value" xml:space="preserve">
+    <value>toss</value>
+  </data>
+  <data name="cboFx.Items.21.Value" xml:space="preserve">
+    <value>turnUp</value>
+  </data>
+  <data name="cboFx.Items.22.Value" xml:space="preserve">
+    <value>turnDown</value>
+  </data>
+  <data name="cboFx.Items.23.Value" xml:space="preserve">
+    <value>turnLeft</value>
+  </data>
+  <data name="cboFx.Items.24.Value" xml:space="preserve">
+    <value>turnRight</value>
+  </data>
+  <data name="cboFx.Items.25.Value" xml:space="preserve">
+    <value>uncover</value>
+  </data>
+  <data name="cboFx.Items.26.Value" xml:space="preserve">
+    <value>wipe</value>
+  </data>
+  <data name="cboFx.Items.27.Value" xml:space="preserve">
+    <value>zoom</value>
+  </data>
+  <data name="cboFx.Items.3.Value" xml:space="preserve">
+    <value>cover</value>
+  </data>
+  <data name="cboFx.Items.4.Value" xml:space="preserve">
+    <value>curtainX</value>
+  </data>
+  <data name="cboFx.Items.5.Value" xml:space="preserve">
+    <value>curtainY</value>
+  </data>
+  <data name="cboFx.Items.6.Value" xml:space="preserve">
+    <value>fade</value>
+  </data>
+  <data name="cboFx.Items.7.Value" xml:space="preserve">
+    <value>fadeZoom</value>
+  </data>
+  <data name="cboFx.Items.8.Value" xml:space="preserve">
+    <value>growX</value>
+  </data>
+  <data name="cboFx.Items.9.Value" xml:space="preserve">
+    <value>growY</value>
+  </data>
+</root>

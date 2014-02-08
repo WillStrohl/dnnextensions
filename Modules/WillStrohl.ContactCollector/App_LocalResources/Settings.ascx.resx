@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="chkRequiredFields.Item0" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="chkRequiredFields.Item1" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="chkRequiredFields.Item2" xml:space="preserve">
+    <value>E-Mail Address</value>
+  </data>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Contact Collector Settings</value>
+  </data>
+  <data name="lblRequiredFields.Help" xml:space="preserve">
+    <value>Check the checkbox to designate which fields you want to be required.</value>
+  </data>
+  <data name="lblRequiredFields.Text" xml:space="preserve">
+    <value>Required Fields</value>
+  </data>
+  <data name="lblUseCaptcha.Text" xml:space="preserve">
+    <value>Use CAPTCHA Control?</value>
+  </data>
+  <data name="Token.Text" xml:space="preserve">
+    <value>&lt;span class="NormalBold"&gt;Token Replacement:&lt;/span&gt;&amp;nbsp; You can use the following tokens in your e-mail templates:&lt;br /&gt;&lt;br /&gt;[CONTACT:FIRSTNAME]&lt;br /&gt;[CONTACT:LASTNAME]&lt;br /&gt;[CONTACT:EMAIL]&lt;br /&gt;[PORTAL:PORTALNAME]</value>
+  </data>
+  <data name="AdminMessage.Subject" xml:space="preserve">
+    <value>A new contact was added</value>
+  </data>
+  <data name="ContactMessage.Subject" xml:space="preserve">
+    <value>Your information was received</value>
+  </data>
+  <data name="txtEmailMessageToAdmin.Text" xml:space="preserve">
+    <value>&lt;p&gt;A new contact was added. The contact information is as follows:&lt;/p&gt;&lt;p&gt;Name: [CONTACT:FIRSTNAME] [CONTACT:LASTNAME]&lt;br /&gt;E-Mail Address: [CONTACT:EMAIL]&lt;/p&gt;</value>
+  </data>
+  <data name="txtEmailMessageToContact.Text" xml:space="preserve">
+    <value>&lt;p&gt;Thank you for submitting your contact information at [PORTAL:PORTALNAME]. Here is the information you submitted:&lt;/p&gt;&lt;p&gt;Name: [CONTACT:FIRSTNAME] [CONTACT:LASTNAME]&lt;br /&gt;E-Mail Address: [CONTACT:EMAIL]&lt;/p&gt;</value>
+  </data>
+  <data name="lblSendEmailToAdmin.Help" xml:space="preserve">
+    <value>Check this checkbox if you would like to have an email sent to the administrator when a new contact is saved.</value>
+  </data>
+  <data name="lblSendEmailToAdmin.Text" xml:space="preserve">
+    <value>Send E-Mail to Administrator</value>
+  </data>
+  <data name="lblSendEmailToContact.Help" xml:space="preserve">
+    <value>Check this checkbox if you would like to have a confirmation e-mail sent to the new contact.</value>
+  </data>
+  <data name="lblSendEmailToContact.Text" xml:space="preserve">
+    <value>Send Confirmation E-Mail to Contact</value>
+  </data>
+  <data name="lblUseCaptcha.Help" xml:space="preserve">
+    <value>If you would like the CAPTCHA control shown, check this checkbox.</value>
+  </data>
+  <data name="lblEmailMessageToAdmin.Help" xml:space="preserve">
+    <value>This is the HTML template used to send e-mails to the administrator when a new contact is created.</value>
+  </data>
+  <data name="lblEmailMessageToAdmin.Text" xml:space="preserve">
+    <value>Administrator E-Mail Template</value>
+  </data>
+  <data name="lblEmailMessageToContact.Help" xml:space="preserve">
+    <value>This is the HTML template used to send e-mails to the newly created contact.</value>
+  </data>
+  <data name="lblEmailMessageToContact.Text" xml:space="preserve">
+    <value>Contact E-Mail Template</value>
+  </data>
+  <data name="Email.Template.ToAdmin.Body" xml:space="preserve">
+    <value>&lt;p&gt;The following contact was saved on your website:&lt;/p&gt;
+
+&lt;p&gt;Name:  [CONTACT:FIRSTNAME] [CONTACT:LASTNAME]&lt;br /&gt;
+E-Mail:  [CONTACT:EMAIL]&lt;/p&gt;</value>
+  </data>
+  <data name="Email.Template.ToAdmin.Subject" xml:space="preserve">
+    <value>A New Contact Has Been Saved</value>
+  </data>
+  <data name="Email.Template.ToContact.Body" xml:space="preserve">
+    <value>&lt;p&gt;Hello, [CONTACT:FIRSTNAME] [CONTACT:LASTNAME]:&lt;/p&gt;
+
+&lt;p&gt;Thank you for submitting your contact information. We have received it, and will contact you as soon as we can.&lt;/p&gt;
+
+&lt;p&gt;Sincereley,&lt;/p&gt;
+
+&lt;p&gt;From the staff at the [PORTAL:PORTALNAME] website&lt;/p&gt;</value>
+  </data>
+  <data name="Email.Template.ToContact.Subject" xml:space="preserve">
+    <value>Your Contact Information Was Saved</value>
+  </data>
+  <data name="lblAdminEmail.Help" xml:space="preserve">
+    <value>This is the e-mail address that the e-mails will be sent from, and the admin e-mail will be sent to.</value>
+  </data>
+  <data name="lblAdminEmail.Text" xml:space="preserve">
+    <value>Administrator E-Mail</value>
+  </data>
+  <data name="lblEmailSubjectToAdmin.Help" xml:space="preserve">
+    <value>This is the subject for the e-mail that will be used in the e-mails sent to the module administrator.</value>
+  </data>
+  <data name="lblEmailSubjectToAdmin.Text" xml:space="preserve">
+    <value>Admin E-Mail Subject</value>
+  </data>
+  <data name="lblEmailSubjectToContact.Help" xml:space="preserve">
+    <value>This is the subject for the e-mails that will be sent to the new contact.</value>
+  </data>
+  <data name="lblEmailSubjectToContact.Text" xml:space="preserve">
+    <value>Contact E-Mail Subject</value>
+  </data>
+  <data name="BasicSettings.Text" xml:space="preserve">
+    <value>Basic Settings</value>
+  </data>
+  <data name="EmailSettings.Text" xml:space="preserve">
+    <value>E-Mail Settings</value>
+  </data>
+  <data name="lblComment.Help" xml:space="preserve">
+    <value>Check the checkbox if you want to allow visitors to add comments.</value>
+  </data>
+  <data name="lblComment.Text" xml:space="preserve">
+    <value>Include Comment Field?</value>
+  </data>
+</root>

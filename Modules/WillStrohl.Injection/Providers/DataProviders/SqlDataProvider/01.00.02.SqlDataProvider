@@ -1,0 +1,22 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Version: 1.00.02
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+Release Notes:
+  This update patches SQL problems that were created.
+
+*/
+
+IF EXISTS(SELECT 1 FROM [sysindexes] WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_injectcontent')
+BEGIN
+	DROP INDEX [IX_{objectQualifier}wns_inj_injection_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection]
+END
+GO

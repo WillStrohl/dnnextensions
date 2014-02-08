@@ -1,0 +1,44 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Version: 1.00.04
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+Release Notes:
+  Increases the size of the injection content field, and shores up some DB inconsistencies.
+
+*/
+
+IF EXISTS (SELECT 1 FROM SYSINDEXES WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_injectcontent')
+	DROP INDEX [IX_{objectQualifier}wns_inj_injection_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection]
+GO
+
+IF EXISTS (SELECT 1 FROM SYSINDEXES WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_moduleid_injectcontent')
+	DROP INDEX [IX_{objectQualifier}wns_inj_injection_moduleid_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] ALTER COLUMN [inject_content] NVARCHAR(MAX) NOT NULL
+GO
+
+DELETE FROM {databaseOwner}[{objectQualifier}wns_inj_injection] 
+WHERE NOT [module_id] IN (
+	SELECT [ModuleId] FROM {databaseOwner}[{objectQualifier}Modules]
+)
+GO
+
+IF EXISTS (SELECT 1 
+	FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+	WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_inj_injection_moduleid' 
+	AND TABLE_NAME = N'{objectQualifier}wns_inj_injection')
+	ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] DROP CONSTRAINT [FK_{objectQualifier}wns_inj_injection_moduleid]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] WITH NOCHECK 
+	ADD CONSTRAINT [FK_{objectQualifier}wns_inj_injection_moduleid] FOREIGN KEY ([module_id]) 
+	REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE

@@ -1,0 +1,157 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/*
+Issue 21110 - Increase the Embed Field Data Length
+*/
+ALTER TABLE {databaseOwner}[{objectQualifier}Media] ALTER COLUMN [Src] NVARCHAR(1500) NOT NULL;
+
+/*
+Issue 20089 - Adding a text footer to the module
+*/
+IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'MediaMessage' AND o.[name] LIKE N'%{objectQualifier}Media')
+    ALTER TABLE {databaseOwner}[{objectQualifier}Media] 
+    ADD [MediaMessage] NVARCHAR(2000) NULL;
+GO
+
+/*
+Adding auditing information to the module
+(ammended POST RELEASE for Issue 22139)
+*/
+IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'LastUpdatedBy' AND o.[name] LIKE N'%{objectQualifier}Media')
+	ALTER TABLE {databaseOwner}[{objectQualifier}Media] 
+    ADD [LastUpdatedBy] INT DEFAULT((1));
+GO
+
+/*
+POST RELEASE: Issue 22139
+*/
+DECLARE @SuperUser INT;
+SELECT TOP 1 @SuperUser = u.[UserId] 
+FROM {databaseOwner}[{objectQualifier}Users] u 
+WHERE u.[IsSuperUser] = 1 AND u.[IsDeleted] = 0 
+ORDER BY u.[CreatedOnDate] ASC;
+
+UPDATE {databaseOwner}[{objectQualifier}Media] 
+SET [LastUpdatedBy] = @SuperUser 
+WHERE [LastUpdatedBy] IS NULL OR NOT [LastUpdatedBy] IN (
+	SELECT u.[UserId] FROM {databaseOwner}[{objectQualifier}Users] u WHERE u.[IsSuperUser] = 1 AND u.[IsDeleted] = 0 
+);
+GO
+	
+IF NOT EXISTS (SELECT * FROM [dbo].[sysobjects] WHERE [id] = OBJECT_ID(N'FK_{objectQualifier}Media_LastUpdatedBy') AND OBJECTPROPERTY([id], N'IsConstraint') = 1)
+	ALTER TABLE {databaseOwner}[{objectQualifier}Media] 
+	ADD CONSTRAINT [FK_{objectQualifier}Media_LastUpdatedBy] FOREIGN KEY ([LastUpdatedBy]) 
+	REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId]);
+GO
+
+IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'LastUpdatedDate' AND o.[name] LIKE N'%{objectQualifier}Media')
+    ALTER TABLE {databaseOwner}[{objectQualifier}Media] 
+    ADD [LastUpdatedDate] DATETIME NULL;
+GO
+
+UPDATE {databaseOwner}[{objectQualifier}Media] SET [LastUpdatedDate] = GETDATE();
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Media] ALTER COLUMN [LastUpdatedDate] DATETIME NOT NULL;
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Media] ALTER COLUMN [LastUpdatedBy] INT NOT NULL;
+GO
+
+/*
+
+UPDATE THE STORED PROCEDURES
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}AddMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}AddMedia];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}AddMedia] 
+	@ModuleID INT, @Src NVARCHAR(1500), @Alt NVARCHAR(100), @Width INT, @Height INT, @NavigateUrl NVARCHAR(250), @MediaAlignment INT, @AutoStart BIT, @MediaLoop BIT, @NewWindow BIT, @TrackClicks BIT, @MediaType INT, @MediaMessage NVARCHAR(2000), @LastUpdatedBy INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	INSERT INTO {databaseOwner}[{objectQualifier}Media] ([ModuleID],[Src],[Alt],[Width],[Height],[NavigateUrl],[MediaAlignment],[AutoStart],[MediaLoop],[NewWindow],[TrackClicks],[MediaType],[MediaMessage],[LastUpdatedBy],[LastUpdatedDate]) 
+    VALUES (@ModuleId, @Src, @Alt, @Width, @Height, @NavigateUrl, @MediaAlignment, @AutoStart, @MediaLoop, @NewWindow, @TrackClicks, @MediaType, @MediaMessage,@LastUpdatedBy,GETDATE());
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UpdateMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UpdateMedia];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}UpdateMedia] 
+	@ModuleID INT, @Src NVARCHAR(1500), @Alt NVARCHAR(100), @Width INT, @Height INT, @NavigateUrl NVARCHAR(250), @MediaAlignment INT, @AutoStart BIT, @MediaLoop BIT, @NewWindow BIT, @TrackClicks BIT, @MediaType INT, @MediaMessage NVARCHAR(2000), @LastUpdatedBy INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}Media] 
+    SET [Src] = @Src, 
+        [Alt] = @Alt, 
+        [Width] = @Width, 
+        [Height] = @Height, 
+        [NavigateUrl] = @NavigateUrl, 
+        [MediaAlignment] = @MediaAlignment, 
+        [AutoStart] = @AutoStart, 
+        [MediaLoop] = @MediaLoop, 
+		[NewWindow] = @NewWindow, 
+		[TrackClicks] = @TrackClicks, 
+		[MediaType] = @MediaType, 
+		[MediaMessage] = @MediaMessage, 
+		[LastUpdatedBy] = @LastUpdatedBy, 
+		[LastUpdatedDate] = GETDATE() 
+    WHERE [ModuleID] = @ModuleID;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}GetMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}GetMedia];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}GetMedia] 
+	@ModuleID INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+    SELECT	m.[ModuleID],m.[Alt],m.[Width],m.[Height], 
+        [Src] = CASE WHEN srcf.[FileName] IS NULL THEN m.[Src] ELSE srcf.[Folder] + srcf.[FileName] END, 
+        [NavigateUrl] = CASE WHEN navf.[FileName] IS NULL THEN m.[NavigateUrl] ELSE navf.[Folder] + navf.[FileName] END,
+        ut.[NewWindow],ut.[TrackClicks],m.[MediaAlignment],m.[AutoStart],m.[MediaLoop],m.[NewWindow],m.[TrackClicks],
+		m.[MediaType], m.[MediaMessage], m.[LastUpdatedBy], m.[LastUpdatedDate] 
+    FROM {databaseOwner}[{objectQualifier}Media] AS m
+    LEFT OUTER JOIN {databaseOwner}[{objectQualifier}Files] AS srcf ON m.Src = 'fileid=' + CONVERT(VARCHAR, srcf.FileID)
+    LEFT OUTER JOIN {databaseOwner}[{objectQualifier}Files] AS navf ON m.NavigateUrl = 'fileid=' + CONVERT(VARCHAR, navf.FileID)
+    LEFT OUTER JOIN {databaseOwner}[{objectQualifier}UrlTracking] ut ON m.[NavigateUrl] = ut.[Url] and ut.[ModuleId] = @ModuleID 
+    WHERE m.[ModuleId] = @ModuleId;
+END
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

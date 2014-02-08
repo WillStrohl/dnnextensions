@@ -1,0 +1,40 @@
+﻿/*
+
+UNINSTALL SQL PROVIDER SCRIPT
+
+Contact Collector Module for DotNetNuke
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_GetContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetContact]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_GetContacts') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetContacts]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_AddContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_AddContact]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_UpdateContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_UpdateContact]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_DeleteContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_DeleteContact]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_contact') IS NULL 
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_cc_contact]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_emailtemplate') IS NULL 
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_cc_emailtemplate]
+GO

@@ -1,0 +1,63 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Version: 01.02.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009-2012 Will Strohl
+
+Release Notes:
+  Fixing a bug with the size of the injection content.
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_AddInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent] 
+	@ModuleId INT, @InjectTop BIT, @InjectName NVARCHAR(50), @InjectContent NVARCHAR(MAX), @IsEnabled BIT, @OrderShown INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id],[inject_top],[inject_name],[inject_content],[is_enabled],[order_shown]) 
+	VALUES (@ModuleId, @InjectTop, @InjectName, @InjectContent, @IsEnabled, @OrderShown)
+	SELECT SCOPE_IDENTITY()
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_UpdateInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent] 
+	@InjectionId INT, @ModuleId INT, @InjectTop BIT, @InjectName NVARCHAR(50), @InjectContent NVARCHAR(MAX), @IsEnabled BIT, @OrderShown INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] SET 
+		[module_id] = @ModuleId, 
+		[inject_top] = @InjectTop, 
+		[inject_name] = @InjectName, 
+		[inject_content] = @InjectContent, 
+		[is_enabled] = @IsEnabled, 
+		[order_shown] = @OrderShown 
+	WHERE [injection_id] = @InjectionId
+END
+GO
+
+/* END OF FILE */

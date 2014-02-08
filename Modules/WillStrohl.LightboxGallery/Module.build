@@ -3,6 +3,8 @@
     <ModulePath>WillStrohl.LightboxGallery</ModulePath>
     <DNNFileName>WillStrohl.Lightbox</DNNFileName>
     <PackageName>WillStrohl.Lightbox</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
     <Extension>zip</Extension>
     <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
     <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>

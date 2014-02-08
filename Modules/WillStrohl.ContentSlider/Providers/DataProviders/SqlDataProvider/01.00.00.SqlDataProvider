@@ -1,0 +1,167 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Content Slider Module for DotNetNuke
+Version: 01.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2011 Will Strohl
+
+Release Notes:
+  This is the first install script for the module. It creates the initial module 
+  structure.
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_contentslider]') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_contentslider]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_contentslider] (
+	[SliderId] INT IDENTITY NOT NULL
+	    CONSTRAINT [PK_{objectQualifier}wns_contentslider] PRIMARY KEY CLUSTERED ON [PRIMARY], 
+	[ModuleId] INT NOT NULL 
+	    CONSTRAINT [FK_{objectQualifier}wns_contentslider_ModuleId] FOREIGN KEY 
+	    REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE, 
+	[SliderName] NVARCHAR(50) NOT NULL,
+	[SliderContent] NVARCHAR(255) NOT NULL, 
+	[AlternateText] NVARCHAR(100) NOT NULL, 
+	[Link] NVARCHAR(255) NOT NULL,
+	[NewWindow] BIT NOT NULL, 
+	[DisplayOrder] INT NOT NULL, 
+	[LastUpdatedBy] INT NOT NULL 
+	    CONSTRAINT [FK_{objectQualifier}wns_contentslider_LastUpdatedBy] FOREIGN KEY 
+	    REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId]) ON DELETE CASCADE, 
+	[LastUpdatedDate] DATETIME NOT NULL
+)
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_contentslider_moduleid] ON {databaseOwner}[{objectQualifier}wns_contentslider] ([ModuleId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_contentslider_moduleid_displayorder] ON {databaseOwner}[{objectQualifier}wns_contentslider] ([ModuleId],[DisplayOrder]);
+GO
+
+/*
+
+STORED PROCEDURES
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_AddSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_AddSlider];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_AddSlider] 
+	@ModuleId INT, @SliderName NVARCHAR(50), @SliderContent NVARCHAR(255), @AlternateText NVARCHAR(100), @Link NVARCHAR(255), @NewWindow BIT, @DisplayOrder INT, @LastUpdatedBy INT
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	IF NOT @DisplayOrder > 0
+	BEGIN
+	    SELECT @DisplayOrder = COUNT(l.[SliderId]) FROM {databaseOwner}[{objectQualifier}wns_contentslider] l WHERE l.[ModuleId] = @ModuleId;
+	    SET @DisplayOrder = @DisplayOrder + 1;
+	END
+
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_contentslider] ([ModuleId],[SliderName],[SliderContent],[AlternateText],[Link],[NewWindow],[DisplayOrder],[LastUpdatedBy],[LastUpdatedDate]) 
+	VALUES (@ModuleId,@SliderName,@SliderContent,@AlternateText,@Link,@NewWindow,@DisplayOrder,@LastUpdatedBy,GETDATE());
+	SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_UpdateSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_UpdateSlider];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_UpdateSlider] 
+	@SliderId INT, @ModuleId INT, @SliderName NVARCHAR(50), @SliderContent NVARCHAR(255), @AlternateText NVARCHAR(100), @Link NVARCHAR(255), @NewWindow BIT, @DisplayOrder INT, @LastUpdatedBy INT
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	UPDATE {databaseOwner}[{objectQualifier}wns_contentslider] 
+	SET [ModuleId] = @ModuleId,
+		[SliderName] = @SliderName, 
+		[SliderContent] = @SliderContent, 
+		[AlternateText] = @AlternateText, 
+		[Link] = @Link, 
+		[NewWindow] = @NewWindow, 
+		[DisplayOrder] = @DisplayOrder,
+		[LastUpdatedBy] = @LastUpdatedBy, 
+		[LastUpdatedDate] = GETDATE()
+	WHERE [SliderId] = @SliderId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_DeleteSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_DeleteSlider];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_DeleteSlider] 
+	@SliderId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	DELETE FROM {databaseOwner}[{objectQualifier}wns_contentslider] WHERE [SliderId] = @SliderId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_GetSliders]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSliders];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSliders] 
+	@ModuleId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT cs.[SliderId],cs.[ModuleId],cs.[SliderName],cs.[SliderContent],cs.[AlternateText],cs.[Link],cs.[NewWindow],cs.[DisplayOrder],cs.[LastUpdatedBy],cs.[LastUpdatedDate]
+	FROM {databaseOwner}[{objectQualifier}wns_contentslider] cs 
+	WHERE cs.[ModuleId] = @ModuleId 
+	ORDER BY cs.[DisplayOrder]
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_GetSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSlider];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSlider] 
+	@SliderId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT cs.[SliderId],cs.[ModuleId],cs.[SliderName],cs.[SliderContent],cs.[AlternateText],cs.[Link],cs.[NewWindow],cs.[DisplayOrder],cs.[LastUpdatedBy],cs.[LastUpdatedDate]
+	FROM {databaseOwner}[{objectQualifier}wns_contentslider] cs 
+	WHERE cs.[SliderId] = @SliderId;
+END
+GO
+
+/* END OF FILE */

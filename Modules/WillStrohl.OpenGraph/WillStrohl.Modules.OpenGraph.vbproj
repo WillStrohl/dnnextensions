@@ -83,7 +83,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DocumentationFile>WillStrohl.Modules.OpenGraph.xml</DocumentationFile>
     <BaseAddress>1581252608</BaseAddress>
     <ConfigurationOverrideFile>

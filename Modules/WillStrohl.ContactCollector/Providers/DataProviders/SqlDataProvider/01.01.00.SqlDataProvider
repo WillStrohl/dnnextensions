@@ -1,0 +1,90 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Contact Collector Module for DotNetNuke
+Version: 1.01.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+Release Notes:
+  No data updates for this version. Just a placeholder
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_emailtemplate') IS NULL 
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_cc_emailtemplate]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_cc_emailtemplate] (
+	[EmailId] INT IDENTITY(1,1) 
+		CONSTRAINT [PK_{objectQualifier}wns_cc_emailtemplate] PRIMARY KEY CLUSTERED, 
+	[ModuleId] INT NOT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_cc_emailtemplate_moduleid] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE, 
+	[ContactSubject] NVARCHAR(50) NULL, 
+	[ContactTemplate] NVARCHAR(MAX) NULL, 
+	[AdminSubject] NVARCHAR(50) NULL, 
+	[AdminTemplate] NVARCHAR(MAX) NULL
+)
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_cc_emailtemplate_moduleid] 
+	ON {databaseOwner}[{objectQualifier}wns_cc_emailtemplate] ([ModuleId])
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_GetEmailTemplate') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetEmailTemplate]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetEmailTemplate] 
+	@ModuleId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	SELECT e.[EmailId],e.[ModuleId],e.[ContactSubject],e.[ContactTemplate],e.[AdminSubject],e.[AdminTemplate] 
+	FROM {databaseOwner}[{objectQualifier}wns_cc_emailtemplate] e 
+	WHERE e.[ModuleId] = @ModuleId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_UpdateEmailTemplate') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_UpdateEmailTemplate]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_UpdateEmailTemplate] 
+	@EmailId INT, @ModuleId INT, @ContactSubject NVARCHAR(50), @ContactTemplate NVARCHAR(MAX), @AdminSubject NVARCHAR(50), @AdminTemplate NVARCHAR(MAX) 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	IF @EmailId > 0
+	BEGIN
+		UPDATE {databaseOwner}[{objectQualifier}wns_cc_emailtemplate] 
+		SET [ModuleId] = @ModuleId, 
+			[ContactSubject] = @ContactSubject, 
+			[ContactTemplate] = @ContactTemplate, 
+			[AdminSubject] = @AdminSubject, 
+			[AdminTemplate] = @AdminTemplate 
+		WHERE [EmailId] = @EmailId
+	END
+	ELSE
+	BEGIN
+		INSERT INTO {databaseOwner}[{objectQualifier}wns_cc_emailtemplate] ([ModuleId],[ContactSubject],[ContactTemplate],[AdminSubject],[AdminTemplate]) 
+		VALUES (@ModuleId, @ContactSubject, @ContactTemplate, @AdminSubject, @AdminTemplate)
+	END
+END
+GO
+

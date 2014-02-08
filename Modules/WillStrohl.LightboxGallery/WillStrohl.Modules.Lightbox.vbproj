@@ -6,7 +6,7 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}</ProjectGuid>
+    <ProjectGuid>{BF44F3B0-07CB-47EE-8ED7-B501437E209D}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
@@ -83,7 +83,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DocumentationFile>WillStrohl.Modules.Lightbox.xml</DocumentationFile>
     <BaseAddress>1581252608</BaseAddress>
     <ConfigurationOverrideFile>
@@ -116,6 +116,10 @@
     </Reference>
     <Reference Include="Exif">
       <HintPath>..\..\References\Exif.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -214,6 +218,7 @@
     <Compile Include="Entities\LightboxInfoCollection.vb" />
     <Compile Include="Entities\LightboxInfoMembers.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.vb" />
     <Compile Include="ViewLightbox.ascx.designer.vb">
       <DependentUpon>ViewLightbox.ascx</DependentUpon>
     </Compile>
@@ -289,6 +294,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Order.ashx" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.02.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.03.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.04.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.05.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.01.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.01.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.02.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.02.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.03.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.04.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.04.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.05.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.06.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.07.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.08.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.09.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.10.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.11.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <None Include="WillStrohl.Lightbox.dnn">
       <SubType>Designer</SubType>
     </None>
@@ -306,6 +332,7 @@
   <ItemGroup>
     <Content Include="Module.Build" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,0 +1,298 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Lightbox Module for DotNetNuke
+Version: 1.02.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2010 Will Strohl
+
+Release Notes:
+  This script file is just a placeholder.
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_lightbox_settings]') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_lightbox_settings];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_lightbox_settings] (
+	[SettingId] INT IDENTITY NOT NULL 
+	    CONSTRAINT [PK_{objectQualifier}wns_lightbox_settings] PRIMARY KEY CLUSTERED, 
+	[LightboxId] INT NOT NULL
+	    CONSTRAINT [FK_{objectQualifier}wns_lightbox_settings_LightboxId] FOREIGN KEY 
+	    REFERENCES {databaseOwner}[{objectQualifier}wns_lightbox] ([LightboxId]) ON DELETE CASCADE, 
+	[Padding] INT NOT NULL 
+	    CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Padding] DEFAULT ((10)), 
+	[Margin] INT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Margin] DEFAULT ((20)), 
+    [Opacity] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Opacity] DEFAULT ((0)), 
+    [Modal] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Modal] DEFAULT ((0)), 
+    [Cyclic] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Cyclic] DEFAULT ((0)), 
+    [OverlayShow] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_OverlayShow] DEFAULT ((1)), 
+    [OverlayOpacity] DECIMAL(1,1) NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_OverlayOpactiy] DEFAULT ((0.3)), 
+    [OverlayColor] NVARCHAR(50) NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_OverlayColor] DEFAULT (N'#666'), 
+    [TitleShow] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_TitleShow] DEFAULT ((1)), 
+    [TitlePosition] NVARCHAR(7) NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_TitlePosition] DEFAULT (N'outside'), 
+    [Transition] NVARCHAR(7) NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Transition] DEFAULT (N'fade'), 
+    [Speed] INT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_Speed] DEFAULT ((300)), 
+    [ChangeSpeed] INT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_ChangeSpeed] DEFAULT ((300)), 
+    [ShowCloseButton] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_ShowCloseButton] DEFAULT ((1)), 
+    [ShowNavArrows] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_ShowNavArrows] DEFAULT ((1)), 
+    [EnableEscapeButton] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_lightbox_settings_EnableEscapeButton] DEFAULT ((1)), 
+    [OnStart] NVARCHAR(100) NULL, 
+    [OnCancel] NVARCHAR(100) NULL, 
+    [OnComplete] NVARCHAR(100) NULL, 
+    [OnCleanup] NVARCHAR(100) NULL, 
+    [OnClosed] NVARCHAR(100) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_lightbox_settings_LightboxId] ON {databaseOwner}[{objectQualifier}wns_lightbox_settings] ([LightboxId]);
+GO
+
+
+/* Import previous settings to new table */
+
+INSERT INTO {databaseOwner}[{objectQualifier}wns_lightbox_settings] ([LightboxId],[Speed],[ChangeSpeed]) 
+SELECT [LightboxId], [TransitionSpeed], [TransitionSpeed] 
+FROM {databaseOwner}[{objectQualifier}wns_lightbox];
+
+
+/* Remove old columns from original table */
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP CONSTRAINT [DF_{objectQualifier}wns_lightbox_ShowDownloadLink];
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP COLUMN [ShowDownloadLink]; 
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP CONSTRAINT [DF_{objectQualifier}wns_lightbox_SupportIE6];
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP COLUMN [SupportIE6];
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP CONSTRAINT [DF_{objectQualifier}wns_lightbox_ShowUpgradeIE6];
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP COLUMN [ShowUpgradeIE6];
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP CONSTRAINT [DF_{objectQualifier}wns_lightbox_TransitionSpeed];
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_lightbox] DROP COLUMN [TransitionSpeed];
+GO
+
+
+/* Stored procedures for the settings table */
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_AddSetting]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_AddSetting];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_AddSetting] 
+	@LightboxId INT, @Padding INT, @Margin INT, @Opacity BIT, @Modal BIT, @Cyclic BIT, @OverlayShow BIT, @OverlayOpacity DECIMAL(1,1), @OverlayColor NVARCHAR(50), @TitleShow BIT, @TitlePosition NVARCHAR(7), @Transition NVARCHAR(7), @Speed INT, @ChangeSpeed INT, @ShowCloseButton BIT, @ShowNavArrows BIT, @EnableEscapeButton BIT, @OnStart NVARCHAR(100), @OnCancel NVARCHAR(100), @OnComplete NVARCHAR(100), @OnCleanup NVARCHAR(100), @OnClosed NVARCHAR(100) 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_lightbox_settings] ([LightboxId],[Padding],[Margin],[Opacity],[Modal],[Cyclic],[OverlayShow],[OverlayOpacity],[OverlayColor],[TitleShow],[TitlePosition],[Transition],[Speed],[ChangeSpeed],[ShowCloseButton],[ShowNavArrows],[EnableEscapeButton],[OnStart],[OnCancel],[OnComplete],[OnCleanup],[OnClosed]) 
+	VALUES (@LightboxId, @Padding, @Margin, @Opacity, @Modal, @Cyclic, @OverlayShow, @OverlayOpacity, @OverlayColor, @TitleShow, @TitlePosition, @Transition, @Speed, @ChangeSpeed, @ShowCloseButton, @ShowNavArrows, @EnableEscapeButton, @OnStart, @OnCancel, @OnComplete, @OnCleanup, @OnClosed);
+	SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_UpdateSetting]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_UpdateSetting];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_UpdateSetting] 
+	@SettingId INT, @LightboxId INT, @Padding INT, @Margin INT, @Opacity BIT, @Modal BIT, @Cyclic BIT, @OverlayShow BIT, @OverlayOpacity DECIMAL(1,1), @OverlayColor NVARCHAR(50), @TitleShow BIT, @TitlePosition NVARCHAR(7), @Transition NVARCHAR(7), @Speed INT, @ChangeSpeed INT, @ShowCloseButton BIT, @ShowNavArrows BIT, @EnableEscapeButton BIT, @OnStart NVARCHAR(100), @OnCancel NVARCHAR(100), @OnComplete NVARCHAR(100), @OnCleanup NVARCHAR(100), @OnClosed NVARCHAR(100) 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_lightbox_settings] 
+	SET [LightboxId] = @LightboxId,
+		[Padding] = @Padding, 
+		[Margin] = @Margin, 
+		[Opacity] = @Opacity,
+		[Modal] = @Modal,
+		[Cyclic] = @Cyclic,
+		[OverlayShow] = @OverlayShow,
+		[OverlayOpacity] = @OverlayOpacity, 
+		[OverlayColor] = @OverlayColor, 
+		[TitleShow] = @TitleShow, 
+		[TitlePosition] = @TitlePosition, 
+		[Transition] = @Transition, 
+		[Speed] = @Speed, 
+		[ChangeSpeed] = @ChangeSpeed, 
+		[ShowCloseButton] = @ShowCloseButton, 
+		[ShowNavArrows] = @ShowNavArrows, 
+		[EnableEscapeButton] = @EnableEscapeButton, 
+		[OnStart] = @OnStart, 
+		[OnCancel] = @OnCancel, 
+		[OnComplete] = @OnComplete, 
+		[OnCleanup] = @OnCleanup, 
+		[OnClosed] = @OnClosed 
+	WHERE [SettingId] = @SettingId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_DeleteSetting]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_DeleteSetting];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_DeleteSetting] 
+	@SettingId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	DELETE FROM {databaseOwner}[{objectQualifier}wns_lightbox_settings] WHERE [SettingId] = @SettingId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_GetSettings]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetSettings];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetSettings] 
+	@LightboxId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT s.[SettingId],s.[LightboxId],s.[Padding],s.[Margin],s.[Opacity],s.[Modal],s.[Cyclic],s.[OverlayShow],
+        s.[OverlayOpacity],s.[OverlayColor],s.[TitleShow],s.[TitlePosition],s.[Transition],s.[Speed], 
+		s.[ChangeSpeed],s.[ShowCloseButton],s.[ShowNavArrows],s.[EnableEscapeButton],s.[OnStart], 
+		s.[OnCancel],s.[OnComplete],s.[OnCleanup],s.[OnClosed]
+	FROM {databaseOwner}[{objectQualifier}wns_lightbox_settings] s 
+	WHERE s.[LightboxId] = @LightboxId;
+END
+GO
+
+
+/* Update the old store procedures */
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_AddLightbox]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_AddLightbox];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_AddLightbox] 
+	@ModuleId INT, @GalleryName NVARCHAR(50), @GalleryDescription NVARCHAR(500), @GalleryFolder NVARCHAR(50) 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_lightbox] ([ModuleId],[GalleryName],[GalleryDescription],[GalleryFolder]) 
+	VALUES (@ModuleId, @GalleryName, @GalleryDescription, @GalleryFolder);
+	SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_UpdateLightbox]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_UpdateLightbox];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_UpdateLightbox] 
+	@LightboxId INT, @ModuleId INT, @GalleryName NVARCHAR(50), @GalleryDescription NVARCHAR(500), @GalleryFolder NVARCHAR(50) 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	UPDATE {databaseOwner}[{objectQualifier}wns_lightbox] 
+	SET [ModuleId] = @ModuleId,
+		[GalleryName] = @GalleryName, 
+		[GalleryDescription] = @GalleryDescription, 
+		[GalleryFolder] = @GalleryFolder
+	WHERE [LightboxId] = @LightboxId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_GetLightboxes]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightboxes];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightboxes] 
+	@ModuleId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	SELECT [LightboxId],[ModuleId],[GalleryName],[GalleryDescription],[GalleryFolder] 
+	FROM {databaseOwner}[{objectQualifier}wns_lightbox] 
+	WHERE [ModuleId] = @ModuleId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_lightbox_GetLightbox]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightbox];
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_lightbox_GetLightbox] 
+	@LightboxId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT [LightboxId],[ModuleId],[GalleryName],[GalleryDescription],[GalleryFolder] 
+	FROM {databaseOwner}[{objectQualifier}wns_lightbox] 
+	WHERE [LightboxId] = @LightboxId;
+END
+GO
+
+
+
+/* END OF FILE */

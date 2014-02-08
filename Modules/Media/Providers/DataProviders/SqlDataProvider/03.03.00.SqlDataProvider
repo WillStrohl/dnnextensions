@@ -1,0 +1,138 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/*
+
+ADD NEW COLUMNS TO THE TABLE
+
+*/
+
+IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'MediaLoop' AND o.[name] LIKE N'%Media')
+    ALTER TABLE {databaseOwner}[{objectQualifier}Media] 
+    ADD [MediaLoop] BIT NOT NULL CONSTRAINT [DF_{objectQualifier}Media_MediaLoop] DEFAULT ((0))
+GO
+
+IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'AutoStart' AND o.[name] LIKE N'%Media')
+    ALTER TABLE {databaseOwner}[{objectQualifier}Media] 
+    ADD [AutoStart] BIT NOT NULL CONSTRAINT [DF_{objectQualifier}Media_AutoStart] DEFAULT ((0))
+GO
+
+/*
+
+UPDATE TABLE TO REFLECT THE NEW DEFAULT VALUES
+
+*/
+
+UPDATE {databaseOwner}[{objectQualifier}Media] 
+SET [AutoStart] = 0, [MediaLoop] = 0
+GO
+
+/*
+
+UPDATE THE STORED PROCEDURES
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}AddMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}AddMedia]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}AddMedia] 
+	@ModuleID INT, @Src NVARCHAR(250), @Alt NVARCHAR(100), @Width INT, @Height INT, @NavigateUrl NVARCHAR(250), @MediaAlignment INT, @AutoStart BIT, @MediaLoop BIT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	INSERT INTO {databaseOwner}[{objectQualifier}Media] ([ModuleID],[Src],[Alt],[Width],[Height],[NavigateUrl],[MediaAlignment],[AutoStart],[MediaLoop]) 
+    VALUES (@ModuleId, @Src, @Alt, @Width, @Height, @NavigateUrl, @MediaAlignment, @AutoStart, @MediaLoop)
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UpdateMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UpdateMedia]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}UpdateMedia] 
+	@ModuleID INT, @Src NVARCHAR(250), @Alt NVARCHAR(100), @Width INT, @Height INT, @NavigateUrl NVARCHAR(250), @MediaAlignment INT, @AutoStart BIT, @MediaLoop BIT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}Media] 
+    SET [Src] = @Src, 
+        [Alt] = @Alt, 
+        [Width] = @Width, 
+        [Height] = @Height, 
+        [NavigateUrl] = @NavigateUrl, 
+        [MediaAlignment] = @MediaAlignment, 
+        [AutoStart] = @AutoStart, 
+        [MediaLoop] = @MediaLoop 
+    WHERE [ModuleID] = @ModuleID
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}GetMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}GetMedia]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}GetMedia] 
+	@ModuleID INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+    SELECT	m.[ModuleID],m.[Alt],m.[Width],m.[Height], 
+        [Src] = CASE WHEN srcf.[FileName] IS NULL THEN m.[Src] ELSE srcf.[Folder] + srcf.[FileName] END, 
+        [NavigateUrl] = CASE WHEN navf.[FileName] IS NULL THEN m.[NavigateUrl] ELSE navf.[Folder] + navf.[FileName] END,
+        ut.[NewWindow],ut.[TrackClicks],m.[MediaAlignment],m.[AutoStart],m.[MediaLoop] 
+    FROM {databaseOwner}[{objectQualifier}Media] AS m
+    LEFT OUTER JOIN {databaseOwner}[{objectQualifier}Files] AS srcf ON m.Src = 'fileid=' + CONVERT(VARCHAR, srcf.FileID)
+    LEFT OUTER JOIN {databaseOwner}[{objectQualifier}Files] AS navf ON m.NavigateUrl = 'fileid=' + CONVERT(VARCHAR, navf.FileID)
+    LEFT OUTER JOIN {databaseOwner}[{objectQualifier}UrlTracking] ut ON m.[NavigateUrl] = ut.[Url] and ut.[ModuleId] = @ModuleID 
+    WHERE m.[ModuleId] = @ModuleId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}DeleteMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}DeleteMedia]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}DeleteMedia] 
+	@ModuleID INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	DELETE FROM {databaseOwner}[{objectQualifier}Media] WHERE [ModuleID] = @ModuleId
+END
+GO
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

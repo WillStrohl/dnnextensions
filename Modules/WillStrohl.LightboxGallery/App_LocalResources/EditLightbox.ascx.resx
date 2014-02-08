@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;p&gt;If you would like help with using this module, or need support, please visit the &lt;a href="http://wnslightbox.codeplex.com" target="_blank"&gt;Lightbox Gallery module home page on codeplex&lt;/a&gt;.&lt;/p&gt;</value>
+  </data>
+  <data name="Delete.Confirm" xml:space="preserve">
+    <value>Are you sure that you want to delete this album? Your images will not be deleted.</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Manage Albums</value>
+  </data>
+  <data name="cmdUpdate.Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cmdDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="lblGalleryDescription.Help" xml:space="preserve">
+    <value>Enter a description for the gallery. This will be displayed to the visitors.</value>
+  </data>
+  <data name="lblGalleryDescription.Text" xml:space="preserve">
+    <value>Album Description</value>
+  </data>
+  <data name="lblGalleryFolder.Help" xml:space="preserve">
+    <value>Enter the name/path of the folder where the gallery images are stored. Begin with the name of the root folder in the Portals directory.</value>
+  </data>
+  <data name="lblGalleryFolder.Text" xml:space="preserve">
+    <value>Album Folder</value>
+  </data>
+  <data name="lblGalleryName.Help" xml:space="preserve">
+    <value>Enter a name for the album. This will be displayed to the visitors.</value>
+  </data>
+  <data name="lblGalleryName.Text" xml:space="preserve">
+    <value>Album Name</value>
+  </data>
+  <data name="rfvGalleryDescription.ErrorMessage" xml:space="preserve">
+    <value>The Album Description is required.</value>
+  </data>
+  <data name="rfvGalleryFolder.ErrorMessage" xml:space="preserve">
+    <value>The Album Folder is required.</value>
+  </data>
+  <data name="rfvGalleryName.ErrorMessage" xml:space="preserve">
+    <value>The Album Name is required.</value>
+  </data>
+  <data name="lblFormMessage.Text" xml:space="preserve">
+    <value>Use this form to add a new album, or to update an existing one.</value>
+  </data>
+  <data name="lblChangeSpeed.Help" xml:space="preserve">
+    <value>Speed of resizing when changing gallery items, in milliseconds</value>
+  </data>
+  <data name="lblChangeSpeed.Text" xml:space="preserve">
+    <value>Change Speed</value>
+  </data>
+  <data name="lblCyclic.Help" xml:space="preserve">
+    <value>When true, galleries will be cyclic, allowing you to keep pressing next/back.</value>
+  </data>
+  <data name="lblCyclic.Text" xml:space="preserve">
+    <value>Cyclic</value>
+  </data>
+  <data name="lblEnableEscapeButton.Help" xml:space="preserve">
+    <value>Toggle if pressing Esc button closes FancyBox</value>
+  </data>
+  <data name="lblEnableEscapeButton.Text" xml:space="preserve">
+    <value>Enable Escape Button</value>
+  </data>
+  <data name="lblMargin.Help" xml:space="preserve">
+    <value>Space between viewport and FancyBox wrapper</value>
+  </data>
+  <data name="lblMargin.Text" xml:space="preserve">
+    <value>Margin</value>
+  </data>
+  <data name="lblModal.Help" xml:space="preserve">
+    <value>When true, 'overlayShow' is set to 'true' and 'hideOnOverlayClick', 'hideOnContentClick', 'enableEscapeButton', 'showCloseButton' are set to 'false'</value>
+  </data>
+  <data name="lblModal.Text" xml:space="preserve">
+    <value>Modal</value>
+  </data>
+  <data name="lblOnCancel.Help" xml:space="preserve">
+    <value>Will be called after loading is canceled</value>
+  </data>
+  <data name="lblOnCancel.Text" xml:space="preserve">
+    <value>OnCancel Callback</value>
+  </data>
+  <data name="lblOnCleanup.Help" xml:space="preserve">
+    <value>Will be called just before closing</value>
+  </data>
+  <data name="lblOnCleanup.Text" xml:space="preserve">
+    <value>OnCleanup Callback</value>
+  </data>
+  <data name="lblOnClosed.Help" xml:space="preserve">
+    <value>Will be called once FancyBox is closed</value>
+  </data>
+  <data name="lblOnClosed.Text" xml:space="preserve">
+    <value>OnClosed Callback</value>
+  </data>
+  <data name="lblOnComplete.Help" xml:space="preserve">
+    <value>Will be called once the content is displayed</value>
+  </data>
+  <data name="lblOnComplete.Text" xml:space="preserve">
+    <value>OnComplete Callback</value>
+  </data>
+  <data name="lblOnStart.Help" xml:space="preserve">
+    <value>Will be called right before attempting to load the content</value>
+  </data>
+  <data name="lblOnStart.Text" xml:space="preserve">
+    <value>OnStart Callback</value>
+  </data>
+  <data name="lblOpacity.Help" xml:space="preserve">
+    <value>When checked, transparency of content is changed for elastic transitions</value>
+  </data>
+  <data name="lblOpacity.Text" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="lblOverlayColor.Help" xml:space="preserve">
+    <value>Color of the overlay</value>
+  </data>
+  <data name="lblOverlayColor.Text" xml:space="preserve">
+    <value>Overlay Color</value>
+  </data>
+  <data name="lblOverlayOpacity.Help" xml:space="preserve">
+    <value>Opacity of the overlay (from 0 to 1; default - 0.3)</value>
+  </data>
+  <data name="lblOverlayOpacity.Text" xml:space="preserve">
+    <value>Overlay Opacity</value>
+  </data>
+  <data name="lblOverlayShow.Help" xml:space="preserve">
+    <value>Toggle overlay</value>
+  </data>
+  <data name="lblOverlayShow.Text" xml:space="preserve">
+    <value>Show Overlay</value>
+  </data>
+  <data name="lblPadding.Help" xml:space="preserve">
+    <value>Space between FancyBox wrapper and content</value>
+  </data>
+  <data name="lblPadding.Text" xml:space="preserve">
+    <value>Padding</value>
+  </data>
+  <data name="lblShowCloseButton.Help" xml:space="preserve">
+    <value>Toggle close button visibility</value>
+  </data>
+  <data name="lblShowCloseButton.Text" xml:space="preserve">
+    <value>Show Close Button</value>
+  </data>
+  <data name="lblShowNavArrows.Help" xml:space="preserve">
+    <value>Toggle navigation arrows visibility</value>
+  </data>
+  <data name="lblShowNavArrows.Text" xml:space="preserve">
+    <value>Show Navigation Arrows</value>
+  </data>
+  <data name="lblSpeed.Help" xml:space="preserve">
+    <value>Speed of the fade and elastic transitions, in milliseconds</value>
+  </data>
+  <data name="lblSpeed.Text" xml:space="preserve">
+    <value>Speed In/Out</value>
+  </data>
+  <data name="lblTitlePosition.Help" xml:space="preserve">
+    <value>The position of the title. Can be set to 'outside', 'inside' or 'over'</value>
+  </data>
+  <data name="lblTitlePosition.Text" xml:space="preserve">
+    <value>Title Position</value>
+  </data>
+  <data name="lblTitleShow.Help" xml:space="preserve">
+    <value>Toggle the visibility of the title</value>
+  </data>
+  <data name="lblTitleShow.Text" xml:space="preserve">
+    <value>Show Title</value>
+  </data>
+  <data name="lblTransition.Help" xml:space="preserve">
+    <value>The transition type. Can be set to 'elastic', 'fade' or 'none'</value>
+  </data>
+  <data name="lblTransition.Text" xml:space="preserve">
+    <value>Transition In/Out</value>
+  </data>
+  <data name="LightboxSettings.Text" xml:space="preserve">
+    <value>Lightbox Settings (Advanced)</value>
+  </data>
+  <data name="lstTitlePosition.Item.Inside" xml:space="preserve">
+    <value>Inside</value>
+  </data>
+  <data name="lstTitlePosition.Item.Outside" xml:space="preserve">
+    <value>Outside</value>
+  </data>
+  <data name="lstTitlePosition.Item.Over" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="lstTransition.Item.Elastic" xml:space="preserve">
+    <value>Elastic</value>
+  </data>
+  <data name="lstTransition.Item.Fade" xml:space="preserve">
+    <value>Fade</value>
+  </data>
+  <data name="lstTransition.Item.None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="revChangeSpeed.ErrorMessage" xml:space="preserve">
+    <value>Change Speed value can only be numeric</value>
+  </data>
+  <data name="revMargin.ErrorMessage" xml:space="preserve">
+    <value>Please only enter numbers for the Margin</value>
+  </data>
+  <data name="revPadding.ErrorMessage" xml:space="preserve">
+    <value>Please only enter numbers for the Padding</value>
+  </data>
+  <data name="revSpeed.ErrorMessage" xml:space="preserve">
+    <value>The Speed can only be numeric</value>
+  </data>
+  <data name="rfvChangeSpeed.ErrorMessage" xml:space="preserve">
+    <value>Change Speed is a required field</value>
+  </data>
+  <data name="rfvMargin.ErrorMessage" xml:space="preserve">
+    <value>Margin is a required field</value>
+  </data>
+  <data name="rfvOverlayColor.ErrorMessage" xml:space="preserve">
+    <value>Overlay Color is a required field</value>
+  </data>
+  <data name="rfvPadding.ErrorMessage" xml:space="preserve">
+    <value>Padding is a required field</value>
+  </data>
+  <data name="rfvSpeed.ErrorMessage" xml:space="preserve">
+    <value>Speed is a required field</value>
+  </data>
+  <data name="rfvTitlePosition.ErrorMessage" xml:space="preserve">
+    <value>Title Position is a required field</value>
+  </data>
+  <data name="rfvTransition.ErrorMessage" xml:space="preserve">
+    <value>Transition is a required field</value>
+  </data>
+  <data name="AlbumSettings.Text" xml:space="preserve">
+    <value>Album Settings</value>
+  </data>
+  <data name="lblGalleryFolder.CaseSensitive" xml:space="preserve">
+    <value>The autocomplete feature is case-sensitive.</value>
+  </data>
+  <data name="lblHideTitleDescription.Help" xml:space="preserve">
+    <value>You can optionally choose to hide the title and description of your album when it is viewed.</value>
+  </data>
+  <data name="lblHideTitleDescription.Text" xml:space="preserve">
+    <value>Hide Title &amp; Description</value>
+  </data>
+  <data name="divFolderNames.Text" xml:space="preserve">
+    <value>Press &amp;lt;ESC&amp;gt; to exit the dialog.</value>
+  </data>
+  <data name="divFolderNames.Title" xml:space="preserve">
+    <value>Choose a Folder Path</value>
+  </data>
+  <data name="ImageEdit.Text" xml:space="preserve">
+    <value>[Edit]</value>
+  </data>
+  <data name="vsError.HeaderText" xml:space="preserve">
+    <value>The following error(s) occured:</value>
+  </data>
+  <data name="cmdDeleteThumbnails.Text" xml:space="preserve">
+    <value>Recreate Thumbnails</value>
+  </data>
+  <data name="DeleteThumbnails.Confirm" xml:space="preserve">
+    <value>Are you sure you want to delete and regenerate all of the thumbnails?</value>
+  </data>
+</root>

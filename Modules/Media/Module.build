@@ -3,11 +3,13 @@
     <ModulePath>Media</ModulePath>
     <DNNFileName>DNN_Media</DNNFileName>
     <PackageName>DNN_Media</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
     <Extension>zip</Extension>
     <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
     <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>
     <WebsiteInstallPath>$(WebsitePath)\Install\Module</WebsiteInstallPath>
-	<FullModulePath>$(WebsitePath)\DesktopModules\$(ModulePath)</FullModulePath>
+    <FullModulePath>$(WebsitePath)\DesktopModules\$(ModulePath)</FullModulePath>
   </PropertyGroup>
   <Import Project="$(BuildScriptsPath)\ModulePackageSource.Targets" />
   <Target Name="AfterBuild" DependsOnTargets="CopyBin;GetFiles;DebugProject;PackageModule">

@@ -1,0 +1,311 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Version: 1.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+Release Notes:
+  This is the first install script for the module. It creates the initial module 
+  structure.
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_injection') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_inj_injection]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] (
+	[injection_id] INT IDENTITY(1,1) NOT NULL, 
+	[module_id] INT NOT NULL, 
+	[inject_top] BIT NOT NULL, 
+	[inject_name] NVARCHAR(50) NOT NULL, 
+	[inject_content] NVARCHAR(2000) NOT NULL, 
+	[order_shown] INT NOT NULL, 
+	[is_enabled] BIT NOT NULL
+)
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] ADD CONSTRAINT [PK_{objectQualifier}wns_inj_injection] PRIMARY KEY ([injection_id])
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] ADD CONSTRAINT [DF_{objectQualifier}wns_inj_injection_inject_top] DEFAULT ((1)) FOR [inject_top]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] ADD CONSTRAINT [DF_{objectQualifier}wns_inj_injection_is_enabled] DEFAULT ((0)) FOR [is_enabled]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_inj_injection_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection] ([inject_content])
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_inj_injection_moduleid] ON {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id])
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_inj_injection_moduleid_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id], [inject_content])
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_inj_injection_moduleid_ordershown] ON {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id], [order_shown])
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_inj_injection_moduleid_injectname] ON {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id], [inject_name])
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_AddInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent] 
+	@ModuleId INT, @InjectTop BIT, @InjectName NVARCHAR(50), @InjectContent NVARCHAR(2000), @IsEnabled BIT, @OrderShown INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id],[inject_top],[inject_name],[inject_content],[is_enabled],[order_shown]) 
+	VALUES (@ModuleId, @InjectTop, @InjectName, @InjectContent, @IsEnabled, @OrderShown)
+	SELECT SCOPE_IDENTITY()
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_UpdateInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent] 
+	@InjectionId INT, @ModuleId INT, @InjectTop BIT, @InjectName NVARCHAR(50), @InjectContent NVARCHAR(2000), @IsEnabled BIT, @OrderShown INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] SET 
+		[module_id] = @ModuleId, 
+		[inject_top] = @InjectTop, 
+		[inject_name] = @InjectName, 
+		[inject_content] = @InjectContent, 
+		[is_enabled] = @IsEnabled, 
+		[order_shown] = @OrderShown 
+	WHERE [injection_id] = @InjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_DisableInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DisableInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DisableInjectionContent] 
+	@InjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	SET [is_enabled] = 0 
+	WHERE [injection_id] = @InjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_EnableInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_EnableInjectionContent] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_EnableInjectionContent] 
+	@InjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	SET [is_enabled] = 1 
+	WHERE [injection_id] = @InjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_DeleteInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DeleteInjectionContent] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DeleteInjectionContent] 
+	@InjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	DELETE FROM {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	WHERE [injection_id] = @InjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContent] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContent] 
+	@InjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	SELECT wsi.[injection_id], wsi.[module_id], wsi.[inject_top], wsi.[inject_name], wsi.[inject_content], wsi.[is_enabled], wsi.[order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[injection_id] = @InjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetActiveInjectionContents') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetActiveInjectionContents] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetActiveInjectionContents] 
+	@ModuleId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	SELECT wsi.[injection_id], wsi.[module_id], wsi.[inject_top], wsi.[inject_name], wsi.[inject_content], wsi.[is_enabled], wsi.[order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[module_id] = @ModuleId AND wsi.[is_enabled] = 1 
+	ORDER BY wsi.[inject_top] DESC, wsi.[order_shown]
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContents') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents] 
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents] 
+	@ModuleId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	SELECT wsi.[injection_id], wsi.[module_id], wsi.[inject_top], wsi.[inject_name], wsi.[inject_content], wsi.[is_enabled], wsi.[order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[module_id] = @ModuleId 
+	ORDER BY wsi.[inject_top] DESC, wsi.[order_shown]
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetNextOrderNumber') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetNextOrderNumber] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetNextOrderNumber] 
+	@ModuleId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @NextOrderNumber INT
+	SELECT @NextOrderNumber = COUNT( wsi.[injection_id] ) 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[module_id] = @ModuleId 
+	SELECT @NextOrderNumber
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_ChangeOrder') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_ChangeOrder] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_ChangeOrder] 
+	@FirstInjectionId INT, @SecondInjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	DECLARE @Pos1 INT, @Pos2 INT
+
+	SELECT @Pos1 = [order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	WHERE [injection_id] = @FirstInjectionId
+
+	SELECT @Pos2 = [order_shown] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	WHERE [injection_id] = @SecondInjectionId
+
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+	SET [order_shown] = -1
+	WHERE [injection_id] = @SecondInjectionId
+
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection]
+	SET [order_shown] = @Pos2
+	WHERE [injection_id] = @FirstInjectionId
+
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection]
+	SET [order_shown] = @Pos1
+	WHERE [injection_id] = @SecondInjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_DoesInjectionNameExist') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DoesInjectionNameExist] 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DoesInjectionNameExist] 
+	@InjectionName NVARCHAR(50), @ModuleId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	DECLARE @Count INT, @Return BIT;
+	SELECT @Count = COUNT( wsi.[injection_id] ) 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[module_id] = @ModuleId AND wsi.[inject_name] = @InjectionName
+	
+	IF @Count > 0
+		SET @Return = 1
+	ELSE
+		SET @Return = 0
+
+	SELECT @Return
+END
+GO

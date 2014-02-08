@@ -6,7 +6,7 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}</ProjectGuid>
+    <ProjectGuid>{6339C785-AABA-464F-8193-91B4F8A5610D}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
@@ -83,7 +83,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DocumentationFile>WillStrohl.Modules.ContentSlider.xml</DocumentationFile>
     <BaseAddress>1581252608</BaseAddress>
     <ConfigurationOverrideFile>
@@ -109,6 +109,10 @@
     </Reference>
     <Reference Include="DotNetNuke.Web">
       <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System">
@@ -172,6 +176,7 @@
     <Compile Include="Entities\SliderInfoCollection.vb" />
     <Compile Include="Entities\SliderInfoMembers.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.vb" />
     <Compile Include="SliderOptions.ascx.designer.vb">
       <DependentUpon>SliderOptions.ascx</DependentUpon>
     </Compile>
@@ -227,6 +232,15 @@
     <Content Include="ViewSlider.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.02.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.01.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.01.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.01.02.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.02.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.02.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <None Include="WillStrohl.ContentSlider.dnn">
       <SubType>Designer</SubType>
     </None>

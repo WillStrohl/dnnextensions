@@ -89,6 +89,10 @@
       <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System">
       <Name>System</Name>
@@ -144,6 +148,7 @@
     <Compile Include="Entities\FileTypeInfo.cs" />
     <Compile Include="Entities\IFileTypeInfo.cs" />
     <Compile Include="Entities\IMediaInfo.cs" />
+    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.cs" />
     <Compile Include="Utilities\MarkUpUtility.cs" />
     <Compile Include="Utilities\RegExUtility.cs" />
     <Compile Include="Entities\MediaInfoMembers.cs" />
@@ -167,6 +172,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Content Include="04.04.01.txt" />
+    <Content Include="04.05.00.txt" />
     <Content Include="EditMedia.ascx" />
     <Content Include="Images\logo\dnnmedia-logo-100x100.png" />
     <Content Include="Images\logo\dnnmedia-logo-150x150.png" />
@@ -186,6 +192,16 @@
     <None Include="DNN_Media.dnn">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Providers\DataProviders\SqlDataProvider\03.02.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\03.02.03.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\03.03.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.00.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.01.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.02.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.03.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.04.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.04.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

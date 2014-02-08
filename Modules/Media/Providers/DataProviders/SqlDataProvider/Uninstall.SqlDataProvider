@@ -1,0 +1,53 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Drop Media Table **/
+
+IF EXISTS (SELECT * FROM [dbo].[sysobjects] WHERE [id] = OBJECT_ID(N'PK_{objectQualifier}Media_{objectQualifier}Modules') AND OBJECTPROPERTY([id], N'IsConstraint') = 1)
+	ALTER TABLE {databaseOwner}[{objectQualifier}Media] DROP CONSTRAINT [FK_{objectQualifier}Media_{objectQualifier}Modules]
+GO
+
+IF EXISTS (SELECT * FROM [dbo].[sysobjects] WHERE [id] = OBJECT_ID(N'PK_{objectQualifier}Media') AND OBJECTPROPERTY([id], N'IsConstraint') = 1)
+	ALTER TABLE {databaseOwner}[{objectQualifier}Media] DROP CONSTRAINT [PK_{objectQualifier}Media]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}Media]') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}Media]
+GO
+
+/** Drop Stored Procedures **/
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}GetMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}GetMedia]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}AddMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}AddMedia]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UpdateMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UpdateMedia]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UpgradeMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UpgradeMedia]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}AddMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}AddMedia]
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}DeleteMedia]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}DeleteMedia]
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

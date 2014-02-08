@@ -1,0 +1,90 @@
+﻿ALTER TABLE {databaseOwner}{objectQualifier}Media ADD
+	MediaAlignment int NULL
+GO
+ALTER TABLE {databaseOwner}{objectQualifier}Media ADD CONSTRAINT
+	DF_{objectQualifier}Media_MediaAlignment DEFAULT 0 FOR MediaAlignment
+GO
+
+/** Update with default values **/
+UPDATE    {databaseOwner}{objectQualifier}Media
+SET       MediaAlignment = 0
+GO
+
+/** Drop Existing Stored Procedures **/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}AddMedia]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+       drop procedure {databaseOwner}{objectQualifier}AddMedia
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}GetMedia]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+       drop procedure {databaseOwner}{objectQualifier}GetMedia
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}UpdateMedia]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+       drop procedure {databaseOwner}{objectQualifier}UpdateMedia
+GO
+
+
+/** Create Stored Procedures **/
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}AddMedia
+	@ModuleID		INT,
+	@Src			NVARCHAR(250),
+	@Alt			NVARCHAR(100),
+	@Width			INT,
+	@Height			INT,
+	@NavigateUrl	NVARCHAR(250),
+	@MediaAlignment INT
+AS
+
+INSERT INTO {objectQualifier}Media (ModuleID, Src, Alt, Width, Height, NavigateUrl,MediaAlignment) 
+VALUES (@ModuleId, @Src, @Alt, @Width, @Height, @NavigateUrl, @MediaAlignment)
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}GetMedia
+	@ModuleId	INT
+AS
+
+SELECT	m.ModuleID,
+	[Src] = CASE WHEN srcf.FileName IS NULL THEN m.Src ELSE srcf.Folder + srcf.FileName END,
+    m.Alt,
+    m.Width,
+    m.Height,
+	[NavigateUrl] = CASE WHEN navf.FileName IS NULL THEN m.NavigateUrl ELSE navf.Folder + navf.FileName END,
+    {objectQualifier}UrlTracking.NewWindow,
+    {objectQualifier}UrlTracking.TrackClicks,
+    m.MediaAlignment
+FROM	{objectQualifier}Media AS m
+	LEFT OUTER JOIN {objectQualifier}Files AS srcf ON m.Src = 'fileid=' + CONVERT(VARCHAR, srcf.FileID)
+	LEFT OUTER JOIN {objectQualifier}Files AS navf ON m.NavigateUrl = 'fileid=' + CONVERT(VARCHAR, navf.FileID)
+	LEFT OUTER JOIN {objectQualifier}UrlTracking ON m.NavigateUrl = {objectQualifier}UrlTracking.Url and {objectQualifier}UrlTracking.ModuleId = @ModuleID 
+WHERE	m.ModuleId = @ModuleId
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}UpdateMedia
+	@ModuleID		INT,
+	@Src			NVARCHAR(250),
+	@Alt			NVARCHAR(100),
+	@Width			INT,
+	@Height			INT,
+	@NavigateUrl	NVARCHAR(250),
+	@MediaAlignment INT
+AS
+
+UPDATE	{objectQualifier}Media
+SET		Src = @Src,
+		Alt = @Alt,
+		Width = @Width,
+		Height = @Height,
+		NavigateUrl = @NavigateUrl,
+		MediaAlignment = @MediaAlignment
+WHERE	ModuleID = @ModuleID
+GO
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

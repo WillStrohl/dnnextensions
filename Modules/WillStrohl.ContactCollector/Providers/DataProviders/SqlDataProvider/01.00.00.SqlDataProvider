@@ -1,0 +1,177 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Contact Collector Module for DotNetNuke
+Version: 1.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009 Will Strohl
+
+Release Notes:
+  This is the first install script for the module. It creates the initial module 
+  structure.
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_contact') IS NULL 
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_cc_contact]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_cc_contact] (
+	[contact_id] INT IDENTITY(1,1), 
+	[module_id] INT NOT NULL, 
+	[first_name] NVARCHAR(50) NULL, 
+	[last_name] NVARCHAR(50) NULL, 
+	[email_address] NVARCHAR(255) NULL, 
+	[isactive] BIT NOT NULL
+)
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_cc_contact] 
+	ADD CONSTRAINT [PK_{objectQualifier}wns_cc_contact] PRIMARY KEY CLUSTERED ([contact_id])
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_cc_contact] WITH NOCHECK 
+	ADD CONSTRAINT [FK_{objectQualifier}wns_cc_contact_module_id] FOREIGN KEY ([module_id]) 
+	REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}wns_cc_contact] 
+	ADD CONSTRAINT [DF_wns_inj_cc_isactive] DEFAULT ((1)) FOR [isactive]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_cc_module_id] 
+	ON {databaseOwner}[{objectQualifier}wns_cc_contact] ([module_id])
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_cc_all_fields] 
+	ON {databaseOwner}[{objectQualifier}wns_cc_contact] ([module_id],[first_name],[last_name],[email_address])
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_GetContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetContact]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetContact] 
+	@ContactId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	SELECT c.[contact_id],c.[module_id],c.[first_name],c.[last_name],c.[email_address],c.[isactive] 
+	FROM {databaseOwner}[{objectQualifier}wns_cc_contact] c 
+	WHERE c.[contact_id] = @ContactId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_GetContacts') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetContacts]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_GetContacts] 
+	@ModuleId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	SELECT c.[contact_id],c.[module_id],c.[first_name],c.[last_name],c.[email_address],c.[isactive] 
+	FROM {databaseOwner}[{objectQualifier}wns_cc_contact] c 
+	WHERE c.[module_id] = @ModuleId AND c.[isactive] = 1
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_AddContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_AddContact]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_AddContact] 
+	@ModuleId INT, @FirstName NVARCHAR(50), @LastName NVARCHAR(50), @EmailAddress NVARCHAR(255), @IsActive BIT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	DECLARE @ContactId INT
+	SET @ContactId = 0
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_cc_contact] ([module_id],[first_name],[last_name],[email_address],[isactive]) 
+	VALUES (@ModuleId,@FirstName,@LastName,@EmailAddress,@IsActive)
+	SET @ContactId = SCOPE_IDENTITY()
+	SELECT @ContactId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_UpdateContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_UpdateContact]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_UpdateContact] 
+	@ContactId INT, @ModuleId INT, @FirstName NVARCHAR(50), @LastName NVARCHAR(50), @EmailAddress NVARCHAR(255), @IsActive BIT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_cc_contact] 
+	SET [module_id] = @ModuleId, 
+		[first_name] = @FirstName, 
+		[last_name] = @LastName, 
+		[email_address] = @EmailAddress, 
+		[isactive] = @IsActive 
+	WHERE [contact_id] = @ContactId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_DeleteContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_DeleteContact]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_DeleteContact] 
+	@ContactId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_cc_contact] 
+	SET [isactive] = 0 
+	WHERE [contact_id] = @ContactId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_cc_DestroyContact') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_DestroyContact]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_cc_DestroyContact] 
+	@ContactId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	DELETE FROM {databaseOwner}[{objectQualifier}wns_cc_contact] WHERE [contact_id] = @ContactId
+END
+GO

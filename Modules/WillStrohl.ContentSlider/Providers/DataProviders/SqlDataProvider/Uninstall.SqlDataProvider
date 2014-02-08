@@ -1,0 +1,49 @@
+﻿/*
+
+UNINSTALL SQL PROVIDER SCRIPT
+
+Content Slider Module for DotNetNuke
+Version: 01.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2011 Will Strohl
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_contentslider]') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_contentslider]
+GO
+
+/*
+
+STORED PROCEDURES
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_AddSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_AddSlider];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_UpdateSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_UpdateSlider];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_DeleteSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_DeleteSlider];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_GetSliders]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSliders];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_GetSlider]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSlider];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider_GetSlidersForEdit]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_contentslider_GetSlidersForEdit];
+GO
+
+/* END OF FILE */

@@ -36,7 +36,7 @@
     <DebugType>pdbonly</DebugType>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DocumentationFile>WillStrohlDisqus.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>

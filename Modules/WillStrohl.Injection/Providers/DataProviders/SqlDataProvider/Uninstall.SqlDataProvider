@@ -1,0 +1,44 @@
+﻿/*
+
+UNINSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009-2012 Will Strohl
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_injection') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wns_inj_injection]
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_AddInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent]
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_UpdateInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent]
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_DisableInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DisableInjectionContent]
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_EnableInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_EnableInjectionContent]
+	
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_DeleteInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_DeleteInjectionContent] 
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContent] 
+	
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetActiveInjectionContents') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetActiveInjectionContents] 
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContents') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents] 
+	
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_ChangeOrder') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_ChangeOrder] 
+
+/* END OF FILE */
