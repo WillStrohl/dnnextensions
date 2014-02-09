@@ -105,6 +105,9 @@ namespace DotNetNuke.Modules.Media
 		private const string ALIGN_RIGHT_CLASS = "dnnmedia_right";
 		private const string ALIGN_CENTER_CLASS = "dnnmedia_center";
 
+	    private const string DESCRIPTION = "-description";
+	    private const string DNNCLEAR = "dnnClear";
+
 #endregion
 
 		private string p_CurrentDomain = Null.NullString;
@@ -186,7 +189,7 @@ namespace DotNetNuke.Modules.Media
 
 #region  Get Media Mark-Up 
 
-		public string GetImageMarkUp(MediaInfo Media, DotNetNuke.Entities.Modules.ModuleInfo ModuleConfig)
+		public string GetImageMarkUp(MediaInfo Media, Entities.Modules.ModuleInfo ModuleConfig)
 		{
 
 			string strTagId = string.Concat(IMAGE_ID_PREFIX, Media.ModuleID.ToString());
@@ -199,6 +202,8 @@ namespace DotNetNuke.Modules.Media
 			// <div id="" class="">
 			// <img id="" class="" src="" alt="" title="" />
 			// </div>
+            // <div id="" class="">
+            // </div>
 			//
 
 			StringBuilder sb = new StringBuilder(10);
@@ -277,7 +282,30 @@ namespace DotNetNuke.Modules.Media
 			sb.AppendFormat(CLOSE_TAG_FORMAT, DIV_TAG);
 			//
 
-			return sb.ToString();
+            // add the description, if necessary
+		    if (!string.IsNullOrEmpty(Media.MediaMessage))
+		    {
+
+		        var strDescriptionId = string.Concat(strDivId, DESCRIPTION);
+
+		        // build open div for description
+		        sb.AppendFormat(OPEN_TAG_FORMAT, DIV_TAG);
+		        sb.AppendFormat(ID_ATTRIBUTE, strDescriptionId);
+		        sb.AppendFormat(CLASS_ATTRIBUTE.Trim(), DNNCLEAR);
+		        sb.Append(CLOSE_BRACKET);
+		        //
+
+                // add the desciption
+		        sb.Append(HttpUtility.HtmlDecode(Media.MediaMessage));
+                //
+
+                // build the close div
+                sb.AppendFormat(CLOSE_TAG_FORMAT, DIV_TAG);
+                //
+
+		    }
+
+		    return sb.ToString();
 
 		}
 

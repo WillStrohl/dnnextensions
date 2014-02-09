@@ -246,7 +246,16 @@ namespace DotNetNuke.Modules.Media
             return Regex.Replace(URL, "&", "&amp;");
         }
 
-        public List<string> DisplayMedia(int moduleId, int tabId, bool isEditable, Entities.Modules.ModuleInfo config, Entities.Portals.PortalSettings settings)
+        /// <summary>
+        /// Retrieves the markup to display to the end-user
+        /// </summary>
+        /// <param name="moduleId"></param>
+        /// <param name="tabId"></param>
+        /// <param name="isEditable"></param>
+        /// <param name="config"></param>
+        /// <param name="settings"></param>
+        /// <returns></returns>
+        public List<string> DisplayMedia(int moduleId, int tabId, bool isEditable, ModuleInfo config, PortalSettings settings)
         {
             MediaInfo objMedia = GetMedia(moduleId);
             List<string> lstMedia = new List<string> { string.Empty, string.Empty, string.Empty };
