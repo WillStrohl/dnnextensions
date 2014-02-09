@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.cs" />
     <Compile Include="View.ascx.designer.cs">
@@ -130,6 +131,7 @@
     </Compile>
     <Compile Include="View.ascx.cs">
       <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Components\WillStrohlDisqusModuleBase.cs">
       <SubType>ASPXCodeBehind</SubType>
