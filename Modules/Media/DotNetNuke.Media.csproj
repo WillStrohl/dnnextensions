@@ -171,7 +171,6 @@
       <DependentUpon>MediaModule.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Content Include="04.04.01.txt" />
     <Content Include="04.05.00.txt" />
     <Content Include="EditMedia.ascx" />
     <Content Include="Images\logo\dnnmedia-logo-100x100.png" />
@@ -202,6 +201,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\04.04.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\04.04.01.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.05.00.SqlDataProvider" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -229,7 +229,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Module.build" />
+    <Content Include="Module.build">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

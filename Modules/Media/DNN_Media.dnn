@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="DNN_Media" type="Module" version="04.04.01">
+    <package name="DNN_Media" type="Module" version="04.05.00">
       <friendlyName>Media</friendlyName>
       <description>This module renders Media files of various kinds, including social media, images, videos, music, and more.</description>
       <iconFile>Images/logo/dnnmedia-logo-150x150.png</iconFile>
@@ -14,7 +14,7 @@
       <releaseNotes src="releasenotes.txt" />
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">07.00.02</dependency>
+        <dependency type="coreversion">07.02.00</dependency>
       </dependencies>
       <components>
         <component type="Script">
@@ -65,14 +65,19 @@
               <name>04.04.01.SqlDataProvider</name>
               <version>04.04.01</version>
             </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>04.05.00.SqlDataProvider</name>
+              <version>04.05.00</version>
+            </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>04.04.01</version>
+              <version>04.05.00</version>
             </script>
           </scripts>
         </component>
-        <component type="Cleanup" fileName="04.04.01.txt" version="04.04.01" />
+        <component type="Cleanup" fileName="04.05.00.txt" version="04.05.00" />
         <component type="Module">
           <desktopModule>
             <moduleName>DNN_Media</moduleName>
@@ -129,12 +134,7 @@
             <assembly>
               <path>bin</path>
               <name>DotNetNuke.Modules.Media.dll</name>
-              <version>04.04.01</version>
-            </assembly>
-            <assembly>
-              <path>bin</path>
-              <name>DotNetNuke.Modules.Media.SqlDataProvider.dll</name>
-              <version>04.04.01</version>
+              <version>04.05.00</version>
             </assembly>
             <assembly>
               <name>WillStrohl.API.oEmbed.dll</name>
@@ -146,7 +146,7 @@
           <files>
             <basePath>DesktopModules\Media</basePath>
             <file>
-              <name>04.04.01.txt</name>
+              <name>04.05.00.txt</name>
             </file>
             <file>
               <name>DNN_Media.dnn</name>
@@ -186,6 +186,10 @@
             <file>
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>04.04.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>04.05.00.SqlDataProvider</name>
             </file>
             <file>
               <path>Providers\DataProviders\SqlDataProvider</path>

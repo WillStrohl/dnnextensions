@@ -48,9 +48,7 @@ namespace DotNetNuke.Modules.Media
 
 #region  Constants 
 
-		private const string p_ObjectProviderType = "data";
-		private const string p_ObjectNamespace = "DotNetNuke.Modules.Media";
-		private const string p_ObjectAssemblyName = "DotNetNuke.Modules.Media";
+        private const string ASSEMBLY = "DotNetNuke.Modules.Media.SqlDataprovider, DotNetNuke.Modules.Media";
 
 #endregion
 
@@ -68,12 +66,19 @@ namespace DotNetNuke.Modules.Media
 		// dynamically create provider
 		private static void CreateProvider()
 		{
-			objProvider = (DataProvider)(DotNetNuke.Framework.Reflection.CreateObject(p_ObjectProviderType, p_ObjectNamespace, p_ObjectAssemblyName));
+            if (objProvider == null)
+            {
+                Type objectType = Type.GetType(ASSEMBLY, true, true);
+
+                objProvider = (DataProvider)Activator.CreateInstance(objectType);
+                DataCache.SetCache(objectType.FullName, objProvider);
+            }
 		}
 
 		// return the provider
 		public static new DataProvider Instance()
 		{
+            if (objProvider == null) CreateProvider();
 			return objProvider;
 		}
 

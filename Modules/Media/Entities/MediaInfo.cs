@@ -21,17 +21,10 @@
 //ORIGINAL LINE: Imports DotNetNuke.Modules.Media.MediaInfoMembers
 //INSTANT C# NOTE: The following line has been modified since C# non-aliased 'using' statements only operate on namespaces:
 //INSTANT C# NOTE: Formerly VB project-level imports:
-using DotNetNuke;
-using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Services.Localization;
 using System;
-using System.Collections;
-using System.Data;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
-using DotNetNuke.Modules.Media;
 using DotNetNuke.Services.FileSystem;
 
 namespace DotNetNuke.Modules.Media
@@ -41,7 +34,7 @@ namespace DotNetNuke.Modules.Media
     /// Represents a piece of Media.
     /// </summary>
     [Serializable()]
-    public class MediaInfo : DotNetNuke.Entities.Modules.IHydratable, IMediaInfo
+    public class MediaInfo : Entities.Modules.IHydratable, IMediaInfo
     {
 
         #region Constants
@@ -407,8 +400,11 @@ namespace DotNetNuke.Modules.Media
                     // IMPORTANT NOTE!!
                     // This code is not thread safe... The portal settings require an active web session
                     Entities.Portals.PortalSettings settings = Entities.Portals.PortalController.GetCurrentPortalSettings();
-                    string folderPath = Regex.Match(Src, FILE_PATH_PATTERN).Groups[1].Value;
+                    //string folderPath = Regex.Match(Src, FILE_PATH_PATTERN).Groups[1].Value;
+                    //string fileName = Regex.Match(Src, FILE_PATH_PATTERN).Groups[2].Value;
+                    // Fix suggested from Issue 23595
                     string fileName = Regex.Match(Src, FILE_PATH_PATTERN).Groups[2].Value;
+                    string folderPath = Src.Substring(0, Src.Length - fileName.Length); 
 
                     IFolderInfo oFolder = FolderManager.Instance.GetFolder(settings.PortalId, folderPath);
                     MediaController ctlMedia = new MediaController();
