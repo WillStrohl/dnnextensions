@@ -18,20 +18,9 @@
 // DEALINGS IN THE SOFTWARE.
 //
 
-//ORIGINAL LINE: Imports DotNetNuke.Modules.Media.MediaController
-//INSTANT C# NOTE: The following line has been modified since C# non-aliased 'using' statements only operate on namespaces:
-//INSTANT C# NOTE: Formerly VB project-level imports:
-using DotNetNuke;
+
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
-using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Services.Localization;
-using System;
-using System.Collections;
-using System.Data;
-using System.Diagnostics;
-
-using DotNetNuke.Modules.Media;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
