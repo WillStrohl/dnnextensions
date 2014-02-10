@@ -2,3 +2,5 @@ Website/
 Website/**/
 **/obj/
 **/bin/
+**/.svn/
+*.svn-base
