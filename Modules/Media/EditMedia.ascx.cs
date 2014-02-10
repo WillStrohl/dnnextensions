@@ -18,27 +18,19 @@
 // DEALINGS IN THE SOFTWARE.
 //
 
-//INSTANT C# NOTE: Formerly VB project-level imports:
-using DotNetNuke;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Journal;
-using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Social.Notifications;
 using System;
-using System.Collections;
-using System.Data;
-using System.Diagnostics;
 using DotNetNuke.Entities.Users;
-using DotNetNuke.Modules.Media;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Security;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.UI.WebControls;
 using WillStrohl.API.oEmbed;
 
