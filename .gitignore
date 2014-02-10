@@ -1,6 +1,10 @@
 Website/
 Website/**/
+obj/
 **/obj/
+**/obj/Debug/
+bin/
 **/bin/
 **/.svn/
 *.svn-base
+packages/
