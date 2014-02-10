@@ -33,6 +33,7 @@
 
 Imports DotNetNuke.Entities.Modules
 Imports DotNetNuke.Services.Localization
+Imports DotNetNuke.Framework.JavaScriptLibraries
 Imports WillStrohl.Modules.ContentSlider.SliderController
 
 Namespace WillStrohl.Modules.ContentSlider
@@ -903,7 +904,7 @@ Namespace WillStrohl.Modules.ContentSlider
                     Me.p_Sync = 1
                 End If
 
-                    Return Me.p_Sync.Value
+                Return Me.p_Sync.Value
             End Get
         End Property
 
@@ -1048,7 +1049,7 @@ Namespace WillStrohl.Modules.ContentSlider
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
             ' request that the DNN framework load the jQuery script into the markup
-            DotNetNuke.Framework.jQuery.RequestDnnPluginsRegistration()
+            JavaScript.RequestRegistration(CommonJs.DnnPlugins)
 
         End Sub
 

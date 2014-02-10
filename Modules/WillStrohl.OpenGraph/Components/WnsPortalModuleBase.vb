@@ -34,6 +34,7 @@ Imports DotNetNuke.Entities.Controllers
 Imports DotNetNuke.Entities.Modules
 Imports DotNetNuke.Services.Localization
 Imports DotNetNuke.Entities.Portals
+Imports DotNetNuke.Framework.JavaScriptLibraries
 Imports WillStrohl.Modules.OpenGraph.OpenGraphController
 
 Namespace WillStrohl.Modules.OpenGraph
@@ -217,7 +218,7 @@ Namespace WillStrohl.Modules.OpenGraph
                 Return p_UseTabUrl.Value
             End Get
         End Property
-        
+
         Protected ReadOnly Property SiteLocale() As String
             Get
                 If String.IsNullOrEmpty(p_SiteLocale) Then
@@ -304,7 +305,7 @@ Namespace WillStrohl.Modules.OpenGraph
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
             ' request that the DNN framework load the jQuery script into the markup
-            jQuery.RequestDnnPluginsRegistration()
+            JavaScript.RequestRegistration(CommonJs.DnnPlugins)
 
         End Sub
 
