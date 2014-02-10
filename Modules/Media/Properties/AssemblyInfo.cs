@@ -1,7 +1,7 @@
 //
-// DotNetNuke® - http://www.dotnetnuke.com
-// Copyright (c) 2002-2013
-// by DotNetNuke Corporation
+// DNN Corp - http://www.dnnsoftware.com
+// Copyright (c) 2002-2014
+// by DNN Corp
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
 // documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
@@ -59,9 +59,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("04.05.00")]
+[assembly: AssemblyVersion("04.04.02")]
 
-[assembly: AssemblyFileVersionAttribute("04.05.00")]
+[assembly: AssemblyFileVersionAttribute("04.04.02")]
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyDelaySign(false)]

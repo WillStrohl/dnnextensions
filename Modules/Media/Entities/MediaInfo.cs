@@ -1,7 +1,7 @@
 //
-// DotNetNuke® - http://www.dotnetnuke.com
-// Copyright (c) 2002-2013
-// by DotNetNuke Corporation
+// DNN Corp - http://www.dnnsoftware.com
+// Copyright (c) 2002-2014
+// by DNN Corp
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
 // documentation files (the "Software"), to deal in the Software without restriction, including without limitation 

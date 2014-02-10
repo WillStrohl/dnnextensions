@@ -1,0 +1,974 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetNuke.Modules.Media</name>
+    </assembly>
+    <members>
+        <member name="P:DotNetNuke.Modules.Media.MediaModuleBase.PostToJournal">
+            <summary>
+            PostToJournal - If true, the module can post a message to the journal
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaModuleBase.PostToJournalSiteWide">
+            <summary>
+            PostToJournalSiteWide - if true, all instances of the media module will post to the journal when updated
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaModuleBase.OverrideJournalSetting">
+            <summary>
+            OverrideJournalSetting - if true, the module will override the site setting (if it exists)
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaModuleBase.NotifyOnUpdate">
+            <summary>
+            NotifyOnUpdate - if true, the module will notify people in the message center when an update is performed
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.OnInit(System.EventArgs)">
+            <summary>
+            OnInit - initialization of the module
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Page_Load runs when the control is loaded
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.cmdCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+            cmdCancel_Click runs when the cancel button is clicked
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.cmdUpdate_Click(System.Object,System.EventArgs)">
+            <summary>
+            cmdUpdate_Click runs when the update button is clicked
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.SaveMediaSettings">
+            <summary>
+            SaveMediaSettings - this allows you to abstract the saving of the settings that can be defined
+            </summary>
+            <remarks>
+            20120820 - Created.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.AddMediaUpdateToJournal(DotNetNuke.Modules.Media.MediaInfo)">
+            <summary>
+            Adds the media update to the journal
+            </summary>
+            <param name="oMedia"></param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.SendNotificationToMessageCenter(DotNetNuke.Modules.Media.MediaInfo)">
+            <summary>
+            Sends a notification to the message center
+            </summary>
+            <param name="oMedia"></param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.EditMedia.AddNotificationTypes">
+            <summary>
+            This will create a notification type used by the module and also handle the actions that must be associated with it.
+            </summary>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblMediaType">
+            <summary>
+            lblMediaType control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.radMediaType">
+            <summary>
+            radMediaType control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.cvMediaType">
+            <summary>
+            cvMediaType control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.liFileSystem">
+            <summary>
+            liFileSystem control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plURL">
+            <summary>
+            plURL control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.ctlURL">
+            <summary>
+            ctlURL control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.rptMediaFileTypes">
+            <summary>
+            rptMediaFileTypes control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.liEmbed">
+            <summary>
+            liEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblEmbed">
+            <summary>
+            lblEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.txtEmbed">
+            <summary>
+            txtEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.liOEmbed">
+            <summary>
+            liOEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblOEmbed">
+            <summary>
+            lblOEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.txtOEmbed">
+            <summary>
+            txtOEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lnkOEmbed">
+            <summary>
+            lnkOEmbed control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblOEmbedCheck">
+            <summary>
+            lblOEmbedCheck control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plAlt">
+            <summary>
+            plAlt control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.txtAlt">
+            <summary>
+            txtAlt control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.valAltText">
+            <summary>
+            valAltText control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plWidth">
+            <summary>
+            plWidth control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.txtWidth">
+            <summary>
+            txtWidth control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.valWidth">
+            <summary>
+            valWidth control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plHeight">
+            <summary>
+            plHeight control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.txtHeight">
+            <summary>
+            txtHeight control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.valHeight">
+            <summary>
+            valHeight control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plMessage">
+            <summary>
+            plMessage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.txtMessage">
+            <summary>
+            txtMessage control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plAlignment">
+            <summary>
+            plAlignment control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.ddlImageAlignment">
+            <summary>
+            ddlImageAlignment control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblAutoStart">
+            <summary>
+            lblAutoStart control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.chkAutoStart">
+            <summary>
+            chkAutoStart control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblLoop">
+            <summary>
+            lblLoop control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.chkLoop">
+            <summary>
+            chkLoop control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.plNavigateUrl">
+            <summary>
+            plNavigateUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.ctlNavigateUrl">
+            <summary>
+            ctlNavigateUrl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.liPostToJournal">
+            <summary>
+            liPostToJournal control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblPostToJournal">
+            <summary>
+            lblPostToJournal control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.chkPostToJournal">
+            <summary>
+            chkPostToJournal control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.liSideWideJournalSetting">
+            <summary>
+            liSideWideJournalSetting control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblPostToJournalSiteWide">
+            <summary>
+            lblPostToJournalSiteWide control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.chkPostToJournalSiteWide">
+            <summary>
+            chkPostToJournalSiteWide control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblOverrideJournalSetting">
+            <summary>
+            lblOverrideJournalSetting control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.chkOverrideJournalSetting">
+            <summary>
+            chkOverrideJournalSetting control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.liNotifyOnUpdate">
+            <summary>
+            liNotifyOnUpdate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.lblNotifyOnUpdate">
+            <summary>
+            lblNotifyOnUpdate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.chkNotifyOnUpdate">
+            <summary>
+            chkNotifyOnUpdate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.cmdUpdate">
+            <summary>
+            cmdUpdate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.cmdCancel">
+            <summary>
+            cmdCancel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.EditMedia.ctlTracking">
+            <summary>
+            ctlTracking control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:DotNetNuke.Modules.Media.FileTypeInfo">
+            <summary>
+            Represents a File Type object.
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.Media.SqlDataProvider">
+            -----------------------------------------------------------------------------
+            <summary>
+            The SqlDataProvider Class is an SQL Server implementation of the DataProvider Abstract
+            class that provides the DataLayer for the HTML Module.
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            	[cnurse]	9/21/2004	Moved HTML to a separate Project
+            </history>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="T:DotNetNuke.Modules.Media.DataProvider">
+            -----------------------------------------------------------------------------
+            <summary>
+            The DataProvider Class Is an abstract class that provides the DataLayer
+            for the Image Module.
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.RegExUtility.IsNumber(System.Object)">
+            <summary>
+            IsNumber - this method uses a regular expression to determine if the value object is in a valid numeric format.
+            </summary>
+            <param name="Value">Object - the object to parse to see if it's a number</param>
+            <returns>If true, the Value object was in a valid numeric format</returns>
+            <remarks>
+            This method does not consider commas (,) to be a valid character. This overload defaults PositiveOnly to True.
+            </remarks>
+            <history>
+            [wstrohl] - 20100130 - created
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.RegExUtility.IsNumber(System.Object,System.Boolean)">
+            <summary>
+            IsNumber - this method uses a regular expression to determine if the value object is in a valid numeric format.
+            </summary>
+            <param name="Value">Object - the object to parse to see if it's a number</param>
+            <param name="PositiveOnly">Boolean - if true, a negative number will be considered valid</param>
+            <returns>If true, the Value object was in a valid numeric format</returns>
+            <remarks>
+            This method does not consider commas (,) to be a valid character.
+            </remarks>
+            <history>
+            [wstrohl] - 20100130 - created
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.RegExUtility.IsBoolean(System.Object)">
+            <summary>
+            IsBoolean - this method uses a regular expression to determine if the value object is in a valid boolean format.
+            </summary>
+            <param name="Value">Object - the object to parse to see if it is in a boolean fomat</param>
+            <returns>If true, the Value object was in a valid boolean format</returns>
+            <remarks>
+            This method looks for one of the following: 1, 0, true, false (case insensitive)
+            </remarks>
+            <history>
+            [wstrohl] - 20100130 - created
+            </history>
+        </member>
+        <member name="T:DotNetNuke.Modules.Media.MediaController">
+            -----------------------------------------------------------------------------
+            Namespace:  DotNetNuke.Modules.Media
+            Project:    DotNetNuke
+            Class:      MediaController
+            -----------------------------------------------------------------------------
+            <summary>
+            The MediaController is the Controller class for the Media Module
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.AddMedia(DotNetNuke.Modules.Media.MediaInfo)">
+            <summary>
+            AddMedia adds a MediaInfo object to the Database
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="objMedia">The MediaInfo object</param>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetMedia(System.Int32)">
+            <summary>
+            GetMedia gets the MediaInfo object from the Database
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="moduleId">The Id of the module</param>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.UpdateMedia(DotNetNuke.Modules.Media.MediaInfo)">
+            <summary>
+            UpdateMedia saves the MediaInfo object to the Database
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="objMedia">The MediaInfo object</param>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.UpgradeMedia(System.Int32,System.Int32)">
+            <summary>
+            UpgradeMedia updates the image control references to Media in the Database
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="OldModuleDefID">The Id of the old module</param>
+            <param name="NewModuleDefID">The Id of the new module</param>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.DeleteMedia(System.Int32)">
+            <summary>
+            DeleteMedia deletes the media associated with the specified module instance
+            </summary>
+            <param name="ModuleId">Integer - the id of the specific module instance</param>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 20100602 - Created.
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.EncodeUrl(System.String)">
+            <summary>
+            EncodeUrl - this method switches any ampersands with the encoded versions of the ampersands for XHTML compliance
+            </summary>
+            <param name="URL">String - the URL to encode</param>
+            <returns></returns>
+            <remarks>This method does not check to see if the encoding has already been done.</remarks>
+            <history>
+            [wstrohl] - 20100605 - Created.
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.DisplayMedia(System.Int32,System.Int32,System.Boolean,DotNetNuke.Entities.Modules.ModuleInfo,DotNetNuke.Entities.Portals.PortalSettings)">
+            <summary>
+            Retrieves the markup to display to the end-user
+            </summary>
+            <param name="moduleId"></param>
+            <param name="tabId"></param>
+            <param name="isEditable"></param>
+            <param name="config"></param>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetObjectKeyForJournal(System.Int32,System.Int32)">
+            <summary>
+            GetObjectKeyForJournal - a centralized way to always get a properly formatted key for journal items
+            </summary>
+            <param name="moduleId">The module ID (not TabModuleId)</param>
+            <returns>Valid objectKey for use with the journal</returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetObjectKeyForJournal(System.String,System.Int32,System.Int32)">
+            <summary>
+            GetObjectKeyForJournal - a centralized way to always get a properly formatted key for journal items
+            </summary>
+            <param name="contentType">The type of content being saved to the journal</param>
+            <param name="moduleId">The module ID (not TabModuleId)</param>
+            <returns>Valid objectKey for use with the journal</returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetMediaJournalTypeID(System.Int32)">
+            <summary>
+            Returns a journal type associated with voting (using one of the core built in journal types).
+            </summary>
+            <param name="portalId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetImageFromProvider(System.Int32,System.String,System.String)">
+            <summary>
+            GetFileFromProvider - returns a API-based file reference to files, regardless of FolderProvider
+            </summary>
+            <param name="portalId">the ID of the portal</param>
+            <param name="folderName">the name of the folder</param>
+            <param name="fileName">the name of the file</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetFileFromProvider(System.Int32,DotNetNuke.Services.FileSystem.IFolderInfo,System.String)">
+            <summary>
+            GetFileFromProvider - returns a API-based file reference to files, regardless of FolderProvider
+            </summary>
+            <param name="portalId">the ID of the portal</param>
+            <param name="folder">the reference object for the folder</param>
+            <param name="fileName">the name of the file</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.GetFileUrl(DotNetNuke.Services.FileSystem.IFileInfo)">
+            <summary>
+            GetImageFileUrl - this method returns the valid URL for any file, regardless to folder or folder provider in use
+            </summary>
+            <param name="oFile">Fully loaded IFileInfo object</param>
+            <returns></returns>
+            <remarks>
+            WARNING!!! This method can return exceptions. They should be caught and processed in the UI though.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.ExportModule(System.Int32)">
+            <summary>
+            ExportModule implements the IPortable ExportModule Interface
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="ModuleID">The Id of the module to be exported</param>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaController.ImportModule(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            ImportModule implements the IPortable ImportModule Interface
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="ModuleID">The Id of the module to be imported</param>
+            <history>
+            	[lpointer]	31.10.2005	documented
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaController.MEDIA_FILE_TYPES">
+            <summary>
+            MEDIA_FILE_TYPES - in conjunction with the DNN global images, these are the file types that this module will work with.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks>
+            This property had to be created to replace the constant, because DNN 5.x handles the file extensions differently than 4.x.
+            </remarks>
+            <history>
+            [wstrohl] - 20100523 - Created from a constant.
+            [wstrohl] - 20101124 - Changed the application version reference from the glbAppVersion; Added support for MP4
+            [wstrohl] - 20101127 - Moved from the EditMedia view
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaController.SUPPORTED_MEDIA_FILE_TYPES">
+            <summary>
+            SUPPORTED_MEDIA_FILE_TYPES - These are the file types that this module will allow, per the Host Settings.
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks>
+            This property is a reflection of the Host Settings configuration.
+            </remarks>
+            <history>
+            [wstrohl] - 20101127 - Created
+            </history>
+        </member>
+        <member name="T:DotNetNuke.Modules.Media.MediaInfo">
+            <summary>
+            Represents a piece of Media.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaInfo.#ctor">
+            <summary>
+            Instantiates a new instance of the <c>ImageInfo</c> class.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.ModuleId">
+            <summary>
+            Gets or sets the unique module identifier.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.ModuleID">
+            <summary>
+            ModuleId - backwards compatibility following the VB to C# conversion
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.Src">
+            <summary>
+            Gets or sets the URL of the Media to display.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.Alt">
+            <summary>
+            Gets or sets the text to display if the Media cannot be displayed.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.Width">
+            <summary>
+            Gets or sets the display width of the Media.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.Height">
+            <summary>
+            Gets or sets the display height of the Media.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.NavigateUrl">
+            <summary>
+            Gets or sets the URL to navigate to when the Media is clicked.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.NewWindow">
+            <summary>
+            Gets or sets the target in which the <see cref="P:DotNetNuke.Modules.Media.MediaInfo.NavigateUrl"/> will be opened in.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            	[Leigh] 	26/02/2006	Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.TrackClicks">
+            <summary>
+            Gets or sets the TrackClicks in which the <see cref="P:DotNetNuke.Modules.Media.MediaInfo.NavigateUrl"/> will be opened in.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            	[Leigh] 	26/02/2006	Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.MediaAlignment">
+            <summary>
+            Gets or sets the MediaAlignment in which the media will use.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            	[Leigh] 	25/10/2006	Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.MediaLoop">
+            <summary>
+            Gets or sets the MediaLoop in which the media will use.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 01/31/2010 - Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.AutoStart">
+            <summary>
+            Gets or sets the AutoStart in which the media will use.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 01/31/2010 - Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.MediaType">
+            <summary>
+            Gets or sets the MediaType in which the media will use.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 20110319 - Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.MediaMessage">
+            <summary>
+            Gets or sets the MediaMessage in which will be displayed with the media.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 20110708 - Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.LastUpdatedBy">
+            <summary>
+            Gets or sets the LastUpdatedBy to keep track of who updates the content.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 20110708 - Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.LastUpdatedDate">
+            <summary>
+            Gets or sets the LastUpdatedDate to keep track of when the content was last updated.
+            </summary>
+            <value></value>
+            <remarks></remarks>
+            <history>
+            [wstrohl] - 20110708 - Created
+            </history>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.WebFriendlyUrl">
+            <summary>
+            WebFriendlyUrl - returns a URL that can immediately be used to display the media source path, regardless of folder provider
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.FileExtension">
+            <summary>
+            FileExtension - returns the extension for the file
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Media.MediaInfo.ContentType">
+            <summary>
+            ContentType - returns the content type of the file
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.Media.MediaModule">
+            <summary>
+            The MediaModule Class provides the UI for displaying the Media
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.MediaModule.MediaLiteral">
+            <summary>
+            MediaLiteral control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Media.MediaModule.MessageLiteral">
+            <summary>
+            MessageLiteral control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaModule.OnInit(System.EventArgs)">
+            <summary>
+            OnInit - initialization of the module
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Media.MediaModule.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Page_Load runs when the control is loaded
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            	[lpointer]	31.10.2005  Read from Business Layer
+            	[lpointer]	17.10.2006  Updated MediaSrc variable so it reads as lower case variable for Case check.
+            </history>
+        </member>
+    </members>
+</doc>

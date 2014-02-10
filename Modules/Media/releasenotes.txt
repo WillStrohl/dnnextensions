@@ -1,12 +1,17 @@
 ﻿<div style="width:100%;height:275px;overflow:auto;">
 
-	<h3>Media Module Version 04.04.01</h3>
-	<p><strong>Date Released:</strong> 05/22/2013</p>
+	<h3>Media Module Version 04.04.02</h3>
+	<p><strong>Date Released:</strong> 02/09/2014</p>
 
 	<ul>
-		<li>Windows Azure compatibility update</li>
-		<li>Added back the usability message for content editors upon module deploy</li>
-		<li>Removing the module when not configured and not in edit mode</li>
+		<li>Tested for version 07.02.00 compatibility</li>
+		<li>Updated oEmbed to version 00.03.00</li>
+		<li>Added missing description below images</li>
+		<li>Fixed oEmbed SSL providers (can use https now)</li>
+		<li>Fixed CSS conflicts with fieldsets</li>
+		<li>Removed NewtonsoftJSON dependency</li>
+		<li>Fixed issue with sub-directories being used for local media</li>
+		<li>Fixed URL that is generated</li>
 	</ul>
 
 </div>

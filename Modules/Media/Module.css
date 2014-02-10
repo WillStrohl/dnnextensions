@@ -21,10 +21,9 @@ div.dnnForm.dnnTextEditor.dnnClear { min-width:570px !important; width:96%; }
 .dnnmedia_textbox { width:275px; margin-right:1em !important; }
 .dnnmedia-audit { margin-top:0.5em; }
 
-fieldset, .dnnmedia-fieldset { margin-bottom:1em !important; }
-    fieldset ol, .dnnmedia-list { padding:1em 1em 0 1em; list-style:none; }
-    fieldset li, .dnnmedia-listitem { padding-bottom:1em; list-style:none; line-height:1.6em; }
-    fieldset.commands { border:none; }
+fieldset.dnnmedia-fieldset { margin-bottom:1em !important; }
+    fieldset.dnnmedia-fieldset ol.dnnmedia-list { padding:1em 1em 0 1em; list-style:none; }
+    fieldset.dnnmedia-fieldset li.dnnmedia-listitem { padding-bottom:1em; list-style:none; line-height:1.6em; }
 
 #divMediaCommands { margin-top:0.8em; text-align:left; }
     ul#ulMediaCommands { list-style-type:none; }

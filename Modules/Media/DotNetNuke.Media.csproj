@@ -83,11 +83,15 @@
     <WarningLevel>1</WarningLevel>
     <DebugType>none</DebugType>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke">
       <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.Web">
+      <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -171,7 +175,7 @@
       <DependentUpon>MediaModule.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Content Include="04.05.00.txt" />
+    <Content Include="04.04.02.txt" />
     <Content Include="EditMedia.ascx" />
     <Content Include="Images\logo\dnnmedia-logo-100x100.png" />
     <Content Include="Images\logo\dnnmedia-logo-150x150.png" />
@@ -201,7 +205,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\04.04.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\04.04.01.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
-    <Content Include="Providers\DataProviders\SqlDataProvider\04.05.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\04.04.02.SqlDataProvider" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
