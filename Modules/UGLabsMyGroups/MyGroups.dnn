@@ -1,19 +1,19 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="MyGroups" type="Module" version="01.00.00">
+    <package name="MyGroups" type="Module" version="01.01.00">
       <friendlyName>UG Labs MyGroups</friendlyName>
       <description>UG Labs MyGroups module</description>
       <iconFile>Images/icon_extensions.gif</iconFile>
       <owner>
-        <name>DotNetNuke Corporation</name>
-        <organization>DotNetNuke Corporation</organization>
-        <url>http://www.dotnetnuke.com</url>
-        <email>community@dnncorp.com</email>
+        <name>Will Strohl</name>
+        <organization>Will Strohl</organization>
+        <url>http://www.willstrohl.com</url>
+        <email>will.strohl@gmail.com</email>
       </owner>
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
       <dependencies>
-        <dependency type="CoreVersion">06.02.02</dependency>
+        <dependency type="CoreVersion">07.02.00</dependency>
       </dependencies>
       
       <components>
@@ -23,7 +23,7 @@
             <basePath>bin</basePath>
             <assembly>
               <name>DNNCommunity.Modules.MyGroups.dll</name>
-              <version>01.00.00</version>
+              <version>01.01.00</version>
             </assembly>
           </assemblies>
         </component>
@@ -73,14 +73,7 @@
             </moduleDefinitions>
           </desktopModule>
         </component>
-        <component type="Assembly">
-          <assemblies>
-            <basePath>bin</basePath>
-            <assembly>
-              <name>DNNCommunity.Modules.MyGroups.dll</name>
-            </assembly>
-          </assemblies>
-        </component>
+        
       </components>
     </package>
   </packages>

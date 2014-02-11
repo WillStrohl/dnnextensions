@@ -1,5 +1,5 @@
 ﻿/*
-' Copyright (c) 2012  DotNetNuke Corporation
+' Copyright (c) 2012-2014  Will Strohl
 '  All rights reserved.
 ' 
 ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
@@ -21,14 +21,9 @@ using DNNCommunity.Modules.MyGroups.Components;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Users;
-using DotNetNuke.Security;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Services.FileSystem;
-using DotNetNuke.Services.Localization;
-using DotNetNuke.Services.Social;
 
 namespace DNNCommunity.Modules.MyGroups
 {
@@ -69,8 +64,8 @@ namespace DNNCommunity.Modules.MyGroups
             {
                 if (p_ProfileId == Null.NullInteger)
                 {
-                    var oUserId = Request.QueryString["UserId"];
-                    if (oUserId != null) p_ProfileId = int.Parse(oUserId.ToString(), System.Globalization.NumberStyles.Integer);
+                    var oUserId = Request.QueryString["UserId"] ?? UserId.ToString();
+                    if (!string.IsNullOrEmpty(oUserId) && !string.Equals(oUserId, "-1")) p_ProfileId = int.Parse(oUserId.ToString(), System.Globalization.NumberStyles.Integer);
                 }
 
                 return p_ProfileId;

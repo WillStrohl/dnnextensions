@@ -1,23 +1,20 @@
 ﻿<h3>MyGroups</h3>
 <p class="Contributor">
-	DotNetNuke Corporation <br />
-	<a href="mailto:community@dnncorp.com">community@dnncorp.com</a><br />
-	<a href=http://www.dotnetnuke.com>http://www.dotnetnuke.com</a><br />
+	Will Strohl<br />
+	<a href="mailto:will.strohl@gmail.com">will.strohl@gmail.com</a><br />
+	<a href=http://www.willstrohl.com>http://www.willstrohl.com</a><br />
 </p>
 <hr/>
 <div class="License">
 	<h3>About the UG Labs: MyGroups Mobule</h3>
 	<p class="Owner">
-		<b>Version 01.00.00</b><br /><br />
+		<b>Version 01.01.00</b><br /><br />
 	</p>
-	<p>This is the first version of this module. It has minimal functionality for its first release. The User Group Labs: MyGroups Module allows you to very easily list the groups that users on your website are subscribed to.</p>
+	<p>This release has the following enhancements and updates</p>
 	
 	<h4>Release Updates</h4>
 	<ul>
-			<li>Single "set it and forget it" setting to get started</li>
-			<li>Lists all social groups a user is a member of</li>
-			<li>Generates thumbnails of the group avatar images for peformance</li>
-			<li>CSS changeable</li>
+			<li>Able to use on any page where the user is logged in</li>
 	</ul>
 	
 </div>

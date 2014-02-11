@@ -1,8 +1,10 @@
 ﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ModulePath>UGLabsMyGroups</ModulePath>
-    <DNNFileName>UGLabsMyGroups</DNNFileName>
-    <PackageName>DNN_Media</PackageName>
+    <DNNFileName>MyGroups</DNNFileName>
+    <PackageName>MyGroups</PackageName>
+  </PropertyGroup>
+  <PropertyGroup>
     <Extension>zip</Extension>
     <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
     <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>

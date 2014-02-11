@@ -1,5 +1,5 @@
 ﻿/*
-' Copyright (c) 2012  DotNetNuke Corporation
+' Copyright (c) 2012-2014  Will Strohl
 '  All rights reserved.
 ' 
 ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
