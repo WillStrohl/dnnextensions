@@ -5,6 +5,14 @@
 		<a href="http://www.schwingsoft.com/" target="_blank">Armand Datema (a.k.a nokiko)</a><br /><br />
 		For support, questions, or suggestions, please use the <a href="http://wnslightbox.codeplex.com" target="_blank">Lightbox Gallery Module for DotNetNuke</a> website.</p>
 
+	<h3>Version 01.12.00</h3>
+	<p><strong>Date Released:</strong> 01/04/2014</p>
+	<ul>
+		<li>Feature:  Support long duration cache headers.  The images are served with a parameter that identifies the server side timestamp.  
+		Copy the supplied cache.config to the folder the images are in AND rename it as web.config.  For IIS 7 and later that will cause IIS to send
+		long duration cache headers for all content in that folder.  BEWARE if you serve that content other than via this module.</li>
+	</ul>
+
 	<h3>Version 01.11.00</h3>
 	<p><strong>Date Released:</strong> 04/02/2012</p>
 	<ul>

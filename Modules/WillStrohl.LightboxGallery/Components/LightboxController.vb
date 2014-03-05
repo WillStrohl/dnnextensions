@@ -321,8 +321,16 @@ Namespace WillStrohl.Modules.Lightbox
             ' caught and processed in the UI though.
             '*******************************************************'
             Dim mapFolder As FolderMappingInfo = FolderMappingController.Instance.GetFolderMapping(Image.FolderMappingID)
-            Return FolderProvider.Instance(mapFolder.FolderProviderType).GetFileUrl(Image)
-            
+            Dim basicUrl = FolderProvider.Instance(mapFolder.FolderProviderType).GetFileUrl(Image)
+            '
+            'Add to the URL a parameter containing the server side timestamp of the file.  This is used purely 
+            'as a cache buster.  Makes it safe to use long duration cache headers with these files.
+            '
+            Dim lastModificationTime = FolderProvider.Instance(mapFolder.FolderProviderType).GetLastModificationTime(Image)
+            Dim urlWithTimeStamp = basicUrl & "?" & "rev=" & lastModificationTime.ToString("yyyy-MM-dd-HH-mm-ss")
+
+            Return urlWithTimeStamp
+
         End Function
 
         ''' <summary>

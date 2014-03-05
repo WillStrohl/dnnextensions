@@ -115,7 +115,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Exif">
-      <HintPath>..\..\References\Exif.dll</HintPath>
+      <HintPath>..\..\ExternalDependencies\Exif\Exif.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -315,6 +315,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\01.10.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\01.11.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
+    <Content Include="Cache.config" />
     <None Include="WillStrohl.Lightbox.dnn">
       <SubType>Designer</SubType>
     </None>
