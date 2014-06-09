@@ -35,6 +35,7 @@ Imports DotNetNuke.Entities.Modules
 Imports DotNetNuke.Services.Localization
 Imports DotNetNuke.Entities.Portals
 Imports DotNetNuke.Framework.JavaScriptLibraries
+Imports DotNetNuke.Framework
 Imports WillStrohl.Modules.OpenGraph.OpenGraphController
 
 Namespace WillStrohl.Modules.OpenGraph

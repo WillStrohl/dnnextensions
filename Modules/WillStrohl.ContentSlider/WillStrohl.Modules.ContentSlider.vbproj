@@ -133,8 +133,7 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\Website\bin\Telerik.Web.UI.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\Telerik.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

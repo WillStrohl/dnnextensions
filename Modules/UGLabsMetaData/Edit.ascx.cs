@@ -19,9 +19,9 @@ using System.Text.RegularExpressions;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Security;
+using DotNetNuke.Security.Roles;
 using DotNetNuke.Security.Roles.Internal;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Security.Roles;
 using DotNetNuke.UI.Skins.Controls;
 
 namespace DNNCommunity.Modules.UGLabsMetaData
