@@ -32,6 +32,7 @@
 '
 
 Imports DotNetNuke.Entities.Modules
+Imports DotNetNuke.Framework.JavaScriptLibraries
 Imports DotNetNuke.Services.Localization
 
 Namespace WillStrohl.Modules.Injection
@@ -82,7 +83,7 @@ Namespace WillStrohl.Modules.Injection
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
             ' request that the DNN framework load the jQuery script into the markup
-            DotNetNuke.Framework.jQuery.RequestDnnPluginsRegistration()
+            JavaScript.RequestRegistration(CommonJs.DnnPlugins)
 
         End Sub
 

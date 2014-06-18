@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="6.0">
     <packages>
-        <package name="WillStrohl.Lightbox" type="Module" version="01.11.00">
+        <package name="WillStrohl.Lightbox" type="Module" version="01.12.00">
             <friendlyName>Lightbox Gallery</friendlyName>
             <description>
                 <![CDATA[<p>This is a lightbox gallery module, written by Will Strohl. Its original purpose was to highlight a few ways that jQuery can be integrated into DNN. It has since become one of the most popular ways to include image galleries into your DNN website.</p>]]>
@@ -116,14 +116,19 @@
                             <version>01.10.00</version>
                         </script>
                         <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.11.00.SqlDataProvider</name>
-                            <version>01.11.00</version>
+                          <path>Providers\DataProviders\SqlDataProvider</path>
+                          <name>01.11.00.SqlDataProvider</name>
+                          <version>01.11.00</version>
                         </script>
-                        <script type="UnInstall">
+                        <script type="Install">
+                          <path>Providers\DataProviders\SqlDataProvider</path>
+                          <name>01.12.00.SqlDataProvider</name>
+                          <version>01.12.00</version>
+                        </script>
+                      <script type="UnInstall">
                             <path>Providers\DataProviders\SqlDataProvider</path>
                             <name>Uninstall.SqlDataProvider</name>
-                            <version>01.11.00</version>
+                            <version>01.12.00</version>
                         </script>
                     </scripts>
                 </component>
@@ -205,11 +210,11 @@
                         <basePath>bin</basePath>
                         <assembly>
                             <name>WillStrohl.Modules.Lightbox.dll</name>
-                            <version>01.11.00</version>
+                            <version>01.12.00</version>
                         </assembly>
                         <assembly>
                             <name>WillStrohl.Modules.Lightbox.SqlDataProvider.dll</name>
-                            <version>01.11.00</version>
+                            <version>01.12.00</version>
                         </assembly>
                         <assembly>
                             <name>Exif.dll</name>
@@ -304,6 +309,10 @@
                             <name>01.11.00.SqlDataProvider</name>
                         </file>
                         <file>
+                            <path>Providers\DataProviders\SqlDataProvider</path>
+                            <name>01.12.00.SqlDataProvider</name>
+                        </file>
+                      <file>
                             <path>Providers\DataProviders\SqlDataProvider</path>
                             <name>Uninstall.SqlDataProvider</name>
                         </file>

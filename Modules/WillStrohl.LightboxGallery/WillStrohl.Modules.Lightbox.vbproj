@@ -107,19 +107,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke">
-      <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="DotNetNuke.Web">
-      <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Exif">
-      <HintPath>..\..\ExternalDependencies\Exif\Exif.dll</HintPath>
+    <Reference Include="Exif, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Exif\Exif.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -142,8 +140,7 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\Website\bin\Telerik.Web.UI.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\Telerik.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +313,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\01.11.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <Content Include="Cache.config" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.12.00.SqlDataProvider" />
     <None Include="WillStrohl.Lightbox.dnn">
       <SubType>Designer</SubType>
     </None>

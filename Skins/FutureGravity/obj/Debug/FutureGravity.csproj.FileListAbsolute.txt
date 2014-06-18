@@ -2,3 +2,7 @@ C:\Websites\Development\Skins\FutureGravity\bin\FutureGravity.dll
 C:\Websites\Development\Skins\FutureGravity\bin\FutureGravity.pdb
 C:\Websites\Development\Skins\FutureGravity\obj\Debug\FutureGravity.dll
 C:\Websites\Development\Skins\FutureGravity\obj\Debug\FutureGravity.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Skins\FutureGravity\bin\FutureGravity.dll
+D:\vsprojects\WillStrohlDnnExtensions\Skins\FutureGravity\bin\FutureGravity.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Skins\FutureGravity\obj\Debug\FutureGravity.dll
+D:\vsprojects\WillStrohlDnnExtensions\Skins\FutureGravity\obj\Debug\FutureGravity.pdb

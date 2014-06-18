@@ -40,20 +40,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke">
-      <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
+    <Reference Include="DotNetNuke, Version=7.1.1.385, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="DotNetNuke.Web">
-      <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.Web.dll</HintPath>
     </Reference>
     <Reference Include="DotNetNuke.Web.Client">
-      <HintPath>..\..\Website\bin\DotNetNuke.Web.Client.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.Web.Client.dll</HintPath>
     </Reference>
     <Reference Include="DotNetNuke.WebUtility">
-      <HintPath>..\..\Website\bin\DotNetNuke.WebUtility.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.WebUtility.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

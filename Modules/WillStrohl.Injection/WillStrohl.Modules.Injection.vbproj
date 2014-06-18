@@ -104,12 +104,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke">
-      <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>

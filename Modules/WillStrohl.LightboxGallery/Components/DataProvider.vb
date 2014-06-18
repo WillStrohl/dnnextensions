@@ -61,6 +61,9 @@ Namespace WillStrohl.Modules.Lightbox
 
         ' return the provider
         Public Shared Shadows Function Instance() As DataProvider
+            If objProvider Is Nothing Then
+                CreateProvider()
+            End If
             Return objProvider
         End Function
 

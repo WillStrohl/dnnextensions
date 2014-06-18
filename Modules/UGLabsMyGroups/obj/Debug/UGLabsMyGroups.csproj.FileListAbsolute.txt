@@ -3,3 +3,15 @@ C:\Websites\Development\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups
 C:\Websites\Development\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.pdb
 C:\Websites\Development\Modules\UGLabsMyGroups\obj\Debug\DNNCommunity.Modules.MyGroups.dll
 C:\Websites\Development\Modules\UGLabsMyGroups\obj\Debug\DNNCommunity.Modules.MyGroups.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.XML
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DNNCommunity.Modules.MyGroups.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\obj\Debug\UGLabsMyGroups.csprojResolveAssemblyReference.cache
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\obj\Debug\DNNCommunity.Modules.MyGroups.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\obj\Debug\DNNCommunity.Modules.MyGroups.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DotNetNuke.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DotNetNuke.WebControls.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DotNetNuke.WebUtility.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\Microsoft.ApplicationBlocks.Data.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\DotNetNuke.Web.Client.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsMyGroups\bin\Telerik.Web.UI.dll

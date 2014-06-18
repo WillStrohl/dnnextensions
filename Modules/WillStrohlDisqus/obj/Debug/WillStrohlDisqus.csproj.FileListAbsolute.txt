@@ -3,3 +3,15 @@ C:\Websites\Development\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.dll
 C:\Websites\Development\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.pdb
 C:\Websites\Development\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.dll
 C:\Websites\Development\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.xml
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\WillStrohlDisqus.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.csprojResolveAssemblyReference.cache
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\obj\Debug\WillStrohlDisqus.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\DotNetNuke.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\Microsoft.ApplicationBlocks.Data.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\DotNetNuke.WebControls.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\DotNetNuke.WebUtility.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\DotNetNuke.Web.Client.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\WillStrohlDisqus\bin\Telerik.Web.UI.dll

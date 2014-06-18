@@ -3,3 +3,14 @@ C:\Websites\Development\Modules\UGLabsUserGroupData\bin\DNNCommunity.Modules.Use
 C:\Websites\Development\Modules\UGLabsUserGroupData\bin\DNNCommunity.Modules.UserGroupData.pdb
 C:\Websites\Development\Modules\UGLabsUserGroupData\obj\Debug\DNNCommunity.Modules.UserGroupData.dll
 C:\Websites\Development\Modules\UGLabsUserGroupData\obj\Debug\DNNCommunity.Modules.UserGroupData.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DNNCommunity.Modules.UserGroupData.XML
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DNNCommunity.Modules.UserGroupData.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DNNCommunity.Modules.UserGroupData.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DotNetNuke.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\Microsoft.ApplicationBlocks.Data.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DotNetNuke.WebControls.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DotNetNuke.WebUtility.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\DotNetNuke.Web.Client.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\obj\Debug\DNNCommunity.Modules.UserGroupData.dll
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\obj\Debug\DNNCommunity.Modules.UserGroupData.pdb
+D:\vsprojects\WillStrohlDnnExtensions\Modules\UGLabsUserGroupData\bin\Telerik.Web.UI.dll

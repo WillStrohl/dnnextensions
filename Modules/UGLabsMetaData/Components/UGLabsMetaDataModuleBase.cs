@@ -12,6 +12,7 @@
 
 using System;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.Framework.JavaScriptLibraries;
 using DotNetNuke.Services.Localization;
 
 namespace DNNCommunity.Modules.UGLabsMetaData
@@ -29,7 +30,7 @@ namespace DNNCommunity.Modules.UGLabsMetaData
         private void PageLoad(object sender, System.EventArgs e)
         {
             // request that the DNN framework load the jQuery script into the markup
-            DotNetNuke.Framework.jQuery.RequestDnnPluginsRegistration();
+            JavaScript.RequestRegistration(CommonJs.DnnPlugins);
         }
 
         #endregion
