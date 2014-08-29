@@ -17,6 +17,7 @@ using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using WillStrohl.Modules.DNNHangout.Components;
@@ -326,11 +327,11 @@ namespace WillStrohl.Modules.DNNHangout
             if (contentItemId > Null.NullInteger)
             {
                 // update the module settings to set the default Google Hangout to show on the first page load
-                var ctlModule = new DotNetNuke.Entities.Modules.ModuleController();
+                var ctlModule = new ModuleController();
 
                 ctlModule.UpdateTabModuleSetting(TabModuleId, DNNHangoutController.SETTINGS_HANGOUT_ID,contentItemId.ToString());
 
-                DotNetNuke.Entities.Modules.ModuleController.SynchronizeModule(ModuleId);
+                ModuleController.SynchronizeModule(ModuleId);
             }
         }
 
@@ -338,13 +339,17 @@ namespace WillStrohl.Modules.DNNHangout
         {
             if (HangoutId > Null.NullInteger)
             {
-                // delete the module setting
-                Settings.Remove(DNNHangoutController.SETTINGS_HANGOUT_ID);
-                DotNetNuke.Entities.Modules.ModuleController.SynchronizeModule(ModuleId);
-
                 // delete the related content item
                 var ctlHangout = new DNNHangoutController();
                 ctlHangout.DeleteContentItem(HangoutId);
+
+                // delete the module setting
+                var ctlModule = new ModuleController();
+                if (Settings.ContainsKey(DNNHangoutController.SETTINGS_HANGOUT_ID))
+                {
+                    ctlModule.DeleteTabModuleSetting(TabModuleId, DNNHangoutController.SETTINGS_HANGOUT_ID);
+                }
+                ModuleController.SynchronizeModule(ModuleId);
             }
         }
 

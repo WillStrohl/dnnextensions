@@ -4,15 +4,13 @@
 		<a href="http://www.willstrohl.com" target="_blank">Will Strohl (a.k.a hismightiness)</a><br /><br />
 		For support, questions, or suggestions, please use the <a href="http://dnnhangout.codeplex.com" target="_blank">DNN Hangout</a> website.</p>
 
-	<h3>Version 01.00.00</h3>
-	<p><strong>Date Released:</strong> 08/26/2014</p>
+	<h3>Version 01.00.01</h3>
+	<p><strong>Date Released:</strong> 08/28/2014</p>
 	<ul>
-		<li>Feature: Quickly add a Google Hangout via copy/paste</li>
-		<li>Feature: Template available to change how the module is displayed to users</li>
-		<li>Feature: Show start date/time and duration for future/past Hangouts</li>
-		<li>Technical Feature: Uses content items for the DAL</li>
-		<li>Technical Feature: Uses DNN token replace</li>
-		<li>Technical Feature: Uses PortalSecurity for user input filtering</li>
+		<li>Feature: Smart caching to improve perfomance on more active sites</li>
+		<li>Bug: Able to delete Hangout without error</li>
+		<li>Bug: Added missing branding icon</li>
+		<li>Technical Feature: Uses DNN Caching</li>
 	</ul>
 
 	<p>Technical Note: A work around is in place to correct a time conversion issue present in the DNN's included NewtonSoft JSON.Net. It basically adds 7 hours to the time.</p>

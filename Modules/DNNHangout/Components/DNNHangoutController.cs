@@ -308,7 +308,7 @@ namespace WillStrohl.Modules.DNNHangout.Components
             // check for a cached template first
             if (cachedTemplate != null)
             {
-                //return cachedTemplate.ToString();
+                return cachedTemplate.ToString();
             }
 
             /*

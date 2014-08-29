@@ -11,6 +11,7 @@
 */
 
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -73,7 +74,7 @@ namespace WillStrohl.Modules.DNNHangout
 
         private void BindData()
         {
-            pnlNoConfig.Visible = (HangoutId == Null.NullInteger);
+            pnlNoConfig.Visible = (HangoutId == 0 || Hangout == null);
             pnlHangout.Visible = !pnlNoConfig.Visible;
 
             if (pnlHangout.Visible)
@@ -148,6 +149,5 @@ namespace WillStrohl.Modules.DNNHangout
         }
 
         #endregion
-
     }
 }

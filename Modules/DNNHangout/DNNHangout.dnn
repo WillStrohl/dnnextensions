@@ -1,9 +1,9 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="DNNHangout" type="Module" version="01.00.00">
+    <package name="DNNHangout" type="Module" version="01.00.01">
       <friendlyName>DNN Hangout</friendlyName>
       <description>Google Hangout module for DNN</description>
-      <iconFile>Images/icon_extensions.gif</iconFile>
+      <iconFile>Images/hangouts-icon.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>WillStrohl.com</organization>
