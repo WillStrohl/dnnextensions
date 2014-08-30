@@ -67,7 +67,7 @@
             </script>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>04.05.00.SqlDataProvider</name>
+              <name>04.04.02.SqlDataProvider</name>
               <version>04.04.02</version>
             </script>
             <script type="UnInstall">

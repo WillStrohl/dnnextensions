@@ -76,6 +76,10 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
 
+    <CreateItem Include="**\$(Version).txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
+    </CreateItem>
+
 
     <CreateItem Include="**\*.sqldataprovider">
       <Output TaskParameter="Include" ItemName="SqlDataProviderFiles" />
