@@ -1,0 +1,51 @@
+<dotnetnuke type="Package" version="6.0">
+  <packages>
+    <package name="WillStrohl.PrismJS" type="SkinObject" version="01.00.00">
+      <friendlyName>PrismJS Skin Object</friendlyName>
+      <description>A SkinObject that easily adds the PrismJS syntax highlighter to your website.</description>
+      <iconFile>~/DesktopModules/WillStrohl.PrismJS/Images/logo.png</iconFile>
+      <owner>
+        <name>Will Strohl</name>
+        <organization>Will Strohl</organization>
+        <url>http://www.willstrohl.com</url>
+        <email>will.strohl@gmail.com</email>
+      </owner>
+      <license src="License.txt" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <azureCompatible>True</azureCompatible>
+      <dependencies>
+        <dependency type="CoreVersion">07.01.00</dependency>
+      </dependencies>
+
+      <components>
+
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>WillStrohl.SkinObjects.PrismJS.dll</name>
+              <version>01.00.00</version>
+            </assembly>
+          </assemblies>
+        </component>
+
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/WillStrohl.PrismJS</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+
+        <component type="SkinObject">
+            <moduleControl>
+              <controlKey>PrismJS</controlKey>
+              <controlSrc>DesktopModules/WillStrohl.PrismJS/PrismJS.ascx</controlSrc>
+              <supportsPartialRendering>False</supportsPartialRendering>
+            </moduleControl>
+        </component>
+        
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

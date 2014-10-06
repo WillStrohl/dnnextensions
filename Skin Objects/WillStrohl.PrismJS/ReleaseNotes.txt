@@ -1,0 +1,17 @@
+﻿<div style="width:100%;height:375px;overflow:auto;">
+
+	<p>Contributors of this open source and free project, include: 
+		<a href="http://www.willstrohl.com" target="_blank">Will Strohl (a.k.a hismightiness)</a><br /><br />
+		For support, questions, or suggestions, please use the <a href="http://dnnprismjs.codeplex.com" target="_blank">PrismJS Skin Object for DNN</a> website.</p>
+
+	<h3>Version 01.00.00</h3>
+	<p><strong>Date Released:</strong> 10/05/2014</p>
+	<ul>
+		<li>As little as one line of code to add PrismJS to your site</li>
+		<li>Attribute to add different levels of JS support</li>
+		<li>Attribute to specify a specific PrismJS themes</li>
+	</ul>
+
+	<p>For more information about this and previous releases of this skin object project, <a href="http://dnnprismjs.codeplex.com" target="_blank">visit the project website</a>.</p>
+
+</div>
