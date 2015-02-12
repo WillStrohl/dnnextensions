@@ -329,7 +329,9 @@
     <Content Include="App_LocalResources\ChangeImageOrder.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Module.Build" />
+    <Content Include="Module.Build">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
