@@ -1,0 +1,53 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wnsDisqus_Disqus]') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wnsDisqus_Disqus];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_AddDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_AddDisqus];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_UpdateDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_UpdateDisqus];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqus];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByPortal]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByPortal];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByTab]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByTab];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqus];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByPortal]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByPortal];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByTab]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByTab];
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByModule]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByModule];
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

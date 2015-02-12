@@ -1,0 +1,228 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wnsDisqus_Disqus]') IS NULL
+	DROP TABLE {databaseOwner}[{objectQualifier}wnsDisqus_Disqus];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] (
+	[LocalDbId] INT IDENTITY NOT NULL
+	    CONSTRAINT [PK_{objectQualifier}wnsDisqus_LocalDbId] PRIMARY KEY, 
+	[PortalId] INT NOT NULL 
+	    CONSTRAINT [FK_{objectQualifier}wnsDisqus_PortalId] FOREIGN KEY 
+	    REFERENCES {databaseOwner}[{objectQualifier}Portals] ([PortalId]), 
+	[TabId] INT NOT NULL 
+	    CONSTRAINT [FK_{objectQualifier}wnsDisqus_TabId] FOREIGN KEY 
+	    REFERENCES {databaseOwner}[{objectQualifier}Tabs] ([TabId]), 
+	[TabModuleId] INT NOT NULL 
+	    CONSTRAINT [FK_{objectQualifier}wnsDisqus_TabModuleId] FOREIGN KEY 
+	    REFERENCES {databaseOwner}[{objectQualifier}TabModules] ([TabModuleId]) ON DELETE CASCADE, 
+	[CommentPath] NVARCHAR(255) NOT NULL, 
+	[DisqusComment] XML NOT NULL, 
+	[CreatedAt] DATETIME NOT NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wnsDisqus_PortalId] ON {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] ([PortalId],[CreatedAt]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wnsDisqus_TabId] ON {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] ([TabId],[CreatedAt]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wnsDisqus_TabModuleId] ON {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] ([TabModuleId],[CreatedAt]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wnsDisqus_CommentPath] ON {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] ([CommentPath]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wnsDisqus_CreatedAt] ON {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] ([CreatedAt]);
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_AddDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_AddDisqus];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_AddDisqus] 
+	@PortalId INT, @TabId INT, @TabModuleId INT, @CommentPath NVARCHAR(255), @DisqusComment XML, @CreatedAt DATETIME 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+
+	INSERT INTO {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] ([PortalId],[TabId],[TabModuleId],[CommentPath],[DisqusComment],[CreatedAt]) 
+	VALUES (@PortalId,@TabId,@TabModuleId,@CommentPath,@DisqusComment,@CreatedAt);
+	SELECT SCOPE_IDENTITY();
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_UpdateDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_UpdateDisqus];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_UpdateDisqus] 
+	@LocalDbId INT, @PortalId INT, @TabId INT, @TabModuleId INT, @CommentPath NVARCHAR(255), @DisqusComment XML, @CreatedAt DATETIME 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	UPDATE {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] 
+	SET [PortalId] = @PortalId,
+		[TabId] = @TabId,
+		[TabModuleId] = @TabModuleId,
+		[CommentPath] = @CommentPath, 
+		[DisqusComment] = @DisqusComment, 
+		[CreatedAt] = @CreatedAt 
+	WHERE [LocalDbId] = @LocalDbId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqus];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqus] 
+	@LocalDbId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	DELETE FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] WHERE [LocalDbId] = @LocalDbId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByPortal]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByPortal];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByPortal] 
+	@PortalId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	DELETE FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] WHERE [PortalId] = @PortalId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByTab]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByTab];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_DeleteDisqusByTab] 
+	@TabId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	DELETE FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] WHERE [TabId] = @TabId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqus]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqus];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqus] 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT d.[LocalDbId],d.[PortalId],d.[TabId],d.[TabModuleId],d.[CommentPath],d.[DisqusComment],d.[CreatedAt]
+	FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] d;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByPortal]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByPortal];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByPortal] 
+	@PortalId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT d.[LocalDbId],d.[PortalId],d.[TabId],d.[TabModuleId],d.[CommentPath],d.[DisqusComment],d.[CreatedAt]
+	FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] d 
+	WHERE d.[PortalId] = @PortalId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByTab]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByTab];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByTab] 
+	@TabId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT d.[LocalDbId],d.[PortalId],d.[TabId],d.[TabModuleId],d.[CommentPath],d.[DisqusComment],d.[CreatedAt]
+	FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] d 
+	WHERE d.[TabId] = @TabId;
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByModule]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByModule];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wnsDisqus_GetDisqusByModule] 
+	@TabModuleId INT 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT d.[LocalDbId],d.[PortalId],d.[TabId],d.[TabModuleId],d.[CommentPath],d.[DisqusComment],d.[CreatedAt]
+	FROM {databaseOwner}[{objectQualifier}wnsDisqus_Disqus] d 
+	WHERE d.[TabModuleId] = @TabModuleId;
+END
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
