@@ -198,9 +198,17 @@ Namespace WillStrohl.Modules.Lightbox
                     Case "DateTime", "DateTimeOriginal", "DateTimeDigitized"
                         Dim strDate As String() = Split(oProp.Value.Value, " ")
                         strDate(0) = strDate(0).Replace(":", "/")
-                        sb.AppendFormat("<div class=""dnnClear""><label class=""wnsExifTitle wnsExifTitle"">{0}:</label>&nbsp; <span class=""Normal wnsExifInline"">{1}</span></div>", _
-                            oProp.Value.Description, _
-                            DateTime.Parse(String.Concat(strDate(0), " ", strDate(1))))
+                        Try
+                            sb.AppendFormat("<div class=""dnnClear""><label class=""wnsExifTitle wnsExifTitle"">{0}:</label>&nbsp; <span class=""Normal wnsExifInline"">{1}</span></div>", _
+                                oProp.Value.Description, _
+                                DateTime.Parse(String.Concat(strDate(0), " ", strDate(1))))
+                        Catch
+                            ' Issue 6934:  https://wnslightbox.codeplex.com/workitem/6934
+                            ' accounting for other time formats
+                            sb.AppendFormat("<div class=""dnnClear""><label class=""wnsExifTitle wnsExifTitle"">{0}:</label>&nbsp; <span class=""Normal wnsExifInline"">{1}</span></div>", _
+                                oProp.Value.Description, _
+                                DateTime.Parse(strDate(0)))
+                        End Try
                     Case "Flash", "ExposureMode", "WhiteBalance", "ShutterSpeedValue", "ApertureValue", "Make", "Model", "Software"
                         sb.AppendFormat("<div class=""dnnClear""><label class=""wnsExifTitle wnsExifTitle"">{0}:</label>&nbsp; <span class=""Normal wnsExifInline"">{1}</span></div>", _
                             oProp.Value.Description, _
