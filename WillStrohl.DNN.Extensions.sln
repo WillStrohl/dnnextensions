@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGLabsMyGroups", "Modules\U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGLabsUserGroupData", "Modules\UGLabsUserGroupData\UGLabsUserGroupData.csproj", "{E0C9E035-5254-4FF2-AAD3-AC632B3CB587}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.OpenGraph", "Modules\WillStrohl.OpenGraph\WillStrohl.Modules.OpenGraph.vbproj", "{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.OpenGraph", "Modules\WillStrohl.OpenGraph\WillStrohl.Modules.OpenGraph.vbproj", "{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohlDisqus", "Modules\WillStrohlDisqus\WillStrohlDisqus.csproj", "{58D56768-8690-41D3-B30F-4003D12264C2}"
 EndProject
@@ -41,19 +41,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureGravity", "Skins\Futu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNuke.Media", "Modules\Media\DotNetNuke.Media.csproj", "{176CE33F-FF0C-451A-8A38-1DE475B00A78}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.ContactCollector", "Modules\WillStrohl.ContactCollector\WillStrohl.Modules.ContactCollector.vbproj", "{77A2EDA2-22F4-41A2-91F3-F60CF77A1EB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.ContactCollector", "Modules\WillStrohl.ContactCollector\WillStrohl.Modules.ContactCollector.vbproj", "{77A2EDA2-22F4-41A2-91F3-F60CF77A1EB0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.ContentSlider", "Modules\WillStrohl.ContentSlider\WillStrohl.Modules.ContentSlider.vbproj", "{6339C785-AABA-464F-8193-91B4F8A5610D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.ContentSlider", "Modules\WillStrohl.ContentSlider\WillStrohl.Modules.ContentSlider.vbproj", "{6339C785-AABA-464F-8193-91B4F8A5610D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.Injection", "Modules\WillStrohl.Injection\WillStrohl.Modules.Injection.vbproj", "{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.Injection", "Modules\WillStrohl.Injection\WillStrohl.Modules.Injection.vbproj", "{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.Lightbox", "Modules\WillStrohl.LightboxGallery\WillStrohl.Modules.Lightbox.vbproj", "{BF44F3B0-07CB-47EE-8ED7-B501437E209D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.Lightbox", "Modules\WillStrohl.LightboxGallery\WillStrohl.Modules.Lightbox.vbproj", "{BF44F3B0-07CB-47EE-8ED7-B501437E209D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.API.oEmbed", "Library\oEmbed\WillStrohl.oEmbed\WillStrohl.API.oEmbed.vbproj", "{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.API.oEmbed", "Library\oEmbed\WillStrohl.oEmbed\WillStrohl.API.oEmbed.vbproj", "{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNHangout", "Modules\DNNHangout\DNNHangout.csproj", "{304B5963-7E6B-4808-9B31-254CBFF00A0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.SkinObjects.PrismJS", "Skin Objects\WillStrohl.PrismJS\WillStrohl.SkinObjects.PrismJS.csproj", "{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration Files", "Configuration Files", "{B51AA4AF-EE33-49E1-B621-DF1BCD22A28C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Website\DotNetNuke.log4net.config = Website\DotNetNuke.log4net.config
+		README.md = README.md
+		Website\web.config = Website\web.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
