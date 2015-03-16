@@ -15,10 +15,7 @@ C:\Websites\Development\
 4. Create a new folder in the root:  _Website_
 5. Install DNN 7.3.4 into the Website folder just like you would for any other DNN site
 6. Update IIS and your local HOSTS file to point to http://dnndev.me
-7. Restore the database from the Assets folder over your database.
-8. The Host/Superuser login is "host" and "password".
-9. Review the pages to see what needs to get done.  Notes are on each page.
-10. Write code.
+7. Write code.
 
 ---
 
