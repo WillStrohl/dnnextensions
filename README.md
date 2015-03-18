@@ -74,8 +74,7 @@ necessary to work on the project.  There are more, but these are the only ones t
 
 ## Checking in Code
 
-Ordinarily, it would be best to branch the code and submit a pull request.  This will not be enforced for this 
-project. Feel free to check-in directly to master if you want.
+Please fork the project and submit a pull request.
 
 ## How to Build
 
