@@ -72,9 +72,15 @@ necessary to work on the project.  There are more, but these are the only ones t
 
 ---
 
-## Checking in Code
+## Pull Requests
 
-Please fork the project and submit a pull request.
+First, thank you! Every single moment you participate benefits a lot of people in the world.
+
+Here are a few ground rules:
+
+* Do not submit pull requests for more than one fix. Keep them small and focused.
+* Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
+* Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
 
 ## How to Build
 
