@@ -201,6 +201,7 @@ namespace WillStrohl.Modules.DNNHangout
              * BAD - https://plus.google.com/events/clhanescd7t9aibhmh236juii88
              * OK  - N6kZAEs7uQ4
              * OK  - http://www.youtube.com/watch?v=N6kZAEs7uQ4
+             * OK  - http://www.youtube.com/watch?v=N6kZAEs7uQ4&feature=youtu.be
              * OK  - http://youtu.be/N6kZAEs7uQ4
              * OK  - <iframe width="420" height="315" src="http://www.youtube.com/embed/N6kZAEs7uQ4" frameborder="0" allowfullscreen></iframe>
              */
