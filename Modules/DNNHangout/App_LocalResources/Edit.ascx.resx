@@ -136,11 +136,14 @@
     <value>Hours</value>
   </data>
   <data name="DNNHangoutHelp.Text" xml:space="preserve">
-    <value>&lt;p&gt;The following are examples of acceptable URL's and/or embed codes for the Google Hangout Address field. We'll only be saving the video ID though.&lt;/p&gt;
+    <value>&lt;p&gt;&lt;a href="https://plus.google.com/hangouts/onair" target="_blank"&gt;Start a Hangout: On Air&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The following are examples of acceptable URL's and/or embed codes for the Google Hangout Address field. We'll only be saving the video ID though.&lt;/p&gt;
 &lt;p&gt;Video ID: N6kZAEs7uQ4&lt;br /&gt;
 YouTube URL: http://www.youtube.com/watch?v=N6kZAEs7uQ4&lt;br /&gt;
 YouTube Short URL: http://youtu.be/N6kZAEs7uQ4&lt;br /&gt;
-Hangout Embed Code: &amp;lt;iframe width="420" height="315" src="http://www.youtube.com/embed/N6kZAEs7uQ4" frameborder="0" allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/p&gt;</value>
+Hangout Embed Code: &amp;lt;iframe width="420" height="315" src="http://www.youtube.com/embed/N6kZAEs7uQ4" frameborder="0" allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/DesktopModules/DNNHangout/Images/Help/Hangout-On-Air-01.png" target="_blank"&gt;Where do I find this before the hangout?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/DesktopModules/DNNHangout/Images/Help/Google-Hangout-Links.png" target="_blank"&gt;Where do I find this during the hangout?&lt;/a&gt;&lt;/p&gt;</value>
   </data>
   <data name="lblDescription.Help" xml:space="preserve">
     <value>Add the description of the event as you would like for visitors to see it above the hangout vdeo.</value>
