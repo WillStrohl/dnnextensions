@@ -39,7 +39,6 @@ namespace WillStrohl.Modules.DNNHangout
     /// -----------------------------------------------------------------------------
     public partial class Edit : DNNHangoutModuleBase
     {
-
         private const string DURATION_PATTERN = @"^\d+$";
 
         #region Event Handlers
@@ -206,11 +205,17 @@ namespace WillStrohl.Modules.DNNHangout
              * OK  - <iframe width="420" height="315" src="http://www.youtube.com/embed/N6kZAEs7uQ4" frameborder="0" allowfullscreen></iframe>
              */
 
-            // check youtube video id
-            if (Regex.IsMatch(value, @"^\w{11,11}$", RegexOptions.IgnoreCase))
+            // check youtube video id (and assign it)
+            result = Regex.IsMatch(value, @"^\w{11,11}$", RegexOptions.IgnoreCase);
+
+            // skip processing if we already have the ID
+            if (result) return result;
+
+            // clean the URL if it has additional querystring parameters
+            if (Regex.IsMatch(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*(\w{11,11})&\w+", RegexOptions.IgnoreCase))
             {
-                // matches video ID
-                result = true;
+                var index = value.IndexOf("&");
+                value = value.Substring(0, index);
             }
 
             // check known URL patterns
@@ -234,10 +239,13 @@ namespace WillStrohl.Modules.DNNHangout
                 }
             }
 
-            if (result)
-            {
-                result = IsValidVideoId(txtHangoutAddress.Text);
-            }
+            //if (result)
+            //{
+            //    // temporarily disabled until a new way is found to validate the google hangout ID
+            //    // all current methods found so far require OAuth 2.0 authenticate.
+            //    // this won't be done for now, due to the added complexity required to have an editor authenticate
+            //    result = IsValidVideoId(txtHangoutAddress.Text);
+            //}
 
             return result;
         }
@@ -252,9 +260,11 @@ namespace WillStrohl.Modules.DNNHangout
              * Reference: http://webapps.stackexchange.com/questions/54443/format-for-id-of-youtube-video?newreg=54e9ac9353cd4970a968feddeaa7510a
              */
 
+            var validationUrl = "http://gdata.youtube.com/feeds/api/videos/{0}";
+
             try
             {
-                var request = (HttpWebRequest) WebRequest.Create(string.Format("http://gdata.youtube.com/feeds/api/videos/{0}", videoId));
+                var request = (HttpWebRequest) WebRequest.Create(string.Format(validationUrl, videoId));
 
                 request.Method = "HEAD";
 
