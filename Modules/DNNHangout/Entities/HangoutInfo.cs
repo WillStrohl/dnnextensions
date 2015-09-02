@@ -11,13 +11,14 @@
 */
 
 using System;
+using Newtonsoft.Json;
+using WillStrohl.Modules.DNNHangout.Components;
 
 namespace WillStrohl.Modules.DNNHangout.Entities
 {
     [Serializable]
     public class HangoutInfo : IHangoutInfo
     {
-
         public int ContentItemId { get; set; }
 
         public string HangoutAddress { get; set; }
@@ -26,11 +27,11 @@ namespace WillStrohl.Modules.DNNHangout.Entities
         
         public string Description { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime StartDate { get; set; }
         
         public int Duration { get; set; }
         
         public DurationType DurationUnits { get; set; }
-
     }
 }

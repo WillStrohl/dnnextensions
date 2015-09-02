@@ -48,6 +48,9 @@
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Website\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -82,6 +85,7 @@
     <Compile Include="Edit.ascx.designer.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Components\DateTimeConverter.cs" />
     <Compile Include="Entities\DurationType.cs" />
     <Compile Include="Entities\IHangoutInfo.cs" />
     <Compile Include="Entities\HangoutInfo.cs" />

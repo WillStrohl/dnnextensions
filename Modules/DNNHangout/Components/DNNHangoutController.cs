@@ -12,19 +12,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.EnterpriseServices.Internal;
 using System.Linq;
-//using System.Xml;
 using System.Text.RegularExpressions;
 using System.Web;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Content;
 using DotNetNuke.Entities.Content.Common;
-using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Services.Localization;
-using DotNetNuke.Services.Search;
 using DotNetNuke.Services.Tokens;
 using WillStrohl.Modules.DNNHangout.Entities;
 
@@ -50,7 +46,6 @@ namespace WillStrohl.Modules.DNNHangout.Components
     /// -----------------------------------------------------------------------------
     public class DNNHangoutController //: IPortable, ISearchable, IUpgradeable
     {
-
         #region Constants
 
         public const string MODULE_TYPE_NAME = "WillStrohl.Modules.DNNHangout";
@@ -301,6 +296,16 @@ namespace WillStrohl.Modules.DNNHangout.Components
 
         #region Token Replacement
 
+        public void ClearCachedTemplate(int contentItemId)
+        {
+            var cachedTemplate = DataCache.GetCache(string.Format(TEMPLATE_CACHE_KEY_FORMAT, contentItemId));
+
+            if (cachedTemplate != null)
+            {
+                DataCache.RemoveCache(string.Format(TEMPLATE_CACHE_KEY_FORMAT, contentItemId));
+            }
+        }
+
         public string ReplaceTokens(string Template, HangoutInfo Hangout, PortalSettings Settings, int ModuleId, string LocalResourceFile)
         {
             var cachedTemplate = DataCache.GetCache(string.Format(TEMPLATE_CACHE_KEY_FORMAT, Hangout.ContentItemId));
@@ -311,17 +316,12 @@ namespace WillStrohl.Modules.DNNHangout.Components
                 return cachedTemplate.ToString();
             }
 
-            /*
-            * workaround for the JSON deserializer bug in DNN's NewtonSoft
-            */
-            Hangout.StartDate = Hangout.StartDate.AddHours(-7);
-
             // begin replacing tokens
             Template = Regex.Replace(Template, TOKEN_TITLE, Hangout.Title);
             Template = Regex.Replace(Template, TOKEN_ADDRESS, Hangout.HangoutAddress);
             Template = Regex.Replace(Template, TOKEN_DESCRIPTION, HttpUtility.HtmlDecode(Hangout.Description));
             Template = Regex.Replace(Template, TOKEN_DURATION, Hangout.Duration.ToString());
-            Template = Regex.Replace(Template, TOKEN_STARTDATE, Hangout.StartDate.ToString("MM/dd/yyyy hh:mm tt")); // todo: make this a setting
+            Template = Regex.Replace(Template, TOKEN_STARTDATE, Hangout.StartDate.ToLocalTime().ToString());
 
             if (Hangout.DurationUnits == DurationType.Minutes)
             {
@@ -329,28 +329,22 @@ namespace WillStrohl.Modules.DNNHangout.Components
             }
             else
             {
-                if (Hangout.Duration > 1)
-                {
-                    Template = Regex.Replace(Template, TOKEN_DURATIONUNITS, Localization.GetString("Hours.Text", LocalResourceFile));
-                }
-                else
-                {
-                    Template = Regex.Replace(Template, TOKEN_DURATIONUNITS, Localization.GetString("Hour.Text", LocalResourceFile));
-                }
+                Template = Regex.Replace(Template, TOKEN_DURATIONUNITS, Hangout.Duration > 1 ? Localization.GetString("Hours.Text", LocalResourceFile) : Localization.GetString("Hour.Text", LocalResourceFile));
             }
 
-            var tr = new TokenReplace();
-
-            tr.AccessingUser = UserController.GetCurrentUserInfo();
-            tr.DebugMessages = Settings.UserMode != PortalSettings.Mode.View;
-            tr.ModuleId = ModuleId;
-            tr.PortalSettings = Settings;
+            var tr = new TokenReplace
+            {
+                AccessingUser = UserController.GetCurrentUserInfo(),
+                DebugMessages = Settings.UserMode != PortalSettings.Mode.View,
+                ModuleId = ModuleId,
+                PortalSettings = Settings
+            };
 
             // replace DNN tokens
             var template = tr.ReplaceEnvironmentTokens(Template);
 
             // cache the template
-            DataCache.SetCache(string.Format(TEMPLATE_CACHE_KEY_FORMAT, Hangout.ContentItemId), template, DateTime.Now.AddMinutes(10));
+           DataCache.SetCache(string.Format(TEMPLATE_CACHE_KEY_FORMAT, Hangout.ContentItemId), template, DateTime.Now.AddMinutes(10));
 
             return template;
         }
@@ -447,7 +441,5 @@ namespace WillStrohl.Modules.DNNHangout.Components
         //}
 
         #endregion
-
     }
-
 }

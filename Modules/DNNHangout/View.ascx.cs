@@ -11,24 +11,14 @@
 */
 
 using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Web.UI;
-using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Users;
 using DotNetNuke.Security;
-using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Entities.Icons;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Services.Localization;
 using WillStrohl.Modules.DNNHangout.Components;
-using WillStrohl.Modules.DNNHangout.Entities;
 
 namespace WillStrohl.Modules.DNNHangout
 {
@@ -47,7 +37,6 @@ namespace WillStrohl.Modules.DNNHangout
     /// -----------------------------------------------------------------------------
     public partial class View : DNNHangoutModuleBase, IActionable
     {
-
         #region Private Members
 
         
@@ -88,16 +77,9 @@ namespace WillStrohl.Modules.DNNHangout
         {
             var template = string.Empty;
 
-            if (Settings.ContainsKey(DNNHangoutController.SETTINGS_TEMPLATE))
-            {
-                // use a saved template from settings
-                template = Settings[DNNHangoutController.SETTINGS_TEMPLATE].ToString();
-            }
-            else
-            {
-                // use a default template from RESX
-                template = Localization.GetString("DefaultTemplate.Text", LocalResourceFile.Replace("View", "Settings"));
-            }
+            template = Settings.ContainsKey(DNNHangoutController.SETTINGS_TEMPLATE) ? 
+                Settings[DNNHangoutController.SETTINGS_TEMPLATE].ToString() : 
+                Localization.GetString("DefaultTemplate.Text", LocalResourceFile.Replace("View", "Settings"));
 
             // replace tokens
             var ctlHangout = new DNNHangoutController();

@@ -62,12 +62,21 @@ namespace WillStrohl.Modules.DNNHangout
 
         protected void lnkUpdate_Click(object o, EventArgs e)
         {
-            if (Page.IsValid)
-            {
-                SaveHangout();
+            if (!Page.IsValid) return;
 
-                SendBackToPage();
-            }
+            SaveHangout();
+
+            ClearCache();
+
+            SendBackToPage();
+        }
+
+        private void ClearCache()
+        {
+            if (Hangout.ContentItemId <= Null.NullInteger) return;
+
+            var ctl = new DNNHangoutController();
+            ctl.ClearCachedTemplate(Hangout.ContentItemId);
         }
 
         protected void cvDurationValidate(object source, ServerValidateEventArgs args)
@@ -145,17 +154,10 @@ namespace WillStrohl.Modules.DNNHangout
                 txtDescription.Text = Hangout.Description;
                 txtDuration.Text = Hangout.Duration.ToString();
                 txtHangoutAddress.Text = Hangout.HangoutAddress;
-                txtStartDate.SelectedDate = Hangout.StartDate;
+                txtStartDate.SelectedDate = Hangout.StartDate.ToLocalTime();
                 txtTitle.Text = Hangout.Title;
 
-                if (Hangout.DurationUnits == DurationType.Minutes)
-                {
-                    ddlDurationUnits.SelectedIndex = 0;
-                }
-                else
-                {
-                    ddlDurationUnits.SelectedIndex = 1;
-                }
+                ddlDurationUnits.SelectedIndex = Hangout.DurationUnits == DurationType.Minutes ? 0 : 1;
             }
         }
 
@@ -301,7 +303,16 @@ namespace WillStrohl.Modules.DNNHangout
             hangout.Description = sec.InputFilter(txtDescription.Text.Trim(), PortalSecurity.FilterFlag.NoScripting);
             hangout.Duration = int.Parse(sec.InputFilter(txtDuration.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup), NumberStyles.Integer);
             hangout.HangoutAddress = sec.InputFilter(txtHangoutAddress.Text.Trim(), PortalSecurity.FilterFlag.NoScripting);
-            hangout.StartDate = txtStartDate.SelectedDate ?? DateTime.Now;
+            if (txtStartDate.SelectedDate.HasValue)
+            {
+                //hangout.StartDate = txtStartDate.SelectedDate.Value.ToUniversalTime();
+                hangout.StartDate = txtStartDate.SelectedDate.Value;
+            }
+            else
+            {
+                //hangout.StartDate = DateTime.Now.ToUniversalTime();
+                hangout.StartDate = DateTime.Now;
+            }
             hangout.Title = sec.InputFilter(txtTitle.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup);
 
             // determine the units to use
