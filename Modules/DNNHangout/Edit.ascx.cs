@@ -209,24 +209,24 @@ namespace WillStrohl.Modules.DNNHangout
              */
 
             // check youtube video id (and assign it)
-            result = Regex.IsMatch(value, @"^\w{11,11}$", RegexOptions.IgnoreCase);
+            result = Regex.IsMatch(value, @"^[\w\-]{11,11}$", RegexOptions.IgnoreCase);
 
             // skip processing if we already have the ID
             if (result) return result;
 
             // clean the URL if it has additional querystring parameters
-            if (Regex.IsMatch(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*(\w{11,11})&\w+", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*([\w\-]{11,11})&\w+", RegexOptions.IgnoreCase))
             {
                 var index = value.IndexOf("&");
                 value = value.Substring(0, index);
             }
 
             // check known URL patterns
-            if (Regex.IsMatch(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*(\w{11,11})$", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*([\w\-]{11,11})$", RegexOptions.IgnoreCase))
             {
                 // matches youtube URL
                 // extract video id
-                txtHangoutAddress.Text = Regex.Match(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*(\w{11,11})$", RegexOptions.IgnoreCase).Groups[5].Value;
+                txtHangoutAddress.Text = Regex.Match(value, @"^http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*([\w\-]{11,11})$", RegexOptions.IgnoreCase).Groups[5].Value;
                 result = true;
             }
 
@@ -234,10 +234,10 @@ namespace WillStrohl.Modules.DNNHangout
             if (Regex.IsMatch(value, @"^<iframe.+</iframe>$", RegexOptions.IgnoreCase))
             {
                 // matches iframe
-                if (Regex.IsMatch(value, @"http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*(\w{11,11})", RegexOptions.IgnoreCase))
+                if (Regex.IsMatch(value, @"http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*([\w\-]{11,11})", RegexOptions.IgnoreCase))
                 {
                     // extract video id
-                    txtHangoutAddress.Text = Regex.Match(value, @"http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*(\w{11,11})", RegexOptions.IgnoreCase).Groups[5].Value;
+                    txtHangoutAddress.Text = Regex.Match(value, @"http(s)*://(youtu\.be|(www\.)*youtube\.com)/(watch\?v=|embed/)*([\w\-]{11,11})", RegexOptions.IgnoreCase).Groups[5].Value;
                     result = true;
                 }
             }
