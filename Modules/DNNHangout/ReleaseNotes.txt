@@ -7,13 +7,12 @@
 	<h3>Version 01.00.02</h3>
 	<p><strong>Date Released:</strong> 09/01/2015</p>
 	<ul>
-		<li>Feature: Smart caching to improve perfomance on more active sites</li>
-		<li>Bug: Able to delete Hangout without error</li>
-		<li>Bug: Added missing branding icon</li>
-		<li>Technical Feature: Uses DNN Caching</li>
+		<li>Feature: <a href="https://github.com/hismightiness/dnnextensions/issues/46" target="_blank">Show the end user where to get the Google Hangout link information</a></li>
+		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/44" target="_blank">Can't save hangouts</a></li>
+		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/45" target="_blank">Updating a hangout doesn't save the hangout</a></li>
+		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/47" target="_blank">Issues saving hangouts with querystrings in the URL</a></li>
+		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/52" target="_blank">JSON serialization issue causes wrong date to be displayed</a></li>
 	</ul>
-
-	<p>Technical Note: A work around is in place to correct a time conversion issue present in the DNN's included NewtonSoft JSON.Net. It basically adds 7 hours to the time.</p>
 
 	<p>For more information about this, previous, and future releases of this module, <a href="http://dnnhangout.codeplex.com" target="_blank">visit the project website</a>.</p>
 
