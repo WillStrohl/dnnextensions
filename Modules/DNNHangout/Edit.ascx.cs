@@ -1,5 +1,5 @@
 ﻿/*
-' Copyright (c) 2014 Will Strohl
+' Copyright (c) 2015 Will Strohl
 '  All rights reserved.
 ' 
 ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
@@ -295,55 +295,33 @@ namespace WillStrohl.Modules.DNNHangout
             HangoutInfo hangout = null;
 
             // get an instance of the hangout (if necessary)
-            if (Hangout == null)
-            {
-                hangout = new HangoutInfo();
-            }
-            else
-            {
-                hangout = Hangout;
-            }
+            hangout = Hangout ?? new HangoutInfo();
 
             // populate the hangout with the user field values
             hangout.Description = sec.InputFilter(txtDescription.Text.Trim(), PortalSecurity.FilterFlag.NoScripting);
             hangout.Duration = int.Parse(sec.InputFilter(txtDuration.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup), NumberStyles.Integer);
             hangout.HangoutAddress = sec.InputFilter(txtHangoutAddress.Text.Trim(), PortalSecurity.FilterFlag.NoScripting);
-            hangout.StartDate = txtStartDate.SelectedDate != null ? txtStartDate.SelectedDate.Value : DateTime.Now;
+            hangout.StartDate = txtStartDate.SelectedDate ?? DateTime.Now;
             hangout.Title = sec.InputFilter(txtTitle.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup);
 
             // determine the units to use
-            if (ddlDurationUnits.SelectedIndex == 0)
-            {
-                hangout.DurationUnits = DurationType.Minutes;
-            }
-            else
-            {
-                hangout.DurationUnits = DurationType.Hours;
-            }
+            hangout.DurationUnits = ddlDurationUnits.SelectedIndex == 0 ? DurationType.Minutes : DurationType.Hours;
 
             var contentItemId = Null.NullInteger;
 
             // update or create the hangout
-            if (HangoutId > Null.NullInteger)
-            {
-                // update hangout
-                contentItemId = ctlHangout.UpdateContentItem(TabId, ModuleId, hangout.ContentItemId, hangout);
-            }
-            else
-            {
-                // new hangout
-                contentItemId = ctlHangout.CreateContentItem(TabId, ModuleId, hangout);
-            }
+            contentItemId = HangoutId > Null.NullInteger ? 
+                ctlHangout.UpdateContentItem(TabId, ModuleId, hangout.ContentItemId, hangout) : 
+                ctlHangout.CreateContentItem(TabId, ModuleId, hangout);
 
-            if (contentItemId > Null.NullInteger)
-            {
-                // update the module settings to set the default Google Hangout to show on the first page load
-                var ctlModule = new ModuleController();
+            if (contentItemId <= Null.NullInteger) return;
 
-                ctlModule.UpdateTabModuleSetting(TabModuleId, DNNHangoutController.SETTINGS_HANGOUT_ID,contentItemId.ToString());
+            // update the module settings to set the default Google Hangout to show on the first page load
+            var ctlModule = new ModuleController();
 
-                ModuleController.SynchronizeModule(ModuleId);
-            }
+            ctlModule.UpdateTabModuleSetting(TabModuleId, DNNHangoutController.SETTINGS_HANGOUT_ID,contentItemId.ToString());
+
+            ModuleController.SynchronizeModule(ModuleId);
         }
 
         private void DeleteHangout()

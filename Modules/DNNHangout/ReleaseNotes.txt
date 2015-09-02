@@ -5,7 +5,7 @@
 		For support, questions, or suggestions, please use the <a href="http://dnnhangout.codeplex.com" target="_blank">DNN Hangout</a> website.</p>
 
 	<h3>Version 01.00.02</h3>
-	<p><strong>Date Released:</strong> 08/28/2014</p>
+	<p><strong>Date Released:</strong> 09/01/2015</p>
 	<ul>
 		<li>Feature: Smart caching to improve perfomance on more active sites</li>
 		<li>Bug: Able to delete Hangout without error</li>

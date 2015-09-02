@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DNNHangout")]
-[assembly: AssemblyCopyright("Copyright © 2014 Will Strohl")]
+[assembly: AssemblyCopyright("Copyright © 2015 Will Strohl")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
