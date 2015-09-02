@@ -12,6 +12,7 @@
 		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/45" target="_blank">Updating a hangout doesn't save the hangout</a></li>
 		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/47" target="_blank">Issues saving hangouts with querystrings in the URL</a></li>
 		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/52" target="_blank">JSON serialization issue causes wrong date to be displayed</a></li>
+		<li>Bug: <a href="https://github.com/hismightiness/dnnextensions/issues/53" target="_blank">Module icon is broken</a></li>
 	</ul>
 
 	<p>For more information about this, previous, and future releases of this module, <a href="http://dnnhangout.codeplex.com" target="_blank">visit the project website</a>.</p>

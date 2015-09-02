@@ -73,7 +73,7 @@ namespace WillStrohl.Modules.DNNHangout
 
         private void ClearCache()
         {
-            if (Hangout.ContentItemId <= Null.NullInteger) return;
+            if (Hangout == null || Hangout.ContentItemId <= Null.NullInteger) return;
 
             var ctl = new DNNHangoutController();
             ctl.ClearCachedTemplate(Hangout.ContentItemId);

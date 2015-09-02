@@ -3,7 +3,7 @@
     <package name="DNNHangout" type="Module" version="01.00.02">
       <friendlyName>DNN Hangout</friendlyName>
       <description>Google Hangout module for DNN</description>
-      <iconFile>/DesktopModules/DNNHangout/Images/hangouts-icon.png</iconFile>
+      <iconFile>DesktopModules/DNNHangout/Images/hangouts-icon.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>WillStrohl.com</organization>
@@ -15,6 +15,7 @@
       <dependencies>
         <dependency type="CoreVersion">07.02.00</dependency>
       </dependencies>
+      <azureCompatible>true</azureCompatible>
       
       <components>
 
