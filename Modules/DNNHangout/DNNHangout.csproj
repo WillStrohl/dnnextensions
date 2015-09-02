@@ -103,6 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Edit.ascx" />
+    <Content Include="Images\Google-Hangouts-Logo.png" />
+    <Content Include="Images\hangouts-icon.png" />
+    <Content Include="Images\Help\Google-Hangout-Links.png" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
     <Content Include="ReleaseNotes.txt" />
