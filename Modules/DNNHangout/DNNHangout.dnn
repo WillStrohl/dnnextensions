@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="DNNHangout" type="Module" version="01.00.01">
+    <package name="DNNHangout" type="Module" version="01.00.02">
       <friendlyName>DNN Hangout</friendlyName>
       <description>Google Hangout module for DNN</description>
       <iconFile>/DesktopModules/DNNHangout/Images/hangouts-icon.png</iconFile>
