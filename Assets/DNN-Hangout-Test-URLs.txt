@@ -1,0 +1,17 @@
+TEST URLS FOR DNN HANGOUT MODULE
+
+https://talkgadget.google.com/hangouts/_/gskjpk2nuq4edsdgdqdb5pkkcea
+https://talkgadget.google.com/hangouts/_/gskjpk2nuq4edsdgdqdb5pkkcea
+https://plus.google.com/u/0/events/cc4lqfimr9kqdnjvv4i28uc4hps
+https://plus.google.com/u/0/events/cc4lqfimr9kqdnjvv4i28uc4hps
+https://plus.google.com/events/cc4lqfimr9kqdnjvv4i28uc4hps
+http://youtu.be/DjiUTrCr55I
+https://www.youtube.com/watch?v=DjiUTrCr55I&feature=youtu.be
+<iframe width="420" height="315" src="http://www.youtube.com/embed/DjiUTrCr55I" frameborder="0" allowfullscreen></iframe>
+https://plus.google.com/hangouts/_/hoaevent/AP36tYfWHlbwcMKVumGq6i8sPNoiX1VP3MxrN8qLnfSA2KQs1nc8Qg
+N6kZAEs7uQ4
+http://www.youtube.com/watch?v=N6kZAEs7uQ4
+http://youtu.be/N6kZAEs7uQ4
+<iframe width="420" height="315" src="http://www.youtube.com/embed/N6kZAEs7uQ4" frameborder="0" allowfullscreen></iframe>
+http://www.youtube.com/watch?v=6n-8SfANn8M
+<iframe width="560" height="315" src="//www.youtube.com/embed/6n-8SfANn8M" frameborder="0" allowfullscreen></iframe>
