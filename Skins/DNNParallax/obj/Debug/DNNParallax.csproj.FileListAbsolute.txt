@@ -1,9 +1,0 @@
-C:\Websites\Development\Skins\DNNParallax\bin\DNNParallax.dll
-C:\Websites\Development\Skins\DNNParallax\bin\DNNParallax.pdb
-C:\Websites\Development\Skins\DNNParallax\obj\Debug\DNNParallax.dll
-C:\Websites\Development\Skins\DNNParallax\obj\Debug\DNNParallax.pdb
-D:\vsprojects\WillStrohlDnnExtensions\Skins\DNNParallax\bin\DNNParallax.dll
-D:\vsprojects\WillStrohlDnnExtensions\Skins\DNNParallax\bin\DNNParallax.pdb
-D:\vsprojects\WillStrohlDnnExtensions\Skins\DNNParallax\obj\Debug\DNNParallax.csprojResolveAssemblyReference.cache
-D:\vsprojects\WillStrohlDnnExtensions\Skins\DNNParallax\obj\Debug\DNNParallax.dll
-D:\vsprojects\WillStrohlDnnExtensions\Skins\DNNParallax\obj\Debug\DNNParallax.pdb

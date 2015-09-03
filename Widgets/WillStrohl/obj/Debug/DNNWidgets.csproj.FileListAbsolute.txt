@@ -1,9 +1,0 @@
-C:\Websites\Development\Widgets\WillStrohl\bin\DNNWidgets.dll
-C:\Websites\Development\Widgets\WillStrohl\bin\DNNWidgets.pdb
-C:\Websites\Development\Widgets\WillStrohl\obj\Debug\DNNWidgets.dll
-C:\Websites\Development\Widgets\WillStrohl\obj\Debug\DNNWidgets.pdb
-D:\vsprojects\WillStrohlDnnExtensions\Widgets\WillStrohl\bin\DNNWidgets.dll
-D:\vsprojects\WillStrohlDnnExtensions\Widgets\WillStrohl\bin\DNNWidgets.pdb
-D:\vsprojects\WillStrohlDnnExtensions\Widgets\WillStrohl\obj\Debug\DNNWidgets.csprojResolveAssemblyReference.cache
-D:\vsprojects\WillStrohlDnnExtensions\Widgets\WillStrohl\obj\Debug\DNNWidgets.dll
-D:\vsprojects\WillStrohlDnnExtensions\Widgets\WillStrohl\obj\Debug\DNNWidgets.pdb
