@@ -39,8 +39,7 @@ Namespace WillStrohl.Modules.Injection
 
 #Region " Private Members "
 
-        Private Const c_Object As String = "data"
-        Private Const c_ObjectType As String = "WillStrohl.Modules.Injection"
+        Private Const c_AssemblyName As String = "WillStrohl.Modules.Injection.SqlDataProvider, WillStrohl.Modules.Injection"
 
 #End Region
 
@@ -56,11 +55,21 @@ Namespace WillStrohl.Modules.Injection
 
         ' dynamically create provider
         Private Shared Sub CreateProvider()
-            objProvider = CType(Framework.Reflection.CreateObject(c_Object, c_ObjectType, c_ObjectType), DataProvider)
+            'objProvider = CType(Framework.Reflection.CreateObject(c_Object, c_ObjectType, c_AssemblyName), DataProvider)
+
+            If objProvider Is Nothing Then
+                Dim objectType As Type = Type.GetType(c_AssemblyName)
+
+                objProvider = DirectCast(Activator.CreateInstance(objectType), DataProvider)
+                DataCache.SetCache(objectType.FullName, objProvider)
+            End If
         End Sub
 
         ' return the provider
         Public Shared Shadows Function Instance() As DataProvider
+            If objProvider Is Nothing Then
+                CreateProvider()
+            End If
             Return objProvider
         End Function
 

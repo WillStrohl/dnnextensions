@@ -120,55 +120,7 @@
               <name>WillStrohl.Modules.Injection.dll</name>
               <version>01.02.01</version>
             </assembly>
-            <assembly>
-              <name>WillStrohl.Modules.Injection.SqlDataProvider.dll</name>
-              <version>01.02.01</version>
-            </assembly>
           </assemblies>
-        </component>
-        <component type="File">
-          <files>
-            <basePath>DesktopModules\WillStrohl.Injection</basePath>
-            <file>
-              <name>WillStrohl.Injection.dnn</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.01.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.02.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.03.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.04.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.01.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.02.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.02.01.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>Uninstall.SqlDataProvider</name>
-            </file>
-          </files>
         </component>
         <component type="ResourceFile">
           <resourceFiles>

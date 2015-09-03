@@ -164,6 +164,7 @@
     <Compile Include="Entities\InjectionInfoCollection.vb" />
     <Compile Include="Entities\InjectionInfoMembers.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.vb" />
     <Compile Include="ViewInjection.ascx.designer.vb">
       <DependentUpon>ViewInjection.ascx</DependentUpon>
     </Compile>
@@ -197,10 +198,20 @@
     <Content Include="App_LocalResources\EditInjections.ascx.resx" />
     <Content Include="App_LocalResources\ViewInjection.ascx.resx" />
     <Content Include="EditInjections.ascx" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\WillStrohl.Modules.Injection.SqlDataProvider.vbproj" />
     <Content Include="releasenotes.txt" />
     <Content Include="ViewInjection.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.02.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.03.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.04.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.01.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.02.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.02.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <None Include="WillStrohl.Injection.dnn" />
   </ItemGroup>
   <ItemGroup>
