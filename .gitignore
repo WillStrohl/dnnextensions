@@ -21,6 +21,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# Cleanup project results
+*.[Ff]ile[Ll]ist[Aa]bsolute.txt
+
 # Roslyn cache directories
 *.ide/
 
@@ -161,7 +164,6 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
-*.FileListAbsolute.txt
 
 # RIA/Silverlight projects
 Generated_Code/
