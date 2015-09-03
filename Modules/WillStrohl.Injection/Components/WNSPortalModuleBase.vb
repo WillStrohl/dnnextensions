@@ -80,7 +80,7 @@ Namespace WillStrohl.Modules.Injection
 
         End Function
 
-        Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Private Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
             ' request that the DNN framework load the jQuery script into the markup
             JavaScript.RequestRegistration(CommonJs.DnnPlugins)

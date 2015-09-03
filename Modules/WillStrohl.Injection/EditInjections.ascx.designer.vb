@@ -48,7 +48,7 @@ Namespace WillStrohl.Modules.Injection
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblName As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblName As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''txtName control.
@@ -84,7 +84,7 @@ Namespace WillStrohl.Modules.Injection
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblInject As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblInject As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''radInject control.
@@ -102,7 +102,7 @@ Namespace WillStrohl.Modules.Injection
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblContent As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblContent As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''txtContent control.
@@ -129,7 +129,7 @@ Namespace WillStrohl.Modules.Injection
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblEnabled As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblEnabled As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''chkEnabled control.
@@ -183,7 +183,7 @@ Namespace WillStrohl.Modules.Injection
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblNoRecords As Global.System.Web.UI.WebControls.Label
+        Protected WithEvents lblNoRecords As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
         '''<summary>
         '''dlInjection control.

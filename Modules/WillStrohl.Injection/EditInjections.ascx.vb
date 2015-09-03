@@ -219,12 +219,9 @@ Namespace WillStrohl.Modules.Injection
                 End With
                 Me.dlInjection.Visible = True
                 Me.lblNoRecords.Visible = False
-                'Me.lnkAddNewInjection.Visible = False
             Else
                 Me.dlInjection.Visible = False
-                Me.lblNoRecords.Text = Me.GetLocalizedString("lblNoRecords.Text")
                 Me.lblNoRecords.Visible = True
-                'Me.lnkAddNewInjection.Visible = True
             End If
 
             Me.txtName.Attributes.Add("onfocus", String.Concat("if (this.value == '", Me.GetLocalizedString("txtName.Text"), "') { this.value = ''; }"))

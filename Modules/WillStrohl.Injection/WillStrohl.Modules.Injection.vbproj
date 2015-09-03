@@ -105,9 +105,11 @@
   <ItemGroup>
     <Reference Include="DotNetNuke">
       <HintPath>..\..\References\DotNetNuke\DotNetNuke.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DotNetNuke.Web">
       <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
