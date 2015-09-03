@@ -8,18 +8,18 @@ Author: Will Strohl
 E-Mail: will.strohl@gmail.com
 Website: http://www.willstrohl.com
 
-Copyright 2009 Will Strohl
+Copyright 2009-2015 Will Strohl
 
 Release Notes:
   Increases the size of the injection content field, and shores up some DB inconsistencies.
 
 */
 
-IF EXISTS (SELECT 1 FROM SYSINDEXES WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_injectcontent')
+IF EXISTS (SELECT 1 FROM [SYSINDEXES] WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_injectcontent')
 	DROP INDEX [IX_{objectQualifier}wns_inj_injection_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection]
 GO
 
-IF EXISTS (SELECT 1 FROM SYSINDEXES WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_moduleid_injectcontent')
+IF EXISTS (SELECT 1 FROM [SYSINDEXES] WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_moduleid_injectcontent')
 	DROP INDEX [IX_{objectQualifier}wns_inj_injection_moduleid_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection]
 GO
 

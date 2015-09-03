@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection" type="Module" version="1.2.1">
+    <package name="WillStrohl.Injection" type="Module" version="02.00.00">
       <friendlyName>Content Injection</friendlyName>
       <description>
         <![CDATA[<p>This is a content injection module, written by Will Strohl. Its purpose is to allow you to inject markup into the header or footer of the page.</p>]]>
@@ -63,7 +63,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.02.01</version>
+              <version>02.00.00</version>
             </script>
           </scripts>
         </component>
@@ -118,7 +118,7 @@
             <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.Injection.dll</name>
-              <version>01.02.01</version>
+              <version>02.00.00</version>
             </assembly>
           </assemblies>
         </component>

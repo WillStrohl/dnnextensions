@@ -8,14 +8,14 @@ Author: Will Strohl
 E-Mail: will.strohl@gmail.com
 Website: http://www.willstrohl.com
 
-Copyright 2009 Will Strohl
+Copyright 2009-2015 Will Strohl
 
 Release Notes:
   This update patches SQL problems that were created.
 
 */
 
-IF EXISTS(SELECT 1 FROM [sysindexes] WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_injectcontent')
+IF EXISTS(SELECT 1 FROM [SYSINDEXES] WHERE [name] = N'IX_{objectQualifier}wns_inj_injection_injectcontent')
 BEGIN
 	DROP INDEX [IX_{objectQualifier}wns_inj_injection_injectcontent] ON {databaseOwner}[{objectQualifier}wns_inj_injection]
 END

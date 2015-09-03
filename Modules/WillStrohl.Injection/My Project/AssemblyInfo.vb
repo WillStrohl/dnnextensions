@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Will Strohl")> 
 <Assembly: AssemblyProduct("http://www.willstrohl.com")> 
-<Assembly: AssemblyCopyright("Copyright 2009-2013 Will Strohl")> 
+<Assembly: AssemblyCopyright("Copyright 2009-2015 Will Strohl")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: CLSCompliant(True)> 
 
@@ -30,7 +30,7 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("01.02.01")> 
+<Assembly: AssemblyVersion("02.00.00")> 
 
 <Assembly: ComVisibleAttribute(False)> 
-<Assembly: AssemblyFileVersionAttribute("01.02.01")> 
+<Assembly: AssemblyFileVersionAttribute("02.00.00")> 
