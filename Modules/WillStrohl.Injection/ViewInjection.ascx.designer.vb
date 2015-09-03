@@ -13,14 +13,5 @@ Option Explicit On
 Namespace WillStrohl.Modules.Injection
 
     Partial Public Class ViewInjection
-
-        '''<summary>
-        '''ManageSettings control.
-        '''</summary>
-        '''<remarks>
-        '''Auto-generated field.
-        '''To modify move field declaration from designer file to code-behind file.
-        '''</remarks>
-        Protected WithEvents ManageSettings As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     End Class
 End Namespace

@@ -87,7 +87,6 @@ Namespace WillStrohl.Modules.Injection
                     ' If IsEditable, then the visitor has edit permissions to the module, is 
                     ' currently logged in, and the portal is in edit mode.
                     AddModuleMessage(Me, Me.GetLocalizedString("InjectionInfo.Text"), ModuleMessageType.BlueInfo)
-                    Me.ManageSettings.InnerHtml = String.Format(Me.GetLocalizedString("ManageSettings.Text"), Me.EditInjectionUrl)
                 Else
                     ' hide the module container (and the rest of the module as well)
                     Me.ContainerControl.Visible = False
