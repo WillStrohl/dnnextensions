@@ -164,7 +164,7 @@
     <Compile Include="Entities\InjectionInfoCollection.vb" />
     <Compile Include="Entities\InjectionInfoMembers.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.vb" />
+    <Compile Include="Components\SqlDataProvider.vb" />
     <Compile Include="ViewInjection.ascx.designer.vb">
       <DependentUpon>ViewInjection.ascx</DependentUpon>
     </Compile>
@@ -191,6 +191,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="02.00.00.txt" />
     <Content Include="License.txt" />
     <Content Include="Module.css" />
   </ItemGroup>
@@ -198,7 +199,6 @@
     <Content Include="App_LocalResources\EditInjections.ascx.resx" />
     <Content Include="App_LocalResources\ViewInjection.ascx.resx" />
     <Content Include="EditInjections.ascx" />
-    <Content Include="Providers\DataProviders\SqlDataProvider\WillStrohl.Modules.Injection.SqlDataProvider.vbproj" />
     <Content Include="releasenotes.txt" />
     <Content Include="ViewInjection.ascx" />
   </ItemGroup>
