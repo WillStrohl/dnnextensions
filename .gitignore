@@ -109,6 +109,9 @@ _NCrunch_*
 *.mm.*
 AutoTest.Net/
 
+#GhostDoc
+*.[Gg]host[Dd]oc.xml
+
 # Web workbench (sass)
 .sass-cache/
 
