@@ -1,6 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.Injection", "WillStrohl.Modules.Injection.vbproj", "{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.Injection.Converted", "WillStrohl.Modules.Injection.Converted.csproj", "{35118921-95CD-4421-BB1A-1354DDEECEFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9B9FC2D-2D76-4446-897C-BA9E7B68EB0E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

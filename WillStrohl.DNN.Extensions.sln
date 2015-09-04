@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGLabsMetaData", "Modules\UGLabsMetaData\UGLabsMetaData.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{70FB7EDF-2E12-405F-B9CD-8A437E96FB11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGLabsMyGroups", "Modules\UGLabsMyGroups\UGLabsMyGroups.csproj", "{520F475F-9F3D-4826-BDC4-7B2C903BCE97}"
 EndProject
@@ -11,13 +11,31 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.OpenGrap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohlDisqus", "Modules\WillStrohlDisqus\WillStrohlDisqus.csproj", "{58D56768-8690-41D3-B30F-4003D12264C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{70FB7EDF-2E12-405F-B9CD-8A437E96FB11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGLabsMetaData", "Modules\UGLabsMetaData\UGLabsMetaData.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNuke.Media", "Modules\Media\DotNetNuke.Media.csproj", "{176CE33F-FF0C-451A-8A38-1DE475B00A78}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.ContactCollector", "Modules\WillStrohl.ContactCollector\WillStrohl.Modules.ContactCollector.vbproj", "{77A2EDA2-22F4-41A2-91F3-F60CF77A1EB0}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.ContentSlider", "Modules\WillStrohl.ContentSlider\WillStrohl.Modules.ContentSlider.vbproj", "{6339C785-AABA-464F-8193-91B4F8A5610D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.Modules.Injection", "Modules\WillStrohl.Injection\WillStrohl.Modules.Injection.csproj", "{35118921-95CD-4421-BB1A-1354DDEECEFB}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.Lightbox", "Modules\WillStrohl.LightboxGallery\WillStrohl.Modules.Lightbox.vbproj", "{BF44F3B0-07CB-47EE-8ED7-B501437E209D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNHangout", "Modules\DNNHangout\DNNHangout.csproj", "{304B5963-7E6B-4808-9B31-254CBFF00A0D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skin Objects", "Skin Objects", "{7F8EF0B3-E868-4303-9A29-79DE3CF277CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.SkinObjects.DemoSO", "Skin Objects\WillStrohl.DemoSO\WillStrohl.SkinObjects.DemoSO.csproj", "{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.SkinObjects.PrismJS", "Skin Objects\WillStrohl.PrismJS\WillStrohl.SkinObjects.PrismJS.csproj", "{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skins", "Skins", "{EAE79EDB-A03E-445B-AF45-8508AB5CB551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNParallax", "Skins\DNNParallax\DNNParallax.csproj", "{20B1F85D-D99E-4D51-9D64-E94127E9989C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureGravity", "Skins\FutureGravity\FutureGravity.csproj", "{3AA05F81-F470-434B-81D4-CF65DA69CD5E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Widgets", "Widgets", "{C137B0AB-EE66-482B-B3A6-EADD2E616208}"
 EndProject
@@ -27,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduled Jobs", "Scheduled
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{94A23A1D-1AD4-4AC9-953E-E5205F980512}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.API.oEmbed", "Library\oEmbed\WillStrohl.oEmbed\WillStrohl.API.oEmbed.vbproj", "{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Files", "Build Files", "{F84D698C-3163-472D-95E9-EC36712D597B}"
 	ProjectSection(SolutionItems) = preProject
 		Build\ModulePackage.targets = Build\ModulePackage.targets
@@ -34,26 +54,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Files", "Build Files"
 		Build\SkinPackage.targets = Build\SkinPackage.targets
 		Build\WidgetPackage.targets = Build\WidgetPackage.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNParallax", "Skins\DNNParallax\DNNParallax.csproj", "{20B1F85D-D99E-4D51-9D64-E94127E9989C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureGravity", "Skins\FutureGravity\FutureGravity.csproj", "{3AA05F81-F470-434B-81D4-CF65DA69CD5E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNuke.Media", "Modules\Media\DotNetNuke.Media.csproj", "{176CE33F-FF0C-451A-8A38-1DE475B00A78}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.ContactCollector", "Modules\WillStrohl.ContactCollector\WillStrohl.Modules.ContactCollector.vbproj", "{77A2EDA2-22F4-41A2-91F3-F60CF77A1EB0}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.ContentSlider", "Modules\WillStrohl.ContentSlider\WillStrohl.Modules.ContentSlider.vbproj", "{6339C785-AABA-464F-8193-91B4F8A5610D}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.Injection", "Modules\WillStrohl.Injection\WillStrohl.Modules.Injection.vbproj", "{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.Modules.Lightbox", "Modules\WillStrohl.LightboxGallery\WillStrohl.Modules.Lightbox.vbproj", "{BF44F3B0-07CB-47EE-8ED7-B501437E209D}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WillStrohl.API.oEmbed", "Library\oEmbed\WillStrohl.oEmbed\WillStrohl.API.oEmbed.vbproj", "{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNHangout", "Modules\DNNHangout\DNNHangout.csproj", "{304B5963-7E6B-4808-9B31-254CBFF00A0D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillStrohl.SkinObjects.PrismJS", "Skin Objects\WillStrohl.PrismJS\WillStrohl.SkinObjects.PrismJS.csproj", "{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration Files", "Configuration Files", "{B51AA4AF-EE33-49E1-B621-DF1BCD22A28C}"
 	ProjectSection(SolutionItems) = preProject
@@ -69,10 +69,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Release|Any CPU.Build.0 = Release|Any CPU
 		{520F475F-9F3D-4826-BDC4-7B2C903BCE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{520F475F-9F3D-4826-BDC4-7B2C903BCE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{520F475F-9F3D-4826-BDC4-7B2C903BCE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,22 +85,10 @@ Global
 		{58D56768-8690-41D3-B30F-4003D12264C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58D56768-8690-41D3-B30F-4003D12264C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58D56768-8690-41D3-B30F-4003D12264C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D2DB282-5F48-44AB-9426-32E063049151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D2DB282-5F48-44AB-9426-32E063049151}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D2DB282-5F48-44AB-9426-32E063049151}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D2DB282-5F48-44AB-9426-32E063049151}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Release|Any CPU.Build.0 = Release|Any CPU
 		{176CE33F-FF0C-451A-8A38-1DE475B00A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{176CE33F-FF0C-451A-8A38-1DE475B00A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{176CE33F-FF0C-451A-8A38-1DE475B00A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -117,26 +101,42 @@ Global
 		{6339C785-AABA-464F-8193-91B4F8A5610D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6339C785-AABA-464F-8193-91B4F8A5610D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6339C785-AABA-464F-8193-91B4F8A5610D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35118921-95CD-4421-BB1A-1354DDEECEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF44F3B0-07CB-47EE-8ED7-B501437E209D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF44F3B0-07CB-47EE-8ED7-B501437E209D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF44F3B0-07CB-47EE-8ED7-B501437E209D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF44F3B0-07CB-47EE-8ED7-B501437E209D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{304B5963-7E6B-4808-9B31-254CBFF00A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{304B5963-7E6B-4808-9B31-254CBFF00A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{304B5963-7E6B-4808-9B31-254CBFF00A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{304B5963-7E6B-4808-9B31-254CBFF00A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38}.Release|Any CPU.Build.0 = Release|Any CPU
 		{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{977F30FD-2F4D-4CFA-A088-5F7B53FB1BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B1F85D-D99E-4D51-9D64-E94127E9989C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA05F81-F470-434B-81D4-CF65DA69CD5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2DB282-5F48-44AB-9426-32E063049151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2DB282-5F48-44AB-9426-32E063049151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2DB282-5F48-44AB-9426-32E063049151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2DB282-5F48-44AB-9426-32E063049151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD55E7E-00B4-4AA5-BE3B-991905BFD35C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,7 +150,7 @@ Global
 		{176CE33F-FF0C-451A-8A38-1DE475B00A78} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{77A2EDA2-22F4-41A2-91F3-F60CF77A1EB0} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{6339C785-AABA-464F-8193-91B4F8A5610D} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
-		{0EDEA79C-2556-4B1C-8A7B-4640D50D1DBD} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
+		{35118921-95CD-4421-BB1A-1354DDEECEFB} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{BF44F3B0-07CB-47EE-8ED7-B501437E209D} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{304B5963-7E6B-4808-9B31-254CBFF00A0D} = {70FB7EDF-2E12-405F-B9CD-8A437E96FB11}
 		{7C3B6D5A-2AA5-4650-8ACC-91C5E9010A38} = {7F8EF0B3-E868-4303-9A29-79DE3CF277CF}

@@ -1,1 +1,1 @@
-﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="ViewInjection.ascx.vb" Inherits="WillStrohl.Modules.Injection.ViewInjection" %>
+﻿<%@ Control Language="c#" AutoEventWireup="false" CodeBehind="ViewInjection.ascx.cs" Inherits="WillStrohl.Modules.Injection.ViewInjection" %>

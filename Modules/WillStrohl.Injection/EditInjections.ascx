@@ -1,4 +1,4 @@
-﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="EditInjections.ascx.vb" Inherits="WillStrohl.Modules.Injection.EditInjections" %>
+﻿<%@ Control AutoEventWireup="false" CodeBehind="EditInjections.ascx.cs" Inherits="WillStrohl.Modules.Injection.EditInjections" Language="C#" %>
 <%@ Import Namespace="DotNetNuke.Services.Localization" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <%@ Register TagPrefix="dnnweb" Assembly="DotNetNuke.Web" Namespace="DotNetNuke.Web.UI.WebControls" %>
@@ -8,7 +8,7 @@
         <asp:ValidationSummary ID="vsAddNew" runat="server" DisplayMode="BulletList" ValidationGroup="AddNew" CssClass="dnnFormMessage dnnFormValidationSummary" />
     </div>
     <div id="dnnEditEntry" class="dnnEditEntry dnnForm dnnClear">
-        <h2 id="dnnPanel-h2Injection" class="dnnFormSectionHead"><a href="" class="dnnLabelExpanded"><%= Me.GetLocalizedString("Injection.Text")%></a></h2>
+        <h2 id="dnnPanel-h2Injection" class="dnnFormSectionHead"><a href="" class="dnnLabelExpanded"><%= GetLocalizedString("Injection.Text")%></a></h2>
         <fieldset id="fsInjection">
             <div class="dnnFormItem">
                 <dnn:Label ID="lblName" runat="server" ResourceKey="lblName" ControlName="txtName" Suffix=":" />
@@ -35,9 +35,9 @@
             </div>
         </fieldset>
         <div class="dnnFormItem">
-            <asp:LinkButton ID="cmdAdd" runat="server" CssClass="dnnPrimaryAction" ValidationGroup="AddNew" />&nbsp; 
-            <asp:LinkButton ID="cmdDelete" runat="server" CausesValidation="false" CssClass="dnnSecondaryAction wns-DeleteLink" />&nbsp; 
-            <asp:LinkButton ID="cmdCancel" runat="server" CausesValidation="false" CssClass="dnnSecondaryAction" />
+            <asp:LinkButton ID="cmdAdd" runat="server" CssClass="dnnPrimaryAction" ValidationGroup="AddNew" OnClick="cmdAdd_Click" />&nbsp; 
+            <asp:LinkButton ID="cmdDelete" runat="server" CausesValidation="false" CssClass="dnnSecondaryAction wns-DeleteLink" OnClick="cmdDelete_Click" />&nbsp; 
+            <asp:LinkButton ID="cmdCancel" runat="server" CausesValidation="false" CssClass="dnnSecondaryAction" OnClick="cmdReturn_Click" />
         </div>
     </div>
 </asp:Panel>
@@ -45,15 +45,15 @@
     <div runat="server" ID="lblNoRecords" runat="server" CssClass="dnnFormMessage dnnFormInfo">
         <%=GetLocalizedString("lblNoRecords.Text")%>
     </div>
-    <asp:DataList ID="dlInjection" runat="server" DataKeyField="InjectionId" CssClass="wns_inj_fullwidth">
+    <asp:DataList ID="dlInjection" runat="server" DataKeyField="InjectionId" CssClass="wns_inj_fullwidth" OnItemCommand="dlInjection_ItemCommand">
         <HeaderTemplate>
             <table cellspacing="0" cellpadding="0" class="dnnGrid wns_inj_injectiontable wns_inj_border" summary="WillStrohl Content Injection Module Management Table Header">
                 <tr class="dnnGridHeader wns_inj_header">
-                    <td class="wns_inj_col_edit wns_inj_borderbottom"><%=Me.GetLocalizedString("dlInjection.Header.Edit")%></td>
-                    <td class="wns_inj_col_editlarge wns_inj_borderbottom"><%=Me.GetLocalizedString("dlInjection.Header.InjectTop")%></td>
-                    <td class="wns_inj_col_editlarge wns_inj_borderbottom"><%=Me.GetLocalizedString("dlInjection.Header.Enabled")%></td>
-                    <td class="wns_inj_borderbottom"><%=Me.GetLocalizedString("dlInjection.Header.Name")%></td>
-                    <td class="wns_inj_col_editmove wns_inj_borderbottom"><%=Me.GetLocalizedString("dlInjection.Header.Move")%></td>
+                    <td class="wns_inj_col_edit wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Edit")%></td>
+                    <td class="wns_inj_col_editlarge wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.InjectTop")%></td>
+                    <td class="wns_inj_col_editlarge wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Enabled")%></td>
+                    <td class="wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Name")%></td>
+                    <td class="wns_inj_col_editmove wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Move")%></td>
                 </tr>
         </HeaderTemplate>
         <ItemTemplate>
@@ -61,12 +61,12 @@
                 <td class="wns_inj_col_edit">
                     <asp:ImageButton ID="imgEdit" runat="server" ImageUrl="~/Icons/Sigma/Edit_16X16_Standard.png" CommandName="Edit" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" />
                 </td>
-                <td class="wns_inj_col_editlarge"><asp:label ID="lblTop" runat="server" Text='<%#Eval("InjectTop").ToString%>' /></td>
-                <td class="wns_inj_col_editlarge"><img src='<%#Me.GetEnabledImage(Eval("IsEnabled"))%>' alt='<%#Me.GetEnabledImageAltText(Eval("IsEnabled"))%>' /></td>
+                <td class="wns_inj_col_editlarge"><asp:label ID="lblTop" runat="server" Text='<%#Eval("InjectTop").ToString()%>' /></td>
+                <td class="wns_inj_col_editlarge"><img src='<%#GetEnabledImage(Eval("IsEnabled"))%>' alt='<%#GetEnabledImageAltText(Eval("IsEnabled"))%>' /></td>
                 <td><asp:label ID="lblName" runat="server" Text='<%#Eval("InjectName")%>' /></td>
                 <td class="wns_inj_col_editmove">
-                    <div class="dnnLeft wns_inj_left wns_inj_col_edit"><asp:ImageButton ID="imgMoveUp" runat="server" ImageUrl="~/Icons/Sigma/Up_16X16_Standard.png" CommandName="MoveUp" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#Me.CommandUpVisible(Eval("InjectionId"))%>' /></div> 
-                    <div class="dnnLeft wns_inj_right wns_inj_col_edit"><asp:ImageButton ID="imgMoveDown" runat="server" ImageUrl="~/Icons/Sigma/Dn_16X16_Standard.png" CommandName="MoveDown" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#Me.CommandDownVisible(Eval("InjectionId"))%>' /></div>
+                    <div class="dnnLeft wns_inj_left wns_inj_col_edit"><asp:ImageButton ID="imgMoveUp" runat="server" ImageUrl="~/Icons/Sigma/Up_16X16_Standard.png" CommandName="MoveUp" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#CommandUpVisible(Eval("InjectionId"))%>' /></div> 
+                    <div class="dnnLeft wns_inj_right wns_inj_col_edit"><asp:ImageButton ID="imgMoveDown" runat="server" ImageUrl="~/Icons/Sigma/Dn_16X16_Standard.png" CommandName="MoveDown" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#CommandDownVisible(Eval("InjectionId"))%>' /></div>
                 </td>
             </tr>
         </ItemTemplate>
@@ -75,12 +75,12 @@
                 <td class="wns_inj_col_edit">
                     <asp:ImageButton ID="imgEdit" runat="server" ImageUrl="~/Icons/Sigma/Edit_16X16_Standard.png" CommandName="Edit" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" />
                 </td>
-                <td class="wns_inj_col_editlarge"><asp:label ID="lblTop" runat="server" Text='<%#Eval("InjectTop").ToString%>' /></td>
-                <td class="wns_inj_col_editlarge"><img src='<%#Me.GetEnabledImage(Eval("IsEnabled"))%>' alt='<%#Me.GetEnabledImageAltText(Eval("IsEnabled"))%>' /></td>
+                <td class="wns_inj_col_editlarge"><asp:label ID="lblTop" runat="server" Text='<%#Eval("InjectTop").ToString()%>' /></td>
+                <td class="wns_inj_col_editlarge"><img src='<%#GetEnabledImage(Eval("IsEnabled"))%>' alt='<%#GetEnabledImageAltText(Eval("IsEnabled"))%>' /></td>
                 <td><asp:label ID="lblName" runat="server" Text='<%#Eval("InjectName")%>' /></td>
                 <td class="wns_inj_col_editmove">
-                    <div class="dnnLeft wns_inj_left wns_inj_col_edit"><asp:ImageButton ID="imgMoveUp" runat="server" ImageUrl="~/Icons/Sigma/Up_16X16_Standard.png" CommandName="MoveUp" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#Me.CommandUpVisible(Eval("InjectionId"))%>' /></div> 
-                    <div class="dnnLeft wns_inj_right wns_inj_col_edit"><asp:ImageButton ID="imgMoveDown" runat="server" ImageUrl="~/Icons/Sigma/Dn_16X16_Standard.png" CommandName="MoveDown" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#Me.CommandDownVisible(Eval("InjectionId"))%>' /></div>
+                    <div class="dnnLeft wns_inj_left wns_inj_col_edit"><asp:ImageButton ID="imgMoveUp" runat="server" ImageUrl="~/Icons/Sigma/Up_16X16_Standard.png" CommandName="MoveUp" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#CommandUpVisible(Eval("InjectionId"))%>' /></div> 
+                    <div class="dnnLeft wns_inj_right wns_inj_col_edit"><asp:ImageButton ID="imgMoveDown" runat="server" ImageUrl="~/Icons/Sigma/Dn_16X16_Standard.png" CommandName="MoveDown" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#CommandDownVisible(Eval("InjectionId"))%>' /></div>
                 </td>
             </tr>
         </AlternatingItemTemplate>
@@ -89,8 +89,8 @@
         </FooterTemplate>
     </asp:DataList>
     <div id="divCommand" class="dnnClear">
-        <asp:LinkButton ID="lnkAddNewInjection" runat="server" CommandName="AddNew" CssClass="dnnPrimaryAction" CausesValidation="false" />&nbsp; 
-        <asp:LinkButton ID="cmdReturn" runat="server" CausesValidation="false" CssClass="dnnSecondaryAction" />
+        <asp:LinkButton ID="lnkAddNewInjection" runat="server" CommandName="AddNew" CssClass="dnnPrimaryAction" CausesValidation="false" OnClick="lnkAddNewInjection_Click" />&nbsp; 
+        <asp:LinkButton ID="cmdReturn" runat="server" CausesValidation="false" CssClass="dnnSecondaryAction" OnClick="cmdReturn_Click" />
     </div>
 </asp:Panel>
 <script language="javascript" type="text/javascript">/*<![CDATA[*/

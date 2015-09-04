@@ -1,0 +1,109 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+Injection Module for DotNetNuke
+Version: 02.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2009-2015 Will Strohl
+
+Release Notes:
+  Added CustomProperties property.
+
+*/
+
+IF NOT EXISTS (SELECT 1 FROM {databaseOwner}[syscolumns] c JOIN {databaseOwner}[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'custom_properties' AND o.[name] = '{objectQualifier}wns_inj_injection')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] 
+    ADD [custom_properties] NVARCHAR(MAX) NULL
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_AddInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_AddInjectionContent] 
+	@ModuleId INT, @InjectTop BIT, @InjectName NVARCHAR(50), @InjectContent NVARCHAR(MAX), @IsEnabled BIT, @OrderShown INT, @CustomProperties NVARCHAR(MAX) 
+AS 
+BEGIN 
+	SET NOCOUNT ON
+	INSERT INTO {databaseOwner}[{objectQualifier}wns_inj_injection] ([module_id],[inject_top],[inject_name],[inject_content],[is_enabled],[order_shown],[custom_properties]) 
+	VALUES (@ModuleId, @InjectTop, @InjectName, @InjectContent, @IsEnabled, @OrderShown, @CustomProperties)
+	SELECT SCOPE_IDENTITY()
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_UpdateInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_UpdateInjectionContent] 
+	@InjectionId INT, @ModuleId INT, @InjectTop BIT, @InjectName NVARCHAR(50), @InjectContent NVARCHAR(MAX), @IsEnabled BIT, @OrderShown INT, @CustomProperties NVARCHAR(MAX) 
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE {databaseOwner}[{objectQualifier}wns_inj_injection] SET 
+		[module_id] = @ModuleId, 
+		[inject_top] = @InjectTop, 
+		[inject_name] = @InjectName, 
+		[inject_content] = @InjectContent, 
+		[is_enabled] = @IsEnabled, 
+		[order_shown] = @OrderShown, 
+		[custom_properties] = @CustomProperties
+	WHERE [injection_id] = @InjectionId
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContents') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents];
+
+SET QUOTED_IDENTIFIER ON;
+GO
+SET ANSI_NULLS ON;
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContents] 
+	@ModuleId INT 
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT wsi.[injection_id], wsi.[module_id], wsi.[inject_top], wsi.[inject_name], wsi.[inject_content], wsi.[is_enabled], wsi.[order_shown], wsi.[custom_properties] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[module_id] = @ModuleId 
+	ORDER BY wsi.[order_shown], wsi.[inject_name];
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_GetInjectionContent') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContent];
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}wns_inj_GetInjectionContent] 
+	@InjectionId INT 
+AS
+BEGIN
+	SET NOCOUNT ON
+	SELECT wsi.[injection_id], wsi.[module_id], wsi.[inject_top], wsi.[inject_name], wsi.[inject_content], wsi.[is_enabled], wsi.[order_shown], wsi.[custom_properties] 
+	FROM {databaseOwner}[{objectQualifier}wns_inj_injection] wsi 
+	WHERE wsi.[injection_id] = @InjectionId
+END
+GO
+
+/* END OF FILE */
