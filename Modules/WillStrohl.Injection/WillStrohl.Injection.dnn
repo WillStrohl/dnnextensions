@@ -5,6 +5,7 @@
       <description>
         <![CDATA[<p>This is a content injection module, written by Will Strohl. Its purpose is to allow you to inject markup into the header or footer of the page.</p>]]>
       </description>
+      <iconFile>DesktopModules/WillStrohl.Injection/Images/injection.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>Will Strohl</organization>
@@ -92,7 +93,7 @@
                   <moduleControl>
                     <controlKey>Edit</controlKey>
                     <controlSrc>DesktopModules/WillStrohl.Injection/EditInjections.ascx</controlSrc>
-                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPartialRendering>True</supportsPartialRendering>
                     <supportsPopUps>True</supportsPopUps>
                     <controlTitle />
                     <controlType>Edit</controlType>
