@@ -58,7 +58,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>WillStrohl.Modules.Injection.xml</DocumentationFile>
+    <DocumentationFile>bin\WillStrohl.Modules.Injection.xml</DocumentationFile>
     <BaseAddress>1581252608</BaseAddress>
     <ConfigurationOverrideFile />
     <DefineConstants />
@@ -241,5 +241,5 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="Module.Build"/>
+  <Import Project="Module.Build" />
 </Project>
