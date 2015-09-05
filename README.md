@@ -12,7 +12,7 @@ You can [read more about this project and view/download the slide deck from my b
 
 * Install and use the extensions (see below)
 * [Create Issues (ideas OR bugs)](https://github.com/hismightiness/dnnextensions/issues)
-* Write documentation
+* [Write documentation](https://github.com/hismightiness/dnnextensions/wiki/Write-Documentation)
 * Test Releases
 * Create UI/UX
 * [Write Code](https://github.com/hismightiness/dnnextensions/wiki/Write-Code)
