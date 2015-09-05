@@ -10,10 +10,10 @@ You can [read more about this project and view/download the slide deck from my b
 
 ## How You Can Help
 
-* Install and use the extensions (see below)
-* [Create Issues (ideas OR bugs)](https://github.com/hismightiness/dnnextensions/issues)
+* [Install and use the extensions (see below)](https://github.com/hismightiness/dnnextensions/wiki/Install-and-Use-the-Extensions)
+* [Create Issues (ideas OR bugs)](https://github.com/hismightiness/dnnextensions/wiki/Create-Issues-or-Ideas)
 * [Write documentation](https://github.com/hismightiness/dnnextensions/wiki/Write-Documentation)
-* Test Releases
+* [Test Releases](https://github.com/hismightiness/dnnextensions/wiki/Test-Releases)
 * Create UI/UX
 * [Write Code](https://github.com/hismightiness/dnnextensions/wiki/Write-Code)
 * Debug Code
