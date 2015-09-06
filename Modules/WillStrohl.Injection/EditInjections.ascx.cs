@@ -39,6 +39,7 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Exceptions;
 using System;
 using System.Globalization;
+using DotNetNuke.Entities.Users;
 using DotNetNuke.Security;
 using WillStrohl.Modules.Injection.Entities;
 using WillStrohl.Modules.Injection.Components;
@@ -401,6 +402,16 @@ namespace WillStrohl.Modules.Injection
                 var provider = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmProviderField).Value;
                 ddlCrmProvider.ClearSelection();
                 ddlCrmProvider.SelectedIndex = int.Parse(provider);
+            }
+
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.LastUpdatedByField))
+            {
+                var updatedBy = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.LastUpdatedByField);
+                var updatedDate = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.LastUpdatedDateField);
+
+                var user = UserController.GetUserById(PortalSettings.PortalId, int.Parse(updatedBy.Value, NumberStyles.Integer));
+
+                lblAudit.Text = string.Format(GetLocalizedString("lblAudit"), user.DisplayName, updatedDate.Value);
             }
 
             if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.InjectionTypeField))

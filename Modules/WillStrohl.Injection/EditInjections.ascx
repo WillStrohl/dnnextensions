@@ -39,6 +39,13 @@
                     <asp:RadioButtonList ID="radInject" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" ValidationGroup="AddNew" />
                 </div>
             </div>
+            <div class="dnnFormItem">
+                <div class="dnnRight wnsFormInfoMessage">
+                    <div class="dnnFormMessage dnnFormInfo">
+                        <asp:Label runat="server" ID="lblAudit"/>
+                    </div>
+                </div>
+            </div>
         </fieldset>
     </div>
     <div id="divAdvanced" class="dnnEditEntry dnnForm dnnClear" runat="server">

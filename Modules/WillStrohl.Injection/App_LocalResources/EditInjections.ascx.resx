@@ -363,4 +363,7 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
   <data name="JavaScript.Text" xml:space="preserve">
     <value>JavaScript &gt; </value>
   </data>
+  <data name="lblAudit.Text" xml:space="preserve">
+    <value>Last updated by &lt;strong&gt;{0}&lt;/strong&gt; on &lt;strong&gt;{1}&lt;/strong&gt;.</value>
+  </data>
 </root>
