@@ -21,3 +21,17 @@ table.dnnGrid.wns_inj_injectiontable { width:100%; }
 .wnsInjectionContent { height: 20em; width: 45em !important; }
 
 #divCommand { margin-top: 1.0em; }
+
+.wnsActions { padding: 0;margin: 0; }
+
+.wnsActions li {
+    padding: 0;
+    margin: 0 1em 0 0;
+    display: inline;
+    list-style-type: none;
+}
+
+.wnsFormInfoMessage {
+    width: 60%; 
+    margin-right: 3.0em;
+}

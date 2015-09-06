@@ -76,22 +76,40 @@ namespace WillStrohl.Modules.Injection {
         protected global::System.Web.UI.WebControls.CustomValidator cvName;
         
         /// <summary>
-        /// lblInject control.
+        /// lblType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl lblInject;
+        protected global::System.Web.UI.UserControl lblType;
         
         /// <summary>
-        /// radInject control.
+        /// radType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radInject;
+        protected global::System.Web.UI.WebControls.RadioButtonList radType;
+        
+        /// <summary>
+        /// lblEnabled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl lblEnabled;
+        
+        /// <summary>
+        /// chkEnabled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkEnabled;
         
         /// <summary>
         /// lblContent control.
@@ -121,22 +139,94 @@ namespace WillStrohl.Modules.Injection {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContent;
         
         /// <summary>
-        /// lblEnabled control.
+        /// cvContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl lblEnabled;
+        protected global::System.Web.UI.WebControls.CustomValidator cvContent;
         
         /// <summary>
-        /// chkEnabled control.
+        /// divInject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkEnabled;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInject;
+        
+        /// <summary>
+        /// lblInject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl lblInject;
+        
+        /// <summary>
+        /// radInject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList radInject;
+        
+        /// <summary>
+        /// divAdvanced control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAdvanced;
+        
+        /// <summary>
+        /// lblCrmPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl lblCrmPriority;
+        
+        /// <summary>
+        /// txtCrmPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCrmPriority;
+        
+        /// <summary>
+        /// rvCrmPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvCrmPriority;
+        
+        /// <summary>
+        /// lblCrmProvider control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl lblCrmProvider;
+        
+        /// <summary>
+        /// ddlCrmProvider control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCrmProvider;
         
         /// <summary>
         /// cmdAdd control.

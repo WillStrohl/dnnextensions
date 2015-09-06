@@ -35,9 +35,13 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using DotNetNuke.Common;
 using DotNetNuke.Entities.Modules;
 using WillStrohl.Modules.Injection.Entities;
 using JsonExtensionsWeb = DotNetNuke.Common.Utilities.JsonExtensionsWeb;
@@ -46,7 +50,14 @@ namespace WillStrohl.Modules.Injection.Components
 {
     public sealed class InjectionController : IPortable
     {
-        #region " Data Access "
+        private const string CSS_PATTERN = @".*\.(cs{2}|les{2}|sas{2})$";
+        private const string JS_PATTERN = @".*\.js$";
+
+        private const string DnnPageHeaderProvider = "DnnPageHeaderProvider";
+        private const string DnnBodyProvider = "DnnBodyProvider";
+        private const string DnnFormBottomProvider = "DnnFormBottomProvider";
+
+        #region Data Access
 
         public int AddInjectionContent(InjectionInfo objInjection)
         {
@@ -80,10 +91,10 @@ namespace WillStrohl.Modules.Injection.Components
             return objInj;
         }
 
-        public InjectionInfoCollection GetActiveInjectionContents(int ModuleId)
+        public InjectionInfoCollection GetActiveInjectionContents(int moduleId)
         {
-            InjectionInfoCollection collInj = new InjectionInfoCollection();
-            collInj.Fill(DataProvider.Instance().GetActiveInjectionContents(ModuleId));
+            var collInj = new InjectionInfoCollection();
+            collInj.Fill(DataProvider.Instance().GetActiveInjectionContents(moduleId));
             return collInj;
         }
 
@@ -116,7 +127,65 @@ namespace WillStrohl.Modules.Injection.Components
 
         #endregion
 
-        #region " IPortable Implementation "
+        #region Injection Type
+
+        private static bool IsHtmlInjectionType(InjectionInfo injection)
+        {
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.InjectionTypeField))
+            {
+                return
+                    injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.InjectionTypeField)
+                        .Value == "1";
+            }
+
+            return true;
+        }
+
+        public static InjectionType GetInjectionType(InjectionInfo injection)
+        {
+            Requires.NotNull("injection", injection);
+
+            var isHtmlType = IsHtmlInjectionType(injection);
+
+            if (isHtmlType && injection.InjectTop)
+            {
+                return InjectionType.HtmlTop;
+            }
+            else if (isHtmlType && !injection.InjectTop)
+            {
+                return InjectionType.HtmlBottom;
+            }
+
+            if (injection.InjectContent.EndsWith(".js"))
+            {
+                return InjectionType.JavaScript;
+            }
+
+            if (Regex.IsMatch(injection.InjectContent, CSS_PATTERN, RegexOptions.IgnoreCase))
+            {
+                return InjectionType.CSS;
+            }
+
+            throw new ArgumentOutOfRangeException("InjectionType", "InjectionType parameters do not match a known injection type.");
+        }
+
+        public static bool IsValidCssInjectionType(string content)
+        {
+            Requires.NotNullOrEmpty("content", content);
+
+            return Regex.IsMatch(content, CSS_PATTERN, RegexOptions.IgnoreCase);
+        }
+
+        public static bool IsValidJavaScriptInjectionType(string content)
+        {
+            Requires.NotNullOrEmpty("content", content);
+
+            return Regex.IsMatch(content, JS_PATTERN, RegexOptions.IgnoreCase);
+        }
+
+        #endregion
+
+        #region IPortable Implementation
 
         public string ExportModule(int ModuleID)
         {
@@ -151,11 +220,11 @@ namespace WillStrohl.Modules.Injection.Components
 
             try
             {
-                XmlNode injContents = DotNetNuke.Common.Globals.GetContent(Content, "//injectionContents");
+                var injContents = DotNetNuke.Common.Globals.GetContent(Content, "//injectionContents");
 
                 foreach (XmlNode injContent in injContents.SelectNodes("//injectionContent"))
                 {
-                    InjectionInfo objInj = new InjectionInfo();
+                    var objInj = new InjectionInfo();
 
                     objInj.ModuleId = ModuleID;
 
@@ -163,22 +232,27 @@ namespace WillStrohl.Modules.Injection.Components
                     {
                         objInj.InjectTop = bool.Parse(injContent.SelectSingleNode("injectTop").InnerText);
                     }
+                    
                     if ((injContent.SelectSingleNode("injectName") != null))
                     {
                         objInj.InjectName = injContent.SelectSingleNode("injectName").InnerText;
                     }
+                    
                     if ((injContent.SelectSingleNode("injectContent") != null))
                     {
                         objInj.InjectContent = injContent.SelectSingleNode("injectContent").InnerText;
                     }
+                    
                     if ((injContent.SelectSingleNode("isEnabled") != null))
                     {
                         objInj.IsEnabled = bool.Parse(injContent.SelectSingleNode("isEnabled").InnerText);
                     }
+                    
                     if ((injContent.SelectSingleNode("orderShown") != null))
                     {
                         objInj.OrderShown = int.Parse(injContent.SelectSingleNode("orderShown").InnerText, System.Globalization.NumberStyles.Integer);
                     }
+                    
                     if ((injContent.SelectSingleNode("customProperties") != null))
                     {
                         objInj.CustomProperties = (List<CustomPropertyInfo>)injContent.SelectSingleNode("customProperties").InnerText.FromJson(typeof(CustomPropertyInfo));
@@ -186,15 +260,96 @@ namespace WillStrohl.Modules.Injection.Components
 
                     AddInjectionContent(objInj);
                 }
-
             }
             catch (Exception ex)
             {
                 Exceptions.LogException(ex);
             }
-
         }
 
         #endregion
+
+        #region Custom Properties
+
+        public static int GetCrmPriority(InjectionInfo injection)
+        {
+            Requires.NotNull("injection", injection);
+            Requires.NotNull("injection.CustomProperties", injection.CustomProperties);
+
+            if (!injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmPriorityField)) return Null.NullInteger;
+
+            var priorityInput = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmPriorityField).Value;
+
+            return GetCrmPriority(priorityInput);
+        }
+
+        public static int GetCrmPriority(string injectionPriority)
+        {
+            if (string.IsNullOrEmpty(injectionPriority)) return Null.NullInteger;
+
+            var priorityLevel = Null.NullInteger;
+
+            var result = int.TryParse(injectionPriority, out priorityLevel);
+
+            return result ? priorityLevel : Null.NullInteger;
+        }
+
+        public static string GetCrmProvider(InjectionInfo injection)
+        {
+            Requires.NotNull("injection", injection);
+            Requires.NotNull("injection.CustomProperties", injection.CustomProperties);
+
+            if (!injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmProviderField)) return string.Empty;
+
+            var provider = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmProviderField).Value;
+
+            return GetCrmProvider(provider);
+        }
+
+        public static string GetCrmProvider(string provider)
+        {
+            switch (provider)
+            {
+                case "1":
+                    return DnnPageHeaderProvider;
+                case "2":
+                    return DnnBodyProvider;
+                case "3":
+                    return DnnFormBottomProvider;
+                default:
+                    return string.Empty;
+            }
+        }
+
+        #endregion
+
+        public static bool IsValidFilePath(string filePath)
+        {
+            Requires.NotNullOrEmpty("filePath", filePath);
+
+            if (!filePath.StartsWith("http"))
+            {
+                throw new ArgumentOutOfRangeException("filePath");
+            }
+
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create(filePath);
+                
+                var response = (HttpWebResponse)request.GetResponse();
+
+                return (response.StatusCode == HttpStatusCode.OK);
+            }
+            catch (WebException webEx)
+            {
+                // this is generally a non-200 response
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return false;
+            }
+        }
     }
 }

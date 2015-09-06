@@ -109,6 +109,10 @@
       <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DotNetNuke.Web.Client, Version=6.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Website\bin\DotNetNuke.Web.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
@@ -154,6 +158,7 @@
     <Compile Include="Entities\InjectionInfo.cs" />
     <Compile Include="Entities\InjectionInfoCollection.cs" />
     <Compile Include="Entities\InjectionInfoMembers.cs" />
+    <Compile Include="Entities\InjectionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewInjection.ascx.cs">
       <DependentUpon>ViewInjection.ascx</DependentUpon>

@@ -127,7 +127,7 @@
     <value>Move Up/Down</value>
   </data>
   <data name="dlInjection.Header.Name" xml:space="preserve">
-    <value>Inject Content Name</value>
+    <value>Name</value>
   </data>
   <data name="ModuleHelp.Text" xml:space="preserve">
     <value>&lt;div class="Normal"&gt;
@@ -193,9 +193,6 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
   <data name="lblContent.Text" xml:space="preserve">
     <value>Content to Inject</value>
   </data>
-  <data name="txtName.Text" xml:space="preserve">
-    <value>Enter a Name Here</value>
-  </data>
   <data name="Delete.Confirm" xml:space="preserve">
     <value>Are you sure that you want to delete this injection item?</value>
   </data>
@@ -212,7 +209,7 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
     <value>&lt;p class="Normal"&gt;No injection records were found.&lt;/p&gt;</value>
   </data>
   <data name="ControlTitle_edit.Text" xml:space="preserve">
-    <value>Manage Content Injection Items</value>
+    <value>Manage Content Injections</value>
   </data>
   <data name="cmdAdd.Text" xml:space="preserve">
     <value>Submit</value>
@@ -261,5 +258,88 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
   </data>
   <data name="cmdDelete.Text" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="cvContent.ErrorMessage" xml:space="preserve">
+    <value>The content you are trying to inject should only be the path of the JavaScript or CSS file.</value>
+  </data>
+  <data name="lblType.Help" xml:space="preserve">
+    <value>Choose the type of injection you are adding, either free-form HTML, or a JS/CSS script file path.</value>
+  </data>
+  <data name="lblType.Text" xml:space="preserve">
+    <value>Injection Type</value>
+  </data>
+  <data name="radType.0.Text" xml:space="preserve">
+    <value>JavaScript/CSS</value>
+  </data>
+  <data name="radType.1.Text" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="Advanced.Text" xml:space="preserve">
+    <value>Advanced Settings</value>
+  </data>
+  <data name="ddlCrmProvider.0.Text" xml:space="preserve">
+    <value>None Specified</value>
+  </data>
+  <data name="ddlCrmProvider.1.Text" xml:space="preserve">
+    <value>Page Header</value>
+  </data>
+  <data name="ddlCrmProvider.2.Text" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="ddlCrmProvider.3.Text" xml:space="preserve">
+    <value>Form Bottom</value>
+  </data>
+  <data name="lblCrmPriority.Help" xml:space="preserve">
+    <value>Enter a numeric value for the priority level in the Client Resource Manager.</value>
+  </data>
+  <data name="lblCrmPriority.Text" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="lblCrmProvider.Help" xml:space="preserve">
+    <value>Choose the provider you wish to use to inject the CSS/JavaScript you've specified. If no choice is made, CSS will be injected into the Page Header, and the JavaScript will be injected in the Form Bottom.&lt;br /&gt;
+&lt;strong&gt;Page Header&lt;/strong&gt; - adds the file to a specific location within the head&lt;br/&gt;
+&lt;strong&gt;Body&lt;/strong&gt; - adds the file to the top of the body&lt;br/&gt;
+&lt;strong&gt;Form Bottom&lt;/strong&gt; - adds the file to the bottom of the body</value>
+  </data>
+  <data name="lblCrmProvider.Text" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="rvCrmPriority.ErrorMessage" xml:space="preserve">
+    <value>The priority level can only be a number, between 0-1000.</value>
+  </data>
+  <data name="PriorityInfo.Text" xml:space="preserve">
+    <value>The following priorities are built-in.  You should choose a priority that isn't currently being used.&lt;br /&gt;&lt;br /&gt;
+&lt;div class="dnnClear" style="width:100%;"&gt;
+&lt;div class="dnnLeft"&gt;
+&lt;strong&gt;JavaScript&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;jQuery: 5&lt;/li&gt;
+&lt;li&gt;jQuery UI: 10&lt;/li&gt;
+&lt;li&gt;DnnXml: 15&lt;/li&gt;
+&lt;li&gt;DnnXmlJsParser: 20&lt;/li&gt;
+&lt;li&gt;DnnXmlHttp: 25&lt;/li&gt;
+&lt;li&gt;DnnXmlHttpJsXmlHttpRequest: 30&lt;/li&gt;
+&lt;li&gt;DnnDomPositioning: 35&lt;/li&gt;
+&lt;li&gt;DnnControls: 40&lt;/li&gt;
+&lt;li&gt;DnnControlsLabelEdit: 45&lt;/li&gt;
+&lt;li&gt;Default: 100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="dnnRight"&gt;
+&lt;strong&gt;CSS&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Default CSS: 5&lt;/li&gt;
+&lt;li&gt;Module CSS: 10&lt;/li&gt;
+&lt;li&gt;Skin CSS: 15&lt;/li&gt;
+&lt;li&gt;Specific Skin CSS: 20&lt;/li&gt;
+&lt;li&gt;Container CSS: 25&lt;/li&gt;
+&lt;li&gt;Specific Container CSS: 30&lt;/li&gt;
+&lt;li&gt;Portal CSS: 35&lt;/li&gt;
+&lt;li&gt;DnnControls: 40&lt;/li&gt;
+&lt;li&gt;DnnControlsLabelEdit: 45&lt;/li&gt;
+&lt;li&gt;Default: 100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</value>
   </data>
 </root>

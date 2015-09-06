@@ -42,7 +42,7 @@ namespace WillStrohl.Modules.Injection.Entities
     [Serializable]
     public sealed class InjectionInfoCollection : List<InjectionInfo>
     {
-        #region " Constructors "
+        #region Constructors
 
         public InjectionInfoCollection()
             : base()
@@ -67,42 +67,53 @@ namespace WillStrohl.Modules.Injection.Entities
             {
                 while (dr.Read())
                 {
-                    InjectionInfo obj = new InjectionInfo();
+                    var obj = new InjectionInfo();
 
-                    if ((dr[InjectionInfoMembers.InjectionIdField] != null))
+                    if (dr[InjectionInfoMembers.InjectionIdField] != null)
                     {
                         obj.InjectionId = int.Parse(dr[InjectionInfoMembers.InjectionIdField].ToString(), System.Globalization.NumberStyles.Integer);
                     }
-                    if ((dr[InjectionInfoMembers.InjectNameField] != null))
+
+                    if (dr[InjectionInfoMembers.InjectNameField] != null)
                     {
                         obj.InjectName = dr[InjectionInfoMembers.InjectNameField].ToString();
                     }
-                    if ((dr[InjectionInfoMembers.InjectContentField] != null))
+
+                    if (dr[InjectionInfoMembers.InjectContentField] != null)
                     {
                         obj.InjectContent = dr[InjectionInfoMembers.InjectContentField].ToString();
                     }
-                    if ((dr[InjectionInfoMembers.InjectTopField] != null))
+
+                    if (dr[InjectionInfoMembers.InjectTopField] != null)
                     {
                         obj.InjectTop = bool.Parse(dr[InjectionInfoMembers.InjectTopField].ToString());
                     }
-                    if ((dr[InjectionInfoMembers.IsEnabledField] != null))
+
+                    if (dr[InjectionInfoMembers.IsEnabledField] != null)
                     {
                         obj.IsEnabled = bool.Parse(dr[InjectionInfoMembers.IsEnabledField].ToString());
                     }
-                    if ((dr[InjectionInfoMembers.ModuleIdField] != null))
+
+                    if (dr[InjectionInfoMembers.ModuleIdField] != null)
                     {
                         obj.ModuleId = int.Parse(dr[InjectionInfoMembers.ModuleIdField].ToString(), System.Globalization.NumberStyles.Integer);
                     }
-                    if ((dr[InjectionInfoMembers.OrderShownField] != null))
+
+                    if (dr[InjectionInfoMembers.OrderShownField] != null)
                     {
                         obj.OrderShown = int.Parse(dr[InjectionInfoMembers.OrderShownField].ToString(), System.Globalization.NumberStyles.Integer);
                     }
-                    if (dr.GetSchemaTable().Columns.Contains(InjectionInfoMembers.CustomPropertiesField))
+
+                    try
                     {
-                        if ((dr[InjectionInfoMembers.CustomPropertiesField] != null))
+                        if (dr[InjectionInfoMembers.CustomPropertiesField] != null)
                         {
-                            obj.CustomProperties = (List<CustomPropertyInfo>)dr[InjectionInfoMembers.CustomPropertiesField].ToString().FromJson(typeof(CustomPropertyInfo));
+                            var properties = dr[InjectionInfoMembers.CustomPropertiesField].ToString();
+                            obj.CustomProperties = properties.FromJson<List<CustomPropertyInfo>>();
                         }
+                    }
+                    catch
+                    {
                     }
 
                     Add(obj);
@@ -120,7 +131,6 @@ namespace WillStrohl.Modules.Injection.Entities
                 }
             }
         }
-
     }
 
 }

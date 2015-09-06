@@ -31,7 +31,7 @@
 //DAMAGE.
 //
 
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
@@ -45,7 +45,7 @@ using WillStrohl.Modules.Injection.Components;
 
 namespace WillStrohl.Modules.Injection
 {
-    public abstract partial class EditInjections : WNSPortalModuleBase
+    public partial class EditInjections : WNSPortalModuleBase
     {
         #region Private Members
 
@@ -143,11 +143,6 @@ namespace WillStrohl.Modules.Injection
 
         #region Event Handlers
 
-        protected EditInjections()
-        {
-            Load += Page_Load;
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -166,21 +161,20 @@ namespace WillStrohl.Modules.Injection
                 Exceptions.ProcessModuleLoadException(this, exc, IsEditable);
             }
         }
-        
+
         protected void lnkAddNewInjection_Click(object sender, EventArgs e)
         {
             ClearForm();
             TogglePanels();
 
             cmdDelete.Visible = !string.IsNullOrEmpty(hidInjectionId.Value);
-
         }
 
         protected void cmdReturn_Click(object sender, EventArgs e)
         {
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
-        
+
         protected void cmdAdd_Click(object sender, EventArgs e)
         {
             if (Page.IsValid && !(string.IsNullOrEmpty(txtName.Text) | string.IsNullOrEmpty(txtContent.Text)))
@@ -190,7 +184,6 @@ namespace WillStrohl.Modules.Injection
                 TogglePanels();
                 BindData();
             }
-
         }
 
         protected void cvName_ServerValidate(object source, ServerValidateEventArgs args)
@@ -213,6 +206,7 @@ namespace WillStrohl.Modules.Injection
                     break;
                 case c_Command_Edit:
                     BindForm(Convert.ToInt32(e.CommandArgument));
+                    ToggleType();
                     TogglePanels();
                     break;
                 case c_Command_Insert:
@@ -226,11 +220,17 @@ namespace WillStrohl.Modules.Injection
                     break;
                 default:
                     return;
-
                     break;
             }
         }
-        
+
+        protected void cmdCancel_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            TogglePanels();
+            BindData();
+        }
+
         protected void cmdDelete_Click(object sender, EventArgs e)
         {
             if (Regex.IsMatch(hidInjectionId.Value, "^\\d+$"))
@@ -245,6 +245,42 @@ namespace WillStrohl.Modules.Injection
 
         }
 
+        protected void radType_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToggleType();
+        }
+
+        protected void cvContent_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (radType.SelectedIndex == 0)
+            {
+                var isValidPathFormat = false;
+                var isValidFilePath = false;
+                var pathToTest = txtContent.Text.Trim();
+
+                isValidPathFormat = (InjectionController.IsValidCssInjectionType(pathToTest) ||
+                                     InjectionController.IsValidJavaScriptInjectionType(pathToTest));
+
+                if (pathToTest.StartsWith("http"))
+                {
+                    // external file path
+                    isValidFilePath = InjectionController.IsValidFilePath(pathToTest);
+                }
+                else
+                {
+                    // local file path
+                    var fullFilePath = Server.MapPath(pathToTest);
+                    isValidFilePath = File.Exists(fullFilePath);
+                }
+
+                args.IsValid = (isValidPathFormat && isValidFilePath);
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
+
         #endregion
 
         #region Private Helper Functions
@@ -253,13 +289,10 @@ namespace WillStrohl.Modules.Injection
         {
             LocalizeModule();
 
-            // bind data to controls
-
             if (Injections.Count > 0)
             {
-                var _with1 = dlInjection;
-                _with1.DataSource = Injections;
-                _with1.DataBind();
+                dlInjection.DataSource = Injections;
+                dlInjection.DataBind();
                 dlInjection.Visible = true;
                 lblNoRecords.Visible = false;
             }
@@ -269,12 +302,31 @@ namespace WillStrohl.Modules.Injection
                 lblNoRecords.Visible = true;
             }
 
-            txtName.Attributes.Add("onfocus", string.Concat("if (value == '", GetLocalizedString("txtName.Text"), "') { value = ''; }"));
+            if (radType.Items.Count == 0)
+            {
+                radType.Items.Add(new ListItem(GetLocalizedString("radType.0.Text")));
+                radType.Items.Add(new ListItem(GetLocalizedString("radType.1.Text")));
+                radType.ClearSelection();
+                // default injection type for NEW injections is 0 because that's the most common use case
+                radType.SelectedIndex = 0;
+            }
+
+            if (ddlCrmProvider.Items.Count == 0)
+            {
+                ddlCrmProvider.Items.Add(new ListItem(GetLocalizedString("ddlCrmProvider.0.Text")));
+                ddlCrmProvider.Items.Add(new ListItem(GetLocalizedString("ddlCrmProvider.1.Text")));
+                ddlCrmProvider.Items.Add(new ListItem(GetLocalizedString("ddlCrmProvider.2.Text")));
+                ddlCrmProvider.Items.Add(new ListItem(GetLocalizedString("ddlCrmProvider.3.Text")));
+                ddlCrmProvider.ClearSelection();
+                ddlCrmProvider.SelectedIndex = 0;
+            }
 
             if (radInject.Items.Count == 0)
             {
                 radInject.Items.Add(new ListItem(GetLocalizedString("radInject.0.Text")));
                 radInject.Items.Add(new ListItem(GetLocalizedString("radInject.1.Text")));
+                radInject.ClearSelection();
+                radInject.SelectedIndex = 0;
             }
 
         }
@@ -291,7 +343,8 @@ namespace WillStrohl.Modules.Injection
             cmdCancel.Text = GetLocalizedString("cmdCancel.Text");
             cmdReturn.Text = GetLocalizedString("cmdReturn.Text");
             cvName.ErrorMessage = GetLocalizedString("cvName.ErrorMessage");
-
+            cvContent.ErrorMessage = GetLocalizedString("cvContent.ErrorMessage");
+            rvCrmPriority.ErrorMessage = GetLocalizedString("rvCrmPriority.ErrorMessage");
         }
 
         private void ClearForm()
@@ -300,20 +353,29 @@ namespace WillStrohl.Modules.Injection
             txtName.Text = GetLocalizedString("txtName.Text");
             txtContent.Text = string.Empty;
             chkEnabled.Checked = true;
+            radType.ClearSelection();
+            radType.Items.FindByText(GetLocalizedString("radType.0.Text")).Selected = true;
+            radInject.ClearSelection();
             radInject.Items.FindByText(GetLocalizedString("radInject.0.Text")).Selected = true;
             cvName.Enabled = true;
+            ddlCrmProvider.ClearSelection();
+            ddlCrmProvider.SelectedIndex = 0;
+
+            ToggleType();
         }
 
         private void BindForm(int ItemId)
         {
-            InjectionController ctlModule = new InjectionController();
-            InjectionInfo objInfo = new InjectionInfo();
-            objInfo = ctlModule.GetInjectionContent(ItemId);
+            var ctlModule = new InjectionController();
+            var injection = new InjectionInfo();
 
-            txtName.Text = objInfo.InjectName;
-            txtContent.Text = Server.HtmlDecode(objInfo.InjectContent);
+            injection = ctlModule.GetInjectionContent(ItemId);
+
+            txtName.Text = injection.InjectName;
+            txtContent.Text = Server.HtmlDecode(injection.InjectContent);
             radInject.ClearSelection();
-            if (objInfo.InjectTop)
+
+            if (injection.InjectTop)
             {
                 radInject.Items.FindByText(GetLocalizedString("radInject.0.Text")).Selected = true;
             }
@@ -321,14 +383,56 @@ namespace WillStrohl.Modules.Injection
             {
                 radInject.Items.FindByText(GetLocalizedString("radInject.1.Text")).Selected = true;
             }
-            chkEnabled.Checked = objInfo.IsEnabled;
-            hidInjectionId.Value = objInfo.InjectionId.ToString();
+
+            chkEnabled.Checked = injection.IsEnabled;
+            hidInjectionId.Value = injection.InjectionId.ToString();
             cvName.Enabled = false;
 
             cmdDelete.Visible = !string.IsNullOrEmpty(hidInjectionId.Value);
 
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmPriorityField))
+            {
+                var priorityLevel = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmPriorityField).Value;
+                txtCrmPriority.Text = (priorityLevel == "-1") ? string.Empty : priorityLevel;
+            } 
+            
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmProviderField))
+            {
+                var provider = injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmProviderField).Value;
+                ddlCrmProvider.ClearSelection();
+                ddlCrmProvider.SelectedIndex = int.Parse(provider);
+            }
+
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.InjectionTypeField))
+            {
+                var intType =int.Parse(
+                    injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.InjectionTypeField)
+                        .Value);
+
+                radType.SelectedIndex = intType;
+            }
+            else
+            {
+                // the default for existing injections is 1 because JS/CSS wasn't an option in the past
+                radType.SelectedIndex = 1;
+            }
+
+            ToggleType();
         }
-        
+
+        private void HandleException(Exception exc)
+        {
+            Exceptions.LogException(exc);
+            if (UserInfo.IsSuperUser | UserInfo.UserID == PortalSettings.AdministratorId)
+            {
+                DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, string.Concat(exc.Message, "<br />", exc.StackTrace), DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
+            }
+            else
+            {
+                DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, exc.Message, DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
+            }
+        }
+
         private void SwapOrder(int ItemId, string UpDown)
         {
             // set the global id to match the one we're looking for
@@ -337,12 +441,158 @@ namespace WillStrohl.Modules.Injection
             // change the order
             InjectionController ctlModule = new InjectionController();
             ctlModule.ChangeOrder(ItemId, UpDown);
-
         }
 
-        private bool FindInjectionById(InjectionInfo item)
+        #endregion
+
+        #region Data Access
+
+        private void SaveInjection()
         {
-            return item.InjectionId == p_SearchParam;
+            try
+            {
+                var ctlModule = new InjectionController();
+                InjectionInfo objInj = null;
+
+                objInj = !string.IsNullOrEmpty(hidInjectionId.Value) ? ctlModule.GetInjectionContent(int.Parse(hidInjectionId.Value)) : new InjectionInfo();
+
+                PopulateInjectionForSave(ref objInj);
+
+                if (!string.IsNullOrEmpty(hidInjectionId.Value))
+                {
+                    ctlModule.UpdateInjectionContent(objInj);
+                }
+                else
+                {
+                    ctlModule.AddInjectionContent(objInj);
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+        }
+
+        private void PopulateInjectionForSave(ref InjectionInfo injection)
+        {
+            var security = new PortalSecurity();
+
+            injection.InjectContent = Server.HtmlEncode(txtContent.Text);
+            injection.InjectName = security.InputFilter(txtName.Text, PortalSecurity.FilterFlag.NoMarkup);
+            injection.InjectTop = radInject.Items.FindByText(GetLocalizedString("radInject.0.Text")).Selected;
+            injection.IsEnabled = chkEnabled.Checked;
+            injection.ModuleId = ModuleId;
+
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.InjectionTypeField))
+            {
+                // update the existing injection type
+                injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.InjectionTypeField)
+                    .Value = radType.SelectedIndex.ToString();
+            }
+            else
+            {
+                // create new injection type
+                injection.CustomProperties.Add(new CustomPropertyInfo()
+                {
+                    Name = InjectionInfoMembers.InjectionTypeField,
+                    Value = radType.SelectedIndex.ToString()
+                });
+            }
+
+            // CRM PRIORITY LEVEL
+            var priorityLevel = ParsePriotityLevel(security);
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmPriorityField))
+            {
+                // update existing CRM/CDF priority level
+                injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmPriorityField)
+                    .Value = priorityLevel.ToString();
+            }
+            else
+            {
+                // create new CRM/CDF priority level
+                injection.CustomProperties.Add(new CustomPropertyInfo()
+                {
+                    Name = InjectionInfoMembers.CrmPriorityField,
+                    Value = priorityLevel.ToString()
+                });
+            }
+
+            // CRM PAGE PROVIDER
+            var provider = ddlCrmProvider.SelectedIndex;
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmProviderField))
+            {
+                // update existing CRM/CDF provider
+                injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmProviderField).Value = provider.ToString();
+            }
+            else
+            {
+                // create new CRM/CDF provider
+                injection.CustomProperties.Add(new CustomPropertyInfo()
+                {
+                    Name = InjectionInfoMembers.CrmProviderField,
+                    Value = provider.ToString()
+                });
+            }
+
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.CrmPriorityField))
+            {
+                injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.CrmPriorityField)
+                    .Value = security.InputFilter(txtCrmPriority.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup);
+            }
+            else
+            {
+                injection.CustomProperties.Add(new CustomPropertyInfo()
+                {
+                    Name = InjectionInfoMembers.CrmPriorityField,
+                    Value = security.InputFilter(txtCrmPriority.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup)
+                });
+            }
+
+            if (injection.CustomProperties.Any(p => p.Name == InjectionInfoMembers.LastUpdatedByField))
+            {
+                // update the existing auditing fields
+                injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.LastUpdatedByField)
+                    .Value = UserInfo.UserID.ToString();
+                injection.CustomProperties.FirstOrDefault(p => p.Name == InjectionInfoMembers.LastUpdatedDateField)
+                    .Value = DateTime.UtcNow.ToString();
+            }
+            else
+            {
+                // adding new audting fields
+                injection.CustomProperties.Add(new CustomPropertyInfo()
+                {
+                    Name = InjectionInfoMembers.LastUpdatedByField,
+                    Value = UserInfo.UserID.ToString()
+                });
+
+                injection.CustomProperties.Add(new CustomPropertyInfo()
+                {
+                    Name = InjectionInfoMembers.LastUpdatedDateField,
+                    Value = DateTime.UtcNow.ToString()
+                });
+            }
+        }
+
+        private int ParsePriotityLevel(PortalSecurity security)
+        {
+            var priorityInput = security.InputFilter(txtCrmPriority.Text.Trim(), PortalSecurity.FilterFlag.NoMarkup);
+            var priorityLevel = InjectionController.GetCrmPriority(priorityInput);
+
+            return (priorityLevel > Null.NullInteger) ? priorityLevel : Null.NullInteger;
+        }
+
+        #endregion
+
+        #region User Interface
+
+        private void ToggleType()
+        {
+            divInject.Visible = radType.SelectedIndex == 1;
+            radInject.Enabled = radType.SelectedIndex == 1;
+            cvContent.Enabled = radType.SelectedIndex == 0;
+            divAdvanced.Visible = radType.SelectedIndex == 0;
+
+            txtContent.Rows = radType.SelectedIndex == 1 ? 10 : 2;
         }
 
         private void TogglePanels()
@@ -350,41 +600,6 @@ namespace WillStrohl.Modules.Injection
             pnlAddNew.Visible = (!pnlAddNew.Visible);
             pnlManage.Visible = (!pnlManage.Visible);
         }
-
-        private void SaveInjection()
-		{
-			try {
-				DotNetNuke.Security.PortalSecurity sec = new DotNetNuke.Security.PortalSecurity();
-				InjectionController ctlModule = new InjectionController();
-				InjectionInfo objInj = new InjectionInfo();
-
-				if (!string.IsNullOrEmpty(hidInjectionId.Value)) {
-					objInj = ctlModule.GetInjectionContent(int.Parse(hidInjectionId.Value));
-					var _with2 = objInj;
-					_with2.InjectContent = Server.HtmlEncode(txtContent.Text);
-					_with2.InjectName = sec.InputFilter(txtName.Text, PortalSecurity.FilterFlag.NoMarkup);
-					_with2.InjectTop = radInject.Items.FindByText(GetLocalizedString("radInject.0.Text")).Selected;
-					_with2.IsEnabled = chkEnabled.Checked;
-					_with2.ModuleId = ModuleId;
-                    //TODO: FINISH THIS
-                    //if (HasAuditingField(ref ref _with2.CustomProperties)) {
-                    //    _with2.CustomProperties.Find(From);
-                    //}
-					ctlModule.UpdateInjectionContent(objInj);
-				} else {
-					var _with3 = objInj;
-					_with3.InjectContent = Server.HtmlEncode(txtContent.Text);
-					_with3.InjectName = sec.InputFilter(txtName.Text, PortalSecurity.FilterFlag.NoMarkup);
-					_with3.InjectTop = radInject.Items.FindByText(GetLocalizedString("radInject.0.Text")).Selected;
-					_with3.IsEnabled = chkEnabled.Checked;
-					_with3.ModuleId = ModuleId;
-					_with3.OrderShown = ctlModule.GetNextOrderNumber(ModuleId);
-					ctlModule.AddInjectionContent(objInj);
-				}
-			} catch (Exception ex) {
-				HandleException(ex);
-			}
-		}
 
         protected bool CommandUpVisible(object InjectionId)
         {
@@ -428,19 +643,6 @@ namespace WillStrohl.Modules.Injection
             else
             {
                 return DisabledAltText;
-            }
-        }
-
-        private void HandleException(Exception exc)
-        {
-            Exceptions.LogException(exc);
-            if (UserInfo.IsSuperUser | UserInfo.UserID == PortalSettings.AdministratorId)
-            {
-                DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, string.Concat(exc.Message, "<br />", exc.StackTrace), DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
-            }
-            else
-            {
-                DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, exc.Message, DotNetNuke.UI.Skins.Controls.ModuleMessage.ModuleMessageType.RedError);
             }
         }
 

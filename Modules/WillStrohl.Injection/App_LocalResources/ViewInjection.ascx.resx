@@ -118,7 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EditInjection.MenuItem.Title" xml:space="preserve">
-    <value>Edit/Add Page Injections</value>
+    <value>Manage Content Injections</value>
+  </data>
+  <data name="FooterFooter.Text" xml:space="preserve">
+    <value>END WillStrohl.Injection Footer Injections</value>
+  </data>
+  <data name="FooterHeader.Text" xml:space="preserve">
+    <value>BEGIN WillStrohl.Injection Footer Injections</value>
+  </data>
+  <data name="HeaderFooter.Text" xml:space="preserve">
+    <value>END WillStrohl.Injection Header Injections</value>
+  </data>
+  <data name="HeaderHeader.Text" xml:space="preserve">
+    <value>BEGIN WillStrohl.Injection Header Injections</value>
   </data>
   <data name="InjectionInfo.Text" xml:space="preserve">
     <value>There is no need to change the module title. Also, there is no need to modify the container in any way. The module will hide itself automatically from your website visitors.</value>

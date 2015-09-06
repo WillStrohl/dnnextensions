@@ -66,10 +66,11 @@ namespace WillStrohl.Modules.Injection.Components
         }
         #endregion
 
+        #region Script Blocks
+
         protected string GetClientScriptBlock(string Script)
         {
-
-            string strScriptBlock = "<script language=\"javascript\" type=\"text/javascript\">/*<![CDATA[*/ {0} /*]]*/></script>";
+            var strScriptBlock = "<script language=\"javascript\" type=\"text/javascript\">/*<![CDATA[*/ {0} /*]]*/></script>";
 
             if (!string.IsNullOrEmpty(Script))
             {
@@ -79,13 +80,11 @@ namespace WillStrohl.Modules.Injection.Components
             {
                 return string.Empty;
             }
-
         }
 
         protected string GetClientScript(string ScriptPath)
         {
-
-            string strScript = "<script language=\"javascript\" type=\"text/javascript\" src=\"{0}\"></script>";
+            var strScript = "<script language=\"javascript\" type=\"text/javascript\" src=\"{0}\"></script>";
 
             if (!string.IsNullOrEmpty(ScriptPath))
             {
@@ -95,11 +94,12 @@ namespace WillStrohl.Modules.Injection.Components
             {
                 return string.Empty;
             }
-
         }
 
+        #endregion
+
         #region Event Handlers
-        public WNSPortalModuleBase()
+        protected WNSPortalModuleBase()
         {
             Load += Page_Load;
         }
@@ -110,6 +110,18 @@ namespace WillStrohl.Modules.Injection.Components
             JavaScript.RequestRegistration(CommonJs.DnnPlugins);
 
         }
+        #endregion
+
+        #region Security
+
+        protected bool CurrentUserCanEdit
+        {
+            get
+            {
+                return (IsEditable && PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit);
+            }
+        }
+
         #endregion
     }
 }

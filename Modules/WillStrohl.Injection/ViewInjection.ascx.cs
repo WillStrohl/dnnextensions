@@ -36,128 +36,181 @@ using System;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.Skins.Controls;
 using System.Web.UI;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules.Actions;
+using DotNetNuke.UI.Skins;
+using DotNetNuke.Web.Client;
+using DotNetNuke.Web.Client.ClientResourceManagement;
+using DotNetNuke.Web.Client.Providers;
 using WillStrohl.Modules.Injection.Components;
 using WillStrohl.Modules.Injection.Entities;
 
 namespace WillStrohl.Modules.Injection
 {
-	public abstract partial class ViewInjection : WNSPortalModuleBase, IActionable
-	{
-		#region " Private Members "
+    public partial class ViewInjection : WNSPortalModuleBase, IActionable
+    {
+        #region Private Members
 
-		private string p_Header = string.Empty;
-		private string p_Footer = string.Empty;
+        private string p_Header = string.Empty;
+        private string p_Footer = string.Empty;
+        private string p_EditInjectionUrl = string.Empty;
 
-		private string p_EditInjectionUrl = string.Empty;
+        #endregion
 
-		#endregion
+        #region Properties
 
-		#region " Properties "
-
-		private string HeaderInjection {
-			get { return this.p_Header; }
-		}
-
-		private string FooterInjection {
-			get { return this.p_Footer; }
-		}
-
-		private string EditInjectionUrl {
-			get {
-				if (!string.IsNullOrEmpty(this.p_EditInjectionUrl)) {
-					return this.p_EditInjectionUrl;
-				}
-
-				this.p_EditInjectionUrl = EditUrl(string.Empty, string.Empty, "Edit");
-
-				return this.p_EditInjectionUrl;
-			}
-		}
-
-		#endregion
-
-        #region " Event Handlers "
-
-        protected ViewInjection()
+        private string HeaderInjection
         {
-            Load += Page_Load;
+            get { return p_Header; }
         }
 
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			try {
-				if (this.IsEditable && this.PortalSettings.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit) {
-					// If IsEditable, then the visitor has edit permissions to the module, is 
-					// currently logged in, and the portal is in edit mode.
-					DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, this.GetLocalizedString("InjectionInfo.Text"), ModuleMessage.ModuleMessageType.BlueInfo);
-				} else {
-					// hide the module container (and the rest of the module as well)
-					this.ContainerControl.Visible = false;
-				}
+        private string FooterInjection
+        {
+            get { return p_Footer; }
+        }
 
-				// inject any strings insto the page
-				this.ExecutePageInjection();
+        private string EditInjectionUrl
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(p_EditInjectionUrl))
+                {
+                    return p_EditInjectionUrl;
+                }
 
-			// Module failed to load
-			} catch (Exception exc) {
-				Exceptions.ProcessModuleLoadException(this, exc, this.IsEditable);
-			}
-		}
+                p_EditInjectionUrl = EditUrl(string.Empty, string.Empty, "Edit");
 
-		public void InjectIntoFooter(object sender, EventArgs e)
-		{
-			if (!string.IsNullOrEmpty(FooterInjection)) {
-				this.Page.Form.Controls.Add(new LiteralControl(FooterInjection));
-			}
-		}
+                return p_EditInjectionUrl;
+            }
+        }
 
-		#endregion
+        #endregion
 
-		#region " Private Helper Methods "
+        #region Event Handlers
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentUserCanEdit)
+                {
+                    // If IsEditable, then the visitor has edit permissions to the module, is 
+                    // currently logged in, and the portal is in edit mode.
+                    Skin.AddModuleMessage(this, GetLocalizedString("InjectionInfo.Text"), ModuleMessage.ModuleMessageType.BlueInfo);
+                }
+                else
+                {
+                    // hide the module container (and the rest of the module as well)
+                    ContainerControl.Visible = false;
+                }
 
-		private void ExecutePageInjection()
-		{
-			InjectionController ctlModule = new InjectionController();
-			InjectionInfoCollection collInj = new InjectionInfoCollection();
-			collInj = ctlModule.GetActiveInjectionContents(this.ModuleId);
+                // inject any strings insto the page
+                ExecutePageInjection();
+            }
+            catch (Exception exc)
+            {
+                // Module failed to load
+                Exceptions.ProcessModuleLoadException(this, exc, IsEditable);
+            }
+        }
 
+        public void InjectIntoFooter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(FooterInjection))
+            {
+                Page.Form.Controls.Add(new LiteralControl(FooterInjection));
+            }
+        }
 
-			if (collInj.Count > 0) {
-				foreach (InjectionInfo objInj in collInj) {
-					if (objInj.InjectTop) {
-						this.p_Header = string.Concat(this.p_Header, Server.HtmlDecode(objInj.InjectContent));
-					} else {
-						this.p_Footer = string.Concat(this.p_Footer, Server.HtmlDecode(objInj.InjectContent));
-					}
-				}
+        #endregion
 
-				// add the injection content to the header
-				if (!string.IsNullOrEmpty(HeaderInjection)) {
-					this.Parent.Page.Header.Controls.Add(new LiteralControl(HeaderInjection));
-				}
+        #region Private Helper Methods
 
-				// add the injection content to the footer
-				if (!string.IsNullOrEmpty(FooterInjection)) {
-					this.Page.LoadComplete += new EventHandler(InjectIntoFooter);
-				}
+        private void ExecutePageInjection()
+        {
+            var ctlModule = new InjectionController();
+            var collInj = new InjectionInfoCollection();
 
-			}
+            collInj = ctlModule.GetActiveInjectionContents(ModuleId);
 
-		}
+            if (collInj.Count <= 0) return;
 
-		#endregion
+            p_Header = string.Format("<!-- {0} -->", GetLocalizedString("HeaderHeader"));
+            p_Footer = string.Format("<!-- {0} -->", GetLocalizedString("FooterHeader"));
 
-		#region " IActionable Implementation "
+            foreach (var injection in collInj)
+            {
+                var injectionType = InjectionController.GetInjectionType(injection);
+                var priority = InjectionController.GetCrmPriority(injection);
+                var provider = InjectionController.GetCrmProvider(injection);
 
-		public DotNetNuke.Entities.Modules.Actions.ModuleActionCollection ModuleActions {
-			get {
-				DotNetNuke.Entities.Modules.Actions.ModuleActionCollection Actions = new DotNetNuke.Entities.Modules.Actions.ModuleActionCollection();
-				Actions.Add(GetNextActionID(), this.GetLocalizedString("EditInjection.MenuItem.Title"), string.Empty, string.Empty, string.Empty, this.EditInjectionUrl, false, DotNetNuke.Security.SecurityAccessLevel.Edit, true, false);
-				return Actions;
-			}
-		}
+                switch (injectionType)
+                {
+                    case InjectionType.CSS:
+                        RegisterStyleSheet(injection.InjectContent, priority, provider);
+                        break;
+                    case InjectionType.JavaScript:
+                        RegisterScript(injection.InjectContent, priority, provider);
+                        break;
+                    case InjectionType.HtmlBottom:
+                        p_Footer = string.Concat(p_Footer, Server.HtmlDecode(injection.InjectContent));
+                        break;
+                    case InjectionType.HtmlTop:
+                        p_Header = string.Concat(p_Header, Server.HtmlDecode(injection.InjectContent));
+                        break;
+                }
+            }
 
-		#endregion
-	}
+            p_Header = string.Concat(p_Header, string.Format("<!-- {0} -->", GetLocalizedString("HeaderFooter")));
+            p_Footer = string.Concat(p_Footer, string.Format("<!-- {0} -->", GetLocalizedString("FooterFooter")));
+
+            // add the injection content to the header
+            if (!string.IsNullOrEmpty(HeaderInjection))
+            {
+                Parent.Page.Header.Controls.Add(new LiteralControl(HeaderInjection));
+            }
+
+            // add the injection content to the footer
+            if (!string.IsNullOrEmpty(FooterInjection))
+            {
+                Page.LoadComplete += new EventHandler(InjectIntoFooter);
+            }
+        }
+
+        private void RegisterStyleSheet(string path, int priority, string provider)
+        {
+            if (priority == Null.NullInteger)
+            {
+                priority = (int)FileOrder.Css.DefaultPriority;
+            }
+
+            ClientResourceManager.RegisterStyleSheet(this.Page, path, priority, provider);
+        }
+
+        private void RegisterScript(string path, int priority, string provider)
+        {
+            if (priority == Null.NullInteger)
+            {
+                priority = (int)FileOrder.Js.DefaultPriority;
+            }
+
+            ClientResourceManager.RegisterScript(this.Page, path, priority, provider);
+        }
+
+        #endregion
+
+        #region IActionable Implementation
+
+        public ModuleActionCollection ModuleActions
+        {
+            get
+            {
+                var Actions = new ModuleActionCollection();
+                Actions.Add(GetNextActionID(), GetLocalizedString("EditInjection.MenuItem.Title"), string.Empty, string.Empty, string.Empty, EditInjectionUrl, false, DotNetNuke.Security.SecurityAccessLevel.Edit, true, false);
+                return Actions;
+            }
+        }
+
+        #endregion
+    }
 }

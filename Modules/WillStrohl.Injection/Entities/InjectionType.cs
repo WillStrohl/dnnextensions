@@ -1,4 +1,4 @@
-//
+﻿//
 // Will Strohl (will.strohl@gmail.com)
 // http://www.willstrohl.com
 //
@@ -33,22 +33,11 @@
 
 namespace WillStrohl.Modules.Injection.Entities
 {
-	public sealed class InjectionInfoMembers
-	{
-		public const string InjectionIdField = "injection_id";
-		public const string ModuleIdField = "module_id";
-		public const string InjectTopField = "inject_top";
-		public const string InjectNameField = "inject_name";
-		public const string InjectContentField = "inject_content";
-		public const string IsEnabledField = "is_enabled";
-		public const string OrderShownField = "order_shown";
-        public const string CustomPropertiesField = "custom_properties";
-
-        // custom properties
-	    public const string InjectionTypeField = "InjectionType";
-        public const string LastUpdatedByField = "LastUpdatedBy";
-        public const string LastUpdatedDateField = "LastUpdatedDate";
-        public const string CrmPriorityField = "CrmPriority";
-        public const string CrmProviderField = "CrmProvider";
-	}
+    public enum InjectionType
+    {
+        JavaScript,
+        CSS,
+        HtmlTop,
+        HtmlBottom
+    }
 }
