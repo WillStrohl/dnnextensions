@@ -321,6 +321,19 @@ namespace WillStrohl.Modules.Injection.Components
             }
         }
 
+        public static string GetCrmProviderDefault(InjectionType type)
+        {
+            switch (type)
+            {
+                case InjectionType.CSS:
+                    return DnnPageHeaderProvider;
+                case InjectionType.JavaScript:
+                    return DnnBodyProvider;
+                default:
+                    return string.Empty;
+            }
+        }
+
         #endregion
 
         public static bool IsValidFilePath(string filePath)

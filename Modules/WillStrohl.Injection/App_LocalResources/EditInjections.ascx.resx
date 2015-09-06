@@ -120,8 +120,8 @@
   <data name="dlInjection.Header.Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="dlInjection.Header.InjectTop" xml:space="preserve">
-    <value>Inject Top</value>
+  <data name="dlInjection.Header.InjectType" xml:space="preserve">
+    <value>Injection Type</value>
   </data>
   <data name="dlInjection.Header.Move" xml:space="preserve">
     <value>Move Up/Down</value>
@@ -341,5 +341,26 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;</value>
+  </data>
+  <data name="CSS.Text" xml:space="preserve">
+    <value>CSS &gt; </value>
+  </data>
+  <data name="DnnBodyProvider.Text" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="DnnFormBottomProvider.Text" xml:space="preserve">
+    <value>Form Bottom</value>
+  </data>
+  <data name="DnnPageHeaderProvider.Text" xml:space="preserve">
+    <value>Page Header</value>
+  </data>
+  <data name="HtmlBottom.Text" xml:space="preserve">
+    <value>HTML &gt; Bottom of Page</value>
+  </data>
+  <data name="HtmlTop.Text" xml:space="preserve">
+    <value>HTML &gt; Top of Page</value>
+  </data>
+  <data name="JavaScript.Text" xml:space="preserve">
+    <value>JavaScript &gt; </value>
   </data>
 </root>

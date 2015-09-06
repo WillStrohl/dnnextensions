@@ -646,6 +646,35 @@ namespace WillStrohl.Modules.Injection
             }
         }
 
+        protected string GetInjectionTypeForDisplay(object InjectionId)
+        {
+            if (InjectionId == null) return string.Empty;
+
+            var ctl = new InjectionController();
+            var injection = ctl.GetInjectionContent(int.Parse(InjectionId.ToString(), NumberStyles.Integer));
+            var injectionType = InjectionController.GetInjectionType(injection);
+            
+            if (injectionType == InjectionType.HtmlBottom || injectionType == InjectionType.HtmlTop)
+            {
+                return GetLocalizedString(injectionType.ToString());
+            }
+            else
+            {
+                var injectionProvider = InjectionController.GetCrmProvider(injection);
+
+                if (string.IsNullOrEmpty(injectionProvider))
+                {
+                    return string.Concat(GetLocalizedString(injectionType.ToString()),
+                        GetLocalizedString(InjectionController.GetCrmProviderDefault(injectionType)));
+                }
+                else
+                {
+                    return string.Concat(GetLocalizedString(injectionType.ToString()),
+                        GetLocalizedString(injectionProvider));
+                }
+            }
+        }
+
         #endregion
     }
 }

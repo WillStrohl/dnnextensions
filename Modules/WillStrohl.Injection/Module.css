@@ -14,6 +14,7 @@ table.dnnGrid.wns_inj_injectiontable { width:100%; }
     table.dnnGrid.wns_inj_injectiontable.wns_inj_border tr td { padding:2px 4px 2px 4px; }
     .wns_inj_col_edit { width:30px; }
     .wns_inj_col_editlarge { width:70px; }
+    .wns_inj_col_editlarger { width:150px; }
     .wns_inj_col_editmove { width:110px; }
     .wns_inj_header td { font-weight:bold; }
     .wns_inj_left.wns_inj_col_edit, .wns_inj_right.wns_inj_col_edit { display:inline; width:20px; height:20px; }

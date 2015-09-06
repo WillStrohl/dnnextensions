@@ -76,7 +76,7 @@
                 <tr class="dnnGridHeader wns_inj_header">
                     <td class="wns_inj_col_edit wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Edit")%></td>
                     <td class="wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Name")%></td>
-                    <td class="wns_inj_col_editlarge wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.InjectTop")%></td>
+                    <td class="wns_inj_col_editlarger wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.InjectType")%></td>
                     <td class="wns_inj_col_editlarge wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Enabled")%></td>
                     <td class="wns_inj_col_editmove wns_inj_borderbottom"><%=GetLocalizedString("dlInjection.Header.Move")%></td>
                 </tr>
@@ -87,7 +87,7 @@
                     <asp:ImageButton ID="imgEdit" runat="server" ImageUrl="~/Icons/Sigma/Edit_16X16_Standard.png" CommandName="Edit" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" />
                 </td>
                 <td><asp:label ID="lblName" runat="server" Text='<%#Eval("InjectName")%>' /></td>
-                <td class="wns_inj_col_editlarge"><asp:label ID="lblTop" runat="server" Text='<%#Eval("InjectTop").ToString()%>' /></td>
+                <td class="wns_inj_col_editlarger"><asp:label ID="lblTop" runat="server" Text='<%#GetInjectionTypeForDisplay(Eval("InjectionId"))%>' /></td>
                 <td class="wns_inj_col_editlarge"><img src='<%#GetEnabledImage(Eval("IsEnabled"))%>' alt='<%#GetEnabledImageAltText(Eval("IsEnabled"))%>' /></td>
                 <td class="wns_inj_col_editmove">
                     <div class="dnnLeft wns_inj_left wns_inj_col_edit"><asp:ImageButton ID="imgMoveUp" runat="server" ImageUrl="~/Icons/Sigma/Up_16X16_Standard.png" CommandName="MoveUp" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#CommandUpVisible(Eval("InjectionId"))%>' /></div> 
@@ -101,7 +101,7 @@
                     <asp:ImageButton ID="imgEdit" runat="server" ImageUrl="~/Icons/Sigma/Edit_16X16_Standard.png" CommandName="Edit" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" />
                 </td>
                 <td><asp:label ID="lblName" runat="server" Text='<%#Eval("InjectName")%>' /></td>
-                <td class="wns_inj_col_editlarge"><asp:label ID="lblTop" runat="server" Text='<%#Eval("InjectTop").ToString()%>' /></td>
+                <td class="wns_inj_col_editlarger"><asp:label ID="lblTop" runat="server" Text='<%#GetInjectionTypeForDisplay(Eval("InjectionId"))%>' /></td>
                 <td class="wns_inj_col_editlarge"><img src='<%#GetEnabledImage(Eval("IsEnabled"))%>' alt='<%#GetEnabledImageAltText(Eval("IsEnabled"))%>' /></td>
                 <td class="wns_inj_col_editmove">
                     <div class="dnnLeft wns_inj_left wns_inj_col_edit"><asp:ImageButton ID="imgMoveUp" runat="server" ImageUrl="~/Icons/Sigma/Up_16X16_Standard.png" CommandName="MoveUp" CommandArgument='<%#Eval("InjectionId")%>' CausesValidation="false" Visible='<%#CommandUpVisible(Eval("InjectionId"))%>' /></div> 
