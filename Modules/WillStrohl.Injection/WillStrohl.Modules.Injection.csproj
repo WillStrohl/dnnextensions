@@ -207,7 +207,9 @@
     <Content Include="App_LocalResources\ViewInjection.ascx.resx" />
     <Content Include="EditInjections.ascx" />
     <Content Include="License.txt" />
-    <Content Include="Module.build" />
+    <Content Include="Module.build">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Module.css" />
     <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\01.00.01.SqlDataProvider" />

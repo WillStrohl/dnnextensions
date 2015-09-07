@@ -1,7 +1,7 @@
 ﻿<h3>Version 02.00.00</h3>
 <p><strong>Date Released:</strong> 09/06/2015</p>
 <ul>
-	<li>Feature: Ability to specify and use CRM features for JavaScript/CSS files</li>
+	<li>Feature: Specify and use CRM features for JavaScript/CSS files</li>
 	<li>Feature: Display auditing history for injections</li>
 	<li>Feature: Display injection type in grid listing</li>
 	<li>Feature: Converted project to C#</li>
