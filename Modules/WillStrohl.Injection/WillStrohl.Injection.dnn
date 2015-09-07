@@ -15,7 +15,7 @@
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
       <dependencies>
-        <dependency type="coreversion">07.00.02</dependency>
+        <dependency type="coreversion">07.02.00</dependency>
       </dependencies>
       <components>
         <component type="Script">
