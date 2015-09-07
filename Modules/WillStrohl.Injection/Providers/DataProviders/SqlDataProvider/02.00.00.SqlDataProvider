@@ -16,6 +16,7 @@ Release Notes:
 */
 
 IF NOT EXISTS (SELECT 1 FROM {databaseOwner}[syscolumns] c JOIN {databaseOwner}[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'custom_properties' AND o.[name] = '{objectQualifier}wns_inj_injection')
+BEGIN
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] 
     ADD [custom_properties] NVARCHAR(MAX) NULL;
 
@@ -24,6 +25,7 @@ IF NOT EXISTS (SELECT 1 FROM {databaseOwner}[syscolumns] c JOIN {databaseOwner}[
 	WHERE 
 		[custom_properties] = N'' OR
 		[custom_properties] IS NULL;
+END
 GO
 
 IF NOT OBJECT_ID(N'{databaseOwner}{objectQualifier}wns_inj_AddInjectionContent') IS NULL
