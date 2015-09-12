@@ -156,6 +156,7 @@
             </resourceFile>
           </resourceFiles>
         </component>
+        <component type="Cleanup" fileName="01.03.00.txt" version="01.03.00" />
       </components>
     </package>
   </packages>
