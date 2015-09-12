@@ -90,6 +90,11 @@ namespace DNNCommunity.Modules.MyGroups
 
         #region Event Handlers
 
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -130,9 +135,8 @@ namespace DNNCommunity.Modules.MyGroups
                 //var roles = ctlRole.GetUserRoles(oUser, false);
                 // This overload does.
                 //var roles = ctlRole.GetUserRoles(PortalId, oUser.Username, string.Empty);
-                var bindableRoles = from r in ctlRole.GetUserRoles(PortalId, oUser.Username, string.Empty)
-                    where r.RoleType != 0 && r.Status == RoleStatus.Approved && r.SecurityMode == SecurityMode.SocialGroup
-                    select r;
+                var bindableRoles = ctlRole.GetUserRoles(PortalId, oUser.Username, string.Empty)
+                    .Where(r => r.RoleType != 0 && r.Status == RoleStatus.Approved && r.SecurityMode == SecurityMode.SocialGroup || r.SecurityMode == SecurityMode.Both);
 
                 if (bindableRoles.Any())
                 {
@@ -183,6 +187,18 @@ namespace DNNCommunity.Modules.MyGroups
 
         }
 
+        /// <summary>
+        /// Parses the group icon file.
+        /// </summary>
+        /// <param name="GroupId">The group identifier.</param>
+        /// <param name="iconFile">The icon file.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// GroupId cannot be null
+        /// or
+        /// The image object is null.
+        /// </exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The File ID is not in a valid format.</exception>
         protected string ParseGroupIconFile(object GroupId, object iconFile)
         {
             if (GroupId == null) throw new ArgumentNullException("GroupId cannot be null");
@@ -232,6 +248,11 @@ namespace DNNCommunity.Modules.MyGroups
             }
         }
 
+        /// <summary>
+        /// Gets the group page URL.
+        /// </summary>
+        /// <param name="GroupId">The group identifier.</param>
+        /// <returns></returns>
         protected string GetGroupPageUrl(object GroupId)
         {
             if (GroupId == null)

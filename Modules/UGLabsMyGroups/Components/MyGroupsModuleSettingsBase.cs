@@ -15,16 +15,30 @@ using DotNetNuke.Services.Localization;
 
 namespace DNNCommunity.Modules.MyGroups
 {
+    /// <summary>
+    /// MyGroupsModuleSettingsBase
+    /// </summary>
     public class MyGroupsModuleSettingsBase : ModuleSettingsBase
     {
 
         #region Localization
 
+        /// <summary>
+        /// Gets the localized string.
+        /// </summary>
+        /// <param name="Key">The key.</param>
+        /// <returns></returns>
         protected string GetLocalizedString(string Key)
         {
             return GetLocalizedString(Key, this.LocalResourceFile);
         }
 
+        /// <summary>
+        /// Gets the localized string.
+        /// </summary>
+        /// <param name="Key">The key.</param>
+        /// <param name="LocalizationFilePath">The localization file path.</param>
+        /// <returns></returns>
         protected string GetLocalizedString(string Key, string LocalizationFilePath)
         {
             return Localization.GetString(Key, LocalizationFilePath);

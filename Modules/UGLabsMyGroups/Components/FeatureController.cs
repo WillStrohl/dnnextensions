@@ -10,11 +10,7 @@
 ' 
 */
 
-using System.Collections.Generic;
-//using System.Xml;
-using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.FileSystem;
-using DotNetNuke.Services.Search;
 
 namespace DNNCommunity.Modules.MyGroups.Components
 {
@@ -43,14 +39,27 @@ namespace DNNCommunity.Modules.MyGroups.Components
 
         #region Constants
 
+        /// <summary>
+        /// The settingke y_ profiletabid
+        /// </summary>
         public const string SETTINGKEY_PROFILETABID = "MyGroups.ProfileTabId";
 
+        /// <summary>
+        /// The filei d_ matc h_ pattern
+        /// </summary>
         public const string FILEID_MATCH_PATTERN = @"^FileID=(\d+)$";
 
         #endregion
 
         #region Image Helpers
 
+        /// <summary>
+        /// Gets the image from provider.
+        /// </summary>
+        /// <param name="PortalId">The portal identifier.</param>
+        /// <param name="FolderName">Name of the folder.</param>
+        /// <param name="FileName">Name of the file.</param>
+        /// <returns></returns>
         public IFileInfo GetImageFromProvider(int PortalId, string FolderName, string FileName)
         {
             var oFolder = FolderManager.Instance.GetFolder(PortalId, FolderName);
@@ -59,6 +68,13 @@ namespace DNNCommunity.Modules.MyGroups.Components
             return oImage;
         }
 
+        /// <summary>
+        /// Gets the image from provider.
+        /// </summary>
+        /// <param name="PortalId">The portal identifier.</param>
+        /// <param name="Folder">The folder.</param>
+        /// <param name="FileName">Name of the file.</param>
+        /// <returns></returns>
         public IFileInfo GetImageFromProvider(int PortalId , IFolderInfo Folder , string FileName )
         {
             var oImage = FileManager.Instance.GetFile(Folder, FileName);

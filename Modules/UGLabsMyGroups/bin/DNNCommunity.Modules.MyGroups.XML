@@ -23,6 +23,34 @@
             </summary>
             -----------------------------------------------------------------------------
         </member>
+        <member name="F:DNNCommunity.Modules.MyGroups.Components.FeatureController.SETTINGKEY_PROFILETABID">
+            <summary>
+            The settingke y_ profiletabid
+            </summary>
+        </member>
+        <member name="F:DNNCommunity.Modules.MyGroups.Components.FeatureController.FILEID_MATCH_PATTERN">
+            <summary>
+            The filei d_ matc h_ pattern
+            </summary>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.Components.FeatureController.GetImageFromProvider(System.Int32,System.String,System.String)">
+            <summary>
+            Gets the image from provider.
+            </summary>
+            <param name="PortalId">The portal identifier.</param>
+            <param name="FolderName">Name of the folder.</param>
+            <param name="FileName">Name of the file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.Components.FeatureController.GetImageFromProvider(System.Int32,DotNetNuke.Services.FileSystem.IFolderInfo,System.String)">
+            <summary>
+            Gets the image from provider.
+            </summary>
+            <param name="PortalId">The portal identifier.</param>
+            <param name="Folder">The folder.</param>
+            <param name="FileName">Name of the file.</param>
+            <returns></returns>
+        </member>
         <member name="M:DNNCommunity.Modules.MyGroups.Components.FeatureController.GetImageFileUrl(DotNetNuke.Services.FileSystem.IFileInfo)">
             <summary>
             GetImageFileUrl - this method returns the valid URL for any file, regardless to folder or folder provider in use
@@ -32,6 +60,46 @@
             <remarks>
             WARNING!!! This method can return exceptions. They should be caught and processed in the UI though.
             </remarks>
+        </member>
+        <member name="T:DNNCommunity.Modules.MyGroups.MyGroupsModuleBase">
+            <summary>
+            MyGroupsModuleBase
+            </summary>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.MyGroupsModuleBase.GetLocalizedString(System.String)">
+            <summary>
+            Gets the localized string.
+            </summary>
+            <param name="Key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.MyGroupsModuleBase.GetLocalizedString(System.String,System.String)">
+            <summary>
+            Gets the localized string.
+            </summary>
+            <param name="Key">The key.</param>
+            <param name="LocalizationFilePath">The localization file path.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DNNCommunity.Modules.MyGroups.MyGroupsModuleSettingsBase">
+            <summary>
+            MyGroupsModuleSettingsBase
+            </summary>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.MyGroupsModuleSettingsBase.GetLocalizedString(System.String)">
+            <summary>
+            Gets the localized string.
+            </summary>
+            <param name="Key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.MyGroupsModuleSettingsBase.GetLocalizedString(System.String,System.String)">
+            <summary>
+            Gets the localized string.
+            </summary>
+            <param name="Key">The key.</param>
+            <param name="LocalizationFilePath">The localization file path.</param>
+            <returns></returns>
         </member>
         <member name="T:DNNCommunity.Modules.MyGroups.Settings">
             -----------------------------------------------------------------------------
@@ -54,6 +122,13 @@
             defined there, as well as properties from DNN such as PortalId, ModuleId, TabId, UserId and many more.
             </summary>
             -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.Settings.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the Page control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
         </member>
         <member name="M:DNNCommunity.Modules.MyGroups.Settings.LoadSettings">
             -----------------------------------------------------------------------------
@@ -128,6 +203,34 @@
             
             </summary>
             -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.View.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the Page control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.View.ParseGroupIconFile(System.Object,System.Object)">
+            <summary>
+            Parses the group icon file.
+            </summary>
+            <param name="GroupId">The group identifier.</param>
+            <param name="iconFile">The icon file.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            GroupId cannot be null
+            or
+            The image object is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The File ID is not in a valid format.</exception>
+        </member>
+        <member name="M:DNNCommunity.Modules.MyGroups.View.GetGroupPageUrl(System.Object)">
+            <summary>
+            Gets the group page URL.
+            </summary>
+            <param name="GroupId">The group identifier.</param>
+            <returns></returns>
         </member>
         <member name="F:DNNCommunity.Modules.MyGroups.View.rptGroupList">
             <summary>
