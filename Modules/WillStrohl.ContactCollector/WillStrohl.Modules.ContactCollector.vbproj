@@ -206,6 +206,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01.03.00.txt" />
     <Content Include="License.txt" />
     <Content Include="Module.css" />
   </ItemGroup>

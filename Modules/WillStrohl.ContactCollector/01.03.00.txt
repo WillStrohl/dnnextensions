@@ -1,0 +1,1 @@
+﻿Bin\WillStrohl.Modules.ContactCollector.SqlDataProvider.dll
