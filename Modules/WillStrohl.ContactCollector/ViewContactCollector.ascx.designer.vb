@@ -30,7 +30,7 @@ Namespace WillStrohl.Modules.ContactCollector
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblFirstName As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblFirstName As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''txtFirstName control.
@@ -57,7 +57,7 @@ Namespace WillStrohl.Modules.ContactCollector
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblLastName As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblLastName As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''txtLastName control.
@@ -84,7 +84,7 @@ Namespace WillStrohl.Modules.ContactCollector
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblEmailAddress As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblEmailAddress As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''txtEmailAddress control.
@@ -120,7 +120,7 @@ Namespace WillStrohl.Modules.ContactCollector
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblComment As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblComment As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''txtComment control.

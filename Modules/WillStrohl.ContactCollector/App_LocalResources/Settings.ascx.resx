@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="chkRequiredFields.Item0" xml:space="preserve">
     <value>First Name</value>
@@ -139,7 +139,7 @@
     <value>Use CAPTCHA Control?</value>
   </data>
   <data name="Token.Text" xml:space="preserve">
-    <value>&lt;span class="NormalBold"&gt;Token Replacement:&lt;/span&gt;&amp;nbsp; You can use the following tokens in your e-mail templates:&lt;br /&gt;&lt;br /&gt;[CONTACT:FIRSTNAME]&lt;br /&gt;[CONTACT:LASTNAME]&lt;br /&gt;[CONTACT:EMAIL]&lt;br /&gt;[PORTAL:PORTALNAME]</value>
+    <value>&lt;span class="NormalBold"&gt;Token Replacement:&lt;/span&gt;&amp;nbsp; You can use the following tokens in your e-mail templates:&lt;br /&gt;&lt;br /&gt;[CONTACT:FIRSTNAME]&lt;br /&gt;[CONTACT:LASTNAME]&lt;br /&gt;[CONTACT:EMAIL]&lt;br /&gt;[CONTACT:COMMENTS]&lt;br /&gt;[PORTAL:PORTALNAME]</value>
   </data>
   <data name="AdminMessage.Subject" xml:space="preserve">
     <value>A new contact was added</value>
@@ -184,7 +184,7 @@
     <value>&lt;p&gt;The following contact was saved on your website:&lt;/p&gt;
 
 &lt;p&gt;Name:  [CONTACT:FIRSTNAME] [CONTACT:LASTNAME]&lt;br /&gt;
-E-Mail:  [CONTACT:EMAIL]&lt;/p&gt;</value>
+E-Mail:  [CONTACT:EMAIL]&lt;br /&gt;Comments: [CONTACT:COMMENTS]&lt;/p&gt;</value>
   </data>
   <data name="Email.Template.ToAdmin.Subject" xml:space="preserve">
     <value>A New Contact Has Been Saved</value>

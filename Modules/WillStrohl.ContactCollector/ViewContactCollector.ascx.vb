@@ -31,10 +31,12 @@
 'DAMAGE.
 '
 
-Imports DotNetNuke
 Imports DotNetNuke.Security
 Imports DotNetNuke.UI.Skins.Skin
 Imports System.Text.RegularExpressions
+Imports DotNetNuke.Entities.Modules
+Imports DotNetNuke.Entities.Modules.Actions
+Imports DotNetNuke.UI.Skins.Controls
 Imports WillStrohl.Modules.ContactCollector.ContactCollectorController
 
 Namespace WillStrohl.Modules.ContactCollector
@@ -48,7 +50,7 @@ Namespace WillStrohl.Modules.ContactCollector
     ''' </history>
     Partial Class ViewContactCollector
         Inherits WNSPortalModuleBase
-        Implements Entities.Modules.IActionable
+        Implements IActionable
 
 #Region " Private Members "
 
@@ -74,16 +76,16 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property ContactId() As Integer
             Get
-                If Me.p_ContactId = Null.NullInteger Then
+                If p_ContactId = Null.NullInteger Then
                     Dim obj As Object = Request.Params("contactid")
                     If Not obj Is Nothing Then
                         If Regex.IsMatch(obj.ToString, "\d+") Then
-                            Me.p_ContactId = Integer.Parse(obj.ToString, Globalization.NumberStyles.Integer)
+                            p_ContactId = Integer.Parse(obj.ToString, Globalization.NumberStyles.Integer)
                         End If
                     End If
                 End If
 
-                Return Me.p_ContactId
+                Return p_ContactId
             End Get
         End Property
 
@@ -99,13 +101,14 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property CheckboxSettingKeys() As String()
             Get
-                If Me.p_SettingKeys Is Nothing Then
-                    Me.p_SettingKeys = New String(3) {}
-                    Me.p_SettingKeys(0) = Localization.GetString("RequiredFields.Item0", Me.LocalResourceFile)
-                    Me.p_SettingKeys(1) = Localization.GetString("RequiredFields.Item1", Me.LocalResourceFile)
-                    Me.p_SettingKeys(2) = Localization.GetString("RequiredFields.Item2", Me.LocalResourceFile)
+                If p_SettingKeys Is Nothing Then
+                    p_SettingKeys = New String(3) {}
+
+                    p_SettingKeys(0) = Localization.GetString("RequiredFields.Item0", LocalResourceFile)
+                    p_SettingKeys(1) = Localization.GetString("RequiredFields.Item1", LocalResourceFile)
+                    p_SettingKeys(2) = Localization.GetString("RequiredFields.Item2", LocalResourceFile)
                 End If
-                Return Me.p_SettingKeys
+                Return p_SettingKeys
             End Get
         End Property
 
@@ -121,33 +124,37 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property SettingValues() As Boolean()
             Get
-                If Me.p_SettingValues Is Nothing Then
+                If p_SettingValues Is Nothing Then
                     Dim obj As Object = Nothing
-                    Me.p_SettingValues = New Boolean(3) {}
 
-                    obj = Me.Settings(Me.GetLocalizedString("RequiredFields.Item0"))
+                    p_SettingValues = New Boolean(3) {}
+
+                    obj = Settings(GetLocalizedString("RequiredFields.Item0"))
+
                     If obj Is Nothing Then
-                        Me.p_SettingValues(0) = c_DefaultRequired
+                        p_SettingValues(0) = c_DefaultRequired
                     Else
-                        Me.p_SettingValues(0) = Boolean.Parse(obj.ToString)
+                        p_SettingValues(0) = Boolean.Parse(obj.ToString)
                     End If
 
-                    obj = Me.Settings(Me.GetLocalizedString("RequiredFields.Item1"))
+                    obj = Settings(GetLocalizedString("RequiredFields.Item1"))
+
                     If obj Is Nothing Then
-                        Me.p_SettingValues(1) = c_DefaultRequired
+                        p_SettingValues(1) = c_DefaultRequired
                     Else
-                        Me.p_SettingValues(1) = Boolean.Parse(obj.ToString)
+                        p_SettingValues(1) = Boolean.Parse(obj.ToString)
                     End If
 
-                    obj = Me.Settings(Me.GetLocalizedString("RequiredFields.Item2"))
+                    obj = Settings(GetLocalizedString("RequiredFields.Item2"))
+
                     If obj Is Nothing Then
-                        Me.p_SettingValues(2) = c_DefaultRequired
+                        p_SettingValues(2) = c_DefaultRequired
                     Else
-                        Me.p_SettingValues(2) = Boolean.Parse(obj.ToString)
+                        p_SettingValues(2) = Boolean.Parse(obj.ToString)
                     End If
                 End If
 
-                Return Me.p_SettingValues
+                Return p_SettingValues
             End Get
         End Property
 
@@ -161,8 +168,8 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property UseCaptcha() As Boolean
             Get
-                If Not Me.Settings(SETTING_USECAPTCHA) Is Nothing Then
-                    Return Boolean.Parse(Me.Settings(SETTING_USECAPTCHA).ToString)
+                If Not Settings(SETTING_USECAPTCHA) Is Nothing Then
+                    Return Boolean.Parse(Settings(SETTING_USECAPTCHA).ToString)
                 Else
                     Return False
                 End If
@@ -179,8 +186,8 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property NotifyContact() As Boolean
             Get
-                If Not Me.Settings(SETTING_SENDEMAILTOCONTACT) Is Nothing Then
-                    Return Boolean.Parse(Me.Settings(SETTING_SENDEMAILTOCONTACT).ToString)
+                If Not Settings(SETTING_SENDEMAILTOCONTACT) Is Nothing Then
+                    Return Boolean.Parse(Settings(SETTING_SENDEMAILTOCONTACT).ToString)
                 Else
                     Return False
                 End If
@@ -197,8 +204,8 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property NotifyAdmin() As Boolean
             Get
-                If Not Me.Settings(SETTING_SENDEMAILTOADMIN) Is Nothing Then
-                    Return Boolean.Parse(Me.Settings(SETTING_SENDEMAILTOADMIN).ToString)
+                If Not Settings(SETTING_SENDEMAILTOADMIN) Is Nothing Then
+                    Return Boolean.Parse(Settings(SETTING_SENDEMAILTOADMIN).ToString)
                 Else
                     Return False
                 End If
@@ -215,20 +222,20 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property AdminEmail() As String
             Get
-                If Not String.IsNullOrEmpty(Me.p_AdminEmail) Then
-                    Return Me.p_AdminEmail
+                If Not String.IsNullOrEmpty(p_AdminEmail) Then
+                    Return p_AdminEmail
                 End If
 
-                If Not Me.Settings(SETTING_ADMINEMAIL) Is Nothing Then
-                    Me.p_AdminEmail = Me.Settings(SETTING_ADMINEMAIL).ToString
+                If Not Settings(SETTING_ADMINEMAIL) Is Nothing Then
+                    p_AdminEmail = Settings(SETTING_ADMINEMAIL).ToString
                 Else
                     Dim ctlUser As New UserController
                     Dim usrAdmin As New UserInfo
-                    usrAdmin = ctlUser.GetUser(Me.PortalId, Me.PortalSettings.AdministratorId)
-                    Me.p_AdminEmail = usrAdmin.Email
+                    usrAdmin = ctlUser.GetUser(PortalId, PortalSettings.AdministratorId)
+                    p_AdminEmail = usrAdmin.Email
                 End If
 
-                Return Me.p_AdminEmail
+                Return p_AdminEmail
             End Get
         End Property
 
@@ -242,8 +249,8 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private ReadOnly Property IncludeComment() As Boolean
             Get
-                If Not Me.Settings(SETTING_INCLUDE_COMMENT) Is Nothing Then
-                    Return Boolean.Parse(Me.Settings(SETTING_INCLUDE_COMMENT).ToString)
+                If Not Settings(SETTING_INCLUDE_COMMENT) Is Nothing Then
+                    Return Boolean.Parse(Settings(SETTING_INCLUDE_COMMENT).ToString)
                 Else
                     Return False
                 End If
@@ -261,32 +268,33 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </remarks>
         ''' <history>
         ''' </history>
-        Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Private Sub Page_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
             Try
                 If Not Page.IsPostBack Then
-                    Me.BindData()
+                    BindData()
                 End If
 
-                Me.LocalizeModule()
+                LocalizeModule()
             Catch exc As Exception ' Module failed to load
                 ProcessModuleLoadException(Me, exc)
             End Try
         End Sub
 
-        Private Sub cmdSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdSubmit.Click
-            
-            If Page.IsValid And ((Me.UseCaptcha And Me.ctlCaptcha.IsValid) Or Not Me.UseCaptcha) Then
+        Private Sub cmdSubmit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdSubmit.Click
+
+            If Page.IsValid And ((UseCaptcha And ctlCaptcha.IsValid) Or Not UseCaptcha) Then
 
                 Dim objContact As New ContactInfo
 
-                objContact = Me.SaveContact()
+                objContact = SaveContact()
 
                 Dim ctlContact As New ContactCollectorController
                 Dim objEmail As New EmailTemplateInfo
-                objEmail = ctlContact.GetEmailTemplate(Me.ModuleId)
 
-                Me.SendMailToContact(Me.AdminEmail, objContact, objEmail)
-                Me.SendMailToAdmin(Me.AdminEmail, Me.AdminEmail, objContact, objEmail)
+                objEmail = ctlContact.GetEmailTemplate(ModuleId)
+
+                SendMailToContact(AdminEmail, objContact, objEmail)
+                SendMailToAdmin(AdminEmail, AdminEmail, objContact, objEmail)
 
             End If
 
@@ -305,68 +313,70 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' </history>
         Private Sub BindData()
 
-            Me.rfvFirstName.Enabled = Me.SettingValues(0)
-            If Me.rfvFirstName.Enabled Then
-                Me.txtFirstName.CssClass = "NormalTextBox dnnFormRequired"
+            rfvFirstName.Enabled = SettingValues(0)
+
+            If rfvFirstName.Enabled Then
+                txtFirstName.CssClass = "NormalTextBox dnnFormRequired"
             Else
-                Me.txtFirstName.CssClass = "NormalTextBox"
+                txtFirstName.CssClass = "NormalTextBox"
             End If
 
-            Me.rfvLastName.Enabled = Me.SettingValues(1)
-            If Me.rfvLastName.Enabled Then
-                Me.txtLastName.CssClass = "NormalTextBox dnnFormRequired"
+            rfvLastName.Enabled = SettingValues(1)
+
+            If rfvLastName.Enabled Then
+                txtLastName.CssClass = "NormalTextBox dnnFormRequired"
             Else
-                Me.txtLastName.CssClass = "NormalTextBox"
+                txtLastName.CssClass = "NormalTextBox"
             End If
 
-            Me.rfvEmailAddress.Enabled = Me.SettingValues(2)
-            If Me.rfvEmailAddress.Enabled Then
-                Me.txtEmailAddress.CssClass = "NormalTextBox dnnFormRequired"
+            rfvEmailAddress.Enabled = SettingValues(2)
+            If rfvEmailAddress.Enabled Then
+                txtEmailAddress.CssClass = "NormalTextBox dnnFormRequired"
             Else
-                Me.txtEmailAddress.CssClass = "NormalTextBox"
+                txtEmailAddress.CssClass = "NormalTextBox"
             End If
 
-            Me.ctlCaptcha.Visible = Me.UseCaptcha
-            Me.ctlCaptcha.Enabled = Me.UseCaptcha
+            ctlCaptcha.Visible = UseCaptcha
+            ctlCaptcha.Enabled = UseCaptcha
 
-            Me.lblComment.Visible = Me.IncludeComment
-            Me.txtComment.Visible = Me.IncludeComment
-            Me.rfvComment.Visible = Me.IncludeComment
-            Me.rfvComment.Enabled = Me.IncludeComment
+            lblComment.Visible = IncludeComment
+            txtComment.Visible = IncludeComment
+            rfvComment.Visible = IncludeComment
+            rfvComment.Enabled = IncludeComment
 
-            If Me.ContactId > Null.NullInteger Then
+            If ContactId > Null.NullInteger Then
                 ' the module control is updating an existing contact record
                 Dim ctlContact As New ContactCollectorController
-                Dim cInfo As New ContactInfo
-                cInfo = ctlContact.GetContact(ContactId)
-                Me.txtFirstName.Text = cInfo.FirstName
-                Me.txtLastName.Text = cInfo.LastName
-                Me.txtEmailAddress.Text = cInfo.EmailAddress
-                Me.txtComment.Text = cInfo.Comment
-            ElseIf Me.UserId > Null.NullInteger Then
+                Dim cInfo As ContactInfo = ctlContact.GetContact(ContactId)
+
+                txtFirstName.Text = cInfo.FirstName
+                txtLastName.Text = cInfo.LastName
+                txtEmailAddress.Text = cInfo.EmailAddress
+                txtComment.Text = cInfo.Comment
+            ElseIf UserId > Null.NullInteger Then
                 ' prefill the contact fields for the visitor
-                Me.txtEmailAddress.Text = Me.UserInfo.Email
-                Me.txtFirstName.Text = Me.UserInfo.FirstName
-                Me.txtLastName.Text = Me.UserInfo.LastName
+                txtEmailAddress.Text = UserInfo.Email
+                txtFirstName.Text = UserInfo.FirstName
+                txtLastName.Text = UserInfo.LastName
             End If
 
         End Sub
 
         Private Sub LocalizeModule()
-            Me.rfvFirstName.ErrorMessage = Me.GetLocalizedString("rfvFirstName.ErrorMessage")
-            Me.rfvLastName.ErrorMessage = Me.GetLocalizedString("rfvLastName.ErrorMessage")
-            Me.rfvEmailAddress.ErrorMessage = Me.GetLocalizedString("rfvEmailAddress.ErrorMessage")
-            Me.revEmailAddress.ErrorMessage = Me.GetLocalizedString("revEmailAddress.ErrorMessage")
-            Me.rfvComment.ErrorMessage = Me.GetLocalizedString("rfvComment.ErrorMessage")
-            Me.cmdSubmit.Text = Me.GetLocalizedString("cmdSubmit.Text")
-            Me.ctlCaptcha.ErrorMessage = Me.GetLocalizedString("ctlCaptcha.ErrorMessage")
+            rfvFirstName.ErrorMessage = GetLocalizedString("rfvFirstName.ErrorMessage")
+            rfvLastName.ErrorMessage = GetLocalizedString("rfvLastName.ErrorMessage")
+            rfvEmailAddress.ErrorMessage = GetLocalizedString("rfvEmailAddress.ErrorMessage")
+            revEmailAddress.ErrorMessage = GetLocalizedString("revEmailAddress.ErrorMessage")
+            rfvComment.ErrorMessage = GetLocalizedString("rfvComment.ErrorMessage")
+            cmdSubmit.Text = GetLocalizedString("cmdSubmit.Text")
+            ctlCaptcha.ErrorMessage = GetLocalizedString("ctlCaptcha.ErrorMessage")
         End Sub
 
         Private Sub ClearForm()
-            Me.txtFirstName.Text = Null.NullString
-            Me.txtLastName.Text = Null.NullString
-            Me.txtEmailAddress.Text = Null.NullString
-            Me.txtComment.Text = Null.NullString
+            txtFirstName.Text = Null.NullString
+            txtLastName.Text = Null.NullString
+            txtEmailAddress.Text = Null.NullString
+            txtComment.Text = Null.NullString
         End Sub
 
         Private Function SaveContact() As ContactInfo
@@ -376,25 +386,25 @@ Namespace WillStrohl.Modules.ContactCollector
                 Dim sec As New PortalSecurity
                 Dim ctlContact As New ContactCollectorController
 
-                Dim strFirstName As String = sec.InputFilter(Me.txtFirstName.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
-                Dim strLastName As String = sec.InputFilter(Me.txtLastName.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
-                Dim strEmailAddress As String = sec.InputFilter(Me.txtEmailAddress.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
-                Dim strComment As String = sec.InputFilter(Me.txtComment.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
+                Dim strFirstName As String = sec.InputFilter(txtFirstName.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
+                Dim strLastName As String = sec.InputFilter(txtLastName.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
+                Dim strEmailAddress As String = sec.InputFilter(txtEmailAddress.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
+                Dim strComment As String = sec.InputFilter(txtComment.Text.Trim, PortalSecurity.FilterFlag.NoMarkup)
 
-                If Me.ContactId > Null.NullInteger Then
+                If ContactId > Null.NullInteger Then
                     ' update
-                    ctlContact.UpdateContact(Me.ContactId, Me.ModuleId, strFirstName, strLastName, strEmailAddress, True, strComment)
-                    intContact = Me.ContactId
+                    ctlContact.UpdateContact(ContactId, ModuleId, strFirstName, strLastName, strEmailAddress, True, strComment)
+                    intContact = ContactId
                 Else
                     ' insert
-                    intContact = ctlContact.AddContact(Me.ModuleId, strFirstName, strLastName, strEmailAddress, True, strComment)
+                    intContact = ctlContact.AddContact(ModuleId, strFirstName, strLastName, strEmailAddress, True, strComment)
                 End If
 
                 AddModuleMessage(Me, _
-                    Me.GetLocalizedString("Message.Success"), _
-                    Skins.Controls.ModuleMessage.ModuleMessageType.GreenSuccess)
+                    GetLocalizedString("Message.Success"), _
+                    ModuleMessage.ModuleMessageType.GreenSuccess)
 
-                Me.ClearForm()
+                ClearForm()
 
                 Dim contact As New ContactInfo
                 contact = ctlContact.GetContact(intContact)
@@ -402,15 +412,15 @@ Namespace WillStrohl.Modules.ContactCollector
                 Return contact
 
             Catch ex As Exception
-                DotNetNuke.Services.Exceptions.LogException(ex)
+                LogException(ex)
 
-                If Me.IsEditable AndAlso PortalSettings.UserMode = DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit Then
+                If IsEditable AndAlso PortalSettings.UserMode = PortalSettings.Mode.Edit Then
                     AddModuleMessage(Me, _
                         String.Concat(ex.Message, "<br />", ex.StackTrace), _
                         Skins.Controls.ModuleMessage.ModuleMessageType.GreenSuccess)
                 Else
                     AddModuleMessage(Me, _
-                        Me.GetLocalizedString("Message.Failure"), _
+                        GetLocalizedString("Message.Failure"), _
                         Skins.Controls.ModuleMessage.ModuleMessageType.RedError)
                 End If
 
@@ -421,9 +431,10 @@ Namespace WillStrohl.Modules.ContactCollector
 
         Private Sub SendMailToContact(ByVal FromEmail As String, ByVal Contact As ContactInfo, ByVal EmailInfo As EmailTemplateInfo)
 
-            If Me.NotifyContact AndAlso Not String.IsNullOrEmpty(Contact.EmailAddress) Then
+            If NotifyContact AndAlso Not String.IsNullOrEmpty(Contact.EmailAddress) Then
                 Dim ctlContact As New ContactCollectorController
-                Dim strBody As String = Me.FormatEmailBody(EmailInfo.ContactTemplate, Contact)
+                Dim strBody As String = FormatEmailBody(EmailInfo.ContactTemplate, Contact)
+
                 ctlContact.SendMail(FromEmail, Contact.EmailAddress, EmailInfo.ContactSubject, strBody)
             End If
 
@@ -431,9 +442,10 @@ Namespace WillStrohl.Modules.ContactCollector
 
         Private Sub SendMailToAdmin(ByVal FromEmail As String, ByVal ToEmail As String, ByVal Contact As ContactInfo, ByVal EmailInfo As EmailTemplateInfo)
 
-            If Me.NotifyAdmin Then
+            If NotifyAdmin Then
                 Dim ctlContact As New ContactCollectorController
-                Dim strBody As String = Me.FormatEmailBody(EmailInfo.AdminTemplate, Contact)
+                Dim strBody As String = FormatEmailBody(EmailInfo.AdminTemplate, Contact)
+
                 ctlContact.SendMail(FromEmail, ToEmail, EmailInfo.AdminSubject, strBody)
             End If
 
@@ -442,9 +454,11 @@ Namespace WillStrohl.Modules.ContactCollector
         Private Function FormatEmailBody(ByVal Body As String, ByVal Contact As ContactInfo) As String
 
             Dim strReturn As String = Regex.Replace(Body, "\[CONTACT:FIRSTNAME\]", Contact.FirstName, RegexOptions.IgnoreCase)
+
             strReturn = Regex.Replace(strReturn, "\[CONTACT:LASTNAME\]", Contact.LastName, RegexOptions.IgnoreCase)
             strReturn = Regex.Replace(strReturn, "\[CONTACT:EMAIL\]", Contact.EmailAddress, RegexOptions.IgnoreCase)
-            strReturn = Regex.Replace(strReturn, "\[PORTAL:PORTALNAME\]", Me.PortalSettings.PortalName, RegexOptions.IgnoreCase)
+            strReturn = Regex.Replace(strReturn, "\[CONTACT:COMMENTS\]", Contact.Comment, RegexOptions.IgnoreCase)
+            strReturn = Regex.Replace(strReturn, "\[PORTAL:PORTALNAME\]", PortalSettings.PortalName, RegexOptions.IgnoreCase)
 
             Return Server.HtmlDecode(strReturn)
 
@@ -454,13 +468,13 @@ Namespace WillStrohl.Modules.ContactCollector
 
 #Region " IActionable Implementation "
 
-        Public ReadOnly Property ModuleActions() As DotNetNuke.Entities.Modules.Actions.ModuleActionCollection Implements DotNetNuke.Entities.Modules.IActionable.ModuleActions
+        Public ReadOnly Property ModuleActions() As ModuleActionCollection Implements IActionable.ModuleActions
             Get
-                Dim Actions As New Entities.Modules.Actions.ModuleActionCollection
-                Actions.Add(GetNextActionID, Me.GetLocalizedString("ViewContacts.MenuItem.Title"), _
+                Dim Actions As New ModuleActionCollection
+                Actions.Add(GetNextActionID, GetLocalizedString("ViewContacts.MenuItem.Title"), _
                     String.Empty, String.Empty, String.Empty, _
-                    Me.EditUrl("ViewContacts"), _
-                    False, DotNetNuke.Security.SecurityAccessLevel.Edit, True, False)
+                    EditUrl("ViewContacts"), _
+                    False, SecurityAccessLevel.Edit, True, False)
                 Return Actions
             End Get
         End Property
