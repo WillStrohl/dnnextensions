@@ -31,8 +31,9 @@
 'DAMAGE.
 '
 
+Imports DotNetNuke.Common.Utilities
 Imports System
-Imports DotNetNuke
+Imports System.Data
 
 Namespace WillStrohl.Modules.ContactCollector
 
@@ -40,8 +41,7 @@ Namespace WillStrohl.Modules.ContactCollector
 
 #Region " Private Members "
 
-        Private Const c_Object As String = "data"
-        Private Const c_ObjectType As String = "WillStrohl.Modules.ContactCollector"
+        Private Const c_AssemblyName As String = "WillStrohl.Modules.ContactCollector.SqlDataProvider, WillStrohl.Modules.ContactCollector"
 
 #End Region
 
@@ -57,11 +57,23 @@ Namespace WillStrohl.Modules.ContactCollector
 
         ' dynamically create provider
         Private Shared Sub CreateProvider()
-            objProvider = CType(Framework.Reflection.CreateObject(c_Object, c_ObjectType, c_ObjectType), DataProvider)
+            If objProvider IsNot Nothing Then
+                Return
+            End If
+
+            Dim objectType As Type = Type.GetType(c_AssemblyName)
+
+            objProvider = CType(Activator.CreateInstance(objectType), DataProvider)
+
+            DataCache.SetCache(objectType.FullName, objProvider)
         End Sub
 
         ' return the provider
         Public Shared Shadows Function Instance() As DataProvider
+            If objProvider Is Nothing Then
+                CreateProvider()
+            End If
+
             Return objProvider
         End Function
 

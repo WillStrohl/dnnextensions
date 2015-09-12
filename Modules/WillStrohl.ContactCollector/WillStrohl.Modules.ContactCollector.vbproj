@@ -160,7 +160,7 @@
     <Compile Include="Entities\EmailTemplateInfo.vb" />
     <Compile Include="Entities\EmailTemplateInfoMembers.vb" />
     <Compile Include="Entities\IEmailTemplateInfo.vb" />
-    <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.vb" />
+    <Compile Include="Components\SqlDataProvider.vb" />
     <Compile Include="Settings.ascx.designer.vb">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
