@@ -8,13 +8,13 @@
 <div class="License">
 	<h3>About the UG Labs: MyGroups Mobule</h3>
 	<p class="Owner">
-		<b>Version 01.01.00</b><br /><br />
+		<b>Version 01.01.01</b><br /><br />
 	</p>
 	<p>This release has the following enhancements and updates</p>
 	
 	<h4>Release Updates</h4>
 	<ul>
-			<li>Able to use on any page where the user is logged in</li>
+			<li>Recognizing social groups AND groups marked as "both"</li>
 	</ul>
 	
 </div>

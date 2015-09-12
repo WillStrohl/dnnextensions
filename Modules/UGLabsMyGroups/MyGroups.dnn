@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="MyGroups" type="Module" version="01.01.00">
+    <package name="MyGroups" type="Module" version="01.01.01">
       <friendlyName>UG Labs MyGroups</friendlyName>
       <description>UG Labs MyGroups module</description>
       <iconFile>Images/icon_extensions.gif</iconFile>
@@ -23,7 +23,7 @@
             <basePath>bin</basePath>
             <assembly>
               <name>DNNCommunity.Modules.MyGroups.dll</name>
-              <version>01.01.00</version>
+              <version>01.01.01</version>
             </assembly>
           </assemblies>
         </component>
