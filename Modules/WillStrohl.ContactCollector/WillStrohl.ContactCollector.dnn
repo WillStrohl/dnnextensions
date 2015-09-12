@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.ContactCollector" type="Module" version="1.2.1">
+    <package name="WillStrohl.ContactCollector" type="Module" version="01.03.00">
       <friendlyName>Contact Collector</friendlyName>
       <description>
         <![CDATA[<p>This is the WillStrohl.ContactCollector module. It allows you to collect user-submitted contact information.</p>]]>
@@ -14,8 +14,9 @@
       </owner>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
+      <azureCompatible>true</azureCompatible>
       <dependecies>
-        <dependency type="coreversion">07.00.02</dependency>
+        <dependency type="coreversion">07.02.00</dependency>
       </dependecies>
       <components>
         <component type="Script">
@@ -49,7 +50,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.02.01</version>
+              <version>01.03.00</version>
             </script>
           </scripts>
         </component>
@@ -112,7 +113,7 @@
             <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.ContactCollector.dll</name>
-              <version>01.02.01</version>
+              <version>01.03.00</version>
             </assembly>
           </assemblies>
         </component>

@@ -1,8 +1,12 @@
-﻿<h3>Version 01.02.01</h3>
-<p><strong>Date Released:</strong> 06/06/2013</p>
+﻿<h3>Version 01.03.00</h3>
+<p><strong>Date Released:</strong> 09/12/2015</p>
+<p>Enhancements:</p>
 <ul>
-	<li>Feature: Upgraded source for Visual Studio 2012</li>
-	<li>Feature: Upgraded for ASP.Net 4.0</li>
-	<li>Feature: Upgraded for DNN 07.00.02</li>
-	<li>Feature: Windows &amp; SQL Azure Compatible</li>
+	<li>Only show the export option when there are contacts to export</li>
+	<li>Add comments to the email template with token</li>
+	<li>Add module icon for administrative branding</li>
+</ul>
+<p>Bug Fixes:</p>
+<ul>
+	<li>None</li>
 </ul>
