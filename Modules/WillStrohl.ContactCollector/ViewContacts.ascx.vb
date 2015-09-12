@@ -31,7 +31,10 @@
 'DAMAGE.
 '
 
+Imports System.Globalization
 Imports System.Web.UI.WebControls
+Imports DotNetNuke.UI.Skins
+Imports DotNetNuke.UI.Skins.Controls
 Imports WillStrohl.Modules.ContactCollector.ContactCollectorController
 
 Namespace WillStrohl.Modules.ContactCollector
@@ -49,67 +52,72 @@ Namespace WillStrohl.Modules.ContactCollector
         ''' <remarks></remarks>
         ''' <history>
         ''' </history>
-        Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
             Try
                 If Not Page.IsPostBack Then
-                    Me.BindData()
+                    BindData()
                 End If
             Catch exc As Exception ' Module failed to load
                 ProcessModuleLoadException(Me, exc)
             End Try
         End Sub
 
-        Private Sub grdContact_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles grdContact.PageIndexChanging
-            If Me.grdContact.EditIndex <> -1 Then
+        Private Sub grdContact_PageIndexChanging(ByVal sender As Object, ByVal e As GridViewPageEventArgs) Handles grdContact.PageIndexChanging
+            If grdContact.EditIndex <> -1 Then
                 e.Cancel = True
             Else
-                Me.grdContact.PageIndex = e.NewPageIndex
-                Me.BindData()
+                grdContact.PageIndex = e.NewPageIndex
+                BindData()
             End If
         End Sub
 
-        Private Sub grdContact_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles grdContact.RowCommand
+        Private Sub grdContact_RowCommand(ByVal sender As Object, ByVal e As GridViewCommandEventArgs) Handles grdContact.RowCommand
             Select Case e.CommandName
                 Case "Delete"
                     Try
+
                         Dim ctlContact As New ContactCollectorController
-                        Dim intContact As Integer = Integer.Parse(Me.grdContact.DataKeys(Integer.Parse(e.CommandArgument.ToString, Globalization.NumberStyles.Integer)).Value.ToString, Globalization.NumberStyles.Integer)
+                        Dim intContact As Integer = Integer.Parse(grdContact.DataKeys(Integer.Parse(e.CommandArgument.ToString, NumberStyles.Integer)).Value.ToString, NumberStyles.Integer)
+
                         ctlContact.DeleteContact(intContact)
-                        Me.ReloadPage()
+
+                        ReloadPage()
+
                     Catch ex As Exception
-                        Services.Exceptions.LogException(ex)
-                        If Me.IsEditable Then
-                            UI.Skins.Skin.AddModuleMessage(Me, _
+                        LogException(ex)
+
+                        If IsEditable Then
+                            Skin.AddModuleMessage(Me, _
                                 String.Concat(ex.Message, "<br />", ex.StackTrace), _
-                                Skins.Controls.ModuleMessage.ModuleMessageType.RedError)
+                                ModuleMessage.ModuleMessageType.RedError)
                         Else
-                            UI.Skins.Skin.AddModuleMessage(Me, _
-                                Me.GetLocalizedString("Message.Failure"), _
-                                Skins.Controls.ModuleMessage.ModuleMessageType.RedError)
+                            Skin.AddModuleMessage(Me, _
+                                GetLocalizedString("Message.Failure"), _
+                                ModuleMessage.ModuleMessageType.RedError)
                         End If
                     End Try
             End Select
         End Sub
 
-        Private Sub grdContact_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles grdContact.RowDeleting
+        Private Sub grdContact_RowDeleting(ByVal sender As Object, ByVal e As GridViewDeleteEventArgs) Handles grdContact.RowDeleting
             e.Cancel = False
         End Sub
 
-        Private Sub cmdReturn_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdReturn.Click
+        Private Sub cmdReturn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdReturn.Click
             Response.Redirect(NavigateURL)
         End Sub
 
-        Private Sub lnkExport_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkExport.Click
+        Private Sub lnkExport_Click(ByVal sender As Object, ByVal e As EventArgs) Handles lnkExport.Click
 
-            If Me.Page.IsValid Then
+            If Page.IsValid Then
                 Dim ctlModule As New ContactCollectorController
-                Select Case Me.cboExport.SelectedValue
+                Select Case cboExport.SelectedValue
                     Case "CSV"
-                        ctlModule.ExportData(Me.ModuleId, Me.ModuleConfiguration.DesktopModule.ModuleName, ExportType.CSV)
+                        ctlModule.ExportData(ModuleId, ModuleConfiguration.DesktopModule.ModuleName, ExportType.CSV)
                     Case "Excel"
-                        ctlModule.ExportData(Me.ModuleId, Me.ModuleConfiguration.DesktopModule.ModuleName, ExportType.Excel)
+                        ctlModule.ExportData(ModuleId, ModuleConfiguration.DesktopModule.ModuleName, ExportType.Excel)
                     Case "XML"
-                        ctlModule.ExportData(Me.ModuleId, Me.ModuleConfiguration.DesktopModule.ModuleName, ExportType.XML)
+                        ctlModule.ExportData(ModuleId, ModuleConfiguration.DesktopModule.ModuleName, ExportType.XML)
                 End Select
             End If
 
@@ -120,24 +128,32 @@ Namespace WillStrohl.Modules.ContactCollector
 #Region " Private Methods "
 
         Private Sub BindData()
-            Me.LocalizeModule()
+            LocalizeModule()
 
             Dim ctlContact As New ContactCollectorController
-            Me.grdContact.DataSource = ctlContact.GetContacts(Me.ModuleId)
-            Me.grdContact.DataBind()
+            Dim contacts As ContactInfoCollection = ctlContact.GetContacts(ModuleId)
+
+            grdContact.DataSource = contacts
+            grdContact.DataBind()
+
+            divExport.Visible = (Not contacts Is Nothing) AndAlso (contacts.Count > 0)
         End Sub
 
         Private Sub LocalizeModule()
-            Localization.LocalizeGridView(Me.grdContact, Me.LocalResourceFile)
-            Me.grdContact.EmptyDataText = Me.GetLocalizedString("grdContact.EmptyDataText")
-            Me.cmdReturn.Text = Me.GetLocalizedString("cmdReturn.Text")
+            Localization.LocalizeGridView(grdContact, LocalResourceFile)
 
-            Me.cboExport.Items.Add(New ListItem("---", "---"))
-            Me.cboExport.Items.Add(New ListItem(Me.GetLocalizedString("cboExport.Items.CSV"), "CSV"))
-            Me.cboExport.Items.Add(New ListItem(Me.GetLocalizedString("cboExport.Items.Excel"), "Excel"))
-            Me.cboExport.Items.Add(New ListItem(Me.GetLocalizedString("cboExport.Items.XML"), "XML"))
-            Me.lnkExport.Text = Me.GetLocalizedString("lnkExport.Text")
-            Me.rfvExport.ErrorMessage = Me.GetLocalizedString("rfvExport.ErrorMessage")
+            grdContact.EmptyDataText = GetLocalizedString("grdContact.EmptyDataText")
+
+            cmdReturn.Text = GetLocalizedString("cmdReturn.Text")
+
+            cboExport.Items.Add(New ListItem("---", "---"))
+            cboExport.Items.Add(New ListItem(GetLocalizedString("cboExport.Items.CSV"), "CSV"))
+            cboExport.Items.Add(New ListItem(GetLocalizedString("cboExport.Items.Excel"), "Excel"))
+            cboExport.Items.Add(New ListItem(GetLocalizedString("cboExport.Items.XML"), "XML"))
+
+            lnkExport.Text = GetLocalizedString("lnkExport.Text")
+
+            rfvExport.ErrorMessage = GetLocalizedString("rfvExport.ErrorMessage")
         End Sub
 
         Private Sub ReloadPage()

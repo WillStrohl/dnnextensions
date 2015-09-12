@@ -17,7 +17,7 @@
             <FooterStyle CssClass="dnnGridItem" />
         </asp:GridView>
     </div>
-    <div id="divExport" class="dnnForm dnnEditEntry dnnClear">
+    <div id="divExport" class="dnnForm dnnEditEntry dnnClear" runat="server">
         <div class="dnnFormItem">
             <dnn:Label ID="lblExport" runat="server" ControlName="cboExport" ResourceKey="lblExport" Suffix=":" />
             <asp:DropDownList ID="cboExport" runat="server" ValidationGroup="Export" CssClass="NormalTextBox dnnFormRequired" /> 

@@ -24,13 +24,22 @@ Namespace WillStrohl.Modules.ContactCollector
         Protected WithEvents grdContact As Global.System.Web.UI.WebControls.GridView
 
         '''<summary>
+        '''divExport control.
+        '''</summary>
+        '''<remarks>
+        '''Auto-generated field.
+        '''To modify move field declaration from designer file to code-behind file.
+        '''</remarks>
+        Protected WithEvents divExport As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+        '''<summary>
         '''lblExport control.
         '''</summary>
         '''<remarks>
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblExport As Global.DotNetNuke.UI.UserControls.LabelControl
+        Protected WithEvents lblExport As Global.System.Web.UI.UserControl
 
         '''<summary>
         '''cboExport control.
