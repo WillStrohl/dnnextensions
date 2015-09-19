@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection" type="Module" version="02.00.00">
+    <package name="WillStrohl.Injection" type="Module" version="02.00.01">
       <friendlyName>Content Injection</friendlyName>
       <description>
         <![CDATA[<p>This is a content injection module, written by Will Strohl. Its purpose is to allow you to inject markup into the header or footer of the page.</p>]]>
@@ -69,7 +69,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>02.00.00</version>
+              <version>02.00.01</version>
             </script>
           </scripts>
         </component>
@@ -77,7 +77,7 @@
           <desktopModule>
             <moduleName>WillStrohl.Injection</moduleName>
             <foldername>WillStrohl.Injection</foldername>
-            <businessControllerClass>WillStrohl.Modules.Injection.InjectionController, WillStrohl.Modules.Injection</businessControllerClass>
+            <businessControllerClass>WillStrohl.Modules.Injection.Components.InjectionController, WillStrohl.Modules.Injection</businessControllerClass>
             <supportedFeatures>
               <supportedFeature type="Portable" />
             </supportedFeatures>
@@ -113,7 +113,7 @@
             <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
             <processorCommand>UpgradeModule</processorCommand>
             <attributes>
-              <businessControllerClass>WillStrohl.Modules.Injection.InjectionController, WillStrohl.Modules.Injection</businessControllerClass>
+              <businessControllerClass>WillStrohl.Modules.Injection.Components.InjectionController, WillStrohl.Modules.Injection</businessControllerClass>
               <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
               <upgradeVersionsList />
             </attributes>
@@ -124,7 +124,7 @@
             <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.Injection.dll</name>
-              <version>02.00.00</version>
+              <version>02.00.01</version>
             </assembly>
           </assemblies>
         </component>
