@@ -110,6 +110,7 @@
     <Folder Include="Entities\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\Settings.ascx">
@@ -138,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
