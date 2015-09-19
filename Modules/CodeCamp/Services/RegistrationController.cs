@@ -41,23 +41,23 @@ using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
 {
-    public partial class EventController : ServiceBase
+    public partial class EventController
     {
         /// <summary>
-        /// Get an event
+        /// Get all registrations
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEvents
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetRegistrations
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage GetEvents()
+        public HttpResponseMessage GetRegistrations(int codeCampId)
         {
             try
             {
-                var codeCamps = CodeCampDataAccess.GetItems(ActiveModule.ModuleID);
-                var response = new ServiceResponse<List<CodeCampInfo>> { Content = codeCamps.ToList() };
+                var registrations = RegistrationDataAccess.GetItems(codeCampId);
+                var response = new ServiceResponse<List<RegistrationInfo>> { Content = registrations.ToList() };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -69,20 +69,20 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
-        /// Get an event
+        /// Get a registration
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEvent
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetRegistration
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage GetEvent(int itemId)
+        public HttpResponseMessage GetRegistration(int itemId, int codeCampId)
         {
             try
             {
-                var codeCamp = CodeCampDataAccess.GetItem(itemId, ActiveModule.ModuleID);
-                var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
+                var registration = RegistrationDataAccess.GetItem(itemId, codeCampId);
+                var response = new ServiceResponse<RegistrationInfo> { Content = registration };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -94,20 +94,21 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
-        /// Delete an event
+        /// Delete a registration
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/CodeCamp/API/Event/DeleteEvent
+        /// DELETE: http://dnndev.me/DesktopModules/CodeCamp/API/Event/DeleteRegistration
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteEvent(int itemId)
+        public HttpResponseMessage DeleteRegistration(int itemId, int codeCampId)
         {
             try
             {
-                CodeCampDataAccess.DeleteItem(itemId, ActiveModule.ModuleID);
+                RegistrationDataAccess.DeleteItem(itemId, codeCampId);
+
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -120,22 +121,22 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
-        /// Create an event
+        /// Create a registration
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CeateEvent
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateRegistration
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage CreateEvent(CodeCampInfo newEvent)
+        public HttpResponseMessage CreateRegistration(RegistrationInfo registration)
         {
             try
             {
-                CodeCampDataAccess.CreateItem(newEvent);
+                RegistrationDataAccess.CreateItem(registration);
 
-                var response = new ServiceResponse<string> { Content = "success" };
+                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -147,20 +148,20 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
-        /// Update an event
+        /// Update a registration
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateEvent
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateRegistration
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateEvent(CodeCampInfo updatedEvent)
+        public HttpResponseMessage UpdateRegistration(RegistrationInfo registration)
         {
             try
             {
-                CodeCampDataAccess.UpdateItem(updatedEvent);
+                RegistrationDataAccess.UpdateItem(registration);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
