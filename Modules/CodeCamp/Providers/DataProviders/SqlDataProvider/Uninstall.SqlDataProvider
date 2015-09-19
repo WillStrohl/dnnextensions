@@ -99,6 +99,12 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_RoomId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_RoomId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
