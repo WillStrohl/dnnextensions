@@ -1,0 +1,51 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ModulePath>CodeCamp</ModulePath>
+    <DNNFileName>CodeCamp</DNNFileName>
+    <PackageName>WillStrohl.CodeCamp</PackageName>
+    <Extension>zip</Extension>
+    <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
+    <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>
+    <WebsiteInstallPath>$(WebsitePath)\Install\Module</WebsiteInstallPath>
+    <FullModulePath>$(WebsitePath)\DesktopModules\$(ModulePath)</FullModulePath>
+  </PropertyGroup>
+  <Import Project="$(BuildScriptsPath)\ModulePackageSource.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="CopyBin;GetFiles;DebugProject;PackageModule">
+  </Target>
+  <Target Name="GetFiles">
+    <ItemGroup>
+      <Manifest Include="*.dnn;*.dnn5;*.dnn6" />
+      <TextFiles Include="*.txt" Exclude="releasenotes.txt;license.txt" />
+      <SourceFiles Include="*.css;*.htm" />
+      <Views Include="*.ascx;" />
+      <ResourceFiles Include="App_LocalResources/*.resx" />
+      <Images Include="Images/**/*.*" />
+      <!--JsFiles Include="Scripts/**/*.*" />
+      <Styles Include="Styles/**/*.*" /-->
+      <DataProvider Include="Providers/DataProviders/SqlDataProvider/*.SqlDataProvider" />
+      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images)" />
+    </ItemGroup>
+  </Target>
+  <ItemGroup>
+    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" />
+    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).pdb" />
+    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BinInstallInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" />
+  </ItemGroup>
+  <Target Name="CopyBin">
+    <Copy SourceFiles="@(BinSourceInclude)" DestinationFolder="$(WebsitePath)/bin" />
+  </Target>
+  <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullModulePath)" />
+    <Copy SourceFiles="@(Views)" DestinationFolder="$(FullModulePath)" />
+    <Copy SourceFiles="@(Images)" DestinationFolder="$(FullModulePath)\Images\%(RecursiveDir)" />
+    <!--Copy SourceFiles="@(JsFiles)" DestinationFolder="$(FullModulePath)\Scripts\%(RecursiveDir)" />
+    <Copy SourceFiles="@(Styles)" DestinationFolder="$(FullModulePath)\Styles\%(RecursiveDir)" /-->
+    <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(FullModulePath)" />
+    <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(FullModulePath)" />
+    <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />
+    <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(FullModulePath)\App_LocalResources" />
+  </Target>
+</Project>
