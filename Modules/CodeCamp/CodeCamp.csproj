@@ -83,6 +83,38 @@
     <Compile Include="Components\CodeCampModuleSettingsBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Entities\CodeCampInfo.cs" />
+    <Compile Include="Entities\CodeCampInfoController.cs" />
+    <Compile Include="Entities\SessionRegistrationInfoController.cs" />
+    <Compile Include="Entities\SessionRegistrationInfo.cs" />
+    <Compile Include="Entities\ISessionRegistrationInfo.cs" />
+    <Compile Include="Entities\SessionSpeakerInfoController.cs" />
+    <Compile Include="Entities\SessionSpeakerInfo.cs" />
+    <Compile Include="Entities\ISessionSpeakerInfo.cs" />
+    <Compile Include="Entities\SessionInfoController.cs" />
+    <Compile Include="Entities\SessionInfo.cs" />
+    <Compile Include="Entities\ISessionInfo.cs" />
+    <Compile Include="Entities\RoomInfoController.cs" />
+    <Compile Include="Entities\RoomInfo.cs" />
+    <Compile Include="Entities\IRoomInfo.cs" />
+    <Compile Include="Entities\TrackInfoController.cs" />
+    <Compile Include="Entities\TrackInfo.cs" />
+    <Compile Include="Entities\ITrackInfo.cs" />
+    <Compile Include="Entities\SpeakerInfo.cs" />
+    <Compile Include="Entities\SpeakerInfoController.cs" />
+    <Compile Include="Entities\ISpeakerInfo.cs" />
+    <Compile Include="Entities\TimeSlotInfo.cs" />
+    <Compile Include="Entities\ITimeSlotInfo.cs" />
+    <Compile Include="Entities\VolunteerTaskInfoController.cs" />
+    <Compile Include="Entities\VolunteerTaskInfo.cs" />
+    <Compile Include="Entities\IVolunteerTaskInfo.cs" />
+    <Compile Include="Entities\VolunteerInfoController.cs" />
+    <Compile Include="Entities\VolunteerInfo.cs" />
+    <Compile Include="Entities\IVolunteerInfo.cs" />
+    <Compile Include="Entities\RegistrationInfoController.cs" />
+    <Compile Include="Entities\RegistrationInfo.cs" />
+    <Compile Include="Entities\IRegistrationInfo.cs" />
+    <Compile Include="Entities\ICodeCampInfo.cs" />
     <Compile Include="Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -107,7 +139,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
     <Folder Include="Services\" />
