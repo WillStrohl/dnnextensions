@@ -1,4 +1,11 @@
-﻿<h3>Version 02.00.00</h3>
+﻿<h3>Version 02.00.01</h3>
+<p><strong>Date Released:</strong> 09/18/2015</p>
+<ul>
+	<li>Bug: Updated a typo in the manifest file that caused exceptions in the event log</li>
+	<li>Bug: Added missing reference to get rid of old SqlDataProvider DLL</li>
+</ul>
+
+<h3>Version 02.00.00</h3>
 <p><strong>Date Released:</strong> 09/06/2015</p>
 <ul>
 	<li>Feature: Specify and use CRM features for JavaScript/CSS files</li>
