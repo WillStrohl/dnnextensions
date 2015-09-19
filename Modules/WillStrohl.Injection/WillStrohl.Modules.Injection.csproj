@@ -202,7 +202,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="02.00.00.txt" />
     <Content Include="App_LocalResources\EditInjections.ascx.resx" />
     <Content Include="App_LocalResources\ViewInjection.ascx.resx" />
     <Content Include="EditInjections.ascx" />
@@ -225,6 +224,7 @@
     <Content Include="ViewInjection.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="02.00.01.txt" />
     <None Include="WillStrohl.Injection.dnn" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
