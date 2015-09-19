@@ -34,7 +34,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
@@ -81,6 +83,86 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var codeCamp = CodeCampDataAccess.GetItem(itemId, ActiveModule.ModuleID);
                 var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Delete an event
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// DELETE: http://dnndev.me/DesktopModules/CodeCamp/API/Event/DeleteEvent
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpDelete]
+        public HttpResponseMessage DeleteEvent(int itemId)
+        {
+            try
+            {
+                var codeCamp = CodeCampDataAccess.GetItem(itemId, ActiveModule.ModuleID);
+                var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Create an event
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CeateEvent
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage CreateEvent(CodeCampInfo newEvent)
+        {
+            try
+            {
+                CodeCampDataAccess.CreateItem(newEvent);
+
+                var response = new ServiceResponse<string> { Content = "success" };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Update an event
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateEvent
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage UpdateEvent(CodeCampInfo updatedEvent)
+        {
+            try
+            {
+                CodeCampDataAccess.UpdateItem(updatedEvent);
+
+                var response = new ServiceResponse<string> { Content = "success" };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
