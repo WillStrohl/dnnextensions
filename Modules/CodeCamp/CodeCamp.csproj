@@ -134,6 +134,7 @@
     <Compile Include="Services\JsonHelper.cs" />
     <Compile Include="Services\SerivceResponse.cs" />
     <Compile Include="Services\ServiceError.cs" />
+    <Compile Include="Services\TestController.cs" />
     <Compile Include="Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
