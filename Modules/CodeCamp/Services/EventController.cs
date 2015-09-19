@@ -28,84 +28,67 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DotNetNuke.Services.Exceptions;
+using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
 {
-    public partial class EventController
+    public partial class EventController : ServiceBase
     {
         /// <summary>
-        /// Use to test a successful response
+        /// Get an event
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/Ping
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEvents
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage Ping()
+        public HttpResponseMessage GetEvents()
         {
-            var response = new ServiceResponse<string>() { Content = "Success" };
-
-            return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
-        }
-
-        /// <summary>
-        /// Use to test a failed response
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/CodeCamp/PingError
-        /// </remarks>
-        [AllowAnonymous]
-        [HttpGet]
-        public HttpResponseMessage PingError()
-        {
-            var errors = new List<ServiceError>();
-
-            errors.Add(new ServiceError()
+            try
             {
-                Code = "NULL",
-                Description = "NullReferenceException stack trace"
-            });
+                var codeCamps = CodeCampDataAccess.GetItems(ActiveModule.ModuleID);
+                var response = new ServiceResponse<List<CodeCampInfo>> { Content = codeCamps.ToList() };
 
-            var response = new ServiceResponse<string>()
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
             {
-                Errors = errors
-            };
-
-            return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
         }
 
         /// <summary>
-        /// Use to test a failed response
+        /// Get an event
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/CodeCamp/PingException
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEvent
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage PingException()
+        public HttpResponseMessage GetEvent(int itemId)
         {
-            return Request.CreateResponse(HttpStatusCode.InternalServerError);
-        }
+            try
+            {
+                var codeCamp = CodeCampDataAccess.GetItem(itemId, ActiveModule.ModuleID);
+                var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
 
-        /// <summary>
-        /// Use to test a failed response
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/CodeCamp/PingNotFound
-        /// </remarks>
-        [AllowAnonymous]
-        [HttpGet]
-        public HttpResponseMessage PingNotFound()
-        {
-            return Request.CreateResponse(HttpStatusCode.NotFound);
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
         }
     }
 }

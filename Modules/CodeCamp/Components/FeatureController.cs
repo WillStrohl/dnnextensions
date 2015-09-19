@@ -28,9 +28,9 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-namespace WillStrohl.Modules.DNNHangout.Components
+namespace WillStrohl.Modules.CodeCamp.Components
 {
-    public class CodeCampController 
+    public class FeatureController 
     {
         
     }

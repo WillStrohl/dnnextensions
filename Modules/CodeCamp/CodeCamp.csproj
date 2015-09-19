@@ -129,10 +129,11 @@
     <Compile Include="Entities\RegistrationInfo.cs" />
     <Compile Include="Entities\IRegistrationInfo.cs" />
     <Compile Include="Entities\ICodeCampInfo.cs" />
-    <Compile Include="Services\CodeCampController.cs" />
+    <Compile Include="Services\EventController.cs" />
     <Compile Include="Services\IServiceResponse.cs" />
     <Compile Include="Services\JsonHelper.cs" />
     <Compile Include="Services\SerivceResponse.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\ServiceError.cs" />
     <Compile Include="Services\TestController.cs" />
     <Compile Include="Settings.ascx.cs">
