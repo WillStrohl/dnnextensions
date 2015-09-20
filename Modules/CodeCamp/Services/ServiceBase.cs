@@ -11,11 +11,13 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
         protected CodeCampInfoController CodeCampDataAccess { get; set; }
         protected RegistrationInfoController RegistrationDataAccess { get; set; }
+        protected RoomInfoController RoomDataAccess { get; set; }
 
         public ServiceBase()
         {
             CodeCampDataAccess = new CodeCampInfoController();
             RegistrationDataAccess = new RegistrationInfoController();
+            RoomDataAccess = new RoomInfoController();
         }
     }
 }

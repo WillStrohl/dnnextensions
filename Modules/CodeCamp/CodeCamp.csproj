@@ -129,6 +129,7 @@
     <Compile Include="Entities\RegistrationInfo.cs" />
     <Compile Include="Entities\IRegistrationInfo.cs" />
     <Compile Include="Entities\ICodeCampInfo.cs" />
+    <Compile Include="Services\Controllers\RoomController.cs" />
     <Compile Include="Services\Controllers\RegistrationController.cs" />
     <Compile Include="Services\Controllers\EventController.cs" />
     <Compile Include="Services\IServiceResponse.cs" />
