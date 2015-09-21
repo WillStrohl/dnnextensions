@@ -143,12 +143,15 @@
     <Compile Include="Services\Controllers\RoomController.cs" />
     <Compile Include="Services\Controllers\RegistrationController.cs" />
     <Compile Include="Services\Controllers\EventController.cs" />
+    <Compile Include="Services\ServiceProxyBase.cs" />
     <Compile Include="Services\IServiceResponse.cs" />
     <Compile Include="Components\JsonHelper.cs" />
+    <Compile Include="Services\ServiceHelper.cs" />
     <Compile Include="Services\SerivceResponse.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\ServiceError.cs" />
     <Compile Include="Services\Controllers\TestController.cs" />
+    <Compile Include="Services\ServiceProxy.cs" />
     <Compile Include="Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
