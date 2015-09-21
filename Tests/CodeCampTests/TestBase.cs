@@ -30,6 +30,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WillStrohl.Modules.CodeCamp.Services;
 
@@ -38,6 +41,17 @@ namespace WillStrohl.Modules.CodeCamp.Tests
     [TestClass]
     public class TestBase
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications);
+        }
+
+        private bool AcceptAllCertifications(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
+        }
+
         protected int ModuleId
         {
             get { return 438; }

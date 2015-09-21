@@ -28,7 +28,11 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WillStrohl.Modules.CodeCamp.Entities;
 using WillStrohl.Modules.CodeCamp.Services;
 
 namespace WillStrohl.Modules.CodeCamp.Tests
@@ -37,13 +41,40 @@ namespace WillStrohl.Modules.CodeCamp.Tests
     public class CodeCampTest : TestBase
     {
         [TestMethod]
-        public void CodeCamp_TestGetAll()
+        public void CodeCamp_CreateFindDeleteEvent_Test()
         {
             var service = new ServiceProxy(ApiBaseUrl);
 
-            var response = service.GetEvents(ModuleId);
+            var newEvent = new CodeCampInfo()
+            {
+                Title = "New Test Code Camp",
+                Description = "Test code camp description.",
+                CreatedByDate = DateTime.Now,
+                CreatedByUserId = 1,
+                LastUpdatedByDate = DateTime.Now,
+                LastUpdatedByUserId = 1,
+                BeginDate = DateTime.Now.AddDays(30),
+                EndDate = DateTime.Now.AddDays(32),
+                ModuleId = ModuleId
+            };
 
-            CheckErrors(response);
+            var createResponse = service.CreateEvent(newEvent);
+
+            CheckErrors(createResponse);
+
+            var findResponse = service.GetEvents(ModuleId);
+
+            CheckErrors(findResponse);
+
+            var actualEvent = findResponse.Content.FirstOrDefault(e => e.Title == "New Test Code Camp");
+
+            Assert.AreEqual(newEvent.BeginDate, actualEvent.BeginDate);
+            Assert.AreEqual(newEvent.EndDate, actualEvent.EndDate);
+            Assert.AreEqual(newEvent.ModuleId, actualEvent.ModuleId);
+
+            var deleteResponse = service.DeleteEvent(newEvent.CodeCampId);
+
+            CheckErrors(deleteResponse);
         }
     }
 }
