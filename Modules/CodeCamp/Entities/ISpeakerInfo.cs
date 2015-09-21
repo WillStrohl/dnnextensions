@@ -35,6 +35,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     public interface ISpeakerInfo
     {
         int SpeakerId { get; set; }
+        int CodeCampId { get; set; }
         int RegistrationId { get; set; }
         string SpeakerName { get; set; }
         string CompanyName { get; set; }

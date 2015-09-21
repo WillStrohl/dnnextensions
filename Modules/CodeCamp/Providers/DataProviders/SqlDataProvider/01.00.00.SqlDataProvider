@@ -338,9 +338,12 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] (
 	[SpeakerId] INT IDENTITY(1,1) 
 		CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Speaker] PRIMARY KEY CLUSTERED, 
+	[CodeCampId] INT NOT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
 	[RegistrationId] INT NOT NULL 
 		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId] FOREIGN KEY 
-		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]) ON DELETE CASCADE, 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]), 
 	[SpeakerName] NVARCHAR(150) NOT NULL, 
 	[CompanyName] NVARCHAR(100) NULL, 
 	[CompanyTitle] NVARCHAR(100) NULL, 

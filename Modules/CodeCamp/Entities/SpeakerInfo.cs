@@ -37,10 +37,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     [TableName("wns_CodeCamp_Speaker")]
     [PrimaryKey("SpeakerId", AutoIncrement = true)]
     [Cacheable("Speaker", CacheItemPriority.Default, 20)]
-    [Scope("RegistrationId")]
+    [Scope("CodeCampId")]
     public class SpeakerInfo : ISpeakerInfo
     {
         public int SpeakerId { get; set; }
+
+        public int CodeCampId { get; set; }
 
         public int RegistrationId { get; set; }
 
