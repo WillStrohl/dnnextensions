@@ -136,6 +136,9 @@
     <Compile Include="Entities\RegistrationInfo.cs" />
     <Compile Include="Entities\IRegistrationInfo.cs" />
     <Compile Include="Entities\ICodeCampInfo.cs" />
+    <Compile Include="Services\Controllers\SpeakerController.cs" />
+    <Compile Include="Services\Controllers\SessionSpeakerController.cs" />
+    <Compile Include="Services\Controllers\SessionRegistrationController.cs" />
     <Compile Include="Services\Controllers\SessionController.cs" />
     <Compile Include="Services\Controllers\RoomController.cs" />
     <Compile Include="Services\Controllers\RegistrationController.cs" />

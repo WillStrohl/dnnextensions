@@ -82,7 +82,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var speaker = SpeakerDataAccess.GetItem(itemId, codeCampId);
-                var response = new ServiceResponse<RoomInfo> { Content = speaker };
+                var response = new ServiceResponse<SpeakerInfo> { Content = speaker };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
