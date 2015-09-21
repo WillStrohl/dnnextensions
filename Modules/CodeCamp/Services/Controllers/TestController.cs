@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Services
 {

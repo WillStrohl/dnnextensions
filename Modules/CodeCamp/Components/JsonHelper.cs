@@ -32,7 +32,7 @@ using System;
 using System.IO;
 using System.Web.Script.Serialization;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace WillStrohl.Modules.CodeCamp.Components
 {
     public static class JsonHelper
     {

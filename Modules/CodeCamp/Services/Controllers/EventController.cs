@@ -37,6 +37,7 @@ using System.Web.Http;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
+using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
