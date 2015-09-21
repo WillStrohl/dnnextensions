@@ -53,7 +53,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             var result = new ServiceResponse<string>();
 
-            result = ServiceHelper.PostRequest<ServiceResponse<string>>(fullApiUri + "CeateEvent", codeCamp.ObjectToJson());
+            result = ServiceHelper.PostRequest<ServiceResponse<string>>(fullApiUri + "CreateEvent", codeCamp.ObjectToJson());
             
             return result;   
         }

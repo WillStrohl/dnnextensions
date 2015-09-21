@@ -53,11 +53,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage GetEvents()
+        public HttpResponseMessage GetEvents(int moduleId)
         {
             try
             {
-                var codeCamps = CodeCampDataAccess.GetItems(ActiveModule.ModuleID);
+                var codeCamps = CodeCampDataAccess.GetItems(moduleId);
                 var response = new ServiceResponse<List<CodeCampInfo>> { Content = codeCamps.ToList() };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -78,11 +78,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage GetEvent(int itemId)
+        public HttpResponseMessage GetEvent(int itemId, int moduleId)
         {
             try
             {
-                var codeCamp = CodeCampDataAccess.GetItem(itemId, ActiveModule.ModuleID);
+                var codeCamp = CodeCampDataAccess.GetItem(itemId, moduleId);
                 var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -104,11 +104,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteEvent(int itemId)
+        public HttpResponseMessage DeleteEvent(int itemId, int moduleId)
         {
             try
             {
-                CodeCampDataAccess.DeleteItem(itemId, ActiveModule.ModuleID);
+                CodeCampDataAccess.DeleteItem(itemId, moduleId);
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
