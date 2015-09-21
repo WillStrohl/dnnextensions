@@ -12,12 +12,20 @@ namespace WillStrohl.Modules.CodeCamp.Services
         protected CodeCampInfoController CodeCampDataAccess { get; set; }
         protected RegistrationInfoController RegistrationDataAccess { get; set; }
         protected RoomInfoController RoomDataAccess { get; set; }
+        protected SessionInfoController SessionDataAccess { get; set; }
+        protected SessionRegistrationInfoController SessionRegistrationDataAccess { get; set; }
+        protected SessionSpeakerInfoController SessionSpeakerDataAccess { get; set; }
+        protected SpeakerInfoController SpeakerDataAccess { get; set; }
 
         public ServiceBase()
         {
             CodeCampDataAccess = new CodeCampInfoController();
             RegistrationDataAccess = new RegistrationInfoController();
             RoomDataAccess = new RoomInfoController();
+            SessionDataAccess = new SessionInfoController();
+            SessionRegistrationDataAccess = new SessionRegistrationInfoController();
+            SessionSpeakerDataAccess = new SessionSpeakerInfoController();
+            SpeakerDataAccess = new SpeakerInfoController();
         }
     }
 }

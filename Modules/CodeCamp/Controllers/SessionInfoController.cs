@@ -32,16 +32,16 @@ using System.Collections.Generic;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class CodeCampInfoController
+    public class SessionInfoController
     {
-        private readonly CodeCampInfoRepository repo = null;
+        private readonly SessionInfoRepository repo = null;
 
-        public CodeCampInfoController() 
+        public SessionInfoController() 
         {
-            repo = new CodeCampInfoRepository();
+            repo = new SessionInfoRepository();
         }
 
-        public void CreateItem(CodeCampInfo i)
+        public void CreateItem(SessionInfo i)
         {
             repo.CreateItem(i);
         }
@@ -51,24 +51,24 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.DeleteItem(itemId, moduleId);
         }
 
-        public void DeleteItem(CodeCampInfo i)
+        public void DeleteItem(SessionInfo i)
         {
             repo.DeleteItem(i);
         }
 
-        public IEnumerable<CodeCampInfo> GetItems(int moduleId)
+        public IEnumerable<SessionInfo> GetItems(int moduleId)
         {
             var items = repo.GetItems(moduleId);
             return items;
         }
 
-        public CodeCampInfo GetItem(int itemId, int moduleId)
+        public SessionInfo GetItem(int itemId, int moduleId)
         {
             var item = repo.GetItem(itemId, moduleId);
             return item;
         }
 
-        public void UpdateItem(CodeCampInfo i)
+        public void UpdateItem(SessionInfo i)
         {
             repo.UpdateItem(i);
         }

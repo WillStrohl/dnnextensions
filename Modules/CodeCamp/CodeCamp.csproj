@@ -97,6 +97,10 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Components\RouteMapper.cs" />
+    <Compile Include="Controllers\SpeakerInfoController.cs" />
+    <Compile Include="Controllers\SessionSpeakerInfoController.cs" />
+    <Compile Include="Controllers\SessionRegistrationInfoController.cs" />
+    <Compile Include="Controllers\SessionInfoController.cs" />
     <Compile Include="Controllers\RoomInfoController.cs" />
     <Compile Include="Controllers\RegistrationInfoController.cs" />
     <Compile Include="Entities\CodeCampInfo.cs" />

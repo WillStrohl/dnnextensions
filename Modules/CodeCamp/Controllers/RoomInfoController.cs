@@ -34,7 +34,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 {
     public class RoomInfoController
     {
-        private RoomInfoRepository repo = null;
+        private readonly RoomInfoRepository repo = null;
 
         public RoomInfoController() 
         {

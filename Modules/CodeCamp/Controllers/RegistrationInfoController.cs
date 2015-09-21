@@ -34,7 +34,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 {
     public class RegistrationInfoController
     {
-        private RegistrationInfoRepository repo = null;
+        private readonly RegistrationInfoRepository repo = null;
 
         public RegistrationInfoController() 
         {
