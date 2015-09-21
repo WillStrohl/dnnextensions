@@ -33,59 +33,59 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class TrackInfoController
+    public class SessionRegistrationInfoRepository
     {
-        public void CreateItem(TrackInfo i)
+        public void CreateItem(SessionRegistrationInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<TrackInfo>();
+                var rep = ctx.GetRepository<SessionRegistrationInfo>();
                 rep.Insert(i);
             }
         }
 
-        public void DeleteItem(int itemId, int codeCampId)
+        public void DeleteItem(int itemId, int sessionId)
         {
-            var i = GetItem(itemId, codeCampId);
+            var i = GetItem(itemId, sessionId);
             DeleteItem(i);
         }
 
-        public void DeleteItem(TrackInfo i)
+        public void DeleteItem(SessionRegistrationInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<TrackInfo>();
+                var rep = ctx.GetRepository<SessionRegistrationInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<TrackInfo> GetItems(int codeCampId)
+        public IEnumerable<SessionRegistrationInfo> GetItems(int sessionId)
         {
-            IEnumerable<TrackInfo> i;
+            IEnumerable<SessionRegistrationInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<TrackInfo>();
-                i = rep.Get(codeCampId);
+                var rep = ctx.GetRepository<SessionRegistrationInfo>();
+                i = rep.Get(sessionId);
             }
             return i;
         }
 
-        public TrackInfo GetItem(int itemId, int codeCampId)
+        public SessionRegistrationInfo GetItem(int itemId, int sessionId)
         {
-            TrackInfo i = null;
+            SessionRegistrationInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<TrackInfo>();
-                i = rep.GetById(itemId, codeCampId);
+                var rep = ctx.GetRepository<SessionRegistrationInfo>();
+                i = rep.GetById(itemId, sessionId);
             }
             return i;
         }
 
-        public void UpdateItem(TrackInfo i)
+        public void UpdateItem(SessionRegistrationInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<TrackInfo>();
+                var rep = ctx.GetRepository<SessionRegistrationInfo>();
                 rep.Update(i);
             }
         }

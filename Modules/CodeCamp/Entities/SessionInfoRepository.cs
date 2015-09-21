@@ -33,59 +33,59 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class CodeCampInfoController
+    public class SessionInfoRepository
     {
-        public void CreateItem(CodeCampInfo i)
+        public void CreateItem(SessionInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<CodeCampInfo>();
+                var rep = ctx.GetRepository<SessionInfo>();
                 rep.Insert(i);
             }
         }
 
-        public void DeleteItem(int itemId, int moduleId)
+        public void DeleteItem(int itemId, int codeCampId)
         {
-            var i = GetItem(itemId, moduleId);
+            var i = GetItem(itemId, codeCampId);
             DeleteItem(i);
         }
 
-        public void DeleteItem(CodeCampInfo i)
+        public void DeleteItem(SessionInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<CodeCampInfo>();
+                var rep = ctx.GetRepository<SessionInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<CodeCampInfo> GetItems(int moduleId)
+        public IEnumerable<SessionInfo> GetItems(int trackId)
         {
-            IEnumerable<CodeCampInfo> i;
+            IEnumerable<SessionInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<CodeCampInfo>();
-                i = rep.Get(moduleId);
+                var rep = ctx.GetRepository<SessionInfo>();
+                i = rep.Get(trackId);
             }
             return i;
         }
 
-        public CodeCampInfo GetItem(int itemId, int moduleId)
+        public SessionInfo GetItem(int itemId, int codeCampId)
         {
-            CodeCampInfo i = null;
+            SessionInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<CodeCampInfo>();
-                i = rep.GetById(itemId, moduleId);
+                var rep = ctx.GetRepository<SessionInfo>();
+                i = rep.GetById(itemId, codeCampId);
             }
             return i;
         }
 
-        public void UpdateItem(CodeCampInfo i)
+        public void UpdateItem(SessionInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<CodeCampInfo>();
+                var rep = ctx.GetRepository<SessionInfo>();
                 rep.Update(i);
             }
         }

@@ -33,59 +33,59 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class VolunteerTaskInfoController
+    public class RoomInfoRepository
     {
-        public void CreateItem(VolunteerTaskInfo i)
+        public void CreateItem(RoomInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerTaskInfo>();
+                var rep = ctx.GetRepository<RoomInfo>();
                 rep.Insert(i);
             }
         }
 
-        public void DeleteItem(int itemId, int volunteerId)
+        public void DeleteItem(int itemId, int codeCampId)
         {
-            var i = GetItem(itemId, volunteerId);
+            var i = GetItem(itemId, codeCampId);
             DeleteItem(i);
         }
 
-        public void DeleteItem(VolunteerTaskInfo i)
+        public void DeleteItem(RoomInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerTaskInfo>();
+                var rep = ctx.GetRepository<RoomInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<VolunteerTaskInfo> GetItems(int volunteerId)
+        public IEnumerable<RoomInfo> GetItems(int codeCampId)
         {
-            IEnumerable<VolunteerTaskInfo> i;
+            IEnumerable<RoomInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerTaskInfo>();
-                i = rep.Get(volunteerId);
+                var rep = ctx.GetRepository<RoomInfo>();
+                i = rep.Get(codeCampId);
             }
             return i;
         }
 
-        public VolunteerTaskInfo GetItem(int itemId, int volunteerId)
+        public RoomInfo GetItem(int itemId, int codeCampId)
         {
-            VolunteerTaskInfo i = null;
+            RoomInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerTaskInfo>();
-                i = rep.GetById(itemId, volunteerId);
+                var rep = ctx.GetRepository<RoomInfo>();
+                i = rep.GetById(itemId, codeCampId);
             }
             return i;
         }
 
-        public void UpdateItem(VolunteerTaskInfo i)
+        public void UpdateItem(RoomInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerTaskInfo>();
+                var rep = ctx.GetRepository<RoomInfo>();
                 rep.Update(i);
             }
         }

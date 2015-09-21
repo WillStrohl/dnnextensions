@@ -33,7 +33,7 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class RegistrationInfoController
+    public class RegistrationInfoRepository
     {
         public void CreateItem(RegistrationInfo i)
         {

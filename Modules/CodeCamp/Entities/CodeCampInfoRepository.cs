@@ -33,59 +33,59 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class VolunteerInfoController
+    public class CodeCampInfoRepository
     {
-        public void CreateItem(VolunteerInfo i)
+        public void CreateItem(CodeCampInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerInfo>();
+                var rep = ctx.GetRepository<CodeCampInfo>();
                 rep.Insert(i);
             }
         }
 
-        public void DeleteItem(int itemId, int registrationId)
+        public void DeleteItem(int itemId, int moduleId)
         {
-            var i = GetItem(itemId, registrationId);
+            var i = GetItem(itemId, moduleId);
             DeleteItem(i);
         }
 
-        public void DeleteItem(VolunteerInfo i)
+        public void DeleteItem(CodeCampInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerInfo>();
+                var rep = ctx.GetRepository<CodeCampInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<VolunteerInfo> GetItems(int registrationId)
+        public IEnumerable<CodeCampInfo> GetItems(int moduleId)
         {
-            IEnumerable<VolunteerInfo> i;
+            IEnumerable<CodeCampInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerInfo>();
-                i = rep.Get(registrationId);
+                var rep = ctx.GetRepository<CodeCampInfo>();
+                i = rep.Get(moduleId);
             }
             return i;
         }
 
-        public VolunteerInfo GetItem(int itemId, int registrationId)
+        public CodeCampInfo GetItem(int itemId, int moduleId)
         {
-            VolunteerInfo i = null;
+            CodeCampInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerInfo>();
-                i = rep.GetById(itemId, registrationId);
+                var rep = ctx.GetRepository<CodeCampInfo>();
+                i = rep.GetById(itemId, moduleId);
             }
             return i;
         }
 
-        public void UpdateItem(VolunteerInfo i)
+        public void UpdateItem(CodeCampInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<VolunteerInfo>();
+                var rep = ctx.GetRepository<CodeCampInfo>();
                 rep.Update(i);
             }
         }

@@ -29,65 +29,48 @@
 */
 
 using System.Collections.Generic;
-using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class SpeakerInfoController
+    public class CodeCampInfoController
     {
-        public void CreateItem(SpeakerInfo i)
+        private CodeCampInfoRepository repo = null;
+
+        public CodeCampInfoController() 
         {
-            using (IDataContext ctx = DataContext.Instance())
-            {
-                var rep = ctx.GetRepository<SpeakerInfo>();
-                rep.Insert(i);
-            }
+            repo = new CodeCampInfoRepository();
         }
 
-        public void DeleteItem(int itemId, int registrationId)
+        public void CreateItem(CodeCampInfo i)
         {
-            var i = GetItem(itemId, registrationId);
-            DeleteItem(i);
+            repo.CreateItem(i);
         }
 
-        public void DeleteItem(SpeakerInfo i)
+        public void DeleteItem(int itemId, int moduleId)
         {
-            using (IDataContext ctx = DataContext.Instance())
-            {
-                var rep = ctx.GetRepository<SpeakerInfo>();
-                rep.Delete(i);
-            }
+            repo.DeleteItem(itemId, moduleId);
         }
 
-        public IEnumerable<SpeakerInfo> GetItems(int registrationId)
+        public void DeleteItem(CodeCampInfo i)
         {
-            IEnumerable<SpeakerInfo> i;
-            using (IDataContext ctx = DataContext.Instance())
-            {
-                var rep = ctx.GetRepository<SpeakerInfo>();
-                i = rep.Get(registrationId);
-            }
-            return i;
+            repo.DeleteItem(i);
         }
 
-        public SpeakerInfo GetItem(int itemId, int registrationId)
+        public IEnumerable<CodeCampInfo> GetItems(int moduleId)
         {
-            SpeakerInfo i = null;
-            using (IDataContext ctx = DataContext.Instance())
-            {
-                var rep = ctx.GetRepository<SpeakerInfo>();
-                i = rep.GetById(itemId, registrationId);
-            }
-            return i;
+            var items = repo.GetItems(moduleId);
+            return items;
         }
 
-        public void UpdateItem(SpeakerInfo i)
+        public CodeCampInfo GetItem(int itemId, int moduleId)
         {
-            using (IDataContext ctx = DataContext.Instance())
-            {
-                var rep = ctx.GetRepository<SpeakerInfo>();
-                rep.Update(i);
-            }
+            var item = repo.GetItem(itemId, moduleId);
+            return item;
+        }
+
+        public void UpdateItem(CodeCampInfo i)
+        {
+            repo.UpdateItem(i);
         }
     }
 }

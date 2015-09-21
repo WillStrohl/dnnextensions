@@ -33,59 +33,59 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class SessionRegistrationInfoController
+    public class VolunteerTaskInfoRepository
     {
-        public void CreateItem(SessionRegistrationInfo i)
+        public void CreateItem(VolunteerTaskInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionRegistrationInfo>();
+                var rep = ctx.GetRepository<VolunteerTaskInfo>();
                 rep.Insert(i);
             }
         }
 
-        public void DeleteItem(int itemId, int sessionId)
+        public void DeleteItem(int itemId, int volunteerId)
         {
-            var i = GetItem(itemId, sessionId);
+            var i = GetItem(itemId, volunteerId);
             DeleteItem(i);
         }
 
-        public void DeleteItem(SessionRegistrationInfo i)
+        public void DeleteItem(VolunteerTaskInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionRegistrationInfo>();
+                var rep = ctx.GetRepository<VolunteerTaskInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<SessionRegistrationInfo> GetItems(int sessionId)
+        public IEnumerable<VolunteerTaskInfo> GetItems(int volunteerId)
         {
-            IEnumerable<SessionRegistrationInfo> i;
+            IEnumerable<VolunteerTaskInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionRegistrationInfo>();
-                i = rep.Get(sessionId);
+                var rep = ctx.GetRepository<VolunteerTaskInfo>();
+                i = rep.Get(volunteerId);
             }
             return i;
         }
 
-        public SessionRegistrationInfo GetItem(int itemId, int sessionId)
+        public VolunteerTaskInfo GetItem(int itemId, int volunteerId)
         {
-            SessionRegistrationInfo i = null;
+            VolunteerTaskInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionRegistrationInfo>();
-                i = rep.GetById(itemId, sessionId);
+                var rep = ctx.GetRepository<VolunteerTaskInfo>();
+                i = rep.GetById(itemId, volunteerId);
             }
             return i;
         }
 
-        public void UpdateItem(SessionRegistrationInfo i)
+        public void UpdateItem(VolunteerTaskInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionRegistrationInfo>();
+                var rep = ctx.GetRepository<VolunteerTaskInfo>();
                 rep.Update(i);
             }
         }

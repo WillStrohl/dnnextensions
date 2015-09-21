@@ -33,59 +33,59 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class SessionInfoController
+    public class SpeakerInfoRepository
     {
-        public void CreateItem(SessionInfo i)
+        public void CreateItem(SpeakerInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionInfo>();
+                var rep = ctx.GetRepository<SpeakerInfo>();
                 rep.Insert(i);
             }
         }
 
-        public void DeleteItem(int itemId, int codeCampId)
+        public void DeleteItem(int itemId, int registrationId)
         {
-            var i = GetItem(itemId, codeCampId);
+            var i = GetItem(itemId, registrationId);
             DeleteItem(i);
         }
 
-        public void DeleteItem(SessionInfo i)
+        public void DeleteItem(SpeakerInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionInfo>();
+                var rep = ctx.GetRepository<SpeakerInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<SessionInfo> GetItems(int trackId)
+        public IEnumerable<SpeakerInfo> GetItems(int registrationId)
         {
-            IEnumerable<SessionInfo> i;
+            IEnumerable<SpeakerInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionInfo>();
-                i = rep.Get(trackId);
+                var rep = ctx.GetRepository<SpeakerInfo>();
+                i = rep.Get(registrationId);
             }
             return i;
         }
 
-        public SessionInfo GetItem(int itemId, int codeCampId)
+        public SpeakerInfo GetItem(int itemId, int registrationId)
         {
-            SessionInfo i = null;
+            SpeakerInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionInfo>();
-                i = rep.GetById(itemId, codeCampId);
+                var rep = ctx.GetRepository<SpeakerInfo>();
+                i = rep.GetById(itemId, registrationId);
             }
             return i;
         }
 
-        public void UpdateItem(SessionInfo i)
+        public void UpdateItem(SpeakerInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<SessionInfo>();
+                var rep = ctx.GetRepository<SpeakerInfo>();
                 rep.Update(i);
             }
         }

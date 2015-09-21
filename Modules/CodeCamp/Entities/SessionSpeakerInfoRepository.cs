@@ -33,7 +33,7 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class SessionSpeakerInfoController
+    public class SessionSpeakerInfoRepository
     {
         public void CreateItem(SessionSpeakerInfo i)
         {

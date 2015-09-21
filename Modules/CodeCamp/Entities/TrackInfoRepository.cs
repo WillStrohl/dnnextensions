@@ -33,13 +33,13 @@ using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public class RoomInfoController
+    public class TrackInfoRepository
     {
-        public void CreateItem(RoomInfo i)
+        public void CreateItem(TrackInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<RoomInfo>();
+                var rep = ctx.GetRepository<TrackInfo>();
                 rep.Insert(i);
             }
         }
@@ -50,42 +50,42 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             DeleteItem(i);
         }
 
-        public void DeleteItem(RoomInfo i)
+        public void DeleteItem(TrackInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<RoomInfo>();
+                var rep = ctx.GetRepository<TrackInfo>();
                 rep.Delete(i);
             }
         }
 
-        public IEnumerable<RoomInfo> GetItems(int codeCampId)
+        public IEnumerable<TrackInfo> GetItems(int codeCampId)
         {
-            IEnumerable<RoomInfo> i;
+            IEnumerable<TrackInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<RoomInfo>();
+                var rep = ctx.GetRepository<TrackInfo>();
                 i = rep.Get(codeCampId);
             }
             return i;
         }
 
-        public RoomInfo GetItem(int itemId, int codeCampId)
+        public TrackInfo GetItem(int itemId, int codeCampId)
         {
-            RoomInfo i = null;
+            TrackInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<RoomInfo>();
+                var rep = ctx.GetRepository<TrackInfo>();
                 i = rep.GetById(itemId, codeCampId);
             }
             return i;
         }
 
-        public void UpdateItem(RoomInfo i)
+        public void UpdateItem(TrackInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
             {
-                var rep = ctx.GetRepository<RoomInfo>();
+                var rep = ctx.GetRepository<TrackInfo>();
                 rep.Update(i);
             }
         }
