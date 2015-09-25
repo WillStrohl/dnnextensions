@@ -32,6 +32,8 @@ namespace WillStrohl.Modules.CodeCamp.Components
 {
     public class Globals
     {
+        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/CodeCamp/App_LocalResources/SharedResources.resx";
+
         public const string VIEW_PATH = "Views/";
         public const string VIEW_EXTENSION = ".ascx";
 

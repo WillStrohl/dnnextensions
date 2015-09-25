@@ -59,12 +59,7 @@ namespace WillStrohl.Modules.CodeCamp
 
         #region Event Handlers
 
-        private void InitializeComponent()
-        {
-            this.Load += new EventHandler(this.PageLoad);
-        }
-
-        private void PageLoad(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             ServicesFramework.Instance.RequestAjaxAntiForgerySupport();
             JavaScript.RequestRegistration(CommonJs.DnnPlugins);
@@ -77,12 +72,12 @@ namespace WillStrohl.Modules.CodeCamp
 
         protected string GetLocalizedString(string Key)
         {
-            return GetLocalizedString(Key, this.LocalResourceFile);
+            return GetLocalizedString(Key, Components.Globals.LOCALIZATION_FILE_PATH);
         }
 
         protected string GetLocalizedString(string Key, string LocalizationFilePath)
         {
-            return Localization.GetString(Key, LocalizationFilePath);
+            return Localization.GetString(Key, Components.Globals.LOCALIZATION_FILE_PATH);
         }
 
         #endregion

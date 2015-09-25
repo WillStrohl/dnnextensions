@@ -22,14 +22,14 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Edit_ascx {
+    internal class SharedResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Edit_ascx() {
+        internal SharedResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.Edit.ascx", typeof(Edit_ascx).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.SharedResources", typeof(SharedResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,51 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Choose One -.
+        /// </summary>
+        internal static string ChooseOne_Text {
+            get {
+                return ResourceManager.GetString("ChooseOne.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose the view that you wish to be loaded into this instance of the module..
+        /// </summary>
+        internal static string lblView_Help {
+            get {
+                return ResourceManager.GetString("lblView.Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default View.
+        /// </summary>
+        internal static string lblView_Text {
+            get {
+                return ResourceManager.GetString("lblView.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        internal static string ViewDefault_Text {
+            get {
+                return ResourceManager.GetString("ViewDefault.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Settings.
+        /// </summary>
+        internal static string ViewSettings_Text {
+            get {
+                return ResourceManager.GetString("ViewSettings.Text", resourceCulture);
             }
         }
     }

@@ -83,20 +83,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_LocalResources\Settings.ascx.Designer.cs">
-      <DependentUpon>Settings.ascx.resx</DependentUpon>
+    <Compile Include="App_LocalResources\SharedResources.Designer.cs">
+      <DependentUpon>SharedResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="App_LocalResources\Edit.ascx.Designer.cs">
-      <DependentUpon>Edit.ascx.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="App_LocalResources\Default.ascx.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Default.ascx.resx</DependentUpon>
     </Compile>
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\CodeCampModuleBase.cs">
@@ -214,17 +204,9 @@
   <ItemGroup>
     <Content Include="Views\SettingsView.ascx" />
     <Content Include="Views\DefaultView.ascx" />
-    <EmbeddedResource Include="App_LocalResources\Settings.ascx.resx">
+    <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Settings.ascx.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Edit.ascx.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Edit.ascx.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Default.ascx.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Default.ascx.Designer.cs</LastGenOutput>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Settings.ascx" />
     <Content Include="Edit.ascx" />

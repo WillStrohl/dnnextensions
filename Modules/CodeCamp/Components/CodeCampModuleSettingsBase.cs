@@ -53,12 +53,12 @@ namespace WillStrohl.Modules.CodeCamp
 
         protected string GetLocalizedString(string Key)
         {
-            return GetLocalizedString(Key, this.LocalResourceFile);
+            return GetLocalizedString(Key, Components.Globals.LOCALIZATION_FILE_PATH);
         }
 
         protected string GetLocalizedString(string Key, string LocalizationFilePath)
         {
-            return Localization.GetString(Key, LocalizationFilePath);
+            return Localization.GetString(Key, Components.Globals.LOCALIZATION_FILE_PATH);
         }
 
         #endregion
