@@ -30,8 +30,12 @@
 
 using System;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.Framework;
 using DotNetNuke.Framework.JavaScriptLibraries;
 using DotNetNuke.Services.Localization;
+using DotNetNuke.Web.Client;
+using DotNetNuke.Web.Client.ClientResourceManagement;
+using DotNetNuke.Web.Client.Providers;
 
 namespace WillStrohl.Modules.CodeCamp
 {
@@ -46,8 +50,9 @@ namespace WillStrohl.Modules.CodeCamp
 
         private void PageLoad(object sender, EventArgs e)
         {
-            // request that the DNN framework load the jQuery script into the markup
+            ServicesFramework.Instance.RequestAjaxAntiForgerySupport();
             JavaScript.RequestRegistration(CommonJs.DnnPlugins);
+            ClientResourceManager.RegisterScript(this.Page, "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js", FileOrder.Js.DefaultPriority, DnnFormBottomProvider.DefaultName);
         }
 
         #endregion

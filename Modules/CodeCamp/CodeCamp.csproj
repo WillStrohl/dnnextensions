@@ -40,11 +40,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClientDependency.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Website\bin\ClientDependency.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetNuke">
       <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
     </Reference>
     <Reference Include="DotNetNuke.Web">
       <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web.Client, Version=6.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Website\bin\DotNetNuke.Web.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
@@ -178,7 +186,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Scripts\" />
+    <Folder Include="Scripts\ng\apps\" />
+    <Folder Include="Scripts\ng\constants\" />
+    <Folder Include="Scripts\ng\controllers\" />
+    <Folder Include="Scripts\ng\directives\" />
+    <Folder Include="Scripts\ng\factories\" />
+    <Folder Include="Scripts\ng\filters\" />
+    <Folder Include="Scripts\ng\ng-templates\" />
+    <Folder Include="Scripts\ng\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\Settings.ascx">
