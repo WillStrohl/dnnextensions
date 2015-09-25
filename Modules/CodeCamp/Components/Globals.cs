@@ -28,40 +28,16 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
-using DotNetNuke.Services.Exceptions;
-using WillStrohl.Modules.CodeCamp.Components;
-
-namespace WillStrohl.Modules.CodeCamp
+namespace WillStrohl.Modules.CodeCamp.Components
 {
-    public partial class Default : CodeCampModuleBase
+    public class Globals
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!Page.IsPostBack)
-                {
-                    if (string.IsNullOrEmpty(DefaultView))
-                    {
-                        var settingsView = LoadControl(ViewHelper.ConcatViewPath(ControlPath)) as CodeCampModuleBase;
-                        settingsView.SelectedControl = Globals.VIEW_SETTINGS;
-                        settingsView.ID = Globals.VIEW_SETTINGS;
-                        plOutput.Controls.Add(settingsView);
-                    }
-                    else
-                    {
-                        var view = LoadControl(ViewHelper.ConcatViewPath(ControlPath, DefaultView)) as CodeCampModuleBase;
-                        view.SelectedControl = DefaultView;
-                        view.ID = DefaultView;
-                        plOutput.Controls.Add(view);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Exceptions.ProcessModuleLoadException(this, ex);
-            }
-        }
+        public const string VIEW_PATH = "Views/";
+        public const string VIEW_EXTENSION = ".ascx";
+
+        public const string SETTINGS_VIEW = "View";
+
+        public const string VIEW_SETTINGS = "SettingsView";
+        public const string VIEW_CODECAMP = "CodeCampView";
     }
 }

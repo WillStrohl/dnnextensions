@@ -1,3 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Settings.ascx.cs" Inherits="WillStrohl.Modules.CodeCamp.Settings" %>
-<h1>SETTINGS</h1>
-<p>I am at least installed correctly...</p>
+<%@ Register TagName="label" TagPrefix="dnn" Src="~/controls/labelcontrol.ascx" %>
+<h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded"><%=GetLocalizedString("ViewSettings")%></a></h2>
+<fieldset>
+    <div class="dnnFormItem">
+        <dnn:label id="lblView" runat="server" resourcekey="lblView"/>
+        <asp:DropDownList runat="server" ID="ddlView"/>
+    </div>
+</fieldset>

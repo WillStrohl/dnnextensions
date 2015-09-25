@@ -41,6 +41,22 @@ namespace WillStrohl.Modules.CodeCamp
 {
     public class CodeCampModuleBase : PortalModuleBase
     {
+        #region Properties
+
+        protected string DefaultView
+        {
+            get
+            {
+                var view = Settings[Components.Globals.SETTINGS_VIEW];
+
+                return view?.ToString() ?? string.Empty;
+            }
+        }
+
+        protected internal string SelectedControl { get; set; }
+
+        #endregion
+
         #region Event Handlers
 
         private void InitializeComponent()

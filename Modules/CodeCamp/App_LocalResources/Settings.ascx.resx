@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblView.Help" xml:space="preserve">
+    <value>Choose the view that you wish to be loaded into this instance of the module.</value>
+  </data>
+  <data name="lblView.Text" xml:space="preserve">
+    <value>Default View</value>
+  </data>
   <data name="ViewSettings.Text" xml:space="preserve">
     <value>View Settings</value>
+  </data>
+  <data name="ChooseOne.Text" xml:space="preserve">
+    <value>- Choose One -</value>
+  </data>
+  <data name="ViewDefault.Text" xml:space="preserve">
+    <value>Default</value>
   </data>
 </root>

@@ -30,33 +30,16 @@
 
 using System;
 using DotNetNuke.Services.Exceptions;
-using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp
+namespace WillStrohl.Modules.CodeCamp.Views
 {
-    public partial class Default : CodeCampModuleBase
+    public partial class DefaultView : CodeCampModuleBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!Page.IsPostBack)
-                {
-                    if (string.IsNullOrEmpty(DefaultView))
-                    {
-                        var settingsView = LoadControl(ViewHelper.ConcatViewPath(ControlPath)) as CodeCampModuleBase;
-                        settingsView.SelectedControl = Globals.VIEW_SETTINGS;
-                        settingsView.ID = Globals.VIEW_SETTINGS;
-                        plOutput.Controls.Add(settingsView);
-                    }
-                    else
-                    {
-                        var view = LoadControl(ViewHelper.ConcatViewPath(ControlPath, DefaultView)) as CodeCampModuleBase;
-                        view.SelectedControl = DefaultView;
-                        view.ID = DefaultView;
-                        plOutput.Controls.Add(view);
-                    }
-                }
+
             }
             catch (Exception ex)
             {

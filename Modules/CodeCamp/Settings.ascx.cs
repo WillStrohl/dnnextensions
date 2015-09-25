@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Web.UI.WebControls;
 using DotNetNuke.Services.Exceptions;
 
 namespace WillStrohl.Modules.CodeCamp
@@ -46,12 +47,28 @@ namespace WillStrohl.Modules.CodeCamp
         {
             try
             {
+                if (!Page.IsPostBack) BindData();
 
+                if (Settings[Components.Globals.SETTINGS_VIEW] != null)
+                {
+                    ddlView.ClearSelection();
+                    ddlView.Items.FindByValue(Settings[Components.Globals.SETTINGS_VIEW].ToString());
+                }
+                else
+                {
+                    ddlView.SelectedIndex = 0;
+                }
             }
             catch (Exception exc) //Module failed to load
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        private void BindData()
+        {
+            ddlView.Items.Add(new ListItem() {Text = GetLocalizedString("ViewDefault"), Value = Components.Globals.VIEW_CODECAMP});
+            ddlView.Items.Insert(0, new ListItem(GetLocalizedString("ChooseOne")));
         }
 
         /// -----------------------------------------------------------------------------

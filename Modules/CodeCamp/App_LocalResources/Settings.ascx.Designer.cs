@@ -61,6 +61,42 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to - Choose One -.
+        /// </summary>
+        internal static string ChooseOne_Text {
+            get {
+                return ResourceManager.GetString("ChooseOne.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose the view that you wish to be loaded into this instance of the module..
+        /// </summary>
+        internal static string lblView_Help {
+            get {
+                return ResourceManager.GetString("lblView.Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default View.
+        /// </summary>
+        internal static string lblView_Text {
+            get {
+                return ResourceManager.GetString("lblView.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        internal static string ViewDefault_Text {
+            get {
+                return ResourceManager.GetString("ViewDefault.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View Settings.
         /// </summary>
         internal static string ViewSettings_Text {
