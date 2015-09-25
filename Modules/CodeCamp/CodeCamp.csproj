@@ -83,20 +83,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_LocalResources\Settings.Designer.cs">
-      <DependentUpon>Settings.ascx</DependentUpon>
+    <Compile Include="App_LocalResources\Settings.ascx.Designer.cs">
+      <DependentUpon>Settings.ascx.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App_LocalResources\Edit.Designer.cs">
-      <DependentUpon>Edit.ascx</DependentUpon>
+    <Compile Include="App_LocalResources\Edit.ascx.Designer.cs">
+      <DependentUpon>Edit.ascx.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App_LocalResources\Default.Designer.cs">
+    <Compile Include="App_LocalResources\Default.ascx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Default.ascx</DependentUpon>
+      <DependentUpon>Default.ascx.resx</DependentUpon>
     </Compile>
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\CodeCampModuleBase.cs">
@@ -194,20 +194,21 @@
     <Folder Include="Scripts\ng\filters\" />
     <Folder Include="Scripts\ng\ng-templates\" />
     <Folder Include="Scripts\ng\services\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\Settings.ascx">
+    <EmbeddedResource Include="App_LocalResources\Settings.ascx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_LocalResources\Edit.ascx">
+      <LastGenOutput>Settings.ascx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Edit.ascx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Edit.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_LocalResources\Default.ascx">
+      <LastGenOutput>Edit.ascx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Default.ascx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Default.Designer.cs</LastGenOutput>
-    </Content>
+      <LastGenOutput>Default.ascx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <Content Include="Settings.ascx" />
     <Content Include="Edit.ascx" />
     <Content Include="Default.ascx" />

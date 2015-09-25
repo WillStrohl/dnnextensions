@@ -22,14 +22,14 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Edit {
+    internal class Default_ascx {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Edit() {
+        internal Default_ascx() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.Edit", typeof(Edit).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.Default.ascx", typeof(Default_ascx).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

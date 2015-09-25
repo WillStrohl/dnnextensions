@@ -22,14 +22,14 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Default {
+    internal class Settings_ascx {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Default() {
+        internal Settings_ascx() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.Default", typeof(Default).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.Settings.ascx", typeof(Settings_ascx).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Settings.
+        /// </summary>
+        internal static string ViewSettings_Text {
+            get {
+                return ResourceManager.GetString("ViewSettings.Text", resourceCulture);
             }
         }
     }
