@@ -30,13 +30,13 @@
 
         <component type="Module">
           <desktopModule>
-            <moduleName>Code Camp Events Module</moduleName>
+            <moduleName>CodeCampEvents</moduleName>
             <foldername>CodeCamp</foldername>
             <businessControllerClass>WillStrohl.Modules.CodeCamp.Components.FeatureController, WillStrohl.Modules.CodeCamp</businessControllerClass>
             <supportedFeatures />
             <moduleDefinitions>
               <moduleDefinition>
-                <friendlyName>DNN Code Camp</friendlyName>
+                <friendlyName>Code Camp Event</friendlyName>
                 <defaultCacheTime>0</defaultCacheTime>
                 <moduleControls>
                   <moduleControl>
