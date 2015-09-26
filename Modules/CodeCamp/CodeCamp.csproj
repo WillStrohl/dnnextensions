@@ -192,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Scripts\ng\apps\" />
     <Folder Include="Scripts\ng\constants\" />
     <Folder Include="Scripts\ng\directives\" />
     <Folder Include="Scripts\ng\factories\" />
@@ -203,8 +202,23 @@
   <ItemGroup>
     <Content Include="Module.css" />
     <Content Include="Scripts\ng\app.js" />
+    <Content Include="Scripts\ng\controllers\AgendaController.js" />
+    <Content Include="Scripts\ng\controllers\CreateController.js" />
+    <Content Include="Scripts\ng\controllers\AboutController.js" />
+    <Content Include="Scripts\ng\controllers\SpeakersController.js" />
+    <Content Include="Scripts\ng\controllers\SpeakerController.js" />
+    <Content Include="Scripts\ng\controllers\SessionsController.js" />
+    <Content Include="Scripts\ng\controllers\SessionController.js" />
     <Content Include="Scripts\ng\controllers\SettingsController.js" />
-    <Content Include="Scripts\ng\controllers\CodeCampController.js" />
+    <Content Include="Scripts\ng\controllers\RegisterController.js" />
+    <Content Include="Templates\_default\about.html" />
+    <Content Include="Templates\_default\agenda.html" />
+    <Content Include="Templates\_default\session.html" />
+    <Content Include="Templates\_default\sessions.html" />
+    <Content Include="Templates\_default\speaker.html" />
+    <Content Include="Templates\_default\speakers.html" />
+    <Content Include="Templates\_default\register.html" />
+    <Content Include="Templates\_default\create.html" />
     <Content Include="Views\SettingsView.ascx" />
     <Content Include="Views\DefaultView.ascx" />
     <None Include="_references.js" />
