@@ -8,6 +8,8 @@ angular
 		function ($routeProvider) {
 		    console.log("entered route provider");
 
+            //TODO: dynamically parse and/or replace _default with "templateFolder"
+
 		    $routeProvider
 			.when("/create", {
 			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/create.html",

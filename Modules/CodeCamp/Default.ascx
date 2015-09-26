@@ -3,5 +3,8 @@
     var moduleId = <%=ModuleId%>;
     var moduleName = "<%=ModuleConfiguration.DesktopModule.FolderName%>";
     var templatePath = "<%=ControlPath%>";
+    <%--
+    var templateFolder = "<%=Settings["TemplateFolder"]%>";
+    --%>
 </script>
 <asp:PlaceHolder runat="server" ID="plOutput"/>
