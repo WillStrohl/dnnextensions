@@ -32,6 +32,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DotNetNuke.Security;
+using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Services
@@ -59,7 +61,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/CodeCamp/PingError
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/PingError
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
@@ -86,7 +88,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/CodeCamp/PingException
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/PingException
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
@@ -100,13 +102,29 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/CodeCamp/PingNotFound
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/PingNotFound
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage PingNotFound()
         {
             return Request.CreateResponse(HttpStatusCode.NotFound);
+        }
+
+        /// <summary>
+        /// Use to test for security credentials
+        /// </summary>
+        /// <returns />
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/PingSecurityCheck
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpGet]
+        public HttpResponseMessage PingSecurityCheck()
+        {
+            // this response should only be reached if the user is allowed to edit the module
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

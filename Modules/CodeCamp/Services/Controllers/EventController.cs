@@ -42,6 +42,13 @@ using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
 {
+    /// <summary>
+    /// This is a partial class that spans multiple class files, in order to keep the code manageable. Each method is necessary to support the front end SPA implementation.
+    /// </summary>
+    /// <remarks>
+    /// The SupportModules attribute will require that all API calls set and include module headers, event GET requests. Even Fiddler will return 401 Unauthorized errors.
+    /// </remarks>
+    [SupportedModules("CodeCampEvents")]
     public partial class EventController : ServiceBase
     {
         /// <summary>
@@ -51,7 +58,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEvents
         /// </remarks>
-        [AllowAnonymous]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
         public HttpResponseMessage GetEvents(int moduleId)
         {
@@ -76,7 +83,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEvent
         /// </remarks>
-        [AllowAnonymous]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
         public HttpResponseMessage GetEvent(int itemId, int moduleId)
         {

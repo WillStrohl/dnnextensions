@@ -51,7 +51,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionSpeakers
         /// </remarks>
-        [AllowAnonymous]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
         public HttpResponseMessage GetSessionSpeakers(int sessionId)
         {
@@ -76,7 +76,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionSpeaker
         /// </remarks>
-        [AllowAnonymous]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
         public HttpResponseMessage GetSessionSpeaker(int itemId, int sessionId)
         {

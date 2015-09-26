@@ -51,7 +51,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetRegistrations
         /// </remarks>
-        [AllowAnonymous]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
         public HttpResponseMessage GetRegistrations(int codeCampId)
         {
@@ -76,7 +76,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetRegistration
         /// </remarks>
-        [AllowAnonymous]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
         public HttpResponseMessage GetRegistration(int itemId, int codeCampId)
         {

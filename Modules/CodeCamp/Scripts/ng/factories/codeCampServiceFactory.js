@@ -1,8 +1,6 @@
 ﻿"use strict";
 
-angular
-    .module("codeCampApp")
-    .factory("codeCampServiceFactory", ["$http", function ($http) {
+codeCampApp.factory("codeCampServiceFactory", ["$http", function ($http) {
 
         var $self = this;
 
