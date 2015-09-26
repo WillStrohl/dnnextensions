@@ -4,7 +4,7 @@ angular
     .module("codeCampApp")
     .factory("codeCampFactory", ["$http", function ($http) {
 
-        $self = this;
+        var $self = this;
 
         return {
             init: function (moduleId, moduleName) {
