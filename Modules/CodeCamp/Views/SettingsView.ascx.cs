@@ -30,9 +30,6 @@
 
 using System;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Web.Client;
-using DotNetNuke.Web.Client.ClientResourceManagement;
-using DotNetNuke.Web.Client.Providers;
 
 namespace WillStrohl.Modules.CodeCamp.Views
 {
@@ -42,7 +39,7 @@ namespace WillStrohl.Modules.CodeCamp.Views
         {
             try
             {
-                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/settingsController.js", FileOrder.Js.DefaultPriority + 15, DnnFormBottomProvider.DefaultName);
+                
             }
             catch (Exception ex)
             {

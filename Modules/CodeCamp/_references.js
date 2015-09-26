@@ -9,3 +9,4 @@
 /// <reference path="scripts/ng/controllers/settingscontroller.js" />
 /// <reference path="scripts/ng/controllers/speakercontroller.js" />
 /// <reference path="scripts/ng/controllers/speakerscontroller.js" />
+/// <reference path="scripts/ng/factories/codecampfactory.js" />

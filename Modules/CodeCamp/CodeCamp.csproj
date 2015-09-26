@@ -194,7 +194,6 @@
     <Folder Include="Images\" />
     <Folder Include="Scripts\ng\constants\" />
     <Folder Include="Scripts\ng\directives\" />
-    <Folder Include="Scripts\ng\factories\" />
     <Folder Include="Scripts\ng\filters\" />
     <Folder Include="Scripts\ng\ng-templates\" />
     <Folder Include="Scripts\ng\services\" />
@@ -211,6 +210,7 @@
     <Content Include="Scripts\ng\controllers\SessionController.js" />
     <Content Include="Scripts\ng\controllers\SettingsController.js" />
     <Content Include="Scripts\ng\controllers\RegisterController.js" />
+    <Content Include="Scripts\ng\factories\codeCampFactory.js" />
     <Content Include="Templates\_default\about.html" />
     <Content Include="Templates\_default\agenda.html" />
     <Content Include="Templates\_default\session.html" />
