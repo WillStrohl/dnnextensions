@@ -1,5 +1,7 @@
-﻿angular
-    .module("codeCampApp", [])
+﻿"use strict";
+
+angular
+    .module("codeCampControllers", [])
     .controller("registerController", ["$scope", function ($scope) {
     
     

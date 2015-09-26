@@ -74,6 +74,7 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-resource.min.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
 #endif
+
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/app.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/factories/codeCampFactory.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AboutController.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
