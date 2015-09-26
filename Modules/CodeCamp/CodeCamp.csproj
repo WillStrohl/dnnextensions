@@ -107,6 +107,8 @@
     <Compile Include="Entities\CodeCampInfo.cs" />
     <Compile Include="Controllers\CodeCampInfoController.cs" />
     <Compile Include="Entities\CodeCampInfoRepository.cs" />
+    <Compile Include="Entities\CustomPropertyInfo.cs" />
+    <Compile Include="Entities\Interfaces\ICustomPropertyInfo.cs" />
     <Compile Include="Entities\SessionRegistrationInfoRepository.cs" />
     <Compile Include="Entities\SessionRegistrationInfo.cs" />
     <Compile Include="Entities\Interfaces\ISessionRegistrationInfo.cs" />
@@ -210,7 +212,8 @@
     <Content Include="Scripts\ng\controllers\SessionController.js" />
     <Content Include="Scripts\ng\controllers\SettingsController.js" />
     <Content Include="Scripts\ng\controllers\RegisterController.js" />
-    <Content Include="Scripts\ng\factories\codeCampFactory.js" />
+    <Content Include="Scripts\ng\factories\codeCampEntityFactory.js" />
+    <Content Include="Scripts\ng\factories\codeCampServiceFactory.js" />
     <Content Include="Templates\_default\about.html" />
     <Content Include="Templates\_default\agenda.html" />
     <Content Include="Templates\_default\session.html" />

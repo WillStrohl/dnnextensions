@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampApp.controller("sessionController", ["$scope", "$routeParams", "$http", "codeCampFactory", function ($scope, $routeParams, $http, codeCampFactory) {
+codeCampApp.controller("sessionController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
     
     
 

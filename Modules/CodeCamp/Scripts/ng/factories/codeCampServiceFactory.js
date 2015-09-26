@@ -2,7 +2,7 @@
 
 angular
     .module("codeCampApp")
-    .factory("codeCampFactory", ["$http", function ($http) {
+    .factory("codeCampServiceFactory", ["$http", function ($http) {
 
         var $self = this;
 
