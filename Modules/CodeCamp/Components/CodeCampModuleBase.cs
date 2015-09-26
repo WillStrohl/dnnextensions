@@ -62,8 +62,19 @@ namespace WillStrohl.Modules.CodeCamp
         protected void Page_Init(object sender, EventArgs e)
         {
             ServicesFramework.Instance.RequestAjaxAntiForgerySupport();
+
             JavaScript.RequestRegistration(CommonJs.DnnPlugins);
+
+#if DEBUG
+            ClientResourceManager.RegisterScript(this.Page, "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js", FileOrder.Js.DefaultPriority, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-resource.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
+#else
             ClientResourceManager.RegisterScript(this.Page, "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js", FileOrder.Js.DefaultPriority, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-resource.min.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
+#endif
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/app.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
         }
 
         #endregion

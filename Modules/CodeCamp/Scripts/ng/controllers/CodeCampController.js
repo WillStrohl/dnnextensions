@@ -1,5 +1,7 @@
-﻿window.app.controller("codeCampController", ["$scope", function($scope) {
+﻿angular
+    .module("codeCampApp", [])
+    .controller("codeCampController", ["$scope", function ($scope) {
     
-
+    
 
 }]);
