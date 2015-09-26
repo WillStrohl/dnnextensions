@@ -38,17 +38,21 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     [PrimaryKey("SessionId", AutoIncrement = true)]
     [Cacheable("Session", CacheItemPriority.Default, 20)]
     [Scope("TrackId")]
-    public class SessionInfo : ITrackInfo
+    public class SessionInfo : ISessionInfo
     {
-        public int TrackId { get; set; }
-
-        public int CodeCampId { get; set; }
-
-        public int RoomId { get; set; }
+        public int SessionId { get; set; }
 
         public string Title { get; set; }
 
         public string Description { get; set; }
+
+        public int TrackId { get; set; }
+
+        public int TimeSlotId { get; set; }
+
+        public int AudienceLevel { get; set; }
+
+        public int NumberRegistered { get; set; }
 
         public int CreatedByUserId { get; set; }
 
@@ -57,6 +61,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public int LastUpdatedByUserId { get; set; }
 
         public DateTime LastUpdatedByDate { get; set; }
+
+        public bool IsApproved { get; set; }
+
+        public int ApprovedByUserId { get; set; }
+
+        public DateTime ApprovedByDate { get; set; }
 
         public string CustomProperties { get; set; }
     }
