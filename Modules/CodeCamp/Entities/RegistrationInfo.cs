@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Web.Caching;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
@@ -52,6 +53,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public bool IsRegistered { get; set; }
 
-        public string CustomProperties { get; set; }
+        public List<CustomPropertyInfo> CustomProperties { get; set; }
     }
 }

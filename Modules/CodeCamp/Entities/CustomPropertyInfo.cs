@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2015, Will Strohl
  * All rights reserved.
  * 
@@ -29,36 +29,14 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Web.Caching;
-using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    [TableName("wns_CodeCamp_Track")]
-    [PrimaryKey("TrackId", AutoIncrement = true)]
-    [Cacheable("Track", CacheItemPriority.Default, 20)]
-    [Scope("CodeCampId")]
-    public class TrackInfo : ITrackInfo
-    {
-        public int TrackId { get; set; }
+	[Serializable]
+	public sealed class CustomPropertyInfo : ICustomPropertyInfo
+	{
+		public string Name { get; set; }
+		public string Value { get; set; }
 
-        public int CodeCampId { get; set; }
-
-        public int RoomId { get; set; }
-
-        public string Title { get; set; }
-
-        public string Description { get; set; }
-
-        public int CreatedByUserId { get; set; }
-
-        public DateTime CreatedByDate { get; set; }
-
-        public int LastUpdatedByUserId { get; set; }
-
-        public DateTime LastUpdatedByDate { get; set; }
-
-        public List<CustomPropertyInfo> CustomProperties { get; set; }
-    }
+	}
 }

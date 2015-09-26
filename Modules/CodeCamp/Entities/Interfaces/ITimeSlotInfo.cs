@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -45,6 +46,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         DateTime CreatedByDate { get; set; }
         int LastUpdatedByUserId { get; set; }
         DateTime LastUpdatedByDate { get; set; }
-        string CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomProperties { get; set; }
     }
 }

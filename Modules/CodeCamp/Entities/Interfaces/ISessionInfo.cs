@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -48,6 +49,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         bool IsApproved { get; set; }
         int ApprovedByUserId { get; set; }
         DateTime ApprovedByDate { get; set; }
-        string CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomProperties { get; set; }
     }
 }

@@ -28,6 +28,8 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System.Collections.Generic;
+
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
     public interface IVolunteerInfo
@@ -35,6 +37,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         int VolunteerId { get; set; }
         int RegistrationId { get; set; }
         string Notes { get; set; }
-        string CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomProperties { get; set; }
     }
 }

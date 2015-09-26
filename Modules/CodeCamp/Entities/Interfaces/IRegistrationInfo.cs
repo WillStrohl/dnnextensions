@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -40,6 +41,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         string ShirtSize { get; set; }
         DateTime RegistrationDate { get; set; }
         bool IsRegistered { get; set; }
-        string CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomProperties { get; set; }
     }
 }
