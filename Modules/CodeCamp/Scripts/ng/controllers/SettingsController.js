@@ -2,7 +2,7 @@
 
 angular
     .module("codeCampControllers")
-    .controller("settingsController", ["$scope", function ($scope) {
+    .controller("settingsController", ["$scope", "$routeParams", "$http", "codeCampFactory", function ($scope, $routeParams, $http, codeCampFactory) {
     
     
 
