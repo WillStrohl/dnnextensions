@@ -22,9 +22,10 @@
       <Images Include="Images/**/*.*" />
       <JsFiles Include="Scripts/**/*.*" />
       <!--Styles Include="Styles/**/*.*" /-->
-      <ChildViews Include="Views/**/*.*" />
+      <ChildViews Include="Views/**/*.ascx" />
+      <Templates Include="Templates/**/*.*" />
       <DataProvider Include="Providers/DataProviders/SqlDataProvider/*.SqlDataProvider" />
-      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images);@(JsFiles);@(ChildViews)" />
+      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images);@(JsFiles);@(ChildViews);@(Templates)" />
     </ItemGroup>
   </Target>
   <ItemGroup>
@@ -49,5 +50,6 @@
     <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />
     <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(FullModulePath)\App_LocalResources" />
     <Copy SourceFiles="@(ChildViews)" DestinationFolder="$(FullModulePath)\Views\%(RecursiveDir)" />
+    <Copy SourceFiles="@(Templates)" DestinationFolder="$(FullModulePath)\Templates\%(RecursiveDir)" />
   </Target>
 </Project>
