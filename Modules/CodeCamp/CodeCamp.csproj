@@ -194,7 +194,6 @@
     <Folder Include="Images\" />
     <Folder Include="Scripts\ng\apps\" />
     <Folder Include="Scripts\ng\constants\" />
-    <Folder Include="Scripts\ng\controllers\" />
     <Folder Include="Scripts\ng\directives\" />
     <Folder Include="Scripts\ng\factories\" />
     <Folder Include="Scripts\ng\filters\" />
@@ -202,8 +201,10 @@
     <Folder Include="Scripts\ng\services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\ng\controllers\CodeCampController.js" />
     <Content Include="Views\SettingsView.ascx" />
     <Content Include="Views\DefaultView.ascx" />
+    <None Include="_references.js" />
     <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
