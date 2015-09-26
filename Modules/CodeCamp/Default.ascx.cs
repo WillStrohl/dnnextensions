@@ -42,20 +42,20 @@ namespace WillStrohl.Modules.CodeCamp
             {
                 if (!Page.IsPostBack)
                 {
-                    //if (string.IsNullOrEmpty(DefaultView))
-                    //{
-                    //    var settingsView = LoadControl(ViewHelper.ConcatViewPath(ControlPath)) as CodeCampModuleBase;
-                    //    settingsView.SelectedControl = Globals.VIEW_SETTINGS;
-                    //    settingsView.ID = Globals.VIEW_SETTINGS;
-                    //    plOutput.Controls.Add(settingsView);
-                    //}
-                    //else
-                    //{
-                    var view = LoadControl(ViewHelper.ConcatViewPath(ControlPath, DefaultView)) as CodeCampModuleBase;
-                    view.SelectedControl = DefaultView;
-                    view.ID = DefaultView;
-                    plOutput.Controls.Add(view);
-                    //}
+                    if (string.IsNullOrEmpty(DefaultView))
+                    {
+                        var settingsView = LoadControl(ViewHelper.ConcatViewPath(ControlPath)) as CodeCampModuleBase;
+                        settingsView.SelectedControl = Globals.VIEW_SETTINGS;
+                        settingsView.ID = Globals.VIEW_SETTINGS;
+                        plOutput.Controls.Add(settingsView);
+                    }
+                    else
+                    {
+                        var view = LoadControl(ViewHelper.ConcatViewPath(ControlPath, DefaultView)) as CodeCampModuleBase;
+                        view.SelectedControl = DefaultView;
+                        view.ID = DefaultView;
+                        plOutput.Controls.Add(view);
+                    }
                 }
             }
             catch (Exception ex)

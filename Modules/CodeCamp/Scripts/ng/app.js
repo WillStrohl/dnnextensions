@@ -6,7 +6,6 @@ var codeCampApp = angular.module("codeCampApp", ["ngRoute"]);
 
 codeCampApp.config(["$routeProvider", 
 		function ($routeProvider) {
-		    console.log("entered route provider");
 
             //TODO: dynamically parse and/or replace _default with "templateFolder"
 

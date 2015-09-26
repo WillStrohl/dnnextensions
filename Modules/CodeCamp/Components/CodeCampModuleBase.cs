@@ -47,10 +47,9 @@ namespace WillStrohl.Modules.CodeCamp
         {
             get
             {
-                return "DefaultView";
-                //var view = Settings[Components.Globals.SETTINGS_VIEW];
+                var view = Settings[Components.Globals.SETTINGS_VIEW];
 
-                //return view?.ToString() ?? string.Empty;
+                return view?.ToString() ?? string.Empty;
             }
         }
 

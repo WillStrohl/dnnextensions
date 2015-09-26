@@ -11,7 +11,7 @@
 
         //TODO: verify that instantiating new date like this will work as expected
 
-        customProperties = function() {
+        customProperties = function () {
             return new [
                 {
                     Name: "",
@@ -46,7 +46,7 @@
             };
         }
 
-        registrationInfo = function() {
+        registrationInfo = function () {
             return new {
                 RegistrationId: -1,
                 CodeCampId: -1,
@@ -58,7 +58,7 @@
             };
         }
 
-        roomInfo = function() {
+        roomInfo = function () {
             return new {
                 RoomId: -1,
                 CodeCampId: -1,
@@ -73,7 +73,7 @@
             };
         }
 
-        sessionInfo = function() {
+        sessionInfo = function () {
             return new {
                 SessionId: -1,
                 Title: "",
@@ -93,7 +93,7 @@
             };
         }
 
-        sessionRegistrationInfo = function() {
+        sessionRegistrationInfo = function () {
             return new {
                 SessionRegistrationId: -1,
                 SessionId: -1,
@@ -109,7 +109,7 @@
             };
         }
 
-        speakerInfo = function() {
+        speakerInfo = function () {
             return new {
                 SpeakerId: -1,
                 CodeCampId: -1,
@@ -129,7 +129,7 @@
             };
         }
 
-        timeSlotInfo = function() {
+        timeSlotInfo = function () {
             return new {
                 TimeSlotId: -1,
                 CodeCampId: -1,
@@ -146,7 +146,7 @@
             };
         }
 
-        trackInfo = function() {
+        trackInfo = function () {
             return new {
                 TrackId: -1,
                 CodeCampId: -1,
@@ -161,7 +161,7 @@
             };
         }
 
-        volunteerInfo = function() {
+        volunteerInfo = function () {
             return new {
                 VolunteerId: -1,
                 RegistrationId: -1,
@@ -170,7 +170,7 @@
             };
         }
 
-        volunteerTaskInfo = function() {
+        volunteerTaskInfo = function () {
             return new {
                 VolunteerTaskId: -1,
                 CodeCampId: -1,
