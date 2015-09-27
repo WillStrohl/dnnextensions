@@ -125,7 +125,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             // this response should only be reached if the user is allowed to edit the module
             // otherwise, they'll be automatically met with a 401 unauthorized error
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var response = new ServiceResponse<string>() { Content = "Success" };
+
+            return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
         }
     }
 }
