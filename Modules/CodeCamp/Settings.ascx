@@ -6,4 +6,8 @@
         <dnn:label id="lblView" runat="server" resourcekey="lblView"/>
         <asp:DropDownList runat="server" ID="ddlView"/>
     </div>
+    <div class="dnnFormItem">
+        <dnn:label id="lblIncludeBootstrap" runat="server" resourcekey="lblIncludeBootstrap"/>
+        <asp:CheckBox runat="server" ID="chkIncludeBootstrap"/>
+    </div>
 </fieldset>

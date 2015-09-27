@@ -132,4 +132,10 @@
   <data name="ViewDefault.Text" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="lblIncludeBootstrap.Help" xml:space="preserve">
+    <value>If your theme/skin is including bootstrap (version 3.3.5 or newer), turn this setting off.</value>
+  </data>
+  <data name="lblIncludeBootstrap.Text" xml:space="preserve">
+    <value>Include Bootstrap?</value>
+  </data>
 </root>

@@ -29,5 +29,23 @@ namespace WillStrohl.Modules.CodeCamp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlView;
+        
+        /// <summary>
+        /// lblIncludeBootstrap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl lblIncludeBootstrap;
+        
+        /// <summary>
+        /// chkIncludeBootstrap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkIncludeBootstrap;
     }
 }

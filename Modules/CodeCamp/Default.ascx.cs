@@ -47,6 +47,8 @@ namespace WillStrohl.Modules.CodeCamp
                         var settingsView = LoadControl(ViewHelper.ConcatViewPath(ControlPath)) as CodeCampModuleBase;
                         settingsView.SelectedControl = Globals.VIEW_SETTINGS;
                         settingsView.ID = Globals.VIEW_SETTINGS;
+                        settingsView.ModuleId = ModuleId;
+                        settingsView.TabModuleId = TabModuleId;
                         plOutput.Controls.Add(settingsView);
                     }
                     else
@@ -54,6 +56,8 @@ namespace WillStrohl.Modules.CodeCamp
                         var view = LoadControl(ViewHelper.ConcatViewPath(ControlPath, DefaultView)) as CodeCampModuleBase;
                         view.SelectedControl = DefaultView;
                         view.ID = DefaultView;
+                        view.ModuleId = ModuleId;
+                        view.TabModuleId = TabModuleId;
                         plOutput.Controls.Add(view);
                     }
                 }

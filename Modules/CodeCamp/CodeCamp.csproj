@@ -203,6 +203,8 @@
   <ItemGroup>
     <Content Include="Module.css" />
     <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.13.4.js" />
+    <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.13.4.min.js" />
     <Content Include="Scripts\ng\app.js" />
     <Content Include="Scripts\ng\controllers\AgendaController.js" />
     <Content Include="Scripts\ng\controllers\CreateController.js" />
@@ -226,6 +228,7 @@
     <Content Include="Templates\_default\create.html" />
     <Content Include="Views\SettingsView.ascx" />
     <Content Include="Views\DefaultView.ascx" />
+    <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist.zip" />
     <None Include="_references.js" />
     <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

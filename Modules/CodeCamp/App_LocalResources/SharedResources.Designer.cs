@@ -70,6 +70,24 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If your theme/skin is including bootstrap (version 3.3.5 or newer), turn this setting off..
+        /// </summary>
+        internal static string lblIncludeBootstrap_Help {
+            get {
+                return ResourceManager.GetString("lblIncludeBootstrap.Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Bootstrap?.
+        /// </summary>
+        internal static string lblIncludeBootstrap_Text {
+            get {
+                return ResourceManager.GetString("lblIncludeBootstrap.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose the view that you wish to be loaded into this instance of the module..
         /// </summary>
         internal static string lblView_Help {

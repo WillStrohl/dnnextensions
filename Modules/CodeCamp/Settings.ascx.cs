@@ -30,6 +30,7 @@
 
 using System;
 using System.Web.UI.WebControls;
+using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 
 namespace WillStrohl.Modules.CodeCamp
@@ -58,6 +59,11 @@ namespace WillStrohl.Modules.CodeCamp
                 {
                     ddlView.SelectedIndex = 0;
                 }
+
+                if (Settings[Components.Globals.SETTINGS_BOOTSTRAP] != null)
+                {
+                    chkIncludeBootstrap.Checked = bool.Parse(Settings[Components.Globals.SETTINGS_BOOTSTRAP].ToString());
+                }
             }
             catch (Exception exc) //Module failed to load
             {
@@ -67,8 +73,13 @@ namespace WillStrohl.Modules.CodeCamp
 
         private void BindData()
         {
+            //
+            // populate the form and set the defaults
+            //
             ddlView.Items.Add(new ListItem() {Text = GetLocalizedString("ViewDefault"), Value = Components.Globals.VIEW_CODECAMP});
             ddlView.Items.Insert(0, new ListItem(GetLocalizedString("ChooseOne")));
+
+            chkIncludeBootstrap.Checked = true;
         }
 
         /// -----------------------------------------------------------------------------
@@ -80,7 +91,13 @@ namespace WillStrohl.Modules.CodeCamp
         {
             try
             {
+                var controller = new ModuleController();
 
+                controller.UpdateModuleSetting(ModuleId, Components.Globals.SETTINGS_VIEW, ddlView.SelectedIndex == 0 ? string.Empty : ddlView.SelectedValue);
+
+                controller.UpdateModuleSetting(ModuleId, Components.Globals.SETTINGS_BOOTSTRAP, chkIncludeBootstrap.Checked.ToString());
+
+                ModuleController.SynchronizeModule(ModuleId);
             }
             catch (Exception exc) //Module failed to load
             {

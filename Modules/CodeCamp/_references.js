@@ -13,3 +13,4 @@
 /// <reference path="scripts/ng/controllers/testcontroller.js" />
 /// <reference path="scripts/ng/factories/codecampentityfactory.js" />
 /// <reference path="scripts/ng/factories/codecampservicefactory.js" />
+/// <reference path="scripts/ng-bootstrap/ui-bootstrap-tpls-0.13.4.js" />
