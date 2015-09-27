@@ -1,13 +1,8 @@
-﻿<div id="divCreate" class="dnnClear">
-    You don't have a code camp created yet. You'll need to <a href="#/create">create one</a>.
-</div>
-<div id="divAbout" class="dnnClear">
-    Here is info about your code camp
-    <div ng-controller="testController as test">
-        <p><strong>Ping:</strong> {{Ping}}</p>
-        <p><strong>PingError:</strong> {{PingError}}</p>
-        <p><strong>PingException:</strong> {{PingException}}</p>
-        <p><strong>PingNotFound:</strong> {{PingNotFound}}</p>
-        <p><strong>PingSecurityCheck:</strong> {{PingSecurityCheck}}</p>
+﻿<div ng-switch="HasCodeCamp">
+    <div class="dnnClear" ng-switch-when="false">
+        You don't have an event created yet. You'll need to <a href="#/create">create one</a>.
+    </div>
+    <div class="dnnClear" ng-switch-when="true">
+        Here is info about your code camp
     </div>
 </div>
