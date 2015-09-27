@@ -53,11 +53,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetSessions(int moduleId)
+        public HttpResponseMessage GetSessions()
         {
             try
             {
-                var sessions = SessionDataAccess.GetItems(moduleId);
+                var sessions = SessionDataAccess.GetItems(ActiveModule.ModuleID);
                 var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -78,11 +78,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetSession(int itemId, int moduleId)
+        public HttpResponseMessage GetSession(int itemId)
         {
             try
             {
-                var session = SessionDataAccess.GetItem(itemId, moduleId);
+                var session = SessionDataAccess.GetItem(itemId, ActiveModule.ModuleID);
                 var response = new ServiceResponse<SessionInfo> { Content = session };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -104,11 +104,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteSession(int itemId, int moduleId)
+        public HttpResponseMessage DeleteSession(int itemId)
         {
             try
             {
-                SessionDataAccess.DeleteItem(itemId, moduleId);
+                SessionDataAccess.DeleteItem(itemId, ActiveModule.ModuleID);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
