@@ -67,6 +67,41 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var codeCamps = CodeCampDataAccess.GetItems(moduleId);
                 var response = new ServiceResponse<List<CodeCampInfo>> { Content = codeCamps.ToList() };
 
+                if (!codeCamps.Any())
+                {
+                    ServiceResponseHelper<List<CodeCampInfo>>.AddNoneFoundError("CodeCampInfo", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get an event
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetEventByModuleId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetEventByModuleId()
+        {
+            try
+            {
+                var codeCamp = CodeCampDataAccess.GetItems(ActiveModule.ModuleID).FirstOrDefault(e => e.ModuleId == ActiveModule.ModuleID);
+                var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
+
+                if (codeCamp == null)
+                {
+                    ServiceResponseHelper<CodeCampInfo>.AddNoneFoundError("CodeCampInfo", ref response);
+                }
+
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
             catch (Exception ex)
@@ -91,6 +126,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var codeCamp = CodeCampDataAccess.GetItem(itemId, moduleId);
                 var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
+
+                if (codeCamp == null)
+                {
+                    ServiceResponseHelper<CodeCampInfo>.AddNoneFoundError("CodeCampInfo", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
