@@ -2,8 +2,6 @@
 
 codeCampApp.controller("testController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
 
-    var $self = this;
-
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
