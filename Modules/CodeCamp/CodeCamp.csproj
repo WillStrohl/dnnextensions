@@ -202,10 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Module.css" />
+    <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\ng\app.js" />
     <Content Include="Scripts\ng\controllers\AgendaController.js" />
     <Content Include="Scripts\ng\controllers\CreateController.js" />
     <Content Include="Scripts\ng\controllers\AboutController.js" />
+    <Content Include="Scripts\ng\controllers\TestController.js" />
     <Content Include="Scripts\ng\controllers\SpeakersController.js" />
     <Content Include="Scripts\ng\controllers\SpeakerController.js" />
     <Content Include="Scripts\ng\controllers\SessionsController.js" />

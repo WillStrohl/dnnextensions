@@ -124,6 +124,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         public HttpResponseMessage PingSecurityCheck()
         {
             // this response should only be reached if the user is allowed to edit the module
+            // otherwise, they'll be automatically met with a 401 unauthorized error
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
