@@ -296,6 +296,13 @@ namespace WillStrohl.Modules.DNNHangout.Components
 
         #region Token Replacement
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contentItemId"></param>
+        /// <remarks>
+        /// Documented this.
+        /// </remarks>
         public void ClearCachedTemplate(int contentItemId)
         {
             var cachedTemplate = DataCache.GetCache(string.Format(TEMPLATE_CACHE_KEY_FORMAT, contentItemId));
