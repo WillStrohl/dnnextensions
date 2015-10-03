@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
+codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$http", "$location", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, codeCampServiceFactory) {
 
     $scope.codeCamp = {};
 
@@ -44,6 +44,10 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
                 console.log("Unknown error occurred calling GetEventByModuleId");
                 console.log(data);
             });
+    }
+
+    $scope.goToAbout = function () {
+        $location.path("/about");
     }
 
 }]);
