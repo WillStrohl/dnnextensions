@@ -102,6 +102,7 @@ namespace WillStrohl.Modules.CodeCamp
             if (IncludeBootstrap)
             {
                 ClientResourceManager.RegisterStyleSheet(this.Page, prefix + "://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css", FileOrder.Css.DefaultPriority);
+                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/styles/bootstrap/bootflat/css/bootflat.css", FileOrder.Css.DefaultPriority + 1);
             }
 
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
@@ -111,6 +112,9 @@ namespace WillStrohl.Modules.CodeCamp
             if (IncludeBootstrap)
             {
                 ClientResourceManager.RegisterScript(this.Page, prefix + "://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/js/icheck.min.js", FileOrder.Js.jQueryUI + 1, DnnPageHeaderProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/js/jquery.fs.selecter.min.js", FileOrder.Js.jQueryUI + 2, DnnPageHeaderProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/js/jquery.fs.stepper.min.js", FileOrder.Js.jQueryUI + 3, DnnPageHeaderProvider.DefaultName);
             }
 
             if (Request.Browser.Type == "IE" && Request.Browser.MajorVersion < 9)
@@ -122,6 +126,7 @@ namespace WillStrohl.Modules.CodeCamp
             if (IncludeBootstrap)
             {
                 ClientResourceManager.RegisterStyleSheet(this.Page, prefix + "://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", FileOrder.Css.DefaultPriority);
+                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/styles/bootstrap/bootflat/css/bootflat.min.css", FileOrder.Css.DefaultPriority + 1);
             }
 
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
@@ -130,7 +135,10 @@ namespace WillStrohl.Modules.CodeCamp
             
             if (IncludeBootstrap)
             {
-                 ClientResourceManager.RegisterScript(this.Page, prefix + "://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, prefix + "://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/js/icheck.min.js", FileOrder.Js.jQueryUI + 1, DnnPageHeaderProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/js/jquery.fs.selecter.min.js", FileOrder.Js.jQueryUI + 2, DnnPageHeaderProvider.DefaultName);
+                ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/js/jquery.fs.stepper.min.js", FileOrder.Js.jQueryUI + 3, DnnPageHeaderProvider.DefaultName);
             }
 
             if (Request.Browser.Type == "IE" && Request.Browser.MajorVersion < 9)
@@ -146,7 +154,7 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/factories/codeCampEntityFactory.js", FileOrder.Js.DefaultPriority + 8, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AboutController.js", FileOrder.Js.DefaultPriority + 9, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AgendaController.js", FileOrder.Js.DefaultPriority + 10, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/CreateController.js", FileOrder.Js.DefaultPriority + 11, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/EventController.js", FileOrder.Js.DefaultPriority + 11, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/RegisterController.js", FileOrder.Js.DefaultPriority + 12, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SessionController.js", FileOrder.Js.DefaultPriority + 13, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SessionsController.js", FileOrder.Js.DefaultPriority + 14, DnnFormBottomProvider.DefaultName);

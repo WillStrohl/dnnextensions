@@ -6,5 +6,8 @@
     <%--
     var templateFolder = "<%=Settings["TemplateFolder"]%>";
     --%>
+    $(document).ready(function() {
+        $('input').iCheck();
+    });
 </script>
 <asp:PlaceHolder runat="server" ID="plOutput"/>

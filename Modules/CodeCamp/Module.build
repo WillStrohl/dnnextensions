@@ -21,11 +21,11 @@
       <ResourceFiles Include="App_LocalResources/*.resx" />
       <Images Include="Images/**/*.*" />
       <JsFiles Include="Scripts/**/*.*" />
-      <!--Styles Include="Styles/**/*.*" /-->
+      <Styles Include="Styles/**/*.*" />
       <ChildViews Include="Views/**/*.ascx" />
       <Templates Include="Templates/**/*.*" />
       <DataProvider Include="Providers/DataProviders/SqlDataProvider/*.SqlDataProvider" />
-      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images);@(JsFiles);@(ChildViews);@(Templates)" />
+      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images);@(JsFiles);@(ChildViews);@(Templates);@(Styles)" />
     </ItemGroup>
   </Target>
   <ItemGroup>
@@ -44,7 +44,7 @@
     <Copy SourceFiles="@(Views)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(Images)" DestinationFolder="$(FullModulePath)\Images\%(RecursiveDir)" />
     <Copy SourceFiles="@(JsFiles)" DestinationFolder="$(FullModulePath)\Scripts\%(RecursiveDir)" />
-    <!--Copy SourceFiles="@(Styles)" DestinationFolder="$(FullModulePath)\Styles\%(RecursiveDir)" /-->
+    <Copy SourceFiles="@(Styles)" DestinationFolder="$(FullModulePath)\Styles\%(RecursiveDir)" />
     <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />

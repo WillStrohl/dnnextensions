@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampApp.controller("testController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
+codeCampControllers.controller("testController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);

@@ -2,7 +2,9 @@
 
 $("body").attr("ng-app", "codeCampApp");
 
-var codeCampApp = angular.module("codeCampApp", ["ngRoute"]);
+var codeCampApp = angular.module("codeCampApp", ["ngRoute", "codeCampControllers"]);
+
+var codeCampControllers = angular.module("codeCampControllers", []);
 
 codeCampApp.config(["$routeProvider", 
 		function ($routeProvider) {
@@ -10,9 +12,9 @@ codeCampApp.config(["$routeProvider",
             //TODO: dynamically parse and/or replace _default with "templateFolder"
 
 		    $routeProvider
-			.when("/create", {
-			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/create.html",
-			    controller: "createController"
+			.when("/update", {
+			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/update.html",
+			    controller: "eventController"
 			})
 			.when("/register", {
 			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/register.html",

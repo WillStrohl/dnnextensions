@@ -1,0 +1,96 @@
+﻿<div class="container" ng-controller="eventController" ng-form="codeCampForm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Create/Update Code Camp</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" ng-show="HasSuccess">
+                <h4>Well done!</h4>
+                <p>The event information was saved succcessfully!</p>
+                <p>
+                    <a class="btn btn-primary" href="#/about">Go Back</a>
+                </p>
+            </div>
+            <div class="alert alert-danger" ng-show="HasErrors">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Oh snap!</strong> An error occurred. Please try again, or contact the site administrator.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label for="title" class="col-md-5">Name</label>
+                    <input type="text" name="title" ng-model="codeCamp.Title" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-md-5">Description</label>
+                    <textarea name="description" ng-model="CodecodeCampCamp.Description" class="form-control" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label for="beginDate" class="col-md-5">Begin Date</label>
+                    <input type="text" name="beginDate" ng-model="codeCamp.BeginDate" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="endDate" class="col-md-5">End Date</label>
+                    <input type="text" name="endDate" ng-model="codeCamp.EndDate" class="form-control" required />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="showShirtSize">
+                            <input type="checkbox" name="showShirtSize" id="showShirtSize" class="flat-checkbox-2" ng-model="codeCamp.ShowShirtSize" />
+                            Show Shirt Size?
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="showAuthor">
+                            <input type="checkbox" name="showAuthor" id="showAuthor" class="flat-checkbox-2" ng-model="codeCamp.ShowAuthor" />
+                            Show Author Badge?
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="isRegistrationActive">
+                            <input type="checkbox" name="isRegistrationActive" id="isRegistrationActive" class="flat-checkbox-2" ng-model="codeCamp.RegistrationActive" />
+                            Is Registration Active?
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-3"><button type="button" class="btn btn-success btn-block">Save Changes</button></div>
+        <div class="col-md-3"><button type="button" class="btn btn-block">Cancel</button></div>
+    </div>
+</div>
