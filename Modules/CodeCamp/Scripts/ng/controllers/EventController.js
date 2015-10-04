@@ -4,8 +4,6 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
 
     $scope.codeCamp = {};
 
-    var ccController = this;
-
     $scope.HasSuccess = false;
     $scope.HasErrors = false;
 
@@ -18,6 +16,7 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
             var serviceResponse = JSON.parse(fullResult.data);
 
             $scope.codeCamp = serviceResponse.Content;
+
             if ($scope.codeCamp === null) {
                 $scope.hasCodeCamp = false;
             } else {
@@ -31,14 +30,14 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
             console.log(data);
         });
 
-    ccController.createEvent = function () {
-        factory.callPostService("CreateEvent", codeCamp)
-            .success(function () {
+    $scope.createEvent = function () {
+        factory.callPostService("CreateEvent", $scope.codeCamp)
+            .success(function (data) {
                 $scope.HasSuccess = true;
                 LogErrors(serviceResponse.Errors);
                 setTimeout($scope.goToAbout, 5000);
             })
-            .error(function () {
+            .error(function (data, status) {
                 $scope.HasErrors = true;
                 console.log("Unknown error occurred calling GetEventByModuleId");
                 console.log(data);
@@ -65,7 +64,7 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
             method.instances[instance] = true;
         };
 
-        method.minDate = new Date();
+        method.minDate = new Date() +1;
 
         method.maxDate = new Date(2023, 12, 24);
 

@@ -156,16 +156,17 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/Common.js", FileOrder.Js.DefaultPriority + 8, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/factories/codeCampServiceFactory.js", FileOrder.Js.DefaultPriority + 9, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/factories/codeCampEntityFactory.js", FileOrder.Js.DefaultPriority + 10, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AboutController.js", FileOrder.Js.DefaultPriority + 11, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AgendaController.js", FileOrder.Js.DefaultPriority + 12, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/EventController.js", FileOrder.Js.DefaultPriority + 13, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/RegisterController.js", FileOrder.Js.DefaultPriority + 14, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SessionController.js", FileOrder.Js.DefaultPriority + 15, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SessionsController.js", FileOrder.Js.DefaultPriority + 16, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SpeakerController.js", FileOrder.Js.DefaultPriority + 17, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SpeakersController.js", FileOrder.Js.DefaultPriority + 18, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SettingsController.js", FileOrder.Js.DefaultPriority + 19, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/TestController.js", FileOrder.Js.DefaultPriority + 20, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/dateDirectives.js", FileOrder.Js.DefaultPriority + 11, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AboutController.js", FileOrder.Js.DefaultPriority + 12, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AgendaController.js", FileOrder.Js.DefaultPriority + 13, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/EventController.js", FileOrder.Js.DefaultPriority + 14, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/RegisterController.js", FileOrder.Js.DefaultPriority + 15, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SessionController.js", FileOrder.Js.DefaultPriority + 16, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SessionsController.js", FileOrder.Js.DefaultPriority + 17, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SpeakerController.js", FileOrder.Js.DefaultPriority + 18, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SpeakersController.js", FileOrder.Js.DefaultPriority + 19, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/SettingsController.js", FileOrder.Js.DefaultPriority + 20, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/TestController.js", FileOrder.Js.DefaultPriority + 21, DnnFormBottomProvider.DefaultName);
         }
     }
 }
