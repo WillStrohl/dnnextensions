@@ -32,12 +32,11 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
         });
 
     ccController.createEvent = function () {
-
         factory.callPostService("CreateEvent", codeCamp)
             .success(function () {
                 $scope.HasSuccess = true;
                 LogErrors(serviceResponse.Errors);
-                // redirect to the about page after a delay
+                setTimeout($scope.goToAbout, 5000);
             })
             .error(function () {
                 $scope.HasErrors = true;
@@ -50,4 +49,34 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
         $location.path("/about");
     }
 
+    /* DatePicker */
+
+    $scope.datePicker = (function() {
+
+        var method = {};
+        method.instances = [];
+
+        method.open = function ($event, instance) {
+            if ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+            }
+
+            method.instances[instance] = true;
+        };
+
+        method.minDate = new Date();
+
+        method.maxDate = new Date(2023, 12, 24);
+
+        method.options = {
+            formatYear: "yyyy",
+            startingDay: 1
+        };
+
+        method.format = "MM/dd/yyyy";
+
+        return method;
+    }());
+    
 }]);

@@ -15,6 +15,3 @@
 /// <reference path="scripts/ng/controllers/testcontroller.js" />
 /// <reference path="scripts/ng/factories/codecampservicefactory.js" />
 /// <reference path="scripts/ng-bootstrap/ui-bootstrap-tpls-0.13.4.js" />
-/// <reference path="Styles/bootstrap/bootflat/js/icheck.min.js" />
-/// <reference path="Styles/bootstrap/bootflat/js/jquery.fs.selecter.min.js" />
-/// <reference path="Styles/bootstrap/bootflat/js/jquery.fs.stepper.min.js" />

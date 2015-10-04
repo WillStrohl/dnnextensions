@@ -2,7 +2,7 @@
 
 $("body").attr("ng-app", "codeCampApp");
 
-var codeCampApp = angular.module("codeCampApp", ["ngRoute", "codeCampControllers"]);
+var codeCampApp = angular.module("codeCampApp", ["ngRoute", "ui.bootstrap", "codeCampControllers"]);
 
 var codeCampControllers = angular.module("codeCampControllers", []);
 
