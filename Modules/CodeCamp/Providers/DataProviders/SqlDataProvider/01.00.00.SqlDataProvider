@@ -72,6 +72,12 @@ IF EXISTS (SELECT 1
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionSpeaker')
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId];
@@ -158,8 +164,8 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] (
     [EndDate] DATETIME NOT NULL, 
     [IconFile] NVARCHAR(100) NULL, 
     [AltText] NVARCHAR(50) NULL, 
-    [RoleName] NVARCHAR(50) NOT NULL, 
-    [WaitListRoleName] NVARCHAR(50) NOT NULL, 
+    [RoleName] NVARCHAR(50) NULL, 
+    [WaitListRoleName] NVARCHAR(50) NULL, 
     [MaximumCapacity] INT NOT NULL 
         CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_MaximumCapacity] DEFAULT((0)), 
     [NumberRegistered] INT NOT NULL
