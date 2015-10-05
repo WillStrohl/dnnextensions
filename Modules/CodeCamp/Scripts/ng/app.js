@@ -32,7 +32,7 @@ codeCampApp.config(["$routeProvider",
 			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speakers.html",
 			    controller: "speakersController"
 			})
-			.when("/speaker/:speakerId", {
+			.when("/speakers/:speakerId", {
 			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speaker.html",
 			    controller: "speakerController"
 			})
@@ -40,9 +40,21 @@ codeCampApp.config(["$routeProvider",
 			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/sessions.html",
 			    controller: "speakersController"
 			})
-			.when("/session/:sessionId", {
+			.when("/sessions/:sessionId", {
 			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/session.html",
 			    controller: "sessionController"
+			})
+			.when("/tracks", {
+			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/tracks.html",
+			    controller: "tracksController"
+			})
+			.when("/tracks/:trackId", {
+			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/track.html",
+			    controller: "trackController"
+			})
+			.when("/volunteers", {
+			    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/volunteers.html",
+			    controller: "volunteersController"
 			})
 			.otherwise({
 			    redirectTo: "/about"

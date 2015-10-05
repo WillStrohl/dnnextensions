@@ -18,8 +18,8 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
             $scope.codeCamp = serviceResponse.Content;
 
             if ($scope.codeCamp != null) {
-                $scope.codeCamp.BeginDate = new Date(parseInt($scope.codeCamp.BeginDate.substr(6)));
-                $scope.codeCamp.EndDate = new Date(parseInt($scope.codeCamp.EndDate.substr(6)));
+                $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
+                $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
             }
 
             if ($scope.codeCamp === null) {

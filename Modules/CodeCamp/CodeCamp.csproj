@@ -222,6 +222,9 @@
     <Content Include="Scripts\ng\controllers\AgendaController.js" />
     <Content Include="Scripts\ng\controllers\EventController.js" />
     <Content Include="Scripts\ng\controllers\AboutController.js" />
+    <Content Include="Scripts\ng\controllers\TrackController.js" />
+    <Content Include="Scripts\ng\controllers\TracksController.js" />
+    <Content Include="Scripts\ng\controllers\VolunteersController.js" />
     <Content Include="Scripts\ng\controllers\TestController.js" />
     <Content Include="Scripts\ng\controllers\SpeakersController.js" />
     <Content Include="Scripts\ng\controllers\SpeakerController.js" />
@@ -235,6 +238,9 @@
     <Content Include="Templates\_default\agenda.html" />
     <Content Include="Templates\_default\session.html" />
     <Content Include="Templates\_default\sessions.html" />
+    <Content Include="Templates\_default\track.html" />
+    <Content Include="Templates\_default\volunteers.html" />
+    <Content Include="Templates\_default\tracks.html" />
     <Content Include="Templates\_default\speaker.html" />
     <Content Include="Templates\_default\speakers.html" />
     <Content Include="Templates\_default\register.html" />

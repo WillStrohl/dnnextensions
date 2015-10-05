@@ -1,1 +1,55 @@
-﻿
+﻿.event-datespan {
+    font-weight: bold;
+    margin-left: 0.5em;
+}
+    .event-date {
+        font-weight: normal;
+    }
+
+.event-meta {
+    margin-left: 1em;
+}
+
+.event-description {
+    margin-top: 1em;
+    background-color: #f8f8f8;
+    padding: 1em;
+}
+
+.event-tile-wrapper {
+    margin-top: 1em;
+}
+    .event-tile-wrapper div a,
+    .event-tile-wrapper div a:hover,
+    .event-tile-wrapper div a:visited,
+    .event-tile-wrapper div a:active,
+    .event-tile-wrapper div a:link {
+        text-decoration: none;
+    }
+    .event-tile-1, .event-tile-2, 
+    .event-tile-3, .event-tile-4,
+    .event-tile-5 {
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+        height: 100px;
+        line-height: 100px;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+        .event-tile-1 {
+            background-color: #ddd;
+        }
+        .event-tile-2 {
+            background-color: #ccc;
+        }
+        .event-tile-3 {
+            background-color: #bbb;
+        }
+        .event-tile-4 {
+            background-color: #aaa;
+        }
+        .event-tile-5 {
+            background-color: #999;
+        }

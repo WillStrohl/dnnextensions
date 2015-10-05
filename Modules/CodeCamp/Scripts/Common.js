@@ -7,3 +7,7 @@ function LogErrors(errors) {
         });
     }
 }
+
+function ParseDate(dateToFormat) {
+    return new Date(parseInt(dateToFormat.substr(6)));
+}

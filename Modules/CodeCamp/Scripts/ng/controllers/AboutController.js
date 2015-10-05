@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("aboutController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
+codeCampControllers.controller("aboutController", ["$scope", "$routeParams", "$location", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $location, $http, codeCampServiceFactory) {
     
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -18,6 +18,11 @@ codeCampControllers.controller("aboutController", ["$scope", "$routeParams", "$h
                 $scope.hasCodeCamp = false;
             } else {
                 $scope.hasCodeCamp = true;
+
+                if ($scope.codeCamp != null) {
+                    $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
+                    $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
+                }
 
                 factory.callGetService("UserCanEditEvent?itemId=" + $scope.codeCamp.CodeCampId)
                     .then(function (response) {
@@ -40,5 +45,9 @@ codeCampControllers.controller("aboutController", ["$scope", "$routeParams", "$h
             console.log("Unknown error occurred calling GetEventByModuleId");
             console.log(data);
         });
+
+    $scope.goToPage = function(pageName) {
+        $location.path(pageName);
+    }
 
 }]);
