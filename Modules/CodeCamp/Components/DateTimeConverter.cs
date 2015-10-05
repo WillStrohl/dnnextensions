@@ -28,47 +28,15 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Web.Caching;
-using DotNetNuke.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using WillStrohl.Modules.CodeCamp.Components;
+using Newtonsoft.Json.Converters;
 
-namespace WillStrohl.Modules.CodeCamp.Entities
+namespace WillStrohl.Modules.CodeCamp.Components
 {
-    [TableName("wns_CodeCamp_VolunteerTask")]
-    [PrimaryKey("VolunteerTaskId", AutoIncrement = true)]
-    [Cacheable("VolunteerTask", CacheItemPriority.Default, 20)]
-    [Scope("VolunteerId")]
-    public class VolunteerTaskInfo : IVolunteerTaskInfo
+    public class DateTimeConverter : IsoDateTimeConverter
     {
-        public int VolunteerTaskId { get; set; }
-
-        public int CodeCampId { get; set; }
-
-        public int VolunteerId { get; set; }
-
-        public string Title { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime BeginDate { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime EndDate { get; set; }
-
-        public bool Completed { get; set; }
-
-        public int CreatedByUserId { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime CreatedByDate { get; set; }
-
-        public int LastUpdatedByUserId { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime LastUpdatedByDate { get; set; }
-
-        public List<CustomPropertyInfo> CustomProperties { get; set; }
+        public DateTimeConverter()
+        {
+            base.DateTimeFormat = "MM/dd/yyyy hh:mm tt";
+        }
     }
 }

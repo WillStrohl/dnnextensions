@@ -1,8 +1,28 @@
-﻿<div ng-switch="HasCodeCamp">
-    <div class="dnnClear" ng-switch-when="false">
-        You don't have an event created yet. You'll need to <a href="#/update">create one</a>.
-    </div>
-    <div class="dnnClear" ng-switch-when="true">
-        Here is info about your code camp
+﻿<div class="container" ng-controller="aboutController">
+    <div class="row">
+        <div class="col-xs-12" ng-switch="hasCodeCamp">
+            <div class="dnnClear" ng-switch-when="false">
+                <div class="alert alert-info">
+                    <h4>You're new here!</h4>
+                    <p>You will need to create an event before you can continue.</p>
+                    <p>
+                        <a class="btn btn-primary" href="#/update">Create Event</a>
+                    </p>
+                </div>
+            </div>
+            <div class="dnnClear" ng-switch-when="true">
+                <div class="pull-right" ng-show="userCanEdit">
+                    <a class="btn btn-info" href="#/update">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Edit Event
+                    </a>
+                </div>
+                Here is info about your code camp
+                <h2>{{codeCamp.Title}}</h2>
+                <div class="dnnClear">
+                    {{codeCamp.Description}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

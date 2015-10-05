@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -71,6 +72,13 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public void UpdateItem(CodeCampInfo i)
         {
             repo.UpdateItem(i);
+        }
+
+        public CodeCampInfo GetItemByModuleId(int moduleId)
+        {
+            var items = GetItems(moduleId);
+
+            return items.FirstOrDefault(i => i.ModuleId == moduleId);
         }
     }
 }

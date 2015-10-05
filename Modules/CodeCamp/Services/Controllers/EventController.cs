@@ -94,7 +94,16 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var codeCamp = CodeCampDataAccess.GetItems(ActiveModule.ModuleID).FirstOrDefault(e => e.ModuleId == ActiveModule.ModuleID);
+                var codeCamp = CodeCampDataAccess.GetItemByModuleId(ActiveModule.ModuleID);
+
+                if (codeCamp != null)
+                {
+                    codeCamp.BeginDate = codeCamp.BeginDate.ToLocalTime();
+                    codeCamp.CreatedByDate = codeCamp.CreatedByDate.ToLocalTime();
+                    codeCamp.EndDate = codeCamp.EndDate.ToLocalTime();
+                    codeCamp.LastUpdatedByDate = codeCamp.LastUpdatedByDate.ToLocalTime();
+                }
+
                 var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
 
                 if (codeCamp == null)
@@ -181,9 +190,15 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                newEvent.CreatedByDate = DateTime.Now;
+                newEvent.CreatedByUserId = UserInfo.UserID;
+                newEvent.LastUpdatedByDate = DateTime.Now;
+                newEvent.LastUpdatedByUserId = UserInfo.UserID;
+                newEvent.ModuleId = ActiveModule.ModuleID;
+
                 CodeCampDataAccess.CreateItem(newEvent);
 
-                var response = new ServiceResponse<string> { Content = "success" };
+                var response = new ServiceResponse<string> { Content = Globals.RESPONSE_SUCCESS };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -219,6 +234,40 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 Exceptions.LogException(ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
             }
+        }
+
+        /// <summary>
+        /// Use to determine if the user has edit permissions
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UserCanEditEvent
+        /// </remarks>
+        [AllowAnonymous]
+        [HttpGet]
+        public HttpResponseMessage UserCanEditEvent(int itemId)
+        {
+            ServiceResponse<string> response = null;
+
+            if (UserInfo.IsSuperUser || UserInfo.IsInRole(PortalSettings.AdministratorRoleName))
+            {
+                response = new ServiceResponse<string>() { Content = Globals.RESPONSE_SUCCESS };
+            }
+            else
+            {
+                var codeCamp = CodeCampDataAccess.GetItem(itemId, ActiveModule.ModuleID);
+
+                if (codeCamp != null && codeCamp.CreatedByUserId == UserInfo.UserID || codeCamp.LastUpdatedByUserId == UserInfo.UserID)
+                {
+                    response = new ServiceResponse<string>() {Content = Globals.RESPONSE_SUCCESS };
+                }
+                else
+                {
+                    response = new ServiceResponse<string>() { Content = Globals.RESPONSE_FAILURE };
+                }
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
         }
     }
 }

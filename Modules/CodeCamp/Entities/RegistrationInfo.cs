@@ -32,6 +32,8 @@ using System;
 using System.Collections.Generic;
 using System.Web.Caching;
 using DotNetNuke.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -49,6 +51,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public string ShirtSize { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime RegistrationDate { get; set; }
 
         public bool IsRegistered { get; set; }

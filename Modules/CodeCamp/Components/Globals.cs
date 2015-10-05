@@ -42,5 +42,8 @@ namespace WillStrohl.Modules.CodeCamp.Components
 
         public const string VIEW_SETTINGS = "SettingsView";
         public const string VIEW_CODECAMP = "CodeCampView";
+
+        public const string RESPONSE_SUCCESS = "Success";
+        public const string RESPONSE_FAILURE = "Failure";
     }
 }

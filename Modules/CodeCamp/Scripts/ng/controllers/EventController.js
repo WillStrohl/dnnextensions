@@ -17,6 +17,11 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
 
             $scope.codeCamp = serviceResponse.Content;
 
+            if ($scope.codeCamp != null) {
+                $scope.codeCamp.BeginDate = new Date(parseInt($scope.codeCamp.BeginDate.substr(6)));
+                $scope.codeCamp.EndDate = new Date(parseInt($scope.codeCamp.EndDate.substr(6)));
+            }
+
             if ($scope.codeCamp === null) {
                 $scope.hasCodeCamp = false;
             } else {
@@ -31,15 +36,27 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
         });
 
     $scope.createEvent = function () {
-        factory.callPostService("CreateEvent", $scope.codeCamp)
+        console.log($scope.codeCamp);
+
+        var action = "";
+
+        if ($scope.codeCamp.CodeCampId > 0) {
+            action = "UpdateEvent";
+        } else {
+            action = "CreateEvent";
+        }
+
+        factory.callPostService(action, $scope.codeCamp)
             .success(function (data) {
                 $scope.HasSuccess = true;
+
+                var serviceResponse = angular.fromJson(data);
+
                 LogErrors(serviceResponse.Errors);
-                setTimeout($scope.goToAbout, 5000);
             })
             .error(function (data, status) {
                 $scope.HasErrors = true;
-                console.log("Unknown error occurred calling GetEventByModuleId");
+                console.log("Unknown error occurred calling " + action);
                 console.log(data);
             });
     }

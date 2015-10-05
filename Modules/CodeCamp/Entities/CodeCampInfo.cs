@@ -32,6 +32,8 @@ using System;
 using System.Collections.Generic;
 using System.Web.Caching;
 using DotNetNuke.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -49,8 +51,10 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public string Description { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime BeginDate { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime EndDate { get; set; }
 
         public string IconFile { get; set; }

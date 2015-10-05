@@ -32,6 +32,8 @@ using System;
 using System.Collections.Generic;
 using System.Web.Caching;
 using DotNetNuke.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -45,8 +47,10 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public int CodeCampId { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime BeginTime { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime EndTime { get; set; }
 
         public string AgendaText { get; set; }
@@ -57,10 +61,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public int CreatedByUserId { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime CreatedByDate { get; set; }
 
         public int LastUpdatedByUserId { get; set; }
 
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime LastUpdatedByDate { get; set; }
 
         public List<CustomPropertyInfo> CustomProperties { get; set; }
