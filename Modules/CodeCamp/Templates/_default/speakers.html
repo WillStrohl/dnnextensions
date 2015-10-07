@@ -1,1 +1,142 @@
-﻿<h1>Code Camp Speakers</h1>
+﻿<h2>Event Speakers</h2>
+<div class="container" ng-show="hasSpeakers == false">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-info">
+                <h4>Want to be a Presenter?</h4>
+                <p>Are you interested in being a speaker? Submit your session(s) and we'll hopefully pick you to speak.</p>
+                <p>
+                    <a class="btn btn-primary" ng-click="openModal('lg')">Submit Session</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+
+Finish wiring this up here:
+    http://bootsnipp.com/snippets/featured/dynamic-avatar-blur
+    http://zurb.com/playground/image-blur-texture
+
+-->
+
+<div class="container" ng-show="hasSpeakers">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                <div class="avatar">
+                    <img src="" alt="" />
+                </div>
+                <div class="content">
+                    <p>
+                        Web Developer <br>
+                        More description here
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-default">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                <div class="avatar">
+                    <img src="" alt="" />
+                </div>
+                <div class="content">
+                    <p>
+                        Web Developer <br>
+                        More description here
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-default">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                <div class="avatar">
+                    <img src="" alt="" />
+                </div>
+                <div class="content">
+                    <p>
+                        Web Developer <br>
+                        More description here
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-default">Contact</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="AddSpeakerModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Submit My Session(s)</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container" ng-form="createSessionsForm">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group" ng-class="{ 'has-error' : createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid }">
+                        <label for="speakerName">Your Name</label>
+                        <input type="text" name="speakerName" ng-model="speaker.SpeakerName" ng-required="true" class="form-control" placeholder="Your full name" required />
+                        <p class="help-block" ng-show="createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid">
+                            Your name is required.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" name="companyName" ng-model="speaker.CompanyName" class="form-control" placeholder="Your company name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="companyTitle">Your Title</label>
+                        <input type="text" name="companyTitle" ng-model="speaker.CompanyTitle" class="form-control" placeholder="Your job title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input type="text" name="url" ng-model="speaker.URL" class="form-control" placeholder="Your company website" />
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid }">
+                        <label for="bio">Biography</label>
+                        <textarea name="bio" ng-model="speaker.Bio" ng-required="true" class="form-control" placeholder="Your biography" required></textarea>
+                        <p class="help-block" ng-show="createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid">
+                            Your biography is required.
+                        </p>
+                    </div>
+                    <!-- TODO: avatar upload -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label for="isAuthor">
+                                        <input type="checkbox" name="isAuthor" ng-model="speaker.IsAuthor" class="form-control" />Are you an author?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()">Send Submission</button>
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

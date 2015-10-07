@@ -215,6 +215,9 @@
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\npm.js" />
+    <Content Include="Scripts\ng\controllers\ModalsController.js" />
+    <Content Include="Scripts\StackBlur.js" />
+    <Content Include="Scripts\StackBlur.min.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.13.4.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.13.4.min.js" />
@@ -236,6 +239,7 @@
     <Content Include="Scripts\ng\factories\codeCampServiceFactory.js" />
     <Content Include="Templates\_default\about.html" />
     <Content Include="Templates\_default\agenda.html" />
+    <Content Include="Templates\_default\modal.html" />
     <Content Include="Templates\_default\session.html" />
     <Content Include="Templates\_default\sessions.html" />
     <Content Include="Templates\_default\track.html" />
