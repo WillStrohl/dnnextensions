@@ -135,6 +135,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                speaker.CreatedByDate = DateTime.Now;
+                speaker.CreatedByUserId = UserInfo.UserID;
+                speaker.LastUpdatedByDate = DateTime.Now;
+                speaker.LastUpdatedByUserId = UserInfo.UserID;
+
                 SpeakerDataAccess.CreateItem(speaker);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };

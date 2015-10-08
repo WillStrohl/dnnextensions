@@ -135,6 +135,14 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                session.CreatedByDate = DateTime.Now;
+                session.CreatedByUserId = UserInfo.UserID;
+                session.LastUpdatedByDate = DateTime.Now;
+                session.LastUpdatedByUserId = UserInfo.UserID;
+
+                // adding a date/time placeholder because DAL doesn't know how to handle a null value
+                session.ApprovedByDate = DateTime.MinValue;
+
                 SessionDataAccess.CreateItem(session);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };

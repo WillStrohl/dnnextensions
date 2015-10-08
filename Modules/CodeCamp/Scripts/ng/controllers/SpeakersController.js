@@ -55,6 +55,8 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 
     $scope.openModal = function (size) {
 
+        // TOOD: require registratin before allowing for a speaker submission OR add email address to the speaker info (then pass it to the modal)
+
         var modalInstance = $modal.open({
             templateUrl: "AddSpeakerModal.html",
             controller: "AddSpeakerModalController",
@@ -76,10 +78,15 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 
 }]);
 
-codeCampApp.controller("AddSpeakerModalController", function ($scope, $modalInstance, codeCamp) {
+codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance", "codeCamp", "codeCampServiceFactory", function ($scope, $modalInstance, codeCamp, codeCampServiceFactory) {
 
     $scope.speaker = {};
+    $scope.savedSpeaker = {};
     $scope.sessions = [];
+    $scope.savedSessions = [];
+
+    var factory = codeCampServiceFactory;
+    factory.init(moduleId, moduleName);
 
     $scope.CodeCampId = codeCamp.CodeCampId;
 
@@ -107,10 +114,67 @@ codeCampApp.controller("AddSpeakerModalController", function ($scope, $modalInst
     }
 
     $scope.ok = function () {
+        $scope.speaker.CodeCampId = $scope.CodeCampId;
+
+        console.log("$scope.speaker = " + $scope.speaker);
+        console.log("$scope.sessions = " + $scope.sessions);
+
+        // save the speaker
+        factory.callPostService("CreateSpeaker", $scope.speaker)
+            .success(function (data) {
+                var savedSpeaker = angular.fromJson(data);
+                $scope.savedSpeaker = savedSpeaker;
+                console.log("savedSpeaker = " + savedSpeaker);
+
+                // save the sessions
+                $.each($scope.sessions, function (index, session) {
+                    factory.callPostService("CreateSession", session)
+                        .success(function (data) {
+                            var savedSession = angular.fromJson(data);
+
+                            $scope.savedSessions.push(savedSession);
+                            console.log("savedSession = " + savedSession);
+
+                            var sessionSpeaker = new {
+                                SessionId: savedSession.SessionId,
+                                SpeakerId: $scope.savedSpeaker.SpeakerId
+                            };
+
+                            // save the speaker session joins
+                            factory.callPostService("CreateSessionSpeaker", sessionSpeaker)
+                                .success(function (data) {
+                                    var sessionSpeaker = angular.fromJson(data);
+                                    console.log("sessionSpeaker = " + sessionSpeaker);
+
+                                    LogErrors(sessionSpeaker.Errors);
+                                })
+                                .error(function (data, status) {
+                                    $scope.HasErrors = true;
+                                    console.log("Unknown error occurred calling CreateSessionSpeaker");
+                                    console.log(data);
+                                });
+
+                            LogErrors(savedSession.Errors);
+                        })
+                        .error(function (data, status) {
+                            $scope.HasErrors = true;
+                            console.log("Unknown error occurred calling CreateSession");
+                            console.log(data);
+                        });
+                });
+
+                LogErrors(savedSpeaker.Errors);
+            })
+            .error(function (data, status) {
+                $scope.HasErrors = true;
+                console.log("Unknown error occurred calling CreateSpeaker");
+                console.log(data);
+            });
+
         $modalInstance.close($scope.speaker);
     };
 
     $scope.cancel = function () {
         $modalInstance.dismiss("cancel");
     };
-});
+}]);

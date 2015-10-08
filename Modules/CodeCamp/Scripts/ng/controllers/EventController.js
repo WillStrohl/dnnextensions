@@ -36,8 +36,6 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
         });
 
     $scope.createEvent = function () {
-        console.log($scope.codeCamp);
-
         var action = "";
 
         if ($scope.codeCamp.CodeCampId > 0) {
