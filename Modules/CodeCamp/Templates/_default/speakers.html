@@ -86,7 +86,7 @@ Finish wiring this up here:
             <div class="row">
                 <div class="col-xs-6">
                     <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid }">
-                        <label for="speakerName">Your Name</label>
+                        <label for="speakerName">Your Name *</label>
                         <input type="text" name="speakerName" ng-model="speaker.SpeakerName" ng-required="true" class="form-control" placeholder="Your full name" required />
                         <p class="help-block" ng-show="createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid">
                             Your name is required.
@@ -111,7 +111,7 @@ Finish wiring this up here:
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid }">
-                        <label for="bio">Biography</label>
+                        <label for="bio">Biography *</label>
                         <textarea name="bio" ng-model="speaker.Bio" ng-required="true" class="form-control" placeholder="Your biography" required></textarea>
                         <p class="help-block" ng-show="createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid">
                             Your biography is required.
@@ -156,7 +156,7 @@ Finish wiring this up here:
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['title{{$index}}'].$dirty && createSessionsForm['title{{$index}}'].$invalid }">
-                            <label for="title">Title</label>
+                            <label for="title">Title *</label>
                             <input type="text" name="title{{$index}}" ng-model="session.Title" ng-required="true" class="form-control" placeholder="Enter a descriptive session title" required />
                             <p class="help-block" ng-show="createSessionsForm['title{{$index}}'].$dirty && createSessionsForm['title{{$index}}'].$invalid">
                                 Session title is required.
@@ -165,7 +165,7 @@ Finish wiring this up here:
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid }">
-                            <label for="audienceLevel">Experience Level</label>
+                            <label for="audienceLevel">Experience Level *</label>
                             <select name="audienceLevel{{$index}}" ng-model="session.AudienceLevel" class="form-control" required>
                                 <option value="">Select One</option>
                                 <option value="0">Beginner</option>
@@ -181,7 +181,7 @@ Finish wiring this up here:
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['description{{$index}}'].$dirty && createSessionsForm['description{{$index}}'].$invalid }">
-                            <label for="description">Description</label>
+                            <label for="description">Description *</label>
                             <textarea name="description{{$index}}" ng-model="session.Description" ng-required="true" class="form-control" placeholder="Full description of your session" required></textarea>
                             <p class="help-block" ng-show="createSessionsForm['description{{$index}}'].$dirty && createSessionsForm['description{{$index}}'].$invalid">
                                 Session description is required.

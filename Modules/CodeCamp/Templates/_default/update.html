@@ -26,14 +26,14 @@
     <div class="row">
         <div class="col-xs-6">
             <div class="form-group" ng-class="{ 'has-error error' : codeCampForm.title.$invalid && !codeCampForm.title.$pristine }">
-                <label for="title">Name</label>
+                <label for="title">Name *</label>
                 <input type="text" name="title" ng-model="codeCamp.Title" ng-required="true" class="form-control" placeholder="Name of the event" required />
                 <p class="help-block" ng-show="codeCampForm.title.$invalid && !codeCampForm.title.$pristine">
                     Title is required.
                 </p>
             </div>
             <div class="form-group" ng-class="{ 'has-error error' : codeCampForm.description.$invalid && !codeCampForm.description.$pristine }">
-                <label for="description">Description</label>
+                <label for="description">Description *</label>
                 <textarea name="description" ng-model="codeCamp.Description" ng-required="true" class="form-control" placeholder="Description of the event" required></textarea>
                 <p class="help-block" ng-show="codeCampForm.description.$invalid && !codeCampForm.description.$pristine">
                     Description is required.
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-xs-6">
-            <label for="beginDate">Begin Date</label>
+            <label for="beginDate">Begin Date *</label>
             <p class="input-group">
                 <input type="text" name="beginDate" ng-model="codeCamp.BeginDate"
                        datepicker-popup="{{datePicker.format}}" min-date="datePicker.minDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['BeginDate']"
@@ -54,7 +54,7 @@
                     <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'BeginDate')"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
             </p>
-            <label for="beginDate">End Date</label>
+            <label for="beginDate">End Date *</label>
             <p class="input-group">
                 <input type="text" name="endDate" ng-model="codeCamp.EndDate"
                        datepicker-popup="{{datePicker.format}}" min-date="codeCamp.BeginDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['EndDate']"
