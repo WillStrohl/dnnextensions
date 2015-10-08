@@ -79,19 +79,25 @@ Finish wiring this up here:
 
 <script type="text/ng-template" id="AddSpeakerModal.html">
     <div class="modal-header">
-        <h3 class="modal-title">Submit My Session(s)</h3>
+        <h3 class="modal-title">Speaker Submission</h3>
     </div>
     <div class="modal-body">
-        <div class="container" ng-form="createSessionsForm">
+        <div class="container modal-form-container-lg" ng-form="createSessionsForm">
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="form-group" ng-class="{ 'has-error' : createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid }">
+                <div class="col-xs-6">
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid }">
                         <label for="speakerName">Your Name</label>
                         <input type="text" name="speakerName" ng-model="speaker.SpeakerName" ng-required="true" class="form-control" placeholder="Your full name" required />
                         <p class="help-block" ng-show="createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid">
                             Your name is required.
                         </p>
                     </div>
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input type="text" name="url" ng-model="speaker.URL" class="form-control" placeholder="Your company website" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
                     <div class="form-group">
                         <label for="companyName">Company Name</label>
                         <input type="text" name="companyName" ng-model="speaker.CompanyName" class="form-control" placeholder="Your company name" />
@@ -100,27 +106,86 @@ Finish wiring this up here:
                         <label for="companyTitle">Your Title</label>
                         <input type="text" name="companyTitle" ng-model="speaker.CompanyTitle" class="form-control" placeholder="Your job title" />
                     </div>
-                    <div class="form-group">
-                        <label for="url">URL</label>
-                        <input type="text" name="url" ng-model="speaker.URL" class="form-control" placeholder="Your company website" />
-                    </div>
-                    <div class="form-group" ng-class="{ 'has-error' : createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid }">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid }">
                         <label for="bio">Biography</label>
                         <textarea name="bio" ng-model="speaker.Bio" ng-required="true" class="form-control" placeholder="Your biography" required></textarea>
                         <p class="help-block" ng-show="createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid">
                             Your biography is required.
                         </p>
                     </div>
-                    <!-- TODO: avatar upload -->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label for="isAuthor">
-                                        <input type="checkbox" name="isAuthor" ng-model="speaker.IsAuthor" class="form-control" />Are you an author?
-                                    </label>
-                                </div>
-                            </div>
+                </div>
+            </div>
+            <!-- TODO: avatar upload -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label for="isAuthor">
+                                <input type="checkbox" name="isAuthor" ng-model="speaker.IsAuthor" class="form-control" />Are you an author?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>Session Abstract(s)</h4>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-right">
+                        <a class="btn btn-info" ng-click="AddSession()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            Add Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="session-addition-wrapper" ng-repeat="session in sessions track by $id(session)">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr/>
+                        <div class="pull-right" ng-show="SessionIndex(session) > 0">
+                            <a class="btn btn-default" ng-click="RemoveSession(session)" title="Remove this Session">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['title{{$index}}'].$dirty && createSessionsForm['title{{$index}}'].$invalid }">
+                            <label for="title">Title</label>
+                            <input type="text" name="title{{$index}}" ng-model="session.Title" ng-required="true" class="form-control" placeholder="Enter a descriptive session title" required />
+                            <p class="help-block" ng-show="createSessionsForm['title{{$index}}'].$dirty && createSessionsForm['title{{$index}}'].$invalid">
+                                Session title is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid }">
+                            <label for="audienceLevel">Experience Level</label>
+                            <select name="audienceLevel{{$index}}" ng-model="session.AudienceLevel" class="form-control" required>
+                                <option value="">Select One</option>
+                                <option value="0">Beginner</option>
+                                <option value="1">Intermediate</option>
+                                <option value="2">Advanced</option>
+                            </select>
+                            <p class="help-block" ng-show="createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid">
+                                Audience level is required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['description{{$index}}'].$dirty && createSessionsForm['description{{$index}}'].$invalid }">
+                            <label for="description">Description</label>
+                            <textarea name="description{{$index}}" ng-model="session.Description" ng-required="true" class="form-control" placeholder="Full description of your session" required></textarea>
+                            <p class="help-block" ng-show="createSessionsForm['description{{$index}}'].$dirty && createSessionsForm['description{{$index}}'].$invalid">
+                                Session description is required.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -128,12 +193,12 @@ Finish wiring this up here:
         </div>
     </div>
     <div class="modal-footer">
-        <div class="container">
+        <div class="container modal-form-container-lg">
             <div class="row">
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()">Send Submission</button>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6">
                     <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
                 </div>
             </div>

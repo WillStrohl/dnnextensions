@@ -79,8 +79,32 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 codeCampApp.controller("AddSpeakerModalController", function ($scope, $modalInstance, codeCamp) {
 
     $scope.speaker = {};
+    $scope.sessions = [];
 
     $scope.CodeCampId = codeCamp.CodeCampId;
+
+    $scope.sessions.push({
+        AudienceLevel: 0,
+        Title: "",
+        Description: ""
+    });
+
+    $scope.AddSession = function () {
+        $scope.sessions.push({
+            AudienceLevel: 0,
+            Title: "",
+            Description: ""
+        });
+    }
+
+    $scope.RemoveSession = function(session) {
+        var index = $scope.sessions.indexOf(session);
+        $scope.sessions.splice(index, 1);
+    }
+
+    $scope.SessionIndex = function(session) {
+        return $scope.sessions.indexOf(session);
+    }
 
     $scope.ok = function () {
         $modalInstance.close($scope.speaker);
