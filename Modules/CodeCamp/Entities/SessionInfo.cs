@@ -49,9 +49,9 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public string Description { get; set; }
 
-        public int TrackId { get; set; }
+        public int? TrackId { get; set; }
 
-        public int TimeSlotId { get; set; }
+        public int? TimeSlotId { get; set; }
 
         public int AudienceLevel { get; set; }
 

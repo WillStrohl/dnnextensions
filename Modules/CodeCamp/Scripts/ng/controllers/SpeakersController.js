@@ -135,7 +135,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
                             $scope.savedSessions.push(savedSession);
                             console.log("savedSession = " + savedSession);
 
-                            var sessionSpeaker = new {
+                            var sessionSpeaker = {
                                 SessionId: savedSession.SessionId,
                                 SpeakerId: $scope.savedSpeaker.SpeakerId
                             };

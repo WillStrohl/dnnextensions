@@ -347,13 +347,14 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] (
 	[CodeCampId] INT NOT NULL 
 		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
-	[RegistrationId] INT NOT NULL 
+	[RegistrationId] INT NULL 
 		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]), 
 	[SpeakerName] NVARCHAR(150) NOT NULL, 
 	[CompanyName] NVARCHAR(100) NULL, 
 	[CompanyTitle] NVARCHAR(100) NULL, 
-	[URL] NVARCHAR(255) NULL, 
+	[URL] NVARCHAR(255) NULL,  
+	[Email] NVARCHAR(255) NULL, 
 	[Bio] NVARCHAR(1000) NOT NULL, 
 	[IconFile] NVARCHAR(100) NULL, 
 	[IsAuthor] BIT NOT NULL 

@@ -28,6 +28,8 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
+
 namespace WillStrohl.Modules.CodeCamp.Components
 {
     public class Globals
@@ -45,5 +47,7 @@ namespace WillStrohl.Modules.CodeCamp.Components
 
         public const string RESPONSE_SUCCESS = "Success";
         public const string RESPONSE_FAILURE = "Failure";
+
+        public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
     }
 }

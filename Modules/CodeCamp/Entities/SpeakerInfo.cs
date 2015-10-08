@@ -47,7 +47,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public int CodeCampId { get; set; }
 
-        public int RegistrationId { get; set; }
+        public int? RegistrationId { get; set; }
 
         public string SpeakerName { get; set; }
 
@@ -56,6 +56,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public string CompanyTitle { get; set; }
 
         public string URL { get; set; }
+
+        public string Email { get; set; }
 
         public string Bio { get; set; }
 

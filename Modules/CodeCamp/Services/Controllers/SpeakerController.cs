@@ -140,6 +140,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 speaker.LastUpdatedByDate = DateTime.Now;
                 speaker.LastUpdatedByUserId = UserInfo.UserID;
 
+                if (speaker.RegistrationId == 0)
+                {
+                    speaker.RegistrationId = null;
+                }
+
                 SpeakerDataAccess.CreateItem(speaker);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };

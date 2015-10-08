@@ -38,8 +38,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         int SessionId { get; set; }
         string Title { get; set; }
         string Description { get; set; }
-        int TrackId { get; set; }
-        int TimeSlotId { get; set; }
+        int? TrackId { get; set; }
+        int? TimeSlotId { get; set; }
         int AudienceLevel { get; set; }
         int NumberRegistered { get; set; }
         int CreatedByUserId { get; set; }

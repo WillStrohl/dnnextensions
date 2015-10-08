@@ -34,6 +34,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
@@ -140,8 +141,18 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 session.LastUpdatedByDate = DateTime.Now;
                 session.LastUpdatedByUserId = UserInfo.UserID;
 
+                if (session.TrackId == 0)
+                {
+                    session.TrackId = null;
+                }
+                
+                if (session.TimeSlotId == 0)
+                {
+                    session.TimeSlotId = null;
+                }
+
                 // adding a date/time placeholder because DAL doesn't know how to handle a null value
-                session.ApprovedByDate = DateTime.MinValue;
+                session.ApprovedByDate = Globals.NULL_DATE;
 
                 SessionDataAccess.CreateItem(session);
 

@@ -37,11 +37,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     {
         int SpeakerId { get; set; }
         int CodeCampId { get; set; }
-        int RegistrationId { get; set; }
+        int? RegistrationId { get; set; }
         string SpeakerName { get; set; }
         string CompanyName { get; set; }
         string CompanyTitle { get; set; }
         string URL { get; set; }
+        string Email { get; set; }
         string Bio { get; set; }
         string IconFile { get; set; }
         bool IsAuthor { get; set; }
