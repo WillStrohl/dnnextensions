@@ -135,9 +135,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                speaker.CreatedByDate = DateTime.Now;
+                var timeStamp = DateTime.Now;
+
+                speaker.CreatedByDate = timeStamp;
                 speaker.CreatedByUserId = UserInfo.UserID;
-                speaker.LastUpdatedByDate = DateTime.Now;
+                speaker.LastUpdatedByDate = timeStamp;
                 speaker.LastUpdatedByUserId = UserInfo.UserID;
 
                 if (speaker.RegistrationId == 0)
@@ -147,7 +149,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 SpeakerDataAccess.CreateItem(speaker);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var speakers = SpeakerDataAccess.GetItems(speaker.CodeCampId);
+
+                var savedSpeaker = speakers.OrderByDescending(s => s.CreatedByDate).FirstOrDefault(s => s.Email == speaker.Email);
+
+                var response = new ServiceResponse<SpeakerInfo> { Content = savedSpeaker };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

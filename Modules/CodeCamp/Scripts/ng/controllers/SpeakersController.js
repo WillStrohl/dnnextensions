@@ -70,7 +70,8 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
         });
 
         modalInstance.result.then(function (savedSpeaker) {
-            console.log(savedSpeaker);
+            $scope.savedSpeaker = savedSpeaker;
+            console.log($scope.savedSpeaker);
         }, function () {
             console.log("Modal dismissed at: " + new Date());
         });
@@ -93,14 +94,16 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
     $scope.sessions.push({
         AudienceLevel: 0,
         Title: "",
-        Description: ""
+        Description: "",
+        CodeCampId: $scope.CodeCampId
     });
 
     $scope.AddSession = function () {
         $scope.sessions.push({
             AudienceLevel: 0,
             Title: "",
-            Description: ""
+            Description: "",
+            CodeCampId: $scope.CodeCampId
         });
     }
 
@@ -123,7 +126,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
         factory.callPostService("CreateSpeaker", $scope.speaker)
             .success(function (data) {
                 var savedSpeaker = angular.fromJson(data);
-                $scope.savedSpeaker = savedSpeaker;
+                $scope.savedSpeaker = savedSpeaker.Content;
                 console.log("savedSpeaker = " + savedSpeaker);
 
                 // save the sessions
@@ -132,11 +135,11 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
                         .success(function (data) {
                             var savedSession = angular.fromJson(data);
 
-                            $scope.savedSessions.push(savedSession);
-                            console.log("savedSession = " + savedSession);
+                            $scope.savedSessions.push(savedSession.Content);
+                            console.log("savedSession = " + savedSession.Content);
 
                             var sessionSpeaker = {
-                                SessionId: savedSession.SessionId,
+                                SessionId: savedSession.Content.SessionId,
                                 SpeakerId: $scope.savedSpeaker.SpeakerId
                             };
 
@@ -144,7 +147,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
                             factory.callPostService("CreateSessionSpeaker", sessionSpeaker)
                                 .success(function (data) {
                                     var sessionSpeaker = angular.fromJson(data);
-                                    console.log("sessionSpeaker = " + sessionSpeaker);
+                                    console.log("sessionSpeaker = " + sessionSpeaker.Content);
 
                                     LogErrors(sessionSpeaker.Errors);
                                 })
@@ -171,7 +174,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
                 console.log(data);
             });
 
-        $modalInstance.close($scope.speaker);
+        $modalInstance.close($scope.savedSpeaker);
     };
 
     $scope.cancel = function () {

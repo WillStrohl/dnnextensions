@@ -2,7 +2,11 @@
 <div class="container" ng-show="hasSpeakers == false">
     <div class="row">
         <div class="col-xs-12">
-            <div class="alert alert-info">
+            <div class="alert alert-success" ng-show="savedSpeaker != null">
+                <h4>Great job!</h4>
+                <p>Thank you for submitting your session(s). We'll be selecting speakers for the event soon.</p>
+            </div>
+            <div class="alert alert-info" ng-show="savedSpeaker == null">
                 <h4>Want to be a Presenter?</h4>
                 <p>Are you interested in being a speaker? Submit your session(s) and we'll hopefully pick you to speak.</p>
                 <p>
@@ -177,7 +181,6 @@ Finish wiring this up here:
                         <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid }">
                             <label for="audienceLevel">Experience Level *</label>
                             <select name="audienceLevel{{$index}}" ng-model="session.AudienceLevel" class="form-control" required>
-                                <option value="">Select One</option>
                                 <option value="0">Beginner</option>
                                 <option value="1">Intermediate</option>
                                 <option value="2">Advanced</option>

@@ -136,9 +136,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                session.CreatedByDate = DateTime.Now;
+                var timeStamp = DateTime.Now;
+
+                session.CreatedByDate = timeStamp;
                 session.CreatedByUserId = UserInfo.UserID;
-                session.LastUpdatedByDate = DateTime.Now;
+                session.LastUpdatedByDate = timeStamp;
                 session.LastUpdatedByUserId = UserInfo.UserID;
 
                 if (session.TrackId == 0)
@@ -156,7 +158,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 SessionDataAccess.CreateItem(session);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var sessions = SessionDataAccess.GetItems(session.CodeCampId);
+
+                var savedSession = sessions.OrderByDescending(s => s.CreatedByDate).FirstOrDefault(s => s.Title == session.Title);
+
+                var response = new ServiceResponse<SessionInfo> { Content = savedSession };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

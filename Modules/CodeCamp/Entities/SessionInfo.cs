@@ -40,7 +40,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     [TableName("wns_CodeCamp_Session")]
     [PrimaryKey("SessionId", AutoIncrement = true)]
     [Cacheable("Session", CacheItemPriority.Default, 20)]
-    [Scope("TrackId")]
+    [Scope("CodeCampId")]
     public class SessionInfo : ISessionInfo
     {
         public int SessionId { get; set; }
@@ -48,6 +48,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public string Title { get; set; }
 
         public string Description { get; set; }
+
+        public int CodeCampId { get; set; }
 
         public int? TrackId { get; set; }
 

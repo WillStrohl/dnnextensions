@@ -59,13 +59,13 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             }
         }
 
-        public IEnumerable<SessionInfo> GetItems(int trackId)
+        public IEnumerable<SessionInfo> GetItems(int codeCampId)
         {
             IEnumerable<SessionInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<SessionInfo>();
-                i = rep.Get(trackId);
+                i = rep.Get(codeCampId);
             }
             return i;
         }

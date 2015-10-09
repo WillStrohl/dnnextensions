@@ -59,24 +59,24 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             }
         }
 
-        public IEnumerable<SpeakerInfo> GetItems(int registrationId)
+        public IEnumerable<SpeakerInfo> GetItems(int codeCampId)
         {
             IEnumerable<SpeakerInfo> i;
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<SpeakerInfo>();
-                i = rep.Get(registrationId);
+                i = rep.Get(codeCampId);
             }
             return i;
         }
 
-        public SpeakerInfo GetItem(int itemId, int registrationId)
+        public SpeakerInfo GetItem(int itemId, int codeCampId)
         {
             SpeakerInfo i = null;
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<SpeakerInfo>();
-                i = rep.GetById(itemId, registrationId);
+                i = rep.GetById(itemId, codeCampId);
             }
             return i;
         }

@@ -46,9 +46,9 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleId)
+        public void DeleteItem(int itemId, int codeCampId)
         {
-            repo.DeleteItem(itemId, moduleId);
+            repo.DeleteItem(itemId, codeCampId);
         }
 
         public void DeleteItem(SpeakerInfo i)
@@ -56,15 +56,15 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.DeleteItem(i);
         }
 
-        public IEnumerable<SpeakerInfo> GetItems(int moduleId)
+        public IEnumerable<SpeakerInfo> GetItems(int codeCampId)
         {
-            var items = repo.GetItems(moduleId);
+            var items = repo.GetItems(codeCampId);
             return items;
         }
 
-        public SpeakerInfo GetItem(int itemId, int moduleId)
+        public SpeakerInfo GetItem(int itemId, int codeCampId)
         {
-            var item = repo.GetItem(itemId, moduleId);
+            var item = repo.GetItem(itemId, codeCampId);
             return item;
         }
 

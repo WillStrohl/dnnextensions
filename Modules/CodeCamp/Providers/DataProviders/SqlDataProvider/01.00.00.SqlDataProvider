@@ -93,6 +93,12 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
@@ -453,6 +459,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] (
 		CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Session] PRIMARY KEY CLUSTERED, 
 	[Title] NVARCHAR(100) NOT NULL, 
 	[Description] NVARCHAR(2000) NOT NULL, 
+	[CodeCampId] INT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]), 
 	[TrackId] INT NULL 
 		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TrackId] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] ([TrackId]), 
@@ -471,6 +480,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] (
 	[ApprovedByDate] DATETIME NULL, 
 	[CustomProperties] NVARCHAR(MAX) NULL
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([CodeCampId]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_TrackId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([TrackId]);

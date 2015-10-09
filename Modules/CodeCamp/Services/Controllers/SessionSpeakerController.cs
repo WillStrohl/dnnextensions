@@ -137,7 +137,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 SessionSpeakerDataAccess.CreateItem(speaker);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var sessionSpeakers = SessionSpeakerDataAccess.GetItems(speaker.SessionId);
+
+                var sessionSpeaker =
+                    sessionSpeakers.OrderByDescending(s => s.SessionSpeakerId).FirstOrDefault(s => s.SpeakerId == speaker.SpeakerId);
+
+                var response = new ServiceResponse<SessionSpeakerInfo> { Content = sessionSpeaker };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
