@@ -60,6 +60,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var rooms = RoomDataAccess.GetItems(codeCampId);
                 var response = new ServiceResponse<List<RoomInfo>> { Content = rooms.ToList() };
 
+                if (rooms == null)
+                {
+                    ServiceResponseHelper<List<RoomInfo>>.AddNoneFoundError("rooms", ref response);
+                }
+
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
             catch (Exception ex)
@@ -84,6 +89,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var room = RoomDataAccess.GetItem(itemId, codeCampId);
                 var response = new ServiceResponse<RoomInfo> { Content = room };
+
+                if (room == null)
+                {
+                    ServiceResponseHelper<RoomInfo>.AddNoneFoundError("room", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

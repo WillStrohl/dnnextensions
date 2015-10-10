@@ -42,6 +42,8 @@ using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
 {
+    // TODO: add validation catches and formal error responses for all end points
+
     /// <summary>
     /// This is a partial class that spans multiple class files, in order to keep the code manageable. Each method is necessary to support the front end SPA implementation.
     /// </summary>
@@ -67,7 +69,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var codeCamps = CodeCampDataAccess.GetItems(ActiveModule.ModuleID);
                 var response = new ServiceResponse<List<CodeCampInfo>> { Content = codeCamps.ToList() };
 
-                if (!codeCamps.Any())
+                if (codeCamps == null)
                 {
                     ServiceResponseHelper<List<CodeCampInfo>>.AddNoneFoundError("CodeCampInfo", ref response);
                 }

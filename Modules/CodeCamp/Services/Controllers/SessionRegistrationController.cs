@@ -60,6 +60,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var registrations = SessionRegistrationDataAccess.GetItems(sessionId);
                 var response = new ServiceResponse<List<SessionRegistrationInfo>> { Content = registrations.ToList() };
 
+                if (registrations == null)
+                {
+                    ServiceResponseHelper<List<SessionRegistrationInfo>>.AddNoneFoundError("registrations", ref response);
+                }
+
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
             catch (Exception ex)
@@ -84,6 +89,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var registration = SessionRegistrationDataAccess.GetItem(itemId, sessionId);
                 var response = new ServiceResponse<SessionRegistrationInfo> { Content = registration };
+
+                if (registration == null)
+                {
+                    ServiceResponseHelper<SessionRegistrationInfo>.AddNoneFoundError("registration", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

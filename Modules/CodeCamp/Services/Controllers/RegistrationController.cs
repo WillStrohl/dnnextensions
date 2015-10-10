@@ -95,6 +95,37 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get a registration
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetRegistrationByUserId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetRegistrationByUserId(int userId, int codeCampId)
+        {
+            try
+            {
+                var registration = RegistrationDataAccess.GetItemByUserId(userId, codeCampId);
+
+                var response = new ServiceResponse<RegistrationInfo> { Content = registration };
+
+                if (registration == null)
+                {
+                    ServiceResponseHelper<RegistrationInfo>.AddNoneFoundError("registration", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Delete a registration
         /// </summary>
         /// <returns></returns>

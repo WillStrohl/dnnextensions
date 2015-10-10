@@ -60,6 +60,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var speakers = SpeakerDataAccess.GetItems(codeCampId);
                 var response = new ServiceResponse<List<SpeakerInfo>> { Content = speakers.ToList() };
 
+                if (speakers == null)
+                {
+                    ServiceResponseHelper<List<SpeakerInfo>>.AddNoneFoundError("speakers", ref response);
+                }
+
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
             catch (Exception ex)
@@ -84,6 +89,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var speaker = SpeakerDataAccess.GetItem(itemId, codeCampId);
                 var response = new ServiceResponse<SpeakerInfo> { Content = speaker };
+
+                if (speaker == null)
+                {
+                    ServiceResponseHelper<SpeakerInfo>.AddNoneFoundError("speaker", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

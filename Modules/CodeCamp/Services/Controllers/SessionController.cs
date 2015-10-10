@@ -61,6 +61,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var sessions = SessionDataAccess.GetItems(ActiveModule.ModuleID);
                 var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
 
+                if (sessions == null)
+                {
+                    ServiceResponseHelper<List<SessionInfo>>.AddNoneFoundError("sessions", ref response);
+                }
+
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
             catch (Exception ex)
@@ -85,6 +90,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var session = SessionDataAccess.GetItem(itemId, ActiveModule.ModuleID);
                 var response = new ServiceResponse<SessionInfo> { Content = session };
+
+                if (session == null)
+                {
+                    ServiceResponseHelper<SessionInfo>.AddNoneFoundError("session", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
