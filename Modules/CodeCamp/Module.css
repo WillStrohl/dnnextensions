@@ -104,3 +104,12 @@
 .modal-form-container-lg {
     width: 870px !important;
 }
+
+
+/* fixes for registration view */
+.checkbox-vert-29 {
+    margin-top: 29px !important;
+}
+.row-btm-adjust {
+    margin-bottom: 13px;
+}

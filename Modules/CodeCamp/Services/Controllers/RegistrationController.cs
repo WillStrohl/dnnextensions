@@ -34,10 +34,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DotNetNuke.Entities.Users;
 using DotNetNuke.Security;
+using DotNetNuke.Security.Membership;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
+using WillStrohl.Modules.CodeCamp.Controllers;
 using WillStrohl.Modules.CodeCamp.Entities;
 
 namespace WillStrohl.Modules.CodeCamp.Services
@@ -107,9 +110,14 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var registration = RegistrationDataAccess.GetItemByUserId(userId, codeCampId);
+                var response = new ServiceResponse<RegistrationInfo>();
+                RegistrationInfo registration = null;
 
-                var response = new ServiceResponse<RegistrationInfo> { Content = registration };
+                if (userId > 0)
+                {
+                    registration = RegistrationDataAccess.GetItemByUserId(userId, codeCampId);
+                    response.Content = registration;
+                }
 
                 if (registration == null)
                 {
@@ -159,16 +167,71 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateRegistration
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage CreateRegistration(RegistrationInfo registration)
         {
             try
             {
-                RegistrationDataAccess.CreateItem(registration);
+                var response = new ServiceResponse<RegistrationInfo>();
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                if (registration.UserId <= 0)
+                {
+                    // user isn't logged in and therefore doesn't likely have a user account on the site
+                    // we need to register them into DNN for them
+
+                    var firstName = registration.CustomProperties.FirstOrDefault(p => p.Name == "FirstName").Value;
+                    var lastName = registration.CustomProperties.FirstOrDefault(p => p.Name == "LastName").Value;
+                    var email = registration.CustomProperties.FirstOrDefault(p => p.Name == "Email").Value;
+                    var portalId = int.Parse(registration.CustomProperties.FirstOrDefault(p => p.Name == "PortalId").Value);
+
+                    var ctlUser = new DnnUserController();
+                    var status = ctlUser.CreateNewUser(firstName, lastName, email, portalId);
+
+                    switch (status)
+                    {
+                        case UserCreateStatus.DuplicateEmail:
+                            ServiceResponseHelper<RegistrationInfo>.AddUserCreateError("DuplicateEmail", ref response);
+                            break;
+                        case UserCreateStatus.DuplicateUserName:
+                            ServiceResponseHelper<RegistrationInfo>.AddUserCreateError("DuplicateUserName", ref response);
+                            break;
+                        case UserCreateStatus.Success:
+                            var user = UserController.GetUserByName(email);
+                            registration.UserId = user.UserID;
+                            break;
+                        case UserCreateStatus.UnexpectedError:
+                            ServiceResponseHelper<RegistrationInfo>.AddUserCreateError("UnexpectedError", ref response);
+                            break;
+                        case UserCreateStatus.UsernameAlreadyExists:
+                            ServiceResponseHelper<RegistrationInfo>.AddUserCreateError("UsernameAlreadyExists", ref response);
+                            break;
+                        case UserCreateStatus.UserAlreadyRegistered:
+                            ServiceResponseHelper<RegistrationInfo>.AddUserCreateError("UserAlreadyRegistered", ref response);
+                            break;
+                        default:
+                            ServiceResponseHelper<RegistrationInfo>.AddUnknownError(ref response);
+                            break;
+                    }
+                }
+
+                if (response.Errors.Count == 0)
+                {
+                    registration.RegistrationDate = DateTime.Now;
+
+                    RegistrationDataAccess.CreateItem(registration);
+
+                    var registrations = RegistrationDataAccess.GetItems(registration.CodeCampId).OrderByDescending(r => r.RegistrationId);
+                    var savedRegistration = registrations.FirstOrDefault(r => r.UserId == registration.UserId);
+
+                    response.Content = savedRegistration;
+
+                    if (savedRegistration == null)
+                    {
+                        ServiceResponseHelper<RegistrationInfo>.AddNoneFoundError("registration", ref response);
+                    }
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -186,7 +249,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateRegistration
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage UpdateRegistration(RegistrationInfo registration)

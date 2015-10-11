@@ -28,21 +28,47 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
-using System.Collections.Generic;
+using System.Linq;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Entities.Users;
+using DotNetNuke.Security.Membership;
+using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp.Entities
+namespace WillStrohl.Modules.CodeCamp.Controllers
 {
-    public interface IRegistrationInfo
+    public class DnnUserController
     {
-        int RegistrationId { get; set; }
-        int CodeCampId { get; set; }
-        int UserId { get; set; }
-        string ShirtSize { get; set; }
-        DateTime RegistrationDate { get; set; }
-        bool IsRegistered { get; set; }
-        bool HasDietaryRequirements { get; set; }
-        string Notes { get; set; }
-        List<CustomPropertyInfo> CustomProperties { get; set; }
+        public UserInfo User { get; set; }
+
+        public DnnUserController()
+        {
+            User = new UserInfo();
+        }
+
+        public UserCreateStatus CreateNewUser(string firstName, string lastName, string emailAddress, int portalId)
+        {
+            var ctlPortal = new PortalController();
+            var portalSettings = ctlPortal.GetPortals().Cast<PortalInfo>().FirstOrDefault(p => p.PortalID == portalId);
+
+            var user = new UserInfo()
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = emailAddress,
+                Username = emailAddress,
+                DisplayName = string.Concat(firstName, " ", lastName)
+            };
+
+            user.Profile.PreferredLocale = portalSettings.DefaultLanguage;
+            user.Membership.Approved = true;
+            user.Membership.Password = PasswordGenerator.GeneratePassword();
+            user.Membership.UpdatePassword = true;
+
+            var status = UserController.CreateUser(ref user);
+
+            User = user;
+
+            return status;
+        }
     }
 }

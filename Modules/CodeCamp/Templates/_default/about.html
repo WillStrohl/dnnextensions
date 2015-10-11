@@ -13,10 +13,16 @@
             <div class="col-xs-12" ng-switch-when="true">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="pull-right" ng-show="userCanEdit">
-                            <a class="btn btn-info" href="#/update">
+                        <div class="pull-right">
+                            <a class="btn btn-info" href="#/update" ng-show="userCanEdit">
                                 <i class="glyphicon glyphicon-edit"></i>
                                 Edit Event
+                            </a>
+                            <a class="btn btn-primary" href="#/register">
+                                <i class="glyphicon glyphicon-log-in" ng-show="currentUserRegistration == null"></i>
+                                <i class="glyphicon glyphicon-edit" ng-show="currentUserRegistration != null"></i>
+                                <span ng-show="currentUserRegistration == null">Register</span>
+                                <span ng-show="currentUserRegistration != null">Update Registration</span>
                             </a>
                         </div>
                         <h2>{{codeCamp.Title}}</h2>

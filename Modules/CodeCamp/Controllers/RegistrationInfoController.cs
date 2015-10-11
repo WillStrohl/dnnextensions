@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -46,9 +47,9 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleId)
+        public void DeleteItem(int itemId, int codeCampId)
         {
-            repo.DeleteItem(itemId, moduleId);
+            repo.DeleteItem(itemId, codeCampId);
         }
 
         public void DeleteItem(RegistrationInfo i)
@@ -56,21 +57,27 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.DeleteItem(i);
         }
 
-        public IEnumerable<RegistrationInfo> GetItems(int moduleId)
+        public IEnumerable<RegistrationInfo> GetItems(int codeCampId)
         {
-            var items = repo.GetItems(moduleId);
+            var items = repo.GetItems(codeCampId);
             return items;
         }
 
-        public RegistrationInfo GetItem(int itemId, int moduleId)
+        public RegistrationInfo GetItem(int itemId, int codeCampId)
         {
-            var item = repo.GetItem(itemId, moduleId);
+            var item = repo.GetItem(itemId, codeCampId);
             return item;
         }
 
         public void UpdateItem(RegistrationInfo i)
         {
             repo.UpdateItem(i);
+        }
+
+        public RegistrationInfo GetItemByUserId(int userId, int codeCampId)
+        {
+            var items = GetItems(codeCampId);
+            return items.FirstOrDefault(r => r.UserId == userId);
         }
     }
 }

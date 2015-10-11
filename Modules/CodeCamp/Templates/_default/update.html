@@ -1,4 +1,14 @@
-﻿<div class="container" ng-controller="eventController" ng-form="codeCampForm">
+﻿<div class="container" ng-show="!userCanEdit">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-danger">
+                <i class="glyphicon glyphicon-alert"></i>
+                You do not have permission to perform this action. Please login to continue.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-controller="eventController" ng-form="codeCampForm" ng-show="userCanEdit">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">

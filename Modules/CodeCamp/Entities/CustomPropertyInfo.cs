@@ -33,10 +33,9 @@ using System;
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
 	[Serializable]
-	public sealed class CustomPropertyInfo : ICustomPropertyInfo
+	public class CustomPropertyInfo : ICustomPropertyInfo
 	{
 		public string Name { get; set; }
 		public string Value { get; set; }
-
 	}
 }

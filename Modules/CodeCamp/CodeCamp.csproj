@@ -101,8 +101,10 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Components\Globals.cs" />
+    <Compile Include="Components\PasswordGenerator.cs" />
     <Compile Include="Components\RouteMapper.cs" />
     <Compile Include="Components\ViewHelper.cs" />
+    <Compile Include="Controllers\DnnUserController.cs" />
     <Compile Include="Controllers\SpeakerInfoController.cs" />
     <Compile Include="Controllers\SessionSpeakerInfoController.cs" />
     <Compile Include="Controllers\SessionRegistrationInfoController.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Entities\RegistrationInfo.cs" />
     <Compile Include="Entities\Interfaces\IRegistrationInfo.cs" />
     <Compile Include="Entities\Interfaces\ICodeCampInfo.cs" />
+    <Compile Include="Services\Controllers\UtilityController.cs" />
     <Compile Include="Services\Controllers\SpeakerController.cs" />
     <Compile Include="Services\Controllers\SessionSpeakerController.cs" />
     <Compile Include="Services\Controllers\SessionRegistrationController.cs" />
@@ -215,7 +218,6 @@
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\npm.js" />
-    <Content Include="Scripts\ng\controllers\ModalsController.js" />
     <Content Include="Scripts\StackBlur.js" />
     <Content Include="Scripts\StackBlur.min.js" />
     <Content Include="Scripts\Common.js" />

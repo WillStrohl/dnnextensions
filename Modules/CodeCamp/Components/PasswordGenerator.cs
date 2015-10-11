@@ -29,20 +29,48 @@
 */
 
 using System;
-using System.Collections.Generic;
 
-namespace WillStrohl.Modules.CodeCamp.Entities
+namespace WillStrohl.Modules.CodeCamp.Components
 {
-    public interface IRegistrationInfo
+    public static class PasswordGenerator
     {
-        int RegistrationId { get; set; }
-        int CodeCampId { get; set; }
-        int UserId { get; set; }
-        string ShirtSize { get; set; }
-        DateTime RegistrationDate { get; set; }
-        bool IsRegistered { get; set; }
-        bool HasDietaryRequirements { get; set; }
-        string Notes { get; set; }
-        List<CustomPropertyInfo> CustomProperties { get; set; }
+        private const int PASSWORD_LENGTH = 15;
+        private const string CHARACTERS = "abcdefghijkmnopqrstuvwxyz23456789";
+        private const string LETTERS = "abcdefghijkmnopqrstuvwxyz";
+
+        public static string GeneratePassword()
+        {
+            var result = string.Empty;
+            var r = new Random();
+
+            r.Next();
+
+            for (var i = 0; i < PASSWORD_LENGTH; i++)
+            {
+                r.Next();
+                if (i == 0)
+                {
+                    result += GetRandomPrintableLetter(r);
+                }
+                else
+                {
+                    result += GetRandomPrintableCharacter(r);
+                }
+            }
+
+            return result;
+        }
+
+        private static string GetRandomPrintableCharacter(Random r)
+        {
+            var location = r.Next(CHARACTERS.Length - 1);
+            return CHARACTERS.Substring(location, 1);
+        }
+
+        private static string GetRandomPrintableLetter(Random r)
+        {
+            int location = r.Next(LETTERS.Length - 1);
+            return LETTERS.Substring(location, 1);
+        }
     }
 }

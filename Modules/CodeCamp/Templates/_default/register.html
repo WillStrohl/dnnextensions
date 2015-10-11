@@ -1,1 +1,86 @@
-﻿<h1>Code Camp Registration</h1>
+﻿<h1>Event Registration</h1>
+<div class="container" ng-form="registrationForm">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-danger" ng-show="RegistrationErrors">
+                An unexpected error occurred while attempting to register you for the event. Please try again, or contact the site administrator.
+            </div>
+            <div class="alert alert-warning" ng-show="UserExistsErrors">
+                You appear to already have a user account. Please <a href="/?ctl=login">login first</a>, then register for the event.
+            </div>
+            <div class="alert alert-success" ng-show="RegistrationSuccess">
+                Congratulations! You've successfully registered for the event.
+                <button type="button" class="btn btn-success" ng-click="goToPage('/about')">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-4">
+            <div class="form-group" ng-class="{ 'has-error error' : registrationForm.firstName.$dirty && registrationForm.firstName.$invalid }">
+                <label for="firstName">First Name *</label>
+                <input type="text" name="firstName" ng-model="userInfo.FirstName" ng-required="true" class="form-control" placeholder="Your first name" maxlength="50" ng-disabled="userInfo.UserID > 0" required/>
+                <p class="help-block" ng-show="registrationForm.firstName.$dirty && registrationForm.firstName.$invalid">
+                    Your first name is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4">
+            <div class="form-group" ng-class="{ 'has-error error' : registrationForm.lastName.$dirty && registrationForm.lastName.$invalid }">
+                <label for="lastName">Last Name *</label>
+                <input type="text" name="lastName" ng-model="userInfo.LastName" ng-required="true" class="form-control" placeholder="Your last name" maxlength="50" ng-disabled="userInfo.UserID > 0" required/>
+                <p class="help-block" ng-show="registrationForm.lastName.$dirty && registrationForm.lastName.$invalid">
+                    Your last name is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4">
+            <div class="form-group" ng-class="{ 'has-error error' : registrationForm.email.$dirty && registrationForm.email.$invalid }">
+                <label for="email">Email Address *</label>
+                <input type="email" name="email" ng-model="userInfo.Email" ng-required="true" class="form-control" placeholder="Your last name" maxlength="256" ng-disabled="userInfo.UserID > 0" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required/>
+                <p class="help-block" ng-show="registrationForm.email.$error.email">
+                    Enter a valid email address.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row row-btm-adjust">
+        <div class="col-md-6 col-lg-6">
+            <label for="shirtSize">Shirt Size *</label>
+            <select name="shirtSize" ng-model="registration.shirtSize" class="form-control" required>
+                <option value="XS">Extra Small</option>
+                <option value="SM">Small</option>
+                <option value="MD">Medium</option>
+                <option value="LG">Large</option>
+                <option value="XL">XL</option>
+                <option value="2X">XXL</option>
+                <option value="3X">XXXL</option>
+            </select>
+            <p class="help-block" ng-show="createSessionsForm.shirtSize.$dirty && createSessionsForm.shirtSize.$invalid">
+                Shirt size is required.
+            </p>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="checkbox checkbox-vert-29">
+                <label for="hasDietaryRequirements">
+                    <input type="checkbox" name="hasDietaryRequirements" ng-model="registration.hasDietaryRequirements"/>Do you have dietary requirements?
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <textarea name="notes" ng-model="registration.notes" class="form-control" placeholder="Enter anything we should know, such as dietary requirements" maxlength="1000"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10 col-lg-offset-8 col-lg-4">
+            <div class="pull-right">
+                <button class="btn btn-success" type="button" ng-disabled="registrationForm.$invalid" ng-click="createNewRegistration()">Send Submission</button>
+                <button class="btn" type="button" ng-click="goToPage('/about')">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

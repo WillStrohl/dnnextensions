@@ -8,6 +8,20 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
+    factory.callGetService("GetCurrentUserId")
+        .then(function (response) {
+            var fullResult = angular.fromJson(response);
+            var serviceResponse = JSON.parse(fullResult.data);
+
+            $scope.currentUserId = serviceResponse.Content;
+
+            LogErrors(serviceResponse.Errors);
+        },
+        function (data) {
+            console.log("Unknown error occurred calling GetCurrentUserId");
+            console.log(data);
+        });
+
     factory.callGetService("GetEventByModuleId")
         .then(function (response) {
             var fullResult = angular.fromJson(response);
@@ -44,6 +58,20 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                         console.log("Unknown error occurred calling GetSpeakers");
                         console.log(data);
                     });
+
+                factory.callGetService("GetRegistrationByUserId?userId=" + $scope.currentUserId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+                    .then(function (response) {
+                        var fullResult = angular.fromJson(response);
+                        var serviceResponse = JSON.parse(fullResult.data);
+
+                        $scope.currentUserRegistration = serviceResponse.Content;
+
+                        LogErrors(serviceResponse.Errors);
+                    },
+                    function (data) {
+                        console.log("Unknown error occurred calling GetRegistrationByUserId");
+                        console.log(data);
+                    });
             }
 
             LogErrors(serviceResponse.Errors);
@@ -63,8 +91,14 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
             size: size,
             backdrop: "static",
             resolve: {
+                userId: function() {
+                    return $scope.currentUserId;
+                },
                 codeCamp: function () {
                     return $scope.codeCamp;
+                },
+                registration: function() {
+                    return $scope.currentUserRegistration;
                 }
             }
         });
@@ -79,7 +113,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 
 }]);
 
-codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance", "codeCamp", "codeCampServiceFactory", function ($scope, $modalInstance, codeCamp, codeCampServiceFactory) {
+codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance", "userId", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $modalInstance, userId, codeCamp, registration, codeCampServiceFactory) {
 
     $scope.speaker = {};
     $scope.savedSpeaker = {};
@@ -117,17 +151,14 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
     }
 
     $scope.ok = function () {
+        $scope.speaker.RegistrationId = registration.RegistrationId;
         $scope.speaker.CodeCampId = $scope.CodeCampId;
-
-        console.log("$scope.speaker = " + $scope.speaker);
-        console.log("$scope.sessions = " + $scope.sessions);
 
         // save the speaker
         factory.callPostService("CreateSpeaker", $scope.speaker)
             .success(function (data) {
                 var savedSpeaker = angular.fromJson(data);
                 $scope.savedSpeaker = savedSpeaker.Content;
-                console.log("savedSpeaker = " + savedSpeaker);
 
                 // save the sessions
                 $.each($scope.sessions, function (index, session) {
@@ -136,7 +167,6 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
                             var savedSession = angular.fromJson(data);
 
                             $scope.savedSessions.push(savedSession.Content);
-                            console.log("savedSession = " + savedSession.Content);
 
                             var sessionSpeaker = {
                                 SessionId: savedSession.Content.SessionId,
@@ -147,7 +177,6 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$modalInstance",
                             factory.callPostService("CreateSessionSpeaker", sessionSpeaker)
                                 .success(function (data) {
                                     var sessionSpeaker = angular.fromJson(data);
-                                    console.log("sessionSpeaker = " + sessionSpeaker.Content);
 
                                     LogErrors(sessionSpeaker.Errors);
                                 })
