@@ -35,6 +35,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using DotNetNuke.Security;
+using DotNetNuke.Security.Permissions;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
@@ -251,7 +252,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             ServiceResponse<string> response = null;
 
-            if (UserInfo.IsSuperUser || UserInfo.IsInRole(PortalSettings.AdministratorRoleName))
+            if (UserInfo.IsSuperUser || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || ModulePermissionController.HasModulePermission(ActiveModule.ModulePermissions, "Edit"))
             {
                 response = new ServiceResponse<string>() { Content = Globals.RESPONSE_SUCCESS };
             }
