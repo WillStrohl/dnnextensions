@@ -14,6 +14,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
             var serviceResponse = JSON.parse(fullResult.data);
 
             $scope.currentUserId = serviceResponse.Content;
+            console.log($scope.currentUserId);
 
             LogErrors(serviceResponse.Errors);
         },

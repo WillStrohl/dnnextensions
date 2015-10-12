@@ -77,7 +77,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public RegistrationInfo GetItemByUserId(int userId, int codeCampId)
         {
             var items = GetItems(codeCampId);
-            return items.FirstOrDefault(r => r.UserId == userId);
+
+            return items?.FirstOrDefault(r => r.UserId == userId);
         }
     }
 }

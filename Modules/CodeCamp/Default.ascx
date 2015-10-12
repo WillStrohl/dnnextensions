@@ -4,6 +4,7 @@
     var moduleId = <%=ModuleId%>;
     var moduleName = "<%=ModuleConfiguration.DesktopModule.FolderName%>";
     var templatePath = "<%=ControlPath%>";
+    var pageUrl = "<%=PortalSettings.ActiveTab.FullUrl%>";
     <%--
     var templateFolder = "<%=Settings["TemplateFolder"]%>";
     --%>

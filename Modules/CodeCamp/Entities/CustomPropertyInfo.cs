@@ -29,13 +29,17 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
 	[Serializable]
-	public class CustomPropertyInfo : ICustomPropertyInfo
+    [JsonObject(MemberSerialization.OptIn)]
+    public class CustomPropertyInfo : ICustomPropertyInfo
 	{
-		public string Name { get; set; }
-		public string Value { get; set; }
+        [JsonProperty("Name")]
+        public string Name { get; set; }
+        [JsonProperty("Value")]
+        public string Value { get; set; }
 	}
 }

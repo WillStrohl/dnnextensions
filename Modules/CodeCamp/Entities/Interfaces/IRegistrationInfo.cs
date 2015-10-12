@@ -43,6 +43,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         bool IsRegistered { get; set; }
         bool HasDietaryRequirements { get; set; }
         string Notes { get; set; }
-        List<CustomPropertyInfo> CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
+        string CustomProperties { get; set; }
     }
 }

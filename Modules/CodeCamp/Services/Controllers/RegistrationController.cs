@@ -34,6 +34,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.UI;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Security;
 using DotNetNuke.Security.Membership;
@@ -181,10 +182,10 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     // user isn't logged in and therefore doesn't likely have a user account on the site
                     // we need to register them into DNN for them
 
-                    var firstName = registration.CustomProperties.FirstOrDefault(p => p.Name == "FirstName").Value;
-                    var lastName = registration.CustomProperties.FirstOrDefault(p => p.Name == "LastName").Value;
-                    var email = registration.CustomProperties.FirstOrDefault(p => p.Name == "Email").Value;
-                    var portalId = int.Parse(registration.CustomProperties.FirstOrDefault(p => p.Name == "PortalId").Value);
+                    var firstName = registration.CustomPropertiesObj.FirstOrDefault(p => p.Name == "FirstName").Value;
+                    var lastName = registration.CustomPropertiesObj.FirstOrDefault(p => p.Name == "LastName").Value;
+                    var email = registration.CustomPropertiesObj.FirstOrDefault(p => p.Name == "Email").Value;
+                    var portalId = int.Parse(registration.CustomPropertiesObj.FirstOrDefault(p => p.Name == "PortalId").Value);
 
                     var ctlUser = new DnnUserController();
                     var status = ctlUser.CreateNewUser(firstName, lastName, email, portalId);
@@ -200,6 +201,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
                         case UserCreateStatus.Success:
                             var user = UserController.GetUserByName(email);
                             registration.UserId = user.UserID;
+
+                            UserController.UserLogin(portalId, user, PortalSettings.PortalName, string.Empty, false);
                             break;
                         case UserCreateStatus.UnexpectedError:
                             ServiceResponseHelper<RegistrationInfo>.AddUserCreateError("UnexpectedError", ref response);

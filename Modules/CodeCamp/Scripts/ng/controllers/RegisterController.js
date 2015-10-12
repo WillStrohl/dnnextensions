@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("registerController", ["$scope", "$routeParams", "$location", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $location, $http, codeCampServiceFactory) {
+codeCampControllers.controller("registerController", ["$scope", "$routeParams", "$location", "$window", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $location, $window, $http, codeCampServiceFactory) {
 
     $scope.RegistrationErrors = false;
     $scope.UserExistsErrors = false;
@@ -66,21 +66,20 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
 
         $scope.registration.CodeCampId = $scope.codeCamp.CodeCampId;
         $scope.registration.UserId = $scope.userInfo.UserID;
-        $scope.registration.CustomProperties = [];
+        $scope.registration.CustomPropertiesObj = [];
 
-        $scope.registration.CustomProperties.push({ Name: "FirstName", Value: $scope.userInfo.FirstName });
-        $scope.registration.CustomProperties.push({ Name: "LastName", Value: $scope.userInfo.LastName });
-        $scope.registration.CustomProperties.push({ Name: "Email", Value: $scope.userInfo.Email });
-        $scope.registration.CustomProperties.push({ Name: "PortalId", Value: portalId });
+        $scope.registration.CustomPropertiesObj.push({ Name: "FirstName", Value: $scope.userInfo.FirstName });
+        $scope.registration.CustomPropertiesObj.push({ Name: "LastName", Value: $scope.userInfo.LastName });
+        $scope.registration.CustomPropertiesObj.push({ Name: "Email", Value: $scope.userInfo.Email });
+        $scope.registration.CustomPropertiesObj.push({ Name: "PortalId", Value: portalId });
         
-        // save the speaker
         factory.callPostService("CreateRegistration", $scope.registration)
             .success(function (data) {
                 var savedRegistration = angular.fromJson(data);
-                $scope.savedRegistration = savedSpeaker.Content;
+                $scope.savedRegistration = savedRegistration.Content;
                 console.log("savedRegistration = " + savedRegistration);
 
-                if (savedRegistration.Errors != null) {
+                if (savedRegistration.Errors.length > 0) {
                     $.each(savedRegistration.Errors, function(index, error) {
                         if (error.Code == "USER-CREATE-ERROR" && $scope.UserExistsErrors == false) {
                             $scope.UserExistsErrors = true;
@@ -91,6 +90,8 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
                     });
                 } else {
                     $scope.RegistrationSuccess = true;
+
+                    setTimeout(function () { $window.location.href = pageUrl; }, 3000);
                 }
 
                 LogErrors(savedRegistration.Errors);

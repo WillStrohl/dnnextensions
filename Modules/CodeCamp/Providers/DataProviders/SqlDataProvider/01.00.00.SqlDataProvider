@@ -223,7 +223,7 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] (
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_UserId] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId]) ON DELETE CASCADE, 
     [ShirtSize] NVARCHAR(5) NULL, 
-	[HasDietaryRequirements] BIT DEFAULT((0)),
+	[HasDietaryRequirements] BIT NOT NULL DEFAULT((0)),
 	[Notes] NVARCHAR(1000) NULL, 
 	[RegistrationDate] DATETIME NOT NULL, 
 	[IsRegistered] BIT DEFAULT((1)),
