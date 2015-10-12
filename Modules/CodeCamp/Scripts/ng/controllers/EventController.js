@@ -24,6 +24,7 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
 
             if ($scope.codeCamp === null) {
                 $scope.hasCodeCamp = false;
+                $scope.codeCamp = { CodeCampId: -1 };
             } else {
                 $scope.hasCodeCamp = true;
             }
