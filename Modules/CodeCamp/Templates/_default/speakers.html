@@ -105,7 +105,7 @@ Finish wiring this up here:
                     </div>
                     <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.email.$error.email }">
                         <label for="email">Email</label>
-                        <input type="email" name="email" ng-model="speaker.Email" class="form-control" placeholder="Your email address" maxlength="256" ng-required="true" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required />
+                        <input type="email" name="email" ng-model="speaker.Email" class="form-control" placeholder="Your email address" maxlength="256" ng-required="true" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required />
                         <p class="help-block" ng-show="createSessionsForm.email.$dirty && createSessionsForm.email.$invalid">
                             Your email address is required.
                         </p>
