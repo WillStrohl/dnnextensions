@@ -259,7 +259,33 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                RegistrationDataAccess.UpdateItem(registration);
+                var registrationFromDb = RegistrationDataAccess.GetItemByUserId(registration.UserId, registration.CodeCampId);
+                var updatesToProcess = false;
+
+                // only update the fields that would be udpdated from the UI to keep the DB clean
+
+                if (registrationFromDb.ShirtSize != registration.ShirtSize)
+                {
+                    registrationFromDb.ShirtSize = registration.ShirtSize;
+                    updatesToProcess = true;
+                }
+
+                if (registrationFromDb.HasDietaryRequirements != registration.HasDietaryRequirements)
+                {
+                    registrationFromDb.HasDietaryRequirements = registration.HasDietaryRequirements;
+                    updatesToProcess = true;
+                }
+
+                if (registrationFromDb.Notes != registration.Notes)
+                {
+                    registrationFromDb.Notes = registration.Notes;
+                    updatesToProcess = true;
+                }
+
+                if (updatesToProcess)
+                {
+                    RegistrationDataAccess.UpdateItem(registrationFromDb);
+                }
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
