@@ -48,7 +48,7 @@
     <div class="row row-btm-adjust">
         <div class="col-md-6 col-lg-6">
             <label for="shirtSize">Shirt Size *</label>
-            <select name="shirtSize" ng-model="registration.shirtSize" class="form-control" ng-disabled="RegistrationSuccess" required>
+            <select name="shirtSize" ng-model="registration.ShirtSize" class="form-control" ng-disabled="RegistrationSuccess" required>
                 <option value="XS">Extra Small</option>
                 <option value="SM">Small</option>
                 <option value="MD">Medium</option>
@@ -64,7 +64,7 @@
         <div class="col-md-6 col-lg-6">
             <div class="checkbox checkbox-vert-29">
                 <label for="hasDietaryRequirements">
-                    <input type="checkbox" name="hasDietaryRequirements" ng-model="registration.hasDietaryRequirements" ng-disabled="RegistrationSuccess"/>Do you have dietary requirements?
+                    <input type="checkbox" name="hasDietaryRequirements" ng-model="registration.HasDietaryRequirements" ng-disabled="RegistrationSuccess"/>Do you have dietary requirements?
                 </label>
             </div>
         </div>
@@ -73,14 +73,14 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="notes">Notes</label>
-                <textarea name="notes" ng-model="registration.notes" class="form-control" placeholder="Enter anything we should know, such as dietary requirements" maxlength="1000" ng-disabled="RegistrationSuccess"></textarea>
+                <textarea name="notes" ng-model="registration.Notes" class="form-control" placeholder="Enter anything we should know, such as dietary requirements" maxlength="1000" ng-disabled="RegistrationSuccess"></textarea>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-offset-2 col-md-10 col-lg-offset-8 col-lg-4">
             <div class="pull-right">
-                <button class="btn btn-success" type="button" ng-disabled="registrationForm.$invalid || RegistrationSuccess" ng-click="createNewRegistration()">Send Submission</button>
+                <button class="btn btn-success" type="button" ng-disabled="registrationForm.$invalid || RegistrationSuccess" ng-click="processRegistration()">Send Submission</button>
                 <button class="btn" type="button" ng-click="goToPage('/about')">Cancel</button>
             </div>
         </div>
