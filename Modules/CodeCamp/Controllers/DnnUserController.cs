@@ -56,10 +56,14 @@ namespace WillStrohl.Modules.CodeCamp.Controllers
                 LastName = lastName,
                 Email = emailAddress,
                 Username = emailAddress,
-                DisplayName = string.Concat(firstName, " ", lastName)
+                DisplayName = string.Concat(firstName, " ", lastName),
+                PortalID = portalId
             };
 
             user.Profile.PreferredLocale = portalSettings.DefaultLanguage;
+            user.Profile.FirstName = firstName;
+            user.Profile.LastName = lastName;
+
             user.Membership.Approved = true;
             user.Membership.Password = PasswordGenerator.GeneratePassword();
             user.Membership.UpdatePassword = true;
