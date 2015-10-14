@@ -50,6 +50,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         bool IsApproved { get; set; }
         int ApprovedByUserId { get; set; }
         DateTime ApprovedByDate { get; set; }
-        List<CustomPropertyInfo> CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
+        string CustomProperties { get; set; }
     }
 }

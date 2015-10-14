@@ -44,6 +44,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         DateTime CreatedByDate { get; set; }
         int LastUpdatedByUserId { get; set; }
         DateTime LastUpdatedByDate { get; set; }
-        List<CustomPropertyInfo> CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
+        string CustomProperties { get; set; }
     }
 }

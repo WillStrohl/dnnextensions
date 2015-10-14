@@ -37,6 +37,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         int VolunteerId { get; set; }
         int RegistrationId { get; set; }
         string Notes { get; set; }
-        List<CustomPropertyInfo> CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
+        string CustomProperties { get; set; }
     }
 }

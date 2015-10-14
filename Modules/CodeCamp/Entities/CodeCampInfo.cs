@@ -31,6 +31,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Caching;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using WillStrohl.Modules.CodeCamp.Components;
@@ -85,6 +86,13 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public DateTime LastUpdatedByDate { get; set; }
 
-        public List<CustomPropertyInfo> CustomProperties { get; set; }
+        [IgnoreColumn]
+        public List<CustomPropertyInfo> CustomPropertiesObj
+        {
+            get { return JsonHelper.ObjectFromJson<List<CustomPropertyInfo>>(CustomProperties); }
+            set { CustomProperties = value.ToJson(); }
+        }
+
+        public string CustomProperties { get; set; }
     }
 }

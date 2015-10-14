@@ -30,7 +30,9 @@
 
 using System.Collections.Generic;
 using System.Web.Caching;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
+using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -46,6 +48,13 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public string Notes { get; set; }
 
-        public List<CustomPropertyInfo> CustomProperties { get; set; }
+        [IgnoreColumn]
+        public List<CustomPropertyInfo> CustomPropertiesObj
+        {
+            get { return JsonHelper.ObjectFromJson<List<CustomPropertyInfo>>(CustomProperties); }
+            set { CustomProperties = value.ToJson(); }
+        }
+
+        public string CustomProperties { get; set; }
     }
 }
