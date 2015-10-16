@@ -27,30 +27,7 @@ Finish wiring this up here:
 
 <div class="container" ng-show="hasSpeakers">
     <div class="row">
-        <div ng-repeat="speaker in speakers | orderBy: 'SpeakerName'">
-            <div class="clearfix" ng-if="$index % 3 == 0"></div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-                    <div class="avatar">
-                        <img src="/DesktopModules/CodeCamp/Images/headshot-placeholder.jpg" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}" />
-                    </div>
-                    <div class="content">
-                        <p>
-                            <span class="speaker-name">{{speaker.SpeakerName}}</span><br />
-                            <span class="speaker-title">{{speaker.CompanyTitle}}</span><br />
-                            <span class="speaker-company">{{speaker.CompanyName}}</span>
-                        </p>
-                        <p>
-                            <a href="mailto:{{speaker.Email}}" target="_blank" class="btn btn-default">
-                                <i class="glyphicon glyphicon-envelope"></i>
-                                Contact
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <speaker-cards data="speakers"></speaker-cards>
     </div>
 </div>
 

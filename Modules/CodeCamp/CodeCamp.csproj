@@ -244,6 +244,7 @@
     <Content Include="Templates\_default\modal.html" />
     <Content Include="Templates\_default\session.html" />
     <Content Include="Templates\_default\sessions.html" />
+    <Content Include="Templates\_default\speaker-cards.html" />
     <Content Include="Templates\_default\track.html" />
     <Content Include="Templates\_default\volunteers.html" />
     <Content Include="Templates\_default\tracks.html" />

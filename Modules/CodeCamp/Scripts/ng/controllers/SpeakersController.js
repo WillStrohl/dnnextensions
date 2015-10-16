@@ -176,18 +176,23 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
         });
 
         modalInstance.result.then(function (savedSpeaker) {
-            console.log("BEGIN modalInstance.result");
             $scope.savedSpeaker = savedSpeaker;
             console.log("$scope.savedSpeaker = " + $scope.savedSpeaker);
-
-            $scope.updateSpeakersList();
-            console.log("END modalInstance.result");
         }, function () {
             console.log("Modal dismissed at: " + new Date());
         });
     };
 
-}]);
+}])
+.directive("speakerCards", function() {
+    return {
+        restrict: "E",
+        templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speaker-cards.html",
+        scope: {
+            speakers: "=data"
+        }
+    };
+});
 
 codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$modalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
 
@@ -292,7 +297,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                 console.log(data);
             });
 
-        $rootScope.$emit("updateSpeakers");
+        $scope.updateSpeakersList();
 
         $modalInstance.close($scope.savedSpeaker);
     };
