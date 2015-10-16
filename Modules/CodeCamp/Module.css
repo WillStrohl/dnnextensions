@@ -70,6 +70,7 @@
   padding: 0;
   background-color: #284c79;
   color: rgb(136, 172, 217);
+    margin-bottom: 2.5em;
 }
 
 .card .header-bg {
@@ -96,6 +97,17 @@
   -moz-border-radius: 50%;
   border-radius: 50%;
   border: 5px solid rgba(0,0,30,0.8);
+}
+
+.speaker-company {
+    font-style: italic;
+}
+.speaker-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+.speaker-title {
+    font-weight: bold;
 }
 
 /* Modals */

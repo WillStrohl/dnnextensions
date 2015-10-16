@@ -1,12 +1,12 @@
 ﻿<h2><span ng-show="!codeCamp.RegistrationActive">Potential </span> Event Speakers</h2>
-<div class="container" ng-show="hasSpeakers == false">
+<div class="container" ng-show="currentUserRegistration != null">
     <div class="row">
         <div class="col-xs-12">
             <div class="alert alert-success" ng-show="savedSpeaker != null">
                 <h4>Great job!</h4>
                 <p>Thank you for submitting your session(s). We'll be selecting speakers for the event soon.</p>
             </div>
-            <div class="alert alert-info" ng-show="savedSpeaker == null && currentUserRegistration != null">
+            <div class="alert alert-info" ng-show="showSpeakerSubmissionForm(savedSpeaker, currentUserRegistration)">
                 <h4>Want to be a Presenter?</h4>
                 <p>Are you interested in being a speaker? Submit your session(s) and we'll hopefully pick you to speak.</p>
                 <p>
@@ -27,54 +27,27 @@ Finish wiring this up here:
 
 <div class="container" ng-show="hasSpeakers">
     <div class="row">
-        <div class="col-sm-3">
-            <div class="card">
-                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-                <div class="avatar">
-                    <img src="" alt=""/>
-                </div>
-                <div class="content">
-                    <p>
-                        Web Developer <br>
-                        More description here
-                    </p>
-                    <p>
-                        <button type="button" class="btn btn-default">Contact</button>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-                <div class="avatar">
-                    <img src="" alt=""/>
-                </div>
-                <div class="content">
-                    <p>
-                        Web Developer <br>
-                        More description here
-                    </p>
-                    <p>
-                        <button type="button" class="btn btn-default">Contact</button>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-                <div class="avatar">
-                    <img src="" alt=""/>
-                </div>
-                <div class="content">
-                    <p>
-                        Web Developer <br>
-                        More description here
-                    </p>
-                    <p>
-                        <button type="button" class="btn btn-default">Contact</button>
-                    </p>
+        <div ng-repeat="speaker in speakers | orderBy: 'SpeakerName'">
+            <div class="clearfix" ng-if="$index % 3 == 0"></div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar">
+                        <img src="/DesktopModules/CodeCamp/Images/headshot-placeholder.jpg" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}" />
+                    </div>
+                    <div class="content">
+                        <p>
+                            <span class="speaker-name">{{speaker.SpeakerName}}</span><br />
+                            <span class="speaker-title">{{speaker.CompanyTitle}}</span><br />
+                            <span class="speaker-company">{{speaker.CompanyName}}</span>
+                        </p>
+                        <p>
+                            <a href="mailto:{{speaker.Email}}" target="_blank" class="btn btn-default">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                Contact
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,7 +76,7 @@ Finish wiring this up here:
                             Enter a valid website address.
                         </p>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.email.$error.email }">
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.email.$error.email || (createSessionsForm.email.$dirty && createSessionsForm.email.$invalid) }">
                         <label for="email">Email</label>
                         <input type="email" name="email" ng-model="speaker.Email" class="form-control" placeholder="Your email address" maxlength="256" ng-required="true" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required />
                         <p class="help-block" ng-show="createSessionsForm.email.$dirty && createSessionsForm.email.$invalid">
@@ -160,7 +133,7 @@ Finish wiring this up here:
             <div class="session-addition-wrapper" ng-repeat="session in sessions track by $id(session)">
                 <div class="row">
                     <div class="col-xs-12">
-                        <hr/>
+                        <hr />
                         <div class="pull-right" ng-show="SessionIndex(session) > 0">
                             <a class="btn btn-default" ng-click="RemoveSession(session)" title="Remove this Session">
                                 <i class="glyphicon glyphicon-minus"></i>
@@ -182,9 +155,9 @@ Finish wiring this up here:
                         <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid }">
                             <label for="audienceLevel">Experience Level *</label>
                             <select name="audienceLevel{{$index}}" ng-model="session.AudienceLevel" class="form-control" required>
-                                <option value="0">Beginner</option>
-                                <option value="1">Intermediate</option>
-                                <option value="2">Advanced</option>
+                                <option value="0" ng-selected="session.AudienceLevel == '0'">Beginner</option>
+                                <option value="1" ng-selected="session.AudienceLevel == '1'">Intermediate</option>
+                                <option value="2" ng-selected="session.AudienceLevel == '2'">Advanced</option>
                             </select>
                             <p class="help-block" ng-show="createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid">
                                 Audience level is required.
@@ -210,7 +183,7 @@ Finish wiring this up here:
         <div class="container modal-form-container-lg">
             <div class="row">
                 <div class="col-xs-6">
-                    <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()">Send Submission</button>
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()">Save Submission</button>
                 </div>
                 <div class="col-xs-6">
                     <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
