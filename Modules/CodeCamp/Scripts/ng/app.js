@@ -38,7 +38,7 @@ codeCampApp.config(["$routeProvider",
 		})
 		.when("/sessions", {
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/sessions.html",
-			controller: "speakersController"
+			controller: "sessionsController"
 		})
 		.when("/sessions/:sessionId", {
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/session.html",
