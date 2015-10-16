@@ -138,7 +138,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateSessionSpeaker
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage CreateSessionSpeaker(SessionSpeakerInfo speaker)
@@ -170,7 +170,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSessionSpeaker
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage UpdateSessionSpeaker(SessionSpeakerInfo speaker)

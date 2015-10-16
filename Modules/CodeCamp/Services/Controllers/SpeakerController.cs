@@ -105,6 +105,36 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get a speaker by their registration id
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSpeakerByRegistrationId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSpeakerByRegistrationId(int codeCampId, int registrationId)
+        {
+            try
+            {
+                var speaker = SpeakerDataAccess.GetItemByRegistrationId(codeCampId, registrationId);
+                var response = new ServiceResponse<SpeakerInfo> { Content = speaker };
+
+                if (speaker == null)
+                {
+                    ServiceResponseHelper<SpeakerInfo>.AddNoneFoundError("speaker", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Delete a speaker
         /// </summary>
         /// <returns></returns>
@@ -138,7 +168,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateSpeaker
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage CreateSpeaker(SpeakerInfo speaker)
@@ -181,7 +211,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSpeaker
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage UpdateSpeaker(SpeakerInfo speaker)
@@ -190,7 +220,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 SpeakerDataAccess.UpdateItem(speaker);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var savedSpeaker = SpeakerDataAccess.GetItem(speaker.SpeakerId, speaker.CodeCampId);
+
+                var response = new ServiceResponse<SpeakerInfo> { Content = savedSpeaker };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

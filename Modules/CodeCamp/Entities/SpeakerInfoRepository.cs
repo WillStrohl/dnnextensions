@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 using DotNetNuke.Data;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
@@ -78,6 +79,20 @@ namespace WillStrohl.Modules.CodeCamp.Entities
                 var rep = ctx.GetRepository<SpeakerInfo>();
                 i = rep.GetById(itemId, codeCampId);
             }
+            return i;
+        }
+
+        public SpeakerInfo GetItemByRegistrationId(int codeCampId, int registrationId)
+        {
+            SpeakerInfo i = null;
+
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SpeakerInfo>();
+
+                i = rep.Find("WHERE CodeCampId = @0 AND RegistrationId = @1", codeCampId, registrationId).FirstOrDefault();
+            }
+
             return i;
         }
 

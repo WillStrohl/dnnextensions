@@ -54,14 +54,47 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetSessions()
+        public HttpResponseMessage GetSessions(int codeCampId)
         {
             try
             {
-                var sessions = SessionDataAccess.GetItems(ActiveModule.ModuleID);
+                var sessions = SessionDataAccess.GetItems(codeCampId);
                 var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
 
                 if (sessions == null)
+                {
+                    ServiceResponseHelper<List<SessionInfo>>.AddNoneFoundError("sessions", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get all sessions by the ID of the speaker
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionsBySpeakerId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSessionsBySpeakerId(int codeCampId, int speakerId)
+        {
+            try
+            {
+                var allSessions = SessionDataAccess.GetItems(codeCampId);
+                var sessionSpeakers = SessionSpeakerDataAccess.GetItemsBySpeakerId(speakerId).Select(s => s.SessionId);
+                var sessions = allSessions.Where(s => sessionSpeakers.Contains(s.SessionId));
+
+                var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
+
+                if (!sessions.Any())
                 {
                     ServiceResponseHelper<List<SessionInfo>>.AddNoneFoundError("sessions", ref response);
                 }
@@ -139,7 +172,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateSession
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage CreateSession(SessionInfo session)
@@ -190,7 +223,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSession
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage UpdateSession(SessionInfo session)
@@ -199,7 +232,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 SessionDataAccess.UpdateItem(session);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var savedSession = SessionDataAccess.GetItem(session.SessionId, session.CodeCampId);
+
+                var response = new ServiceResponse<SessionInfo> { Content = savedSession };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

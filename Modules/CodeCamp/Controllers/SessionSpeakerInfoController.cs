@@ -62,6 +62,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             return items;
         }
 
+        public IEnumerable<SessionSpeakerInfo> GetItemsBySpeakerId(int speakerId)
+        {
+            var items = repo.GetItemsBySpeakerId(speakerId);
+            return items;
+        }
+
         public SessionSpeakerInfo GetItem(int itemId, int sessionId)
         {
             var item = repo.GetItem(itemId, sessionId);

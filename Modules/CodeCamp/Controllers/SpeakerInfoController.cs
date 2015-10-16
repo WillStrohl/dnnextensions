@@ -68,6 +68,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             return item;
         }
 
+        public SpeakerInfo GetItemByRegistrationId(int codeCampId, int registrationId)
+        {
+            var item = repo.GetItemByRegistrationId(codeCampId, registrationId);
+            return item;
+        }
+
         public void UpdateItem(SpeakerInfo i)
         {
             repo.UpdateItem(i);

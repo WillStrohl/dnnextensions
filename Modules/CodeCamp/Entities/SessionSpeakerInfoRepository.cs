@@ -81,6 +81,20 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             return i;
         }
 
+        public IEnumerable<SessionSpeakerInfo> GetItemsBySpeakerId(int speakerId)
+        {
+            IEnumerable<SessionSpeakerInfo> i;
+
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SessionSpeakerInfo>();
+
+                i = rep.Find("WHERE SpeakerId = @0", speakerId);
+            }
+
+            return i;
+        }
+
         public void UpdateItem(SessionSpeakerInfo i)
         {
             using (IDataContext ctx = DataContext.Instance())
