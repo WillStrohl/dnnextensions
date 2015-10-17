@@ -272,6 +272,8 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                                 .success(function (data) {
                                     var sessionSpeaker = angular.fromJson(data);
 
+                                    $scope.updateSpeakersList();
+
                                     LogErrors(sessionSpeaker.Errors);
                                 })
                                 .error(function (data, status) {
@@ -296,8 +298,6 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                 console.log("Unknown error occurred calling CreateSpeaker");
                 console.log(data);
             });
-
-        $scope.updateSpeakersList();
 
         $modalInstance.close($scope.savedSpeaker);
     };
