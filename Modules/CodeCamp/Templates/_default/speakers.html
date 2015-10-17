@@ -2,11 +2,18 @@
 <div class="container" ng-show="currentUserRegistration != null">
     <div class="row">
         <div class="col-xs-12">
+            <div class="pull-right" ng-show="currentSpeakerSessions != null">
+                <button type="button" class="btn btn-primary" ng-click="openModal('lg')">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Update Speaker Profile
+                </button>
+                <div class="clearfix"></div>
+            </div>
             <div class="alert alert-success" ng-show="savedSpeaker != null">
                 <h4>Great job!</h4>
                 <p>Thank you for submitting your session(s). We'll be selecting speakers for the event soon.</p>
             </div>
-            <div class="alert alert-info" ng-show="showSpeakerSubmissionForm(savedSpeaker, currentUserRegistration)">
+            <div class="alert alert-info" ng-show="showSpeakerSubmissionForm(savedSpeaker, currentUserRegistration, currentSpeakerSessions)">
                 <h4>Want to be a Presenter?</h4>
                 <p>Are you interested in being a speaker? Submit your session(s) and we'll hopefully pick you to speak.</p>
                 <p>
