@@ -90,7 +90,7 @@
   z-index: 100;
 }
 
-.card .avatar img {
+.card .avatar img, .avatar img {
   width: 100px;
   height: 100px;
   -webkit-border-radius: 50%;
@@ -112,6 +112,53 @@
 
 .admin-button-wrapper {
     margin-bottom: 1em;
+}
+
+/* Speaker */
+.speaker-meta-wrapper {
+    margin-bottom: 2em;
+}
+.speaker-avatar-wrapper {
+    width: 100%;
+    height: 100%;
+}
+    .speaker-avatar-wrapper .avatar {
+        margin: 0 auto;
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        height: 100px;
+        min-height: 100px;
+        max-height: 100px;
+        position: relative;
+        top: 2.25em;
+    }
+.speaker-name-wrapper {
+    
+}
+.speaker-bio-wrapper {
+    margin-top: 3em;
+}
+
+.session-list-wrapper {
+    border-top: 2px solid #000000;
+}
+.session-card {
+    background-color: #ddd;
+    margin-bottom: 2em;
+    padding: 1em 4em;
+}
+.session-actions-wrapper {
+    padding-top: 1em;
+}
+    .session-actions-wrapper p {
+        text-align: center;
+    }
+    .session-actions-wrapper button {
+        
+    }
+.audience-level-label {
+    font-weight: bold;
 }
 
 /* Modals */

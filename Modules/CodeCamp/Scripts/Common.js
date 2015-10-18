@@ -25,3 +25,19 @@ function addConfirmationToElements() {
         title: "Delete Confirmation"
     });
 }
+
+function GetSlugFromValue(value) {
+    /* Remove unwanted characters, only accept alphanumeric and space */
+    var slug = value.replace(/[^A-Za-z0-9 ]/g, "");
+
+    /* Replace multi spaces with a single space */
+    slug = slug.replace(/\s{2,}/g, " ");
+
+    /* Replace space with a '-' symbol */
+    slug = slug.replace(/\s/g, "-");
+
+    var cleanSlug = slug.toLowerCase();
+    console.log(cleanSlug);
+
+    return cleanSlug;
+}

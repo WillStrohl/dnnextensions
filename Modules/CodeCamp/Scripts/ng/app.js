@@ -32,7 +32,7 @@ codeCampApp.config(["$routeProvider",
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speakers.html",
 			controller: "speakersController"
 		})
-		.when("/speakers/:speakerId", {
+		.when("/speakers/:speakerId/:speakerName", {
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speaker.html",
 			controller: "speakerController"
 		})

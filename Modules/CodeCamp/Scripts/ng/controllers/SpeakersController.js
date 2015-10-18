@@ -30,6 +30,10 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                     $scope.hasSpeakers = false;
                 } else {
                     $scope.hasSpeakers = ($scope.speakers.length > 0);
+
+                    $.each($scope.speakers, function (i, obj) {
+                        obj.SpeakerSlug = GetSlugFromValue(obj.SpeakerName);
+                    });
                 }
                 console.log("$scope.hasSpeakers = " + $scope.hasSpeakers);
 
@@ -371,7 +375,6 @@ function processSpeakerCards() {
     var sourceImages = [];
 
     jQuery(".speaker-avatar").each(function() {
-        console.log("found speaker avatar");
         sourceImages.push(jQuery(this).attr("src"));
     });
 
@@ -384,7 +387,6 @@ function processSpeakerCards() {
     };
 
     jQuery(".card canvas").each(function(index) {
-        console.log("processing canvas");
         var canvas = jQuery(this)[0];
 
         var image = new Image();

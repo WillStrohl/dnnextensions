@@ -93,6 +93,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.UpdateItem(i);
         }
 
+        #region Private Helper Methods
+
         private List<SessionInfo> GetSessionsForSpeaker(int codeCampId, int speakerId)
         {
             var allSessions = sessionRepo.GetItems(codeCampId);
@@ -106,5 +108,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         {
             item.Sessions = GetSessionsForSpeaker(item.CodeCampId, item.SpeakerId);
         }
+
+        #endregion
     }
 }

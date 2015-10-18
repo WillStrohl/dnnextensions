@@ -36,10 +36,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     public class SessionInfoController
     {
         private readonly SessionInfoRepository repo = null;
+        private readonly SessionRegistrationInfoController registrantRepo = null;
 
         public SessionInfoController() 
         {
             repo = new SessionInfoRepository();
+            registrantRepo = new SessionRegistrationInfoController();
         }
 
         public void CreateItem(SessionInfo i)
@@ -60,12 +62,18 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public IEnumerable<SessionInfo> GetItems(int codeCampId)
         {
             var items = repo.GetItems(codeCampId);
+
+            items.Select(s => { s.RegistrantCount = GetRegistrantCount(s.SessionId); return s; });
+
             return items;
         }
 
         public SessionInfo GetItem(int itemId, int codeCampId)
         {
             var item = repo.GetItem(itemId, codeCampId);
+
+            UpdateSessionWithRegistrantCount(ref item);
+
             return item;
         }
 
@@ -73,5 +81,21 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         {
             repo.UpdateItem(i);
         }
+
+        #region Private Helper Methods
+
+        private int GetRegistrantCount(int sessionId)
+        {
+            var registrants = registrantRepo.GetItems(sessionId);
+
+            return registrants.Any() ? registrants.Count() : 0;
+        }
+
+        private void UpdateSessionWithRegistrantCount(ref SessionInfo item)
+        {
+            item.RegistrantCount = GetRegistrantCount(item.SessionId);
+        }
+
+        #endregion
     }
 }

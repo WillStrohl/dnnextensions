@@ -13,7 +13,7 @@
                     <span class="speaker-company">{{speaker.CompanyName}}</span>
                 </p>
                 <p>
-                    <a href="#/speakers/{{speaker.SpeakerId}}" class="btn btn-default">
+                    <a href="#/speakers/{{speaker.SpeakerId}}/{{speaker.SpeakerSlug}}" class="btn btn-default">
                         {{speaker.Sessions.length}} Session(s)
                     </a>
                     <a href="{{speaker.URL}}" target="_blank" class="btn btn-default" ng-show="speaker.URL.length > 0">

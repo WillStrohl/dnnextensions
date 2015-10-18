@@ -7,54 +7,49 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
-    $scope.getEvent = function () {
-        factory.callGetService("GetEventByModuleId")
-            .then(function (response) {
-                var fullResult = angular.fromJson(response);
-                var serviceResponse = JSON.parse(fullResult.data);
+    $scope.speakerId = $routeParams.speakerId;
 
-                $scope.codeCamp = serviceResponse.Content;
-                console.log("serviceResponse.Content = " + serviceResponse.Content);
+    factory.callGetService("GetEventByModuleId")
+        .then(function (response) {
+            var fullResult = angular.fromJson(response);
+            var serviceResponse = JSON.parse(fullResult.data);
 
-                if ($scope.codeCamp != null) {
-                    $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
-                    $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
-                }
+            $scope.codeCamp = serviceResponse.Content;
+            console.log("serviceResponse.Content = " + serviceResponse.Content);
 
-                if ($scope.codeCamp === null) {
-                    $scope.hasCodeCamp = false;
-                } else {
-                    $scope.hasCodeCamp = true;
+            if ($scope.codeCamp != null) {
+                $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
+                $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
+            }
 
-                    $scope.getSpeaker();
-                }
+            if ($scope.codeCamp === null) {
+                $scope.hasCodeCamp = false;
+            } else {
+                $scope.hasCodeCamp = true;
 
-                LogErrors(serviceResponse.Errors);
-            },
-            function (data) {
-                console.log("Unknown error occurred calling GetEventByModuleId");
-                console.log(data);
-            });
-    }
+                $scope.getSpeaker();
+            }
+
+            LogErrors(serviceResponse.Errors);
+        },
+        function (data) {
+            console.log("Unknown error occurred calling GetEventByModuleId");
+            console.log(data);
+        });
 
     $scope.getSpeaker = function () {
-        factory.callGetService("GetEventByModuleId")
+        factory.callGetService("GetSpeaker?itemId=" + $scope.speakerId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
 
-                $scope.codeCamp = serviceResponse.Content;
-                console.log("serviceResponse.Content = " + serviceResponse.Content);
-
-                if ($scope.codeCamp != null) {
-                    $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
-                    $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
-                }
+                $scope.speaker = serviceResponse.Content;
+                console.log("$scope.speaker = " + $scope.speaker);
 
                 if ($scope.codeCamp === null) {
-                    $scope.hasCodeCamp = false;
+                    $scope.hasSpeaker = false;
                 } else {
-                    $scope.hasCodeCamp = true;
+                    $scope.hasSpeaker = true;
                 }
 
                 LogErrors(serviceResponse.Errors);
@@ -65,4 +60,29 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
             });
     }
 
-}]);
+}]).directive("sessionAudience", function () {
+    return {
+        restrict: "E",
+        scope: {
+            level: "="
+        },
+        link: function (scope, element, attrs) {
+            switch (scope.level) {
+                case 0:
+                    scope.AudienceTitle = "Beginners";
+                    break;
+                case 1:
+                    scope.AudienceTitle = "Intermediate";
+                    break;
+                case 2:
+                    scope.AudienceTitle = "Advanced";
+                    break;
+                default:
+                    scope.AudienceTitle = "UNKNOWN";
+                    break;
+            }
+
+            element.replaceWith(scope.AudienceTitle);
+        }
+    }
+});

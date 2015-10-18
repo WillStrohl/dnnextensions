@@ -85,5 +85,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         }
 
         public string CustomProperties { get; set; }
+
+        [IgnoreColumn]
+        public int RegistrantCount { get; set; }
     }
 }
