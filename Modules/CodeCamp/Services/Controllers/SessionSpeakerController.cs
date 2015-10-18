@@ -111,7 +111,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// DELETE: http://dnndev.me/DesktopModules/CodeCamp/API/Event/DeleteSessionSpeaker
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
         public HttpResponseMessage DeleteSessionSpeaker(int itemId, int sessionId)

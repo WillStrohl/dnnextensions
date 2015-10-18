@@ -16,6 +16,7 @@
 /// <reference path="scripts/ng/controllers/trackcontroller.js" />
 /// <reference path="scripts/ng/controllers/trackscontroller.js" />
 /// <reference path="scripts/ng/controllers/volunteerscontroller.js" />
+/// <reference path="scripts/ng/directives/confirmdirectives.js" />
 /// <reference path="scripts/ng/directives/datedirectives.js" />
 /// <reference path="scripts/ng/factories/codecampservicefactory.js" />
 /// <reference path="scripts/ng-bootstrap/ui-bootstrap-tpls-0.13.4.js" />

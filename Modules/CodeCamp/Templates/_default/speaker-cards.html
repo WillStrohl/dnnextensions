@@ -1,12 +1,10 @@
-﻿<!-- BEGIN speaker cards -->
-<!-- TODO: Add the website information (conditionally) -->
-<div ng-repeat="speaker in speakers | orderBy: 'SpeakerName'">
+﻿<div ng-repeat="speaker in speakers | orderBy: 'SpeakerName'">
     <div class="clearfix" ng-if="$index % 3 == 0"></div>
     <div class="col-sm-4">
         <div class="card">
             <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
             <div class="avatar">
-                <img src="/DesktopModules/CodeCamp/Images/headshot-placeholder.jpg" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}"/>
+                <img class="speaker-avatar" src="/DesktopModules/CodeCamp/Images/headshot-placeholder.jpg" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}"/>
             </div>
             <div class="content">
                 <p>
@@ -15,7 +13,14 @@
                     <span class="speaker-company">{{speaker.CompanyName}}</span>
                 </p>
                 <p>
-                    <a href="mailto:{{speaker.Email}}" target="_blank" class="btn btn-default">
+                    <a href="#/speakers/{{speaker.SpeakerId}}" class="btn btn-default">
+                        {{speaker.Sessions.length}} Session(s)
+                    </a>
+                    <a href="{{speaker.URL}}" target="_blank" class="btn btn-default" ng-show="speaker.URL.length > 0">
+                        <i class="glyphicon glyphicon-link"></i>
+                        Website
+                    </a>
+                    <a href="mailto:{{speaker.Email}}" target="_blank" class="btn btn-default" ng-show="speaker.Email.length > 0">
                         <i class="glyphicon glyphicon-envelope"></i>
                         Contact
                     </a>
@@ -24,4 +29,3 @@
         </div>
     </div>
 </div>
-<!-- END speaker cards -->

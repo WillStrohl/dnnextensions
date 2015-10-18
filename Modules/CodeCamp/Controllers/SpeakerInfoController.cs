@@ -29,16 +29,21 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
     public class SpeakerInfoController
     {
         private readonly SpeakerInfoRepository repo = null;
+        private readonly SessionInfoRepository sessionRepo = null;
+        private readonly SessionSpeakerInfoRepository sessionSpeakerRepo = null;
 
         public SpeakerInfoController() 
         {
             repo = new SpeakerInfoRepository();
+            sessionRepo = new SessionInfoRepository();
+            sessionSpeakerRepo = new SessionSpeakerInfoRepository();
         }
 
         public void CreateItem(SpeakerInfo i)
@@ -59,24 +64,47 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public IEnumerable<SpeakerInfo> GetItems(int codeCampId)
         {
             var items = repo.GetItems(codeCampId);
+
+            items.Select(c => { c.Sessions = GetSessionsForSpeaker(c.CodeCampId,c.SpeakerId); return c; }).ToList();
+            
             return items;
         }
 
         public SpeakerInfo GetItem(int itemId, int codeCampId)
         {
             var item = repo.GetItem(itemId, codeCampId);
+
+            UpdateSpeakerWithSessions(ref item);
+
             return item;
         }
 
         public SpeakerInfo GetItemByRegistrationId(int codeCampId, int registrationId)
         {
             var item = repo.GetItemByRegistrationId(codeCampId, registrationId);
+
+            UpdateSpeakerWithSessions(ref item);
+
             return item;
         }
 
         public void UpdateItem(SpeakerInfo i)
         {
             repo.UpdateItem(i);
+        }
+
+        private List<SessionInfo> GetSessionsForSpeaker(int codeCampId, int speakerId)
+        {
+            var allSessions = sessionRepo.GetItems(codeCampId);
+            var sessionSpeakers = sessionSpeakerRepo.GetItemsBySpeakerId(speakerId).Select(s => s.SessionId);
+            var sessions = allSessions.Where(s => sessionSpeakers.Contains(s.SessionId));
+
+            return sessions.ToList();
+        }
+
+        private void UpdateSpeakerWithSessions(ref SpeakerInfo item)
+        {
+            item.Sessions = GetSessionsForSpeaker(item.CodeCampId, item.SpeakerId);
         }
     }
 }

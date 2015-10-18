@@ -2,7 +2,7 @@
 <div class="container" ng-show="currentUserRegistration != null">
     <div class="row">
         <div class="col-xs-12">
-            <div class="pull-right" ng-show="currentSpeakerSessions != null">
+            <div class="pull-right admin-button-wrapper" ng-show="currentSpeakerSessions != null">
                 <button type="button" class="btn btn-primary" ng-click="openModal('lg')">
                     <i class="glyphicon glyphicon-edit"></i>
                     Update Speaker Profile
@@ -61,7 +61,7 @@ Finish wiring this up here:
                         </p>
                     </div>
                     <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.email.$error.email || (createSessionsForm.email.$dirty && createSessionsForm.email.$invalid) }">
-                        <label for="email">Email</label>
+                        <label for="email">Email *</label>
                         <input type="email" name="email" ng-model="speaker.Email" class="form-control" placeholder="Your email address" maxlength="256" ng-required="true" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required />
                         <p class="help-block" ng-show="createSessionsForm.email.$dirty && createSessionsForm.email.$invalid">
                             Your email address is required.
@@ -119,7 +119,7 @@ Finish wiring this up here:
                     <div class="col-xs-12">
                         <hr />
                         <div class="pull-right" ng-show="SessionIndex(session) > 0">
-                            <a class="btn btn-default" ng-click="RemoveSession(session)" title="Remove this Session">
+                            <a class="btn btn-default" ng-class="{ 'add-confirm' : requiresConfirmation(session) }" ng-click="ProcessSessionRemoval(this, session)" title="Remove this Session">
                                 <i class="glyphicon glyphicon-minus"></i>
                             </a>
                         </div>

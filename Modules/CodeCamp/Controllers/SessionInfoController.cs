@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {

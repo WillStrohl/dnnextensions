@@ -9,10 +9,10 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
     factory.init(moduleId, moduleName);
 
     $scope.showSpeakerSubmissionForm = function (spkr, rgstn, sssn) {
-        if (sssn) {
+        if (sssn != undefined) {
             return (sssn.length == 0);
         } else {
-            return (spkr == null && rgstn != null);
+            return (spkr == undefined && rgstn != undefined);
         }
     }
 
@@ -190,10 +190,18 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
         templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speaker-cards.html",
         scope: {
             speakers: "=data"
+        },
+        link: function (scope, element, attrs) {
+            scope.$watch("speakers", function() {
+                processSpeakerCards();
+            });
         }
     };
 });
 
+/*
+ * Speakers Modal Controller
+ */
 codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$modalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
 
     $scope.speaker = {};
@@ -231,6 +239,52 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
         });
     }
 
+    $scope.requiresConfirmation = function(session) {
+        return (session.SessionId > 0 || (session.Title.length > 0 || session.Description.length > 0));
+    }
+
+    $scope.ProcessSessionRemoval = function (elem, session) {
+        if ($scope.requiresConfirmation(session)) {
+            jQuery(elem).dnnConfirm({
+                text: "Are you sure you want to delete this?",
+                yesText: "Yes",
+                noText: "No",
+                title: "Delete Confirmation",
+                callbackTrue: function() {
+                    if (session.SessionId > 0) {
+                        factory.callDeleteService("DeleteSession", session.SessionId)
+                            .success(function(data) {
+                                var deleteResponse = angular.fromJson(data);
+                                console.log("deleteResponse.Content = " + deleteResponse.Content);
+
+                                // TODO: delete sessionspeaker data as well
+
+                                $scope.RemoveSession(session);
+                            })
+                            .error(function(data, status) {
+                                $scope.HasErrors = true;
+                                console.log("Unknown error occurred calling DeleteSession");
+                                console.log(data);
+                            });
+                    } else {
+                        $scope.RemoveSession(session);
+                    }
+                    return true;
+                },
+                callbackFalse: function() {
+                    return false;
+                }
+            });
+
+            jQuery(elem).trigger("click");
+            jQuery(elem).click(function(e) {
+                return;
+            });
+        } else {
+            $scope.RemoveSession(session);
+        }
+    }
+
     $scope.RemoveSession = function(session) {
         var index = $scope.sessions.indexOf(session);
         $scope.sessions.splice(index, 1);
@@ -245,9 +299,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
         $scope.speaker.CodeCampId = $scope.CodeCampId;
 
         var speakerAction = ($scope.UpdateMode) ? "UpdateSpeaker" : "CreateSpeaker";
-        var sessionAction = ($scope.UpdateMode) ? "UpdateSession" : "CreateSession";
-        var sessionSpeakerAction = ($scope.UpdateMode) ? "UpdateSessionSpeaker" : "CreateSessionSpeaker";
-
+        
         // save the speaker
         factory.callPostService(speakerAction, $scope.speaker)
             .success(function (data) {
@@ -256,6 +308,10 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
 
                 // save the sessions
                 $.each($scope.sessions, function (index, session) {
+
+                    var sessionAction = (session.SessionId > 0) ? "UpdateSession" : "CreateSession";
+                    var sessionSpeakerAction = (session.SessionId > 0) ? "UpdateSessionSpeaker" : "CreateSessionSpeaker";
+
                     factory.callPostService(sessionAction, session)
                         .success(function (data) {
                             var savedSession = angular.fromJson(data);
@@ -306,3 +362,36 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
         $modalInstance.dismiss("cancel");
     };
 }]);
+
+/*
+ * Additional functions 
+ */
+function processSpeakerCards() {
+    var BLUR_RADIUS = 40;
+    var sourceImages = [];
+
+    jQuery(".speaker-avatar").each(function() {
+        console.log("found speaker avatar");
+        sourceImages.push(jQuery(this).attr("src"));
+    });
+
+    var drawBlur = function(canvas, image) {
+        var w = canvas.width;
+        var h = canvas.height;
+        var canvasContext = canvas.getContext("2d");
+        canvasContext.drawImage(image, 0, 0, w, h);
+        stackBlurCanvasRGBA(canvas, 0, 0, w, h, BLUR_RADIUS);
+    };
+
+    jQuery(".card canvas").each(function(index) {
+        console.log("processing canvas");
+        var canvas = jQuery(this)[0];
+
+        var image = new Image();
+        image.src = sourceImages[index];
+
+        image.onload = function() {
+            drawBlur(canvas, image);
+        }
+    });
+}

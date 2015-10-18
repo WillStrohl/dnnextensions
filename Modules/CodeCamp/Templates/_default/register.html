@@ -9,10 +9,8 @@
                 You appear to already have a user account. Please <a href="/?ctl=login">login first</a>, then register for the event.
             </div>
             <div class="alert alert-success" ng-show="RegistrationSuccess">
+                <i class="glyphicon glyphicon-thumbs-up"></i>
                 Congratulations! You've successfully registered for the event.
-                <p>
-                    <button type="button" class="btn btn-success" ng-click="goToPage('/about')">Continue</button>
-                </p>
             </div>
             <div class="alert alert-danger" ng-show="RegistrationUpdateError">
                 An unexpected error occurred while attempting to update your registration. Please try again, or contact the site administrator.

@@ -110,6 +110,10 @@
     font-weight: bold;
 }
 
+.admin-button-wrapper {
+    margin-bottom: 1em;
+}
+
 /* Modals */
 
 /* TODO: might need to have adjustments for different resolutions */

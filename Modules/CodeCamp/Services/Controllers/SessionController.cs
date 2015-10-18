@@ -109,6 +109,39 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get the count of all sessions by the ID of the speaker
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionCountBySpeakerId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSessionCountBySpeakerId(int codeCampId, int speakerId)
+        {
+            try
+            {
+                var allSessions = SessionDataAccess.GetItems(codeCampId);
+                var sessionSpeakers = SessionSpeakerDataAccess.GetItemsBySpeakerId(speakerId).Select(s => s.SessionId);
+                var sessions = allSessions.Where(s => sessionSpeakers.Contains(s.SessionId));
+
+                var response = new ServiceResponse<int> { Content = sessions.Any() ? sessions.Count() : 0 };
+
+                if (!sessions.Any())
+                {
+                    ServiceResponseHelper<int>.AddNoneFoundError("sessions", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Get a session
         /// </summary>
         /// <returns></returns>
@@ -145,7 +178,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// DELETE: http://dnndev.me/DesktopModules/CodeCamp/API/Event/DeleteSession
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
         public HttpResponseMessage DeleteSession(int itemId)
