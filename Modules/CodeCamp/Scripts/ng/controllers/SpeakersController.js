@@ -254,6 +254,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                 yesText: "Yes",
                 noText: "No",
                 title: "Delete Confirmation",
+                isButton: true,
                 callbackTrue: function() {
                     if (session.SessionId > 0) {
                         factory.callDeleteService("DeleteSession", session.SessionId)
@@ -269,20 +270,21 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                                 $scope.HasErrors = true;
                                 console.log("Unknown error occurred calling DeleteSession");
                                 console.log(data);
+                                return;
                             });
                     } else {
                         $scope.RemoveSession(session);
                     }
-                    return true;
-                },
-                callbackFalse: function() {
-                    return false;
                 }
             });
 
             jQuery(elem).trigger("click");
-            jQuery(elem).click(function(e) {
-                return;
+            jQuery(elem).click(function (e, isTrigger) {
+                // TODO: troubleshoot and fix this
+                if (isTrigger) {
+                    return true;
+                }
+                return false;
             });
         } else {
             $scope.RemoveSession(session);
