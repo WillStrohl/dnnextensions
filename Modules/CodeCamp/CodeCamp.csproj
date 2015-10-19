@@ -128,6 +128,7 @@
     <Compile Include="Entities\RoomInfoRepository.cs" />
     <Compile Include="Entities\RoomInfo.cs" />
     <Compile Include="Entities\Interfaces\IRoomInfo.cs" />
+    <Compile Include="Entities\SpeakerInfoLite.cs" />
     <Compile Include="Entities\TrackInfoRepository.cs" />
     <Compile Include="Entities\TrackInfo.cs" />
     <Compile Include="Entities\Interfaces\ITrackInfo.cs" />

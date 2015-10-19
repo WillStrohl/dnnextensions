@@ -88,5 +88,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         [IgnoreColumn]
         public int RegistrantCount { get; set; }
+
+        [IgnoreColumn]
+        public List<SpeakerInfoLite> Speakers { get; set; } 
     }
 }

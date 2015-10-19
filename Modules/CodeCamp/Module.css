@@ -194,55 +194,55 @@
 	transform:rotate(30deg);
 }
 
-.project {
+.sessioncard {
     min-height:300px;
     height:auto;
 }
 
-.project{
+.sessioncard {
     background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
 }
 
-.project-radius{
+.sessioncard-radius{
     border-radius:7px;
 }
 
-.project-default {    border-color: #999999; }
-.project-default .shape{
+.sessioncard-default {    border-color: #999999; }
+.sessioncard-default .shape{
 	border-color: transparent #999999 transparent transparent;
 	border-color: rgba(255,255,255,0) #999999 rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-.project-danger {    border-color: #d9534f; }
-.project-danger .shape{
+.sessioncard-danger {    border-color: #d9534f; }
+.sessioncard-danger .shape{
 	border-color: transparent #d9534f transparent transparent;
 	border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-.project-success {	border-color: #5cb85c; }
-.project-success .shape{
+.sessioncard-success {	border-color: #5cb85c; }
+.sessioncard-success .shape{
 	border-color: transparent #5cb85c transparent transparent;
 	border-color: rgba(255,255,255,0) #5cb85c rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-.project-primary {	border-color: #428bca; }
-.project-primary .shape{
+.sessioncard-primary {	border-color: #428bca; }
+.sessioncard-primary .shape{
 	border-color: transparent #428bca transparent transparent;
 	border-color: rgba(255,255,255,0) #428bca rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-.project-info {	border-color: #5bc0de; }
-.project-info .shape{
+.sessioncard-info {	border-color: #5bc0de; }
+.sessioncard-info .shape{
 	border-color: transparent #5bc0de transparent transparent;
 	border-color: rgba(255,255,255,0) #5bc0de rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-.project-warning {	border-color: #f0ad4e; }
-.project-warning .shape{
+.sessioncard-warning {	border-color: #f0ad4e; }
+.sessioncard-warning .shape{
 	border-color: transparent #f0ad4e transparent transparent;
 	border-color: rgba(255,255,255,0) #f0ad4e rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-.project-content {
+.sessioncard-content {
     padding:0 20px 10px;
 }

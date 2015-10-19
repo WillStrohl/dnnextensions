@@ -37,11 +37,15 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     {
         private readonly SessionInfoRepository repo = null;
         private readonly SessionRegistrationInfoController registrantRepo = null;
+        private readonly SpeakerInfoController speakerRepo = null;
+        private readonly SessionSpeakerInfoController sessionSpeakerRepo = null;
 
         public SessionInfoController() 
         {
             repo = new SessionInfoRepository();
             registrantRepo = new SessionRegistrationInfoController();
+            speakerRepo = new SpeakerInfoController();
+            sessionSpeakerRepo = new SessionSpeakerInfoController();
         }
 
         public void CreateItem(SessionInfo i)
@@ -65,6 +69,11 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
             items.Select(s => { s.RegistrantCount = GetRegistrantCount(s.SessionId); return s; });
 
+            foreach (var item in items)
+            {
+                item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+            }
+
             return items;
         }
 
@@ -73,6 +82,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             var item = repo.GetItem(itemId, codeCampId);
 
             UpdateSessionWithRegistrantCount(ref item);
+            UpdateSessionWithSpeakers(ref item);
 
             return item;
         }
@@ -94,6 +104,19 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         private void UpdateSessionWithRegistrantCount(ref SessionInfo item)
         {
             item.RegistrantCount = GetRegistrantCount(item.SessionId);
+        }
+
+        private List<SpeakerInfoLite> GetSpeakers(int sessionId, int codeCampId)
+        {
+            var speakerList = sessionSpeakerRepo.GetItems(sessionId).Select(s => s.SpeakerId);
+            var speakers = speakerRepo.GetItems(codeCampId).Where(s => speakerList.Contains(s.SpeakerId)).ToList();
+
+            return speakers.Select(speaker => new SpeakerInfoLite(speaker)).ToList();
+        }
+
+        private void UpdateSessionWithSpeakers(ref SessionInfo item)
+        {
+            item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
         }
 
         #endregion
