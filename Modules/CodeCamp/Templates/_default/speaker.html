@@ -47,11 +47,11 @@
                         <p class="audience-level-label"><session-audience level="session.AudienceLevel"></session-audience></p>
                         <p><count session="session" session-registration="SessionRegistration.length"></count> people attending</p>
                         <p>
-                            <button type="button" class="btn btn-danger" ng-click="RegisterForSession(session.SessionId)" ng-class="{ 'disabled' : (currentUserRegistration == null) }" ng-show="!IsUserRegisteredForSession(session.SessionId)">
+                            <button type="button" class="btn btn-danger" ng-click="RegisterForSession(session.SessionId)" ng-class="{ 'disabled' : SessionRegistrationIsDisabled }" ng-show="!IsUserRegisteredForSession(session.SessionId)">
                                 <i class="glyphicon glyphicon-thumbs-down"></i>
                                 Not Attending
                             </button>
-                            <button type="button" class="btn btn-success" ng-click="UnregisterForSession(session.SessionId)" ng-class="{ 'disabled' : (currentUserRegistration == null) }" ng-show="IsUserRegisteredForSession(session.SessionId)">
+                            <button type="button" class="btn btn-success" ng-click="UnregisterForSession(session.SessionId)" ng-class="{ 'disabled' : SessionRegistrationIsDisabled }" ng-show="IsUserRegisteredForSession(session.SessionId)">
                                 <i class="glyphicon glyphicon-thumbs-up"></i>
                                 I'm Attending
                             </button>

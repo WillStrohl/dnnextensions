@@ -1,7 +1,5 @@
 ﻿"use strict";
 
-// TODO: disable the attendance button for speakers viewing their own sessions
-
 codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
 
     $scope.speaker = {};
@@ -95,6 +93,8 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
 
                 $scope.UpdateSessionRegistration();
 
+                $scope.DetermineRegisterEnablement();
+
                 LogErrors(serviceResponse.Errors);
             },
             function (data) {
@@ -126,6 +126,18 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
                             console.log(data);
                         });
             });
+        }
+    }
+
+    $scope.DetermineRegisterEnablement = function() {
+        var validRegistration = ($scope.currentUserRegistration != null);
+
+        if (!validRegistration) {
+            $scope.SessionRegistrationIsDisabled = true;
+        } else {
+            var speakerIsSame = ($scope.speaker.RegistrationId == $scope.currentUserRegistration.RegistrationId);
+
+            $scope.SessionRegistrationIsDisabled = speakerIsSame;
         }
     }
 
