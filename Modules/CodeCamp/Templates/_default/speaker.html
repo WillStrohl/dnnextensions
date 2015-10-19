@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="session-list-wrapper">
-        <h3>Session(s)</h3>
+        <h3>Session(s) By this Speaker</h3>
         <div ng-repeat="session in speaker.Sessions | orderBy: 'Title'">
             <div class="row session-card">
                 <div class="col-md-5 col-md-offset-2">
@@ -44,55 +44,19 @@
                 </div>
                 <div class="col-md-3">
                     <div class="session-actions-wrapper">
-                        <p class="audience-level-label">For <session-audience level="session.AudienceLevel"></session-audience></p>
-                        <p>{{session.RegistrantCount}} people attending</p>
+                        <p class="audience-level-label"><session-audience level="session.AudienceLevel"></session-audience></p>
+                        <p><count session="session" session-registration="SessionRegistration.length"></count> people attending</p>
                         <p>
-                            <button type="button" class="btn btn-danger">
+                            <button type="button" class="btn btn-danger" ng-click="RegisterForSession(session.SessionId)" ng-class="{ 'disabled' : (currentUserRegistration == null) }" ng-show="!IsUserRegisteredForSession(session.SessionId)">
                                 <i class="glyphicon glyphicon-thumbs-down"></i>
                                 Not Attending
                             </button>
+                            <button type="button" class="btn btn-success" ng-click="UnregisterForSession(session.SessionId)" ng-class="{ 'disabled' : (currentUserRegistration == null) }" ng-show="IsUserRegisteredForSession(session.SessionId)">
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                                I'm Attending
+                            </button>
                         </p>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row session-card">
-            <div class="col-md-5 col-md-offset-2">
-                <h4>Session Title</h4>
-                <p>Session Audience</p>
-                <div class="session-description-wrapper">
-                    Session Description
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="session-actions-wrapper">
-                    <p>0 people attending</p>
-                    <p>
-                        <button type="button" class="btn btn-success">
-                            <i class="glyphicon glyphicon-thumbs-up"></i>
-                            I'm Attending
-                        </button>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row session-card">
-            <div class="col-md-5 col-md-offset-2">
-                <h4>Session Title</h4>
-                <p>Session Audience</p>
-                <div class="session-description-wrapper">
-                    Session Description
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="session-actions-wrapper">
-                    <p>0 people attending</p>
-                    <p>
-                        <button type="button" class="btn btn-danger">
-                            <i class="glyphicon glyphicon-thumbs-down"></i>
-                            Not Attending
-                        </button>
-                    </p>
                 </div>
             </div>
         </div>

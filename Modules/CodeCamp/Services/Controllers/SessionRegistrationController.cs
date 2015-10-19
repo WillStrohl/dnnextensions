@@ -105,13 +105,43 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get a session registration
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionRegistrationByRegistrantId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSessionRegistrationByRegistrantId(int sessionId, int registrantId)
+        {
+            try
+            {
+                var registration = SessionRegistrationDataAccess.GetItems(sessionId).FirstOrDefault(r => r.RegistrationId == registrantId);
+                var response = new ServiceResponse<SessionRegistrationInfo> { Content = registration };
+
+                if (registration == null)
+                {
+                    ServiceResponseHelper<SessionRegistrationInfo>.AddNoneFoundError("registration", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Delete a session registration
         /// </summary>
         /// <returns></returns>
         /// <remarks>
         /// DELETE: http://dnndev.me/DesktopModules/CodeCamp/API/Event/DeleteSessionRegistration
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
         public HttpResponseMessage DeleteSessionRegistration(int itemId, int sessionId)
@@ -138,7 +168,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateSessionRegistration
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage CreateSessionRegistration(SessionRegistrationInfo registration)
@@ -147,7 +177,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 SessionRegistrationDataAccess.CreateItem(registration);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var savedRegistration = SessionRegistrationDataAccess.GetItems(registration.SessionId).FirstOrDefault(r => r.RegistrationId == registration.RegistrationId);
+
+                var response = new ServiceResponse<SessionRegistrationInfo> { Content = savedRegistration };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -165,7 +197,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSessionRegistration
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage UpdateSessionRegistration(SessionRegistrationInfo registration)
@@ -174,7 +206,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 SessionRegistrationDataAccess.UpdateItem(registration);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var savedRegistration = SessionRegistrationDataAccess.GetItems(registration.SessionId).FirstOrDefault(r => r.RegistrationId == registration.RegistrationId);
+
+                var response = new ServiceResponse<SessionRegistrationInfo> { Content = savedRegistration };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

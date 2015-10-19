@@ -37,7 +37,6 @@ function GetSlugFromValue(value) {
     slug = slug.replace(/\s/g, "-");
 
     var cleanSlug = slug.toLowerCase();
-    console.log(cleanSlug);
 
     return cleanSlug;
 }
