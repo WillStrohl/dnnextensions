@@ -262,7 +262,62 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                SessionDataAccess.UpdateItem(session);
+                var updatesToProcess = false;
+                var originalSession = SessionDataAccess.GetItem(session.SessionId, session.CodeCampId);
+
+                if (!string.Equals(session.Title, originalSession.Title))
+                {
+                    originalSession.Title = session.Title;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(session.Description, originalSession.Description))
+                {
+                    originalSession.Description = session.Description;
+                    updatesToProcess = true;
+                }
+
+                if (session.AudienceLevel != originalSession.AudienceLevel)
+                {
+                    originalSession.AudienceLevel = session.AudienceLevel;
+                    updatesToProcess = true;
+                }
+
+                // parse custom properties for updates
+                foreach (var property in originalSession.CustomPropertiesObj)
+                {
+                    if (session.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    {
+                        // see if the existing property needs to be updated
+                        var prop = session.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                        if (!string.Equals(prop.Value, property.Value))
+                        {
+                            property.Value = prop.Value;
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        // delete the property
+                        originalSession.CustomPropertiesObj.Remove(property);
+                        updatesToProcess = true;
+                    }
+                }
+
+                // add any new properties
+                foreach (var property in session.CustomPropertiesObj.Where(property => !originalSession.CustomPropertiesObj.Contains(property)))
+                {
+                    originalSession.CustomPropertiesObj.Add(property);
+                    updatesToProcess = true;
+                }
+
+                if (updatesToProcess)
+                {
+                    originalSession.LastUpdatedByDate = DateTime.Now;
+                    originalSession.LastUpdatedByUserId = UserInfo.UserID;
+
+                    SessionDataAccess.UpdateItem(session);
+                }
 
                 var savedSession = SessionDataAccess.GetItem(session.SessionId, session.CodeCampId);
 

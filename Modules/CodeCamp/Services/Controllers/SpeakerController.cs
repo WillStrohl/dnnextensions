@@ -218,7 +218,83 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                SpeakerDataAccess.UpdateItem(speaker);
+                var updatesToProcess = false;
+                var originalSpeaker = SpeakerDataAccess.GetItem(speaker.SpeakerId, speaker.CodeCampId);
+
+                if (!string.Equals(speaker.SpeakerName, originalSpeaker.SpeakerName))
+                {
+                    originalSpeaker.SpeakerName = speaker.SpeakerName;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(speaker.URL, originalSpeaker.URL))
+                {
+                    originalSpeaker.URL = speaker.URL;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(speaker.Email, originalSpeaker.Email))
+                {
+                    originalSpeaker.Email = speaker.Email;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(speaker.CompanyName, originalSpeaker.CompanyName))
+                {
+                    originalSpeaker.CompanyName = speaker.CompanyName;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(speaker.CompanyTitle, originalSpeaker.CompanyTitle))
+                {
+                    originalSpeaker.CompanyTitle = speaker.CompanyTitle;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(speaker.Bio, originalSpeaker.Bio))
+                {
+                    originalSpeaker.Bio = speaker.Bio;
+                    updatesToProcess = true;
+                }
+
+                if (speaker.IsAuthor != originalSpeaker.IsAuthor)
+                {
+                    originalSpeaker.IsAuthor = speaker.IsAuthor;
+                    updatesToProcess = true;
+                }
+
+                // parse custom properties for updates
+                foreach (var property in originalSpeaker.CustomPropertiesObj)
+                {
+                    if (speaker.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    {
+                        // see if the existing property needs to be updated
+                        var prop = speaker.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                        if (!string.Equals(prop.Value, property.Value))
+                        {
+                            property.Value = prop.Value;
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        // delete the property
+                        originalSpeaker.CustomPropertiesObj.Remove(property);
+                        updatesToProcess = true;
+                    }
+                }
+
+                // add any new properties
+                foreach (var property in speaker.CustomPropertiesObj.Where(property => !originalSpeaker.CustomPropertiesObj.Contains(property)))
+                {
+                    originalSpeaker.CustomPropertiesObj.Add(property);
+                    updatesToProcess = true;
+                }
+
+                if (updatesToProcess)
+                {
+                    SpeakerDataAccess.UpdateItem(originalSpeaker);
+                }
 
                 var savedSpeaker = SpeakerDataAccess.GetItem(speaker.SpeakerId, speaker.CodeCampId);
 

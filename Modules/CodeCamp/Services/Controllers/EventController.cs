@@ -222,13 +222,106 @@ namespace WillStrohl.Modules.CodeCamp.Services
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateEvent(CodeCampInfo updatedEvent)
+        public HttpResponseMessage UpdateEvent(CodeCampInfo codeCamp)
         {
             try
             {
-                CodeCampDataAccess.UpdateItem(updatedEvent);
+                var updatesToProcess = false;
+                var originalEvent = CodeCampDataAccess.GetItem(codeCamp.CodeCampId, codeCamp.ModuleId);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                if (!string.Equals(codeCamp.Title, originalEvent.Title))
+                {
+                    originalEvent.Title = codeCamp.Title;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(codeCamp.Description, originalEvent.Description))
+                {
+                    originalEvent.Description = codeCamp.Description;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.MaximumCapacity != originalEvent.MaximumCapacity)
+                {
+                    originalEvent.MaximumCapacity = codeCamp.MaximumCapacity;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.BeginDate != originalEvent.BeginDate)
+                {
+                    originalEvent.BeginDate = codeCamp.BeginDate;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.EndDate != originalEvent.EndDate)
+                {
+                    originalEvent.EndDate = codeCamp.EndDate;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.EndDate != originalEvent.EndDate)
+                {
+                    originalEvent.EndDate = codeCamp.EndDate;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.ShowShirtSize != originalEvent.ShowShirtSize)
+                {
+                    originalEvent.ShowShirtSize = codeCamp.ShowShirtSize;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.ShowAuthor != originalEvent.ShowAuthor)
+                {
+                    originalEvent.ShowAuthor = codeCamp.ShowAuthor;
+                    updatesToProcess = true;
+                }
+
+                if (codeCamp.RegistrationActive != originalEvent.RegistrationActive)
+                {
+                    originalEvent.RegistrationActive = codeCamp.RegistrationActive;
+                    updatesToProcess = true;
+                }
+
+                // parse custom properties for updates
+                foreach (var property in originalEvent.CustomPropertiesObj)
+                {
+                    if (codeCamp.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    {
+                        // see if the existing property needs to be updated
+                        var prop = codeCamp.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                        if (!string.Equals(prop.Value, property.Value))
+                        {
+                            property.Value = prop.Value;
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        // delete the property
+                        originalEvent.CustomPropertiesObj.Remove(property);
+                        updatesToProcess = true;
+                    }
+                }
+
+                // add any new properties
+                foreach (var property in codeCamp.CustomPropertiesObj.Where(property => !originalEvent.CustomPropertiesObj.Contains(property)))
+                {
+                    originalEvent.CustomPropertiesObj.Add(property);
+                    updatesToProcess = true;
+                }
+
+                if (updatesToProcess)
+                {
+                    originalEvent.LastUpdatedByDate = DateTime.Now;
+                    originalEvent.LastUpdatedByUserId = UserInfo.UserID;
+
+                    CodeCampDataAccess.UpdateItem(codeCamp);
+                }
+
+                var savedEvent = CodeCampDataAccess.GetItem(codeCamp.CodeCampId, codeCamp.ModuleId);
+
+                var response = new ServiceResponse<CodeCampInfo> { Content = savedEvent };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
