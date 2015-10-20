@@ -259,32 +259,77 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var registrationFromDb = RegistrationDataAccess.GetItemByUserId(registration.UserId, registration.CodeCampId);
+                var originalRegistration = RegistrationDataAccess.GetItemByUserId(registration.UserId, registration.CodeCampId);
                 var updatesToProcess = false;
 
                 // only update the fields that would be udpdated from the UI to keep the DB clean
 
-                if (registrationFromDb.ShirtSize != registration.ShirtSize)
+                if (originalRegistration.ShirtSize != registration.ShirtSize)
                 {
-                    registrationFromDb.ShirtSize = registration.ShirtSize;
+                    originalRegistration.ShirtSize = registration.ShirtSize;
                     updatesToProcess = true;
                 }
 
-                if (registrationFromDb.HasDietaryRequirements != registration.HasDietaryRequirements)
+                if (originalRegistration.HasDietaryRequirements != registration.HasDietaryRequirements)
                 {
-                    registrationFromDb.HasDietaryRequirements = registration.HasDietaryRequirements;
+                    originalRegistration.HasDietaryRequirements = registration.HasDietaryRequirements;
                     updatesToProcess = true;
                 }
 
-                if (registrationFromDb.Notes != registration.Notes)
+                if (originalRegistration.Notes != registration.Notes)
                 {
-                    registrationFromDb.Notes = registration.Notes;
+                    originalRegistration.Notes = registration.Notes;
                     updatesToProcess = true;
+                }
+
+                if (originalRegistration.CustomProperties != null)
+                {
+                    // parse custom properties for updates
+                    foreach (var property in originalRegistration.CustomPropertiesObj)
+                    {
+                        if (registration.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                        {
+                            // see if the existing property needs to be updated
+                            var prop = registration.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                            if (!string.Equals(prop.Value, property.Value))
+                            {
+                                property.Value = prop.Value;
+                                updatesToProcess = true;
+                            }
+                        }
+                        else
+                        {
+                            // delete the property
+                            originalRegistration.CustomPropertiesObj.Remove(property);
+                            updatesToProcess = true;
+                        }
+                    }
+                }
+
+                if (registration.CustomPropertiesObj != null)
+                {
+                    // add any new properties
+                    if (originalRegistration.CustomProperties == null)
+                    {
+                        foreach (var property in registration.CustomPropertiesObj)
+                        {
+                            originalRegistration.CustomPropertiesObj.Add(property);
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        foreach (var property in registration.CustomPropertiesObj.Where(property => !originalRegistration.CustomPropertiesObj.Contains(property)))
+                        {
+                            originalRegistration.CustomPropertiesObj.Add(property);
+                            updatesToProcess = true;
+                        }
+                    }
                 }
 
                 if (updatesToProcess)
                 {
-                    RegistrationDataAccess.UpdateItem(registrationFromDb);
+                    RegistrationDataAccess.UpdateItem(originalRegistration);
                 }
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };

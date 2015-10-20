@@ -283,32 +283,49 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     updatesToProcess = true;
                 }
 
-                // parse custom properties for updates
-                foreach (var property in originalSession.CustomPropertiesObj)
+                if (originalSession.CustomProperties != null)
                 {
-                    if (session.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    // parse custom properties for updates
+                    foreach (var property in originalSession.CustomPropertiesObj)
                     {
-                        // see if the existing property needs to be updated
-                        var prop = session.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
-                        if (!string.Equals(prop.Value, property.Value))
+                        if (session.CustomPropertiesObj.Any(p => p.Name == property.Name))
                         {
-                            property.Value = prop.Value;
+                            // see if the existing property needs to be updated
+                            var prop = session.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                            if (!string.Equals(prop.Value, property.Value))
+                            {
+                                property.Value = prop.Value;
+                                updatesToProcess = true;
+                            }
+                        }
+                        else
+                        {
+                            // delete the property
+                            originalSession.CustomPropertiesObj.Remove(property);
+                            updatesToProcess = true;
+                        }
+                    }
+                }
+
+                if (session.CustomPropertiesObj != null)
+                {
+                    // add any new properties
+                    if (originalSession.CustomProperties == null)
+                    {
+                        foreach (var property in session.CustomPropertiesObj)
+                        {
+                            originalSession.CustomPropertiesObj.Add(property);
                             updatesToProcess = true;
                         }
                     }
                     else
                     {
-                        // delete the property
-                        originalSession.CustomPropertiesObj.Remove(property);
-                        updatesToProcess = true;
+                        foreach (var property in session.CustomPropertiesObj.Where(property => !originalSession.CustomPropertiesObj.Contains(property)))
+                        {
+                            originalSession.CustomPropertiesObj.Add(property);
+                            updatesToProcess = true;
+                        }
                     }
-                }
-
-                // add any new properties
-                foreach (var property in session.CustomPropertiesObj.Where(property => !originalSession.CustomPropertiesObj.Contains(property)))
-                {
-                    originalSession.CustomPropertiesObj.Add(property);
-                    updatesToProcess = true;
                 }
 
                 if (updatesToProcess)

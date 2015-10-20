@@ -263,32 +263,49 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     updatesToProcess = true;
                 }
 
-                // parse custom properties for updates
-                foreach (var property in originalSpeaker.CustomPropertiesObj)
+                if (originalSpeaker.CustomProperties != null)
                 {
-                    if (speaker.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    // parse custom properties for updates
+                    foreach (var property in originalSpeaker.CustomPropertiesObj)
                     {
-                        // see if the existing property needs to be updated
-                        var prop = speaker.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
-                        if (!string.Equals(prop.Value, property.Value))
+                        if (speaker.CustomPropertiesObj.Any(p => p.Name == property.Name))
                         {
-                            property.Value = prop.Value;
+                            // see if the existing property needs to be updated
+                            var prop = speaker.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                            if (!string.Equals(prop.Value, property.Value))
+                            {
+                                property.Value = prop.Value;
+                                updatesToProcess = true;
+                            }
+                        }
+                        else
+                        {
+                            // delete the property
+                            originalSpeaker.CustomPropertiesObj.Remove(property);
+                            updatesToProcess = true;
+                        }
+                    }
+                }
+
+                if (speaker.CustomPropertiesObj != null)
+                {
+                    // add any new properties
+                    if (originalSpeaker.CustomProperties == null)
+                    {
+                        foreach (var property in speaker.CustomPropertiesObj)
+                        {
+                            originalSpeaker.CustomPropertiesObj.Add(property);
                             updatesToProcess = true;
                         }
                     }
                     else
                     {
-                        // delete the property
-                        originalSpeaker.CustomPropertiesObj.Remove(property);
-                        updatesToProcess = true;
+                        foreach (var property in speaker.CustomPropertiesObj.Where(property => !originalSpeaker.CustomPropertiesObj.Contains(property)))
+                        {
+                            originalSpeaker.CustomPropertiesObj.Add(property);
+                            updatesToProcess = true;
+                        }
                     }
-                }
-
-                // add any new properties
-                foreach (var property in speaker.CustomPropertiesObj.Where(property => !originalSpeaker.CustomPropertiesObj.Contains(property)))
-                {
-                    originalSpeaker.CustomPropertiesObj.Add(property);
-                    updatesToProcess = true;
                 }
 
                 if (updatesToProcess)

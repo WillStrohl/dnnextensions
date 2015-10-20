@@ -283,32 +283,49 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     updatesToProcess = true;
                 }
 
-                // parse custom properties for updates
-                foreach (var property in originalEvent.CustomPropertiesObj)
+                if (originalEvent.CustomProperties != null)
                 {
-                    if (codeCamp.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    // parse custom properties for updates
+                    foreach (var property in originalEvent.CustomPropertiesObj)
                     {
-                        // see if the existing property needs to be updated
-                        var prop = codeCamp.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
-                        if (!string.Equals(prop.Value, property.Value))
+                        if (codeCamp.CustomPropertiesObj.Any(p => p.Name == property.Name))
                         {
-                            property.Value = prop.Value;
+                            // see if the existing property needs to be updated
+                            var prop = codeCamp.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                            if (!string.Equals(prop.Value, property.Value))
+                            {
+                                property.Value = prop.Value;
+                                updatesToProcess = true;
+                            }
+                        }
+                        else
+                        {
+                            // delete the property
+                            originalEvent.CustomPropertiesObj.Remove(property);
+                            updatesToProcess = true;
+                        }
+                    }
+                }
+
+                if (codeCamp.CustomPropertiesObj != null)
+                {
+                    // add any new properties
+                    if (originalEvent.CustomProperties == null)
+                    {
+                        foreach (var property in codeCamp.CustomPropertiesObj)
+                        {
+                            originalEvent.CustomPropertiesObj.Add(property);
                             updatesToProcess = true;
                         }
                     }
                     else
                     {
-                        // delete the property
-                        originalEvent.CustomPropertiesObj.Remove(property);
-                        updatesToProcess = true;
+                        foreach (var property in codeCamp.CustomPropertiesObj.Where(property => !originalEvent.CustomPropertiesObj.Contains(property)))
+                        {
+                            originalEvent.CustomPropertiesObj.Add(property);
+                            updatesToProcess = true;
+                        }
                     }
-                }
-
-                // add any new properties
-                foreach (var property in codeCamp.CustomPropertiesObj.Where(property => !originalEvent.CustomPropertiesObj.Contains(property)))
-                {
-                    originalEvent.CustomPropertiesObj.Add(property);
-                    updatesToProcess = true;
                 }
 
                 if (updatesToProcess)
