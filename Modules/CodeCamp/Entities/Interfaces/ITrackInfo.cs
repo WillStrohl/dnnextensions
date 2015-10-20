@@ -37,7 +37,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     {
         int TrackId { get; set; }
         int CodeCampId { get; set; }
-        int RoomId { get; set; }
+        int? RoomId { get; set; }
         string Title { get; set; }
         string Description { get; set; }
         int CreatedByUserId { get; set; }

@@ -430,7 +430,7 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] (
     [CodeCampId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
-    [RoomId] INT NOT NULL 
+    [RoomId] INT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_RoomId] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] ([RoomId]), 
     [Title] NVARCHAR(50) NOT NULL, 

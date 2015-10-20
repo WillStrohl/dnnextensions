@@ -28,49 +28,51 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
 using System.Collections.Generic;
-using System.Web.Caching;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    [TableName("wns_CodeCamp_Track")]
-    [PrimaryKey("TrackId", AutoIncrement = true)]
-    [Cacheable("Track", CacheItemPriority.Default, 20)]
-    [Scope("CodeCampId")]
-    public class TrackInfo : ITrackInfo
+    public class TrackInfoController
     {
-        public int TrackId { get; set; }
+        private readonly TrackInfoRepository repo = null;
 
-        public int CodeCampId { get; set; }
-
-        public int? RoomId { get; set; }
-
-        public string Title { get; set; }
-
-        public string Description { get; set; }
-
-        public int CreatedByUserId { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime CreatedByDate { get; set; }
-
-        public int LastUpdatedByUserId { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime LastUpdatedByDate { get; set; }
-
-        [IgnoreColumn]
-        public List<CustomPropertyInfo> CustomPropertiesObj
+        public TrackInfoController() 
         {
-            get { return JsonHelper.ObjectFromJson<List<CustomPropertyInfo>>(CustomProperties); }
-            set { CustomProperties = value.ToJson(); }
+            repo = new TrackInfoRepository();
         }
 
-        public string CustomProperties { get; set; }
+        public void CreateItem(TrackInfo i)
+        {
+            repo.CreateItem(i);
+        }
+
+        public void DeleteItem(int itemId, int codeCampId)
+        {
+            repo.DeleteItem(itemId, codeCampId);
+        }
+
+        public void DeleteItem(TrackInfo i)
+        {
+            repo.DeleteItem(i);
+        }
+
+        public IEnumerable<TrackInfo> GetItems(int codeCampId)
+        {
+            var items = repo.GetItems(codeCampId);
+
+            return items;
+        }
+
+        public TrackInfo GetItem(int itemId, int codeCampId)
+        {
+            var item = repo.GetItem(itemId, codeCampId);
+
+            return item;
+        }
+
+        public void UpdateItem(TrackInfo i)
+        {
+            repo.UpdateItem(i);
+        }
     }
 }
