@@ -48,6 +48,12 @@ IF EXISTS (SELECT 1
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionSpeaker')
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId];
@@ -63,6 +69,12 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
@@ -105,7 +117,7 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_RoomId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
     ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_RoomId];
-    
+
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Room_CodeCampId' 
