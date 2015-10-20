@@ -348,7 +348,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                         })
                         .error(function (data, status) {
                             $scope.HasErrors = true;
-                            console.log("Unknown error occurred calling CreateSession");
+                            console.log("Unknown error occurred calling " + sessionAction);
                             console.log(data);
                         });
                 });
@@ -357,7 +357,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
             })
             .error(function (data, status) {
                 $scope.HasErrors = true;
-                console.log("Unknown error occurred calling CreateSpeaker");
+                console.log("Unknown error occurred calling " + speakerAction);
                 console.log(data);
             });
 
