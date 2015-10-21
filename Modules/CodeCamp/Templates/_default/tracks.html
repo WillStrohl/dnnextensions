@@ -24,7 +24,7 @@
             <div class="col-sm-4">
                 <div class="tile" ng-class="classColors[$index % 5]">
                     <h3 class="title">
-                        {{track.Title}}
+                        <a href="#/tracks/{{track.TrackId}}/{{track.TrackSlug}}">{{track.Title}}</a>
                     </h3>
                     <div>{{track.Description}}</div>
                     <div class="tile-action-wrapper">

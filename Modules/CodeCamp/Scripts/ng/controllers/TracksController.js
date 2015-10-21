@@ -82,10 +82,14 @@ codeCampControllers.controller("tracksController", ["$scope", "$routeParams", "$
 
                 $scope.tracks = serviceResponse.Content;
 
+                $.each($scope.tracks, function (i, track) {
+                    track.TrackSlug = GetSlugFromValue(track.Title);
+                });
+
                 LogErrors(serviceResponse.Errors);
             },
             function (data) {
-                console.log("Unknown error occurred calling UserCanEditEvent");
+                console.log("Unknown error occurred calling GetTracks");
                 console.log(data);
             });
     }

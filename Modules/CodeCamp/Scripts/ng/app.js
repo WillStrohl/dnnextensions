@@ -48,7 +48,7 @@ codeCampApp.config(["$routeProvider",
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/tracks.html",
 			controller: "tracksController"
 		})
-		.when("/tracks/:trackId", {
+		.when("/tracks/:trackId/:trackName", {
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/track.html",
 			controller: "trackController"
 		})

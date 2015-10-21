@@ -262,7 +262,8 @@
     .tile .title {
       margin-top: 0px;
     }
-    .tile.purple, .tile.blue, .tile.red, .tile.orange, .tile.green {
+    .tile.purple, .tile.blue, .tile.red, .tile.orange, .tile.green, 
+    .tile a, .tile a:link, .tile a:hover, .tile a:visited, .tile a:active {
       color: #fff;
     }
     .tile.purple {
@@ -299,4 +300,8 @@
 .tile-action-wrapper {
     display: block;
     margin-top: 1em;
+}
+
+.track-meta-wrapper {
+    margin-bottom: 2em;
 }

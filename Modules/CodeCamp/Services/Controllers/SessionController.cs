@@ -108,6 +108,37 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get all sessions by the ID of the track
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionsByTrackId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSessionsByTrackId(int trackId)
+        {
+            try
+            {
+                var sessions = SessionDataAccess.GetItemsByTrackId(trackId);
+
+                var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
+
+                if (!sessions.Any())
+                {
+                    ServiceResponseHelper<List<SessionInfo>>.AddNoneFoundError("sessions", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Get the count of all sessions by the ID of the speaker
         /// </summary>
         /// <returns></returns>
