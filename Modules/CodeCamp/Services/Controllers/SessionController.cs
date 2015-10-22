@@ -75,6 +75,36 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get all sessions unassigned to tracks
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionsUnassigned
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSessionsUnassigned(int codeCampId)
+        {
+            try
+            {
+                var sessions = SessionDataAccess.GetItemsUnassigned(codeCampId);
+                var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
+
+                if (sessions == null)
+                {
+                    ServiceResponseHelper<List<SessionInfo>>.AddNoneFoundError("sessions", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Get all sessions by the ID of the speaker
         /// </summary>
         /// <returns></returns>
@@ -116,11 +146,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetSessionsByTrackId(int trackId)
+        public HttpResponseMessage GetSessionsByTrackId(int trackId, int codeCampId)
         {
             try
             {
-                var sessions = SessionDataAccess.GetItemsByTrackId(trackId);
+                var sessions = SessionDataAccess.GetItemsByTrackId(trackId, codeCampId);
 
                 var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
 
@@ -314,6 +344,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     updatesToProcess = true;
                 }
 
+                if (session.TrackId != originalSession.TrackId)
+                {
+                    originalSession.TrackId = session.TrackId;
+                    updatesToProcess = true;
+                }
+
                 if (originalSession.CustomProperties != null)
                 {
                     // parse custom properties for updates
@@ -370,6 +406,74 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var savedSession = SessionDataAccess.GetItem(session.SessionId, session.CodeCampId);
 
                 var response = new ServiceResponse<SessionInfo> { Content = savedSession };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Assigns the session to the specified track
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/AssignSessionToTrack
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage AssignSessionToTrack(int sessionId, int trackId, int codeCampId)
+        {
+            try
+            {
+                var session = SessionDataAccess.GetItem(sessionId, codeCampId);
+
+                session.TrackId = trackId;
+
+                session.LastUpdatedByDate = DateTime.Now;
+                session.LastUpdatedByUserId = UserInfo.UserID;
+
+                SessionDataAccess.UpdateItem(session);
+
+                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Unassign the session from the track
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UnassignSessionFromTrack
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage UnassignSessionFromTrack(int sessionId, int codeCampId)
+        {
+            try
+            {
+                var session = SessionDataAccess.GetItem(sessionId, codeCampId);
+
+                session.TrackId = null;
+
+                session.LastUpdatedByDate = DateTime.Now;
+                session.LastUpdatedByUserId = UserInfo.UserID;
+
+                SessionDataAccess.UpdateItem(session);
+
+                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

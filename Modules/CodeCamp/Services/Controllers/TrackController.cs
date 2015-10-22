@@ -118,6 +118,17 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                var sessions = SessionDataAccess.GetItemsByTrackId(itemId, codeCampId);
+
+                if (sessions.Any())
+                {
+                    foreach (var session in sessions)
+                    {
+                        session.TrackId = null;
+                        SessionDataAccess.UpdateItem(session);
+                    }
+                }
+
                 TrackDataAccess.DeleteItem(itemId, codeCampId);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };

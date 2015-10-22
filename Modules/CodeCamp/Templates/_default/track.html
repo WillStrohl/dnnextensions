@@ -1,4 +1,18 @@
 ﻿<div class="container">
+    <div class="row" ng-show="userCanEdit">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" class="btn btn-primary" ng-click="ManageSessions()">
+                    <i class="glyphicon glyphicon-th-list"></i>
+                    Manage Sessions
+                </button>
+                <button type="button" class="btn btn-warning" ng-click="DeleteTrack()">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    Delete Track
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="track-meta-wrapper">
@@ -9,7 +23,7 @@
     </div>
     <div class="session-list-wrapper">
         <h3>Session(s) in this Track</h3>
-        <div class="row" ng-show="sessions.length == 0">
+        <div class="row" ng-show="assignedSessions.length == 0">
             <div class="col-xs-12">
                 <div class="alert alert-warning">
                     <h4>Whoops!</h4>
@@ -17,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div ng-repeat="session in sessions | orderBy: 'Title'">
+        <div ng-repeat="session in assignedSessions | orderBy: 'Title'">
             <div class="row session-card">
                 <div class="col-md-5 col-md-offset-2">
                     <h4>{{session.Title}}</h4>
@@ -27,8 +41,10 @@
                 </div>
                 <div class="col-md-3">
                     <div class="session-actions-wrapper">
-                        <p class="audience-level-label"><session-audience level="session.AudienceLevel"></session-audience></p>
-                        <p><count session="session" session-registration="SessionRegistration.length"></count> people attending</p>
+                        <p class="audience-level-label"><session-audience level="session.AudienceLevel"></session-audience>
+                        </p>
+                        <p><count session="session" session-registration="SessionRegistration.length"></count> people attending
+                        </p>
                         <p>
                             <button type="button" class="btn btn-danger" ng-click="RegisterForSession(session.SessionId)" ng-class="{ 'disabled' : SessionRegistrationIsDisabled }" ng-show="!IsUserRegisteredForSession(session.SessionId)">
                                 <i class="glyphicon glyphicon-thumbs-down"></i>
@@ -45,3 +61,84 @@
         </div>
     </div>
 </div>
+
+<script type="text/ng-template" id="ManageSessionsModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Manage Track Sessions</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-lg">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h4>Available sessions</h4>
+                    <div class="session-selection-list-wrapper">
+                        <ul class="session-selection-list">
+                            <li class="session-selection-list-item" ng-repeat="session in availableSessions | orderBy: 'Title'">
+                                <div class="pull-right">
+                                    <button type="button" ng-click="AddToTrack(session.SessionId)">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </button>
+                                </div>
+                                <span class="speaker-name">{{session.Title | limitTo: titleLimit}}</span><br/>
+                                <span class="speaker-title">{{DisplaySpeakers(session.Speakers)}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <h4>Assigned sessions</h4>
+                    <div class="session-selection-list-wrapper">
+                        <ul class="session-selection-list">
+                            <li class="session-selection-list-item" ng-repeat="session in assignedSessions | orderBy: 'Title'">
+                                <div class="pull-left">
+                                    <button type="button" ng-click="RemoveFromTrack(session.SessionId)">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </button>
+                                </div>
+                                <span class="speaker-name">{{session.Title | limitTo: titleLimit}}</span><br />
+                                <span class="speaker-title">{{DisplaySpeakers(session.Speakers)}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-lg">
+            <div class="row">
+                <div class="col-xs-6 col-offset-6">
+                    <button class="btn btn-success btn-block" type="button" ng-click="ok()">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="ConfirmModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-sm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Deleting a track will only delete the track itself. Any assigned sessions (if any) will be unassigned and otherwise unchanged.</p>
+                    <p>Are you sure you want to delete this track?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-sm">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success btn-block" type="button" ng-click="ok()">Delete Track</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

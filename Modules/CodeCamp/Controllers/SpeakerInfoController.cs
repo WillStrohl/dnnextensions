@@ -106,7 +106,10 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         private void UpdateSpeakerWithSessions(ref SpeakerInfo item)
         {
-            item.Sessions = GetSessionsForSpeaker(item.CodeCampId, item.SpeakerId);
+            if (item != null)
+            {
+                item.Sessions = GetSessionsForSpeaker(item.CodeCampId, item.SpeakerId);
+            }
         }
 
         #endregion

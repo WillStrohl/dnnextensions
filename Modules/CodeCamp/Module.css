@@ -164,6 +164,9 @@
 /* Modals */
 
 /* TODO: might need to have adjustments for different resolutions */
+.modal-form-container-sm {
+    width: 268px !important;
+}
 .modal-form-container-md {
     width: 568px !important;
 }
@@ -305,3 +308,41 @@
 .track-meta-wrapper {
     margin-bottom: 2em;
 }
+
+.session-selection-list-wrapper {
+    width: 100%;
+    height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+    .session-selection-list {
+        
+    }
+    .session-selection-list-item {
+        margin: 0;
+        padding: 14px 10px;
+        list-style-type: none;
+        height: 120px;
+        min-height: 120px;
+        max-height: 120px;
+        border-bottom: solid 1px #ddd;
+    }
+    .session-selection-list-item:hover {
+        background-color: #ddd;
+    }
+    .session-selection-list-item div,
+    .session-selection-list-item div button,
+    .session-selection-list-item div button span {
+        margin: auto 0;
+        height: 80px;
+    }
+    .session-selection-list-item div button span {
+        font-size: 20px;
+        margin-top: 120%;
+    }
+    .session-selection-list-item .pull-left {
+        margin-right: 1em;
+    }
+    .session-selection-list-item .pull-right {
+        margin-left: 1em;
+    }
