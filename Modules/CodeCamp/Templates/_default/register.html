@@ -25,7 +25,7 @@
         <div class="col-md-4 col-lg-4">
             <div class="form-group" ng-class="{ 'has-error error' : registrationForm.firstName.$dirty && registrationForm.firstName.$invalid }">
                 <label for="firstName">First Name *</label>
-                <input type="text" name="firstName" ng-model="userInfo.FirstName" ng-required="true" class="form-control" placeholder="Your first name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required/>
+                <input type="text" name="firstName" ng-model="userInfo.FirstName" ng-required="true" class="form-control" placeholder="Your first name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required ng-trim/>
                 <p class="help-block" ng-show="registrationForm.firstName.$dirty && registrationForm.firstName.$invalid">
                     Your first name is required.
                 </p>
@@ -34,7 +34,7 @@
         <div class="col-md-4 col-lg-4">
             <div class="form-group" ng-class="{ 'has-error error' : registrationForm.lastName.$dirty && registrationForm.lastName.$invalid }">
                 <label for="lastName">Last Name *</label>
-                <input type="text" name="lastName" ng-model="userInfo.LastName" ng-required="true" class="form-control" placeholder="Your last name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required/>
+                <input type="text" name="lastName" ng-model="userInfo.LastName" ng-required="true" class="form-control" placeholder="Your last name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required ng-trim/>
                 <p class="help-block" ng-show="registrationForm.lastName.$dirty && registrationForm.lastName.$invalid">
                     Your last name is required.
                 </p>
@@ -43,7 +43,7 @@
         <div class="col-md-4 col-lg-4">
             <div class="form-group" ng-class="{ 'has-error error' : registrationForm.email.$dirty && registrationForm.email.$invalid }">
                 <label for="email">Email Address *</label>
-                <input type="email" name="email" ng-model="userInfo.Email" ng-required="true" class="form-control" placeholder="Your last name" maxlength="256" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required/>
+                <input type="email" name="email" ng-model="userInfo.Email" ng-required="true" class="form-control" placeholder="Your last name" maxlength="256" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required ng-trim/>
                 <p class="help-block" ng-show="registrationForm.email.$error.email">
                     Enter a valid email address.
                 </p>
@@ -78,7 +78,7 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label for="notes">Notes</label>
-                <textarea name="notes" ng-model="registration.Notes" class="form-control" placeholder="Enter anything we should know, such as dietary requirements" maxlength="1000" ng-disabled="RegistrationSuccess"></textarea>
+                <textarea name="notes" ng-model="registration.Notes" class="form-control" placeholder="Enter anything we should know, such as dietary requirements" maxlength="1000" ng-disabled="RegistrationSuccess" ng-trim></textarea>
             </div>
         </div>
     </div>

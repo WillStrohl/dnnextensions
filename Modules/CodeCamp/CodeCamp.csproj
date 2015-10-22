@@ -246,7 +246,6 @@
     <Content Include="Scripts\ng\factories\codeCampServiceFactory.js" />
     <Content Include="Templates\_default\about.html" />
     <Content Include="Templates\_default\agenda.html" />
-    <Content Include="Templates\_default\modal.html" />
     <Content Include="Templates\_default\session.html" />
     <Content Include="Templates\_default\sessions.html" />
     <Content Include="Templates\_default\speaker-cards.html" />

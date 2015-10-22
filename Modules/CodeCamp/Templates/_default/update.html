@@ -37,21 +37,21 @@
         <div class="col-xs-6">
             <div class="form-group" ng-class="{ 'has-error error' : codeCampForm.title.$invalid && !codeCampForm.title.$pristine }">
                 <label for="title">Name *</label>
-                <input type="text" name="title" ng-model="codeCamp.Title" ng-required="true" class="form-control" placeholder="Name of the event" required />
+                <input type="text" name="title" ng-model="codeCamp.Title" ng-required="true" class="form-control" placeholder="Name of the event" required ng-trim />
                 <p class="help-block" ng-show="codeCampForm.title.$invalid && !codeCampForm.title.$pristine">
                     Title is required.
                 </p>
             </div>
             <div class="form-group" ng-class="{ 'has-error error' : codeCampForm.description.$invalid && !codeCampForm.description.$pristine }">
                 <label for="description">Description *</label>
-                <textarea name="description" ng-model="codeCamp.Description" ng-required="true" class="form-control" placeholder="Description of the event" required></textarea>
+                <textarea name="description" ng-model="codeCamp.Description" ng-required="true" class="form-control" placeholder="Description of the event" required ng-trim></textarea>
                 <p class="help-block" ng-show="codeCampForm.description.$invalid && !codeCampForm.description.$pristine">
                     Description is required.
                 </p>
             </div>
             <div class="form-group" ng-class="{ 'has-error error' : codeCampForm.title.$invalid && !codeCampForm.title.$pristine }">
                 <label for="title">Maximum Capacity</label>
-                <input type="number" name="maximumCapacity" ng-model="codeCamp.MaximumCapacity" class="form-control" placeholder="#" min="0" />
+                <input type="number" name="maximumCapacity" ng-model="codeCamp.MaximumCapacity" class="form-control" placeholder="#" min="0" ng-trim />
             </div>
         </div>
         <div class="col-xs-6">
@@ -59,7 +59,7 @@
             <p class="input-group">
                 <input type="text" name="beginDate" ng-model="codeCamp.BeginDate"
                        datepicker-popup="{{datePicker.format}}" min-date="datePicker.minDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['BeginDate']"
-                       ng-focus="datePicker.open($event, 'BeginDate')" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event begins" min="datePicker.minDate" max="datePicker.maxDate" required/>
+                       ng-focus="datePicker.open($event, 'BeginDate')" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event begins" min="datePicker.minDate" max="datePicker.maxDate" required ng-trim/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'BeginDate')"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -69,7 +69,7 @@
                 <input type="text" name="endDate" ng-model="codeCamp.EndDate"
                        datepicker-popup="{{datePicker.format}}" min-date="codeCamp.BeginDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['EndDate']"
                        ng-focus="datePicker.open($event, 'EndDate')" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event ends" min="codeCamp.BeginDate" max="datePicker.maxDate" 
-                       date-greater-than="{{codeCamp.BeginDate | date:'short'}}"/>
+                       date-greater-than="{{codeCamp.BeginDate | date:'short'}}" ng-trim/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'EndDate')"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
