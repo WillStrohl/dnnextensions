@@ -222,6 +222,7 @@
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\npm.js" />
     <Content Include="Scripts\ng\directives\confirmDirectives.js" />
+    <Content Include="Scripts\ng\directives\sessionDirectives.js" />
     <Content Include="Scripts\StackBlur.js" />
     <Content Include="Scripts\StackBlur.min.js" />
     <Content Include="Scripts\Common.js" />
