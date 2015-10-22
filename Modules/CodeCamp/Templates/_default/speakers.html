@@ -2,7 +2,7 @@
 <div class="container" ng-show="currentUserRegistration != null">
     <div class="row">
         <div class="col-xs-12">
-            <div class="pull-right admin-button-wrapper" ng-show="currentSpeakerSessions != null">
+            <div class="pull-right admin-button-wrapper" ng-show="currentSpeakerSessions.length > 0">
                 <button type="button" class="btn btn-primary" ng-click="openModal('lg')">
                     <i class="glyphicon glyphicon-edit"></i>
                     Update Speaker Profile
@@ -13,7 +13,7 @@
                 <h4>Great job!</h4>
                 <p>Thank you for submitting your session(s). We'll be selecting speakers for the event soon.</p>
             </div>
-            <div class="alert alert-info" ng-show="showSpeakerSubmissionForm(savedSpeaker, currentUserRegistration, currentSpeakerSessions)">
+            <div class="alert alert-info" ng-show="showSpeakerSubmission">
                 <h4>Want to be a Presenter?</h4>
                 <p>Are you interested in being a speaker? Submit your session(s) and we'll hopefully pick you to speak.</p>
                 <p>
@@ -23,14 +23,6 @@
         </div>
     </div>
 </div>
-
-<!--
-
-Finish wiring this up here:
-    http://bootsnipp.com/snippets/featured/dynamic-avatar-blur
-    http://zurb.com/playground/image-blur-texture
-
--->
 
 <div class="container" ng-show="hasSpeakers">
     <div class="row">

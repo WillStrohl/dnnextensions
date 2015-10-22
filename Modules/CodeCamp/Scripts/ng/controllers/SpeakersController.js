@@ -2,18 +2,41 @@
 
 codeCampControllers.controller("speakersController", ["$scope", "$routeParams", "$http", "$modal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $modal, codeCampServiceFactory) {
 
+    $scope.currentSpeaker = {};
     $scope.speakers = {};
+    $scope.currentUserRegistration = {};
+    $scope.currentSpeakerSessions = [];
     $scope.hasSpeakers = false;
+    $scope.showSpeakerSubmission = false;
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
-    $scope.showSpeakerSubmissionForm = function (spkr, rgstn, sssn) {
-        if (sssn != undefined) {
-            return (sssn.length == 0);
+    $scope.LoadSpeakerSubmission = function () {
+        if ($scope.currentSpeakerSessions != undefined) {
+            $scope.showSpeakerSubmission = ($scope.currentSpeakerSessions.length == 0);
         } else {
-            return (spkr == undefined && rgstn != undefined);
+            $scope.showSpeakerSubmission = ($scope.currentSpeaker == undefined && $scope.currentUserRegistration != undefined);
         }
+    }
+
+    $scope.LoadData = function() {
+        factory.callGetService("GetCurrentUserId")
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.currentUserId = serviceResponse.Content;
+                console.log("$scope.currentUserId = " + $scope.currentUserId);
+
+                $scope.getEvent();
+
+                LogErrors(serviceResponse.Errors);
+            },
+            function (data) {
+                console.log("Unknown error occurred calling GetCurrentUserId");
+                console.log(data);
+            });
     }
 
     $scope.updateSpeakersList = function () {
@@ -53,6 +76,8 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 
                 $scope.currentSpeakerSessions = serviceResponse.Content;
                 console.log("$scope.currentSpeakerSessions = " + $scope.currentSpeakerSessions);
+
+                $scope.LoadSpeakerSubmission();
 
                 LogErrors(serviceResponse.Errors);
             },
@@ -96,6 +121,8 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                     $scope.getSpeaker();
                 }
 
+                $scope.LoadSpeakerSubmission();
+
                 LogErrors(serviceResponse.Errors);
             },
             function (data) {
@@ -136,23 +163,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
             });
     }
 
-    factory.callGetService("GetCurrentUserId")
-        .then(function (response) {
-            var fullResult = angular.fromJson(response);
-            var serviceResponse = JSON.parse(fullResult.data);
-
-            $scope.currentUserId = serviceResponse.Content;
-            console.log("$scope.currentUserId = " + $scope.currentUserId);
-
-            $scope.getEvent();
-
-            LogErrors(serviceResponse.Errors);
-        },
-        function (data) {
-            console.log("Unknown error occurred calling GetCurrentUserId");
-            console.log(data);
-        });
-
     $scope.openModal = function (size) {
         var modalInstance = $modal.open({
             templateUrl: "AddSpeakerModal.html",
@@ -186,6 +196,8 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
             console.log("Modal dismissed at: " + new Date());
         });
     };
+
+    $scope.LoadData();
 
 }])
 .directive("speakerCards", function() {
