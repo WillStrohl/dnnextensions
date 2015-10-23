@@ -118,6 +118,20 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                var tracks = TrackDataAccess.GetItems(codeCampId).Where(t => t.RoomId == itemId);
+
+                if (tracks.Any())
+                {
+                    foreach (var track in tracks)
+                    {
+                        track.RoomId = null;
+                        track.LastUpdatedByDate = DateTime.Now;
+                        track.LastUpdatedByUserId = UserInfo.UserID;
+
+                        TrackDataAccess.UpdateItem(track);
+                    }
+                }
+
                 RoomDataAccess.DeleteItem(itemId, codeCampId);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
@@ -145,9 +159,16 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                room.CreatedByDate = DateTime.Now;
+                room.CreatedByUserId = UserInfo.UserID;
+                room.LastUpdatedByDate = DateTime.Now;
+                room.LastUpdatedByUserId = UserInfo.UserID;
+
                 RoomDataAccess.CreateItem(room);
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var savedRoom = RoomDataAccess.GetItems(room.CodeCampId).OrderByDescending(r => r.CreatedByDate).FirstOrDefault();
+
+                var response = new ServiceResponse<RoomInfo> { Content = savedRoom };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -172,9 +193,38 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                RoomDataAccess.UpdateItem(room);
+                var originalRoom = RoomDataAccess.GetItem(room.RoomId, room.CodeCampId);
+                var updatesToProcess = false;
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                if (!string.Equals(originalRoom.RoomName, room.RoomName))
+                {
+                    originalRoom.RoomName = room.RoomName;
+                    updatesToProcess = true;
+                }
+
+                if (!string.Equals(originalRoom.Description, room.Description))
+                {
+                    originalRoom.Description = room.Description;
+                    updatesToProcess = true;
+                }
+
+                if (originalRoom.MaximumCapacity != room.MaximumCapacity)
+                {
+                    originalRoom.MaximumCapacity = room.MaximumCapacity;
+                    updatesToProcess = true;
+                }
+
+                if (updatesToProcess)
+                {
+                    room.LastUpdatedByDate = DateTime.Now;
+                    room.LastUpdatedByUserId = UserInfo.UserID;
+
+                    RoomDataAccess.UpdateItem(room);
+                }
+
+                var savedRoom = RoomDataAccess.GetItem(room.RoomId, room.CodeCampId);
+
+                var response = new ServiceResponse<RoomInfo> { Content = savedRoom };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
