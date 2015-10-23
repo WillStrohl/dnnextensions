@@ -1,1 +1,18 @@
-﻿<h1>Event Rooms</h1>
+﻿<h2>Event Rooms</h2>
+<div class="container" ng-show="!userCanEdit">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-danger">
+                <i class="glyphicon glyphicon-alert"></i>
+                You do not have permission to perform this action. Please login to continue.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-show="userCanEdit">
+    <div class="row">
+        <div class="row">
+            <p>Content goes here</p>
+        </div>
+    </div>
+</div>
