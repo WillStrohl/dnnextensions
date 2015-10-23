@@ -133,6 +133,11 @@
         position: relative;
         top: 2.25em;
     }
+@media (max-width: 768px) {
+    .speaker-avatar-wrapper .avatar {
+        top: 0.25em;
+    }
+}
 .speaker-name-wrapper {
     
 }
