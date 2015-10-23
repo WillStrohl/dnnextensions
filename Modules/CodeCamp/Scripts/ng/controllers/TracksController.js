@@ -155,7 +155,7 @@ codeCampApp.controller("AddTrackModalController", ["$scope", "$rootScope", "$mod
                 LogErrors(serviceResponse.Errors);
             },
             function (data) {
-                console.log("Unknown error occurred calling UserCanEditEvent");
+                console.log("Unknown error occurred calling GetTrack");
                 console.log(data);
             });
     }
