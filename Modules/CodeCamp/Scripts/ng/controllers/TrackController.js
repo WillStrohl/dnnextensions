@@ -531,7 +531,7 @@ codeCampApp.controller("ConfirmModalController", ["$scope", "$rootScope", "$moda
                 LogErrors(serviceResponse.Errors);
             },
                 function (data) {
-                    console.log("Unknown error occurred calling CreateSessionRegistration");
+                    console.log("Unknown error occurred calling DeleteTrack");
                     console.log(data);
                 });
 

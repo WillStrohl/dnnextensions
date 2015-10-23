@@ -125,6 +125,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     foreach (var session in sessions)
                     {
                         session.TrackId = null;
+                        session.LastUpdatedByDate = DateTime.Now;
+                        session.LastUpdatedByUserId = UserInfo.UserID;
+
                         SessionDataAccess.UpdateItem(session);
                     }
                 }

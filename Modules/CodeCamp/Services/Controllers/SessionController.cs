@@ -241,11 +241,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteSession(int itemId)
+        public HttpResponseMessage DeleteSession(int itemId, int codeCampId)
         {
             try
             {
-                SessionDataAccess.DeleteItem(itemId, ActiveModule.ModuleID);
+                SessionDataAccess.DeleteItem(itemId, codeCampId);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
