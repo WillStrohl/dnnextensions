@@ -71,9 +71,12 @@
             <div class="row">
                 <div class="col-xs-6">
                     <h4>Available sessions</h4>
+                    <div class="form-group" ng-class="{ 'has-error' : availableListFilter != '' }">
+                        <input type="text" ng-Model="availableListFilter" placeholder="Filter List By" class="form-control" /><br />
+                    </div>
                     <div class="session-selection-list-wrapper">
                         <ul class="session-selection-list">
-                            <li class="session-selection-list-item" ng-repeat="session in availableSessions | orderBy: 'Title'">
+                            <li class="session-selection-list-item" ng-repeat="session in availableSessions | filter: availableListFilter | orderBy: 'Title'">
                                 <div class="pull-right">
                                     <button type="button" ng-click="AddToTrack(session.SessionId)">
                                         <span class="glyphicon glyphicon-chevron-right"></span>
@@ -87,9 +90,12 @@
                 </div>
                 <div class="col-xs-6">
                     <h4>Assigned sessions</h4>
+                    <div class="form-group" ng-class="{ 'has-error' : assignedListFilter != '' }">
+                        <input type="text" ng-Model="assignedListFilter" placeholder="Filter List By" class="form-control" /><br />
+                    </div>
                     <div class="session-selection-list-wrapper">
                         <ul class="session-selection-list">
-                            <li class="session-selection-list-item" ng-repeat="session in assignedSessions | orderBy: 'Title'">
+                            <li class="session-selection-list-item" ng-repeat="session in assignedSessions | filter: assignedListFilter | orderBy: 'Title'">
                                 <div class="pull-left">
                                     <button type="button" ng-click="RemoveFromTrack(session.SessionId)">
                                         <span class="glyphicon glyphicon-chevron-left"></span>

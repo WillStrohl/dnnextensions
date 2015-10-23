@@ -12,6 +12,8 @@ codeCampControllers.controller("trackController", [
         $scope.SessionRegistration = [];
         $scope.userCanEdit = false;
         $scope.TrackId = $routeParams.trackId;
+        $scope.availableListFilter = "";
+        $scope.assignedListFilter = "";
 
         $scope.LoadData = function() {
             factory.callGetService("GetCurrentUserId")
