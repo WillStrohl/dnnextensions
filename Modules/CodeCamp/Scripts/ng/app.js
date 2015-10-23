@@ -28,6 +28,10 @@ codeCampApp.config(["$routeProvider",
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/agenda.html",
 			controller: "agendaController"
 		})
+		.when("/rooms", {
+		    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/rooms.html",
+		    controller: "roomsController"
+		})
 		.when("/speakers", {
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/speakers.html",
 			controller: "speakersController"
