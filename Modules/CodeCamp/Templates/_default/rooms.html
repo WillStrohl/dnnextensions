@@ -40,6 +40,7 @@
             <div class="col-sm-4">
                 <div class="tile" ng-class="classColors[$index % 5]">
                     <h3 class="title">{{room.RoomName}}</h3>
+                    <div ng-show="room.Track != null"><strong>Assigned To:</strong> {{room.Track.Title}}</div>
                     <div>{{room.Description}}</div>
                     <div class="tile-action-wrapper">
                         <div class="pull-right">
@@ -93,6 +94,14 @@
                         <p class="help-block" ng-show="createRoomForm.description.$dirty && createRoomForm.description.$invalid">
                             Room description is required.
                         </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="track">Unassigned Tracks</label>
+                        <select name="track" ng-model="selectedTrack" class="form-control" ng-options="item.Title for item in availableTracks track by item.TrackId"></select>
                     </div>
                 </div>
             </div>

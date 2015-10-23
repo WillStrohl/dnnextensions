@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $modal, codeCampServiceFactory) {
-    
+
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
@@ -84,10 +84,31 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
 
                 $scope.rooms = serviceResponse.Content;
 
+                angular.forEach($scope.rooms, function (room, index) {
+                    room.Track = [];
+                    room.Track = $scope.getTrack(room.RoomId);
+                });
+
                 LogErrors(serviceResponse.Errors);
             },
                 function (data) {
                     console.log("Unknown error occurred calling GetRooms");
+                    console.log(data);
+                });
+    }
+
+    $scope.getTrack = function (roomId) {
+        factory.callGetService("GetTrackByRoomId?roomId=" + roomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                LogErrors(serviceResponse.Errors);
+
+                return serviceResponse.Content;
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetTrack");
                     console.log(data);
                 });
     }
@@ -176,10 +197,18 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
     factory.init(moduleId, moduleName);
 
     $scope.CodeCampId = codeCamp.CodeCampId;
-
     $scope.room = {};
+    $scope.availableTracks = [];
+    $scope.selectedTrack = {};
 
     $scope.UpdateMode = (roomId != undefined && roomId > -1);
+
+    /*
+     * TODO:
+     * - track drop down doesn't load a saved session
+     * - load tracks isn't showing an assigned track in the room template
+     * - how do we unassigne the track from here?
+     */
 
     if ($scope.UpdateMode) {
         factory.callGetService("GetRoom?itemId=" + roomId + "&codeCampId=" + $scope.CodeCampId)
@@ -197,18 +226,57 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
             });
     }
 
+    $scope.GetTrack = function () {
+        if ($scope.room.roomId > -1) {
+            factory.callGetService("GetTrackByRoomId?roomId=" + $scope.room.roomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+                .then(function (response) {
+                    var fullResult = angular.fromJson(response);
+                    var serviceResponse = JSON.parse(fullResult.data);
+
+                    var track = serviceResponse.Content;
+
+                    $scope.selectedTrack = track.TrackId;
+
+                    LogErrors(serviceResponse.Errors);
+                },
+                    function (data) {
+                        console.log("Unknown error occurred calling GetRooms");
+                        console.log(data);
+                    });
+        } else {
+            $scope.selectedTrack = -1;
+        }
+    }
+
+    $scope.LoadTracks = function () {
+        factory.callGetService("GetTracksWithoutRooms?codeCampId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.availableTracks = serviceResponse.Content;
+
+                $scope.GetTrack();
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetRooms");
+                    console.log(data);
+                });
+    }
+
     $scope.ok = function () {
         $scope.room.CodeCampId = $scope.CodeCampId;
 
         var roomAction = ($scope.UpdateMode) ? "UpdateRoom" : "CreateRoom";
 
-        // save the track
         factory.callPostService(roomAction, $scope.room)
             .success(function (data) {
                 var savedRoom = angular.fromJson(data);
                 $scope.savedRoom = savedRoom.Content;
 
-                $scope.LoadRooms();
+                $scope.AssignRoomToTrack($scope.savedRoom.RoomId);
 
                 LogErrors(savedRoom.Errors);
             })
@@ -221,9 +289,30 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
         $modalInstance.close($scope.savedRoom);
     };
 
+    $scope.AssignRoomToTrack = function (roomId) {
+        if ($scope.selectedTrack.TrackId > -1) {
+            factory.callPostService("AssignRoomToTrack?roomId=" + roomId + "&trackId=" + $scope.selectedTrack.TrackId + "&codeCampId=" + $scope.CodeCampId)
+                .success(function (data) {
+                    var fullResult = angular.fromJson(data);
+                    var serviceResponse = JSON.parse(fullResult.data);
+
+                    $scope.LoadRooms();
+
+                    LogErrors(serviceResponse.Errors);
+                })
+                .error(function (data, status) {
+                    $scope.HasErrors = true;
+                    console.log("Unknown error occurred calling AssignRoomToTrack");
+                    console.log(data);
+                });
+        }
+    }
+
     $scope.cancel = function () {
         $modalInstance.dismiss("cancel");
     };
+
+    $scope.LoadTracks();
 }]);
 
 /*

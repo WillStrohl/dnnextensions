@@ -75,6 +75,37 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get all tracks that haven't been assigned to rooms yet
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetTracksWithoutRooms
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [HttpGet]
+        public HttpResponseMessage GetTracksWithoutRooms(int codeCampId)
+        {
+            try
+            {
+                var tracks = TrackDataAccess.GetItems(codeCampId).Where(t => !t.RoomId.HasValue);
+
+                var response = new ServiceResponse<List<TrackInfo>> { Content = tracks.ToList() };
+
+                if (tracks == null)
+                {
+                    ServiceResponseHelper<List<TrackInfo>>.AddNoneFoundError("tracks", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Get a track
         /// </summary>
         /// <returns></returns>
@@ -88,6 +119,37 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var track = TrackDataAccess.GetItem(itemId, codeCampId);
+                var response = new ServiceResponse<TrackInfo> { Content = track };
+
+                if (track == null)
+                {
+                    ServiceResponseHelper<TrackInfo>.AddNoneFoundError("track", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get a track using the id of the room
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetTrackByRoomId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetTrackByRoomId(int roomId, int codeCampId)
+        {
+            try
+            {
+                var track = TrackDataAccess.GetItems(codeCampId).FirstOrDefault(t => t.RoomId == roomId);
+
                 var response = new ServiceResponse<TrackInfo> { Content = track };
 
                 if (track == null)
@@ -268,6 +330,86 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var savedTrack = TrackDataAccess.GetItem(track.TrackId, track.CodeCampId);
 
                 var response = new ServiceResponse<TrackInfo> { Content = savedTrack };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Sets the room as the official room for the track
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/AssignRoomToTrack
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [HttpPost]
+        public HttpResponseMessage AssignRoomToTrack(int roomId, int trackId, int codeCampId)
+        {
+            try
+            {
+                var track = TrackDataAccess.GetItem(trackId, codeCampId);
+
+                if (track != null)
+                {
+                    track.RoomId = roomId;
+                    track.LastUpdatedByDate = DateTime.Now;
+                    track.LastUpdatedByUserId = UserInfo.UserID;
+
+                    TrackDataAccess.UpdateItem(track);
+                }
+
+                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+
+                if (track == null)
+                {
+                    ServiceResponseHelper<string>.AddNoneFoundError("track", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Sets the room as the official room for the track
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UnassignRoomFromTrack
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [HttpGet]
+        public HttpResponseMessage UnassignRoomFromTrack(int roomId, int trackId, int codeCampId)
+        {
+            try
+            {
+                var track = TrackDataAccess.GetItem(trackId, codeCampId);
+
+                if (track != null)
+                {
+                    track.RoomId = null;
+                    track.LastUpdatedByDate = DateTime.Now;
+                    track.LastUpdatedByUserId = UserInfo.UserID;
+
+                    TrackDataAccess.UpdateItem(track);
+                }
+
+                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+
+                if (track == null)
+                {
+                    ServiceResponseHelper<string>.AddNoneFoundError("track", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

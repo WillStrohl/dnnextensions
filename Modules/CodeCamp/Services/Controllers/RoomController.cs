@@ -30,6 +30,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -63,6 +64,75 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 if (rooms == null)
                 {
                     ServiceResponseHelper<List<RoomInfo>>.AddNoneFoundError("rooms", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get all rooms
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetUnassignedRooms
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [HttpGet]
+        public HttpResponseMessage GetUnassignedRooms(int codeCampId)
+        {
+            try
+            {
+                var trackList = TrackDataAccess.GetItems(codeCampId).Select(t => t.RoomId);
+                var rooms = RoomDataAccess.GetItems(codeCampId).Where(r => !trackList.Contains(r.RoomId));
+
+                var response = new ServiceResponse<List<RoomInfo>> { Content = rooms.ToList() };
+
+                if (rooms == null)
+                {
+                    ServiceResponseHelper<List<RoomInfo>>.AddNoneFoundError("rooms", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get the room assigned to the specified track
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetRoomByTrackId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetRoomByTrackId(int trackId, int codeCampId)
+        {
+            try
+            {
+                RoomInfo room = null;
+                var track = TrackDataAccess.GetItems(codeCampId).Where(t => t.TrackId == trackId).FirstOrDefault();
+
+                if (track != null)
+                {
+                    room = RoomDataAccess.GetItem(track.RoomId.Value, codeCampId);
+                }
+
+                var response = new ServiceResponse<RoomInfo> { Content = room };
+
+                if (room == null)
+                {
+                    ServiceResponseHelper<RoomInfo>.AddNoneFoundError("rooms", ref response);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
