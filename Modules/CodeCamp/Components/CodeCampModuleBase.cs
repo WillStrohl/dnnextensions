@@ -106,11 +106,11 @@ namespace WillStrohl.Modules.CodeCamp
                 ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/css/bootstrap-flat-extras.css", FileOrder.Css.DefaultPriority + 2);
             }
 
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-resource.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
 
             if (IncludeBootstrap)
             {
@@ -135,11 +135,11 @@ namespace WillStrohl.Modules.CodeCamp
                 ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/css/bootstrap-flat-extras.min.css", FileOrder.Css.DefaultPriority + 2);
             }
 
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-resource.min.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
             
             if (IncludeBootstrap)
             {
