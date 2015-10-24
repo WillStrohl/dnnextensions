@@ -48,6 +48,10 @@ codeCampApp.config(["$routeProvider",
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/session.html",
 			controller: "sessionController"
 		})
+		.when("/timeslots", {
+		    templateUrl: "/DesktopModules/CodeCamp/Templates/_default/timeslots.html",
+		    controller: "timeSlotsController"
+		})
 		.when("/tracks", {
 			templateUrl: "/DesktopModules/CodeCamp/Templates/_default/tracks.html",
 			controller: "tracksController"

@@ -14,6 +14,7 @@
 /// <reference path="scripts/ng/controllers/speakercontroller.js" />
 /// <reference path="scripts/ng/controllers/speakerscontroller.js" />
 /// <reference path="scripts/ng/controllers/testcontroller.js" />
+/// <reference path="scripts/ng/controllers/timeslotscontroller.js" />
 /// <reference path="scripts/ng/controllers/trackcontroller.js" />
 /// <reference path="scripts/ng/controllers/trackscontroller.js" />
 /// <reference path="scripts/ng/controllers/volunteerscontroller.js" />

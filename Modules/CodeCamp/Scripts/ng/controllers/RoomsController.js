@@ -91,7 +91,11 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
                             var serviceResponse = JSON.parse(fullResult.data);
 
                             room.Track = serviceResponse.Content;
-                            room.TrackSlug = GetSlugFromValue(room.Track.Title);
+                            if (room.Track != null && room.Track.Title != null) {
+                                room.TrackSlug = GetSlugFromValue(room.Track.Title);
+                            } else {
+                                room.TrackSlug = null;
+                            }
 
                             LogErrors(serviceResponse.Errors);
                         },
