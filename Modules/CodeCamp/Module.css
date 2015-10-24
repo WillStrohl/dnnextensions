@@ -358,3 +358,13 @@
     padding: 0.5em 0;
     margin: 0.5em 0;
 }
+
+/* time slots */
+.timeslot-line-item {
+    margin: 0.5em 0;
+    border-bottom: #ddd;
+    background: none;
+}
+    .timeslot-line-item:hover {
+        background-color: #ccc;
+    }

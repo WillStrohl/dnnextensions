@@ -47,6 +47,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
         protected SpeakerInfoController SpeakerDataAccess { get; set; }
         protected TrackInfoController TrackDataAccess { get; set; }
 
+        protected TimeSlotInfoController TimeSlotDataAccess { get; set; }
+
         public ServiceBase()
         {
             CodeCampDataAccess = new CodeCampInfoController();
@@ -57,6 +59,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
             SessionSpeakerDataAccess = new SessionSpeakerInfoController();
             SpeakerDataAccess = new SpeakerInfoController();
             TrackDataAccess = new TrackInfoController();
+            TimeSlotDataAccess = new TimeSlotInfoController();
         }
     }
 }

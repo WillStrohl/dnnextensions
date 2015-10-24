@@ -113,10 +113,6 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
                 });
     }
 
-    $scope.getTrack = function (roomId) {
-        
-    }
-
     $scope.getCurrentUserId = function () {
         factory.callGetService("GetCurrentUserId")
             .then(function (response) {
