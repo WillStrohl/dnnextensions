@@ -105,6 +105,7 @@
     <Compile Include="Components\RouteMapper.cs" />
     <Compile Include="Components\ViewHelper.cs" />
     <Compile Include="Controllers\DnnUserController.cs" />
+    <Compile Include="Controllers\TimeSlotInfoController.cs" />
     <Compile Include="Controllers\TrackInfoController.cs" />
     <Compile Include="Controllers\SpeakerInfoController.cs" />
     <Compile Include="Controllers\SessionSpeakerInfoController.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Entities\RoomInfo.cs" />
     <Compile Include="Entities\Interfaces\IRoomInfo.cs" />
     <Compile Include="Entities\SpeakerInfoLite.cs" />
+    <Compile Include="Entities\TimeSlotInfoRepository.cs" />
     <Compile Include="Entities\TrackInfoRepository.cs" />
     <Compile Include="Entities\TrackInfo.cs" />
     <Compile Include="Entities\Interfaces\ITrackInfo.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Entities\RegistrationInfo.cs" />
     <Compile Include="Entities\Interfaces\IRegistrationInfo.cs" />
     <Compile Include="Entities\Interfaces\ICodeCampInfo.cs" />
+    <Compile Include="Services\Controllers\TimeSlotController.cs" />
     <Compile Include="Services\Controllers\TrackController.cs" />
     <Compile Include="Services\Controllers\UtilityController.cs" />
     <Compile Include="Services\Controllers\SpeakerController.cs" />

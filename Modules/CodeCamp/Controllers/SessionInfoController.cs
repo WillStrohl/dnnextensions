@@ -105,6 +105,20 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             return items;
         }
 
+        public IEnumerable<SessionInfo> GetItemsByTimeSlotId(int timeSlotId, int codeCampId)
+        {
+            var items = repo.GetItems(codeCampId).Where(t => t.TimeSlotId == timeSlotId);
+
+            items.Select(s => { s.RegistrantCount = GetRegistrantCount(s.SessionId); return s; });
+
+            foreach (var item in items)
+            {
+                item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+            }
+
+            return items;
+        }
+
         public SessionInfo GetItem(int itemId, int codeCampId)
         {
             var item = repo.GetItem(itemId, codeCampId);
