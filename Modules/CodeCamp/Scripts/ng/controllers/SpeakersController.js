@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("speakersController", ["$scope", "$routeParams", "$http", "$modal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $modal, codeCampServiceFactory) {
+codeCampControllers.controller("speakersController", ["$scope", "$routeParams", "$http", "$uibModal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $uibModal, codeCampServiceFactory) {
 
     $scope.currentSpeaker = {};
     $scope.speakers = {};
@@ -164,7 +164,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
     }
 
     $scope.openModal = function (size) {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: "AddSpeakerModal.html",
             controller: "AddSpeakerModalController",
             size: size,
@@ -218,7 +218,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 /*
  * Speakers Modal Controller
  */
-codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$modalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
+codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$uibModalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
 
     $scope.speaker = {};
     $scope.savedSpeaker = {};
@@ -373,11 +373,11 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$m
                 console.log(data);
             });
 
-        $modalInstance.close($scope.savedSpeaker);
+        $uibModalInstance.close($scope.savedSpeaker);
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss("cancel");
+        $uibModalInstance.dismiss("cancel");
     };
 }]);
 

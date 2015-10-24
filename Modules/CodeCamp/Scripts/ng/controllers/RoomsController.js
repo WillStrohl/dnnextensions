@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $modal, codeCampServiceFactory) {
+codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$http", "$location", "$uibModal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -130,7 +130,7 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
     }
 
     $scope.DeleteRoom = function (roomId) {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: "DeleteRoomModal.html",
             controller: "DeleteRoomModalController",
             size: "sm",
@@ -159,7 +159,7 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
 
     $scope.EditRoom = function (roomId) {
 
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: "AddRoomModal.html",
             controller: "AddRoomModalController",
             size: "md",
@@ -191,7 +191,7 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
 /*
  * Room Modal Controller
  */
-codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$modalInstance", "codeCamp", "roomId", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, codeCamp, roomId, codeCampServiceFactory) {
+codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$uibModalInstance", "codeCamp", "roomId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, codeCamp, roomId, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -279,7 +279,7 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
                 console.log(data);
             });
 
-        $modalInstance.close($scope.savedRoom);
+        $uibModalInstance.close($scope.savedRoom);
     };
 
     $scope.AssignRoomToTrack = function (roomId) {
@@ -302,7 +302,7 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
     }
 
     $scope.cancel = function () {
-        $modalInstance.dismiss("cancel");
+        $uibModalInstance.dismiss("cancel");
     };
 
     $scope.LoadData();

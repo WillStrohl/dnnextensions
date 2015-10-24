@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 codeCampControllers.controller("trackController", [
-    "$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function($scope, $routeParams, $http, $location, $modal, codeCampServiceFactory) {
+    "$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
 
         var factory = codeCampServiceFactory;
         factory.init(moduleId, moduleName);
@@ -350,7 +350,7 @@ codeCampControllers.controller("trackController", [
         }
 
         $scope.ManageSessions = function() {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: "ManageSessionsModal.html",
                 controller: "ManageSessionsModalController",
                 size: "lg",
@@ -381,7 +381,7 @@ codeCampControllers.controller("trackController", [
         };
 
         $scope.DeleteTrack = function() {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: "ConfirmModal.html",
                 controller: "ConfirmModalController",
                 size: "sm",
@@ -412,7 +412,7 @@ codeCampControllers.controller("trackController", [
 /*
  * Sessions Modal
  */
-codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope", "$modalInstance", "trackId", "codeCampId", "assignedSessions", "availableSessions", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, trackId, codeCampId, assignedSessions, availableSessions, codeCampServiceFactory) {
+codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope", "$uibModalInstance", "trackId", "codeCampId", "assignedSessions", "availableSessions", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, trackId, codeCampId, assignedSessions, availableSessions, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -503,20 +503,18 @@ codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope",
     }
 
     $scope.ok = function () {
-
-
-        $modalInstance.close();
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss("cancel");
+        $uibModalInstance.dismiss("cancel");
     };
 }]);
 
 /*
  * Delete Modal
  */
-codeCampApp.controller("ConfirmModalController", ["$scope", "$rootScope", "$modalInstance", "trackId", "codeCampId", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, trackId, codeCampId, codeCampServiceFactory) {
+codeCampApp.controller("ConfirmModalController", ["$scope", "$rootScope", "$uibModalInstance", "trackId", "codeCampId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, trackId, codeCampId, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -535,10 +533,10 @@ codeCampApp.controller("ConfirmModalController", ["$scope", "$rootScope", "$moda
                     console.log(data);
                 });
 
-        $modalInstance.close();
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss("cancel");
+        $uibModalInstance.dismiss("cancel");
     };
 }]);

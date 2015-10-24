@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $modal, codeCampServiceFactory) {
+codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams", "$http", "$location", "$uibModal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -112,7 +112,7 @@ codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams",
     }
 
     $scope.DeleteTimeSlot = function (timeSlotId) {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: "DeleteTimeSlotModal.html",
             controller: "DeleteTimeSlotModalController",
             size: "sm",
@@ -137,7 +137,7 @@ codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams",
 
     $scope.EditTimeSlot = function (timeSlotId) {
 
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: "AddTimeSlotModal.html",
             controller: "AddTimeSlotModalController",
             size: "md",
@@ -169,7 +169,7 @@ codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams",
 /*
  * Time Slot Modal Controller
  */
-codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$modalInstance", "codeCamp", "timeSlotId", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, codeCamp, timeSlotId, codeCampServiceFactory) {
+codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$uibModalInstance", "codeCamp", "timeSlotId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, codeCamp, timeSlotId, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -242,11 +242,11 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
                 console.log(data);
             });
 
-        $modalInstance.close($scope.savedTimeSlot);
+        $uibModalInstance.close($scope.savedTimeSlot);
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss("cancel");
+        $uibModalInstance.dismiss("cancel");
     };
 
     $scope.Init();

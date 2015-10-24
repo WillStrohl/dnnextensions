@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampControllers.controller("tracksController", ["$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $modal, codeCampServiceFactory) {
+codeCampControllers.controller("tracksController", ["$scope", "$routeParams", "$http", "$location", "$uibModal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -99,7 +99,7 @@ codeCampControllers.controller("tracksController", ["$scope", "$routeParams", "$
     }
 
     $scope.openModal = function (size, trackId) {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             templateUrl: "AddTrackModal.html",
             controller: "AddTrackModalController",
             size: size,
@@ -133,7 +133,7 @@ codeCampControllers.controller("tracksController", ["$scope", "$routeParams", "$
 /*
  * Speakers Modal Controller
  */
-codeCampApp.controller("AddTrackModalController", ["$scope", "$rootScope", "$modalInstance", "userId", "codeCamp", "trackId", "codeCampServiceFactory", function ($scope, $rootScope, $modalInstance, userId, codeCamp, trackId, codeCampServiceFactory) {
+codeCampApp.controller("AddTrackModalController", ["$scope", "$rootScope", "$uibModalInstance", "userId", "codeCamp", "trackId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, userId, codeCamp, trackId, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -181,10 +181,10 @@ codeCampApp.controller("AddTrackModalController", ["$scope", "$rootScope", "$mod
                 console.log(data);
             });
 
-        $modalInstance.close($scope.savedTrack);
+        $uibModalInstance.close($scope.savedTrack);
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss("cancel");
+        $uibModalInstance.dismiss("cancel");
     };
 }]);
