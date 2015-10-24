@@ -40,8 +40,8 @@
             <div class="col-sm-4">
                 <div class="tile" ng-class="classColors[$index % 5]">
                     <h3 class="title">{{room.RoomName}}</h3>
-                    <div ng-show="room.Track != null"><strong>Assigned To:</strong> {{room.Track.Title}}</div>
                     <div>{{room.Description}}</div>
+                    <div class="assigned-track-wrapper" ng-show="room.Track != null"><strong>Track:</strong> <a href="#/tracks/{{room.Track.TrackId}}/{{room.TrackSlug}}">{{room.Track.Title}}</a></div>
                     <div class="tile-action-wrapper">
                         <div class="pull-right">
                             <button type="button" class="btn btn-info" ng-click="EditRoom(room.RoomId)">
@@ -100,8 +100,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="track">Unassigned Tracks</label>
-                        <select name="track" ng-model="selectedTrack" class="form-control" ng-options="item.Title for item in availableTracks track by item.TrackId"></select>
+                        <label for="track">Tracks</label>
+                        <select name="track" ng-model="selectedTrack" class="form-control" ng-options="item.Title for item in availableTracks track by item.TrackId">
+                            <option value="">Select a Track</option>
+                        </select>
                     </div>
                 </div>
             </div>

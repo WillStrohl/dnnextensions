@@ -85,8 +85,20 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
                 $scope.rooms = serviceResponse.Content;
 
                 angular.forEach($scope.rooms, function (room, index) {
-                    room.Track = [];
-                    room.Track = $scope.getTrack(room.RoomId);
+                    factory.callGetService("GetTrackByRoomId?roomId=" + room.RoomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+                        .then(function (response) {
+                            var fullResult = angular.fromJson(response);
+                            var serviceResponse = JSON.parse(fullResult.data);
+
+                            room.Track = serviceResponse.Content;
+                            room.TrackSlug = GetSlugFromValue(room.Track.Title);
+
+                            LogErrors(serviceResponse.Errors);
+                        },
+                            function (data) {
+                                console.log("Unknown error occurred calling GetTrack");
+                                console.log(data);
+                            });
                 });
 
                 LogErrors(serviceResponse.Errors);
@@ -98,19 +110,7 @@ codeCampControllers.controller("roomsController", ["$scope", "$routeParams", "$h
     }
 
     $scope.getTrack = function (roomId) {
-        factory.callGetService("GetTrackByRoomId?roomId=" + roomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
-            .then(function (response) {
-                var fullResult = angular.fromJson(response);
-                var serviceResponse = JSON.parse(fullResult.data);
-
-                LogErrors(serviceResponse.Errors);
-
-                return serviceResponse.Content;
-            },
-                function (data) {
-                    console.log("Unknown error occurred calling GetTrack");
-                    console.log(data);
-                });
+        
     }
 
     $scope.getCurrentUserId = function () {
@@ -203,53 +203,46 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
 
     $scope.UpdateMode = (roomId != undefined && roomId > -1);
 
-    /*
-     * TODO:
-     * - track drop down doesn't load a saved session
-     * - load tracks isn't showing an assigned track in the room template
-     * - how do we unassigne the track from here?
-     */
+    $scope.LoadData = function() {
+        if ($scope.UpdateMode) {
+            factory.callGetService("GetRoom?itemId=" + roomId + "&codeCampId=" + $scope.CodeCampId)
+                .then(function(response) {
+                        var fullResult = angular.fromJson(response);
+                        var serviceResponse = JSON.parse(fullResult.data);
 
-    if ($scope.UpdateMode) {
-        factory.callGetService("GetRoom?itemId=" + roomId + "&codeCampId=" + $scope.CodeCampId)
+                        $scope.room = serviceResponse.Content;
+
+                        $scope.LoadTracks();
+
+                        LogErrors(serviceResponse.Errors);
+                    },
+                    function(data) {
+                        console.log("Unknown error occurred calling GetRoom");
+                        console.log(data);
+                    });
+        }
+    }
+
+    $scope.GetTrack = function () {
+        factory.callGetService("GetTrackByRoomId?roomId=" + $scope.room.RoomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
 
-                $scope.room = serviceResponse.Content;
+                var track = serviceResponse.Content;
+
+                $scope.selectedTrack = track;
 
                 LogErrors(serviceResponse.Errors);
             },
-            function (data) {
-                console.log("Unknown error occurred calling GetRoom");
-                console.log(data);
-            });
-    }
-
-    $scope.GetTrack = function () {
-        if ($scope.room.roomId > -1) {
-            factory.callGetService("GetTrackByRoomId?roomId=" + $scope.room.roomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
-                .then(function (response) {
-                    var fullResult = angular.fromJson(response);
-                    var serviceResponse = JSON.parse(fullResult.data);
-
-                    var track = serviceResponse.Content;
-
-                    $scope.selectedTrack = track.TrackId;
-
-                    LogErrors(serviceResponse.Errors);
-                },
-                    function (data) {
-                        console.log("Unknown error occurred calling GetRooms");
-                        console.log(data);
-                    });
-        } else {
-            $scope.selectedTrack = -1;
-        }
+                function (data) {
+                    console.log("Unknown error occurred calling GetRooms");
+                    console.log(data);
+                });
     }
 
     $scope.LoadTracks = function () {
-        factory.callGetService("GetTracksWithoutRooms?codeCampId=" + $scope.codeCamp.CodeCampId)
+        factory.callGetService("GetTracks?codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
@@ -290,13 +283,11 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
     };
 
     $scope.AssignRoomToTrack = function (roomId) {
-        if ($scope.selectedTrack.TrackId > -1) {
+        if ($scope.selectedTrack != null && $scope.selectedTrack.TrackId > -1) {
             factory.callPostService("AssignRoomToTrack?roomId=" + roomId + "&trackId=" + $scope.selectedTrack.TrackId + "&codeCampId=" + $scope.CodeCampId)
                 .success(function (data) {
                     var fullResult = angular.fromJson(data);
                     var serviceResponse = JSON.parse(fullResult.data);
-
-                    $scope.LoadRooms();
 
                     LogErrors(serviceResponse.Errors);
                 })
@@ -306,13 +297,15 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$moda
                     console.log(data);
                 });
         }
+
+        $scope.LoadRooms();
     }
 
     $scope.cancel = function () {
         $modalInstance.dismiss("cancel");
     };
 
-    $scope.LoadTracks();
+    $scope.LoadData();
 }]);
 
 /*
@@ -324,6 +317,7 @@ codeCampApp.controller("DeleteRoomModalController", ["$scope", "$rootScope", "$m
     factory.init(moduleId, moduleName);
 
     $scope.room = {};
+    $scope.track = {};
 
     factory.callGetService("GetRoom?itemId=" + roomId + "&codeCampId=" + codeCampId)
         .then(function (response) {
@@ -331,6 +325,20 @@ codeCampApp.controller("DeleteRoomModalController", ["$scope", "$rootScope", "$m
             var serviceResponse = JSON.parse(fullResult.data);
 
             $scope.room = serviceResponse.Content;
+
+            factory.callGetService("GetTrackByRoomId?roomId=" + room.RoomId + "&codeCampId=" + codeCampId)
+                .then(function (response) {
+                    var fullResult = angular.fromJson(response);
+                    var serviceResponse = JSON.parse(fullResult.data);
+
+                    $scope.track = serviceResponse.Content;
+
+                    LogErrors(serviceResponse.Errors);
+                },
+                    function (data) {
+                        console.log("Unknown error occurred calling GetRooms");
+                        console.log(data);
+                    });
 
             LogErrors(serviceResponse.Errors);
         },
@@ -340,6 +348,21 @@ codeCampApp.controller("DeleteRoomModalController", ["$scope", "$rootScope", "$m
         });
 
     $scope.ok = function () {
+        if ($scope.track != null && $scope.track.TrackId != null) {
+            factory.callPostService("UnassignRoomFromTrack?roomId=" + roomId + "&trackId=" + $scope.track.TrackId + "&codeCampId=" + codeCampId)
+                .success(function (data) {
+                    var fullResult = angular.fromJson(data);
+                    var serviceResponse = JSON.parse(fullResult.data);
+
+                    LogErrors(serviceResponse.Errors);
+                })
+                .error(function (data, status) {
+                    $scope.HasErrors = true;
+                    console.log("Unknown error occurred calling AssignRoomToTrack");
+                    console.log(data);
+                });
+        }
+
         factory.callDeleteService("DeleteRoom?itemId=" + roomId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
                 var fullResult = angular.fromJson(response);

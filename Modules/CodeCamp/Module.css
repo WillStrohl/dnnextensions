@@ -351,3 +351,10 @@
     .session-selection-list-item .pull-right {
         margin-left: 1em;
     }
+
+/* rooms */
+.assigned-track-wrapper {
+    border-top: 1px solid #fff;
+    padding: 0.5em 0;
+    margin: 0.5em 0;
+}
