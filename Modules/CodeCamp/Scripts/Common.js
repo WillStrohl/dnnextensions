@@ -22,6 +22,7 @@ function ParseTime(dateToFormat) {
     return time;
 }
 
+// TODO: remove the dnnConfirm support and replace with angular modal (speakers view)
 $(document).ready(function () {
     addConfirmationToElements();
 });
