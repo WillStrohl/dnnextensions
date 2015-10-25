@@ -25,7 +25,6 @@
             </div>
         </div>
     </div>
-    <h3>Rooms in this Event</h3>
     <div class="row" ng-show="timeSlots.length == 0">
         <div class="col-xs-12">
             <div class="alert alert-warning">
@@ -39,28 +38,23 @@
             <p>The following time slots have been added to this event.</p>
         </div>
     </div>
-    <div class="row">
-        <div ng-repeat="timeSlot in timeSlots | orderBy: 'BeginTime'">
-            <div class="col-sm-4 col-offset-4">
-                <div class="timeslot-line-item">
-                    <div class="pull-left">
-                        ({{timeSlot.BeginTime}}-{{timeSlot.EndTime}}) {{timeSlot.AgendaText}}
-                    </div>
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-info" ng-click="EditTimeSlot(timeSlot.TimeSlotId)">
-                            <i class="glyphicon glyphicon-edit"></i>
-                            Edit
-                        </button>
-                        <button type="button" class="btn btn-warning" ng-click="DeleteTimeSlot(timeSlot.TimeSlotId)">
-                            <i class="glyphicon glyphicon-remove"></i>
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <h3 class="title">{{timeSlot.BeginTime}} - {{timeSlot.EndTime}}</h3>
+    <div class="row" ng-show="timeSlots.length > 0">
+        <div class="col-sm-6 col-sm-offset-2 timeslot-line-item" ng-repeat="timeSlot in timeSlots | orderBy: 'BeginTime'">
+            <div class="pull-left">
+                (<span>{{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}}</span>-<span>{{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}</span>) {{timeSlot.AgendaText}}
             </div>
-            <div class="col-sm-4">&nbsp;</div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-info" ng-click="EditTimeSlot(timeSlot.TimeSlotId)">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Edit
+                </button>
+                <button type="button" class="btn btn-warning" ng-click="DeleteTimeSlot(timeSlot.TimeSlotId)">
+                    <i class="glyphicon glyphicon-remove"></i>
+                    Delete
+                </button>
+            </div>
         </div>
+        <div class="col-sm-2">&nbsp;</div>
     </div>
 </div>
 
@@ -70,6 +64,14 @@
     </div>
     <div class="modal-body">
         <div class="container modal-form-container-md" ng-form="createTimeSlotForm">
+            <div class="row" ng-show="HasTimeSlotError">
+                <div class="col-xs-12">
+                    <div class="alert alert-danger">
+                        <i class="glyphicon glyphicon-alert"></i>
+                        Time slots can't touch or overlap each other in any way. Please change the time range and try again.
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group" ng-class="{ 'has-error error' : createTimeSlotForm.agendaText.$dirty && createTimeSlotForm.agendaText.$invalid }">
@@ -85,13 +87,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="beginTime">Begin Time *</label>
-                        <uib-timepicker ng-model="timeSlot.BeginTime" hour-step="hourSteps" minute-step="minuteSteps" show-meridian="true" required></uib-timepicker>
+                        <uib-timepicker ng-model="timeSlot.BeginTime" ng-change="TimeChanged()" hour-step="hourSteps" minute-step="minuteSteps" show-meridian="true" required></uib-timepicker>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="endTime">End Time *</label>
-                        <uib-timepicker ng-model="timeSlot.EndTime" hour-step="hourSteps" minute-step="minuteSteps" show-meridian="true" required></uib-timepicker>
+                        <uib-timepicker ng-model="timeSlot.EndTime" ng-change="TimeChanged()" hour-step="hourSteps" minute-step="minuteSteps" show-meridian="true" required></uib-timepicker>
                     </div>
                 </div>
             </div>
@@ -128,7 +130,7 @@
         <div class="container modal-form-container-sm">
             <div class="row">
                 <div class="col-xs-12">
-                    <p><strong>Deleting:</strong> {{timeSlot.AgendaText}} ({{timeSlot.BeginTime}}-{{timeSlot.EndTime}})</p>
+                    <p><strong>Deleting:</strong> {{timeSlot.AgendaText}} (<span>{{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}}</span>-<span>{{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}</span>)</p>
                     <p>Deleting a time slot will only delete the time slot itself. Any assigned sessions (if any) will be unassigned and otherwise unchanged.</p>
                     <p>Are you sure you want to delete this time slot?</p>
                 </div>
@@ -139,7 +141,7 @@
         <div class="container modal-form-container-sm">
             <div class="row">
                 <div class="col-xs-6">
-                    <button class="btn btn-success btn-block" type="button" ng-click="ok()">Delete Time Slot</button>
+                    <button class="btn btn-success btn-block" type="button" ng-click="ok()">Delete</button>
                 </div>
                 <div class="col-xs-6">
                     <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>

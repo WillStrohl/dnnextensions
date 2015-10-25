@@ -174,23 +174,41 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
+    $scope.HasTimeSlotError = false;
     $scope.CodeCampId = codeCamp.CodeCampId;
     $scope.timeSlot = {};
     $scope.hourSteps = [1, 2, 3];
     $scope.minuteSteps = [1, 5, 10, 15, 25, 30];
     $scope.UpdateMode = (timeSlotId != undefined && timeSlotId > -1);
 
-    /*
-     * TODO: 
-     * - validate the times?
-     * - ensure that the begin time comes before the end time
-     * - prevent timeslot overlap
-     *   - time slots can't touch each other
-     *   - time slots can't over lap
-     *   - time slots can't be duplicated
-     */
+    $scope.LoadTimeSlots = function () {
+        factory.callGetService("GetTimeSlots?codeCampId=" + $scope.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
 
-    $scope.Init = function () {
+                $scope.timeSlots = serviceResponse.Content;
+
+                angular.forEach($scope.timeSlots, function(timeSlot, index) {
+                    timeSlot.BeginTime = ParseDate(timeSlot.BeginTime);
+                    timeSlot.EndTime = ParseDate(timeSlot.EndTime);
+                });
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetTimeSlots");
+                    console.log(data);
+                });
+    }
+
+    $scope.TimeChanged = function() {
+        if ($scope.timeSlot.EndTime <= $scope.timeSlot.BeginTime) {
+            $scope.timeSlot.EndTime = addMinutes($scope.timeSlot.BeginTime, 45);
+        }
+    }
+
+    $scope.InitTimePicker = function () {
         var beginDate = new Date();
         beginDate.setHours(8);
         beginDate.setMinutes(0);
@@ -201,19 +219,24 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
         endDate.setHours(9);
         endDate.setMinutes(0);
 
-        $scope.timeSlot.EndDate = endDate;
-
-        $scope.LoadData();
+        $scope.timeSlot.EndTime = endDate;
     }
 
     $scope.LoadData = function() {
         if ($scope.UpdateMode) {
-            factory.callGetService("GetTimeSlot?itemId=" + roomId + "&codeCampId=" + $scope.CodeCampId)
+            factory.callGetService("GetTimeSlot?itemId=" + timeSlotId + "&codeCampId=" + $scope.CodeCampId)
                 .then(function(response) {
                     var fullResult = angular.fromJson(response);
                     var serviceResponse = JSON.parse(fullResult.data);
 
                     $scope.timeSlot = serviceResponse.Content;
+
+                    if ($scope.timeSlot == null) {
+                        $scope.InitTimePicker();
+                    } else {
+                        $scope.timeSlot.BeginTime = ParseDate($scope.timeSlot.BeginTime);
+                        $scope.timeSlot.EndTime = ParseDate($scope.timeSlot.EndTime);
+                    }
 
                     LogErrors(serviceResponse.Errors);
                 },
@@ -222,9 +245,15 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
                         console.log(data);
                     });
         }
+
+        $scope.LoadTimeSlots();
     }
 
     $scope.ok = function () {
+        $scope.CheckForErrors();
+    };
+
+    $scope.SaveTimeSlot = function() {
         $scope.timeSlot.CodeCampId = $scope.CodeCampId;
 
         var timeSlotAction = ($scope.UpdateMode) ? "UpdateTimeSlot" : "CreateTimeSlot";
@@ -234,20 +263,96 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
                 var savedTimeSlot = angular.fromJson(data);
                 $scope.savedTimeSlot = savedTimeSlot.Content;
 
+                $scope.LoadTimeSlots();
+
                 LogErrors(savedTimeSlot.Errors);
+
+                $uibModalInstance.close($scope.savedTimeSlot);
             })
             .error(function (data, status) {
                 $scope.HasErrors = true;
                 console.log("Unknown error occurred calling " + timeSlotAction);
                 console.log(data);
             });
+    }
 
-        $uibModalInstance.close($scope.savedTimeSlot);
+    $scope.CheckForErrors = function () {
+        var hasError = false;
+
+        angular.forEach($scope.timeSlots, function (timeSlot, index) {
+            var beginTimeHasIssue = ($scope.timeSlot.BeginTime >= timeSlot.BeginTime && $scope.timeSlot.BeginTime <= timeSlot.EndTime);
+            var endTimeHasIssue = ($scope.timeSlot.EndTime >= timeSlot.BeginTime && $scope.timeSlot.EndTime <= timeSlot.EndTime);
+
+            if (beginTimeHasIssue || endTimeHasIssue) {
+                hasError = true;
+                $scope.HasTimeSlotError = true;
+                return;
+            } 
+        });
+
+        if (!hasError) {
+            $scope.SaveTimeSlot();
+        }
+    }
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss("cancel");
+    };
+
+    $scope.LoadData();
+}]);
+
+/*
+ * Delete Modal
+ */
+codeCampApp.controller("DeleteTimeSlotModalController", ["$scope", "$rootScope", "$uibModalInstance", "timeSlotId", "codeCampId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, timeSlotId, codeCampId, codeCampServiceFactory) {
+
+    var factory = codeCampServiceFactory;
+    factory.init(moduleId, moduleName);
+
+    $scope.LoadData = function () {
+        factory.callGetService("GetTimeSlot?itemId=" + timeSlotId + "&codeCampId=" + codeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.timeSlot = serviceResponse.Content;
+
+                if ($scope.timeSlot != null) {
+                    $scope.timeSlot.BeginTime = ParseDate($scope.timeSlot.BeginTime);
+                    $scope.timeSlot.EndTime = ParseDate($scope.timeSlot.EndTime);
+                }
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetTimeSlot");
+                    console.log(data);
+                });
+    }
+
+    $scope.ok = function () {
+        factory.callDeleteService("DeleteTimeSlot?itemId=" + timeSlotId + "&codeCampId=" + codeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+                console.log("serviceResponse = " + serviceResponse);
+
+                $scope.LoadTimeSlots();
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling DeleteTimeSlot");
+                    console.log(data);
+                });
+
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss("cancel");
     };
 
-    $scope.Init();
+    $scope.LoadData();
 }]);

@@ -12,6 +12,16 @@ function ParseDate(dateToFormat) {
     return new Date(parseInt(dateToFormat.substr(6)));
 }
 
+function ParseTime(dateToFormat) {
+    var dateTime = new Date(parseInt(dateToFormat.substr(6)));
+    var hours = dateTime.getHours();
+    var minutes = dateTime.getMinutes();
+
+    var time = ("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2);
+
+    return time;
+}
+
 $(document).ready(function () {
     addConfirmationToElements();
 });
@@ -39,4 +49,8 @@ function GetSlugFromValue(value) {
     var cleanSlug = slug.toLowerCase();
 
     return cleanSlug;
+}
+
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes * 60000);
 }

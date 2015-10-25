@@ -58,6 +58,16 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var timeSlots = TimeSlotDataAccess.GetItems(codeCampId);
+
+                if (timeSlots.Any())
+                {
+                    foreach (var timeSlot in timeSlots)
+                    {
+                        timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
+                        timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
+                    }
+                }
+
                 var response = new ServiceResponse<List<TimeSlotInfo>> { Content = timeSlots.ToList() };
 
                 if (timeSlots == null)
@@ -88,6 +98,13 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var timeSlot = TimeSlotDataAccess.GetItem(itemId, codeCampId);
+
+                if (timeSlot != null)
+                {
+                    timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
+                    timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
+                }
+
                 var response = new ServiceResponse<TimeSlotInfo> { Content = timeSlot };
 
                 if (timeSlot == null)
@@ -171,6 +188,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var timeSlots = TimeSlotDataAccess.GetItems(timeSlot.CodeCampId);
 
                 var savedTimeSlot = timeSlots.OrderByDescending(s => s.CreatedByDate).FirstOrDefault(s => s.BeginTime == timeSlot.BeginTime);
+
+                if (savedTimeSlot != null)
+                {
+                    savedTimeSlot.BeginTime = savedTimeSlot.BeginTime.ToLocalTime();
+                    savedTimeSlot.EndTime = savedTimeSlot.EndTime.ToLocalTime();
+                }
 
                 var response = new ServiceResponse<TimeSlotInfo> { Content = savedTimeSlot };
 
@@ -284,6 +307,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 }
 
                 var savedTimeSlot = TimeSlotDataAccess.GetItem(timeSlot.TimeSlotId, timeSlot.CodeCampId);
+
+                if (savedTimeSlot != null)
+                {
+                    savedTimeSlot.BeginTime = savedTimeSlot.BeginTime.ToLocalTime();
+                    savedTimeSlot.EndTime = savedTimeSlot.EndTime.ToLocalTime();
+                }
 
                 var response = new ServiceResponse<TimeSlotInfo> { Content = savedTimeSlot };
 

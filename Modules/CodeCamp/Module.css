@@ -361,10 +361,22 @@
 
 /* time slots */
 .timeslot-line-item {
-    margin: 0.5em 0;
-    border-bottom: #ddd;
+    border-bottom: 1px solid #999;
     background: none;
+    width: 100%;
+    vertical-align: middle;
 }
+    .timeslot-line-item:first-child {
+        border-top: 1px solid #999;
+    }
     .timeslot-line-item:hover {
-        background-color: #ccc;
+        background-color: #bbb;
+    }
+    .timeslot-line-item div {
+        margin: auto 0;
+        padding: 0.5em 0;
+        vertical-align: middle;
+    }
+    .timeslot-line-item div:first-child {
+        margin-top: 0.5em;
     }
