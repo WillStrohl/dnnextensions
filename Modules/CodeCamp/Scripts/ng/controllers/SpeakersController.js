@@ -218,7 +218,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 /*
  * Speakers Modal Controller
  */
-codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$uibModalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
+codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$uibModal", "$uibModalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $uibModal, $uibModalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
 
     $scope.speaker = {};
     $scope.savedSpeaker = {};
@@ -261,43 +261,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
 
     $scope.ProcessSessionRemoval = function (elem, session) {
         if ($scope.requiresConfirmation(session)) {
-            jQuery(elem).dnnConfirm({
-                text: "Are you sure you want to delete this?",
-                yesText: "Yes",
-                noText: "No",
-                title: "Delete Confirmation",
-                isButton: true,
-                callbackTrue: function() {
-                    if (session.SessionId > 0) {
-                        factory.callDeleteService("DeleteSession", session.SessionId)
-                            .success(function(data) {
-                                var deleteResponse = angular.fromJson(data);
-                                console.log("deleteResponse.Content = " + deleteResponse.Content);
-
-                                // TODO: delete sessionspeaker data as well
-
-                                $scope.RemoveSession(session);
-                            })
-                            .error(function(data, status) {
-                                $scope.HasErrors = true;
-                                console.log("Unknown error occurred calling DeleteSession");
-                                console.log(data);
-                                return;
-                            });
-                    } else {
-                        $scope.RemoveSession(session);
-                    }
-                }
-            });
-
-            jQuery(elem).trigger("click");
-            jQuery(elem).click(function (e, isTrigger) {
-                // TODO: troubleshoot and fix this
-                if (isTrigger) {
-                    return true;
-                }
-                return false;
-            });
+            $scope.ConfirmDeleteSession(session);
         } else {
             $scope.RemoveSession(session);
         }
@@ -379,6 +343,45 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
     $scope.cancel = function () {
         $uibModalInstance.dismiss("cancel");
     };
+
+    $scope.ConfirmDeleteSession = function (session) {
+        var modalInstance = $uibModal.open({
+            templateUrl: "DeleteSessionModal.html",
+            controller: "DeleteSessionModalController",
+            size: "sm",
+            backdrop: "static",
+            scope: $scope,
+            resolve: {
+                session: function () {
+                    return $scope.session;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (result) {
+            if (result != null) {
+                $scope.RemoveSession(result);
+            }
+        }, function () {
+            console.log("Modal dismissed at: " + new Date());
+        });
+    }
+}]);
+
+/*
+ * Delete Modal
+ */
+codeCampApp.controller("DeleteSessionModalController", ["$scope", "$rootScope", "$uibModalInstance", "session", function ($scope, $rootScope, $uibModalInstance, session) {
+
+    $scope.ok = function () {
+        $scope.RemoveSession(session);
+        $uibModalInstance.close(session);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss("cancel");
+    };
+
 }]);
 
 /*
