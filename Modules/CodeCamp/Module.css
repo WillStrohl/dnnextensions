@@ -380,3 +380,8 @@
     .timeslot-line-item div:first-child {
         margin-top: 0.5em;
     }
+
+/* navigation */
+.navigation-wrapper {
+    margin-bottom: 0.5em;
+}

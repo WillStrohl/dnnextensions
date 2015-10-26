@@ -6,6 +6,7 @@
 /// <reference path="scripts/ng/controllers/aboutcontroller.js" />
 /// <reference path="scripts/ng/controllers/agendacontroller.js" />
 /// <reference path="scripts/ng/controllers/eventcontroller.js" />
+/// <reference path="scripts/ng/controllers/navigationcontroller.js" />
 /// <reference path="scripts/ng/controllers/registercontroller.js" />
 /// <reference path="scripts/ng/controllers/roomscontroller.js" />
 /// <reference path="scripts/ng/controllers/sessioncontroller.js" />

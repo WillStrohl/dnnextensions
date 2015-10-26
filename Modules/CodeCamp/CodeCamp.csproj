@@ -224,6 +224,7 @@
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\npm.js" />
+    <Content Include="Scripts\ng\controllers\NavigationController.js" />
     <Content Include="Scripts\ng\controllers\TimeSlotsController.js" />
     <Content Include="Scripts\ng\controllers\RoomsController.js" />
     <Content Include="Scripts\ng\directives\confirmDirectives.js" />
@@ -250,6 +251,7 @@
     <Content Include="Scripts\ng\directives\dateDirectives.js" />
     <Content Include="Scripts\ng\factories\codeCampServiceFactory.js" />
     <Content Include="Templates\_default\about.html" />
+    <Content Include="Templates\_default\navigation.html" />
     <Content Include="Templates\_default\timeslots.html" />
     <Content Include="Templates\_default\rooms.html" />
     <Content Include="Templates\_default\agenda.html" />

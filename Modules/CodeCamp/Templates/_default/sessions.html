@@ -1,5 +1,5 @@
-﻿<h2><span ng-show="!codeCamp.RegistrationActive">Prospective </span>Sessions</h2>
-<!-- http://bootsnipp.com/snippets/xvodW -->
+﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
+<h2><span ng-show="!codeCamp.RegistrationActive">Prospective </span>Sessions</h2>
 <div class="container">
     <div class="row">
         <div ng-repeat="session in sessions | orderBy: 'Title'">
