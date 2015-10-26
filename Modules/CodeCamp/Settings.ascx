@@ -7,6 +7,10 @@
         <asp:DropDownList runat="server" ID="ddlView"/>
     </div>
     <div class="dnnFormItem">
+        <dnn:label id="lblUseCdn" runat="server" resourcekey="lblUseCdn"/>
+        <asp:CheckBox runat="server" ID="chkUseCdn"/>
+    </div>
+    <div class="dnnFormItem">
         <dnn:label id="lblIncludeBootstrap" runat="server" resourcekey="lblIncludeBootstrap"/>
         <asp:CheckBox runat="server" ID="chkIncludeBootstrap"/>
     </div>

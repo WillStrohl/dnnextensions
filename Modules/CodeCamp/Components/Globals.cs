@@ -41,6 +41,7 @@ namespace WillStrohl.Modules.CodeCamp.Components
 
         public const string SETTINGS_VIEW = "View";
         public const string SETTINGS_BOOTSTRAP = "Bootstrap";
+        public const string SETTINGS_USECDN = "UseCdn";
 
         public const string VIEW_SETTINGS = "SettingsView";
         public const string VIEW_CODECAMP = "CodeCampView";

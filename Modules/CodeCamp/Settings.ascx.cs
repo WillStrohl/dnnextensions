@@ -64,6 +64,11 @@ namespace WillStrohl.Modules.CodeCamp
                 {
                     chkIncludeBootstrap.Checked = bool.Parse(Settings[Components.Globals.SETTINGS_BOOTSTRAP].ToString());
                 }
+
+                if (Settings[Components.Globals.SETTINGS_USECDN] != null)
+                {
+                    chkUseCdn.Checked = bool.Parse(Settings[Components.Globals.SETTINGS_USECDN].ToString());
+                }
             }
             catch (Exception exc) //Module failed to load
             {
@@ -96,6 +101,8 @@ namespace WillStrohl.Modules.CodeCamp
                 controller.UpdateModuleSetting(ModuleId, Components.Globals.SETTINGS_VIEW, ddlView.SelectedIndex == 0 ? string.Empty : ddlView.SelectedValue);
 
                 controller.UpdateModuleSetting(ModuleId, Components.Globals.SETTINGS_BOOTSTRAP, chkIncludeBootstrap.Checked.ToString());
+
+                controller.UpdateModuleSetting(ModuleId, Components.Globals.SETTINGS_USECDN, chkUseCdn.Checked.ToString());
 
                 ModuleController.SynchronizeModule(ModuleId);
             }
