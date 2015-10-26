@@ -2,8 +2,9 @@
 
 codeCampControllers.controller("sessionsController", ["$scope", "$routeParams", "$http", "codeCampServiceFactory", function ($scope, $routeParams, $http, codeCampServiceFactory) {
 
-    $scope.sessions = {};
+    $scope.sessions = [];
     $scope.hasSessions = false;
+    $scope.sessionFilter = "";
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);

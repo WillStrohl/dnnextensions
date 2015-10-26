@@ -2,20 +2,30 @@
 <h2><span ng-show="!codeCamp.RegistrationActive">Prospective </span>Sessions</h2>
 <div class="container">
     <div class="row">
-        <div ng-repeat="session in sessions | orderBy: 'Title'">
+        <div class="col-sm-3 col-sm-offset-9">
+            <div class="pull-right">
+                <div class="form-group" ng-class="{ 'has-error' : sessionFilter != '' }">
+                    <input type="text" ng-Model="sessionFilter" placeholder="Filter Sessions By" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="session in sessions | filter: sessionFilter | orderBy: 'Title'">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4">
                 <div class="sessioncard sessioncard-primary">
                     <!--div class="shape">
-                        <div class="shape-text">
-                            top
-                        </div>
+                    <div class="shape-text">
+                        top
+                    </div>
                     </div-->
                     <div class="sessioncard-content">
                         <h3 class="lead">
                             {{session.Title}}
                         </h3>
-                        <div class="speaker-name">by <speaker-list speakers="session.Speakers"></speaker-list></div>
+                        <div class="speaker-name">by <speaker-list speakers="session.Speakers"></speaker-list>
+                        </div>
                         <div>
                             {{session.Description}}
                         </div>
