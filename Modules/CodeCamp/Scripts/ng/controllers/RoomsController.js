@@ -286,8 +286,7 @@ codeCampApp.controller("AddRoomModalController", ["$scope", "$rootScope", "$uibM
         if ($scope.selectedTrack != null && $scope.selectedTrack.TrackId > -1) {
             factory.callPostService("AssignRoomToTrack?roomId=" + roomId + "&trackId=" + $scope.selectedTrack.TrackId + "&codeCampId=" + $scope.CodeCampId)
                 .success(function (data) {
-                    var fullResult = angular.fromJson(data);
-                    var serviceResponse = JSON.parse(fullResult.data);
+                    var serviceResponse = angular.fromJson(data);
 
                     LogErrors(serviceResponse.Errors);
                 })
