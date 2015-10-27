@@ -64,9 +64,9 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             return items;
         }
 
-        public VolunteerTaskInfo GetItem(int itemId, int codeCampId)
+        public VolunteerTaskInfo GetItem(int itemId, int volunteerId)
         {
-            var item = repo.GetItem(itemId, codeCampId);
+            var item = repo.GetItem(itemId, volunteerId);
 
             return item;
         }
