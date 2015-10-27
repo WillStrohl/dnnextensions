@@ -422,6 +422,22 @@ codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope",
     $scope.availableSessions = availableSessions;
     $scope.assignedSessions = assignedSessions;
 
+    $scope.LoadTrack = function () {
+        factory.callGetService("GetTrack?itemId=" + $scope.TrackId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.track = serviceResponse.Content;
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetTrack");
+                    console.log(data);
+                });
+    }
+
     $scope.LoadUnassignedSessions = function () {
         factory.callGetService("GetSessionsUnassigned?codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
@@ -464,6 +480,8 @@ codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope",
 
                 $scope.LoadAssignedSessions();
                 $scope.LoadUnassignedSessions();
+
+                LogErrors(serviceResponse.Errors);
             },
                 function (data) {
                     console.log("Unknown error occurred calling GetSpeakerByRegistrationId");
@@ -479,6 +497,8 @@ codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope",
 
                 $scope.LoadAssignedSessions();
                 $scope.LoadUnassignedSessions();
+
+                LogErrors(serviceResponse.Errors);
             },
                 function (data) {
                     console.log("Unknown error occurred calling GetSpeakerByRegistrationId");
@@ -509,6 +529,8 @@ codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope",
     $scope.cancel = function () {
         $uibModalInstance.dismiss("cancel");
     };
+
+    $scope.LoadTrack();
 }]);
 
 /*

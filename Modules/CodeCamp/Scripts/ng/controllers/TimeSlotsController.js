@@ -280,6 +280,8 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
         var hasError = false;
 
         angular.forEach($scope.timeSlots, function (timeSlot, index) {
+            if (timeSlot.timeSlotId == $scope.timeSlot.timeSlotId) return;
+
             var beginTimeHasIssue = ($scope.timeSlot.BeginTime >= timeSlot.BeginTime && $scope.timeSlot.BeginTime <= timeSlot.EndTime);
             var endTimeHasIssue = ($scope.timeSlot.EndTime >= timeSlot.BeginTime && $scope.timeSlot.EndTime <= timeSlot.EndTime);
 
