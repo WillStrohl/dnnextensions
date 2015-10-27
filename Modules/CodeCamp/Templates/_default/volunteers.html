@@ -3,7 +3,22 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            Content goes here
+            I am not registered and want to volunteer or see volunteers.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" ng-show="!userIsVolunteer">
+            I am registered and want to volunteer.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" ng-show="userIsVolunteer">
+            I am a volunteer. I want to see my tasks.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" ng-show="userCanEdit">
+            I am an admin and want to see all tasks.
         </div>
     </div>
 </div>
