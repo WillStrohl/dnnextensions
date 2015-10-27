@@ -191,6 +191,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 
         modalInstance.result.then(function (savedSpeaker) {
             $scope.savedSpeaker = savedSpeaker;
+            $scope.LoadData();
             console.log("$scope.savedSpeaker = " + $scope.savedSpeaker);
         }, function () {
             console.log("Modal dismissed at: " + new Date());
@@ -311,6 +312,8 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
                                     var sessionSpeaker = angular.fromJson(data);
 
                                     $scope.updateSpeakersList();
+
+                                    $scope.LoadData();
 
                                     LogErrors(sessionSpeaker.Errors);
                                 })
