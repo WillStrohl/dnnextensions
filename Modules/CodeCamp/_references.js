@@ -5,6 +5,7 @@
 /// <reference path="scripts/ie-support/html5shiv.js" />
 /// <reference path="scripts/ie-support/respond .min.js" />
 /// <reference path="scripts/ie-support/respond.js" />
+/// <reference path="scripts/moment/angular-moment.js" />
 /// <reference path="scripts/moment/moment.js" />
 /// <reference path="scripts/moment/moment-with-locales.js" />
 /// <reference path="scripts/ng/angular/angular.js" />

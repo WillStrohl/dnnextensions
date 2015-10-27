@@ -29,16 +29,51 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public interface IVolunteerInfo
+    public class VolunteerTaskInfoController
     {
-        int VolunteerId { get; set; }
-        int CodeCampId { get; set; }
-        int RegistrationId { get; set; }
-        string Notes { get; set; }
-        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
-        string CustomProperties { get; set; }
+        private readonly VolunteerTaskInfoRepository repo = null;
+
+        public VolunteerTaskInfoController() 
+        {
+            repo = new VolunteerTaskInfoRepository();
+        }
+
+        public void CreateItem(VolunteerTaskInfo i)
+        {
+            repo.CreateItem(i);
+        }
+
+        public void DeleteItem(int itemId, int volunteerId)
+        {
+            repo.DeleteItem(itemId, volunteerId);
+        }
+
+        public void DeleteItem(VolunteerTaskInfo i)
+        {
+            repo.DeleteItem(i);
+        }
+
+        public IEnumerable<VolunteerTaskInfo> GetItems(int volunteerId)
+        {
+            var items = repo.GetItems(volunteerId);
+
+            return items;
+        }
+
+        public VolunteerTaskInfo GetItem(int itemId, int codeCampId)
+        {
+            var item = repo.GetItem(itemId, codeCampId);
+
+            return item;
+        }
+
+        public void UpdateItem(VolunteerTaskInfo i)
+        {
+            repo.UpdateItem(i);
+        }
     }
 }

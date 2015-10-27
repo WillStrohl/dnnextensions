@@ -26,19 +26,62 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+
+ int*/
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
-    public interface IVolunteerInfo
+    public class VolunteerInfoController
     {
-        int VolunteerId { get; set; }
-        int CodeCampId { get; set; }
-        int RegistrationId { get; set; }
-        string Notes { get; set; }
-        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
-        string CustomProperties { get; set; }
+        private readonly VolunteerInfoRepository repo = null;
+
+        public VolunteerInfoController() 
+        {
+            repo = new VolunteerInfoRepository();
+        }
+
+        public void CreateItem(VolunteerInfo i)
+        {
+            repo.CreateItem(i);
+        }
+
+        public void DeleteItem(int itemId, int codeCampId)
+        {
+            repo.DeleteItem(itemId, codeCampId);
+        }
+
+        public void DeleteItem(VolunteerInfo i)
+        {
+            repo.DeleteItem(i);
+        }
+
+        public IEnumerable<VolunteerInfo> GetItems(int codeCampId)
+        {
+            var items = repo.GetItems(codeCampId);
+
+            return items;
+        }
+
+        public VolunteerInfo GetItemByRegistrationId(int registrationId, int codeCampId)
+        {
+            var item = repo.GetItems(codeCampId).FirstOrDefault(v => v.RegistrationId == registrationId);
+
+            return item;
+        }
+
+        public VolunteerInfo GetItem(int itemId, int codeCampId)
+        {
+            var item = repo.GetItem(itemId, codeCampId);
+
+            return item;
+        }
+
+        public void UpdateItem(VolunteerInfo i)
+        {
+            repo.UpdateItem(i);
+        }
     }
 }

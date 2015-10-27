@@ -42,15 +42,15 @@ IF EXISTS (SELECT 1
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
-    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId' 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
-    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId];
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
-    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_VolunteerTask_CodeCampId' 
-    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_VolunteerTask')
-    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_CodeCampId];
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
@@ -259,6 +259,9 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] (
     [VolunteerId] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Volunteer] PRIMARY KEY CLUSTERED, 
+    [CodeCampId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]),
     [RegistrationId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]) ON DELETE CASCADE, 
@@ -268,6 +271,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] (
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([RegistrationId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Volunteer_VolunteerId_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([VolunteerId],[CodeCampId]);
 GO
 
 /*
@@ -283,12 +289,9 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] (
     [VolunteerTaskId] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_VolunteerTask] PRIMARY KEY CLUSTERED, 
-    [CodeCampId] INT NOT NULL 
-        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_CodeCampId] FOREIGN KEY 
-        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
     [VolunteerId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId] FOREIGN KEY 
-        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([VolunteerId]), 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([VolunteerId]) ON DELETE CASCADE, 
     [Title] NVARCHAR(100) NOT NULL, 
     [BeginDate] DATETIME NULL, 
     [EndDate] DATETIME NULL, 
@@ -303,6 +306,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] (
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] ([VolunteerId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerTaskId_VolunteerId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] ([VolunteerTaskId],[VolunteerId]);
 GO
 
 /*

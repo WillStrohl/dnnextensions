@@ -39,10 +39,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     [TableName("wns_CodeCamp_Volunteer")]
     [PrimaryKey("VolunteerId", AutoIncrement = true)]
     [Cacheable("Volunteer", CacheItemPriority.Default, 20)]
-    [Scope("RegistrationId")]
+    [Scope("CodeCampId")]
     public class VolunteerInfo : IVolunteerInfo
     {
         public int VolunteerId { get; set; }
+
+        public int CodeCampId { get; set; }
 
         public int RegistrationId { get; set; }
 

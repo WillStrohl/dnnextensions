@@ -46,8 +46,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     {
         public int VolunteerTaskId { get; set; }
 
-        public int CodeCampId { get; set; }
-
         public int VolunteerId { get; set; }
 
         public string Title { get; set; }

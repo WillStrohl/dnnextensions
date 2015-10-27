@@ -18,15 +18,15 @@ IF EXISTS (SELECT 1
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
-    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId' 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId' 
     AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
-    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId];
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
-    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_VolunteerTask_CodeCampId' 
-    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_VolunteerTask')
-    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_CodeCampId];
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId];
     
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 

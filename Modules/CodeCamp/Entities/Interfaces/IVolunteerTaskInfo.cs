@@ -36,7 +36,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     public interface IVolunteerTaskInfo
     {
         int VolunteerTaskId { get; set; }
-        int CodeCampId { get; set; }
         int VolunteerId { get; set; }
         string Title { get; set; }
         DateTime BeginDate { get; set; }

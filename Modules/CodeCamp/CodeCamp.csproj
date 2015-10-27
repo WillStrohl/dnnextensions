@@ -106,6 +106,8 @@
     <Compile Include="Components\ViewHelper.cs" />
     <Compile Include="Controllers\DnnUserController.cs" />
     <Compile Include="Controllers\TimeSlotInfoController.cs" />
+    <Compile Include="Controllers\VolunteerTaskInfoController.cs" />
+    <Compile Include="Controllers\VolunteerInfoController.cs" />
     <Compile Include="Controllers\TrackInfoController.cs" />
     <Compile Include="Controllers\SpeakerInfoController.cs" />
     <Compile Include="Controllers\SessionSpeakerInfoController.cs" />
@@ -151,6 +153,8 @@
     <Compile Include="Entities\Interfaces\IRegistrationInfo.cs" />
     <Compile Include="Entities\Interfaces\ICodeCampInfo.cs" />
     <Compile Include="Services\Controllers\TimeSlotController.cs" />
+    <Compile Include="Services\Controllers\VolunteerTaskController.cs" />
+    <Compile Include="Services\Controllers\VolunteerController.cs" />
     <Compile Include="Services\Controllers\TrackController.cs" />
     <Compile Include="Services\Controllers\UtilityController.cs" />
     <Compile Include="Services\Controllers\SpeakerController.cs" />
@@ -228,6 +232,8 @@
     <Content Include="Scripts\IE-Support\html5shiv.min.js" />
     <Content Include="Scripts\IE-Support\respond .min.js" />
     <Content Include="Scripts\IE-Support\respond.js" />
+    <Content Include="Scripts\moment\angular-moment.js" />
+    <Content Include="Scripts\moment\angular-moment.min.js" />
     <Content Include="Scripts\moment\moment.min.js" />
     <Content Include="Scripts\moment\moment-with-locales.js" />
     <Content Include="Scripts\moment\moment.js" />
@@ -292,6 +298,7 @@
     <Content Include="Scripts\ng\angular\angular-resource.min.js.map" />
     <Content Include="Scripts\ng\angular\angular-route.min.js.map" />
     <Content Include="Scripts\ng\angular\angular.min.js.map" />
+    <Content Include="Scripts\moment\angular-moment.min.js.map" />
     <None Include="_references.js" />
     <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
