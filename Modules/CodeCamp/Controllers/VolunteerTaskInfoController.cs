@@ -36,10 +36,12 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     public class VolunteerTaskInfoController
     {
         private readonly VolunteerTaskInfoRepository repo = null;
+        private readonly VolunteerInfoRepository volunteerRepo = null;
 
         public VolunteerTaskInfoController() 
         {
             repo = new VolunteerTaskInfoRepository();
+            volunteerRepo=new VolunteerInfoRepository();
         }
 
         public void CreateItem(VolunteerTaskInfo i)
@@ -60,6 +62,19 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public IEnumerable<VolunteerTaskInfo> GetItems(int volunteerId)
         {
             var items = repo.GetItems(volunteerId);
+
+            return items;
+        }
+
+        public List<VolunteerTaskInfo> GetItemsAll(int codeCampId)
+        {
+            var volunteerIds = volunteerRepo.GetItems(codeCampId).Select(v => v.VolunteerId);
+            var items = new List<VolunteerTaskInfo>();
+
+            foreach (var queriedItems in volunteerIds.Select(id => repo.GetItems(id)).Where(queriedItems => queriedItems.Any()))
+            {
+                items.AddRange(queriedItems);
+            }
 
             return items;
         }
