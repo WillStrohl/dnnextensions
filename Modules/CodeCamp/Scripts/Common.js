@@ -22,21 +22,6 @@ function ParseTime(dateToFormat) {
     return time;
 }
 
-// TODO: remove the dnnConfirm support and replace with angular modal (speakers view)
-$(document).ready(function () {
-    addConfirmationToElements();
-});
-
-function addConfirmationToElements() {
-    console.log("Called addConfirmationToElements()");
-    $(".add-confirm").dnnConfirm({
-        text: "Are you sure you want to delete this?",
-        yesText: "Yes",
-        noText: "No",
-        title: "Delete Confirmation"
-    });
-}
-
 function GetSlugFromValue(value) {
     /* Remove unwanted characters, only accept alphanumeric and space */
     var slug = value.replace(/[^A-Za-z0-9 ]/g, "");
