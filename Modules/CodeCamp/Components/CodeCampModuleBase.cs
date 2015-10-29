@@ -116,7 +116,6 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/app.js", FileOrder.Js.DefaultPriority + 12, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/Common.js", FileOrder.Js.DefaultPriority + 14, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/factories/codeCampServiceFactory.js", FileOrder.Js.DefaultPriority + 16, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/factories/codeCampEntityFactory.js", FileOrder.Js.DefaultPriority + 18, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/dateDirectives.js", FileOrder.Js.DefaultPriority + 20, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/confirmDirectives.js", FileOrder.Js.DefaultPriority + 22, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/sessionDirectives.js", FileOrder.Js.DefaultPriority + 24, DnnFormBottomProvider.DefaultName);
@@ -144,8 +143,8 @@ namespace WillStrohl.Modules.CodeCamp
             if (IncludeBootstrap)
             {
                 ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Scripts/bootstrap/3.3.5/css/bootstrap.css", FileOrder.Css.DefaultPriority);
-                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/css/bootstrap-flat.css", FileOrder.Css.DefaultPriority + 1);
-                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/css/bootstrap-flat-extras.css", FileOrder.Css.DefaultPriority + 2);
+                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/flat/bootstrap-flat.css", FileOrder.Css.DefaultPriority + 1);
+                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/flat/bootstrap-flat-extras.css", FileOrder.Css.DefaultPriority + 2);
             }
 
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
@@ -215,8 +214,8 @@ namespace WillStrohl.Modules.CodeCamp
             if (IncludeBootstrap)
             {
                 ClientResourceManager.RegisterStyleSheet(this.Page, prefix + "://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css", FileOrder.Css.DefaultPriority);
-                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/css/bootstrap-flat.css", FileOrder.Css.DefaultPriority + 1);
-                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/bootflat/css/bootstrap-flat-extras.css", FileOrder.Css.DefaultPriority + 2);
+                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/flat/bootstrap-flat.css", FileOrder.Css.DefaultPriority + 1);
+                ClientResourceManager.RegisterStyleSheet(this.Page, "~/DesktopModules/CodeCamp/Styles/bootstrap/flat/bootstrap-flat-extras.css", FileOrder.Css.DefaultPriority + 2);
             }
 
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js", FileOrder.Js.DefaultPriority, DnnPageHeaderProvider.DefaultName);
