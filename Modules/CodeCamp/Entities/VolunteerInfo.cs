@@ -58,5 +58,17 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         }
 
         public string CustomProperties { get; set; }
+
+        [IgnoreColumn]
+        public string FullName { get; set; }
+
+        [IgnoreColumn]
+        public int TasksOpen { get; set; }
+
+        [IgnoreColumn]
+        public int TasksClosed { get; set; }
+
+        [IgnoreColumn]
+        public int TasksOverdue { get; set; }
     }
 }

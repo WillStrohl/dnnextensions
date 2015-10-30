@@ -49,6 +49,12 @@ namespace WillStrohl.Modules.CodeCamp.Components
         public const string RESPONSE_SUCCESS = "Success";
         public const string RESPONSE_FAILURE = "Failure";
 
+        public const string TASKSTATE_OPEN = "open";
+        public const string TASKSTATE_CLOSED = "closed";
+        public const string TASKSTATE_OVERDUE = "overdue";
+
+        public const string SPACE = " ";
+
         public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
     }
 }

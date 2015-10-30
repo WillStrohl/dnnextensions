@@ -28,6 +28,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -89,6 +90,27 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         public void UpdateItem(VolunteerTaskInfo i)
         {
             repo.UpdateItem(i);
+        }
+
+        public int GetVolunteerTaskCount(int volunteerId, string taskState)
+        {
+            var tasks = repo.GetItems(volunteerId);
+            var count = 0;
+
+            switch (taskState)
+            {
+                case "open":
+                    count = tasks.Count(t => !t.Completed);
+                    break;
+                case "closed":
+                    count = tasks.Count(t => t.Completed);
+                    break;
+                case "overdue":
+                    count = tasks.Count(t => t.EndDate < DateTime.Now && !t.Completed);
+                    break;
+            }
+
+            return count;
         }
     }
 }

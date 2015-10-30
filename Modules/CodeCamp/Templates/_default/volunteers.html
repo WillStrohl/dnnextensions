@@ -1,24 +1,112 @@
 ﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
 <h2>Event Volunteers</h2>
-<div class="container">
+<div class="container" ng-show="!userIsRegistered">
     <div class="row">
         <div class="col-xs-12">
-            I am not registered and want to volunteer or see volunteers.
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12" ng-show="!userIsVolunteer">
-            I am registered and want to volunteer.
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12" ng-show="userIsVolunteer">
-            I am a volunteer. I want to see my tasks.
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12" ng-show="userCanEdit">
-            I am an admin and want to see all tasks.
+            <div class="alert alert-warning">
+                <h4>Want to Help?</h4>
+                <p>We're always looking for volunteers. If you want to help us, <a href="#/register">register</a> and then you can volunteer here.</p>
+            </div>
         </div>
     </div>
 </div>
+<div class="container" ng-show="userIsRegistered && !userIsVolunteer">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-info">
+                <h4>Want to Help?</h4>
+                <p>We'd be happy to have you. If you want to help us, simply click the button below and tell us how you'd like to help.</p>
+                <p>
+                    <a class="btn btn-primary" ng-click="openVolunteerSubmission()">Let Me Help</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-show="userIsVolunteer || userCanEdit">
+    <div class="row">
+        <div class="col-xs-12">
+            <uib-tabset>
+                <uib-tab heading="My Tasks" ng-show="userIsVolunteer">
+                    <div class="volunteer-task-wrapper">
+                        <div class="table-responsive" ng-show="volunteerTasks.length > 0">
+                            <table class="table table-striped myTasksTable">
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Begin</th>
+                                    <th>Due</th>
+                                    <th>Completed</th>
+                                </tr>
+                                <tr ng-repeat="task in volunteerTasks | orderBy: 'BeginDate'">
+                                    <td>{{task.Title}}</td>
+                                    <td>{{task.BeginDate}}</td>
+                                    <td>{{task.EndDate}}</td>
+                                    <td>{{task.Completed}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="alert alert-warning" ng-show="volunteerTasks.length == 0">
+                            <h4>Lucky you!</h4>
+                            <p>You don't have any tasks yet. Some may get assigned to you soon.</p>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab heading="Manage Tasks" ng-show="userCanEdit">
+                    <div class="volunteer-task-wrapper">
+                        <table class="table table-striped allTasksTable">
+                            <tr>
+                                <th>Volunteer</th>
+                                <th>Open</th>
+                                <th>Completed</th>
+                                <th>Overdue</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr ng-repeat="volunteer in volunteers | orderBy: 'BeginDate'">
+                                <td><strong>{{volunteer.FullName}}</strong><br />{{volunteer.Notes}}</td>
+                                <td>{{volunteer.TasksOpen}}</td>
+                                <td>{{volunteer.TasksClosed}}</td>
+                                <td>{{volunteer.TasksOverdue}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-default">Add Task</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="AddVolunteerModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Volunteer to Help</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-md" ng-form="createVolunteerForm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group" ng-class="{ 'has-error error' : createVolunteerForm.notes.$dirty && createVolunteerForm.notes.$invalid }">
+                        <label for="notes">What do you want to do? *</label>
+                        <textarea name="notes" ng-model="volunteer.Notes" ng-required="true" class="form-control" placeholder="List any limitations, skills, interests, or resources you have" maxlength="200" required></textarea>
+                        <p class="help-block" ng-show="createTrackForm.description.$dirty && createTrackForm.description.$invalid">
+                            Notes are required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-md">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createVolunteerForm.$invalid" ng-click="ok()">I'm Ready to Help!</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

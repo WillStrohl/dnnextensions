@@ -31,16 +31,19 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using WillStrohl.Modules.CodeCamp.Components;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
     public class VolunteerInfoController
     {
         private readonly VolunteerInfoRepository repo = null;
+        private readonly RegistrationInfoRepository registrationRepo = null;
 
         public VolunteerInfoController() 
         {
             repo = new VolunteerInfoRepository();
+            registrationRepo = new RegistrationInfoRepository();
         }
 
         public void CreateItem(VolunteerInfo i)
@@ -77,6 +80,17 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             var item = repo.GetItem(itemId, codeCampId);
 
             return item;
+        }
+
+        public string GetItemFullName(int itemId, int codeCampId, int portalId)
+        {
+            var item = repo.GetItem(itemId, codeCampId);
+
+            var registration = registrationRepo.GetItem(item.RegistrationId, codeCampId);
+
+            var userInfo = DotNetNuke.Entities.Users.UserController.GetUserById(portalId, registration.UserId);
+
+            return string.Concat(userInfo.FirstName, Globals.SPACE, userInfo.LastName);
         }
 
         public void UpdateItem(VolunteerInfo i)

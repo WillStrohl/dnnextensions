@@ -59,6 +59,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var volunteers = VolunteerDataAccess.GetItems(codeCampId);
+
+                volunteers = LoadSupplementalProperties(volunteers);
+
                 var response = new ServiceResponse<List<VolunteerInfo>> { Content = volunteers.ToList() };
 
                 if (volunteers == null)
@@ -103,6 +106,11 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     ServiceResponseHelper<VolunteerInfo>.AddNoneFoundError("volunteer", ref response);
                 }
 
+                if (volunteer != null)
+                {
+                    LoadSupplementalProperties(ref volunteer);
+                }
+
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
             catch (Exception ex)
@@ -126,6 +134,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var volunteer = VolunteerDataAccess.GetItemByRegistrationId(registrationId, codeCampId);
+
+                if (volunteer != null)
+                {
+                    LoadSupplementalProperties(ref volunteer);
+                }
+
                 var response = new ServiceResponse<VolunteerInfo> { Content = volunteer };
 
                 if (volunteer == null &&
@@ -183,7 +197,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/CreateVolunteer
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage CreateVolunteer(VolunteerInfo volunteer)
@@ -212,7 +226,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// <remarks>
         /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateVolunteer
         /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public HttpResponseMessage UpdateVolunteer(VolunteerInfo volunteer)
@@ -222,7 +236,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var updatesToProcess = false;
                 var originalVolunteer = VolunteerDataAccess.GetItem(volunteer.VolunteerId, volunteer.CodeCampId);
 
-                if (!string.Equals(volunteer.Notes, volunteer.Notes))
+                if (!string.Equals(volunteer.Notes, originalVolunteer.Notes))
                 {
                     originalVolunteer.Notes = volunteer.Notes;
                     updatesToProcess = true;
@@ -320,6 +334,28 @@ namespace WillStrohl.Modules.CodeCamp.Services
             });
 
             return VolunteerDataAccess.GetItemByRegistrationId(registration.RegistrationId, codeCampId);
+        }
+
+        private void LoadSupplementalProperties(ref VolunteerInfo volunteer)
+        {
+            volunteer.TasksClosed = VolunteerTaskDataAccess.GetVolunteerTaskCount(volunteer.VolunteerId, Globals.TASKSTATE_CLOSED);
+            volunteer.TasksOpen = VolunteerTaskDataAccess.GetVolunteerTaskCount(volunteer.VolunteerId, Globals.TASKSTATE_OPEN);
+            volunteer.TasksOverdue = VolunteerTaskDataAccess.GetVolunteerTaskCount(volunteer.VolunteerId, Globals.TASKSTATE_OVERDUE);
+            volunteer.FullName = VolunteerDataAccess.GetItemFullName(volunteer.VolunteerId, volunteer.CodeCampId, PortalSettings.PortalId);
+        }
+
+        private List<VolunteerInfo> LoadSupplementalProperties(IEnumerable<VolunteerInfo> volunteers)
+        {
+            var newList = new List<VolunteerInfo>();
+
+            foreach (var volunteer in volunteers)
+            {
+                var newItem = volunteer;
+                LoadSupplementalProperties(ref newItem);
+                newList.Add(newItem);
+            }
+
+            return newList;
         }
 
         #endregion
