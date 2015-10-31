@@ -292,7 +292,7 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] (
     [VolunteerId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([VolunteerId]) ON DELETE CASCADE, 
-    [Title] NVARCHAR(100) NOT NULL, 
+    [Title] NVARCHAR(140) NOT NULL, 
     [BeginDate] DATETIME NULL, 
     [EndDate] DATETIME NULL, 
     [Completed] BIT NOT NULL 

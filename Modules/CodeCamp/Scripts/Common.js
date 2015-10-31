@@ -1,5 +1,9 @@
 ﻿"use strict";
 
+var $momentFullDateFormat = "MM/DD/YYYY HH:mm A";
+var $momentDateFormat = "MM/DD/YYYY";
+var $momentTimeFormat = "HH:mm A";
+
 function LogErrors(errors) {
     if (errors) {
         $.each(errors, function (i, error) {

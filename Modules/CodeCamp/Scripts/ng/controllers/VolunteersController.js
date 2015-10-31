@@ -135,6 +135,13 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
 
                     $scope.userHasTasks = ($scope.volunteerTasks.length > 0);
 
+                    if ($scope.userHasTasks) {
+                        angular.forEach($scope.volunteerTasks, function(task, index) {
+                            task.BeginDate = moment(task.BeginDate).format($momentFullDateFormat);
+                            task.EndDate = moment(task.EndDate).format($momentFullDateFormat);
+                        });
+                    }
+
                     LogErrors(serviceResponse.Errors);
                 },
                     function (data) {
@@ -202,6 +209,40 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
         });
     };
 
+    $scope.OpenAddNewTask = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: "AddNewTaskModal.html",
+            controller: "AddNewTaskModalController",
+            size: "md",
+            backdrop: "static",
+            scope: $scope,
+            resolve: {
+                codeCamp: function () {
+                    return $scope.codeCamp;
+                },
+                volunteerId: function () {
+                    if ($scope.volunteer != null) {
+                        return $scope.volunteer.VolunteerId;
+                    } else {
+                        return null;
+                    }
+                },
+                registrationId: function () {
+                    return $scope.currentUserRegistration.RegistrationId;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (savedTask) {
+            $scope.savedTask = savedTask;
+            console.log("$scope.savedTask = " + $scope.savedTask);
+            $scope.LoadVolunteer();
+            $scope.LoadVolunteers();
+        }, function () {
+            console.log("Modal dismissed at: " + new Date());
+        });
+    };
+
     $scope.LoadData();
 
 }]);
@@ -242,7 +283,7 @@ codeCampApp.controller("AddVolunteerModalController", ["$scope", "$rootScope", "
 
         var volunteerAction = ($scope.UpdateMode) ? "UpdateVolunteer" : "CreateVolunteer";
 
-        // save the track
+        // save the volunteer
         factory.callPostService(volunteerAction, $scope.volunteer)
             .success(function (data) {
                 var savedVolunteer = angular.fromJson(data);
@@ -264,4 +305,119 @@ codeCampApp.controller("AddVolunteerModalController", ["$scope", "$rootScope", "
     $scope.cancel = function () {
         $uibModalInstance.dismiss("cancel");
     };
+}]);
+
+/*
+ * Add Task Modal Controller
+ */
+codeCampApp.controller("AddNewTaskModalController", ["$scope", "$rootScope", "$uibModalInstance", "codeCamp", "volunteerId", "registrationId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, codeCamp, volunteerId, registrationId, codeCampServiceFactory) {
+
+    var factory = codeCampServiceFactory;
+    factory.init(moduleId, moduleName);
+
+    $scope.hourSteps = [1, 2, 3];
+    $scope.minuteSteps = [1, 5, 10, 15, 25, 30];
+    $scope.task = {};
+
+    $scope.InitTimePicker = function () {
+        var beginDate = new Date();
+        beginDate.setHours(8);
+        beginDate.setMinutes(0);
+
+        $scope.task.BeginTime = beginDate;
+
+        var endDate = new Date();
+        endDate.setHours(9);
+        endDate.setMinutes(0);
+
+        $scope.task.EndTime = endDate;
+    }
+
+    $scope.LoadData = function() {
+        $scope.InitTimePicker();
+    }
+
+    $scope.ok = function () {
+        // assign default values
+        $scope.task.VolunteerId = volunteerId;
+        $scope.task.Completed = false;
+
+        // concatenate the dates and times before we send it
+        var beginDateMoment = moment(new Date($scope.task.BeginDate.toString()));
+        var beginTimeMoment = moment(new Date($scope.task.BeginTime.toString()));
+        var endDateMoment = moment(new Date($scope.task.EndDate.toString()));
+        var endTimeMoment = moment(new Date($scope.task.EndTime.toString()));
+
+        var beginCombined = moment(beginDateMoment.format($momentDateFormat) + " " + beginTimeMoment.format($momentTimeFormat), $momentFullDateFormat);
+        var endCombined = moment(endDateMoment.format($momentDateFormat) + " " + endTimeMoment.format($momentTimeFormat), $momentFullDateFormat);
+
+        $scope.task.BeginDate = beginCombined.format($momentFullDateFormat);
+        $scope.task.EndDate = endCombined.format($momentFullDateFormat);
+
+        // save the task
+        factory.callPostService("CreateVolunteerTask", $scope.task)
+            .success(function (data) {
+                var savedTask = angular.fromJson(data);
+                $scope.savedTask = savedTask.Content;
+
+                $scope.LoadVolunteer();
+                $scope.LoadVolunteers();
+
+                LogErrors(savedTask.Errors);
+            })
+            .error(function (data, status) {
+                $scope.HasErrors = true;
+                console.log("Unknown error occurred calling CreateVolunteerTask");
+                console.log(data);
+            });
+
+        $uibModalInstance.close($scope.savedTask);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss("cancel");
+    };
+
+    $scope.TimeChanged = function () {
+        var beginDateMoment = moment(new Date($scope.task.BeginDate.toString()));
+        var endDateMoment = moment(new Date($scope.task.EndDate.toString()));
+
+        if (beginDateMoment.isSame(endDateMoment)) {
+            if ($scope.task.EndTime <= $scope.task.BeginTime) {
+                $scope.task.EndTime = addMinutes($scope.task.BeginTime, 45);
+            }
+        }
+    }
+
+    /* DatePicker */
+
+    $scope.datePicker = (function () {
+
+        var method = {};
+        method.instances = [];
+
+        method.open = function ($event, instance) {
+            if ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+            }
+
+            method.instances[instance] = true;
+        };
+
+        method.minDate = new Date() + 1;
+
+        method.maxDate = new Date(2023, 12, 24);
+
+        method.options = {
+            formatYear: "yyyy",
+            startingDay: 1
+        };
+
+        method.format = "MM/dd/yyyy";
+
+        return method;
+    }());
+
+    $scope.LoadData();
 }]);
