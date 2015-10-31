@@ -88,6 +88,24 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check if you want to use a CDN to load all of the third party scripts and CSS..
+        /// </summary>
+        internal static string lblUseCdn_Help {
+            get {
+                return ResourceManager.GetString("lblUseCdn.Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use CDN.
+        /// </summary>
+        internal static string lblUseCdn_Text {
+            get {
+                return ResourceManager.GetString("lblUseCdn.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose the view that you wish to be loaded into this instance of the module..
         /// </summary>
         internal static string lblView_Help {

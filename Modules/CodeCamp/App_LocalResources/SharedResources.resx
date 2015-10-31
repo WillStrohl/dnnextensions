@@ -138,4 +138,10 @@
   <data name="lblIncludeBootstrap.Text" xml:space="preserve">
     <value>Include Bootstrap?</value>
   </data>
+  <data name="lblUseCdn.Help" xml:space="preserve">
+    <value>Check if you want to use a CDN to load all of the third party scripts and CSS.</value>
+  </data>
+  <data name="lblUseCdn.Text" xml:space="preserve">
+    <value>Use CDN</value>
+  </data>
 </root>
