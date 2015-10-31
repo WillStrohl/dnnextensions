@@ -61,13 +61,13 @@
                                 <th>Overdue</th>
                                 <th>&nbsp;</th>
                             </tr>
-                            <tr ng-repeat="volunteer in volunteers | orderBy: 'BeginDate'">
-                                <td><strong>{{volunteer.FullName}}</strong><br />{{volunteer.Notes}}</td>
-                                <td>{{volunteer.TasksOpen}}</td>
-                                <td>{{volunteer.TasksClosed}}</td>
-                                <td>{{volunteer.TasksOverdue}}</td>
+                            <tr ng-repeat="vol in volunteers | orderBy: 'BeginDate'">
+                                <td><strong>{{vol.FullName}}</strong><br />{{vol.Notes}}</td>
+                                <td>{{vol.TasksOpen}}</td>
+                                <td>{{vol.TasksClosed}}</td>
+                                <td>{{vol.TasksOverdue}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-default" ng-click="OpenAddNewTask(volunteer.VolunteerId)">Add Task</button>
+                                    <button type="button" class="btn btn-default" ng-click="OpenAddNewTask(vol.VolunteerId)">Add Task</button>
                                 </td>
                             </tr>
                         </table>
