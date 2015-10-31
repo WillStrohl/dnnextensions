@@ -9,7 +9,16 @@ var codeCampControllers = angular.module("codeCampControllers", []);
 codeCampApp.config(["$routeProvider", 
 	function ($routeProvider) {
 
-        //TODO: dynamically parse and/or replace _default with "templateFolder"
+	    //TODO: dynamically parse and/or replace _default with "templateFolder"
+	    //TODO: add registrant list view, for printing badges by organizers
+	    //TODO: add social networks to registration
+	    //TODO: add image upload for event 
+	    //TODO: add image upload for registration
+	    //TODO: add missing registration fields
+	    //TODO: add missing event fields
+	    //TODO: add logic to only show approved sessions
+	    //TODO: complete the agenda view
+        //TODO: add template editor view
 
 		$routeProvider
 		.when("/update", {
