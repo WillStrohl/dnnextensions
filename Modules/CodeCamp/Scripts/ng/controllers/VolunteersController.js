@@ -209,7 +209,7 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
         });
     };
 
-    $scope.OpenAddNewTask = function () {
+    $scope.OpenAddNewTask = function (volunteerId) {
         var modalInstance = $uibModal.open({
             templateUrl: "AddNewTaskModal.html",
             controller: "AddNewTaskModalController",
@@ -221,14 +221,7 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
                     return $scope.codeCamp;
                 },
                 volunteerId: function () {
-                    if ($scope.volunteer != null) {
-                        return $scope.volunteer.VolunteerId;
-                    } else {
-                        return null;
-                    }
-                },
-                registrationId: function () {
-                    return $scope.currentUserRegistration.RegistrationId;
+                    return volunteerId;
                 }
             }
         });
@@ -310,7 +303,7 @@ codeCampApp.controller("AddVolunteerModalController", ["$scope", "$rootScope", "
 /*
  * Add Task Modal Controller
  */
-codeCampApp.controller("AddNewTaskModalController", ["$scope", "$rootScope", "$uibModalInstance", "codeCamp", "volunteerId", "registrationId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, codeCamp, volunteerId, registrationId, codeCampServiceFactory) {
+codeCampApp.controller("AddNewTaskModalController", ["$scope", "$rootScope", "$uibModalInstance", "codeCamp", "volunteerId", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, codeCamp, volunteerId, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
