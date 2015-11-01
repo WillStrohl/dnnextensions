@@ -7,55 +7,20 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
     $scope.RegistrationSuccess = false;
     $scope.RegistrationUpdateSuccess = false;
     $scope.RegistrationUpdateError = false;
+    $scope.HasBeenRegistered = false;
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
-    factory.callGetService("GetCurrentUser")
+    $scope.LoadData = function () {
+        factory.callGetService("GetCurrentUser")
         .then(function (response) {
             var fullResult = angular.fromJson(response);
             var serviceResponse = JSON.parse(fullResult.data);
 
             $scope.userInfo = serviceResponse.Content;
 
-            factory.callGetService("GetEventByModuleId")
-                .then(function (response) {
-                    var fullResult = angular.fromJson(response);
-                    var serviceResponse = JSON.parse(fullResult.data);
-
-                    $scope.codeCamp = serviceResponse.Content;
-
-                    if ($scope.codeCamp != null) {
-                        $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
-                        $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
-                    }
-
-                    if ($scope.codeCamp === null) {
-                        $scope.hasCodeCamp = false;
-                    } else {
-                        $scope.hasCodeCamp = true;
-
-                        factory.callGetService("GetRegistrationByUserId?userId=" + $scope.userInfo.UserID + "&codeCampId=" + $scope.codeCamp.CodeCampId)
-                            .then(function (response) {
-                                var fullResult = angular.fromJson(response);
-                                var serviceResponse = JSON.parse(fullResult.data);
-
-                                $scope.registration = serviceResponse.Content;
-
-                                LogErrors(serviceResponse.Errors);
-                            },
-                            function (data) {
-                                console.log("Unknown error occurred calling GetRegistrationByUserId");
-                                console.log(data);
-                            });
-                    }
-
-                    LogErrors(serviceResponse.Errors);
-                },
-                function (data) {
-                    console.log("Unknown error occurred calling GetEventByModuleId");
-                    console.log(data);
-                });
+            $scope.GetEventDetails();
 
             LogErrors(serviceResponse.Errors);
         },
@@ -63,10 +28,58 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
             console.log("Unknown error occurred calling GetCurrentUser");
             console.log(data);
         });
+    }
+
+    $scope.GetEventDetails = function () {
+        factory.callGetService("GetEventByModuleId")
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.codeCamp = serviceResponse.Content;
+
+                if ($scope.codeCamp != null) {
+                    $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
+                    $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
+                }
+
+                if ($scope.codeCamp === null) {
+                    $scope.hasCodeCamp = false;
+                } else {
+                    $scope.hasCodeCamp = true;
+
+                    $scope.GetRegistration();
+                }
+
+                LogErrors(serviceResponse.Errors);
+            },
+            function (data) {
+                console.log("Unknown error occurred calling GetEventByModuleId");
+                console.log(data);
+            });
+    }
+
+    $scope.GetRegistration = function () {
+        factory.callGetService("GetRegistrationByUserId?userId=" + $scope.userInfo.UserID + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.registration = serviceResponse.Content;
+
+                $scope.HasBeenRegistered = ($scope.registration != null);
+
+                LogErrors(serviceResponse.Errors);
+            },
+            function (data) {
+                console.log("Unknown error occurred calling GetRegistrationByUserId");
+                console.log(data);
+            });
+    }
 
     $scope.processRegistration = function () {
 
-        if ($scope.userInfo.UserID > -1) {
+        if ($scope.HasBeenRegistered) {
             // update existing registration
             factory.callPostService("UpdateRegistration", $scope.registration)
                 .success(function (data) {
@@ -76,7 +89,7 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
                     if (serviceResponse.Content == "SUCCESS") {
                         $scope.RegistrationUpdateSuccess = true;
 
-                        setTimeout(function() { $window.location.href = pageUrl; }, 3000);
+                        setTimeout(function () { $window.location.href = pageUrl; }, 3000);
                     } else {
                         $scope.RegistrationUpdateError = true;
                     }
@@ -85,7 +98,7 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
                 })
                 .error(function (data, status) {
                     $scope.HasErrors = true;
-                    console.log("Unknown error occurred calling CreateRegistration");
+                    console.log("Unknown error occurred calling UpdateRegistration");
                     console.log(data);
                 });
         } else {
@@ -100,13 +113,13 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
             $scope.registration.CustomPropertiesObj.push({ Name: "PortalId", Value: portalId });
 
             factory.callPostService("CreateRegistration", $scope.registration)
-                .success(function(data) {
+                .success(function (data) {
                     var savedRegistration = angular.fromJson(data);
                     $scope.savedRegistration = savedRegistration.Content;
                     //console.log("savedRegistration = " + savedRegistration);
 
                     if (savedRegistration.Errors.length > 0) {
-                        $.each(savedRegistration.Errors, function(index, error) {
+                        $.each(savedRegistration.Errors, function (index, error) {
                             if (error.Code == "USER-CREATE-ERROR" && $scope.UserExistsErrors == false) {
                                 $scope.UserExistsErrors = true;
                             }
@@ -117,12 +130,12 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
                     } else {
                         $scope.RegistrationSuccess = true;
 
-                        setTimeout(function() { $window.location.href = pageUrl; }, 3000);
+                        setTimeout(function () { $window.location.href = pageUrl; }, 3000);
                     }
 
                     LogErrors(savedRegistration.Errors);
                 })
-                .error(function(data, status) {
+                .error(function (data, status) {
                     $scope.HasErrors = true;
                     console.log("Unknown error occurred calling CreateRegistration");
                     console.log(data);
@@ -134,5 +147,7 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
     $scope.goToPage = function (pageName) {
         $location.path(pageName);
     }
+
+    $scope.LoadData();
 
 }]);

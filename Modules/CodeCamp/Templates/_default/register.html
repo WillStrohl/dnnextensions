@@ -86,7 +86,7 @@
         <div class="col-md-offset-2 col-md-10 col-lg-offset-8 col-lg-4">
             <div class="pull-right">
                 <button class="btn btn-success" type="button" ng-disabled="registrationForm.$invalid || RegistrationSuccess" ng-click="processRegistration()">
-                    <span ng-show="registration == null">Save</span><span ng-show="registration != null">Update</span> Registration
+                    <span ng-show="!HasBeenRegistered">Save</span><span ng-show="HasBeenRegistered">Update</span> Registration
                 </button>
                 <button class="btn" type="button" ng-click="goToPage('/about')">Cancel</button>
             </div>
