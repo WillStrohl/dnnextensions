@@ -18,7 +18,12 @@ codeCampApp.config(["$routeProvider",
 	    //TODO: add missing event fields
 	    //TODO: add logic to only show approved sessions
 	    //TODO: complete the agenda view
-        //TODO: add template editor view
+	    //TODO: add template editor view
+	    //TODO: speakers page is completely blank when a code camp is first created and with no registrations
+	    //TODO: ensure that show shirt size and other settings are observed in other views
+	    //TODO: first load of Volunteers view by admin gets manage tasks, want to help message, and no tasks message (not registered yet)
+	    //TODO: first load of Sessions view is blank, with filter (not registered yet)
+        //TODO: first load of Speakers view is is blank (not registered yet)
 
 		$routeProvider
 		.when("/update", {
