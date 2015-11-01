@@ -311,6 +311,7 @@ codeCampApp.controller("AddNewTaskModalController", ["$scope", "$rootScope", "$u
     $scope.hourSteps = [1, 2, 3];
     $scope.minuteSteps = [1, 5, 10, 15, 25, 30];
     $scope.task = {};
+    $scope.volunteer = {};
 
     $scope.InitTimePicker = function () {
         var beginDate = new Date();
@@ -326,8 +327,35 @@ codeCampApp.controller("AddNewTaskModalController", ["$scope", "$rootScope", "$u
         $scope.task.EndTime = endDate;
     }
 
-    $scope.LoadData = function() {
-        $scope.InitTimePicker();
+    $scope.LoadData = function () {
+        factory.callGetService("GetVolunteer?itemId=" + volunteerId + "&codeCampId=" + codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.volunteer = serviceResponse.Content;
+
+                $scope.InitTimePicker();
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetVolunteer");
+                    console.log(data);
+                });
+    }
+
+    $scope.SyncDates = function () {
+        if (!angular.isDefined($scope.task.BeginDate)) {
+            $scope.task.BeginDate = $scope.task.EndDate;
+            $scope.TimeChanged();
+            return;
+        }
+
+        if (moment($scope.task.BeginDate).isAfter($scope.task.EndDate)) {
+            $scope.task.EndDate = $scope.task.BeginDate;
+            $scope.TimeChanged();
+        }
     }
 
     $scope.ok = function () {
