@@ -10,45 +10,51 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
-    factory.callGetService("GetEventByModuleId")
-        .then(function (response) {
-            var fullResult = angular.fromJson(response);
-            var serviceResponse = JSON.parse(fullResult.data);
+    $scope.LoadData = function () {
+        factory.callGetService("GetEventByModuleId")
+           .then(function (response) {
+               var fullResult = angular.fromJson(response);
+               var serviceResponse = JSON.parse(fullResult.data);
 
-            $scope.codeCamp = serviceResponse.Content;
+               $scope.codeCamp = serviceResponse.Content;
 
-            if ($scope.codeCamp != null) {
-                $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
-                $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
-            }
+               if ($scope.codeCamp != null) {
+                   $scope.codeCamp.BeginDate = moment($scope.codeCamp.BeginDate).format($momentDateFormat);
+                   $scope.codeCamp.EndDate = moment($scope.codeCamp.EndDate).format($momentDateFormat);
+               }
 
-            if ($scope.codeCamp === null) {
-                $scope.hasCodeCamp = false;
-                $scope.codeCamp = { CodeCampId: -1 };
-            } else {
-                $scope.hasCodeCamp = true;
-            }
+               if ($scope.codeCamp === null) {
+                   $scope.hasCodeCamp = false;
+                   $scope.codeCamp = { CodeCampId: -1 };
+               } else {
+                   $scope.hasCodeCamp = true;
+               }
 
-            factory.callGetService("UserCanEditEvent?itemId=" + $scope.codeCamp.CodeCampId)
-                .then(function (response) {
-                    var fullResult = angular.fromJson(response);
-                    var serviceResponse = JSON.parse(fullResult.data);
+               $scope.LoadEditPermissions();
 
-                    $scope.userCanEdit = (serviceResponse.Content == "Success");
+               LogErrors(serviceResponse.Errors);
+           },
+           function (data) {
+               console.log("Unknown error occurred calling GetEventByModuleId");
+               console.log(data);
+           });
+    }
 
-                    LogErrors(serviceResponse.Errors);
-                },
-                function (data) {
-                    console.log("Unknown error occurred calling UserCanEditEvent");
-                    console.log(data);
-                });
+    $scope.LoadEditPermissions = function () {
+        factory.callGetService("UserCanEditEvent?itemId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
 
-            LogErrors(serviceResponse.Errors);
-        },
-        function (data) {
-            console.log("Unknown error occurred calling GetEventByModuleId");
-            console.log(data);
-        });
+                $scope.userCanEdit = (serviceResponse.Content == "Success");
+
+                LogErrors(serviceResponse.Errors);
+            },
+            function (data) {
+                console.log("Unknown error occurred calling UserCanEditEvent");
+                console.log(data);
+            });
+    }
 
     $scope.createEvent = function () {
         var action = "";
@@ -59,11 +65,16 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
             action = "CreateEvent";
         }
 
+        $scope.codeCamp.BeginDate = moment(new Date($scope.codeCamp.BeginDate)).format($momentFullDateFormat);
+        $scope.codeCamp.EndDate = moment(new Date($scope.codeCamp.EndDate)).format($momentFullDateFormat);
+
         factory.callPostService(action, $scope.codeCamp)
             .success(function (data) {
                 $scope.HasSuccess = true;
 
                 var serviceResponse = angular.fromJson(data);
+
+                $scope.LoadData();
 
                 LogErrors(serviceResponse.Errors);
             })
@@ -78,9 +89,20 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
         $location.path("/about");
     }
 
+    $scope.SyncDates = function () {
+        if (!angular.isDefined($scope.codeCamp.BeginDate)) {
+            $scope.codeCamp.BeginDate = moment(new Date($scope.codeCamp.EndDate.toString())).format($momentDateFormat);
+            return;
+        }
+
+        if (moment(new Date($scope.codeCamp.BeginDate)).isAfter(moment(new Date($scope.codeCamp.EndDate)))) {
+            $scope.codeCamp.EndDate = moment(new Date($scope.codeCamp.BeginDate.toString())).format($momentDateFormat);
+        }
+    }
+
     /* DatePicker */
 
-    $scope.datePicker = (function() {
+    $scope.datePicker = (function () {
 
         var method = {};
         method.instances = [];
@@ -94,7 +116,7 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
             method.instances[instance] = true;
         };
 
-        method.minDate = new Date() +1;
+        method.minDate = new Date() + 1;
 
         method.maxDate = new Date(2023, 12, 24);
 
@@ -107,5 +129,7 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
 
         return method;
     }());
-    
+
+    $scope.LoadData();
+
 }]);
