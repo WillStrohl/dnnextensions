@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1>Create/Update Code Camp</h1>
+                    <h1>Create/Update Event</h1>
                 </div>
             </div>
         </div>
@@ -59,7 +59,8 @@
             <p class="input-group">
                 <input type="text" name="beginDate" ng-model="codeCamp.BeginDate"
                        uib-datepicker-popup="{{datePicker.format}}" min-date="datePicker.minDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['BeginDate']"
-                       ng-focus="datePicker.open($event, 'BeginDate')" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event begins" min="datePicker.minDate" max="datePicker.maxDate" required ng-trim/>
+                       ng-focus="datePicker.open($event, 'BeginDate')" ng-change="SyncDates()" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event begins" min="datePicker.minDate" 
+                       max="datePicker.maxDate" required ng-trim/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'BeginDate')"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -68,8 +69,8 @@
             <p class="input-group">
                 <input type="text" name="endDate" ng-model="codeCamp.EndDate"
                        uib-datepicker-popup="{{datePicker.format}}" min-date="codeCamp.BeginDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['EndDate']"
-                       ng-focus="datePicker.open($event, 'EndDate')" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event ends" min="codeCamp.BeginDate" max="datePicker.maxDate" 
-                       date-greater-than="{{codeCamp.BeginDate | date:'short'}}" ng-trim/>
+                       ng-focus="datePicker.open($event, 'EndDate')" ng-change="SyncDates()" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the event ends" min="codeCamp.BeginDate" 
+                       max="datePicker.maxDate" date-greater-than="{{codeCamp.BeginDate | date:'short'}}" ng-trim/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'EndDate')"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
