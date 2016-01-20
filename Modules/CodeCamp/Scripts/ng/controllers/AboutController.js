@@ -39,8 +39,8 @@ codeCampControllers.controller("aboutController", ["$scope", "$routeParams", "$l
                     $scope.hasCodeCamp = true;
 
                     if ($scope.codeCamp != null) {
-                        $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
-                        $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
+                        $scope.codeCamp.BeginDate = moment($scope.codeCamp.BeginDate).format($momentDateFormat);
+                        $scope.codeCamp.EndDate = moment($scope.codeCamp.EndDate).format($momentDateFormat);
                     }
 
                     $scope.LoadEditPermissions();
