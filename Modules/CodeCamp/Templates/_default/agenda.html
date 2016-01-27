@@ -1,7 +1,7 @@
 ﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
 <h2>Event Agenda</h2>
 <div class="container">
-    <div class="row">
+    <div class="row" ng-show="userCanEdit">
         <div class="col-xs-12">
             <div class="pull-right">
                 <button type="button" class="btn btn-default" ng-click="goToPage('/timeslots')">
