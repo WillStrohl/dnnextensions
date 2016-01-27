@@ -5,6 +5,8 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
 
+    $scope.eventDays = [];
+
     $scope.LoadData = function () {
         factory.callGetService("GetEventByModuleId")
             .then(function (response) {
@@ -24,6 +26,27 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                     $scope.hasCodeCamp = true;
 
                     $scope.LoadEditPermissions();
+                }
+
+                var beginMoment = moment($scope.codeCamp.BeginDate);
+                var endMoment = moment($scope.codeCamp.EndDate);
+                $scope.eventLength = endMoment.diff(beginMoment, "days") + 1;
+
+                for (var i = 0; i < $scope.eventLength; i++) {
+                    var newDay = {};
+                    var newMoment = moment(beginMoment.format("MM/DD/YYYY"));
+
+                    if (i > 0) {
+                        newMoment = newMoment.add(i, "days");
+                    }
+
+                    newDay.Month = newMoment.format("MMM");
+                    newDay.DayName = newMoment.format("dddd");
+                    newDay.DayNumber = newMoment.format("DD");
+                    newDay.Date = newMoment.format("MM/DD/YYYY");
+                    newDay.Year = newMoment.format("YYYY");
+
+                    $scope.eventDays.push(newDay);
                 }
 
                 LogErrors(serviceResponse.Errors);
@@ -81,6 +104,11 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.timeSlots = serviceResponse.Content;
+
+                angular.forEach($scope.timeSlots, function (timeSlot, index) {
+                    timeSlot.BeginTime = moment(timeSlot.BeginTime).format("hh:mm A");
+                    timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
+                });
 
                 LogErrors(serviceResponse.Errors);
             },

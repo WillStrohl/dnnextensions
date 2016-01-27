@@ -23,24 +23,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Single event in a single day -->
-                        <tr>
-                            <td class="agenda-date" class="active" rowspan="1">
-                                <div class="dayofmonth">26</div>
-                                <div class="dayofweek">Saturday</div>
-                                <div class="shortdate text-muted">July, 2014</div>
-                            </td>
-                            <td class="agenda-time">
-                                5:30 AM
-                            </td>
-                            <td class="agenda-events">
-                                <div class="agenda-event">
-                                    <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i>
-                                    Fishing
-                                </div>
-                            </td>
-                        </tr>
-
+                    <tr ng-repeat="eventDay in eventDays | orderBy: 'Date'">
+                        <td class="agenda-date" title="{{eventDay.Date}}" class="active">
+                            <div class="dayofmonth">{{eventDay.DayNumber}}</div>
+                            <div class="dayofweek">{{eventDay.DayName}}</div>
+                            <div class="shortdate text-muted">{{eventDay.Month}}, {{eventDay.Year}}</div>
+                        </td>
+                        <td>
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                <tr ng-repeat="timeSlot in timeSlots | orderBy: 'BeginTime'">
+                                    <td>
+                                        {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
+                                    </td>
+                                    <td>
+                                        Sessions go here
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
                         <!-- Multiple events in a single day (note the rowspan) -->
                         <tr>
                             <td class="agenda-date" class="active" rowspan="3">
@@ -74,6 +77,23 @@
                             <td class="agenda-events">
                                 <div class="agenda-event">
                                     Aria's dance recital
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Single event in a single day -->
+                        <tr>
+                            <td class="agenda-date" class="active" rowspan="1">
+                                <div class="dayofmonth">26</div>
+                                <div class="dayofweek">Saturday</div>
+                                <div class="shortdate text-muted">July, 2014</div>
+                            </td>
+                            <td class="agenda-time">
+                                5:30 AM
+                            </td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i>
+                                    Fishing
                                 </div>
                             </td>
                         </tr>
