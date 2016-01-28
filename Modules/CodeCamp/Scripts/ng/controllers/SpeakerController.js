@@ -143,7 +143,6 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
 
     $scope.IsUserRegisteredForSession = function (sessionId) {
         var result = $scope.SessionRegistration.indexOf(sessionId) >= 0;
-        console.log("IsUserRegisteredForSession(" + sessionId + ") = " + result);
         return result;
     }
 
