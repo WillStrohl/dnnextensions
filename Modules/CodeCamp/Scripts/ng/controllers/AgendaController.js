@@ -126,18 +126,20 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                 });
     }
 
-    $scope.LoadSessions = function (trackId) {
-        factory.callGetService("GetSessionsByTrackId?trackId=" + trackId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+    $scope.LoadSessionsByTimeSlotId = function (timeSlotId) {
+        factory.callGetService("GetSessionsByTimeSlotId?timeSlotId=" + timeSlotId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
 
-                $scope.assignedSessions = serviceResponse.Content;
+                var timeSlotSessions = serviceResponse.Content;
 
                 LogErrors(serviceResponse.Errors);
+
+                return timeSlotSessions;
             },
                 function (data) {
-                    console.log("Unknown error occurred calling GetSessionsByTrackId");
+                    console.log("Unknown error occurred calling GetSessionsByTimeSlotId");
                     console.log(data);
                     return null;
                 });

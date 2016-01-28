@@ -202,6 +202,37 @@ namespace WillStrohl.Modules.CodeCamp.Services
         }
 
         /// <summary>
+        /// Get all sessions by the ID of the time slot
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetSessionsByTimeSlotId
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetSessionsByTimeSlotId(int timeSlotId, int codeCampId)
+        {
+            try
+            {
+                var sessions = SessionDataAccess.GetItemsByTimeSlotId(timeSlotId, codeCampId);
+
+                var response = new ServiceResponse<List<SessionInfo>> { Content = sessions.ToList() };
+
+                if (!sessions.Any())
+                {
+                    ServiceResponseHelper<List<SessionInfo>>.AddNoneFoundError("sessions", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Get a session
         /// </summary>
         /// <returns></returns>
