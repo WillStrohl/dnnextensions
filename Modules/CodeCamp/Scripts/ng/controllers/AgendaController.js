@@ -106,8 +106,16 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                 $scope.timeSlots = serviceResponse.Content;
 
                 angular.forEach($scope.timeSlots, function (timeSlot, index) {
+                    var beginDateTime = moment(timeSlot.BeginTime);
+
                     timeSlot.BeginTime = moment(timeSlot.BeginTime).format("hh:mm A");
                     timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
+
+                    var seconds = beginDateTime.seconds();
+                    var minutes = beginDateTime.minutes();
+                    var hours = beginDateTime.hours();
+
+                    timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
                 });
 
                 LogErrors(serviceResponse.Errors);

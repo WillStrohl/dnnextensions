@@ -418,3 +418,10 @@
 /* Events */
 .agenda .agenda-events {  } 
 .agenda .agenda-events .agenda-event {  } 
+
+.agenda-date-column {
+    width: 160px;
+}
+.agenda-session-column {
+
+}
