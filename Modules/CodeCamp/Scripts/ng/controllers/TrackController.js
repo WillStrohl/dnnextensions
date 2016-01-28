@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 codeCampControllers.controller("trackController", [
-    "$scope", "$routeParams", "$http", "$location", "$modal", "codeCampServiceFactory", function($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
+    "$scope", "$routeParams", "$http", "$location", "$uibModal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
 
         var factory = codeCampServiceFactory;
         factory.init(moduleId, moduleName);
@@ -348,10 +348,10 @@ codeCampControllers.controller("trackController", [
             $location.path(pageName);
         }
 
-        $scope.ManageSessions = function() {
+        $scope.AssignSessions = function() {
             var modalInstance = $uibModal.open({
-                templateUrl: "ManageSessionsModal.html",
-                controller: "ManageSessionsModalController",
+                templateUrl: "AssignSessionsModal.html",
+                controller: "AssignSessionsModalController",
                 size: "lg",
                 backdrop: "static",
                 scope: $scope,
@@ -375,6 +375,34 @@ codeCampControllers.controller("trackController", [
                 $scope.LoadAssignedSessions();
                 $scope.LoadUnassignedSessions();
             }, function() {
+                console.log("Modal dismissed at: " + new Date());
+            });
+        };
+
+        $scope.SortSessions = function () {
+            var modalInstance = $uibModal.open({
+                templateUrl: "SortSessionsModal.html",
+                controller: "SortSessionsModalController",
+                size: "md",
+                backdrop: "static",
+                scope: $scope,
+                resolve: {
+                    trackId: function () {
+                        return $scope.TrackId;
+                    },
+                    codeCampId: function () {
+                        return $scope.codeCamp.CodeCampId;
+                    },
+                    assignedSessions: function () {
+                        return $scope.assignedSessions;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function () {
+                $scope.LoadAssignedSessions();
+                $scope.LoadUnassignedSessions();
+            }, function () {
                 console.log("Modal dismissed at: " + new Date());
             });
         };
@@ -409,9 +437,9 @@ codeCampControllers.controller("trackController", [
 ]);
 
 /*
- * Sessions Modal
+ * Assign Sessions Modal
  */
-codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope", "$uibModalInstance", "trackId", "codeCampId", "assignedSessions", "availableSessions", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, trackId, codeCampId, assignedSessions, availableSessions, codeCampServiceFactory) {
+codeCampApp.controller("AssignSessionsModalController", ["$scope", "$rootScope", "$uibModalInstance", "trackId", "codeCampId", "assignedSessions", "availableSessions", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, trackId, codeCampId, assignedSessions, availableSessions, codeCampServiceFactory) {
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -519,6 +547,62 @@ codeCampApp.controller("ManageSessionsModalController", ["$scope", "$rootScope",
         }
 
         return speakerText;
+    }
+
+    $scope.ok = function () {
+        $uibModalInstance.close();
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss("cancel");
+    };
+
+    $scope.LoadTrack();
+}]);
+
+/*
+ * Sort Sessions Modal
+ */
+codeCampApp.controller("SortSessionsModalController", ["$scope", "$rootScope", "$uibModalInstance", "trackId", "codeCampId", "assignedSessions", "codeCampServiceFactory", function ($scope, $rootScope, $uibModalInstance, trackId, codeCampId, assignedSessions, codeCampServiceFactory) {
+
+    var factory = codeCampServiceFactory;
+    factory.init(moduleId, moduleName);
+
+    $scope.titleLimit = 50;
+
+    $scope.assignedSessions = assignedSessions;
+
+    $scope.LoadTrack = function () {
+        factory.callGetService("GetTrack?itemId=" + $scope.TrackId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.track = serviceResponse.Content;
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetTrack");
+                    console.log(data);
+                });
+    }
+
+    $scope.LoadAssignedSessions = function () {
+        factory.callGetService("GetSessionsByTrackId?trackId=" + $scope.TrackId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
+            .then(function (response) {
+                var fullResult = angular.fromJson(response);
+                var serviceResponse = JSON.parse(fullResult.data);
+
+                $scope.assignedSessions = serviceResponse.Content;
+
+                LogErrors(serviceResponse.Errors);
+            },
+                function (data) {
+                    console.log("Unknown error occurred calling GetSessionsByTrackId");
+                    console.log(data);
+                    return null;
+                });
     }
 
     $scope.ok = function () {
