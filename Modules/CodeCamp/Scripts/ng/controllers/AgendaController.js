@@ -6,6 +6,7 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
     factory.init(moduleId, moduleName);
 
     $scope.eventDays = [];
+    $scope.sessions = [];
 
     $scope.LoadData = function () {
         factory.callGetService("GetEventByModuleId")
@@ -40,6 +41,7 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                         newMoment = newMoment.add(i, "days");
                     }
 
+                    newDay.Index = i;
                     newDay.Month = newMoment.format("MMM");
                     newDay.DayName = newMoment.format("dddd");
                     newDay.DayNumber = newMoment.format("DD");
@@ -118,12 +120,24 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                     timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
                 });
 
+                $scope.LoadSessions();
+
                 LogErrors(serviceResponse.Errors);
             },
                 function (data) {
                     console.log("Unknown error occurred calling GetTimeSlots");
                     console.log(data);
                 });
+    }
+
+    $scope.LoadSessions = function () {
+        var availableTimeSlotCount = $scope.timeSlots.length;
+        var i = 0;
+
+        angular.forEach($scope.timeSlots, function(timeSlot, index) {
+            $scope.LoadSessionsByTimeSlotId(timeSlot.TimeSlotId);
+            i++;
+        });
     }
 
     $scope.LoadSessionsByTimeSlotId = function (timeSlotId) {
@@ -133,6 +147,8 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 var timeSlotSessions = serviceResponse.Content;
+
+                $scope.sessions[timeSlotId] = timeSlotSessions;
 
                 LogErrors(serviceResponse.Errors);
 

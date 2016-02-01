@@ -36,7 +36,11 @@
                                         {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
                                     </td>
                                     <td class="agenda-session-column">
-                                        Session #{{$index}}
+                                        <ul>
+                                            <li ng-repeat="session in sessions[timeSlot.TimeSlotId]">
+                                                <span>{{session.Title}}</span>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
                                 </tbody>
