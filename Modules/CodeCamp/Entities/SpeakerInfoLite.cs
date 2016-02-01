@@ -37,17 +37,20 @@ namespace WillStrohl.Modules.CodeCamp.Entities
     {
         public SpeakerInfoLite(SpeakerInfo originalSpeaker)
         {
-            SpeakerId = originalSpeaker.SpeakerId;
-            CodeCampId = originalSpeaker.CodeCampId;
-            RegistrationId = originalSpeaker.RegistrationId;
-            SpeakerName = originalSpeaker.SpeakerName;
-            CompanyName = originalSpeaker.CompanyName;
-            CompanyTitle = originalSpeaker.CompanyTitle;
-            URL = originalSpeaker.URL;
-            Email = originalSpeaker.Email;
-            Bio = originalSpeaker.Bio;
-            IconFile = originalSpeaker.IconFile;
-            IsAuthor = originalSpeaker.IsAuthor;
+            if (originalSpeaker != null)
+            {
+                SpeakerId = originalSpeaker.SpeakerId;
+                CodeCampId = originalSpeaker.CodeCampId;
+                RegistrationId = originalSpeaker.RegistrationId;
+                SpeakerName = originalSpeaker.SpeakerName;
+                CompanyName = originalSpeaker.CompanyName;
+                CompanyTitle = originalSpeaker.CompanyTitle;
+                URL = originalSpeaker.URL;
+                Email = originalSpeaker.Email;
+                Bio = originalSpeaker.Bio;
+                IconFile = originalSpeaker.IconFile;
+                IsAuthor = originalSpeaker.IsAuthor;
+            }
         }
 
         public int SpeakerId { get; set; }
