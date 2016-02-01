@@ -67,6 +67,16 @@ codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams",
 
                 $scope.timeSlots = serviceResponse.Content;
 
+                angular.forEach($scope.timeSlots, function (timeSlot, index) {
+                    var beginDateTime = moment(timeSlot.BeginTime);
+
+                    var seconds = beginDateTime.seconds();
+                    var minutes = beginDateTime.minutes();
+                    var hours = beginDateTime.hours();
+
+                    timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
+                });
+
                 LogErrors(serviceResponse.Errors);
             },
                 function (data) {
