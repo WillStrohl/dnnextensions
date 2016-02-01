@@ -135,6 +135,8 @@ codeCampControllers.controller("trackController", [
 
                         $scope.getSpeaker();
 
+                        $scope.LoadTimeSlots();
+
                         $scope.UpdateSessionRegistration();
 
                         $scope.DetermineRegisterEnablement();
@@ -194,6 +196,35 @@ codeCampControllers.controller("trackController", [
                         console.log("Unknown error occurred calling GetSessionsByTrackId");
                         console.log(data);
                         return null;
+                    });
+        }
+
+        $scope.LoadTimeSlots = function () {
+            factory.callGetService("GetTimeSlots?codeCampId=" + $scope.codeCamp.CodeCampId)
+                .then(function (response) {
+                    var fullResult = angular.fromJson(response);
+                    var serviceResponse = JSON.parse(fullResult.data);
+
+                    $scope.timeSlots = serviceResponse.Content;
+
+                    angular.forEach($scope.timeSlots, function (timeSlot, index) {
+                        var beginDateTime = moment(timeSlot.BeginTime);
+
+                        timeSlot.BeginTime = moment(timeSlot.BeginTime).format("hh:mm A");
+                        timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
+
+                        var seconds = beginDateTime.seconds();
+                        var minutes = beginDateTime.minutes();
+                        var hours = beginDateTime.hours();
+
+                        timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
+                    });
+
+                    LogErrors(serviceResponse.Errors);
+                },
+                    function (data) {
+                        console.log("Unknown error occurred calling GetTimeSlots");
+                        console.log(data);
                     });
         }
 
@@ -406,7 +437,6 @@ codeCampControllers.controller("trackController", [
 
             modalInstance.result.then(function () {
                 $scope.LoadAssignedSessions();
-                $scope.LoadUnassignedSessions();
             }, function () {
                 console.log("Modal dismissed at: " + new Date());
             });
@@ -608,6 +638,31 @@ codeCampApp.controller("SortSessionsModalController", ["$scope", "$rootScope", "
                     console.log(data);
                     return null;
                 });
+    }
+
+    $scope.sortableOptions = {
+        diabled: false,
+        update: function (e, ui) {
+        },
+        stop: function (e, ui) {
+            $scope.updateSessionOrder();
+        }
+    };
+
+    $scope.updateSessionOrder = function () {
+        factory.callPostService("UpdateSessionsTimeSlotOrder?codeCampId=" + $scope.codeCamp.CodeCampId, $scope.assignedSessions)
+            .success(function (data) {
+                var serviceResponse = angular.fromJson(data);
+
+                $scope.LoadAssignedSessions();
+
+                LogErrors(serviceResponse.Errors);
+            })
+            .error(function (data, status) {
+                $scope.HasErrors = true;
+                console.log("Unknown error occurred calling UpdateSessionsTimeSlotOrder");
+                console.log(data);
+            });
     }
 
     $scope.ok = function () {

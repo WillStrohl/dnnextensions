@@ -28,7 +28,9 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WillStrohl.Modules.CodeCamp.Entities
 {
@@ -60,7 +62,10 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         {
             var items = repo.GetItems(codeCampId);
 
-            return items;
+            // re-order timeslots by time only
+            SortTimeSlots(ref items);
+
+            return items.OrderBy(t => t.BeginTime);
         }
 
         public TimeSlotInfo GetItem(int itemId, int codeCampId)
@@ -74,5 +79,17 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         {
             repo.UpdateItem(i);
         }
+
+        #region Private Helper Methods
+
+        private void SortTimeSlots(ref IEnumerable<TimeSlotInfo> timeSlots)
+        {
+            foreach (var timeSlot in timeSlots)
+            {
+                timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeSlot.BeginTime.Hour, timeSlot.BeginTime.Minute, 0);
+            }
+        }
+
+        #endregion
     }
 }

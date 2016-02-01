@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div ng-repeat="session in assignedSessions | orderBy: 'Title'">
+        <div ng-repeat="session in assignedSessions | orderBy: ['SortOrder', 'Title']">
             <div class="row session-card">
                 <div class="col-md-5 col-md-offset-2">
                     <h4>{{session.Title}}</h4>
@@ -50,9 +50,11 @@
                 </div>
                 <div class="col-md-3">
                     <div class="session-actions-wrapper">
-                        <p class="audience-level-label"><session-audience level="session.AudienceLevel"></session-audience>
+                        <p class="audience-level-label">
+                            <session-audience level="session.AudienceLevel"></session-audience>
                         </p>
-                        <p><count session="session" session-registration="SessionRegistration.length"></count> people attending
+                        <p>
+                            <count session="session" session-registration="SessionRegistration.length"></count> people attending
                         </p>
                         <p>
                             <button type="button" class="btn btn-danger" ng-click="RegisterForSession(session.SessionId)" ng-class="{ 'disabled' : SessionRegistrationIsDisabled }" ng-show="!IsUserRegisteredForSession(session.SessionId)">
@@ -73,12 +75,19 @@
 
 <script type="text/ng-template" id="AssignSessionsModal.html">
     <div class="modal-header">
-        <h3 class="modal-title">Manage Track Sessions</h3>
+        <h3 class="modal-title">Assign Track Sessions</h3>
     </div>
     <div class="modal-body">
         <div class="container modal-form-container-lg">
             <div class="row">
                 <div class="col-xs-12"><strong>Adding Sessions To:</strong> {{track.Title}}</div>
+            </div>
+            <div class="row" ng-show="">
+                <div class="col-xs-12">
+                    <div class="alert alert-warning">
+                        There aren't any more available timeslots for this track.
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-6">
@@ -94,7 +103,7 @@
                                         <span class="glyphicon glyphicon-chevron-right"></span>
                                     </button>
                                 </div>
-                                <span class="speaker-name">{{session.Title | limitTo: titleLimit}}</span><br/>
+                                <span class="speaker-name">{{session.Title | limitTo: titleLimit}}</span><br />
                                 <span class="speaker-title">{{DisplaySpeakers(session.Speakers)}}</span>
                             </li>
                         </ul>
@@ -140,12 +149,21 @@
     <div class="modal-body">
         <div class="container modal-form-container-md">
             <div class="row">
-                <div class="col-xs-12">Sorting Sessions for the <strong>{{track.Title}}</strong> track</div>
+                <div class="col-xs-12">
+                    <p>
+                        Sorting Sessions for the <strong>{{track.Title}}</strong> track. Sorting sessions will also put them into the appropriate time slots in the agenda.
+                    </p>
+                </div>
             </div>
             <div class="row">
-                <div class="session-sort-tile" ng-repeat="session in assignedSessions">
-                    <h4>{{session.Title}}</h4>
-                </div>
+                <ul class="list-group" ui-sortable="sortableOptions" ng-model="assignedSessions">
+                    <li class="list-group-item" ng-repeat="session in assignedSessions | orderBy: ['SortOrder', 'Title']">
+                        <span>
+                            <em class="glyphicon glyphicon-resize-vertical"></em>
+                            {{session.Title}}
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

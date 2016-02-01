@@ -91,5 +91,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         [IgnoreColumn]
         public List<SpeakerInfoLite> Speakers { get; set; } 
+
+        [IgnoreColumn]
+        public int SortOrder { get; set; }
     }
 }

@@ -151,10 +151,11 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-route.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-resource.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng-bootstrap/ui-bootstrap-tpls-0.14.3.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-sortable.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng-bootstrap/ui-bootstrap-tpls-0.14.3.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
 
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/moment.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/angular-moment.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/moment.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/angular-moment.js", FileOrder.Js.DefaultPriority + 7, DnnFormBottomProvider.DefaultName);
             // TODO: add internationalization support for moment.js
 
             if (IncludeBootstrap)
@@ -184,10 +185,11 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-route.min.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-resource.min.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng-bootstrap/ui-bootstrap-tpls.min.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/angular/angular-sortable.min.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng-bootstrap/ui-bootstrap-tpls.min.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
             
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/moment.min.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/angular-moment.min.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/moment.min.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/moment/angular-moment.min.js", FileOrder.Js.DefaultPriority + 7, DnnFormBottomProvider.DefaultName);
             // TODO: add internationalization support for moment.js
             
             if (IncludeBootstrap)
@@ -222,10 +224,11 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.4/sortable.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
 
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.js", FileOrder.Js.DefaultPriority + 7, DnnFormBottomProvider.DefaultName);
             // TODO: add internationalization support for moment.js
 
             if (IncludeBootstrap)
@@ -255,10 +258,11 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js", FileOrder.Js.DefaultPriority + 1, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js", FileOrder.Js.DefaultPriority + 2, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, prefix + "://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js", FileOrder.Js.DefaultPriority + 3, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.4/sortable.js", FileOrder.Js.DefaultPriority + 4, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
             
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js", FileOrder.Js.DefaultPriority + 5, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js", FileOrder.Js.DefaultPriority + 6, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, prefix + "://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js", FileOrder.Js.DefaultPriority + 7, DnnFormBottomProvider.DefaultName);
             // TODO: add internationalization support for moment.js
             
             if (IncludeBootstrap)

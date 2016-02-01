@@ -425,3 +425,12 @@
 .agenda-session-column {
 
 }
+
+ul.list-group{
+    margin:0;
+    padding:0;
+}
+    ul.list-group .list-group-item, ul.list-group .list-group-item-active {
+        cursor: move;
+        margin-bottom: 1em;
+    }
