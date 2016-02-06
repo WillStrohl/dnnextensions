@@ -38,6 +38,11 @@
             </summary>
             -----------------------------------------------------------------------------
         </member>
+        <member name="P:DNNCommunity.Modules.UGLabsUserGroupData.View.ModuleActions">
+            <summary>
+            ModuleActions - loads the actions menu with a custom menu item
+            </summary>
+        </member>
         <member name="F:DNNCommunity.Modules.UGLabsUserGroupData.View.pnlUserGroupData">
             <summary>
             pnlUserGroupData control.
@@ -406,11 +411,6 @@
             Auto-generated field.
             To modify move field declaration from designer file to code-behind file.
             </remarks>
-        </member>
-        <member name="P:DNNCommunity.Modules.UGLabsUserGroupData.View.ModuleActions">
-            <summary>
-            ModuleActions - loads the actions menu with a custom menu item
-            </summary>
         </member>
     </members>
 </doc>

@@ -1,0 +1,1775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Namespaces>
+  <Namespace Name="WillStrohl.API.oEmbed">
+   <Messages>
+    <Message Id="API" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="85" Level="Error">Correct the casing of 'API' in namespace name 'WillStrohl.API.oEmbed' by changing it to 'Api'.</Issue>
+    </Message>
+    <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="85" Level="Error">Correct the casing of 'o' in namespace name 'WillStrohl.API.oEmbed' by changing it to 'O'.</Issue>
+    </Message>
+    <Message Id="Strohl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Strohl' in namespace name 'WillStrohl.API.oEmbed'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="WillStrohl.API.oEmbed.Providers">
+   <Messages>
+    <Message Id="API" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="85" Level="Error">Correct the casing of 'API' in namespace name 'WillStrohl.API.oEmbed.Providers' by changing it to 'Api'.</Issue>
+    </Message>
+    <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="85" Level="Error">Correct the casing of 'o' in namespace name 'WillStrohl.API.oEmbed.Providers' by changing it to 'O'.</Issue>
+    </Message>
+    <Message Id="Strohl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+     <Issue Name="Namespace" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Strohl' in namespace name 'WillStrohl.API.oEmbed.Providers'.</Issue>
+    </Message>
+   </Messages>
+  </Namespace>
+ </Namespaces>
+ <Targets>
+  <Target Name="C:\Websites\Development\References\WillStrohl.API.oEmbed.dll">
+   <Modules>
+    <Module Name="willstrohl.api.oembed.dll">
+     <Messages>
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+       <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Sign 'WillStrohl.API.oEmbed.dll' with a strong name key.</Issue>
+      </Message>
+      <Message Id="API" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+       <Issue Name="Assembly" Certainty="85" Level="Error">Correct the casing of 'API' in assembly name 'WillStrohl.API.oEmbed.dll' by changing it to 'Api'.</Issue>
+      </Message>
+      <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+       <Issue Name="Assembly" Certainty="85" Level="Error">Correct the casing of 'o' in assembly name 'WillStrohl.API.oEmbed.dll' by changing it to 'O'.</Issue>
+      </Message>
+      <Message Id="Strohl" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+       <Issue Name="Assembly" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Strohl' in assembly name 'WillStrohl.API.oEmbed.dll'.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Error">Mark 'WillStrohl.API.oEmbed.dll' with CLSCompliant(true) because it exposes externally visible types.</Issue>
+      </Message>
+      <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Warning">Because assembly 'WillStrohl.API.oEmbed.dll' contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="WillStrohl.API.oEmbed">
+       <Types>
+        <Type Name="ApplicationError" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Error">Because type 'ApplicationError' contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#GetAppliationErrorObject(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Error" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="ApplicationError.vb" Line="52">In member 'ApplicationError.GetAppliationErrorObject(String)', correct the casing of 'Error' in parameter name 'ErrorMessage' by changing it to 'error'.</Issue>
+            </Message>
+            <Message Id="Appliation" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="ApplicationError.vb" Line="52">Correct the spelling of 'Appliation' in member name 'ApplicationError.GetAppliationErrorObject(String)' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Constants" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Error">Because type 'Constants' contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#CLEARSPRINGWIDGETS_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="CLEARSPRINGWIDGETS" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'CLEARSPRINGWIDGETS' in member name 'Constants.CLEARSPRINGWIDGETS_FORMAT' by changing it to 'Clearspringwidgets'.</Issue>
+            </Message>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.CLEARSPRINGWIDGETS_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.CLEARSPRINGWIDGETS_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DEFAULT_VIDEO_HEIGHT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="DEFAULT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'DEFAULT' in member name 'Constants.DEFAULT_VIDEO_HEIGHT' by changing it to 'Default'.</Issue>
+            </Message>
+            <Message Id="HEIGHT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'HEIGHT' in member name 'Constants.DEFAULT_VIDEO_HEIGHT' by changing it to 'Height'.</Issue>
+            </Message>
+            <Message Id="VIDEO" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'VIDEO' in member name 'Constants.DEFAULT_VIDEO_HEIGHT' by changing it to 'Video'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.DEFAULT_VIDEO_HEIGHT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DEFAULT_VIDEO_WIDTH" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="DEFAULT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'DEFAULT' in member name 'Constants.DEFAULT_VIDEO_WIDTH' by changing it to 'Default'.</Issue>
+            </Message>
+            <Message Id="VIDEO" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'VIDEO' in member name 'Constants.DEFAULT_VIDEO_WIDTH' by changing it to 'Video'.</Issue>
+            </Message>
+            <Message Id="WIDTH" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'WIDTH' in member name 'Constants.DEFAULT_VIDEO_WIDTH' by changing it to 'Width'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.DEFAULT_VIDEO_WIDTH'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EMBEDLY_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="EMBEDLY" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'EMBEDLY' in member name 'Constants.EMBEDLY_FORMAT' by changing it to 'Embedly'.</Issue>
+            </Message>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.EMBEDLY_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.EMBEDLY_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FLICKR_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FLICKR" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FLICKR' in member name 'Constants.FLICKR_FORMAT' by changing it to 'Flickr'.</Issue>
+            </Message>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.FLICKR_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.FLICKR_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FORMAT_JSON" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.FORMAT_JSON' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="JSON" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'JSON' in member name 'Constants.FORMAT_JSON' by changing it to 'Json'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.FORMAT_JSON'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#HULU_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.HULU_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="HULU" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'HULU' in member name 'Constants.HULU_FORMAT' by changing it to 'Hulu'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.HULU_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#MYOPERA_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.MYOPERA_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="MYOPERA" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'MYOPERA' in member name 'Constants.MYOPERA_FORMAT' by changing it to 'Myopera'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.MYOPERA_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NULL_DECIMAL" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="DECIMAL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'DECIMAL' in member name 'Constants.NULL_DECIMAL' by changing it to 'Decimal'.</Issue>
+            </Message>
+            <Message Id="NULL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'NULL' in member name 'Constants.NULL_DECIMAL' by changing it to 'Null'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.NULL_DECIMAL'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NULL_INTEGER" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="INTEGER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'INTEGER' in member name 'Constants.NULL_INTEGER' by changing it to 'Integer'.</Issue>
+            </Message>
+            <Message Id="NULL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'NULL' in member name 'Constants.NULL_INTEGER' by changing it to 'Null'.</Issue>
+            </Message>
+            <Message Id="integer" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="LanguageSpecificMember" Certainty="75" Level="Error">Consider replacing the language-specific data type identifier 'INTEGER' in member name 'Constants.NULL_INTEGER' with either a language-independent equivalent or a more generic term, such as 'value'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.NULL_INTEGER'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NULL_STRING" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="NULL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'NULL' in member name 'Constants.NULL_STRING' by changing it to 'Null'.</Issue>
+            </Message>
+            <Message Id="STRING" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'STRING' in member name 'Constants.NULL_STRING' by changing it to 'String'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.NULL_STRING'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OOHEMBED_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.OOHEMBED_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="OOHEMBED" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'OOHEMBED' in member name 'Constants.OOHEMBED_FORMAT' by changing it to 'Oohembed'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.OOHEMBED_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#POLLEVERYWHERE_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.POLLEVERYWHERE_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="POLLEVERYWHERE" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'POLLEVERYWHERE' in member name 'Constants.POLLEVERYWHERE_FORMAT' by changing it to 'Polleverywhere'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.POLLEVERYWHERE_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_CLEARSPRINGWIDGETS" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="CLEARSPRINGWIDGETS" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'CLEARSPRINGWIDGETS' in member name 'Constants.PROVIDER_CLEARSPRINGWIDGETS' by changing it to 'Clearspringwidgets'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_CLEARSPRINGWIDGETS' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_CLEARSPRINGWIDGETS'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_EMBEDLY" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="EMBEDLY" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'EMBEDLY' in member name 'Constants.PROVIDER_EMBEDLY' by changing it to 'Embedly'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_EMBEDLY' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_EMBEDLY'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_FLICKR" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FLICKR" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FLICKR' in member name 'Constants.PROVIDER_FLICKR' by changing it to 'Flickr'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_FLICKR' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_FLICKR'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_HULU" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="HULU" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'HULU' in member name 'Constants.PROVIDER_HULU' by changing it to 'Hulu'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_HULU' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_HULU'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_MYOPERA" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="MYOPERA" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'MYOPERA' in member name 'Constants.PROVIDER_MYOPERA' by changing it to 'Myopera'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_MYOPERA' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_MYOPERA'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_OOHEMBED" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="OOHEMBED" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'OOHEMBED' in member name 'Constants.PROVIDER_OOHEMBED' by changing it to 'Oohembed'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_OOHEMBED' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_OOHEMBED'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_POLLEVERYWHERE" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="POLLEVERYWHERE" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'POLLEVERYWHERE' in member name 'Constants.PROVIDER_POLLEVERYWHERE' by changing it to 'Polleverywhere'.</Issue>
+            </Message>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_POLLEVERYWHERE' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_POLLEVERYWHERE'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_QIK" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_QIK' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message Id="QIK" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'QIK' in member name 'Constants.PROVIDER_QIK' by changing it to 'Qik'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_QIK'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_REVISION3" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_REVISION3' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message Id="REVISION" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'REVISION' in member name 'Constants.PROVIDER_REVISION3' by changing it to 'Revision'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_REVISION3'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_VIDDLER" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_VIDDLER' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message Id="VIDDLER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'VIDDLER' in member name 'Constants.PROVIDER_VIDDLER' by changing it to 'Viddler'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_VIDDLER'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_VIMEO" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_VIMEO' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message Id="VIMEO" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'VIMEO' in member name 'Constants.PROVIDER_VIMEO' by changing it to 'Vimeo'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_VIMEO'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PROVIDER_YOUTUBE" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PROVIDER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PROVIDER' in member name 'Constants.PROVIDER_YOUTUBE' by changing it to 'Provider'.</Issue>
+            </Message>
+            <Message Id="YOUTUBE" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'YOUTUBE' in member name 'Constants.PROVIDER_YOUTUBE' by changing it to 'Youtube'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.PROVIDER_YOUTUBE'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#QIK_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.QIK_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="QIK" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'QIK' in member name 'Constants.QIK_FORMAT' by changing it to 'Qik'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.QIK_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#REVISION3_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.REVISION3_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="REVISION" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'REVISION' in member name 'Constants.REVISION3_FORMAT' by changing it to 'Revision'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.REVISION3_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SSL_PATTERN" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PATTERN" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'PATTERN' in member name 'Constants.SSL_PATTERN' by changing it to 'Pattern'.</Issue>
+            </Message>
+            <Message Id="SSL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'SSL' in member name 'Constants.SSL_PATTERN' by changing it to 'Ssl'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.SSL_PATTERN'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#VIDDLER_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.VIDDLER_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="VIDDLER" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'VIDDLER' in member name 'Constants.VIDDLER_FORMAT' by changing it to 'Viddler'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.VIDDLER_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#VIMEO_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.VIMEO_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="VIMEO" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'VIMEO' in member name 'Constants.VIMEO_FORMAT' by changing it to 'Vimeo'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.VIMEO_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#YOUTUBE_FORMAT" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="FORMAT" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'FORMAT' in member name 'Constants.YOUTUBE_FORMAT' by changing it to 'Format'.</Issue>
+            </Message>
+            <Message Id="YOUTUBE" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'YOUTUBE' in member name 'Constants.YOUTUBE_FORMAT' by changing it to 'Youtube'.</Issue>
+            </Message>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="95" Level="Error">Remove the underscores from member name 'Constants.YOUTUBE_FORMAT'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IBaseType" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AuthorUrl" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Change the type of property 'IBaseType.AuthorUrl()' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ProviderUrl" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Change the type of property 'IBaseType.ProviderUrl()' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ThumbnailUrl" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Change the type of property 'IBaseType.ThumbnailUrl()' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IPhotoProvider" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetPhoto(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Height" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IPhotoProvider.GetPhoto(String, Integer, Integer)', correct the casing of 'Height' in parameter name 'Height' by changing it to 'height'.</Issue>
+            </Message>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IPhotoProvider.GetPhoto(String, Integer, Integer)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="Width" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IPhotoProvider.GetPhoto(String, Integer, Integer)', correct the casing of 'Width' in parameter name 'Width' by changing it to 'width'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IPhotoProvider.GetPhoto(String, Integer, Integer)' from string to System.Uri, or provide an overload of 'IPhotoProvider.GetPhoto(String, Integer, Integer)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPhotoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Height" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IPhotoProvider.GetPhotoObject(String, Integer, Integer)', correct the casing of 'Height' in parameter name 'Height' by changing it to 'height'.</Issue>
+            </Message>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IPhotoProvider.GetPhotoObject(String, Integer, Integer)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="Width" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IPhotoProvider.GetPhotoObject(String, Integer, Integer)', correct the casing of 'Width' in parameter name 'Width' by changing it to 'width'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IPhotoProvider.GetPhotoObject(String, Integer, Integer)' from string to System.Uri, or provide an overload of 'IPhotoProvider.GetPhotoObject(String, Integer, Integer)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IPhotoType" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Url" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Change the type of property 'IPhotoType.Url()' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRequest" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#URL" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'URL' in member name 'IRequest.URL()' by changing it to 'Url'.</Issue>
+            </Message>
+            <Message TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error">Change the type of property 'IRequest.URL()' from string to System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IRichProvider" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetRichContent(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IRichProvider.GetRichContent(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IRichProvider.GetRichContent(String)' from string to System.Uri, or provide an overload of 'IRichProvider.GetRichContent(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContentObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IRichProvider.GetRichContentObject(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IRichProvider.GetRichContentObject(String)' from string to System.Uri, or provide an overload of 'IRichProvider.GetRichContentObject(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IVideoProvider" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetVideo(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideo(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IVideoProvider.GetVideo(String)' from string to System.Uri, or provide an overload of 'IVideoProvider.GetVideo(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Max" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideo(String, Integer, Integer)', correct the casing of 'Max' in parameter name 'MaxHeight' by changing it to 'max'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideo(String, Integer, Integer)', correct the casing of 'Max' in parameter name 'MaxWidth' by changing it to 'max'.</Issue>
+            </Message>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideo(String, Integer, Integer)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IVideoProvider.GetVideo(String, Integer, Integer)' from string to System.Uri, or provide an overload of 'IVideoProvider.GetVideo(String, Integer, Integer)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideoObject(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IVideoProvider.GetVideoObject(String)' from string to System.Uri, or provide an overload of 'IVideoProvider.GetVideoObject(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Max" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideoObject(String, Integer, Integer)', correct the casing of 'Max' in parameter name 'MaxHeight' by changing it to 'max'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideoObject(String, Integer, Integer)', correct the casing of 'Max' in parameter name 'MaxWidth' by changing it to 'max'.</Issue>
+            </Message>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error">In member 'IVideoProvider.GetVideoObject(String, Integer, Integer)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error">Change the type of parameter 'URL' of method 'IVideoProvider.GetVideoObject(String, Integer, Integer)' from string to System.Uri, or provide an overload of 'IVideoProvider.GetVideoObject(String, Integer, Integer)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="oEmbedInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'o' in type name 'oEmbedInfo' by changing it to 'O'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="ProviderFormat" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#IsUrlSupported(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="ProviderFormat.vb" Line="57">In member 'ProviderFormat.IsUrlSupported(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="ProviderFormat.vb" Line="57">The 'this' parameter (or 'Me' in Visual Basic) of 'ProviderFormat.IsUrlSupported(String)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="ProviderFormat.vb" Line="57">Change the type of parameter 'URL' of method 'ProviderFormat.IsUrlSupported(String)' from string to System.Uri, or provide an overload of 'ProviderFormat.IsUrlSupported(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ProviderToUse(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="ProviderFormat.vb" Line="107">In member 'ProviderFormat.ProviderToUse(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="ProviderFormat.vb" Line="107">The 'this' parameter (or 'Me' in Visual Basic) of 'ProviderFormat.ProviderToUse(String)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="ProviderFormat.vb" Line="107">Change the type of parameter 'URL' of method 'ProviderFormat.ProviderToUse(String)' from string to System.Uri, or provide an overload of 'ProviderFormat.ProviderToUse(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#pthVimeo" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="pth" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'pth' in member name 'ProviderFormat.pthVimeo' by changing it to 'Pth'.</Issue>
+            </Message>
+            <Message Id="Vimeo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Vimeo' in member name 'ProviderFormat.pthVimeo' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="pth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'pth' in member name 'ProviderFormat.pthVimeo' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnEmbedly" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnEmbedly' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="Embedly" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Embedly' in member name 'ProviderFormat.ptnEmbedly' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnEmbedly' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnFlickr" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnFlickr' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnFlickr' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnHulu" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnHulu' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnHulu' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnMyOpera" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnMyOpera' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnMyOpera' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnOohEmbed" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnOohEmbed' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnOohEmbed' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnPollEverywhere" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnPollEverywhere' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnPollEverywhere' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnQik" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnQik' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="Qik" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Qik' in member name 'ProviderFormat.ptnQik' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnQik' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnRevision3" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnRevision3' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnRevision3' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnViddler" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnViddler' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="Viddler" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Viddler' in member name 'ProviderFormat.ptnViddler' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnViddler' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ptnYouTube" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'ptn' in member name 'ProviderFormat.ptnYouTube' by changing it to 'Ptn'.</Issue>
+            </Message>
+            <Message Id="ptn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'ptn' in member name 'ProviderFormat.ptnYouTube' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RequestController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetOEmbedContent(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="56">In member 'RequestController.GetOEmbedContent(String)', correct the casing of 'Request' in parameter name 'RequestUrl' by changing it to 'request'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="56">Change the type of parameter 'RequestUrl' of method 'RequestController.GetOEmbedContent(String)' from string to System.Uri, or provide an overload of 'RequestController.GetOEmbedContent(String)', that allows 'RequestUrl' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOEmbedContent(System.String,System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="113">Object 'dataStream' can be disposed more than once in method 'RequestController.GetOEmbedContent(String, String, Integer)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 113</Issue>
+            </Message>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="103">Modify 'RequestController.GetOEmbedContent(String, String, Integer)' to catch a more specific exception than 'Exception' or rethrow the exception.</Issue>
+            </Message>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="70">In member 'RequestController.GetOEmbedContent(String, String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="70">In member 'RequestController.GetOEmbedContent(String, String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="70">In member 'RequestController.GetOEmbedContent(String, String, Integer)', correct the casing of 'Request' in parameter name 'RequestUrl' by changing it to 'request'.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="70">The 'this' parameter (or 'Me' in Visual Basic) of 'RequestController.GetOEmbedContent(String, String, Integer)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message TypeName="PassSystemUriObjectsInsteadOfStrings" Category="Microsoft.Usage" CheckId="CA2234" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="70">Modify 'RequestController.GetOEmbedContent(String, String, Integer)' to call 'WebRequest.Create(Uri)' instead of 'WebRequest.Create(String)'.</Issue>
+            </Message>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="83">Because the behavior of 'Integer.ToString()' could vary based on the current user's locale settings, replace this call in 'RequestController.GetOEmbedContent(String, String, Integer)' with a call to 'Integer.ToString(IFormatProvider)'. If the result of 'Integer.ToString(IFormatProvider)' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Components" File="RequestController.vb" Line="70">Change the type of parameter 'RequestUrl' of method 'RequestController.GetOEmbedContent(String, String, Integer)' from string to System.Uri, or provide an overload of 'RequestController.GetOEmbedContent(String, String, Integer)', that allows 'RequestUrl' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RequestInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="RequestInfo.vb" Line="59">In member 'RequestInfo.New(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="RequestInfo.vb" Line="59">Change the type of parameter 'URL' of method 'RequestInfo.New(String)' from string to System.Uri, or provide an overload of 'RequestInfo.New(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#.ctor(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Height" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="RequestInfo.vb" Line="63">In member 'RequestInfo.New(String, Integer, Integer)', correct the casing of 'Height' in parameter name 'Height' by changing it to 'height'.</Issue>
+            </Message>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="RequestInfo.vb" Line="63">In member 'RequestInfo.New(String, Integer, Integer)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message Id="Width" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="RequestInfo.vb" Line="63">In member 'RequestInfo.New(String, Integer, Integer)', correct the casing of 'Width' in parameter name 'Width' by changing it to 'width'.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Entities" File="RequestInfo.vb" Line="63">Change the type of parameter 'URL' of method 'RequestInfo.New(String, Integer, Integer)' from string to System.Uri, or provide an overload of 'RequestInfo.New(String, Integer, Integer)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Wrapper" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetContent(WillStrohl.API.oEmbed.RequestInfo)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="90" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="56">'Wrapper.GetContent(RequestInfo)' has a cyclomatic complexity of 29. Rewrite or refactor the method to reduce complexity to 25.</Issue>
+            </Message>
+            <Message Id="System.Console.WriteLine(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="63">Method 'Wrapper.GetContent(RequestInfo)' passes a literal string as parameter 'value' of a call to 'Console.WriteLine(String)'. Retrieve the following string(s) from a resource table instead: "PROVIDER: ".</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="56">In member 'Wrapper.GetContent(RequestInfo)', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+            <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="103">Method 'Wrapper.GetContent(RequestInfo)' passes 'URL' as the 'paramName' argument to a 'ArgumentOutOfRangeException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="108">Method 'Wrapper.GetContent(RequestInfo)' passes 'URL' as the 'paramName' argument to a 'ArgumentOutOfRangeException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="56">The 'this' parameter (or 'Me' in Visual Basic) of 'Wrapper.GetContent(RequestInfo)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="0" TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="60">In externally visible method 'Wrapper.GetContent(RequestInfo)', validate parameter 'Request' before using it.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetParsedURL(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="287">The 'this' parameter (or 'Me' in Visual Basic) of 'Wrapper.GetParsedURL(String, RequestInfo, ParamArray String())' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="304">Because the behavior of 'String.Format(String, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Wrapper.GetParsedURL(String, RequestInfo, ParamArray String())' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPhotoContent(System.String,WillStrohl.API.oEmbed.RequestInfo)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="End" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="121">In member 'Wrapper.GetPhotoContent(String, RequestInfo)', correct the casing of 'End' in parameter name 'EndPoint' by changing it to 'end'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="121">In member 'Wrapper.GetPhotoContent(String, RequestInfo)', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPhotoContent(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Args" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="133">In member 'Wrapper.GetPhotoContent(String, RequestInfo, ParamArray String())', correct the casing of 'Args' in parameter name 'Args' by changing it to 'args'.</Issue>
+            </Message>
+            <Message Id="End" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="133">In member 'Wrapper.GetPhotoContent(String, RequestInfo, ParamArray String())', correct the casing of 'End' in parameter name 'EndPoint' by changing it to 'end'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="133">In member 'Wrapper.GetPhotoContent(String, RequestInfo, ParamArray String())', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+            <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="146">Method 'Wrapper.GetPhotoContent(String, RequestInfo, ParamArray String())' passes 'Request.MaxHeight' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="149">Method 'Wrapper.GetPhotoContent(String, RequestInfo, ParamArray String())' passes 'Request.MaxWidth' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="143">Method 'Wrapper.GetPhotoContent(String, RequestInfo, ParamArray String())' passes 'Request.URL' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContent(System.String,WillStrohl.API.oEmbed.RequestInfo)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="End" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="232">In member 'Wrapper.GetRichContent(String, RequestInfo)', correct the casing of 'End' in parameter name 'EndPoint' by changing it to 'end'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="232">In member 'Wrapper.GetRichContent(String, RequestInfo)', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContent(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Args" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="244">In member 'Wrapper.GetRichContent(String, RequestInfo, ParamArray String())', correct the casing of 'Args' in parameter name 'Args' by changing it to 'args'.</Issue>
+            </Message>
+            <Message Id="End" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="244">In member 'Wrapper.GetRichContent(String, RequestInfo, ParamArray String())', correct the casing of 'End' in parameter name 'EndPoint' by changing it to 'end'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="244">In member 'Wrapper.GetRichContent(String, RequestInfo, ParamArray String())', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+            <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="254">Method 'Wrapper.GetRichContent(String, RequestInfo, ParamArray String())' passes 'Request.URL' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoContent(System.String,WillStrohl.API.oEmbed.RequestInfo)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="End" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="177">In member 'Wrapper.GetVideoContent(String, RequestInfo)', correct the casing of 'End' in parameter name 'EndPoint' by changing it to 'end'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="177">In member 'Wrapper.GetVideoContent(String, RequestInfo)', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoContent(System.String,WillStrohl.API.oEmbed.RequestInfo,System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Args" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="189">In member 'Wrapper.GetVideoContent(String, RequestInfo, ParamArray String())', correct the casing of 'Args' in parameter name 'Args' by changing it to 'args'.</Issue>
+            </Message>
+            <Message Id="End" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="189">In member 'Wrapper.GetVideoContent(String, RequestInfo, ParamArray String())', correct the casing of 'End' in parameter name 'EndPoint' by changing it to 'end'.</Issue>
+            </Message>
+            <Message Id="Request" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="189">In member 'Wrapper.GetVideoContent(String, RequestInfo, ParamArray String())', correct the casing of 'Request' in parameter name 'Request' by changing it to 'request'.</Issue>
+            </Message>
+            <Message TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="202">Method 'Wrapper.GetVideoContent(String, RequestInfo, ParamArray String())' passes 'Request.MaxHeight' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="205">Method 'Wrapper.GetVideoContent(String, RequestInfo, ParamArray String())' passes 'Request.MaxWidth' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+             <Issue Name="IncorrectParameterName" Certainty="95" Level="CriticalError" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed" File="Wrapper.vb" Line="199">Method 'Wrapper.GetVideoContent(String, RequestInfo, ParamArray String())' passes 'Request.URL' as the 'paramName' argument to a 'ArgumentNullException' constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="WillStrohl.API.oEmbed.Providers">
+       <Types>
+        <Type Name="ClearspringWidgets" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Clearspring" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Clearspring' in type name 'ClearspringWidgets'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="ClearspringWidgets.vb" Line="65">In member 'ClearspringWidgets.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="ClearspringWidgets.vb" Line="65">In member 'ClearspringWidgets.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContentObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="ClearspringWidgets.vb" Line="93">Because the behavior of 'String.Format(String, Object)' could vary based on the current user's locale settings, replace this call in 'ClearspringWidgets.GetRichContentObject(String)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Embedly" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Embedly" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Embedly' in type name 'Embedly'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="Embedly.vb" Line="65">In member 'Embedly.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="Embedly.vb" Line="65">In member 'Embedly.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContentObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="Embedly.vb" Line="93">Because the behavior of 'String.Format(String, Object)' could vary based on the current user's locale settings, replace this call in 'Embedly.GetRichContentObject(String)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Flickr" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Photo" File="Flickr.vb" Line="65">In member 'Flickr.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Photo" File="Flickr.vb" Line="65">In member 'Flickr.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPhotoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Photo" File="Flickr.vb" Line="105">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Flickr.GetPhotoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Hulu" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="65">In member 'Hulu.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="65">In member 'Hulu.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="89">In member 'Hulu.GetVideo(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="89">In member 'Hulu.GetVideo(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="113">In member 'Hulu.GetVideoObject(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="113">In member 'Hulu.GetVideoObject(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Hulu.vb" Line="127">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Hulu.GetVideoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="IClearspringWidgets" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IClearspringWidgets'.</Issue>
+          </Message>
+          <Message Id="Clearspring" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Clearspring' in type name 'IClearspringWidgets'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IEmbedly" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IEmbedly'.</Issue>
+          </Message>
+          <Message Id="Embedly" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Embedly' in type name 'IEmbedly'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IFlickr" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IFlickr'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IHulu" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IHulu'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IMyOpera" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IMyOpera'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IOohEmbed" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IOohEmbed'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IPollEverywhere" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IPollEverywhere'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IQik" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IQik'.</Issue>
+          </Message>
+          <Message Id="Qik" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Qik' in type name 'IQik'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IRevision3" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IRevision3'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IViddler" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IViddler'.</Issue>
+          </Message>
+          <Message Id="Viddler" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Viddler' in type name 'IViddler'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IVimeo" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IVimeo'.</Issue>
+          </Message>
+          <Message Id="Vimeo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Vimeo' in type name 'IVimeo'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="IYouTube" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Warning">Define a custom attribute to replace 'IYouTube'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="MyOpera" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="MyOpera.vb" Line="65">In member 'MyOpera.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="MyOpera.vb" Line="65">In member 'MyOpera.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContentObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="MyOpera.vb" Line="93">Because the behavior of 'String.Format(String, Object)' could vary based on the current user's locale settings, replace this call in 'MyOpera.GetRichContentObject(String)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="oohEmbed" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="ooh" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="85" Level="Error">Correct the casing of 'ooh' in type name 'oohEmbed' by changing it to 'Ooh'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="oohEmbed.vb" Line="65">In member 'oohEmbed.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="oohEmbed.vb" Line="65">In member 'oohEmbed.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContentObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="oohEmbed.vb" Line="93">Because the behavior of 'String.Format(String, Object)' could vary based on the current user's locale settings, replace this call in 'oohEmbed.GetRichContentObject(String)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PollEverywhere" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="PollEverywhere.vb" Line="65">In member 'PollEverywhere.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="PollEverywhere.vb" Line="65">In member 'PollEverywhere.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetRichContentObject(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingArgument" Certainty="75" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="PollEverywhere.vb" Line="93">Method 'PollEverywhere.GetRichContentObject(String)' calls 'String.Format(String, Object)' and does not provide an argument for format item "{1}, {2}". The provided format string is: '"http://www.youtube.com/oembed?url={0}&amp;format=json&amp;maxwidth={1}&amp;maxheight={2}"'</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Rich" File="PollEverywhere.vb" Line="93">Because the behavior of 'String.Format(String, Object)' could vary based on the current user's locale settings, replace this call in 'PollEverywhere.GetRichContentObject(String)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ProviderBase" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AbstractTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1012" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="CriticalWarning">Change the accessibility of all public constructors in 'ProviderBase' to protected.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers" File="ProviderBase.vb" Line="108">In member 'ProviderBase.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers" File="ProviderBase.vb" Line="108">In member 'ProviderBase.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UseSSL(System.String)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SSL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers" File="ProviderBase.vb" Line="125">Correct the casing of 'SSL' in member name 'ProviderBase.UseSSL(String)' by changing it to 'Ssl'.</Issue>
+            </Message>
+            <Message Id="URL" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers" File="ProviderBase.vb" Line="125">In member 'ProviderBase.UseSSL(String)', correct the casing of 'URL' in parameter name 'URL' by changing it to 'url'.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers" File="ProviderBase.vb" Line="125">The 'this' parameter (or 'Me' in Visual Basic) of 'ProviderBase.UseSSL(String)' is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Issue>
+            </Message>
+            <Message Id="0#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="60" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers" File="ProviderBase.vb" Line="125">Change the type of parameter 'URL' of method 'ProviderBase.UseSSL(String)' from string to System.Uri, or provide an overload of 'ProviderBase.UseSSL(String)', that allows 'URL' to be passed as a System.Uri object.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Qik" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Qik" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Qik' in type name 'Qik'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="65">In member 'Qik.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="65">In member 'Qik.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="89">In member 'Qik.GetVideo(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="89">In member 'Qik.GetVideo(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="113">In member 'Qik.GetVideoObject(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="113">In member 'Qik.GetVideoObject(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Qik.vb" Line="127">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Qik.GetVideoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Revision3" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="65">In member 'Revision3.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="65">In member 'Revision3.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="89">In member 'Revision3.GetVideo(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="89">In member 'Revision3.GetVideo(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="113">In member 'Revision3.GetVideoObject(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="113">In member 'Revision3.GetVideoObject(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Revision3.vb" Line="127">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Revision3.GetVideoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Viddler" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Viddler" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Viddler' in type name 'Viddler'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="65">In member 'Viddler.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="65">In member 'Viddler.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="89">In member 'Viddler.GetVideo(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="89">In member 'Viddler.GetVideo(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="113">In member 'Viddler.GetVideoObject(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="113">In member 'Viddler.GetVideoObject(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Viddler.vb" Line="127">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Viddler.GetVideoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Vimeo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Vimeo" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Vimeo' in type name 'Vimeo'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="65">In member 'Vimeo.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="65">In member 'Vimeo.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="89">In member 'Vimeo.GetVideo(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="89">In member 'Vimeo.GetVideo(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="113">In member 'Vimeo.GetVideoObject(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="113">In member 'Vimeo.GetVideoObject(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="Vimeo.vb" Line="127">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'Vimeo.GetVideoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="YouTube" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Proxy" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="65">In member 'YouTube.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyAddress' by changing it to 'proxy'.</Issue>
+             <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="65">In member 'YouTube.New(String, Integer)', correct the casing of 'Proxy' in parameter name 'ProxyPort' by changing it to 'proxy'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideo(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="89">In member 'YouTube.GetVideo(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="89">In member 'YouTube.GetVideo(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideo(String, Integer, Integer)'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetVideoObject(System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="1#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="113">In member 'YouTube.GetVideoObject(String, Integer, Integer)', change parameter name 'Width' to 'MaxWidth' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="2#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="113">In member 'YouTube.GetVideoObject(String, Integer, Integer)', change parameter name 'Height' to 'MaxHeight' in order to match the identifier as it has been declared in 'IVideoProvider.GetVideoObject(String, Integer, Integer)'.</Issue>
+            </Message>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2016-02-06 08:55:54Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Websites\Development\Library\oEmbed\WillStrohl.oEmbed\Providers\Video" File="YouTube.vb" Line="127">Because the behavior of 'String.Format(String, Object, Object, Object)' could vary based on the current user's locale settings, replace this call in 'YouTube.GetVideoObject(String, Integer, Integer)' with a call to 'String.Format(IFormatProvider, String, ParamArray Object())'. If the result of 'String.Format(IFormatProvider, String, ParamArray Object())' will be displayed to the user, specify 'CultureInfo.CurrentCulture()' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture()'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AbstractTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1012">
+   <Name>Abstract types should not have constructors</Name>
+   <Description>Public constructors for abstract types do not make sense because you cannot create instances of abstract types.</Description>
+   <Resolution Name="Default">Change the accessibility of all public constructors in {0} to protected.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182126.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+   <Name>Assemblies should have valid strong names</Name>
+   <Description>Either the assembly has no strong name, an invalid one, or the strong name is valid only because of the computer configuration. The assembly should not be deployed in this state. The most common causes of this are: 1) The assembly's contents were modified after it was signed. 2) The signing process failed. 3) The assembly was delay-signed. 4) A registry key existed that allowed the check to pass (where it would not have otherwise).</Description>
+   <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182127.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidEmptyInterfaces" Category="Microsoft.Design" CheckId="CA1040">
+   <Name>Avoid empty interfaces</Name>
+   <Description>Interfaces are meant to contain members that specify a set of behaviors. To mark or label a class, use an attribute instead of an empty interface.</Description>
+   <Resolution Name="Default">Define a custom attribute to replace {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182128.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidExcessiveComplexity" Category="Microsoft.Maintainability" CheckId="CA1502">
+   <Name>Avoid excessive complexity</Name>
+   <Description>Method implementations that are exceedingly complex increase the challenge of understanding and maintaining code.</Description>
+   <Resolution Name="Default">{0} has a cyclomatic complexity of {1}. Rewrite or refactor the method to reduce complexity to {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182212.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="maintainabilityrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 113</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Do not pass literals as localized parameters</Name>
+   <Description>Literal strings that are embedded in source code are difficult to localize. Avoid passing literal strings as arguments in circumstances where a localized string is generally expected.</Description>
+   <Resolution Name="KnownValue">Method {0} passes a literal string as parameter '{1}' of a call to {2}. Retrieve the following string(s) from a resource table instead: {3}.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182187.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Do not catch general exception types</Name>
+   <Description>You should not catch Exception or SystemException. Catching generic exception types can hide run-time problems from the library user, and can complicate debugging. You should catch only those exceptions that you can handle gracefully.</Description>
+   <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182137.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are Pascal-cased. Parameter identifiers are camel-cased. Two letter acronyms within these identifiers should be upper-cased, for example, use System.IO instead of System.Io. Acronyms of three or more letters should be Pascal-cased, for example, use System.Xml instead of System.XML. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Assembly">Correct the casing of '{0}' in assembly name {1} by changing it to '{2}'.</Resolution>
+   <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+   <Resolution Name="MemberParameter">In member {0}, correct the casing of '{1}' in parameter name {2} by changing it to '{3}'.</Resolution>
+   <Resolution Name="Namespace">Correct the casing of '{0}' in namespace name '{1}' by changing it to '{2}'.</Resolution>
+   <Resolution Name="Type">Correct the casing of '{0}' in type name {1} by changing it to '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182240.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+   <Name>Identifiers should be spelled correctly</Name>
+   <Description>The individual words that make up an identifier should not be abbreviated and should be spelled correctly. If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</Description>
+   <Resolution Name="Assembly">Correct the spelling of '{0}' in assembly name {1}.</Resolution>
+   <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="Namespace">Correct the spelling of '{0}' in namespace name '{1}'.</Resolution>
+   <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264492.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="namingrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720">
+   <Name>Identifiers should not contain type names</Name>
+   <Description>Avoid using language-specific types name in parameters and members and data type identifiers in parameters. Types names might not be intuitive for all developers. It is recommended that you select a generic name, such as 'value', instead. If this is not sufficient, be sure to use the type name as it is defined in the .NET Framework Library and avoid language-specific type names completely. Some examples of C#-specific type names are 'float' (use 'Single' if a generic name is not sufficient), and 'ulong' (use 'UInt64' if a generic name is not sufficient).</Description>
+   <Resolution Name="LanguageSpecificMember">Consider replacing the language-specific data type identifier '{0}' in member name {1} with either a language-independent equivalent or a more generic term, such as 'value'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb531486.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707">
+   <Name>Identifiers should not contain underscores</Name>
+   <Description>Do not use underscores when specifying identifiers. Some generated Visual Studio identifiers for applications contain underscore characters. Underscore characters should generally be avoided in public identifiers.</Description>
+   <Resolution Name="Member">Remove the underscores from member name {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182245.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="InstantiateArgumentExceptionsCorrectly" Category="Microsoft.Usage" CheckId="CA2208">
+   <Name>Instantiate argument exceptions correctly</Name>
+   <Description>String arguments passed to constructors of ArgumentException and its derived types should be correct. Types derived from ArgumentException have inconsistent constructor overloads with respect to the message and paramName parameters as compared to ArgumentException.</Description>
+   <Resolution Name="IncorrectParameterName">Method {0} passes '{1}' as the {2} argument to a {3} constructor. Replace this argument with one of the method's parameter names. Note that the provided parameter name should have the exact casing as declared on the method.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182347.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+   <Name>Mark assemblies with CLSCompliantAttribute</Name>
+   <Description>Assemblies should explicitly state their CLS compliance using the CLSCompliant attribute. An assembly without this attribute is not CLS-compliant. Assemblies, modules, and types can be CLS-compliant even if some parts of the assembly, module, or type are not CLS-compliant. The following rules apply: 1) If the element is marked CLSCompliant, any noncompliant members must have the CLSCompliant attribute present with its argument set to false. 2) A comparable CLS-compliant alternative member must be supplied for each member that is not CLS-compliant.</Description>
+   <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182156.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824">
+   <Name>Mark assemblies with NeutralResourcesLanguageAttribute</Name>
+   <Description>The NeutralResourcesLanguage attribute informs the ResourceManager of the language used to render the neutral culture's resources for an assembly. When looking up resources in the same culture as the neutral resources language, the ResourceManager automatically uses the resources located in the main assembly, instead of searching for a satellite assembly with the current user interface culture for the current thread. This will improve lookup performance for the first resource you load and can reduce your working set.</Description>
+   <Resolution Name="Default">Because assembly {0} contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb385967.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+   <Name>Mark members as static</Name>
+   <Description>Methods which do not access instance data or call instance methods can be marked as static (Shared in Visual Basic). After doing so, the compiler will emit non-virtual call sites to these members which will prevent a check at runtime for each call that ensures the current object pointer is non-null. This can result in a measurable performance gain for performance-sensitive code. In some cases, the failure to access the current object instance represents a correctness issue.</Description>
+   <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245046.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725">
+   <Name>Parameter names should match base declaration</Name>
+   <Description>For usability reasons, parameter names in overridden methods should match those of the base declaration.</Description>
+   <Resolution Name="Default">In member {0}, change parameter name {1} to {2} in order to match the identifier as it has been declared in {3}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182251.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="PassSystemUriObjectsInsteadOfStrings" Category="Microsoft.Usage" CheckId="CA2234">
+   <Name>Pass System.Uri objects instead of strings</Name>
+   <Description>If there are two overloads one taking System.Uri and one taking System.String, library code should never call the string-based overload.</Description>
+   <Resolution Name="Default">Modify {0} to call {1} instead of {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182360.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241">
+   <Name>Provide correct arguments to formatting methods</Name>
+   <Description>Provide the correct number of arguments to String.Format calls.</Description>
+   <Resolution Name="MissingArgument">Method {0} calls {1} and does not provide an argument for format item {2}. The provided format string is: '{3}'</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182361.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+   <Name>Specify IFormatProvider</Name>
+   <Description>If an overload exists that takes an IFormatProvider argument, it should always be called in favor of an overload that does not. Some methods in the runtime convert a value to or from a string representation and take a string parameter that contains one or more characters, called format specifiers, which indicate how the value is to be converted. If the meaning of the format specifier varies by culture, a formatting object supplies the actual characters used in the string representation. In scenarios where sorting and comparison behavior should never change between cultures, specify CultureInfo.InvariantCulture, otherwise, specify CultureInfo.CurrentCulture.</Description>
+   <Resolution Name="IFormatProviderAlternateString">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify {4}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182190.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053">
+   <Name>Static holder types should not have constructors</Name>
+   <Description>Instances of types that define only static members do not need to be created. Many compilers will automatically add a public default constructor if no constructor is specified. To prevent this, adding an empty private constructor may be required.</Description>
+   <Resolution Name="Default">Because type {0} contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182169.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054">
+   <Name>URI parameters should not be strings</Name>
+   <Description>If a parameter name contains "uri" or "url" or "urn", and it's typed as string, the parameter type should be changed to System.Uri, unless there is an overload method where the same parameter is typed as System.Uri.</Description>
+   <Resolution Name="Default">Change the type of parameter {0} of method {1} from string to System.Uri, or provide an overload of {1}, that allows {0} to be passed as a System.Uri object.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182174.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056">
+   <Name>URI properties should not be strings</Name>
+   <Description>If a property name contains "uri" or "url" or "urn" and it's typed as string, it should be changed to System.Uri.</Description>
+   <Resolution Name="Default">Change the type of property {0} from string to System.Uri.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182175.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Validate arguments of public methods" Category="Microsoft.Design" CheckId="CA1062">
+   <Name>Validate arguments of public methods</Name>
+   <Description>All reference arguments passed to externally visible methods should be checked against null (Nothing in VB). If appropriate, throw a System.ArgumentNullException when the argument is null.</Description>
+   <Resolution Name="Default">In externally visible method {0}, validate parameter '{1}' before using it.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182182.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

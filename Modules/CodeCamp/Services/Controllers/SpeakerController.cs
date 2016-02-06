@@ -33,6 +33,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
@@ -323,6 +325,49 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 Exceptions.LogException(ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Saves a new or updates an existing avatar for a speaker
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSpeakerAvatar
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage UpdateSpeakerAvatar(int codeCampId)
+        {
+            try
+            {
+                var httpRequest = HttpContext.Current.Request;
+                if (httpRequest.Files.Count > 0)
+                {
+                    var folderPath = string.Format("~/Portals/{0}/CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, codeCampId);
+
+                    foreach (string file in httpRequest.Files)
+                    {
+                        var postedFile = httpRequest.Files[file];
+                        var filePath = HttpContext.Current.Server.MapPath(string.Concat(folderPath, postedFile.FileName));
+
+                        // TODO: append "-ORIGINAL" to the file name
+                        // TODO: parse the image and resize as required
+                        // TODO: allow avatars to be cropepd and saved
+
+                        postedFile.SaveAs(filePath);
+                        // NOTE: To store in memory use postedFile.InputStream
+                    }
+                }
+
+                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.GetBaseException().Message);
             }
         }
     }

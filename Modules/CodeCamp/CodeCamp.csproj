@@ -92,8 +92,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Components\AvatarMultipartFormDataStreamProvider.cs" />
-    <Compile Include="Components\AvatarPhotoManager.cs" />
     <Compile Include="Components\DateTimeConverter.cs" />
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\CodeCampModuleBase.cs">
@@ -103,7 +101,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Components\Globals.cs" />
-    <Compile Include="Components\IAvatarManager.cs" />
     <Compile Include="Components\PasswordGenerator.cs" />
     <Compile Include="Components\RouteMapper.cs" />
     <Compile Include="Components\ViewHelper.cs" />
@@ -120,14 +117,12 @@
     <Compile Include="Controllers\RegistrationInfoController.cs" />
     <Compile Include="Entities\AgendaTimeSlotInfo.cs" />
     <Compile Include="Entities\EventDayInfo.cs" />
-    <Compile Include="Entities\AvatarInfo.cs" />
     <Compile Include="Entities\AgendaInfo.cs" />
     <Compile Include="Entities\CodeCampInfo.cs" />
     <Compile Include="Controllers\CodeCampInfoController.cs" />
     <Compile Include="Entities\CodeCampInfoRepository.cs" />
     <Compile Include="Entities\CustomPropertyInfo.cs" />
     <Compile Include="Entities\Interfaces\IAgendaInfo.cs" />
-    <Compile Include="Entities\Interfaces\IAvatarInfo.cs" />
     <Compile Include="Entities\Interfaces\ICustomPropertyInfo.cs" />
     <Compile Include="Entities\Interfaces\IEventDayInfo.cs" />
     <Compile Include="Entities\SessionRegistrationInfoRepository.cs" />
@@ -249,6 +244,17 @@
     <Content Include="Scripts\moment\moment.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.14.3.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.14.3.min.js" />
+    <Content Include="Scripts\ngImageUploader\FileAPI.flash.swf" />
+    <Content Include="Scripts\ngImageUploader\FileAPI.js" />
+    <Content Include="Scripts\ngImageUploader\FileAPI.min.js" />
+    <Content Include="Scripts\ngImageUploader\ItemEdit.js" />
+    <Content Include="Scripts\ngImageUploader\ItemView.js" />
+    <Content Include="Scripts\ngImageUploader\ng-file-upload-all.js" />
+    <Content Include="Scripts\ngImageUploader\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ngImageUploader\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ngImageUploader\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ngImageUploader\ng-file-upload.js" />
+    <Content Include="Scripts\ngImageUploader\ng-file-upload.min.js" />
     <Content Include="Scripts\ng\angular\angular-animate.js" />
     <Content Include="Scripts\ng\angular\angular-animate.min.js" />
     <Content Include="Scripts\ng\angular\angular-resource.js" />
@@ -261,8 +267,6 @@
     <Content Include="Scripts\ng\controllers\TimeSlotsController.js" />
     <Content Include="Scripts\ng\controllers\RoomsController.js" />
     <Content Include="Scripts\ng\directives\confirmDirectives.js" />
-    <Content Include="Scripts\ng\directives\egFiles.js" />
-    <Content Include="Scripts\ng\directives\egPhotoUploader.js" />
     <Content Include="Scripts\ng\directives\sessionDirectives.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\ng\app.js" />
@@ -294,7 +298,6 @@
     <Content Include="Styles\bootstrap\flat\bootstrap-flat.css" />
     <Content Include="Styles\bootstrap\flat\bootstrap-flat.min.css" />
     <Content Include="Templates\_default\about.html" />
-    <Content Include="Templates\_default\photo-uploader.html" />
     <Content Include="Templates\_default\navigation.html" />
     <Content Include="Templates\_default\timeslots.html" />
     <Content Include="Templates\_default\rooms.html" />

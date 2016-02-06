@@ -73,6 +73,11 @@
                         <label for="companyTitle">Your Title</label>
                         <input type="text" name="companyTitle" ng-model="speaker.CompanyTitle" class="form-control" placeholder="Your job title" maxlength="100" ng-trim />
                     </div>
+                    <div class="form-group">
+                        <label for="avatarUpload">Your Avatar</label>
+                        <!-- TODO: REPLACE THIS WITH THE FILE UPLOAD FROM RALPH'S PROJECT -->
+                        <input type="file" id="newAvatars" accept="image/*" eg-files="avatars" has-files="hasFiles" />
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -86,7 +91,6 @@
                     </div>
                 </div>
             </div>
-            <!-- TODO: avatar upload -->
             <div class="row">
                 <div class="col-xs-6">
                     <div class="checkbox">
@@ -160,7 +164,7 @@
         <div class="container modal-form-container-lg">
             <div class="row">
                 <div class="col-xs-6">
-                    <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()">Save Submission</button>
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()" eg-upload="upload(avatars)">Save Submission</button>
                 </div>
                 <div class="col-xs-6">
                     <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>

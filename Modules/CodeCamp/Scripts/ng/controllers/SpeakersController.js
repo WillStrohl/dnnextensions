@@ -27,7 +27,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.currentUserId = serviceResponse.Content;
-                console.log("$scope.currentUserId = " + $scope.currentUserId);
 
                 $scope.getEvent();
 
@@ -46,8 +45,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.speakers = serviceResponse.Content;
-                console.log("$scope.speakers = " + $scope.speakers);
-                console.log("$scope.speakers.length = " + $scope.speakers.length);
 
                 if ($scope.speakers === null) {
                     $scope.hasSpeakers = false;
@@ -58,7 +55,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                         obj.SpeakerSlug = GetSlugFromValue(obj.SpeakerName);
                     });
                 }
-                console.log("$scope.hasSpeakers = " + $scope.hasSpeakers);
 
                 LogErrors(serviceResponse.Errors);
             },
@@ -75,7 +71,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.currentSpeakerSessions = serviceResponse.Content;
-                console.log("$scope.currentSpeakerSessions = " + $scope.currentSpeakerSessions);
 
                 $scope.LoadSpeakerSubmission();
 
@@ -94,7 +89,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.currentSpeaker = serviceResponse.Content;
-                console.log("$scope.currentSpeaker = " + $scope.currentSpeaker);
 
                 if ($scope.currentSpeaker != null) {
                     $scope.getSpeakerSessions();
@@ -115,7 +109,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.currentUserRegistration = serviceResponse.Content;
-                console.log("$scope.currentUserRegistration = " + $scope.currentUserRegistration);
 
                 if ($scope.codeCamp != null && $scope.currentUserRegistration != null) {
                     $scope.getSpeaker();
@@ -138,7 +131,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.codeCamp = serviceResponse.Content;
-                console.log("serviceResponse.Content = " + serviceResponse.Content);
 
                 if ($scope.codeCamp != null) {
                     $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
@@ -192,7 +184,6 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
         modalInstance.result.then(function (savedSpeaker) {
             $scope.savedSpeaker = savedSpeaker;
             $scope.LoadData();
-            console.log("$scope.savedSpeaker = " + $scope.savedSpeaker);
         }, function () {
             console.log("Modal dismissed at: " + new Date());
         });
@@ -289,47 +280,15 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
                 var savedSpeaker = angular.fromJson(data);
                 $scope.savedSpeaker = savedSpeaker.Content;
 
+                // save the speaker avatar
+
                 // save the sessions
                 $.each($scope.sessions, function (index, session) {
 
                     var sessionAction = (session.SessionId > 0) ? "UpdateSession" : "CreateSession";
                     var sessionSpeakerAction = (session.SessionId > 0) ? "UpdateSessionSpeaker" : "CreateSessionSpeaker";
 
-                    factory.callPostService(sessionAction, session)
-                        .success(function (data) {
-                            var savedSession = angular.fromJson(data);
-
-                            $scope.savedSessions.push(savedSession.Content);
-
-                            var sessionSpeaker = {
-                                SessionId: savedSession.Content.SessionId,
-                                SpeakerId: $scope.savedSpeaker.SpeakerId
-                            };
-
-                            // save the speaker session joins
-                            factory.callPostService(sessionSpeakerAction, sessionSpeaker)
-                                .success(function (data) {
-                                    var sessionSpeaker = angular.fromJson(data);
-
-                                    $scope.updateSpeakersList();
-
-                                    $scope.LoadData();
-
-                                    LogErrors(sessionSpeaker.Errors);
-                                })
-                                .error(function (data, status) {
-                                    $scope.HasErrors = true;
-                                    console.log("Unknown error occurred calling CreateSessionSpeaker");
-                                    console.log(data);
-                                });
-
-                            LogErrors(savedSession.Errors);
-                        })
-                        .error(function (data, status) {
-                            $scope.HasErrors = true;
-                            console.log("Unknown error occurred calling " + sessionAction);
-                            console.log(data);
-                        });
+                    $scope.saveSession(sessionAction, session, sessionSpeakerAction);
                 });
 
                 LogErrors(savedSpeaker.Errors);
@@ -342,6 +301,64 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
 
         $uibModalInstance.close($scope.savedSpeaker);
     };
+
+    $scope.saveAvatar = function () {
+        // TODO: replace this with the file upload logic from Ralph's project 
+        factory.callPostService("UpdateSpeakerAvatar")
+            .success(function (data) {
+                var serviceResponse = angular.fromJson(data);
+                console.log("Avatar Save Response = " + serviceResponse.Content);
+
+                LogErrors(serviceResponse.Errors);
+            })
+            .error(function (data, status) {
+                $scope.HasErrors = true;
+                console.log("Unknown error occurred calling UpdateSpeakerAvatar");
+                console.log(data);
+            });
+    }
+
+    $scope.saveSession = function (sessionAction, session, sessionSpeakerAction) {
+        factory.callPostService(sessionAction, session)
+            .success(function (data) {
+                var savedSession = angular.fromJson(data);
+
+                $scope.savedSessions.push(savedSession.Content);
+
+                var sessionSpeaker = {
+                    SessionId: savedSession.Content.SessionId,
+                    SpeakerId: $scope.savedSpeaker.SpeakerId
+                };
+
+                // save the speaker session joins
+                $scope.saveSpeakerSession(sessionSpeakerAction, sessionSpeaker);
+
+                LogErrors(savedSession.Errors);
+            })
+            .error(function (data, status) {
+                $scope.HasErrors = true;
+                console.log("Unknown error occurred calling " + sessionAction);
+                console.log(data);
+            });
+    }
+
+    $scope.saveSpeakerSession = function(sessionSpeakerAction, sessionSpeaker) {
+        factory.callPostService(sessionSpeakerAction, sessionSpeaker)
+            .success(function (data) {
+                var sessionSpeaker = angular.fromJson(data);
+
+                $scope.updateSpeakersList();
+
+                $scope.LoadData();
+
+                LogErrors(sessionSpeaker.Errors);
+            })
+            .error(function (data, status) {
+                $scope.HasErrors = true;
+                console.log("Unknown error occurred calling CreateSessionSpeaker");
+                console.log(data);
+            });
+    }
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss("cancel");
