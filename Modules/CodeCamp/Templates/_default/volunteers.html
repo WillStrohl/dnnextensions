@@ -1,0 +1,190 @@
+﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
+<h2>Event Volunteers</h2>
+<div class="container" ng-show="!userIsRegistered">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-info">
+                <h4>Want to Help?</h4>
+                <p>We're always looking for volunteers. If you want to help us, <a href="#/register">register</a> and then you can volunteer here.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-show="userIsRegistered && !userIsVolunteer">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-info">
+                <h4>Want to Help?</h4>
+                <p>We'd be happy to have you. If you want to help us, simply click the button below and tell us how you'd like to help.</p>
+                <p>
+                    <a class="btn btn-primary" ng-click="openVolunteerSubmission()">Let Me Help</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-show="userIsVolunteer || userCanEdit">
+    <div class="row">
+        <div class="col-xs-12">
+            <uib-tabset>
+                <uib-tab heading="My Tasks" ng-show="userIsVolunteer">
+                    <div class="volunteer-task-wrapper">
+                        <div class="table-responsive" ng-show="volunteerTasks.length > 0">
+                            <table class="table table-striped myTasksTable">
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Begin</th>
+                                    <th>Due</th>
+                                    <th>Completed</th>
+                                </tr>
+                                <tr ng-repeat="task in volunteerTasks | orderBy: 'BeginDate'">
+                                    <td>{{task.Title}}</td>
+                                    <td>{{task.BeginDate}}</td>
+                                    <td>{{task.EndDate}}</td>
+                                    <td>{{task.Completed}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="alert alert-warning" ng-show="volunteerTasks.length == 0">
+                            <h4>Lucky you!</h4>
+                            <p>You don't have any tasks yet. Some may get assigned to you soon.</p>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab heading="Manage Tasks" ng-show="userCanEdit">
+                    <div class="volunteer-task-wrapper">
+                        <table class="table table-striped allTasksTable">
+                            <tr>
+                                <th>Volunteer</th>
+                                <th>Open</th>
+                                <th>Completed</th>
+                                <th>Overdue</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr ng-repeat="vol in volunteers | orderBy: 'BeginDate'">
+                                <td><strong>{{vol.FullName}}</strong><br />{{vol.Notes}}</td>
+                                <td>{{vol.TasksOpen}}</td>
+                                <td>{{vol.TasksClosed}}</td>
+                                <td>{{vol.TasksOverdue}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-default" ng-click="OpenAddNewTask(vol.VolunteerId)">Add Task</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="AddVolunteerModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Volunteer to Help</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-md" ng-form="createVolunteerForm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group" ng-class="{ 'has-error error' : createVolunteerForm.notes.$dirty && createVolunteerForm.notes.$invalid }">
+                        <label for="notes">What do you want to do? *</label>
+                        <textarea name="notes" ng-model="volunteer.Notes" ng-required="true" class="form-control" placeholder="List any limitations, skills, interests, or resources you have" maxlength="200" required></textarea>
+                        <p class="help-block" ng-show="createTrackForm.description.$dirty && createTrackForm.description.$invalid">
+                            Notes are required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-md">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createVolunteerForm.$invalid" ng-click="ok()">I'm Ready to Help!</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="AddNewTaskModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Add New Task</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-md" ng-form="createTaskForm">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><strong>Adding a Task For:</strong> {{volunteer.FullName}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group" ng-class="{ 'has-error error' : createTaskForm.title.$dirty && createTaskForm.title.$invalid }">
+                        <label for="notes">Task *</label>
+                        <input type="text" name="title" ng-model="task.Title" ng-required="true" class="form-control" placeholder="Clearly and succinctly describe the task" maxlength="140" required />
+                        <p class="help-block" ng-show="createTaskForm.title.$dirty && createTaskForm.title.$invalid">
+                            Title is required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="beginDate">Begin Date *</label>
+                    <p class="input-group">
+                        <input type="text" name="beginDate" ng-model="task.BeginDate"
+                               uib-datepicker-popup="{{datePicker.format}}" min-date="datePicker.minDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['BeginDate']"
+                               ng-focus="datePicker.open($event, 'BeginDate')" ng-change="SyncDates()" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the task begins" min="datePicker.minDate" 
+                               max="datePicker.maxDate" required ng-trim />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'BeginDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <label for="beginDate">End Date *</label>
+                    <p class="input-group">
+                        <input type="text" name="endDate" ng-model="task.EndDate"
+                               uib-datepicker-popup="{{datePicker.format}}" min-date="task.BeginDate" max-date="datePicker.maxDate" datepicker-options="datePicker.options" is-open="datePicker.instances['EndDate']"
+                               ng-focus="datePicker.open($event, 'EndDate')" ng-change="SyncDates()" ng-required="true" close-text="Close" class="form-control" placeholder="Day that the task ends" min="task.BeginDate" 
+                               max="datePicker.maxDate" date-greater-than="{{task.BeginDate | date:'short'}}" required ng-trim />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="datePicker.open($event, 'EndDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="beginTime">Begin Time *</label>
+                        <uib-timepicker ng-model="task.BeginTime" ng-change="TimeChanged()" hour-step="hourSteps" minute-step="minuteSteps" show-meridian="true" required></uib-timepicker>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="endTime">End Time *</label>
+                        <uib-timepicker ng-model="task.EndTime" ng-change="TimeChanged()" hour-step="hourSteps" minute-step="minuteSteps" show-meridian="true" required></uib-timepicker>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-md">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createTaskForm.$invalid" ng-click="ok()">Save the Task</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

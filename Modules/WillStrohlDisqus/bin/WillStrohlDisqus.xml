@@ -35,6 +35,21 @@
             Reference: http://oauth.net/code/
             </remarks>
         </member>
+        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.SignatureTypes">
+            <summary>
+            Provides a predefined set of algorithms that are supported officially by the protocol
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.QueryParameter">
+            <summary>
+            Provides an internal structure to sort the query parameter
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.QueryParameterComparer">
+            <summary>
+            Comparer class used to perform the sorting of the query parameters
+            </summary>
+        </member>
         <member name="M:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.ComputeHash(System.Security.Cryptography.HashAlgorithm,System.String)">
             <summary>
             Helper function to compute a hash value
@@ -122,21 +137,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.SignatureTypes">
-            <summary>
-            Provides a predefined set of algorithms that are supported officially by the protocol
-            </summary>
-        </member>
-        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.QueryParameter">
-            <summary>
-            Provides an internal structure to sort the query parameter
-            </summary>
-        </member>
-        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.OAuthHelper.QueryParameterComparer">
-            <summary>
-            Comparer class used to perform the sorting of the query parameters
-            </summary>
-        </member>
         <member name="T:DotNetNuke.Modules.WillStrohlDisqus.DataProvider">
             -----------------------------------------------------------------------------
             <summary>
@@ -150,63 +150,6 @@
             The EditWillStrohlDisqus class is used to manage content
             </summary>
             -----------------------------------------------------------------------------
-        </member>
-        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase">
-            <summary>
-            A base class for all module views to use
-            </summary>
-        </member>
-        <member name="M:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.GetLocalizedString(System.String)">
-            <summary>
-            GetLocalizedString - A shortcut to localizing a string object
-            </summary>
-            <param name="localizationKey">a unique string key representing the localization value</param>
-            <returns></returns>
-        </member>
-        <member name="M:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.GetLocalizedString(System.String,System.String)">
-            <summary>
-            GetLocalizedString - A shortcut to localizing a string object
-            </summary>
-            <param name="localizationKey">a unique string key representing the localization value</param>
-            <param name="localResourceFilePath">the path to the localization file</param>
-            <returns></returns>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusApplicationName">
-            <summary>
-            DisqusApplicationName
-            </summary>
-            <returns>The name of the Disqus Application that was created on Disqus.com</returns>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusApiSecret">
-            <summary>
-            DisqusApiSecret
-            </summary>
-            <returns>The API secret for the Disqus Application that was created on Disqus.com</returns>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.RequireDnnLogin">
-            <summary>
-            RequireDnnLogin
-            </summary>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.ScheduleEnabled">
-            <summary>
-            ScheduleEnabled
-            </summary>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusDeveloperMode">
-            <summary>
-            DisqusDeveloperMode
-            </summary>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusSsoEnabled">
-            <summary>
-            DisqusSsoEnabled
-            </summary>
-        </member>
-        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusSsoApiKey">
-            <summary>
-            DisqusSsoApiKey
-            </summary>
         </member>
         <member name="F:DotNetNuke.Modules.WillStrohlDisqus.Edit.lblModuleView">
             <summary>
@@ -800,6 +743,63 @@
             <summary>
             ModuleActions - loads the actions menu with a custom menu item
             </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase">
+            <summary>
+            A base class for all module views to use
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusApplicationName">
+            <summary>
+            DisqusApplicationName
+            </summary>
+            <returns>The name of the Disqus Application that was created on Disqus.com</returns>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusApiSecret">
+            <summary>
+            DisqusApiSecret
+            </summary>
+            <returns>The API secret for the Disqus Application that was created on Disqus.com</returns>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.RequireDnnLogin">
+            <summary>
+            RequireDnnLogin
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.ScheduleEnabled">
+            <summary>
+            ScheduleEnabled
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusDeveloperMode">
+            <summary>
+            DisqusDeveloperMode
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusSsoEnabled">
+            <summary>
+            DisqusSsoEnabled
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.DisqusSsoApiKey">
+            <summary>
+            DisqusSsoApiKey
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.GetLocalizedString(System.String)">
+            <summary>
+            GetLocalizedString - A shortcut to localizing a string object
+            </summary>
+            <param name="localizationKey">a unique string key representing the localization value</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.WillStrohlDisqus.WillStrohlDisqusModuleBase.GetLocalizedString(System.String,System.String)">
+            <summary>
+            GetLocalizedString - A shortcut to localizing a string object
+            </summary>
+            <param name="localizationKey">a unique string key representing the localization value</param>
+            <param name="localResourceFilePath">the path to the localization file</param>
+            <returns></returns>
         </member>
     </members>
 </doc>

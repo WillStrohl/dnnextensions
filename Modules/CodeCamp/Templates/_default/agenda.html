@@ -1,0 +1,55 @@
+﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
+<h2>Event Agenda</h2>
+<div class="container">
+    <div class="row" ng-show="userCanEdit">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default" ng-click="goToPage('/timeslots')">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Manage Time Slots
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="agenda">
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered agenda-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Events</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="eventDay in agenda.EventDays | orderBy: 'TimeStamp'">
+                        <td class="agenda-date" title="{{eventDay.TimeStamp}}" class="active">
+                            <div class="dayofmonth">{{eventDay.Day}}</div>
+                            <div class="dayofweek">{{eventDay.DayName}}</div>
+                            <div class="shortdate text-muted">{{eventDay.Month}}, {{eventDay.Year}}</div>
+                        </td>
+                        <td>
+                            <table class="table table-condensed table-bordered agenda-timeblock-table">
+                                <tbody>
+                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'Index'">
+                                    <td class="agenda-date-column">
+                                        {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
+                                    </td>
+                                    <td class="agenda-session-column">
+                                        <ul>
+                                            <li ng-repeat="session in timeSlot.Sessions">
+                                                <span>{{session.Title}}</span> by <span class="agenda-session-speaker" ng-repeat="speaker in session.Speakers | orderBy: 'SpeakerName'">{{speaker.SpeakerName}}<span ng-if="session.Speakers > 1">, </span></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,571 @@
+﻿/*
+
+INSTALL SQL PROVIDER SCRIPT
+
+CodeCamp Module for DotNetNuke
+Version: 01.00.00
+Author: Will Strohl
+E-Mail: will.strohl@gmail.com
+Website: http://www.willstrohl.com
+
+Copyright 2015 Will Strohl
+
+Release Notes:
+ This is the first install script for the module. It creates the initial module 
+ structure.
+
+*/
+
+/*
+
+CONSTRAINTS
+
+*/
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_CodeCamp_ModuleId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_CodeCamp')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_CodeCamp_ModuleId];
+        
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Registration_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Registration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_CodeCampId];
+        
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Registration_UserId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Registration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_UserId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_VolunteerTask')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_TimeSlot_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_TimeSlot')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_TimeSlot_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionSpeaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SpeakerId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionSpeaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SpeakerId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_RoomId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_RoomId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_TrackId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TrackId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_TimeSlotId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TimeSlotId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionRegistration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionRegistration_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionRegistration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionRegistration_RegistrationId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_RoomId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_RoomId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Room_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Room')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Room_CodeCampId];
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] (
+    [CodeCampId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_CodeCamp] PRIMARY KEY CLUSTERED, 
+    [ModuleId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_CodeCamp_ModuleId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE, 
+    [Title] NVARCHAR(100) NOT NULL, 
+    [Description] NVARCHAR(1000) NOT NULL, 
+    [BeginDate] DATETIME NOT NULL, 
+    [EndDate] DATETIME NOT NULL, 
+    [IconFile] NVARCHAR(100) NULL, 
+    [AltText] NVARCHAR(50) NULL, 
+    [RoleName] NVARCHAR(50) NULL, 
+    [WaitListRoleName] NVARCHAR(50) NULL, 
+    [MaximumCapacity] INT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_MaximumCapacity] DEFAULT((0)), 
+    [NumberRegistered] INT NOT NULL
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_NumberRegistered] DEFAULT((0)), 
+    [EventFull] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_EventFull] DEFAULT((0)), 
+    [RegistrationActive] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_RegistrationActive] DEFAULT((0)), 
+    [ShowShirtSize] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_ShowShirtSize] DEFAULT((1)), 
+    [ShowMicrosoftMVP] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_ShowMicrosoftMVP] DEFAULT((1)), 
+    [ShowAuthor] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_CodeCamp_ShowAuthor] DEFAULT((1)), 
+    [CreatedByUserId] INT NOT NULL, 
+    [CreatedByDate] DATETIME NOT NULL, 
+    [LastUpdatedByUserId] INT NOT NULL, 
+    [LastUpdatedByDate] DATETIME NOT NULL, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_CodeCamp_ModuleId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([ModuleId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_CodeCamp_CodeCampId_ModuleId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId],[ModuleId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_CodeCamp_CreatedByUser] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CreatedByUserId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Registration]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] (
+    [RegistrationId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Registration] PRIMARY KEY CLUSTERED, 
+    [CodeCampId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_CodeCampId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
+    [UserId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_UserId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId]) ON DELETE CASCADE, 
+    [ShirtSize] NVARCHAR(5) NULL, 
+	[HasDietaryRequirements] BIT NOT NULL DEFAULT((0)),
+	[Notes] NVARCHAR(1000) NULL, 
+	[RegistrationDate] DATETIME NOT NULL, 
+	[IsRegistered] BIT DEFAULT((1)),
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Registration_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([CodeCampId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Registration_CodeCampId_IsRegistered] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([CodeCampId],[IsRegistered]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Registration_UserId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([UserId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Registration_CodeCampId_ShirtSize] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([CodeCampId],[ShirtSize]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Registration_CodeCampId_UserId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([CodeCampId],[UserId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] (
+    [VolunteerId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Volunteer] PRIMARY KEY CLUSTERED, 
+    [CodeCampId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]),
+    [RegistrationId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]) ON DELETE CASCADE, 
+    [Notes] NVARCHAR(200) NULL, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([RegistrationId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Volunteer_VolunteerId_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([VolunteerId],[CodeCampId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] (
+    [VolunteerTaskId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_VolunteerTask] PRIMARY KEY CLUSTERED, 
+    [VolunteerId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] ([VolunteerId]) ON DELETE CASCADE, 
+    [Title] NVARCHAR(140) NOT NULL, 
+    [BeginDate] DATETIME NULL, 
+    [EndDate] DATETIME NULL, 
+    [Completed] BIT NOT NULL 
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_VolunteerTask_Completed] DEFAULT((0)), 
+    [CreatedByUserId] INT NOT NULL, 
+    [CreatedByDate] DATETIME NOT NULL, 
+    [LastUpdatedByUserId] INT NOT NULL, 
+    [LastUpdatedByDate] DATETIME NOT NULL, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] ([VolunteerId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerTaskId_VolunteerId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] ([VolunteerTaskId],[VolunteerId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot] (
+    [TimeSlotId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_TimeSlot] PRIMARY KEY CLUSTERED, 
+    [CodeCampId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_TimeSlot_CodeCampId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
+    [BeginTime] DATETIME NULL, 
+    [EndTime] DATETIME NULL, 
+    [AgendaText] NVARCHAR(50) NOT NULL, 
+    [SpanAllTracks] BIT NOT NULL
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_TimeSlot_SpanAllTracks] DEFAULT((0)), 
+    [IncludeInDropDowns] BIT NOT NULL
+        CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_TimeSlot_IncludeInDropDowns] DEFAULT((1)), 
+    [CreatedByUserId] INT NOT NULL, 
+    [CreatedByDate] DATETIME, 
+    [LastUpdatedByUserId] INT NOT NULL, 
+    [LastUpdatedByDate] DATETIME, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_TimeSlot_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot] ([CodeCampId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] (
+	[SpeakerId] INT IDENTITY(1,1) 
+		CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Speaker] PRIMARY KEY CLUSTERED, 
+	[CodeCampId] INT NOT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
+	[RegistrationId] INT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]), 
+	[SpeakerName] NVARCHAR(150) NOT NULL, 
+	[CompanyName] NVARCHAR(100) NULL, 
+	[CompanyTitle] NVARCHAR(100) NULL, 
+	[URL] NVARCHAR(255) NULL,  
+	[Email] NVARCHAR(255) NULL, 
+	[Bio] NVARCHAR(1000) NOT NULL, 
+	[IconFile] NVARCHAR(100) NULL, 
+	[IsAuthor] BIT NOT NULL 
+		CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_Speaker_Author] DEFAULT((0)), 
+	[CreatedByUserId] INT NOT NULL, 
+	[CreatedByDate] DATETIME, 
+	[LastUpdatedByUserId] INT NOT NULL, 
+	[LastUpdatedByDate] DATETIME, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] ([RegistrationId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Speaker_Author] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] ([IsAuthor]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_Room]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Room]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Room];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] (
+    [RoomId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Room] PRIMARY KEY CLUSTERED, 
+    [CodeCampId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Room_CodeCampId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]), 
+    [RoomName] NVARCHAR(20) NOT NULL, 
+    [Description] NVARCHAR(100) NULL, 
+    [MaximumCapacity] INT NULL, 
+    [CreatedByUserId] INT NOT NULL, 
+    [CreatedByDate] DATETIME, 
+    [LastUpdatedByUserId] INT NOT NULL, 
+    [LastUpdatedByDate] DATETIME, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Room_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] ([CodeCampId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Room_RoomName] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] ([RoomName]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_Track]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Track]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] (
+    [TrackId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Track] PRIMARY KEY CLUSTERED, 
+    [CodeCampId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]) ON DELETE CASCADE, 
+    [RoomId] INT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_RoomId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] ([RoomId]), 
+    [Title] NVARCHAR(50) NOT NULL, 
+    [Description] NVARCHAR(500) NOT NULL, 
+    [CreatedByUserId] INT NOT NULL, 
+    [CreatedByDate] DATETIME, 
+    [LastUpdatedByUserId] INT NOT NULL, 
+    [LastUpdatedByDate] DATETIME, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Track_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] ([CodeCampId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_Session]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Session]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] (
+	[SessionId] INT IDENTITY(1,1) 
+		CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_Session] PRIMARY KEY CLUSTERED, 
+	[Title] NVARCHAR(100) NOT NULL, 
+	[Description] NVARCHAR(2000) NOT NULL, 
+	[CodeCampId] INT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ([CodeCampId]), 
+	[TrackId] INT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TrackId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] ([TrackId]), 
+	[TimeSlotId] INT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TimeSlotId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot] ([TimeSlotId]), 
+	[AudienceLevel] INT NULL, 
+	[NumberRegistered] INT NULL, 
+	[CreatedByUserId] INT NOT NULL, 
+	[CreatedByDate] DATETIME NOT NULL, 
+	[LastUpdatedByUserId] INT NOT NULL, 
+	[LastUpdatedByDate] DATETIME NOT NULL, 
+	[IsApproved] BIT NULL 
+		CONSTRAINT [DF_{objectQualifier}wns_CodeCamp_Session_Approved] DEFAULT((0)), 
+	[ApprovedByUserId] INT NULL, 
+	[ApprovedByDate] DATETIME NULL, 
+	[CustomProperties] NVARCHAR(MAX) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_CodeCampId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([CodeCampId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_TrackId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([TrackId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_TimeSlotId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([TimeSlotId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_TrackId_Approved] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([TrackId],[IsApproved]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_Session_TrackId_TimeSlotId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([TrackId],[TimeSlotId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] (
+    [SessionSpeakerId] INT IDENTITY(1,1) 
+        CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_SessionSpeaker] PRIMARY KEY CLUSTERED, 
+    [SessionId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([SessionId]) NOT FOR REPLICATION, 
+    [SpeakerId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SpeakerId] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] ([SpeakerId]) NOT FOR REPLICATION
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] ([SessionId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId_SpeakerId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] ([SessionId],[SpeakerId]);
+GO
+
+/*
+
+TABLES: {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration]
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration];
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] (
+	[SessionRegistrationId] INT IDENTITY(1,1) 
+		CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_SessionRegistration] PRIMARY KEY CLUSTERED, 
+	[SessionId] INT NOT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([SessionId]) ON DELETE CASCADE, 
+	[RegistrationId] INT NOT NULL 
+		CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionRegistration_RegistrationId] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ([RegistrationId]) ON DELETE CASCADE
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] ([SessionId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_SessionRegistration_RegistrationId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] ([RegistrationId]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionIdRegistrationId] ON {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] ([SessionId],[RegistrationId]);
+GO
+
+/*
+
+END OF FILE
+
+*/

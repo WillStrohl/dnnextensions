@@ -1,0 +1,169 @@
+﻿IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_CodeCamp_ModuleId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_CodeCamp')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_CodeCamp_ModuleId];
+        
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Registration_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Registration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_CodeCampId];
+        
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Registration_UserId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Registration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Registration_UserId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Volunteer')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Volunteer_RegistrationId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_VolunteerTask')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_VolunteerTask_VolunteerId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_TimeSlot_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_TimeSlot')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_TimeSlot_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_RegistrationId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Speaker_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionSpeaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SpeakerId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionSpeaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SpeakerId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_CodeCampId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_RoomId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_RoomId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_TrackId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TrackId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Session_TimeSlotId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Session')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Session_TimeSlotId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionRegistration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionRegistration_SessionId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_SessionRegistration_RegistrationId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_SessionRegistration')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionRegistration_RegistrationId];
+    
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_CodeCampId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Track_RoomId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Track')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Track_RoomId];
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}wns_CodeCamp_Room_CodeCampId' 
+    AND TABLE_NAME = N'{objectQualifier}wns_CodeCamp_Room')
+    ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Room] DROP CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_Room_CodeCampId];
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Registration]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Volunteer];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_VolunteerTask];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_TimeSlot];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Track]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Track];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Room]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Room];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_Session]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Session];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionRegistration];
+GO
