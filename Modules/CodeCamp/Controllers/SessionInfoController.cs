@@ -39,7 +39,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         private readonly SessionInfoRepository repo = null;
         private readonly SessionRegistrationInfoController registrantRepo = null;
         private readonly SpeakerInfoController speakerRepo = null;
-        private readonly SessionSpeakerInfoController sessionSpeakerRepo = null;
+        //private readonly SessionSpeakerInfoController sessionSpeakerRepo = null;
         private readonly TimeSlotInfoController timeSlotRepo = null;
 
         public SessionInfoController() 
@@ -47,7 +47,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo = new SessionInfoRepository();
             registrantRepo = new SessionRegistrationInfoController();
             speakerRepo = new SpeakerInfoController();
-            sessionSpeakerRepo = new SessionSpeakerInfoController();
+            //sessionSpeakerRepo = new SessionSpeakerInfoController();
             timeSlotRepo = new TimeSlotInfoController();
         }
 
@@ -112,16 +112,23 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public IEnumerable<SessionInfo> GetItemsByTimeSlotId(int timeSlotId, int codeCampId)
         {
+            return GetItemsByTimeSlotIdByPage(timeSlotId, codeCampId, 1, int.MaxValue);
+        }
+
+        public IEnumerable<SessionInfo> GetItemsByTimeSlotIdByPage(int timeSlotId, int codeCampId, int pageNumber, int pageSize)
+        {
             var items = repo.GetItems(codeCampId).Where(t => t.TimeSlotId == timeSlotId);
 
             items.Select(s => { s.RegistrantCount = GetRegistrantCount(s.SessionId); return s; });
 
-            foreach (var item in items)
+            var resultSet = items.Skip(pageSize * (pageNumber - 1)).Take(pageSize);
+
+            foreach (var item in resultSet)
             {
                 item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
             }
 
-            return items;
+            return resultSet;
         }
 
         public void UpdateItemSortOrder(IEnumerable<SessionInfo> sessions, int codeCampId)
