@@ -119,7 +119,7 @@ namespace WillStrohl.Modules.CodeCamp
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/dateDirectives.js", FileOrder.Js.DefaultPriority + 20, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/confirmDirectives.js", FileOrder.Js.DefaultPriority + 22, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/directives/sessionDirectives.js", FileOrder.Js.DefaultPriority + 24, DnnFormBottomProvider.DefaultName);
-            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/ngImageUploader/ng-file-upload-all.min.js", FileOrder.Js.DefaultPriority + 25, DnnFormBottomProvider.DefaultName);
+            ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ngImageUploader/ng-file-upload-all.min.js", FileOrder.Js.DefaultPriority + 25, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AboutController.js", FileOrder.Js.DefaultPriority + 26, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/AgendaController.js", FileOrder.Js.DefaultPriority + 28, DnnFormBottomProvider.DefaultName);
             ClientResourceManager.RegisterScript(this.Page, "~/DesktopModules/CodeCamp/Scripts/ng/controllers/EventController.js", FileOrder.Js.DefaultPriority + 30, DnnFormBottomProvider.DefaultName);

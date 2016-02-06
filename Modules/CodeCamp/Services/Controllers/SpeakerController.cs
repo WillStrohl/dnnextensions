@@ -342,7 +342,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                var result = NO_FILES;
                 var httpRequest = HttpContext.Current.Request;
+
                 if (httpRequest.Files.Count > 0)
                 {
                     var folderPath = string.Format("~/Portals/{0}/CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, codeCampId);
@@ -355,13 +357,22 @@ namespace WillStrohl.Modules.CodeCamp.Services
                         // TODO: append "-ORIGINAL" to the file name
                         // TODO: parse the image and resize as required
                         // TODO: allow avatars to be cropepd and saved
+                        // TODO: update speaker profile with file id
 
                         postedFile.SaveAs(filePath);
                         // NOTE: To store in memory use postedFile.InputStream
+
+                        var folderInfo = DotNetNuke.Services.FileSystem.FolderManager.Instance.GetFolder(PortalSettings.PortalId, folderPath);
+                        var fileExists = DotNetNuke.Services.FileSystem.FileManager.Instance.FileExists(folderInfo, postedFile.FileName);
+
+                        if (fileExists)
+                        {
+                            result = DotNetNuke.Services.FileSystem.FileManager.Instance.GetFile(folderInfo, postedFile.FileName).FileId.ToString();
+                        }
                     }
                 }
 
-                var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
+                var response = new ServiceResponse<string> { Content = result };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

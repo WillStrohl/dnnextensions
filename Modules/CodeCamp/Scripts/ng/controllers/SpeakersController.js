@@ -302,20 +302,40 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
         $uibModalInstance.close($scope.savedSpeaker);
     };
 
-    $scope.saveAvatar = function () {
-        // TODO: replace this with the file upload logic from Ralph's project 
-        factory.callPostService("UpdateSpeakerAvatar")
-            .success(function (data) {
-                var serviceResponse = angular.fromJson(data);
-                console.log("Avatar Save Response = " + serviceResponse.Content);
+    $scope.saveAvatar = function (file, errFiles) {
+        if ($.ServicesFramework) {
+            var _sf = $.ServicesFramework(moduleId);
+            $uploadService.ServiceRoot = _sf.getServiceRoot(moduleName);
+            $uploadService.ServicePath = $uploadService.ServiceRoot + "Event/";
+            $uploadService.Headers = {
+                "ModuleId": moduleId,
+                "TabId": _sf.getTabId(),
+                "RequestVerificationToken": _sf.getAntiForgeryValue()
+            };
+        }
 
-                LogErrors(serviceResponse.Errors);
-            })
-            .error(function (data, status) {
-                $scope.HasErrors = true;
-                console.log("Unknown error occurred calling UpdateSpeakerAvatar");
-                console.log(data);
+        $scope.f = file;
+        $scope.errFile = errFiles && errFiles[0];
+        if (file) {
+            file.upload = Upload.upload({
+                method: "POST",
+                headers: $uploadService.Headers,
+                url: $uploadService.ServicePath + "UpdateSpeakerAvatar",
+                data: { file: file }
             });
+
+            file.upload.then(function (response) {
+                console.log(response);
+                $timeout(function () {
+                    file.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    $scope.errorMsg = response.status + ": " + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+        }
     }
 
     $scope.saveSession = function (sessionAction, session, sessionSpeakerAction) {

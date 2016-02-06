@@ -35,8 +35,9 @@ namespace WillStrohl.Modules.CodeCamp.Services
 {
     public class ServiceBase : DnnApiController
     {
-        protected string SUCCESS_MESSAGE = "SUCCESS";
-        protected string ERROR_MESSAGE = "An error occurred. Please check the event log or contact your site administrator for more information";
+        protected const string SUCCESS_MESSAGE = "SUCCESS";
+        protected const string ERROR_MESSAGE = "An error occurred. Please check the event log or contact your site administrator for more information";
+        protected const string NO_FILES = "NO FILES";
 
         protected CodeCampInfoController CodeCampDataAccess { get; set; }
         protected RegistrationInfoController RegistrationDataAccess { get; set; }

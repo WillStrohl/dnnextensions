@@ -76,7 +76,17 @@
                     <div class="form-group">
                         <label for="avatarUpload">Your Avatar</label>
                         <!-- TODO: REPLACE THIS WITH THE FILE UPLOAD FROM RALPH'S PROJECT -->
-                        <input type="file" id="newAvatars" accept="image/*" eg-files="avatars" has-files="hasFiles" />
+                        <button type="file" ngf-select="saveAvatar($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                            Select Photo
+                        </button>
+                        <div style="font:smaller">
+                            {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                            <span class="progress" ng-show="f.progress >= 0">
+                                <div style="width:{{f.progress}}%"
+                                     ng-bind="f.progress + '%'"></div>
+                            </span>
+                        </div>
+                        {{errorMsg}}
                     </div>
                 </div>
             </div>
