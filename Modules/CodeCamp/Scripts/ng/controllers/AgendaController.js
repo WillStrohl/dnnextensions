@@ -89,7 +89,7 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                     track.TrackSlug = GetSlugFromValue(track.Title);
                 });
 
-                $scope.LoadTimeSlots();
+                $scope.LoadAgenda();
 
                 LogErrors(serviceResponse.Errors);
             },
@@ -99,29 +99,27 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
             });
     };
 
-    $scope.LoadTimeSlots = function () {
-        factory.callGetService("GetTimeSlots?codeCampId=" + $scope.codeCamp.CodeCampId)
+    $scope.LoadAgenda = function () {
+        factory.callGetService("GetAgenda?codeCampId=" + $scope.codeCamp.CodeCampId)
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
 
-                $scope.timeSlots = serviceResponse.Content;
+                $scope.agenda = serviceResponse.Content;
 
-                angular.forEach($scope.timeSlots, function (timeSlot, index) {
-                    var beginDateTime = moment(timeSlot.BeginTime);
+                $scope.agenda.CodeCamp.BeginDate = moment($scope.agenda.CodeCamp.BeginDate).format("MM/DD/YYYY");
+                $scope.agenda.CodeCamp.EndDate = moment($scope.agenda.CodeCamp.EndDate).format("MM/DD/YYYY");
 
-                    timeSlot.BeginTime = moment(timeSlot.BeginTime).format("hh:mm A");
-                    timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
+                angular.forEach($scope.agenda.EventDays, function(eventDay, index) {
+                    eventDay.TimeStamp = moment(eventDay.TimeStamp).format("MM/DD/YYYY");
+                    eventDay.DayName = moment(eventDay.TimeStamp).format("dddd");
 
-                    var seconds = beginDateTime.seconds();
-                    var minutes = beginDateTime.minutes();
-                    var hours = beginDateTime.hours();
-
-                    timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
+                    angular.forEach(eventDay.TimeSlots, function(timeSlot, index) {
+                        timeSlot.BeginTime = moment(timeSlot.BeginTime).format("hh:mm A");
+                        timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
+                    });
                 });
-
-                $scope.LoadSessions();
-
+                
                 LogErrors(serviceResponse.Errors);
             },
                 function (data) {
@@ -129,37 +127,6 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                     console.log(data);
                 });
     }
-
-    $scope.LoadSessions = function () {
-        var availableTimeSlotCount = $scope.timeSlots.length;
-        var i = 0;
-
-        angular.forEach($scope.timeSlots, function(timeSlot, index) {
-            $scope.LoadSessionsByTimeSlotId(timeSlot.TimeSlotId);
-            i++;
-        });
-    }
-
-    $scope.LoadSessionsByTimeSlotId = function (timeSlotId) {
-        factory.callGetService("GetSessionsByTimeSlotId?timeSlotId=" + timeSlotId + "&codeCampId=" + $scope.codeCamp.CodeCampId)
-            .then(function (response) {
-                var fullResult = angular.fromJson(response);
-                var serviceResponse = JSON.parse(fullResult.data);
-
-                var timeSlotSessions = serviceResponse.Content;
-
-                $scope.sessions[timeSlotId] = timeSlotSessions;
-
-                LogErrors(serviceResponse.Errors);
-
-                return timeSlotSessions;
-            },
-                function (data) {
-                    console.log("Unknown error occurred calling GetSessionsByTimeSlotId");
-                    console.log(data);
-                    return null;
-                });
-    };
 
     $scope.goToPage = function (pageName) {
         $location.path(pageName);

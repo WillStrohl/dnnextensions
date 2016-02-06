@@ -382,5 +382,87 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
             return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
         }
+
+        /// <summary>
+        /// Get the agenda for the event
+        /// </summary>
+        /// <returns>This will return the event itself, the days of the event, timeslots in each day, sessions in each timeslot, and speakers for each session</returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/GetAgenda
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetAgenda(int codeCampId)
+        {
+            try
+            {
+                var agenda = new AgendaInfo();
+                agenda.CodeCamp = CodeCampDataAccess.GetItem(codeCampId, ActiveModule.ModuleID);
+
+                if (agenda.CodeCamp != null)
+                {
+                    var timeSlots = TimeSlotDataAccess.GetItems(codeCampId).Where(t => !t.SpanAllTracks);
+                    var timeSlotCount = timeSlots.Count();
+
+                    // determine how many days the event lasts for
+                    agenda.NumberOfDays = (int)(agenda.CodeCamp.EndDate - agenda.CodeCamp.BeginDate).TotalDays + 1;
+
+                    // iterate through each day
+                    agenda.EventDays = new List<EventDayInfo>();
+
+                    var dayCount = 0;
+                    while (dayCount <= agenda.NumberOfDays)
+                    {
+                        var eventDate = agenda.CodeCamp.BeginDate.AddDays(dayCount);
+
+                        var eventDay = new EventDayInfo()
+                        {
+                            Index = dayCount,
+                            Day = eventDate.Day,
+                            Month = eventDate.Month,
+                            Year = eventDate.Year,
+                            TimeStamp = eventDate
+                        };
+
+                        eventDay.TimeSlots = new List<AgendaTimeSlotInfo>();
+
+                        // iterate through each timeslot
+                        foreach (var timeSlot in timeSlots)
+                        {
+                            var slot = new AgendaTimeSlotInfo(timeSlot);
+
+                            // iterate through each session
+                            slot.Sessions = SessionDataAccess.GetItemsByTimeSlotIdByPage(slot.TimeSlotId, codeCampId, dayCount + 1, timeSlotCount).ToList();
+
+                            // iterate through each speaker
+                            foreach (var session in slot.Sessions)
+                            {
+                                session.Speakers = SpeakerDataAccess.GetSpeakersForCollection(session.SessionId, codeCampId);
+                            }
+
+                            eventDay.TimeSlots.Add(slot);
+                        }
+
+                        agenda.EventDays.Add(eventDay);
+
+                        dayCount++;
+                    }
+                }
+
+                var response = new ServiceResponse<AgendaInfo> { Content = agenda };
+
+                if (agenda.CodeCamp == null)
+                {
+                    ServiceResponseHelper<AgendaInfo>.AddNoneFoundError("AgendaInfo", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
     }
 }

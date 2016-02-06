@@ -22,23 +22,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="eventDay in eventDays | orderBy: 'Date'">
-                        <td class="agenda-date" title="{{eventDay.Date}}" class="active">
-                            <div class="dayofmonth">{{eventDay.DayNumber}}</div>
+                    <tr ng-repeat="eventDay in agenda.EventDays | orderBy: 'TimeStamp'">
+                        <td class="agenda-date" title="{{eventDay.TimeStamp}}" class="active">
+                            <div class="dayofmonth">{{eventDay.Day}}</div>
                             <div class="dayofweek">{{eventDay.DayName}}</div>
                             <div class="shortdate text-muted">{{eventDay.Month}}, {{eventDay.Year}}</div>
                         </td>
                         <td>
                             <table class="table table-condensed table-bordered agenda-timeblock-table">
                                 <tbody>
-                                <tr ng-repeat="timeSlot in timeSlots | orderBy: 'sortTime'">
+                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'Index'">
                                     <td class="agenda-date-column">
                                         {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
                                     </td>
                                     <td class="agenda-session-column">
                                         <ul>
-                                            <li ng-repeat="session in sessions[timeSlot.TimeSlotId]">
-                                                <span>{{session.Title}}</span>
+                                            <li ng-repeat="session in timeSlot.Sessions">
+                                                <span>{{session.Title}}</span> by <span class="agenda-session-speaker" ng-repeat="speaker in session.Speakers | orderBy: 'SpeakerName'">{{speaker.SpeakerName}}<span ng-if="session.Speakers > 1">, </span></span>
                                             </li>
                                         </ul>
                                     </td>

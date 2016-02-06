@@ -93,6 +93,14 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.UpdateItem(i);
         }
 
+        public List<SpeakerInfoLite> GetSpeakersForCollection(int sessionId, int codeCampId)
+        {
+            var speakerList = sessionSpeakerRepo.GetItems(sessionId).Select(s => s.SpeakerId);
+            var speakers = repo.GetItems(codeCampId).Where(s => speakerList.Contains(s.SpeakerId)).ToList();
+
+            return speakers.Select(speaker => new SpeakerInfoLite(speaker)).ToList();
+        }
+
         #region Private Helper Methods
 
         private List<SessionInfo> GetSessionsForSpeaker(int codeCampId, int speakerId)

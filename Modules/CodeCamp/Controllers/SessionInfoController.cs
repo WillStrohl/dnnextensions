@@ -74,7 +74,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
             foreach (var item in items)
             {
-                item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+                item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
             }
 
             return items;
@@ -88,7 +88,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
             foreach (var item in items)
             {
-                item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+                item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
             }
 
             return items;
@@ -102,7 +102,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
             foreach (var item in items)
             {
-                item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+                item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
             }
 
             SortSessions(ref items, codeCampId);
@@ -118,7 +118,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
             foreach (var item in items)
             {
-                item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+                item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
             }
 
             return items;
@@ -179,17 +179,9 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             item.RegistrantCount = GetRegistrantCount(item.SessionId);
         }
 
-        private List<SpeakerInfoLite> GetSpeakers(int sessionId, int codeCampId)
-        {
-            var speakerList = sessionSpeakerRepo.GetItems(sessionId).Select(s => s.SpeakerId);
-            var speakers = speakerRepo.GetItems(codeCampId).Where(s => speakerList.Contains(s.SpeakerId)).ToList();
-
-            return speakers.Select(speaker => new SpeakerInfoLite(speaker)).ToList();
-        }
-
         private void UpdateSessionWithSpeakers(ref SessionInfo item)
         {
-            item.Speakers = GetSpeakers(item.SessionId, item.CodeCampId);
+            item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
         }
 
         private void SortSessions(ref IEnumerable<SessionInfo> sessions, int codeCampId)
