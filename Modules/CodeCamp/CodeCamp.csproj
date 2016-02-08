@@ -312,7 +312,6 @@
     <Content Include="Templates\_default\speakers.html" />
     <Content Include="Templates\_default\register.html" />
     <Content Include="Templates\_default\update.html" />
-    <Content Include="View.html" />
     <Content Include="Views\SettingsView.ascx" />
     <Content Include="Views\DefaultView.ascx" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.css.map" />
