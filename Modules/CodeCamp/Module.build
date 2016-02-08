@@ -16,16 +16,15 @@
     <ItemGroup>
       <Manifest Include="*.dnn;*.dnn5;*.dnn6" />
       <TextFiles Include="*.txt" Exclude="releasenotes.txt;license.txt" />
-      <SourceFiles Include="*.css;*.htm" />
+      <SourceFiles Include="*.css;*.htm;*.html" />
       <Views Include="*.ascx;" />
       <ResourceFiles Include="App_LocalResources/*.resx" />
       <Images Include="Images/**/*.*" />
       <JsFiles Include="Scripts/**/*.*" />
       <CssFiles Include="Styles/**/*.*" />
-      <ChildViews Include="Views/**/*.ascx" />
       <Templates Include="Templates/**/*.*" />
       <DataProvider Include="Providers/DataProviders/SqlDataProvider/*.SqlDataProvider" />
-      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images);@(JsFiles);@(ChildViews);@(Templates);@(CssFiles)" />
+      <Resources Include="@(ResourceFiles);@(Views);@(TextFiles);@(SourceFiles);@(Manifest);@(DataProvider);@(Images);@(JsFiles);@(Templates);@(CssFiles)" />
     </ItemGroup>
   </Target>
   <ItemGroup>
@@ -49,7 +48,6 @@
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />
     <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(FullModulePath)\App_LocalResources" />
-    <Copy SourceFiles="@(ChildViews)" DestinationFolder="$(FullModulePath)\Views\%(RecursiveDir)" />
     <Copy SourceFiles="@(Templates)" DestinationFolder="$(FullModulePath)\Templates\%(RecursiveDir)" />
   </Target>
 </Project>

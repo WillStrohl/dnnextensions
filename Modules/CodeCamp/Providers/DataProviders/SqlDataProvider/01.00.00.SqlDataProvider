@@ -520,10 +520,10 @@ CREATE TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_SessionSpeaker] (
         CONSTRAINT [PK_{objectQualifier}wns_CodeCamp_SessionSpeaker] PRIMARY KEY CLUSTERED, 
     [SessionId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SessionId] FOREIGN KEY 
-        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([SessionId]) NOT FOR REPLICATION, 
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Session] ([SessionId]), 
     [SpeakerId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}wns_CodeCamp_SessionSpeaker_SpeakerId] FOREIGN KEY 
-        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] ([SpeakerId]) NOT FOR REPLICATION
+        REFERENCES {databaseOwner}[{objectQualifier}wns_CodeCamp_Speaker] ([SpeakerId])
 );
 GO
 
