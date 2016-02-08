@@ -27,6 +27,22 @@
             </resourceFile>
           </resourceFiles>
         </component>
+        
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\CodeCamp</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+              <version>01.00.00</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>01.00.00</version>
+            </script>
+          </scripts>
+        </component>
 
         <component type="Module">
           <desktopModule>
