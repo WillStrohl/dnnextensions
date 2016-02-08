@@ -35,20 +35,6 @@ namespace WillStrohl.Modules.CodeCamp
 {
     public class CodeCampModuleSettingsBase : ModuleSettingsBase
     {
-        #region Properties
-
-        protected string DefaultView
-        {
-            get
-            {
-                var view = Settings[Components.Globals.SETTINGS_VIEW];
-
-                return view?.ToString() ?? string.Empty;
-            }
-        }
-
-        #endregion
-
         #region Localization
 
         protected string GetLocalizedString(string Key)

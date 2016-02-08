@@ -94,9 +94,6 @@
     </Compile>
     <Compile Include="Components\DateTimeConverter.cs" />
     <Compile Include="Components\FeatureController.cs" />
-    <Compile Include="Components\CodeCampModuleBase.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Components\CodeCampModuleSettingsBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -186,35 +183,7 @@
     <Compile Include="Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Edit.ascx.cs">
-      <DependentUpon>Edit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Edit.ascx.designer.cs">
-      <DependentUpon>Edit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.ascx.cs">
-      <DependentUpon>Default.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.ascx.designer.cs">
-      <DependentUpon>Default.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\SettingsView.ascx.cs">
-      <DependentUpon>SettingsView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\SettingsView.ascx.designer.cs">
-      <DependentUpon>SettingsView.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DefaultView.ascx.cs">
-      <DependentUpon>DefaultView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DefaultView.ascx.designer.cs">
-      <DependentUpon>DefaultView.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
@@ -235,7 +204,7 @@
     <Content Include="Scripts\bootstrap\3.3.5\js\npm.js" />
     <Content Include="Scripts\IE-Support\html5shiv.js" />
     <Content Include="Scripts\IE-Support\html5shiv.min.js" />
-    <Content Include="Scripts\IE-Support\respond .min.js" />
+    <Content Include="Scripts\IE-Support\respond.min.js" />
     <Content Include="Scripts\IE-Support\respond.js" />
     <Content Include="Scripts\moment\angular-moment.js" />
     <Content Include="Scripts\moment\angular-moment.min.js" />
@@ -313,8 +282,6 @@
     <Content Include="Templates\_default\register.html" />
     <Content Include="Templates\_default\update.html" />
     <Content Include="View.html" />
-    <Content Include="Views\SettingsView.ascx" />
-    <Content Include="Views\DefaultView.ascx" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.eot" />
@@ -370,8 +337,6 @@
       <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Settings.ascx" />
-    <Content Include="Edit.ascx" />
-    <Content Include="Default.ascx" />
     <Content Include="license.txt" />
     <Content Include="releasenotes.txt" />
   </ItemGroup>

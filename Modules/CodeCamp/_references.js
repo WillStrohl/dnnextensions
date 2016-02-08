@@ -3,7 +3,6 @@
 /// <reference path="scripts/bootstrap/3.3.5/js/npm.js" />
 /// <reference path="scripts/common.js" />
 /// <reference path="scripts/ie-support/html5shiv.js" />
-/// <reference path="scripts/ie-support/respond .min.js" />
 /// <reference path="scripts/ie-support/respond.js" />
 /// <reference path="scripts/moment/angular-moment.js" />
 /// <reference path="scripts/moment/moment.js" />
