@@ -82,9 +82,9 @@
         </component>
         <component type="Assembly">
           <assemblies>
-            <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.CodeCamp.dll</name>
+              <path>bin</path>
             </assembly>
           </assemblies>
         </component>

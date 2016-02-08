@@ -1,45 +1,5 @@
-﻿<h3>Version 02.00.00</h3>
-<p><strong>Date Released:</strong> 04/30/2012</p>
-<ul>
-	<li>New Feature: Single Sign-On with Disqus (REQUIRES A PAID DISQUS ACCOUNT)</li>
-	<li>New Feature: Displays comments in HTML for SEO</li>
-	<li>New Feature: Automatically import comments from Disqus</li>
-	<li>New Feature: Force end users to login to view & comment</li>
-	<li>Enhancement: Allows for site-wide settings</li>
-	<li>Bug: Module attachment ignores deleted modules</li>
-</ul>
-
-<h3>Version 01.02.00</h3>
-<p><strong>Date Released:</strong> 09/04/2011</p>
-<ul>
-	<li>New Feature: Create Cross Domain Receiver File</li>
-	<li>New Feature: Added "Top Commenters" View</li>
-	<li>New Feature: Added "Popular Threads" View</li>
-	<li>New Feature: Added "Recent Comments" View</li>
-	<li>New Feature: Added "Combination View" View</li>
-	<li>Enhancement: Now adds line breaks to generated scripts when in debug mode</li>
-</ul>
-
-<h3>Version 01.01.02</h3>
-<p><strong>Date Released:</strong> 08/20/2011</p>
-<ul>
-	<li>Bug Fix: Same comments on mulitple pages</li>
-</ul>
-
-<h3>Version 01.01.01</h3>
-<p><strong>Date Released:</strong> 08/06/2011</p>
-<ul>
-	<li>Bug Fix: Allowing end-users to add their own Disqus site to the script.</li>
-</ul>
-
-<h3>Version 01.01.00</h3>
-<p><strong>Date Released:</strong> 08/04/2011</p>
-<ul>
-	<li>Feature: Replace the core DNN Blog Comments with Disqus automatically</li>
-</ul>
-
-<h3>Version 01.00.00</h3>
-<p><strong>Date Released:</strong> 07/29/2011</p>
+﻿<h3>Version 01.00.00</h3>
+<p><strong>Date Released:</strong> 02/05/2016</p>
 <ul>
 	<li>Initial Release</li>
 </ul>
