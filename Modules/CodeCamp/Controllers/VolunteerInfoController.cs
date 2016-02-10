@@ -90,7 +90,19 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
             var userInfo = DotNetNuke.Entities.Users.UserController.GetUserById(portalId, registration.UserId);
 
-            return string.Concat(userInfo.FirstName, Globals.SPACE, userInfo.LastName);
+            var fullName = userInfo.DisplayName;
+
+            // ISSUE 96: DNN 8 isn't assigning the newly created the user the same as in DNN 7
+            if (!string.IsNullOrEmpty(userInfo.FirstName) && !string.IsNullOrEmpty(userInfo.LastName))
+            {
+                fullName = string.Concat(userInfo.FirstName, Globals.SPACE, userInfo.LastName);
+            }
+            else if (!string.IsNullOrEmpty(userInfo.Profile.FirstName) && !string.IsNullOrEmpty(userInfo.Profile.LastName))
+            {
+                fullName = string.Concat(userInfo.Profile.FirstName, Globals.SPACE, userInfo.Profile.LastName);
+            }
+
+            return fullName;
         }
 
         public void UpdateItem(VolunteerInfo i)
