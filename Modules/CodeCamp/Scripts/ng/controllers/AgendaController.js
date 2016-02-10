@@ -35,18 +35,18 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
 
                 for (var i = 0; i < $scope.eventLength; i++) {
                     var newDay = {};
-                    var newMoment = moment(beginMoment.format("MM/DD/YYYY"));
+                    var newMoment = moment(beginMoment.format($momentDateFormat));
 
                     if (i > 0) {
                         newMoment = newMoment.add(i, "days");
                     }
 
                     newDay.Index = i;
-                    newDay.Month = newMoment.format("MMM");
-                    newDay.DayName = newMoment.format("dddd");
-                    newDay.DayNumber = newMoment.format("DD");
-                    newDay.Date = newMoment.format("MM/DD/YYYY");
-                    newDay.Year = newMoment.format("YYYY");
+                    newDay.Month = newMoment.format($momentMonthFormat);
+                    newDay.DayName = newMoment.format($momentDayNameFormat);
+                    newDay.DayNumber = newMoment.format($momentDayNumberFormat);
+                    newDay.Date = newMoment.format($momentDateFormat);
+                    newDay.Year = newMoment.format($momentYearFormat);
 
                     $scope.eventDays.push(newDay);
                 }
@@ -107,16 +107,16 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
 
                 $scope.agenda = serviceResponse.Content;
 
-                $scope.agenda.CodeCamp.BeginDate = moment($scope.agenda.CodeCamp.BeginDate).format("MM/DD/YYYY");
-                $scope.agenda.CodeCamp.EndDate = moment($scope.agenda.CodeCamp.EndDate).format("MM/DD/YYYY");
+                $scope.agenda.CodeCamp.BeginDate = moment($scope.agenda.CodeCamp.BeginDate).format($momentDateFormat);
+                $scope.agenda.CodeCamp.EndDate = moment($scope.agenda.CodeCamp.EndDate).format($momentDateFormat);
 
                 angular.forEach($scope.agenda.EventDays, function(eventDay, index) {
-                    eventDay.TimeStamp = moment(eventDay.TimeStamp).format("MM/DD/YYYY");
-                    eventDay.DayName = moment(eventDay.TimeStamp).format("dddd");
+                    eventDay.TimeStamp = moment(eventDay.TimeStamp).format($momentDateFormat);
+                    eventDay.DayName = moment(eventDay.TimeStamp).format($momentDayNameFormat);
 
                     angular.forEach(eventDay.TimeSlots, function(timeSlot, index) {
-                        timeSlot.BeginTime = moment(timeSlot.BeginTime).format("hh:mm A");
-                        timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
+                        timeSlot.BeginTime = moment(timeSlot.BeginTime).format($momentTimeFormat);
+                        timeSlot.EndTime = moment(timeSlot.EndTime).format($momentTimeFormat);
                     });
                 });
 

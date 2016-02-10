@@ -3,6 +3,10 @@
 var $momentFullDateFormat = "MM/DD/YYYY hh:mm A";
 var $momentDateFormat = "MM/DD/YYYY";
 var $momentTimeFormat = "hh:mm A";
+var $momentDayNameFormat = "dddd";
+var $momentDayNumberFormat = "DD";
+var $momentMonthFormat = "MMM";
+var $momentYearFormat = "YYYY";
 
 function LogErrors(errors) {
     if (errors) {
