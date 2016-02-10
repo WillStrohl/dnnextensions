@@ -223,80 +223,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 var updatesToProcess = false;
                 var originalTimeSlot = TimeSlotDataAccess.GetItem(timeSlot.TimeSlotId, timeSlot.CodeCampId);
 
-                if (timeSlot.BeginTime != originalTimeSlot.BeginTime)
-                {
-                    originalTimeSlot.BeginTime = timeSlot.BeginTime;
-                    updatesToProcess = true;
-                }
-
-                if (timeSlot.EndTime != originalTimeSlot.EndTime)
-                {
-                    originalTimeSlot.EndTime = timeSlot.EndTime;
-                    updatesToProcess = true;
-                }
-
-                if (!string.Equals(timeSlot.AgendaText, originalTimeSlot.AgendaText))
-                {
-                    originalTimeSlot.AgendaText = timeSlot.AgendaText;
-                    updatesToProcess = true;
-                }
-
-                if (timeSlot.SpanAllTracks != originalTimeSlot.SpanAllTracks)
-                {
-                    originalTimeSlot.SpanAllTracks = timeSlot.SpanAllTracks;
-                    updatesToProcess = true;
-                }
-
-                if (timeSlot.IncludeInDropDowns != originalTimeSlot.IncludeInDropDowns)
-                {
-                    originalTimeSlot.IncludeInDropDowns = timeSlot.IncludeInDropDowns;
-                    updatesToProcess = true;
-                }
-
-                if (originalTimeSlot.CustomProperties != null)
-                {
-                    // parse custom properties for updates
-                    foreach (var property in originalTimeSlot.CustomPropertiesObj)
-                    {
-                        if (timeSlot.CustomPropertiesObj.Any(p => p.Name == property.Name))
-                        {
-                            // see if the existing property needs to be updated
-                            var prop = timeSlot.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
-                            if (!string.Equals(prop.Value, property.Value))
-                            {
-                                property.Value = prop.Value;
-                                updatesToProcess = true;
-                            }
-                        }
-                        else
-                        {
-                            // delete the property
-                            originalTimeSlot.CustomPropertiesObj.Remove(property);
-                            updatesToProcess = true;
-                        }
-                    }
-                }
-
-                if (timeSlot.CustomPropertiesObj != null)
-                {
-                    // add any new properties
-                    if (originalTimeSlot.CustomProperties == null)
-                    {
-                        foreach (var property in timeSlot.CustomPropertiesObj)
-                        {
-                            originalTimeSlot.CustomPropertiesObj.Add(property);
-                            updatesToProcess = true;
-                        }
-                    }
-                    else
-                    {
-                        foreach (var property in timeSlot.CustomPropertiesObj.Where(property => !originalTimeSlot.CustomPropertiesObj.Contains(property)))
-                        {
-                            originalTimeSlot.CustomPropertiesObj.Add(property);
-                            updatesToProcess = true;
-                        }
-                    }
-                }
+                updatesToProcess = TimeSlotHasUpdates(ref originalTimeSlot, ref timeSlot);
 
                 if (updatesToProcess)
                 {
@@ -404,5 +331,92 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
             }
         }
+
+        #region Private Helper Methods
+
+        private bool TimeSlotHasUpdates(ref TimeSlotInfo originalTimeSlot, ref TimeSlotInfo timeSlot)
+        {
+            var updatesToProcess = false;
+
+            if (timeSlot.BeginTime != originalTimeSlot.BeginTime)
+            {
+                originalTimeSlot.BeginTime = timeSlot.BeginTime;
+                updatesToProcess = true;
+            }
+
+            if (timeSlot.EndTime != originalTimeSlot.EndTime)
+            {
+                originalTimeSlot.EndTime = timeSlot.EndTime;
+                updatesToProcess = true;
+            }
+
+            if (!string.Equals(timeSlot.AgendaText, originalTimeSlot.AgendaText))
+            {
+                originalTimeSlot.AgendaText = timeSlot.AgendaText;
+                updatesToProcess = true;
+            }
+
+            if (timeSlot.SpanAllTracks != originalTimeSlot.SpanAllTracks)
+            {
+                originalTimeSlot.SpanAllTracks = timeSlot.SpanAllTracks;
+                updatesToProcess = true;
+            }
+
+            if (timeSlot.IncludeInDropDowns != originalTimeSlot.IncludeInDropDowns)
+            {
+                originalTimeSlot.IncludeInDropDowns = timeSlot.IncludeInDropDowns;
+                updatesToProcess = true;
+            }
+
+            if (originalTimeSlot.CustomProperties != null)
+            {
+                // parse custom properties for updates
+                foreach (var property in originalTimeSlot.CustomPropertiesObj)
+                {
+                    if (timeSlot.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    {
+                        // see if the existing property needs to be updated
+                        var prop = timeSlot.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                        if (!string.Equals(prop.Value, property.Value))
+                        {
+                            property.Value = prop.Value;
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        // delete the property
+                        originalTimeSlot.CustomPropertiesObj.Remove(property);
+                        updatesToProcess = true;
+                    }
+                }
+            }
+
+            if (timeSlot.CustomPropertiesObj != null)
+            {
+                // add any new properties
+                if (originalTimeSlot.CustomProperties == null)
+                {
+                    foreach (var property in timeSlot.CustomPropertiesObj)
+                    {
+                        originalTimeSlot.CustomPropertiesObj.Add(property);
+                        updatesToProcess = true;
+                    }
+                }
+                else
+                {
+                    TimeSlotInfo slot = originalTimeSlot;
+                    foreach (var property in timeSlot.CustomPropertiesObj.Where(property => !slot.CustomPropertiesObj.Contains(property)))
+                    {
+                        slot.CustomPropertiesObj.Add(property);
+                        updatesToProcess = true;
+                    }
+                }
+            }
+
+            return updatesToProcess;
+        }
+
+        #endregion
     }
 }
