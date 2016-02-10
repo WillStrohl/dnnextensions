@@ -119,6 +119,8 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                         timeSlot.EndTime = moment(timeSlot.EndTime).format("hh:mm A");
                     });
                 });
+
+                $scope.hasAgenda = ($scope.agenda != null) && ($scope.agenda.EventDays != null) && ($scope.agenda.EventDays[0].TimeSlots.length > 0);
                 
                 LogErrors(serviceResponse.Errors);
             },

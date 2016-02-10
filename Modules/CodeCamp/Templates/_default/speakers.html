@@ -23,6 +23,14 @@
             </div>
         </div>
     </div>
+    <div class="row" ng-show="!hasSpeakers">
+        <div class="col-lg-12">
+            <div class="alert alert-warning">
+                <h4>Whoops!</h4>
+                <p>There aren't any speakers yet. Please check back again soon!</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container" ng-show="hasSpeakers">
