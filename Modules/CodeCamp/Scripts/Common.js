@@ -1,8 +1,8 @@
 ﻿"use strict";
 
-var $momentFullDateFormat = "MM/DD/YYYY HH:mm A";
+var $momentFullDateFormat = "MM/DD/YYYY hh:mm A";
 var $momentDateFormat = "MM/DD/YYYY";
-var $momentTimeFormat = "HH:mm A";
+var $momentTimeFormat = "hh:mm A";
 
 function LogErrors(errors) {
     if (errors) {
