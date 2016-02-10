@@ -87,6 +87,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             foreach (var timeSlot in timeSlots)
             {
                 timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeSlot.BeginTime.Hour, timeSlot.BeginTime.Minute, 0);
+                timeSlot.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeSlot.EndTime.Hour, timeSlot.EndTime.Minute, 0);
             }
         }
 

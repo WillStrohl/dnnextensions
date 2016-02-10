@@ -39,7 +39,7 @@
                         <td>
                             <table class="table table-condensed table-bordered agenda-timeblock-table">
                                 <tbody>
-                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'Index'">
+                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'BeginTime'">
                                     <td class="agenda-date-column">
                                         {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
                                     </td>

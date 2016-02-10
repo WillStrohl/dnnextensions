@@ -401,7 +401,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 if (agenda.CodeCamp != null)
                 {
-                    var timeSlots = TimeSlotDataAccess.GetItems(codeCampId).Where(t => !t.SpanAllTracks);
+                    var timeSlots = TimeSlotDataAccess.GetItems(codeCampId);
                     var timeSlotCount = timeSlots.Count();
 
                     // determine how many days the event lasts for
@@ -431,13 +431,21 @@ namespace WillStrohl.Modules.CodeCamp.Services
                         {
                             var slot = new AgendaTimeSlotInfo(timeSlot);
 
-                            // iterate through each session
-                            slot.Sessions = SessionDataAccess.GetItemsByTimeSlotIdByPage(slot.TimeSlotId, codeCampId, dayCount + 1, timeSlotCount).ToList();
-
-                            // iterate through each speaker
-                            foreach (var session in slot.Sessions)
+                            if (!timeSlot.SpanAllTracks)
                             {
-                                session.Speakers = SpeakerDataAccess.GetSpeakersForCollection(session.SessionId, codeCampId);
+                                // iterate through each session
+                                slot.Sessions = SessionDataAccess.GetItemsByTimeSlotIdByPage(slot.TimeSlotId, codeCampId, dayCount + 1, timeSlotCount).ToList();
+
+                                // iterate through each speaker
+                                foreach (var session in slot.Sessions)
+                                {
+                                    session.Speakers = SpeakerDataAccess.GetSpeakersForCollection(session.SessionId, codeCampId);
+                                }
+                            }
+                            else
+                            {
+                                // add the full span session item
+                                // TODO: allow for items to be added to full span timeslots
                             }
 
                             eventDay.TimeSlots.Add(slot);
