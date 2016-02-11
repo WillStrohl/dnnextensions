@@ -226,107 +226,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var updatesToProcess = false;
                 var originalEvent = CodeCampDataAccess.GetItem(codeCamp.CodeCampId, codeCamp.ModuleId);
-
-                if (!string.Equals(codeCamp.Title, originalEvent.Title))
-                {
-                    originalEvent.Title = codeCamp.Title;
-                    updatesToProcess = true;
-                }
-
-                if (!string.Equals(codeCamp.Description, originalEvent.Description))
-                {
-                    originalEvent.Description = codeCamp.Description;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.MaximumCapacity != originalEvent.MaximumCapacity)
-                {
-                    originalEvent.MaximumCapacity = codeCamp.MaximumCapacity;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.BeginDate != originalEvent.BeginDate)
-                {
-                    originalEvent.BeginDate = codeCamp.BeginDate;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.EndDate != originalEvent.EndDate)
-                {
-                    originalEvent.EndDate = codeCamp.EndDate;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.EndDate != originalEvent.EndDate)
-                {
-                    originalEvent.EndDate = codeCamp.EndDate;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.ShowShirtSize != originalEvent.ShowShirtSize)
-                {
-                    originalEvent.ShowShirtSize = codeCamp.ShowShirtSize;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.ShowAuthor != originalEvent.ShowAuthor)
-                {
-                    originalEvent.ShowAuthor = codeCamp.ShowAuthor;
-                    updatesToProcess = true;
-                }
-
-                if (codeCamp.RegistrationActive != originalEvent.RegistrationActive)
-                {
-                    originalEvent.RegistrationActive = codeCamp.RegistrationActive;
-                    updatesToProcess = true;
-                }
-
-                if (originalEvent.CustomProperties != null)
-                {
-                    // parse custom properties for updates
-                    foreach (var property in originalEvent.CustomPropertiesObj)
-                    {
-                        if (codeCamp.CustomPropertiesObj.Any(p => p.Name == property.Name))
-                        {
-                            // see if the existing property needs to be updated
-                            var prop = codeCamp.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
-                            if (!string.Equals(prop.Value, property.Value))
-                            {
-                                property.Value = prop.Value;
-                                updatesToProcess = true;
-                            }
-                        }
-                        else
-                        {
-                            // delete the property
-                            originalEvent.CustomPropertiesObj.Remove(property);
-                            updatesToProcess = true;
-                        }
-                    }
-                }
-
-                if (codeCamp.CustomPropertiesObj != null)
-                {
-                    // add any new properties
-                    if (originalEvent.CustomProperties == null)
-                    {
-                        foreach (var property in codeCamp.CustomPropertiesObj)
-                        {
-                            originalEvent.CustomPropertiesObj.Add(property);
-                            updatesToProcess = true;
-                        }
-                    }
-                    else
-                    {
-                        foreach (var property in codeCamp.CustomPropertiesObj.Where(property => !originalEvent.CustomPropertiesObj.Contains(property)))
-                        {
-                            originalEvent.CustomPropertiesObj.Add(property);
-                            updatesToProcess = true;
-                        }
-                    }
-                }
+                var updatesToProcess = EventHasUpdates(ref originalEvent, ref codeCamp);
 
                 if (updatesToProcess)
                 {
@@ -473,5 +374,116 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
             }
         }
+
+        #region Private Helper Methods
+
+        private bool EventHasUpdates(ref CodeCampInfo originalCodeCamp, ref CodeCampInfo newCodeCamp)
+        {
+            var updatesToProcess = false;
+
+            if (!string.Equals(newCodeCamp.Title, originalCodeCamp.Title))
+            {
+                originalCodeCamp.Title = newCodeCamp.Title;
+                updatesToProcess = true;
+            }
+
+            if (!string.Equals(newCodeCamp.Description, originalCodeCamp.Description))
+            {
+                originalCodeCamp.Description = newCodeCamp.Description;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.MaximumCapacity != originalCodeCamp.MaximumCapacity)
+            {
+                originalCodeCamp.MaximumCapacity = newCodeCamp.MaximumCapacity;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.BeginDate != originalCodeCamp.BeginDate)
+            {
+                originalCodeCamp.BeginDate = newCodeCamp.BeginDate;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.EndDate != originalCodeCamp.EndDate)
+            {
+                originalCodeCamp.EndDate = newCodeCamp.EndDate;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.EndDate != originalCodeCamp.EndDate)
+            {
+                originalCodeCamp.EndDate = newCodeCamp.EndDate;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.ShowShirtSize != originalCodeCamp.ShowShirtSize)
+            {
+                originalCodeCamp.ShowShirtSize = newCodeCamp.ShowShirtSize;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.ShowAuthor != originalCodeCamp.ShowAuthor)
+            {
+                originalCodeCamp.ShowAuthor = newCodeCamp.ShowAuthor;
+                updatesToProcess = true;
+            }
+
+            if (newCodeCamp.RegistrationActive != originalCodeCamp.RegistrationActive)
+            {
+                originalCodeCamp.RegistrationActive = newCodeCamp.RegistrationActive;
+                updatesToProcess = true;
+            }
+
+            if (originalCodeCamp.CustomProperties != null)
+            {
+                // parse custom properties for updates
+                foreach (var property in originalCodeCamp.CustomPropertiesObj)
+                {
+                    if (newCodeCamp.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    {
+                        // see if the existing property needs to be updated
+                        var prop = newCodeCamp.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                        if (!string.Equals(prop.Value, property.Value))
+                        {
+                            property.Value = prop.Value;
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        // delete the property
+                        originalCodeCamp.CustomPropertiesObj.Remove(property);
+                        updatesToProcess = true;
+                    }
+                }
+            }
+
+            if (newCodeCamp.CustomPropertiesObj != null)
+            {
+                // add any new properties
+                if (originalCodeCamp.CustomProperties == null)
+                {
+                    foreach (var property in newCodeCamp.CustomPropertiesObj)
+                    {
+                        originalCodeCamp.CustomPropertiesObj.Add(property);
+                        updatesToProcess = true;
+                    }
+                }
+                else
+                {
+                    var camp = originalCodeCamp;
+                    foreach (var property in newCodeCamp.CustomPropertiesObj.Where(property => !camp.CustomPropertiesObj.Contains(property)))
+                    {
+                        camp.CustomPropertiesObj.Add(property);
+                        updatesToProcess = true;
+                    }
+                }
+            }
+
+            return updatesToProcess;
+        }
+
+        #endregion
     }
 }
