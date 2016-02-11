@@ -39,9 +39,9 @@
                         <td>
                             <table class="table table-condensed table-bordered agenda-timeblock-table">
                                 <tbody>
-                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'BeginTime'">
+                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'SortOrder'">
                                     <td class="agenda-date-column">
-                                        {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
+                                        {{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}} - {{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}
                                     </td>
                                     <td class="agenda-session-column">
                                         <ul>

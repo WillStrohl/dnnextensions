@@ -68,13 +68,15 @@ codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams",
                 $scope.timeSlots = serviceResponse.Content;
 
                 angular.forEach($scope.timeSlots, function (timeSlot, index) {
-                    var beginDateTime = moment(timeSlot.BeginTime);
+                    //var beginDateTime = moment(timeSlot.BeginTime);
 
-                    var seconds = beginDateTime.seconds();
-                    var minutes = beginDateTime.minutes();
-                    var hours = beginDateTime.hours();
+                    //var seconds = beginDateTime.seconds();
+                    //var minutes = beginDateTime.minutes();
+                    //var hours = beginDateTime.hours();
 
-                    timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
+                    //timeSlot.sortTime = hours * 60 * 60 + minutes * 60 + seconds;
+                    timeSlot.BeginTime = moment(timeSlot.BeginTime).format($momentFullDateFormat);
+                    timeSlot.EndTime = moment(timeSlot.EndTime).format($momentFullDateFormat);
                 });
 
                 LogErrors(serviceResponse.Errors);
@@ -199,9 +201,9 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
 
                 $scope.timeSlots = serviceResponse.Content;
 
-                angular.forEach($scope.timeSlots, function(timeSlot, index) {
-                    timeSlot.BeginTime = ParseDate(timeSlot.BeginTime);
-                    timeSlot.EndTime = ParseDate(timeSlot.EndTime);
+                angular.forEach($scope.timeSlots, function (timeSlot, index) {
+                    timeSlot.BeginTime = moment(timeSlot.BeginTime).format($momentFullDateFormat);
+                    timeSlot.EndTime = moment(timeSlot.EndTime).format($momentFullDateFormat);
                 });
 
                 LogErrors(serviceResponse.Errors);
@@ -244,8 +246,8 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
                     if ($scope.timeSlot == null) {
                         $scope.InitTimePicker();
                     } else {
-                        $scope.timeSlot.BeginTime = ParseDate($scope.timeSlot.BeginTime);
-                        $scope.timeSlot.EndTime = ParseDate($scope.timeSlot.EndTime);
+                        $scope.timeSlot.BeginTime = moment($scope.timeSlot.BeginTime).format($momentFullDateFormat);
+                        $scope.timeSlot.EndTime = moment($scope.timeSlot.EndTime).format($momentFullDateFormat);
                     }
 
                     LogErrors(serviceResponse.Errors);
@@ -267,6 +269,10 @@ codeCampApp.controller("AddTimeSlotModalController", ["$scope", "$rootScope", "$
         $scope.timeSlot.CodeCampId = $scope.CodeCampId;
 
         var timeSlotAction = ($scope.UpdateMode) ? "UpdateTimeSlot" : "CreateTimeSlot";
+
+        // ensure that the datetime is converted to a string so it doesn't get converted in unexpected ways
+        $scope.timeSlot.BeginTime = moment($scope.timeSlot.BeginTime).format($momentFullDateFormat);
+        $scope.timeSlot.EndTime = moment($scope.timeSlot.EndTime).format($momentFullDateFormat);
 
         factory.callPostService(timeSlotAction, $scope.timeSlot)
             .success(function (data) {

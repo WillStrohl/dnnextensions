@@ -115,8 +115,8 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                     eventDay.DayName = moment(eventDay.TimeStamp).format($momentDayNameFormat);
 
                     angular.forEach(eventDay.TimeSlots, function(timeSlot, index) {
-                        timeSlot.BeginTime = moment(timeSlot.BeginTime).format($momentTimeFormat);
-                        timeSlot.EndTime = moment(timeSlot.EndTime).format($momentTimeFormat);
+                        timeSlot.BeginTime = moment(timeSlot.BeginTime).format($momentFullDateFormat);
+                        timeSlot.EndTime = moment(timeSlot.EndTime).format($momentFullDateFormat);
                     });
                 });
 

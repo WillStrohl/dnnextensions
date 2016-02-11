@@ -57,16 +57,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var timeSlots = TimeSlotDataAccess.GetItems(codeCampId);
-
-                if (timeSlots.Any())
-                {
-                    foreach (var timeSlot in timeSlots)
-                    {
-                        timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
-                        timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
-                    }
-                }
+                var slotsToOrder = TimeSlotDataAccess.GetItems(codeCampId);
+                var timeSlots = SortTimeSlots(slotsToOrder);
 
                 var response = new ServiceResponse<List<TimeSlotInfo>> { Content = timeSlots.ToList() };
 
@@ -99,11 +91,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var timeSlot = TimeSlotDataAccess.GetItem(itemId, codeCampId);
 
-                if (timeSlot != null)
-                {
-                    timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
-                    timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
-                }
+                // removing this prevented the saved/retrieved time from being offset to being about 4 hours off
+                //if (timeSlot != null)
+                //{
+                //    timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
+                //    timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
+                //}
 
                 var response = new ServiceResponse<TimeSlotInfo> { Content = timeSlot };
 
@@ -189,11 +182,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 var savedTimeSlot = timeSlots.OrderByDescending(s => s.CreatedByDate).FirstOrDefault(s => s.BeginTime == timeSlot.BeginTime);
 
-                if (savedTimeSlot != null)
-                {
-                    savedTimeSlot.BeginTime = savedTimeSlot.BeginTime.ToLocalTime();
-                    savedTimeSlot.EndTime = savedTimeSlot.EndTime.ToLocalTime();
-                }
+                // removing this prevented the saved/retrieved time from being offset to being about 4 hours off
+                //if (savedTimeSlot != null)
+                //{
+                //    savedTimeSlot.BeginTime = savedTimeSlot.BeginTime.ToLocalTime();
+                //    savedTimeSlot.EndTime = savedTimeSlot.EndTime.ToLocalTime();
+                //}
 
                 var response = new ServiceResponse<TimeSlotInfo> { Content = savedTimeSlot };
 
@@ -235,11 +229,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 var savedTimeSlot = TimeSlotDataAccess.GetItem(timeSlot.TimeSlotId, timeSlot.CodeCampId);
 
-                if (savedTimeSlot != null)
-                {
-                    savedTimeSlot.BeginTime = savedTimeSlot.BeginTime.ToLocalTime();
-                    savedTimeSlot.EndTime = savedTimeSlot.EndTime.ToLocalTime();
-                }
+                // removing this prevented the saved/retrieved time from being offset to being about 4 hours off
+                //if (savedTimeSlot != null)
+                //{
+                //    savedTimeSlot.BeginTime = savedTimeSlot.BeginTime.ToLocalTime();
+                //    savedTimeSlot.EndTime = savedTimeSlot.EndTime.ToLocalTime();
+                //}
 
                 var response = new ServiceResponse<TimeSlotInfo> { Content = savedTimeSlot };
 
@@ -338,13 +333,13 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             var updatesToProcess = false;
 
-            if (timeSlot.BeginTime != originalTimeSlot.BeginTime)
+            if (timeSlot.BeginTime.ToUniversalTime() != originalTimeSlot.BeginTime)
             {
                 originalTimeSlot.BeginTime = timeSlot.BeginTime;
                 updatesToProcess = true;
             }
 
-            if (timeSlot.EndTime != originalTimeSlot.EndTime)
+            if (timeSlot.EndTime.ToUniversalTime() != originalTimeSlot.EndTime)
             {
                 originalTimeSlot.EndTime = timeSlot.EndTime;
                 updatesToProcess = true;
@@ -415,6 +410,31 @@ namespace WillStrohl.Modules.CodeCamp.Services
             }
 
             return updatesToProcess;
+        }
+
+        protected IEnumerable<TimeSlotInfo> SortTimeSlots(IEnumerable<TimeSlotInfo> timeSlots)
+        {
+            var index = 0;
+
+            // first, ensure that the times all have the same dates
+            foreach (var timeSlot in timeSlots)
+            {
+                var beginTime = timeSlot.BeginTime;
+                var endTime = timeSlot.EndTime;
+
+                timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, beginTime.Hour, beginTime.Minute, 0);
+                timeSlot.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, endTime.Hour, endTime.Minute, 0);
+            }
+
+            // now sort by the time
+            foreach (var timeSlot in timeSlots.OrderBy(t => t.BeginTime))
+            {
+                timeSlot.SortOrder = index;
+
+                index++;
+            }
+
+            return timeSlots;
         }
 
         #endregion

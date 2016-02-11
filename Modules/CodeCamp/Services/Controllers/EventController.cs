@@ -401,7 +401,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 if (agenda.CodeCamp != null)
                 {
-                    var timeSlots = TimeSlotDataAccess.GetItems(codeCampId);
+                    var slotsToOrder = TimeSlotDataAccess.GetItems(codeCampId);
+                    var timeSlots = SortTimeSlots(slotsToOrder);
                     var timeSlotCount = timeSlots.Count();
 
                     // determine how many days the event lasts for
