@@ -17,8 +17,8 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                 $scope.codeCamp = serviceResponse.Content;
 
                 if ($scope.codeCamp != null) {
-                    $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
-                    $scope.codeCamp.EndDate = ParseDate($scope.codeCamp.EndDate);
+                    $scope.codeCamp.BeginDate = moment($scope.codeCamp.BeginDate).format($momentDateFormat);
+                    $scope.codeCamp.EndDate = moment($scope.codeCamp.EndDate).format($momentDateFormat);
                 }
 
                 if ($scope.codeCamp === null) {

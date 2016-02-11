@@ -99,14 +99,6 @@ namespace WillStrohl.Modules.CodeCamp.Services
             {
                 var codeCamp = CodeCampDataAccess.GetItemByModuleId(ActiveModule.ModuleID);
 
-                if (codeCamp != null)
-                {
-                    codeCamp.BeginDate = codeCamp.BeginDate.ToLocalTime();
-                    codeCamp.CreatedByDate = codeCamp.CreatedByDate.ToLocalTime();
-                    codeCamp.EndDate = codeCamp.EndDate.ToLocalTime();
-                    codeCamp.LastUpdatedByDate = codeCamp.LastUpdatedByDate.ToLocalTime();
-                }
-
                 var response = new ServiceResponse<CodeCampInfo> { Content = codeCamp };
 
                 if (codeCamp == null)
@@ -234,10 +226,10 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     originalEvent.LastUpdatedByDate = DateTime.Now;
                     originalEvent.LastUpdatedByUserId = UserInfo.UserID;
 
-                    CodeCampDataAccess.UpdateItem(codeCamp);
+                    CodeCampDataAccess.UpdateItem(originalEvent);
                 }
 
-                var savedEvent = CodeCampDataAccess.GetItem(codeCamp.CodeCampId, codeCamp.ModuleId);
+                var savedEvent = CodeCampDataAccess.GetItem(originalEvent.CodeCampId, originalEvent.ModuleId);
 
                 var response = new ServiceResponse<CodeCampInfo> { Content = savedEvent };
 
@@ -313,7 +305,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     agenda.EventDays = new List<EventDayInfo>();
 
                     var dayCount = 0;
-                    while (dayCount <= agenda.NumberOfDays)
+                    while (dayCount <= agenda.NumberOfDays - 1)
                     {
                         var eventDate = agenda.CodeCamp.BeginDate.AddDays(dayCount);
 
