@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2015, Will Strohl
+ * Copyright (c) 2016, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
@@ -63,9 +63,10 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             var items = repo.GetItems(codeCampId);
 
             // re-order timeslots by time only
-            SortTimeSlots(ref items);
+            //ConvertTimeSlotTimes(ref items);
+            //SortTimeSlots(ref items);
 
-            return items.OrderBy(t => t.BeginTime);
+            return items;
         }
 
         public TimeSlotInfo GetItem(int itemId, int codeCampId)
@@ -82,11 +83,35 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         #region Private Helper Methods
 
+        //private void ConvertTimeSlotTimes(ref IEnumerable<TimeSlotInfo> timeSlots)
+        //{
+        //    if (!timeSlots.Any()) return;
+
+        //    foreach (var timeSlot in timeSlots)
+        //    {
+        //        timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
+        //        timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
+        //    }
+        //}
+
         private void SortTimeSlots(ref IEnumerable<TimeSlotInfo> timeSlots)
         {
-            foreach (var timeSlot in timeSlots)
+            if (!timeSlots.Any()) return;
+            
+            var index = 0;
+
+            foreach (var timeSlot in timeSlots.OrderBy(t => t.BeginTime.ToLocalTime()))
             {
-                timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeSlot.BeginTime.Hour, timeSlot.BeginTime.Minute, 0);
+                //var beginTime = timeSlot.BeginTime.ToLocalTime();
+                //var endTime = timeSlot.EndTime.ToLocalTime();
+                //var today = DateTime.Now;
+
+                //timeSlot.BeginTime = new DateTime(today.Year, today.Month, today.Day, beginTime.Hour, beginTime.Minute, 0);
+                //timeSlot.EndTime = new DateTime(today.Year, today.Month, today.Day, endTime.Hour, endTime.Minute, 0);
+
+                timeSlot.SortOrder = index;
+
+                index++;
             }
         }
 

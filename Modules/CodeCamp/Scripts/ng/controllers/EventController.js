@@ -57,12 +57,10 @@ codeCampControllers.controller("eventController", ["$scope", "$routeParams", "$h
     }
 
     $scope.createEvent = function () {
-        var action = "";
+        var action = "CreateEvent";
 
         if ($scope.codeCamp.CodeCampId > 0) {
             action = "UpdateEvent";
-        } else {
-            action = "CreateEvent";
         }
 
         $scope.codeCamp.BeginDate = moment(new Date($scope.codeCamp.BeginDate)).format($momentFullDateFormat);

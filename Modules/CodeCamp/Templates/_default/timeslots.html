@@ -40,9 +40,9 @@
         </div>
     </div>
     <div class="row" ng-show="timeSlots.length > 0">
-        <div class="col-sm-6 col-sm-offset-2 timeslot-line-item" ng-repeat="timeSlot in timeSlots | orderBy: 'sortTime'">
+        <div class="col-sm-6 col-sm-offset-2 timeslot-line-item" ng-repeat="timeSlot in timeSlots | orderBy: 'SortOrder'">
             <div class="pull-left">
-                (<span>{{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}}</span>-<span>{{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}</span>) {{timeSlot.AgendaText}}
+                {{timeSlot.SortOrder}}(<span>{{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}}</span>-<span>{{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}</span>) {{timeSlot.AgendaText}}
             </div>
             <div class="pull-right">
                 <button type="button" class="btn btn-info" ng-click="EditTimeSlot(timeSlot.TimeSlotId)">

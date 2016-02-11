@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2015, Will Strohl
+ * Copyright (c) 2016, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
@@ -78,5 +78,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         }
 
         public string CustomProperties { get; set; }
+
+        [IgnoreColumn]
+        public int SortOrder { get; set; }
     }
 }

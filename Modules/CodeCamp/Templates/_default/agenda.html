@@ -11,6 +11,14 @@
             </div>
         </div>
     </div>
+    <div class="row" ng-show="!hasAgenda">
+        <div class="col-lg-12">
+            <div class="alert alert-warning">
+                <h4>Whoops!</h4>
+                <p>The agenda hasn't been decided upon yet. Please check back again soon!</p>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="agenda">
             <div class="table-responsive">
@@ -31,9 +39,9 @@
                         <td>
                             <table class="table table-condensed table-bordered agenda-timeblock-table">
                                 <tbody>
-                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'Index'">
+                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'SortOrder'">
                                     <td class="agenda-date-column">
-                                        {{timeSlot.BeginTime}} - {{timeSlot.EndTime}}
+                                        {{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}} - {{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}
                                     </td>
                                     <td class="agenda-session-column">
                                         <ul>
