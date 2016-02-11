@@ -333,13 +333,13 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             var updatesToProcess = false;
 
-            if (timeSlot.BeginTime.ToUniversalTime() != originalTimeSlot.BeginTime)
+            if (timeSlot.BeginTime != originalTimeSlot.BeginTime)
             {
                 originalTimeSlot.BeginTime = timeSlot.BeginTime;
                 updatesToProcess = true;
             }
 
-            if (timeSlot.EndTime.ToUniversalTime() != originalTimeSlot.EndTime)
+            if (timeSlot.EndTime != originalTimeSlot.EndTime)
             {
                 originalTimeSlot.EndTime = timeSlot.EndTime;
                 updatesToProcess = true;
