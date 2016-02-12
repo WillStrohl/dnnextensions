@@ -8,6 +8,20 @@ You can [read more about this project and view/download the slide deck from my b
 
 ---
 
+## First... Thank You
+
+I just want to thank everyone that helps with the project, even if it's just to use the apps being 
+built or submit issues.  However, I'd really like to also thank [JetBrains](https://www.jetbrains.com/). 
+The things I build wouldn't be built half as fast if it wasn't for your generous support.  Specifically, 
+the following Visual Studio integrations really have saved me TONS of time and headaches over the 
+years, and gotten me up to speed faster on other people's code more than anything else I've ever 
+tried (even talking to them about it).
+
+![ReSharper by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_ReSharper.png)
+![dotPeek by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_dotPeek.png)
+
+---
+
 ## How You Can Help
 
 * [Install and use the extensions (see below)](https://github.com/hismightiness/dnnextensions/wiki/Install-and-Use-the-Extensions)
