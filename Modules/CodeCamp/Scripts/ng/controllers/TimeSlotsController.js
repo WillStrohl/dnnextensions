@@ -167,7 +167,6 @@ codeCampControllers.controller("timeSlotsController", ["$scope", "$routeParams",
 
         modalInstance.result.then(function (savedTimeSlot) {
             $scope.savedTimeSlot = savedTimeSlot;
-            console.log("$scope.savedTimeSlot = " + $scope.savedTimeSlot);
             $scope.LoadTimeSlots();
         }, function () {
             console.log("Modal dismissed at: " + new Date());
@@ -354,7 +353,6 @@ codeCampApp.controller("DeleteTimeSlotModalController", ["$scope", "$rootScope",
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
-                console.log("serviceResponse = " + serviceResponse);
 
                 $scope.LoadTimeSlots();
 

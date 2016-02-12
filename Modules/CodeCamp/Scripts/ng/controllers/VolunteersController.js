@@ -110,9 +110,6 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
 
                     $scope.userIsVolunteer = ($scope.volunteer != null);
 
-                    //console.log("$scope.volunteer = " + $scope.volunteer);
-                    //console.log("$scope.userIsVolunteer = " + $scope.userIsVolunteer);
-
                     $scope.LoadTasks();
 
                     LogErrors(serviceResponse.Errors);
@@ -202,7 +199,6 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
 
         modalInstance.result.then(function (savedVolunteer) {
             $scope.savedVolunteer = savedVolunteer;
-            console.log("$scope.savedVolunteer = " + $scope.savedVolunteer);
             $scope.LoadVolunteer();
         }, function () {
             console.log("Modal dismissed at: " + new Date());
@@ -228,7 +224,6 @@ codeCampControllers.controller("volunteersController", ["$scope", "$routeParams"
 
         modalInstance.result.then(function (savedTask) {
             $scope.savedTask = savedTask;
-            console.log("$scope.savedTask = " + $scope.savedTask);
             $scope.LoadVolunteer();
             $scope.LoadVolunteers();
         }, function () {

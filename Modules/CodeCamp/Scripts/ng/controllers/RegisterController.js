@@ -84,7 +84,6 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
             factory.callPostService("UpdateRegistration", $scope.registration)
                 .success(function (data) {
                     var serviceResponse = angular.fromJson(data);
-                    console.log("update registration response = " + serviceResponse.Content);
 
                     if (serviceResponse.Content == "SUCCESS") {
                         $scope.RegistrationUpdateSuccess = true;
@@ -116,7 +115,6 @@ codeCampControllers.controller("registerController", ["$scope", "$routeParams", 
                 .success(function (data) {
                     var savedRegistration = angular.fromJson(data);
                     $scope.savedRegistration = savedRegistration.Content;
-                    //console.log("savedRegistration = " + savedRegistration);
 
                     if (savedRegistration.Errors.length > 0) {
                         $.each(savedRegistration.Errors, function (index, error) {

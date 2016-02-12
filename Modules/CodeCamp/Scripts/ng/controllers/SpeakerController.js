@@ -17,7 +17,6 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.codeCamp = serviceResponse.Content;
-                console.log("serviceResponse.Content = " + serviceResponse.Content);
 
                 if ($scope.codeCamp != null) {
                     $scope.codeCamp.BeginDate = ParseDate($scope.codeCamp.BeginDate);
@@ -47,7 +46,6 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.speaker = serviceResponse.Content;
-                console.log("$scope.speaker = " + $scope.speaker);
 
                 if ($scope.codeCamp === null) {
                     $scope.hasSpeaker = false;
@@ -232,7 +230,6 @@ codeCampControllers.controller("speakerController", ["$scope", "$routeParams", "
                         .then(function (response) {
                             var fullResult = angular.fromJson(response);
                             var serviceResponse = JSON.parse(fullResult.data);
-                            console.log("serviceResponse = " + serviceResponse);
 
                             $scope.UpdateSessionRegistration();
 

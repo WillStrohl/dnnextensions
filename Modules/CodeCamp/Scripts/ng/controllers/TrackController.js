@@ -361,7 +361,6 @@ codeCampControllers.controller("trackController", [
                                 .then(function(response) {
                                         var fullResult = angular.fromJson(response);
                                         var serviceResponse = JSON.parse(fullResult.data);
-                                        console.log("serviceResponse = " + serviceResponse);
 
                                         $scope.UpdateSessionRegistration();
 
@@ -689,7 +688,6 @@ codeCampApp.controller("ConfirmModalController", ["$scope", "$rootScope", "$uibM
             .then(function (response) {
                 var fullResult = angular.fromJson(response);
                 var serviceResponse = JSON.parse(fullResult.data);
-                console.log("serviceResponse = " + serviceResponse);
 
                 LogErrors(serviceResponse.Errors);
             },

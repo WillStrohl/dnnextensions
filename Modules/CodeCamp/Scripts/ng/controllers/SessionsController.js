@@ -45,15 +45,12 @@ codeCampControllers.controller("sessionsController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.sessions = serviceResponse.Content;
-                console.log("$scope.sessions = " + $scope.sessions);
-                console.log("$scope.sessions.length = " + $scope.sessions.length);
 
                 if ($scope.sessions === null) {
                     $scope.hasSessions = false;
                 } else {
                     $scope.hasSessions = ($scope.sessions.length > 0);
                 }
-                console.log("$scope.hasSessions = " + $scope.hasSessions);
 
                 LogErrors(serviceResponse.Errors);
             },
@@ -70,15 +67,12 @@ codeCampControllers.controller("sessionsController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.sessions = serviceResponse.Content;
-                console.log("$scope.sessions = " + $scope.sessions);
-                console.log("$scope.sessions.length = " + $scope.sessions.length);
 
                 if ($scope.sessions === null) {
                     $scope.hasSessions = false;
                 } else {
                     $scope.hasSessions = ($scope.sessions.length > 0);
                 }
-                console.log("$scope.hasSessions = " + $scope.hasSessions);
 
                 LogErrors(serviceResponse.Errors);
             },

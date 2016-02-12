@@ -120,7 +120,6 @@ codeCampControllers.controller("tracksController", ["$scope", "$routeParams", "$
 
         modalInstance.result.then(function (savedTrack) {
             $scope.savedTrack = savedTrack;
-            console.log("$scope.savedTrack = " + $scope.savedTrack);
             $scope.LoadTracks();
         }, function () {
             console.log("Modal dismissed at: " + new Date());
