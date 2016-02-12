@@ -36,7 +36,11 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 {
     public class TimeSlotInfoController
     {
+        #region Private Properties
+
         private readonly TimeSlotInfoRepository repo = null;
+
+        #endregion
 
         public TimeSlotInfoController() 
         {
@@ -81,38 +85,31 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             repo.UpdateItem(i);
         }
 
-        #region Private Helper Methods
-
-        //private void ConvertTimeSlotTimes(ref IEnumerable<TimeSlotInfo> timeSlots)
-        //{
-        //    if (!timeSlots.Any()) return;
-
-        //    foreach (var timeSlot in timeSlots)
-        //    {
-        //        timeSlot.BeginTime = timeSlot.BeginTime.ToLocalTime();
-        //        timeSlot.EndTime = timeSlot.EndTime.ToLocalTime();
-        //    }
-        //}
-
-        private void SortTimeSlots(ref IEnumerable<TimeSlotInfo> timeSlots)
+        #region Static Helper Methods
+        
+        public static IEnumerable<TimeSlotInfo> SortTimeSlots(IEnumerable<TimeSlotInfo> timeSlots)
         {
-            if (!timeSlots.Any()) return;
-            
             var index = 0;
 
-            foreach (var timeSlot in timeSlots.OrderBy(t => t.BeginTime.ToLocalTime()))
+            // first, ensure that the times all have the same dates
+            foreach (var timeSlot in timeSlots)
             {
-                //var beginTime = timeSlot.BeginTime.ToLocalTime();
-                //var endTime = timeSlot.EndTime.ToLocalTime();
-                //var today = DateTime.Now;
+                var beginTime = timeSlot.BeginTime;
+                var endTime = timeSlot.EndTime;
 
-                //timeSlot.BeginTime = new DateTime(today.Year, today.Month, today.Day, beginTime.Hour, beginTime.Minute, 0);
-                //timeSlot.EndTime = new DateTime(today.Year, today.Month, today.Day, endTime.Hour, endTime.Minute, 0);
+                timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, beginTime.Hour, beginTime.Minute, 0);
+                timeSlot.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, endTime.Hour, endTime.Minute, 0);
+            }
 
+            // now sort by the time
+            foreach (var timeSlot in timeSlots.OrderBy(t => t.BeginTime))
+            {
                 timeSlot.SortOrder = index;
 
                 index++;
             }
+
+            return timeSlots;
         }
 
         #endregion

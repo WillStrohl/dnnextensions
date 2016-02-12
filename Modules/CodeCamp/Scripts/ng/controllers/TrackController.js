@@ -1,10 +1,5 @@
 ﻿"use strict";
 
-//TODO: clear timeblock upon removing a session from the track
-//TODO: implement sorting in the pop-up
-//TODO: stop allowing session assignment when there's no more available timeslots
-//TODO: add timeblock info to sorting pop-up
-
 codeCampControllers.controller("trackController", [
     "$scope", "$routeParams", "$http", "$location", "$uibModal", "codeCampServiceFactory", function ($scope, $routeParams, $http, $location, $uibModal, codeCampServiceFactory) {
 
@@ -649,19 +644,21 @@ codeCampApp.controller("SortSessionsModalController", ["$scope", "$rootScope", "
     };
 
     $scope.updateSessionOrder = function () {
-        factory.callPostService("UpdateSessionsTimeSlotOrder?codeCampId=" + $scope.codeCamp.CodeCampId, $scope.assignedSessions)
-            .success(function (data) {
-                var serviceResponse = angular.fromJson(data);
+        angular.forEach($scope.assignedSessions, function(session, index) {
+            factory.callPostService("UpdateSessionTimeSlotOrder?sessionId=" + session.SessionId + "&codeCampId=" +  + $scope.codeCamp.CodeCampId + "&newPosition=" + index)
+                .success(function (data) {
+                    var serviceResponse = angular.fromJson(data);
 
-                $scope.LoadAssignedSessions();
+                    LogErrors(serviceResponse.Errors);
+                })
+                .error(function (data, status) {
+                    $scope.HasErrors = true;
+                    console.log("Unknown error occurred calling UpdateSessionsTimeSlotOrder");
+                    console.log(data);
+                });
+        });
 
-                LogErrors(serviceResponse.Errors);
-            })
-            .error(function (data, status) {
-                $scope.HasErrors = true;
-                console.log("Unknown error occurred calling UpdateSessionsTimeSlotOrder");
-                console.log(data);
-            });
+        $scope.LoadAssignedSessions();
     }
 
     $scope.ok = function () {

@@ -58,7 +58,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
             try
             {
                 var slotsToOrder = TimeSlotDataAccess.GetItems(codeCampId);
-                var timeSlots = SortTimeSlots(slotsToOrder);
+                var timeSlots = TimeSlotInfoController.SortTimeSlots(slotsToOrder);
 
                 var response = new ServiceResponse<List<TimeSlotInfo>> { Content = timeSlots.ToList() };
 
@@ -410,31 +410,6 @@ namespace WillStrohl.Modules.CodeCamp.Services
             }
 
             return updatesToProcess;
-        }
-
-        protected IEnumerable<TimeSlotInfo> SortTimeSlots(IEnumerable<TimeSlotInfo> timeSlots)
-        {
-            var index = 0;
-
-            // first, ensure that the times all have the same dates
-            foreach (var timeSlot in timeSlots)
-            {
-                var beginTime = timeSlot.BeginTime;
-                var endTime = timeSlot.EndTime;
-
-                timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, beginTime.Hour, beginTime.Minute, 0);
-                timeSlot.EndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, endTime.Hour, endTime.Minute, 0);
-            }
-
-            // now sort by the time
-            foreach (var timeSlot in timeSlots.OrderBy(t => t.BeginTime))
-            {
-                timeSlot.SortOrder = index;
-
-                index++;
-            }
-
-            return timeSlots;
         }
 
         #endregion

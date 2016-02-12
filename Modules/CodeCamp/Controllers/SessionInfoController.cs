@@ -105,9 +105,9 @@ namespace WillStrohl.Modules.CodeCamp.Entities
                 item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
             }
 
-            SortSessions(ref items, codeCampId);
+            var returnItems = SortSessions(items, codeCampId);
 
-            return items;
+            return returnItems;
         }
 
         public IEnumerable<SessionInfo> GetItemsByTimeSlotId(int timeSlotId, int codeCampId)
@@ -131,30 +131,20 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             return resultSet;
         }
 
-        public void UpdateItemSortOrder(IEnumerable<SessionInfo> sessions, int codeCampId)
+        public void UpdateItemSortOrder(int sessionId, int codeCampId, int newPosition)
         {
+            // get the time slots that aren't full span
             var availableTimeSlots = timeSlotRepo.GetItems(codeCampId).Where(t => !t.SpanAllTracks);
-
             // re-order timeslots by time only
-            foreach (var timeSlot in availableTimeSlots)
-            {
-                timeSlot.BeginTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeSlot.BeginTime.Hour, timeSlot.BeginTime.Minute, 0);
-            }
-            var timeSlotList = availableTimeSlots.OrderBy(t => t.BeginTime).ToList();
+            var timeSlots = TimeSlotInfoController.SortTimeSlots(availableTimeSlots).ToList();
+            // get the time slot matching the index
+            var slot = timeSlots[newPosition];
+            // get the session
+            var session = repo.GetItem(sessionId, codeCampId);
 
-            var index = 0;
-            foreach (var session in sessions)
-            {
-                var timeSlot = timeSlotList[index];
+            session.TimeSlotId = slot.TimeSlotId;
 
-                if (timeSlot != null)
-                {
-                    session.TimeSlotId = timeSlot.TimeSlotId;
-                    repo.UpdateItem(session);
-                }
-
-                index++;
-            }
+            repo.UpdateItem(session);
         }
 
         public SessionInfo GetItem(int itemId, int codeCampId)
@@ -191,7 +181,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
             item.Speakers = speakerRepo.GetSpeakersForCollection(item.SessionId, item.CodeCampId);
         }
 
-        private void SortSessions(ref IEnumerable<SessionInfo> sessions, int codeCampId)
+        private IEnumerable<SessionInfo> SortSessions(IEnumerable<SessionInfo> sessions, int codeCampId)
         {
             var availableTimeSlots = timeSlotRepo.GetItems(codeCampId);
             var index = 0;
@@ -206,7 +196,7 @@ namespace WillStrohl.Modules.CodeCamp.Entities
                 index++;
             }
 
-            sessions.OrderBy(s => s.SortOrder);
+            return sessions.OrderBy(s => s.SortOrder).ThenBy(s => s.Title);
         }
 
         #endregion

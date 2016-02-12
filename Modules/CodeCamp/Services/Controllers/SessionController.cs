@@ -237,16 +237,16 @@ namespace WillStrohl.Modules.CodeCamp.Services
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSessionsTimeSlotOrder
+        /// GET: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSessionTimeSlotOrder
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateSessionsTimeSlotOrder([FromBody] IEnumerable<SessionInfo> sessions, int codeCampId)
+        public HttpResponseMessage UpdateSessionTimeSlotOrder(int sessionId, int codeCampId, int newPosition)
         {
             try
             {
-                SessionDataAccess.UpdateItemSortOrder(sessions, codeCampId);
+                SessionDataAccess.UpdateItemSortOrder(sessionId, codeCampId, newPosition);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 

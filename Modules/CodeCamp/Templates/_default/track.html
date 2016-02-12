@@ -157,10 +157,10 @@
             </div>
             <div class="row">
                 <ul class="list-group" ui-sortable="sortableOptions" ng-model="assignedSessions">
-                    <li class="list-group-item" ng-repeat="session in assignedSessions | orderBy: ['SortOrder', 'Title']">
+                    <li class="list-group-item" ng-repeat="session in assignedSessions | orderBy: ['SortOrder']">
                         <span>
                             <em class="glyphicon glyphicon-resize-vertical"></em>
-                            {{session.Title}}
+                            {{session.SortOrder}}{{session.Title}}
                         </span>
                     </li>
                 </ul>
