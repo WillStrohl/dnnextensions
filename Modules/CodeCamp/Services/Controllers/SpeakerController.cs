@@ -33,7 +33,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using DotNetNuke.Security;
@@ -378,6 +377,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
             }
             catch (Exception ex)
             {
+                Exceptions.LogException(ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.GetBaseException().Message);
             }
         }

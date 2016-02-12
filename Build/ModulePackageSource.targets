@@ -46,6 +46,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <InstallInclude Include="**\*.ttf" Exclude="packages\**" />
       <InstallInclude Include="**\*.woff" Exclude="packages\**" />
       <InstallInclude Include="**\*.woff2" Exclude="packages\**" />
+      <InstallInclude Include="**\*.swf" Exclude="packages\**" />
     </ItemGroup>
 
     <ItemGroup>
