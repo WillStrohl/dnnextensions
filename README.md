@@ -17,8 +17,8 @@ the following Visual Studio integrations really have saved me TONS of time and h
 years, and gotten me up to speed faster on other people's code more than anything else I've ever 
 tried (even talking to them about it).
 
-![ReSharper by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_ReSharper.png)
-![dotPeek by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_dotPeek.png)
+[![ReSharper by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_ReSharper.png)](https://www.jetbrains.com/resharper/)
+[![dotPeek by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_dotPeek.png)](https://www.jetbrains.com/decompiler/)
 
 ---
 
