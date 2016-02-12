@@ -8,6 +8,8 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
     $scope.eventDays = [];
     $scope.sessions = [];
 
+    $scope.classColors = ["purple", "red", "green", "blue", "orange"];
+
     $scope.LoadData = function () {
         factory.callGetService("GetEventByModuleId")
             .then(function (response) {
@@ -110,13 +112,21 @@ codeCampControllers.controller("agendaController", ["$scope", "$routeParams", "$
                 $scope.agenda.CodeCamp.BeginDate = moment($scope.agenda.CodeCamp.BeginDate).format($momentDateFormat);
                 $scope.agenda.CodeCamp.EndDate = moment($scope.agenda.CodeCamp.EndDate).format($momentDateFormat);
 
-                angular.forEach($scope.agenda.EventDays, function(eventDay, index) {
-                    eventDay.TimeStamp = moment(eventDay.TimeStamp).format($momentDateFormat);
-                    eventDay.DayName = moment(eventDay.TimeStamp).format($momentDayNameFormat);
+                angular.forEach($scope.agenda.EventDays, function (eventDay, index) {
+                    var eventDayMoment = moment(eventDay.TimeStamp);
+                    eventDay.TimeStamp = eventDayMoment.format($momentDateFormat);
+                    eventDay.DayName = eventDayMoment.format($momentDayNameFormat);
+                    eventDay.MonthName = eventDayMoment.format($momentMonthFormat);
 
                     angular.forEach(eventDay.TimeSlots, function(timeSlot, index) {
                         timeSlot.BeginTime = moment(timeSlot.BeginTime).format($momentFullDateFormat);
                         timeSlot.EndTime = moment(timeSlot.EndTime).format($momentFullDateFormat);
+
+                        angular.forEach(timeSlot.Sessions, function (session, index) {
+                            angular.forEach(session.Speakers, function(speaker, index) {
+                                speaker.SpeakerSlug = GetSlugFromValue(speaker.SpeakerName);
+                            });
+                        });
                     });
                 });
 

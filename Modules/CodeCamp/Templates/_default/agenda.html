@@ -34,7 +34,7 @@
                         <td class="agenda-date" title="{{eventDay.TimeStamp}}" class="active">
                             <div class="dayofmonth">{{eventDay.Day}}</div>
                             <div class="dayofweek">{{eventDay.DayName}}</div>
-                            <div class="shortdate text-muted">{{eventDay.Month}}, {{eventDay.Year}}</div>
+                            <div class="shortdate text-muted">{{eventDay.MonthName}}, {{eventDay.Year}}</div>
                         </td>
                         <td>
                             <table class="table table-condensed table-bordered agenda-timeblock-table">
@@ -44,11 +44,17 @@
                                         {{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}} - {{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}
                                     </td>
                                     <td class="agenda-session-column">
-                                        <ul>
-                                            <li ng-repeat="session in timeSlot.Sessions">
-                                                <span>{{session.Title}}</span> by <span class="agenda-session-speaker" ng-repeat="speaker in session.Speakers | orderBy: 'SpeakerName'">{{speaker.SpeakerName}}<span ng-if="session.Speakers > 1">, </span></span>
-                                            </li>
-                                        </ul>
+                                        <div ng-repeat="session in timeSlot.Sessions | orderBy: 'TrackId'">
+                                            <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                                            <div class="col-sm-4">
+                                                <div class="tile" ng-class="classColors[$index % 5]">
+                                                    <span>{{session.Title}}</span> by
+                                                    <span class="agenda-session-speaker" ng-repeat="speaker in session.Speakers | orderBy: 'SpeakerName'">
+                                                        <a href="#/speakers/{{speaker.SpeakerId}}/{{speaker.SpeakerSlug}}">{{speaker.SpeakerName}}</a><span ng-if="session.Speakers > 1">, </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>
