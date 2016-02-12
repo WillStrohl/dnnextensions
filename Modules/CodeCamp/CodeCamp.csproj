@@ -198,7 +198,9 @@
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.min.css" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap.css" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap.min.css" />
-    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\3.3.5\js\npm.js" />
@@ -284,10 +286,18 @@
     <Content Include="View.html" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap.css.map" />
-    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap\3.3.5\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\ng\angular\angular-animate.min.js.map" />
     <Content Include="Scripts\ng\angular\angular-resource.min.js.map" />
     <Content Include="Scripts\ng\angular\angular-route.min.js.map" />
