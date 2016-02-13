@@ -215,17 +215,6 @@
     <Content Include="Scripts\moment\moment.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.14.3.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.14.3.min.js" />
-    <Content Include="Scripts\ngImageUploader\FileAPI.flash.swf" />
-    <Content Include="Scripts\ngImageUploader\FileAPI.js" />
-    <Content Include="Scripts\ngImageUploader\FileAPI.min.js" />
-    <Content Include="Scripts\ngImageUploader\ItemEdit.js" />
-    <Content Include="Scripts\ngImageUploader\ItemView.js" />
-    <Content Include="Scripts\ngImageUploader\ng-file-upload-all.js" />
-    <Content Include="Scripts\ngImageUploader\ng-file-upload-all.min.js" />
-    <Content Include="Scripts\ngImageUploader\ng-file-upload-shim.js" />
-    <Content Include="Scripts\ngImageUploader\ng-file-upload-shim.min.js" />
-    <Content Include="Scripts\ngImageUploader\ng-file-upload.js" />
-    <Content Include="Scripts\ngImageUploader\ng-file-upload.min.js" />
     <Content Include="Scripts\ng\angular\angular-animate.js" />
     <Content Include="Scripts\ng\angular\angular-animate.min.js" />
     <Content Include="Scripts\ng\angular\angular-resource.js" />

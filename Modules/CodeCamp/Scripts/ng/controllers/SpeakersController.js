@@ -210,7 +210,7 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
 /*
  * Speakers Modal Controller
  */
-codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$uibModal", "$uibModalInstance", "Upload", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $uibModal, $uibModalInstance, Upload, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
+codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$uibModal", "$uibModalInstance", "userId", "currentSpeaker", "currentSessions", "codeCamp", "registration", "codeCampServiceFactory", function ($scope, $rootScope, $uibModal, $uibModalInstance, userId, currentSpeaker, currentSessions, codeCamp, registration, codeCampServiceFactory) {
 
     $scope.speaker = {};
     $scope.savedSpeaker = {};
