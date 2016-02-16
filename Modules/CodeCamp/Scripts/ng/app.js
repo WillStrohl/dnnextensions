@@ -2,28 +2,12 @@
 
 $("body").attr("ng-app", "codeCampApp");
 
-var codeCampApp = angular.module("codeCampApp", ["ngRoute", "ngAnimate", "ui.bootstrap", "ui.sortable", "angularMoment", "codeCampControllers"]);
+var codeCampApp = angular.module("codeCampApp", ["ngRoute", "ngAnimate", "ui.bootstrap", "ui.sortable", "angularMoment", "flow", "codeCampControllers"]);
 
 var codeCampControllers = angular.module("codeCampControllers", []);
 
 codeCampApp.config(["$routeProvider", 
 	function ($routeProvider) {
-
-	    //TODO: dynamically parse and/or replace _default with "templateFolder"
-	    //TODO: add registrant list view, for printing badges by organizers
-	    //TODO: add social networks to registration
-	    //TODO: add image upload for event 
-	    //TODO: add image upload for registration
-	    //TODO: add missing registration fields
-	    //TODO: add missing event fields
-	    //TODO: add logic to only show approved sessions
-	    //TODO: complete the agenda view
-	    //TODO: add template editor view
-	    //TODO: speakers page is completely blank when a code camp is first created and with no registrations
-	    //TODO: ensure that show shirt size and other settings are observed in other views
-	    //TODO: first load of Volunteers view by admin gets manage tasks, want to help message, and no tasks message (not registered yet)
-	    //TODO: first load of Sessions view is blank, with filter (not registered yet)
-        //TODO: first load of Speakers view is is blank (not registered yet)
 
 		$routeProvider
 		.when("/update", {
@@ -82,3 +66,30 @@ codeCampApp.config(["$routeProvider",
 			redirectTo: "/about"
 		});
 	}]);
+
+//codeCampApp.config(["flowFactoryProvider", function (flowFactoryProvider) {
+//    var $self = this;
+
+//    if ($.ServicesFramework) {
+//        var _sf = $.ServicesFramework(moduleId);
+//        $self.ServiceRoot = _sf.getServiceRoot(moduleName);
+//        $self.ServicePath = $self.ServiceRoot + "Event/";
+//    }
+
+//    flowFactoryProvider.defaults = {
+//        //target: $self.ServicePath + "UpdateSpeakerAvatar",
+//        target: "/uploader",
+//        permanentErrors: [404, 500, 501],
+//        maxChunkRetries: 1,
+//        chunkRetryInterval: 5000,
+//        simultaneousUploads: 4,
+//        headers: {
+//            "ModuleId": moduleId,
+//            "TabId": _sf.getTabId(),
+//            "RequestVerificationToken": _sf.getAntiForgeryValue()
+//        }
+//    };
+//    flowFactoryProvider.on("catchAll", function (event) {
+//        console.log("catchAll", arguments);
+//    });
+//}]);

@@ -86,7 +86,26 @@
                     </div>
                     <div class="form-group">
                         <label for="avatarUpload">Your Avatar</label>
-                        <!-- TODO: REPLACE THIS WITH NG-FLOW -->                        
+                        <div flow-init="{target: '/uploader'}"
+                             flow-name="uploader.flow"
+                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                            <div>
+                                <div class="thumbnail" ng-hide="$flow.files.length">
+                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                                </div>
+                                <div class="thumbnail" ng-show="$flow.files.length">
+                                    <img flow-img="$flow.files[0]" />
+                                </div>
+                                <div>
+                                    <md-button class="btn btn-default" flow-btn type="button" ng-hide="$flow.files.length">Add Photo</md-button><br />
+                                    <!--<input ng-click="upload()">Upload</input>-->
+                                    <div ng-repeat="file in uploader.flow.files">
+                                        {{file.name}} <a ng-click="file.cancel()">X</a>
+                                    </div>
+                                    Total files #{{uploader.flow.files.length}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

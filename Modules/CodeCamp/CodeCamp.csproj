@@ -215,6 +215,10 @@
     <Content Include="Scripts\moment\moment.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.14.3.js" />
     <Content Include="Scripts\ng-bootstrap\ui-bootstrap-tpls-0.14.3.min.js" />
+    <Content Include="Scripts\ng-flow\ng-flow-standalone.js" />
+    <Content Include="Scripts\ng-flow\ng-flow-standalone.min.js" />
+    <Content Include="Scripts\ng-flow\ng-flow.js" />
+    <Content Include="Scripts\ng-flow\ng-flow.min.js" />
     <Content Include="Scripts\ng\angular\angular-animate.js" />
     <Content Include="Scripts\ng\angular\angular-animate.min.js" />
     <Content Include="Scripts\ng\angular\angular-resource.js" />

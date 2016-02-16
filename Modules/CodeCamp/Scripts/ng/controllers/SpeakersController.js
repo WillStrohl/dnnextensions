@@ -217,6 +217,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
     $scope.sessions = [];
     $scope.savedSessions = [];
     $scope.UpdateMode = false;
+    $scope.uploader = {};
 
     var factory = codeCampServiceFactory;
     factory.init(moduleId, moduleName);
@@ -405,6 +406,10 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
         }, function () {
             console.log("Modal dismissed at: " + new Date());
         });
+    }
+
+    $scope.uploader = function() {
+        $scope.uploader.flow.upload();
     }
 }]);
 
