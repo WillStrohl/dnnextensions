@@ -114,6 +114,10 @@
     margin-bottom: 1em;
 }
 
+.speaker-link, .speaker-link:hover {
+    cursor: pointer;
+}
+
 /* Speaker */
 .speaker-meta-wrapper {
     margin-bottom: 2em;

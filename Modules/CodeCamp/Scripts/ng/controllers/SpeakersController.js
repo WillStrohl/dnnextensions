@@ -281,8 +281,6 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
                 var savedSpeaker = angular.fromJson(data);
                 $scope.savedSpeaker = savedSpeaker.Content;
 
-                // save the speaker avatar
-
                 // save the sessions
                 $.each($scope.sessions, function (index, session) {
 
@@ -291,6 +289,9 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
 
                     $scope.saveSession(sessionAction, session, sessionSpeakerAction);
                 });
+
+                // save the speaker avatar
+                $scope.saveAvatar();
 
                 LogErrors(savedSpeaker.Errors);
             })
@@ -303,6 +304,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
         $uibModalInstance.close($scope.savedSpeaker);
     };
 
+    //$scope.saveAvatar = function ($flow) {
     $scope.saveAvatar = function (file, errFiles) {
         if ($.ServicesFramework) {
             var _sf = $.ServicesFramework(moduleId);
@@ -409,7 +411,7 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
     }
 
     $scope.uploader = function() {
-        $scope.uploader.flow.upload();
+        $scope.$flow.upload();
     }
 }]);
 

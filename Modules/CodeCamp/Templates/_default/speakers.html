@@ -74,8 +74,6 @@
                             Enter a valid email address.
                         </p>
                     </div>
-                </div>
-                <div class="col-xs-6">
                     <div class="form-group">
                         <label for="companyName">Company Name</label>
                         <input type="text" name="companyName" ng-model="speaker.CompanyName" class="form-control" placeholder="Your company name" maxlength="100" ng-trim />
@@ -84,10 +82,11 @@
                         <label for="companyTitle">Your Title</label>
                         <input type="text" name="companyTitle" ng-model="speaker.CompanyTitle" class="form-control" placeholder="Your job title" maxlength="100" ng-trim />
                     </div>
+                </div>
+                <div class="col-xs-6">
                     <div class="form-group">
-                        <label for="avatarUpload">Your Avatar</label>
-                        <div flow-init="{target: '/uploader'}"
-                             flow-name="uploader.flow"
+                        <label for="avatarUpload">Your Headshot</label>
+                        <div flow-init="{target: ''}"
                              flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
                             <div>
                                 <div class="thumbnail" ng-hide="$flow.files.length">
@@ -97,12 +96,16 @@
                                     <img flow-img="$flow.files[0]" />
                                 </div>
                                 <div>
-                                    <md-button class="btn btn-default" flow-btn type="button" ng-hide="$flow.files.length">Add Photo</md-button><br />
-                                    <!--<input ng-click="upload()">Upload</input>-->
-                                    <div ng-repeat="file in uploader.flow.files">
-                                        {{file.name}} <a ng-click="file.cancel()">X</a>
+                                    <md-button class="btn btn-default" flow-btn type="button" flow-attrs="{accept:'image/*'}" ng-hide="$flow.files.length">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        Add Photo
+                                    </md-button>
+                                    <div ng-repeat="file in $flow.files">
+                                        {{file.name}} ({{file.size / 1024 | number: 0}} KB)
+                                        <a class="speaker-link" ng-click="file.cancel()" title="Remove Headshot">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </a>
                                     </div>
-                                    Total files #{{uploader.flow.files.length}}
                                 </div>
                             </div>
                         </div>
