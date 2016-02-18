@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using DotNetNuke.Security;
@@ -337,7 +338,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateSpeakerAvatar(int codeCampId)
+        public HttpResponseMessage UpdateSpeakerAvatar(int codeCampId, int speakerId)
         {
             try
             {
@@ -367,6 +368,18 @@ namespace WillStrohl.Modules.CodeCamp.Services
                         if (fileExists)
                         {
                             result = DotNetNuke.Services.FileSystem.FileManager.Instance.GetFile(folderInfo, postedFile.FileName).FileId.ToString();
+
+                            if (!string.IsNullOrEmpty(result))
+                            {
+                                var speaker = SpeakerDataAccess.GetItem(speakerId, codeCampId);
+
+                                if (speaker != null)
+                                {
+                                    speaker.IconFile = result;
+
+                                    SpeakerDataAccess.UpdateItem(speaker);
+                                }
+                            }
                         }
                     }
                 }
