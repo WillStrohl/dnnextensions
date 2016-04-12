@@ -11,9 +11,9 @@ Option Strict On
 Option Explicit On
 
 Namespace WillStrohl.Modules.ContentSlider
-
+    
     Partial Public Class SliderOptions
-
+        
         '''<summary>
         '''lblWidth control.
         '''</summary>
@@ -21,8 +21,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblWidth As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblWidth As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtWidth control.
         '''</summary>
@@ -31,7 +31,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtWidth As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblHeight control.
         '''</summary>
@@ -39,8 +39,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblHeight As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblHeight As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtHeight control.
         '''</summary>
@@ -49,7 +49,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtHeight As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvHeight control.
         '''</summary>
@@ -58,7 +58,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvHeight As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''lblSpeed control.
         '''</summary>
@@ -66,8 +66,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblSpeed As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblSpeed As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtSpeed control.
         '''</summary>
@@ -76,7 +76,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtSpeed As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvSpeed control.
         '''</summary>
@@ -85,7 +85,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvSpeed As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''revSpeed control.
         '''</summary>
@@ -94,7 +94,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents revSpeed As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
+        
         '''<summary>
         '''lblFit control.
         '''</summary>
@@ -102,8 +102,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblFit As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblFit As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkFit control.
         '''</summary>
@@ -112,7 +112,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkFit As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblContainerResize control.
         '''</summary>
@@ -120,8 +120,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblContainerResize As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblContainerResize As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkContainerResize control.
         '''</summary>
@@ -130,7 +130,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkContainerResize As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblPause control.
         '''</summary>
@@ -138,8 +138,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPause As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPause As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkPause control.
         '''</summary>
@@ -148,7 +148,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkPause As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblExcludeCycle control.
         '''</summary>
@@ -156,8 +156,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblExcludeCycle As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblExcludeCycle As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkExcludeCycle control.
         '''</summary>
@@ -166,7 +166,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkExcludeCycle As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblExcludeEasing control.
         '''</summary>
@@ -174,8 +174,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblExcludeEasing As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblExcludeEasing As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkExcludeEasing control.
         '''</summary>
@@ -184,7 +184,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkExcludeEasing As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblCacheDuration control.
         '''</summary>
@@ -192,8 +192,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblCacheDuration As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblCacheDuration As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtCacheDuration control.
         '''</summary>
@@ -202,7 +202,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtCacheDuration As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvCacheDuration control.
         '''</summary>
@@ -211,7 +211,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvCacheDuration As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''revCacheDuration control.
         '''</summary>
@@ -220,7 +220,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents revCacheDuration As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
+        
         '''<summary>
         '''lblCssAfter control.
         '''</summary>
@@ -228,8 +228,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblCssAfter As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblCssAfter As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtCssAfter control.
         '''</summary>
@@ -238,7 +238,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtCssAfter As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblCssBefore control.
         '''</summary>
@@ -246,8 +246,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblCssBefore As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblCssBefore As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtCssBefore control.
         '''</summary>
@@ -256,7 +256,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtCssBefore As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblEasing control.
         '''</summary>
@@ -264,8 +264,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblEasing As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblEasing As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtEasing control.
         '''</summary>
@@ -274,7 +274,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtEasing As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblEaseIn control.
         '''</summary>
@@ -282,8 +282,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblEaseIn As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblEaseIn As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtEaseIn control.
         '''</summary>
@@ -292,7 +292,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtEaseIn As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblEaseOut control.
         '''</summary>
@@ -300,8 +300,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblEaseOut As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblEaseOut As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtEaseOut control.
         '''</summary>
@@ -310,7 +310,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtEaseOut As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblPager control.
         '''</summary>
@@ -318,8 +318,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPager As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPager As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkPager control.
         '''</summary>
@@ -328,7 +328,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkPager As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblActivePagerClass control.
         '''</summary>
@@ -336,8 +336,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblActivePagerClass As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblActivePagerClass As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtActivePagerClass control.
         '''</summary>
@@ -346,7 +346,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtActivePagerClass As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblPagerAnchorBuilder control.
         '''</summary>
@@ -354,8 +354,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPagerAnchorBuilder As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPagerAnchorBuilder As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtPagerAnchorBuilder control.
         '''</summary>
@@ -364,7 +364,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtPagerAnchorBuilder As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lnkDefaultPagerAnchorBuilder control.
         '''</summary>
@@ -373,7 +373,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents lnkDefaultPagerAnchorBuilder As Global.System.Web.UI.WebControls.LinkButton
-
+        
         '''<summary>
         '''lblNext control.
         '''</summary>
@@ -381,8 +381,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblNext As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblNext As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtNext control.
         '''</summary>
@@ -391,7 +391,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtNext As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblPrev control.
         '''</summary>
@@ -399,8 +399,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPrev As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPrev As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtPrev control.
         '''</summary>
@@ -409,7 +409,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtPrev As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblPauseOnPagerHover control.
         '''</summary>
@@ -417,8 +417,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPauseOnPagerHover As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPauseOnPagerHover As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkPauseOnPagerHover control.
         '''</summary>
@@ -427,7 +427,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkPauseOnPagerHover As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblAllowPagerClickBubble control.
         '''</summary>
@@ -435,8 +435,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblAllowPagerClickBubble As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblAllowPagerClickBubble As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkAllowPagerClickBubble control.
         '''</summary>
@@ -445,7 +445,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkAllowPagerClickBubble As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblAutoStop control.
         '''</summary>
@@ -453,8 +453,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblAutoStop As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblAutoStop As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkAutoStop control.
         '''</summary>
@@ -463,7 +463,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkAutoStop As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblAutoStopCount control.
         '''</summary>
@@ -471,8 +471,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblAutoStopCount As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblAutoStopCount As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtAutoStopCount control.
         '''</summary>
@@ -481,7 +481,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtAutoStopCount As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblBackwards control.
         '''</summary>
@@ -489,8 +489,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblBackwards As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblBackwards As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkBackwards control.
         '''</summary>
@@ -499,7 +499,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkBackwards As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblMetaAttr control.
         '''</summary>
@@ -507,8 +507,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblMetaAttr As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblMetaAttr As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtMetaAttr control.
         '''</summary>
@@ -517,7 +517,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtMetaAttr As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvMetaAttr control.
         '''</summary>
@@ -526,7 +526,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvMetaAttr As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''lblNoWrap control.
         '''</summary>
@@ -534,8 +534,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblNoWrap As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblNoWrap As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkNoWrap control.
         '''</summary>
@@ -544,7 +544,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkNoWrap As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblRandom control.
         '''</summary>
@@ -552,8 +552,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblRandom As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblRandom As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkRandom control.
         '''</summary>
@@ -562,7 +562,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkRandom As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblRequeueOnImageNotLoaded control.
         '''</summary>
@@ -570,8 +570,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblRequeueOnImageNotLoaded As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblRequeueOnImageNotLoaded As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkRequeueOnImageNotLoaded control.
         '''</summary>
@@ -580,7 +580,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkRequeueOnImageNotLoaded As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblRequeueTimeout control.
         '''</summary>
@@ -588,8 +588,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblRequeueTimeout As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblRequeueTimeout As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtRequeueTimeout control.
         '''</summary>
@@ -598,7 +598,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtRequeueTimeout As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvRequeueTimeout control.
         '''</summary>
@@ -607,7 +607,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvRequeueTimeout As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''revRequeueTimeout control.
         '''</summary>
@@ -616,7 +616,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents revRequeueTimeout As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
+        
         '''<summary>
         '''lblShuffle control.
         '''</summary>
@@ -624,8 +624,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblShuffle As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblShuffle As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtShuffle control.
         '''</summary>
@@ -634,7 +634,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtShuffle As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblSlideResize control.
         '''</summary>
@@ -642,8 +642,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblSlideResize As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblSlideResize As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkSlideResize control.
         '''</summary>
@@ -652,7 +652,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkSlideResize As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblStartingSlide control.
         '''</summary>
@@ -660,8 +660,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblStartingSlide As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblStartingSlide As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtStartingSlide control.
         '''</summary>
@@ -670,7 +670,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtStartingSlide As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblAnimIn control.
         '''</summary>
@@ -678,8 +678,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblAnimIn As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblAnimIn As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtAnimIn control.
         '''</summary>
@@ -688,7 +688,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtAnimIn As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblAnimOut control.
         '''</summary>
@@ -696,8 +696,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblAnimOut As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblAnimOut As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtAnimOut control.
         '''</summary>
@@ -706,7 +706,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtAnimOut As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblContinuous control.
         '''</summary>
@@ -714,8 +714,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblContinuous As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblContinuous As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkContinuous control.
         '''</summary>
@@ -724,7 +724,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkContinuous As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblDelay control.
         '''</summary>
@@ -732,8 +732,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblDelay As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblDelay As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtDelay control.
         '''</summary>
@@ -742,7 +742,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtDelay As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblFastOnEvent control.
         '''</summary>
@@ -750,8 +750,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblFastOnEvent As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblFastOnEvent As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtFastOnEvent control.
         '''</summary>
@@ -760,7 +760,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtFastOnEvent As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblFx control.
         '''</summary>
@@ -768,8 +768,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblFx As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblFx As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''cboFx control.
         '''</summary>
@@ -778,7 +778,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents cboFx As Global.System.Web.UI.WebControls.DropDownList
-
+        
         '''<summary>
         '''rfvFx control.
         '''</summary>
@@ -787,7 +787,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvFx As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''lblManualTrump control.
         '''</summary>
@@ -795,8 +795,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblManualTrump As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblManualTrump As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkManualTrump control.
         '''</summary>
@@ -805,7 +805,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkManualTrump As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblRandomizeEffects control.
         '''</summary>
@@ -813,8 +813,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblRandomizeEffects As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblRandomizeEffects As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkRandomizeEffects control.
         '''</summary>
@@ -823,7 +823,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkRandomizeEffects As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblRev control.
         '''</summary>
@@ -831,8 +831,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblRev As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblRev As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkRev control.
         '''</summary>
@@ -841,7 +841,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkRev As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblSpeedIn control.
         '''</summary>
@@ -849,8 +849,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblSpeedIn As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblSpeedIn As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtSpeedIn control.
         '''</summary>
@@ -859,7 +859,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtSpeedIn As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblSpeedOut control.
         '''</summary>
@@ -867,8 +867,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblSpeedOut As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblSpeedOut As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtSpeedOut control.
         '''</summary>
@@ -877,7 +877,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtSpeedOut As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblTimeout control.
         '''</summary>
@@ -885,8 +885,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblTimeout As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblTimeout As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtTimeout control.
         '''</summary>
@@ -895,7 +895,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtTimeout As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvTimeout control.
         '''</summary>
@@ -904,7 +904,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvTimeout As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''lblSync control.
         '''</summary>
@@ -912,8 +912,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblSync As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblSync As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''chkSync control.
         '''</summary>
@@ -922,7 +922,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents chkSync As Global.System.Web.UI.WebControls.CheckBox
-
+        
         '''<summary>
         '''lblAfter control.
         '''</summary>
@@ -930,8 +930,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblAfter As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblAfter As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtAfter control.
         '''</summary>
@@ -940,7 +940,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtAfter As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblBefore control.
         '''</summary>
@@ -948,8 +948,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblBefore As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblBefore As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtBefore control.
         '''</summary>
@@ -958,7 +958,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtBefore As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblEnd control.
         '''</summary>
@@ -966,8 +966,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblEnd As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblEnd As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtEnd control.
         '''</summary>
@@ -976,7 +976,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtEnd As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblFxFn control.
         '''</summary>
@@ -984,8 +984,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblFxFn As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblFxFn As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtFxFn control.
         '''</summary>
@@ -994,7 +994,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtFxFn As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblOnPagerEvent control.
         '''</summary>
@@ -1002,8 +1002,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblOnPagerEvent As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblOnPagerEvent As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtOnPagerEvent control.
         '''</summary>
@@ -1012,7 +1012,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtOnPagerEvent As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblOnPrevNextEvent control.
         '''</summary>
@@ -1020,8 +1020,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblOnPrevNextEvent As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblOnPrevNextEvent As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtOnPrevNextEvent control.
         '''</summary>
@@ -1030,7 +1030,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtOnPrevNextEvent As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblPagerEvent control.
         '''</summary>
@@ -1038,8 +1038,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPagerEvent As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPagerEvent As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtPagerEvent control.
         '''</summary>
@@ -1048,7 +1048,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtPagerEvent As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvPagerEvent control.
         '''</summary>
@@ -1057,7 +1057,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvPagerEvent As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''lblPrevNextEvent control.
         '''</summary>
@@ -1065,8 +1065,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblPrevNextEvent As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblPrevNextEvent As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtPrevNextEvent control.
         '''</summary>
@@ -1075,7 +1075,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtPrevNextEvent As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''rfvPrevNextEvent control.
         '''</summary>
@@ -1084,7 +1084,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents rfvPrevNextEvent As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
+        
         '''<summary>
         '''lblSlideExpr control.
         '''</summary>
@@ -1092,8 +1092,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblSlideExpr As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblSlideExpr As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtSlideExpr control.
         '''</summary>
@@ -1102,7 +1102,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtSlideExpr As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblTimeoutFn control.
         '''</summary>
@@ -1110,8 +1110,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblTimeoutFn As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblTimeoutFn As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtTimeoutFn control.
         '''</summary>
@@ -1120,7 +1120,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtTimeoutFn As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lblUpdateActivePagerLink control.
         '''</summary>
@@ -1128,8 +1128,8 @@ Namespace WillStrohl.Modules.ContentSlider
         '''Auto-generated field.
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
-        Protected WithEvents lblUpdateActivePagerLink As Global.DotNetNuke.UI.UserControls.LabelControl
-
+        Protected WithEvents lblUpdateActivePagerLink As Global.System.Web.UI.UserControl
+        
         '''<summary>
         '''txtUpdateActivePagerLink control.
         '''</summary>
@@ -1138,7 +1138,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents txtUpdateActivePagerLink As Global.System.Web.UI.WebControls.TextBox
-
+        
         '''<summary>
         '''lnkSave control.
         '''</summary>
@@ -1147,7 +1147,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents lnkSave As Global.System.Web.UI.WebControls.LinkButton
-
+        
         '''<summary>
         '''lnkCancel control.
         '''</summary>
@@ -1156,7 +1156,7 @@ Namespace WillStrohl.Modules.ContentSlider
         '''To modify move field declaration from designer file to code-behind file.
         '''</remarks>
         Protected WithEvents lnkCancel As Global.System.Web.UI.WebControls.LinkButton
-
+        
         '''<summary>
         '''lnkReset control.
         '''</summary>

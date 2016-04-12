@@ -1,10 +1,9 @@
-﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="EditSlider.ascx.vb" Inherits="WillStrohl.Modules.ContentSlider.EditSlider" %>
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="EditSlider.ascx.vb" Inherits="WillStrohl.Modules.ContentSlider.EditSliderView" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/labelcontrol.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="Url" Src="~/controls/urlcontrol.ascx" %>
-<%@ Register TagPrefix="dnn" Assembly="DotNetNuke.Web" Namespace="DotNetNuke.Web.UI.WebControls" %>
-<%@ Import Namespace="DotNetNuke.Services.Localization" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web.Deprecated" %>
 <div id="dnnEditEntry" class="dnnForm dnnEditEntry dnnClear">
-    <h2 id="dnnPanel-h2Slider" class="dnnFormSectionHead"><a href="" class="dnnLabelExpanded"><%= GetLocalizedString("SliderHeader.Text")%></a></h2>
+    <h2 id="dnnPanel-h2Slider" class="dnnFormSectionHead"><a href="" class="dnnLabelExpanded"><%= Me.GetLocalizedString("SliderHeader.Text")%></a></h2>
     <fieldset id="fsSlider" class="wns-fieldset">
         <div class="dnnFormItem">
             <dnn:Label id="lblSliderName" runat="server" ResourceKey="lblSliderName" ControlName="txtSliderName" Suffix=":" />
@@ -58,9 +57,9 @@
             /* add a friend confirmation message for when a deletion is requested */
             $('#<%= Me.cmdDelete.ClientId %>').dnnConfirm({
                 text: delText,
-                yesText: '<%= Localization.GetString("Yes.Text", Localization.SharedResourceFile) %>',
-                noText: '<%= Localization.GetString("No.Text", Localization.SharedResourceFile) %>',
-                title: '<%= Localization.GetString("Confirm.Text", Localization.SharedResourceFile) %>'
+                yesText: '<%= Me.GetSharedLocalizedString("Yes.Text") %>',
+                noText: '<%= Me.GetSharedLocalizedString("No.Text") %>',
+                title: '<%= Me.GetSharedLocalizedString("Confirm.Text") %>'
             });
 
             $('#<%= Me.txtSliderName.ClientId %>').live('blur', function () {
@@ -77,3 +76,4 @@
 
     }(jQuery, window.Sys));
     /*]]>*/</script>
+<asp:PlaceHolder runat="server" ID="phDeleteMe"></asp:PlaceHolder>

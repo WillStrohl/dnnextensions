@@ -86,7 +86,7 @@
                 <div class="col-xs-6">
                     <div class="form-group">
                         <label for="avatarUpload">Your Headshot</label>
-                        <div flow-init="{target: ''}"
+                        <div flow-init="{ target: '/DesktopModules/CodeCamp/API/Event/UpdateSpeakerAvatar', singleFile: true }"
                              flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
                             <div>
                                 <div class="thumbnail" ng-hide="$flow.files.length">
@@ -96,7 +96,7 @@
                                     <img flow-img="$flow.files[0]" />
                                 </div>
                                 <div>
-                                    <md-button class="btn btn-default" flow-btn type="button" flow-attrs="{accept:'image/*'}" ng-hide="$flow.files.length">
+                                    <md-button class="btn btn-default" flow-btn type="button" flow-attrs="{ accept: 'image/*' }" ng-hide="$flow.files.length">
                                         <i class="glyphicon glyphicon-plus"></i>
                                         Add Photo
                                     </md-button>

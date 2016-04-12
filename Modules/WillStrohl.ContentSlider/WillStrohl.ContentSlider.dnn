@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.ContentSlider" type="Module" version="01.02.01">
+    <package name="WillStrohl.ContentSlider" type="Module" version="01.03.00">
       <friendlyName>Content Slider</friendlyName>
       <description>
         <![CDATA[<p>This module allows you to quickly and easily add the popular "content slider" functionality to your DotNetNuke website. This feature enables the ability to have banner and content dynamically cycle on your DNN web pages. This is completely a client-side solution, not Flash.</p>]]>
@@ -14,7 +14,7 @@
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
       <dependecies>
-        <dependency type="coreversion">07.00.02</dependency>
+        <dependency type="coreversion">08.00.00</dependency>
       </dependecies>
       <components>
         <component type="Script">
@@ -60,10 +60,15 @@
               <name>01.02.01.SqlDataProvider</name>
               <version>01.02.01</version>
             </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.01.SqlDataProvider</name>
+              <version>01.03.00</version>
+            </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.02.01</version>
+              <version>01.03.00</version>
             </script>
           </scripts>
         </component>
@@ -136,11 +141,11 @@
             <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.ContentSlider.dll</name>
-              <version>01.02.01</version>
+              <version>01.03.00</version>
             </assembly>
             <assembly>
               <name>WillStrohl.Modules.ContentSlider.SqlDataProvider.dll</name>
-              <version>01.02.01</version>
+              <version>01.03.00</version>
             </assembly>
           </assemblies>
         </component>
@@ -181,6 +186,10 @@
             <file>
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>01.02.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.03.00.SqlDataProvider</name>
             </file>
             <file>
               <path>Providers\DataProviders\SqlDataProvider</path>
