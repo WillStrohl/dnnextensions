@@ -1,8 +1,5 @@
-﻿<h3>Version 01.02.01</h3>
-<p><strong>Date Released:</strong> 06/06/2013</p>
+﻿<h3>Version 01.03.00</h3>
+<p><strong>Date Released:</strong> 04/12/2016</p>
 <ul>
-	<li>Feature: Upgraded source for Visual Studio 2012</li>
-	<li>Feature: Upgraded for ASP.Net 4.0</li>
-	<li>Feature: Upgraded for DNN 07.00.02</li>
-	<li>Feature: Windows &amp; SQL Azure Compatible</li>
+	<li>Feature: Updated to support DNN 8</li>
 </ul>

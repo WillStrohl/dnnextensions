@@ -58,7 +58,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
@@ -81,6 +81,7 @@
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -101,16 +102,37 @@
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke">
-      <HintPath>..\..\References\DotNetNuke\DotNetNuke.dll</HintPath>
+      <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DotNetNuke.Web">
-      <HintPath>..\..\References\DotNetNuke\DotNetNuke.Web.dll</HintPath>
+      <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.Web.Client">
+      <HintPath>..\..\Website\bin\DotNetNuke.Web.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.Web.Deprecated, Version=8.0.0.809, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Website\bin\DotNetNuke.Web.Deprecated.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.WebControls">
+      <HintPath>..\..\Website\bin\DotNetNuke.WebControls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.WebUtility">
+      <HintPath>..\..\Website\bin\DotNetNuke.WebUtility.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
       <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -133,7 +155,7 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\References\DotNetNuke\Telerik.Web.UI.dll</HintPath>
+      <HintPath>..\..\Website\bin\Telerik.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +259,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\01.02.00.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\01.02.01.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.03.00.SqlDataProvider" />
     <None Include="WillStrohl.ContentSlider.dnn">
       <SubType>Designer</SubType>
     </None>

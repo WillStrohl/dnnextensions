@@ -2,7 +2,7 @@
 ' Will Strohl (will.strohl@gmail.com)
 ' http://www.willstrohl.com
 '
-'Copyright (c) 2011-2013, Will Strohl
+'Copyright (c) 2011-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
@@ -31,6 +31,7 @@
 'DAMAGE.
 '
 
+Imports System.Resources
 Imports DotNetNuke.Services.Cache
 Imports DotNetNuke.Common
 Imports DotNetNuke.Common.Utilities
@@ -42,6 +43,10 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports System.Web.Caching
 Imports System.Web.UI
+Imports DotNetNuke.Framework.JavaScriptLibraries
+Imports DotNetNuke.Web.Client
+Imports DotNetNuke.Web.Client.ClientResourceManagement
+Imports DotNetNuke.Web.Client.Providers
 Imports WillStrohl.Modules.ContentSlider.SliderController
 
 Namespace WillStrohl.Modules.ContentSlider
@@ -60,7 +65,7 @@ Namespace WillStrohl.Modules.ContentSlider
         Private Const c_MenuItem_Sliders As String = "Slider.MenuItem.Sliders"
         Private Const CYCLE_KEY As String = "jQuery.Plugin.Cycle"
         Private Const EASING_KEY As String = "jQuery.Plugin.Easing"
-        Private Const SCRIPT_TAG_FORMAT As String = "<script language=""javascript"" type=""text/javascript"" src=""{0}""></script>"
+        'Private Const SCRIPT_TAG_FORMAT As String = "<script language=""javascript"" type=""text/javascript"" src=""{0}""></script>"
 
         Private p_Sliders As SliderInfoCollection = Nothing
 
@@ -103,19 +108,25 @@ Namespace WillStrohl.Modules.ContentSlider
                 'End If
 
                 If Not Me.Setting_ExcludeCycle And Not Page.ClientScript.IsClientScriptBlockRegistered(CYCLE_KEY) Then
-                    Page.ClientScript.RegisterClientScriptBlock( _
-                        Me.GetType, _
-                        CYCLE_KEY, _
-                        String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js")), _
-                        False)
+
+                    ClientResourceManager.RegisterScript(Page, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js"), FileOrder.Js.jQuery + 1, DnnPageHeaderProvider.DefaultName, CYCLE_KEY, "2.9995")
+
+                    'Page.ClientScript.RegisterClientScriptBlock( _
+                    '    Me.GetType, _
+                    '    CYCLE_KEY, _
+                    '    String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js")), _
+                    '    False)
                 End If
 
                 If Not Me.Setting_ExcludeEasing And Not Page.ClientScript.IsClientScriptBlockRegistered(EASING_KEY) Then
-                    Page.ClientScript.RegisterClientScriptBlock( _
-                        Me.GetType, _
-                        EASING_KEY, _
-                        String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js")), _
-                        False)
+
+                    ClientResourceManager.RegisterScript(Page, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js"), FileOrder.Js.jQuery + 2, DnnPageHeaderProvider.DefaultName, EASING_KEY, "1")
+
+                    'Page.ClientScript.RegisterClientScriptBlock( _
+                    '    Me.GetType, _
+                    '    EASING_KEY, _
+                    '    String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js")), _
+                    '    False)
                 End If
             Catch exc As Exception ' Module failed to load
                 ProcessModuleLoadException(Me, exc, Me.IsEditable)

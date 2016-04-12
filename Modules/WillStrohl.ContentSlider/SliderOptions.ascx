@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="SliderOptions.ascx.vb" Inherits="WillStrohl.Modules.ContentSlider.SliderOptions" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/labelcontrol.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="TextBox" Src="~/controls/texteditor.ascx" %>
-<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web" Assembly="DotNetNuke.Web" %>
 <%@ Import Namespace="DotNetNuke.Services.Localization" %>
 <div id="dnnEditEntry" class="dnnForm dnnEditEntry dnnClear">
     <div class="dnnFormExpandContent dnnClear"><a href=""><%= Localization.GetString("ExpandAll", Localization.SharedResourceFile)%></a></div>

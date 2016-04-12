@@ -2,7 +2,7 @@
 ' Will Strohl (will.strohl@gmail.com)
 ' http://www.willstrohl.com
 '
-'Copyright (c) 2011-2013, Will Strohl
+'Copyright (c) 2011-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
@@ -1029,6 +1029,14 @@ Namespace WillStrohl.Modules.ContentSlider
         Protected Overloads Function GetLocalizedString(ByVal LocalizationKey As String) As String
             If Not String.IsNullOrEmpty(LocalizationKey) Then
                 Return Localization.GetString(LocalizationKey, Me.LocalResourceFile)
+            Else
+                Return String.Empty
+            End If
+        End Function
+
+        Protected Overloads Function GetSharedLocalizedString(ByVal LocalizationKey As String) As String
+            If Not String.IsNullOrEmpty(LocalizationKey) Then
+                Return Localization.GetString(LocalizationKey, Localization.SharedResourceFile)
             Else
                 Return String.Empty
             End If

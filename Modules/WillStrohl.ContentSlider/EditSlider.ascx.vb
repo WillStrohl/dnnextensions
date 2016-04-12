@@ -2,7 +2,7 @@
 ' Will Strohl (will.strohl@gmail.com)
 ' http://www.willstrohl.com
 '
-'Copyright (c) 2011-2013, Will Strohl
+'Copyright (c) 2011-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
@@ -39,7 +39,7 @@ Imports WillStrohl.Modules.ContentSlider.SliderController
 
 Namespace WillStrohl.Modules.ContentSlider
 
-    Partial Public MustInherit Class EditSlider
+    Partial Public MustInherit Class EditSliderView
         Inherits WNSPortalModuleBase
 
 #Region " Private Members "

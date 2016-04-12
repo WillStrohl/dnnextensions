@@ -2,7 +2,7 @@
 ' Will Strohl (will.strohl@gmail.com)
 ' http://www.willstrohl.com
 '
-'Copyright (c) 2011-2013, Will Strohl
+'Copyright (c) 2011-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
@@ -31,11 +31,6 @@
 'DAMAGE.
 '
 
-Imports DotNetNuke
-Imports DotNetNuke.Common
-Imports DotNetNuke.Common.Utilities
-Imports System
-Imports System.Data
 Imports Microsoft.ApplicationBlocks.Data
 
 Namespace WillStrohl.Modules.ContentSlider
@@ -47,7 +42,7 @@ Namespace WillStrohl.Modules.ContentSlider
 
         Private Const ProviderType As String = "data"
 
-        Private p_providerConfiguration As Framework.Providers.ProviderConfiguration = Framework.Providers.ProviderConfiguration.GetProviderConfiguration(ProviderType)
+        Private p_providerConfiguration As DotNetNuke.Framework.Providers.ProviderConfiguration = DotNetNuke.Framework.Providers.ProviderConfiguration.GetProviderConfiguration(ProviderType)
         Private p_connectionString As String = String.Empty
         Private p_providerPath As String = String.Empty
         Private p_objectQualifier As String = String.Empty
@@ -84,30 +79,30 @@ Namespace WillStrohl.Modules.ContentSlider
         ''' </history>
         Public Sub New()
 
-            ' Read the configuration specific information for this provider
-            Dim objProvider As Framework.Providers.Provider = CType(p_providerConfiguration.Providers(p_providerConfiguration.DefaultProvider), Framework.Providers.Provider)
+	        ' Read the configuration specific information for this provider
+	        Dim objProvider As DotNetNuke.Framework.Providers.Provider = DirectCast(p_providerConfiguration.Providers(p_providerConfiguration.DefaultProvider), DotNetNuke.Framework.Providers.Provider)
 
-            ' Read the attributes for this provider
-            If Not String.IsNullOrEmpty(objProvider.Attributes(c_ConnectionStringName)) Then
-                p_connectionString = Utilities.Config.GetConnectionString
-            Else
-                p_connectionString = objProvider.Attributes(c_ConnectionString)
-            End If
+	        ' Read the attributes for this provider
 
-            p_providerPath = objProvider.Attributes(c_ProviderPath)
+	        'Get Connection string from web.config
+	        p_connectionString = Config.GetConnectionString()
 
-            p_objectQualifier = objProvider.Attributes(c_ObjectQualifier)
-            If Not String.IsNullOrEmpty(p_objectQualifier) And p_objectQualifier.EndsWith(c_Underscore) = False Then
-                p_objectQualifier = String.Concat(p_objectQualifier, c_Underscore)
-            End If
+	        If String.IsNullOrEmpty(p_connectionString) Then
+		        ' Use connection string specified in provider
+		        p_connectionString = objProvider.Attributes("connectionString")
+	        End If
 
-            ' Add willstrohl_ to the beginning of the sprocs
-            p_objectQualifier = String.Concat(p_objectQualifier, c_SProc_Prefix)
+	        p_providerPath = objProvider.Attributes("providerPath")
 
-            p_databaseOwner = objProvider.Attributes(c_DatabaseOwner)
-            If Not String.IsNullOrEmpty(p_databaseOwner) And p_databaseOwner.EndsWith(c_Period) = False Then
-                p_databaseOwner = String.Concat(p_databaseOwner, c_Period)
-            End If
+	        p_objectQualifier = objProvider.Attributes("objectQualifier")
+	        If Not String.IsNullOrEmpty(p_objectQualifier) AndAlso p_objectQualifier.EndsWith("_", StringComparison.Ordinal) = False Then
+		        p_objectQualifier += "_"
+	        End If
+
+	        p_databaseOwner = objProvider.Attributes("databaseOwner")
+	        If Not String.IsNullOrEmpty(p_databaseOwner) AndAlso p_databaseOwner.EndsWith(".", StringComparison.Ordinal) = False Then
+		        p_databaseOwner += "."
+	        End If
 
         End Sub
 
@@ -147,25 +142,25 @@ Namespace WillStrohl.Modules.ContentSlider
             If EndDate = Null.NullDate Then
                 EndDate = DateTime.Parse("1/1/1900")
             End If
-            Return CType(SqlHelper.ExecuteScalar(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_AddSlider), ModuleId, GetNull(SliderName), GetNull(SliderContent), GetNull(AlternateText), GetNull(Link), NewWindow, DisplayOrder, LastUpdatedBy, StartDate, EndDate), Integer)
+            Return CType(SqlHelper.ExecuteScalar(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_SProc_Prefix, c_AddSlider), ModuleId, GetNull(SliderName), GetNull(SliderContent), GetNull(AlternateText), GetNull(Link), NewWindow, DisplayOrder, LastUpdatedBy, StartDate, EndDate), Integer)
         End Function
         Public Overrides Sub DeleteSlider(ByVal SliderId As Integer)
-            SqlHelper.ExecuteNonQuery(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_DeleteSlider), SliderId)
+            SqlHelper.ExecuteNonQuery(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_SProc_Prefix, c_DeleteSlider), SliderId)
         End Sub
         Public Overrides Function GetSliders(ByVal ModuleId As Integer) As System.Data.IDataReader
-            Return CType(SqlHelper.ExecuteReader(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_GetSliders), ModuleId), IDataReader)
+            Return CType(SqlHelper.ExecuteReader(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_SProc_Prefix, c_GetSliders), ModuleId), IDataReader)
         End Function
         Public Overrides Function GetSlidersForEdit(ByVal ModuleId As Integer) As System.Data.IDataReader
-            Return CType(SqlHelper.ExecuteReader(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_GetSlidersForEdit), ModuleId), IDataReader)
+            Return CType(SqlHelper.ExecuteReader(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_SProc_Prefix, c_GetSlidersForEdit), ModuleId), IDataReader)
         End Function
         Public Overrides Function GetSlider(ByVal SliderId As Integer) As System.Data.IDataReader
-            Return CType(SqlHelper.ExecuteReader(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_GetSlider), SliderId), IDataReader)
+            Return CType(SqlHelper.ExecuteReader(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_SProc_Prefix, c_GetSlider), SliderId), IDataReader)
         End Function
         Public Overrides Sub UpdateSlider(ByVal SliderId As Integer, ByVal ModuleId As Integer, ByVal SliderName As String, ByVal SliderContent As String, ByVal AlternateText As String, ByVal Link As String, ByVal NewWindow As Boolean, ByVal DisplayOrder As Integer, ByVal LastUpdatedBy As Integer, ByVal StartDate As DateTime, ByVal EndDate As DateTime)
             If EndDate = Null.NullDate Then
                 EndDate = DateTime.Parse("1/1/1900")
             End If
-            SqlHelper.ExecuteNonQuery(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_UpdateSlider), SliderId, ModuleId, GetNull(SliderName), GetNull(SliderContent), GetNull(AlternateText), GetNull(Link), NewWindow, DisplayOrder, LastUpdatedBy, StartDate, EndDate)
+            SqlHelper.ExecuteNonQuery(ConnectionString, String.Concat(DatabaseOwner, ObjectQualifier, c_SProc_Prefix, c_UpdateSlider), SliderId, ModuleId, GetNull(SliderName), GetNull(SliderContent), GetNull(AlternateText), GetNull(Link), NewWindow, DisplayOrder, LastUpdatedBy, StartDate, EndDate)
         End Sub
 
 #End Region

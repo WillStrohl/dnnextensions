@@ -2,7 +2,7 @@
 ' Will Strohl (will.strohl@gmail.com)
 ' http://www.willstrohl.com
 '
-'Copyright (c) 2011-2013, Will Strohl
+'Copyright (c) 2011-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
@@ -39,8 +39,7 @@ Namespace WillStrohl.Modules.ContentSlider
 
 #Region " Private Members "
 
-        Private Const c_Object As String = "data"
-        Private Const c_ObjectType As String = "WillStrohl.Modules.ContentSlider"
+        Private Const c_AssemblyName As String = "WillStrohl.Modules.ContentSlider.SqlDataProvider, WillStrohl.Modules.ContentSlider"
 
 #End Region
 
@@ -56,7 +55,15 @@ Namespace WillStrohl.Modules.ContentSlider
 
         ' dynamically create provider
         Private Shared Sub CreateProvider()
-            objProvider = CType(Framework.Reflection.CreateObject(c_Object, c_ObjectType, c_ObjectType), DataProvider)
+            If objProvider IsNot Nothing Then
+                Return
+            End If
+
+            Dim objectType As Type = Type.GetType(c_AssemblyName)
+
+            objProvider = CType(Activator.CreateInstance(objectType), DataProvider)
+
+            DataCache.SetCache(objectType.FullName, objProvider)
         End Sub
 
         ' return the provider

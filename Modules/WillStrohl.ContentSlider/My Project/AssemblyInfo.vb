@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("This module allows you to quickly and easily add a content slider to your website.")> 
 <Assembly: AssemblyCompany("Will Strohl")> 
 <Assembly: AssemblyProduct("http://www.willstrohl.com")> 
-<Assembly: AssemblyCopyright("Copyright 2011-2013 Will Strohl")> 
+<Assembly: AssemblyCopyright("Copyright 2011-2016 Will Strohl")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: CLSCompliant(True)> 
 
@@ -30,7 +30,7 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("01.02.01")> 
+<Assembly: AssemblyVersion("01.03.00")> 
 
 <Assembly: ComVisibleAttribute(False)> 
-<Assembly: AssemblyFileVersionAttribute("01.02.01")> 
+<Assembly: AssemblyFileVersion("01.03.00")> 
