@@ -138,14 +138,10 @@
         </component>
         <component type="Assembly">
           <assemblies>
-            <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.ContentSlider.dll</name>
               <version>01.03.00</version>
-            </assembly>
-            <assembly>
-              <name>WillStrohl.Modules.ContentSlider.SqlDataProvider.dll</name>
-              <version>01.03.00</version>
+              <path>bin</path>
             </assembly>
           </assemblies>
         </component>
