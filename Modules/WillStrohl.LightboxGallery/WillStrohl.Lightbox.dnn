@@ -1,332 +1,335 @@
 ﻿<dotnetnuke type="Package" version="6.0">
-    <packages>
-        <package name="WillStrohl.Lightbox" type="Module" version="01.12.00">
-            <friendlyName>Lightbox Gallery</friendlyName>
-            <description>
-                <![CDATA[<p>This is a lightbox gallery module, written by Will Strohl. Its original purpose was to highlight a few ways that jQuery can be integrated into DNN. It has since become one of the most popular ways to include image galleries into your DNN website.</p>]]>
-            </description>
-            <owner>
-                <name>Will Strohl</name>
-                <organization>Will Strohl</organization>
-                <url><![CDATA[<a href="http://wnslightbox.codeplex.com" target="_blank">http://wnslightbox.codeplex.com</a>]]></url>
-                <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
-            </owner>
-            <license src="license.txt" />
-            <releaseNotes src="releasenotes.txt" />
-            <dependencies>
-                <dependency type="coreversion">06.00.00</dependency>
-            </dependencies>
-            <components>
-                <component type="Script">
-                    <scripts>
-                        <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.00.SqlDataProvider</name>
-                            <version>01.00.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.01.SqlDataProvider</name>
-                            <version>01.00.01</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.02.SqlDataProvider</name>
-                            <version>01.00.02</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.03.SqlDataProvider</name>
-                            <version>01.00.03</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.04.SqlDataProvider</name>
-                            <version>01.00.04</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.05.SqlDataProvider</name>
-                            <version>01.00.05</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.01.00.SqlDataProvider</name>
-                            <version>01.01.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.01.01.SqlDataProvider</name>
-                            <version>01.01.01</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.02.00.SqlDataProvider</name>
-                            <version>01.02.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.02.01.SqlDataProvider</name>
-                            <version>01.02.01</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.03.00.SqlDataProvider</name>
-                            <version>01.03.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.04.00.SqlDataProvider</name>
-                            <version>01.04.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.04.01.SqlDataProvider</name>
-                            <version>01.04.01</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.05.00.SqlDataProvider</name>
-                            <version>01.05.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.06.00.SqlDataProvider</name>
-                            <version>01.06.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.07.00.SqlDataProvider</name>
-                            <version>01.07.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.08.00.SqlDataProvider</name>
-                            <version>01.08.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.09.00.SqlDataProvider</name>
-                            <version>01.09.00</version>
-                        </script>
-                        <script type="Install">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.10.00.SqlDataProvider</name>
-                            <version>01.10.00</version>
-                        </script>
-                        <script type="Install">
-                          <path>Providers\DataProviders\SqlDataProvider</path>
-                          <name>01.11.00.SqlDataProvider</name>
-                          <version>01.11.00</version>
-                        </script>
-                        <script type="Install">
-                          <path>Providers\DataProviders\SqlDataProvider</path>
-                          <name>01.12.00.SqlDataProvider</name>
-                          <version>01.12.00</version>
-                        </script>
-                      <script type="UnInstall">
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>Uninstall.SqlDataProvider</name>
-                            <version>01.12.00</version>
-                        </script>
-                    </scripts>
-                </component>
-                <component type="Module">
-                    <desktopModule>
-                        <moduleName>WillStrohl.Lightbox</moduleName>
-                        <foldername>WillStrohl.LightboxGallery</foldername>
-                        <businessControllerClass>WillStrohl.Modules.Lightbox.LightboxController, WillStrohl.Modules.Lightbox</businessControllerClass>
-                        <supportedFeatures>
-                            <supportedFeature type="Portable" />
-                            <supportedFeature type="Searchable" />
-                        </supportedFeatures>
-                        <moduleDefinitions>
-                            <moduleDefinition>
-                                <friendlyName>Lightbox Gallery</friendlyName>
-                                <defaultCacheTime>-1</defaultCacheTime>
-                                <moduleControls>
-                                    <moduleControl>
-                                        <controlKey />
-                                        <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ViewLightbox.ascx</controlSrc>
-                                        <supportsPartialRendering>False</supportsPartialRendering>
-                                        <controlTitle />
-                                        <controlType>View</controlType>
-                                        <iconFile />
-                                        <helpUrl />
-                                    </moduleControl>
-                                    <moduleControl>
-                                        <controlKey>Edit</controlKey>
-                                        <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/EditLightbox.ascx</controlSrc>
-                                        <supportsPartialRendering>False</supportsPartialRendering>
-                                        <controlTitle />
-                                        <controlType>Edit</controlType>
-                                        <iconFile />
-                                        <helpUrl />
-                                    </moduleControl>
-                                    <moduleControl>
-                                        <controlKey>ChangeOrder</controlKey>
-                                        <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ChangeOrder.ascx</controlSrc>
-                                        <supportsPartialRendering>False</supportsPartialRendering>
-                                        <controlTitle />
-                                        <controlType>Edit</controlType>
-                                        <iconFile />
-                                        <helpUrl />
-                                    </moduleControl>
-                                    <moduleControl>
-                                        <controlKey>EditImage</controlKey>
-                                        <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/EditImage.ascx</controlSrc>
-                                        <supportsPartialRendering>False</supportsPartialRendering>
-                                        <controlTitle />
-                                        <controlType>Edit</controlType>
-                                        <iconFile />
-                                        <helpUrl />
-                                    </moduleControl>
-                                    <moduleControl>
-                                        <controlKey>ChangeImageOrder</controlKey>
-                                        <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ChangeImageOrder.ascx</controlSrc>
-                                        <supportsPartialRendering>False</supportsPartialRendering>
-                                        <controlTitle />
-                                        <controlType>Edit</controlType>
-                                        <iconFile />
-                                        <helpUrl />
-                                    </moduleControl>
-                                </moduleControls>
-                            </moduleDefinition>
-                        </moduleDefinitions>
-                    </desktopModule>
-                    <eventMessage>
-                        <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
-                        <processorCommand>UpgradeModule</processorCommand>
-                        <attributes>
-                            <businessControllerClass>WillStrohl.Modules.Lightbox.LightboxController, WillStrohl.Modules.Lightbox</businessControllerClass>
-                            <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
-                            <upgradeVersionsList />
-                        </attributes>
-                    </eventMessage>
-                </component>
-                <component type="Assembly">
-                    <assemblies>
-                        <basePath>bin</basePath>
-                        <assembly>
-                            <name>WillStrohl.Modules.Lightbox.dll</name>
-                            <version>01.12.00</version>
-                        </assembly>
-                        <assembly>
-                            <name>WillStrohl.Modules.Lightbox.SqlDataProvider.dll</name>
-                            <version>01.12.00</version>
-                        </assembly>
-                        <assembly>
-                            <name>Exif.dll</name>
-                            <version>00.02.00.00</version>
-                        </assembly>
-                    </assemblies>
-                </component>
-                <component type="File">
-                    <files>
-                        <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
-                        <file>
-                            <name>WillStrohl.Lightbox.dnn</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.01.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.02.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.03.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.04.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.00.05.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.01.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.01.01.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.02.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.02.01.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.03.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.04.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.04.01.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.05.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.06.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.07.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.08.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.09.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.10.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.11.00.SqlDataProvider</name>
-                        </file>
-                        <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>01.12.00.SqlDataProvider</name>
-                        </file>
-                      <file>
-                            <path>Providers\DataProviders\SqlDataProvider</path>
-                            <name>Uninstall.SqlDataProvider</name>
-                        </file>
-                    </files>
-                </component>
-                <component type="ResourceFile">
-                    <resourceFiles>
-                        <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
-                        <resourceFile>
-                            <name>Resources.zip</name>
-                        </resourceFile>
-                    </resourceFiles>
-                </component>
-            </components>
-        </package>
-    </packages>
+  <packages>
+    <package name="WillStrohl.Lightbox" type="Module" version="01.12.00">
+      <friendlyName>Lightbox Gallery</friendlyName>
+      <description>
+        <![CDATA[<p>This is a lightbox gallery module, written by Will Strohl. Its original purpose was to highlight a few ways that jQuery can be integrated into DNN. It has since become one of the most popular ways to include image galleries into your DNN website.</p>]]>
+      </description>
+      <owner>
+        <name>Will Strohl</name>
+        <organization>Will Strohl</organization>
+        <url><![CDATA[<a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a>]]></url>
+        <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+      </owner>
+      <license src="license.txt" />
+      <releaseNotes src="releasenotes.txt" />
+      <dependencies>
+        <dependency type="coreversion">08.00.03</dependency>
+      </dependencies>
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+              <version>01.00.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.01.SqlDataProvider</name>
+              <version>01.00.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.02.SqlDataProvider</name>
+              <version>01.00.02</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.03.SqlDataProvider</name>
+              <version>01.00.03</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.04.SqlDataProvider</name>
+              <version>01.00.04</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.05.SqlDataProvider</name>
+              <version>01.00.05</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.00.SqlDataProvider</name>
+              <version>01.01.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.01.SqlDataProvider</name>
+              <version>01.01.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.00.SqlDataProvider</name>
+              <version>01.02.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.01.SqlDataProvider</name>
+              <version>01.02.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.03.00.SqlDataProvider</name>
+              <version>01.03.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.04.00.SqlDataProvider</name>
+              <version>01.04.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.04.01.SqlDataProvider</name>
+              <version>01.04.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.05.00.SqlDataProvider</name>
+              <version>01.05.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.06.00.SqlDataProvider</name>
+              <version>01.06.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.07.00.SqlDataProvider</name>
+              <version>01.07.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.08.00.SqlDataProvider</name>
+              <version>01.08.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.09.00.SqlDataProvider</name>
+              <version>01.09.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.10.00.SqlDataProvider</name>
+              <version>01.10.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.11.00.SqlDataProvider</name>
+              <version>01.11.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.12.00.SqlDataProvider</name>
+              <version>01.12.00</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>01.12.00</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>WillStrohl.Lightbox</moduleName>
+            <foldername>WillStrohl.LightboxGallery</foldername>
+            <businessControllerClass>WillStrohl.Modules.Lightbox.LightboxController, WillStrohl.Modules.Lightbox</businessControllerClass>
+            <supportedFeatures>
+              <supportedFeature type="Portable" />
+              <supportedFeature type="Searchable" />
+            </supportedFeatures>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Lightbox Gallery</friendlyName>
+                <defaultCacheTime>-1</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ViewLightbox.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/EditLightbox.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>ChangeOrder</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ChangeOrder.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>EditImage</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/EditImage.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>ChangeImageOrder</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ChangeImageOrder.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+          <eventMessage>
+            <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+            <processorCommand>UpgradeModule</processorCommand>
+            <attributes>
+              <businessControllerClass>WillStrohl.Modules.Lightbox.LightboxController, WillStrohl.Modules.Lightbox</businessControllerClass>
+              <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+              <upgradeVersionsList />
+            </attributes>
+          </eventMessage>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>WillStrohl.Modules.Lightbox.dll</name>
+              <version>01.12.00</version>
+              <path>bin</path>
+            </assembly>
+            <assembly>
+              <name>WillStrohl.Modules.Lightbox.SqlDataProvider.dll</name>
+              <version>01.12.00</version>
+              <path>bin</path>
+            </assembly>
+            <assembly>
+              <name>Exif.dll</name>
+              <version>00.02.00</version>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
+            <file>
+              <name>WillStrohl.Lightbox.dnn</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.02.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.03.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.04.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.05.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.02.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.03.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.04.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.04.01.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.05.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.06.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.07.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.08.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.09.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.10.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.11.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.12.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+            </file>
+          </files>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Cleanup" fileName="01.12.00.txt" version="01.12.00" />
+      </components>
+    </package>
+  </packages>
 </dotnetnuke>
