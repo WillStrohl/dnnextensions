@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("This module integrates the popular lightbox functionality into a DotNetNuke module")> 
 <Assembly: AssemblyCompany("Will Strohl")> 
 <Assembly: AssemblyProduct("http://www.willstrohl.com")> 
-<Assembly: AssemblyCopyright("Copyright 2011 Will Strohl")> 
+<Assembly: AssemblyCopyright("Copyright 2016 Will Strohl")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: CLSCompliant(True)> 
 

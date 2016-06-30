@@ -2,7 +2,7 @@
 ' Lightbox Gallery Module for DotNetNuke
 ' Project Contributors - Will Strohl (http://www.WillStrohl.com), Armand Datema (http://www.schwingsoft.com)
 '
-'Copyright (c) 2009-2012, Will Strohl
+'Copyright (c) 2009-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
@@ -31,10 +31,7 @@
 'DAMAGE.
 '
 
-Imports DotNetNuke
-Imports DotNetNuke.Common
-Imports System
-Imports System.Data
+Imports DotNetNuke.Framework.Providers
 Imports Microsoft.ApplicationBlocks.Data
 
 Namespace WillStrohl.Modules.Lightbox
@@ -46,7 +43,7 @@ Namespace WillStrohl.Modules.Lightbox
 
         Private Const ProviderType As String = "data"
 
-        Private p_providerConfiguration As Framework.Providers.ProviderConfiguration = Framework.Providers.ProviderConfiguration.GetProviderConfiguration(ProviderType)
+        Private p_providerConfiguration As ProviderConfiguration = ProviderConfiguration.GetProviderConfiguration(ProviderType)
         Private p_connectionString As String = String.Empty
         Private p_providerPath As String = String.Empty
         Private p_objectQualifier As String = String.Empty

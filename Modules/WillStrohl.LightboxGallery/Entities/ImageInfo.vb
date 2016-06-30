@@ -2,7 +2,7 @@
 ' Lightbox Gallery Module for DotNetNuke
 ' Project Contributors - Will Strohl (http://www.WillStrohl.com), Armand Datema (http://www.schwingsoft.com)
 '
-'Copyright (c) 2009-2012, Will Strohl
+'Copyright (c) 2009-2016, Will Strohl
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
