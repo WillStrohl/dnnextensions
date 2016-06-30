@@ -239,6 +239,14 @@ Namespace WillStrohl.Modules.Lightbox
                         Dim oImage As IFileInfo = ctlModule.GetImageFromProvider(PortalId, oLightboxFolder, objImage.FileName)
                         Dim oImageThumbnail As IFileInfo = ctlModule.GetImageFromProvider(PortalId, oLightboxFolder, GetThumbnailImageName(objImage.FileName, Me.PortalSettings, True))
 
+                        ' this check is necessary for use cases where the same "album" is used, but the folder is changed
+                        If (oImage Is Nothing) then
+                            ' drop from the database
+                            ctlModule.DeleteImageById(objImage.ImageId)
+                            ' skip to the next image
+                            Continue For
+                        End If
+
                         If IsEditable AndAlso PortalSettings.UserMode = Entities.Portals.PortalSettings.Mode.Edit Then
                             sb.AppendFormat( _
                                 IMAGE_EDIT_TEMPLATE, _
