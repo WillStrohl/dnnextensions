@@ -31,10 +31,7 @@
 'DAMAGE.
 '
 
-Imports DotNetNuke
-Imports DotNetNuke.Common
-Imports System
-Imports System.Data
+Imports DotNetNuke.Framework.Providers
 Imports Microsoft.ApplicationBlocks.Data
 
 Namespace WillStrohl.Modules.Lightbox
@@ -46,7 +43,7 @@ Namespace WillStrohl.Modules.Lightbox
 
         Private Const ProviderType As String = "data"
 
-        Private p_providerConfiguration As Framework.Providers.ProviderConfiguration = Framework.Providers.ProviderConfiguration.GetProviderConfiguration(ProviderType)
+        Private p_providerConfiguration As ProviderConfiguration = ProviderConfiguration.GetProviderConfiguration(ProviderType)
         Private p_connectionString As String = String.Empty
         Private p_providerPath As String = String.Empty
         Private p_objectQualifier As String = String.Empty

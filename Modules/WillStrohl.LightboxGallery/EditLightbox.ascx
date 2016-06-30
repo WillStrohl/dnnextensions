@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="EditLightbox.ascx.vb" Inherits="WillStrohl.Modules.Lightbox.EditLightbox" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
-<%@ Register TagPrefix="dnnweb" Assembly="DotNetNuke.Web" Namespace="DotNetNuke.Web.UI.WebControls" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web.Deprecated" %>
+<%@ Import Namespace="DotNetNuke.Services.Localization" %>
 <div class="dnnClear">
     <asp:ValidationSummary ID="vsError" runat="server" CssClass="dnnFormMessage dnnFormValidationSummary" DisplayMode="List" ValidationGroup="lightbox" />
 </div>
@@ -25,7 +26,7 @@
             <li class="wns-listitem">
                 <div class="dnnFormItem">
                     <dnn:label id="lblGalleryFolder" runat="server" ResourceKey="lblGalleryFolder" ControlName="cboGalleryFolder" Suffix=":" />
-                    <dnnweb:DnnComboBox ID="cboGalleryFolder" runat="server" MaxHeight="300px" CssClass="wns_RadCombo NormalTextBox dnnFormRequired" DropDownCssClass="NormalTextBox dnnFormRequired" InputCssClass="NormalTextBox dnnFormRequired" /> 
+                    <dnn:DnnComboBox ID="cboGalleryFolder" runat="server" MaxHeight="300px" CssClass="wns_RadCombo NormalTextBox dnnFormRequired" DropDownCssClass="NormalTextBox dnnFormRequired" InputCssClass="NormalTextBox dnnFormRequired" /> 
                     <asp:RequiredFieldValidator ID="rfvGalleryFolder" runat="server" ControlToValidate="cboGalleryFolder" Display="Dynamic" CssClass="dnnFormMessage dnnFormError" ValidationGroup="lightbox" />
                 </div>
             </li>
