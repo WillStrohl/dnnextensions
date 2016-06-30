@@ -11,6 +11,7 @@
         <url><![CDATA[<a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a>]]></url>
         <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
       </owner>
+      <azureCompatible>true</azureCompatible>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
       <dependencies>
@@ -209,11 +210,6 @@
           <assemblies>
             <assembly>
               <name>WillStrohl.Modules.Lightbox.dll</name>
-              <version>01.12.00</version>
-              <path>bin</path>
-            </assembly>
-            <assembly>
-              <name>WillStrohl.Modules.Lightbox.SqlDataProvider.dll</name>
               <version>01.12.00</version>
               <path>bin</path>
             </assembly>
