@@ -1,4 +1,11 @@
-﻿<h3>Version 02.00.01</h3>
+﻿<h3>Version 02.00.02</h3>
+<p><strong>Date Released:</strong> 06/30/2016</p>
+<ul>
+	<li>Feature: Increased minimum supported version to DNN 7.4.2</li>
+	<li>Bug: Fixed Azure installation issue</li>
+</ul>
+
+<h3>Version 02.00.01</h3>
 <p><strong>Date Released:</strong> 09/18/2015</p>
 <ul>
 	<li>Bug: Updated a typo in the manifest file that caused exceptions in the event log</li>

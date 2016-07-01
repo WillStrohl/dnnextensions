@@ -42,3 +42,4 @@ GO
 ALTER TABLE {databaseOwner}[{objectQualifier}wns_inj_injection] WITH NOCHECK 
 	ADD CONSTRAINT [FK_{objectQualifier}wns_inj_injection_moduleid] FOREIGN KEY ([module_id]) 
 	REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE
+GO

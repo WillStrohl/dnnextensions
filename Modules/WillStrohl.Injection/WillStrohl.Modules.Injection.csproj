@@ -55,6 +55,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -101,20 +102,25 @@
     <PostBuildEvent />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke">
-      <HintPath>..\..\References\DotNetNuke\DotNetNuke.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DotNetNuke, Version=7.2.0.607, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DotNetNuke.Web">
+    <Reference Include="DotNetNuke.Web, Version=7.4.2.216, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Website\bin\DotNetNuke.Web.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DotNetNuke.Web.Client, Version=6.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DotNetNuke.Web.Client, Version=7.4.2.216, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Website\bin\DotNetNuke.Web.Client.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\..\References\DotNetNuke\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Website\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System">
@@ -224,7 +230,8 @@
     <Content Include="ViewInjection.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="02.00.01.txt" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\02.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\02.00.02.SqlDataProvider" />
     <None Include="WillStrohl.Injection.dnn" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

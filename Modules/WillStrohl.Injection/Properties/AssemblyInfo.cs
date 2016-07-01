@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Will Strohl")]
 [assembly: AssemblyProduct("http://www.willstrohl.com")]
-[assembly: AssemblyCopyright("Copyright 2009-2015 Will Strohl")]
+[assembly: AssemblyCopyright("Copyright 2009-2016 Will Strohl")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("02.00.01")]
-[assembly: AssemblyFileVersion("02.00.01")]
+[assembly: AssemblyVersion("02.00.02")]
+[assembly: AssemblyFileVersion("02.00.02")]
