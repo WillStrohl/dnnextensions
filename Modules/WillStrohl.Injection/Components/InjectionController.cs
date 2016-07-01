@@ -2,7 +2,7 @@
 // Will Strohl (will.strohl@gmail.com)
 // http://www.willstrohl.com
 //
-//Copyright (c) 2009-2015, Will Strohl
+//Copyright (c) 2009-2016, Will Strohl
 //All rights reserved.
 //
 //Redistribution and use in source and binary forms, with or without modification, are 

@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection" type="Module" version="02.00.01">
+    <package name="WillStrohl.Injection" type="Module" version="02.00.02">
       <friendlyName>Content Injection</friendlyName>
       <description>
         <![CDATA[<p>This is a content injection module, written by Will Strohl. Its purpose is to allow you to inject markup into the header or footer of the page.</p>]]>
@@ -9,14 +9,14 @@
       <owner>
         <name>Will Strohl</name>
         <organization>Will Strohl</organization>
-        <url><![CDATA[<a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a>]]></url>
+        <url><![CDATA[<a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a>]]></url>
         <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
       </owner>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">07.02.00</dependency>
+        <dependency type="coreversion">07.04.02</dependency>
       </dependencies>
       <components>
         <component type="Script">
@@ -67,10 +67,20 @@
               <name>02.00.00.SqlDataProvider</name>
               <version>02.00.00</version>
             </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>02.00.01.SqlDataProvider</name>
+              <version>02.00.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>02.00.02.SqlDataProvider</name>
+              <version>02.00.02</version>
+            </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>02.00.01</version>
+              <version>02.00.02</version>
             </script>
           </scripts>
         </component>
@@ -122,10 +132,10 @@
         </component>
         <component type="Assembly">
           <assemblies>
-            <basePath>bin</basePath>
             <assembly>
               <name>WillStrohl.Modules.Injection.dll</name>
-              <version>02.00.01</version>
+              <version>02.00.02</version>
+              <path>bin</path>
             </assembly>
           </assemblies>
         </component>
@@ -137,7 +147,6 @@
             </resourceFile>
           </resourceFiles>
         </component>
-        <component type="Cleanup" fileName="02.00.01.txt" version="02.00.01" />
       </components>
     </package>
   </packages>

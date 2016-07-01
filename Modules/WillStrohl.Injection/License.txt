@@ -1,5 +1,5 @@
-﻿<p>Will Strohl (<a href="mailto:will.strohl@gmail.com">will.strohl@gmail.com</a>)<br /><a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a></p>
-<p>Copyright (c) 2009-2015, Will Strohl</p>
+﻿<p>Will Strohl (<a href="mailto:will.strohl@gmail.com">will.strohl@gmail.com</a>)<br /><a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a></p>
+<p>Copyright (c) 2009-2016, Will Strohl</p>
 <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
 <p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
 <p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
