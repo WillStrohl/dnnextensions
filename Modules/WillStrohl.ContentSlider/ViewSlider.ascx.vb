@@ -96,37 +96,30 @@ Namespace WillStrohl.Modules.ContentSlider
             End Get
         End Property
 
+        Protected ReadOnly Property CanAppendSlidersAndScript() as Boolean
+            Get
+                Return (Not Sliders Is Nothing AndAlso Sliders.Count > 0)
+            End Get
+        End Property
+
 #End Region
 
 #Region " Event Handlers "
 
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Try
-                ' Cannot ignore on postbacks, because the content will disappear
-                'If Not Page.IsPostBack Then
-                Me.BindData()
-                'End If
+                BindData()
 
-                If Not Me.Setting_ExcludeCycle And Not Page.ClientScript.IsClientScriptBlockRegistered(CYCLE_KEY) Then
+                If Not Setting_ExcludeCycle Then
 
-                    ClientResourceManager.RegisterScript(Page, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js"), FileOrder.Js.jQuery + 1, DnnPageHeaderProvider.DefaultName, CYCLE_KEY, "2.9995")
+                    ClientResourceManager.RegisterScript(Page, String.Concat(ControlPath, "js/jquery.cycle.min.js"), FileOrder.Js.jQuery + 1, DnnPageHeaderProvider.DefaultName, CYCLE_KEY, "2.9995")
 
-                    'Page.ClientScript.RegisterClientScriptBlock( _
-                    '    Me.GetType, _
-                    '    CYCLE_KEY, _
-                    '    String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js")), _
-                    '    False)
                 End If
 
-                If Not Me.Setting_ExcludeEasing And Not Page.ClientScript.IsClientScriptBlockRegistered(EASING_KEY) Then
+                If Not Setting_ExcludeEasing Then
 
-                    ClientResourceManager.RegisterScript(Page, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js"), FileOrder.Js.jQuery + 2, DnnPageHeaderProvider.DefaultName, EASING_KEY, "1")
+                    ClientResourceManager.RegisterScript(Page, String.Concat(ControlPath, "js/jquery.easing.compatibility.js"), FileOrder.Js.jQuery + 2, DnnPageHeaderProvider.DefaultName, EASING_KEY, "1")
 
-                    'Page.ClientScript.RegisterClientScriptBlock( _
-                    '    Me.GetType, _
-                    '    EASING_KEY, _
-                    '    String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js")), _
-                    '    False)
                 End If
             Catch exc As Exception ' Module failed to load
                 ProcessModuleLoadException(Me, exc, Me.IsEditable)
@@ -139,17 +132,17 @@ Namespace WillStrohl.Modules.ContentSlider
 
         Private Sub BindData()
 
-            If Not Me.Sliders Is Nothing AndAlso Me.Sliders.Count > 0 Then
+            If CanAppendSlidersAndScript() Then
 
-                Me.AppendSliders()
+                AppendSliders()
 
-                Me.AppendScript()
+                AppendScript()
 
             Else
-                AddModuleMessage(Me, Me.GetLocalizedString("Error.NoSliders"), ModuleMessageType.BlueInfo)
+                AddModuleMessage(Me, GetLocalizedString("Error.NoSliders"), ModuleMessageType.BlueInfo)
 
-                Me.phScript.Visible = False
-                Me.phSlider.Visible = False
+                phScript.Visible = False
+                phSlider.Visible = False
             End If
 
         End Sub

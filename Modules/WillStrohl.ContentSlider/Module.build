@@ -40,7 +40,7 @@
   <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(Views)" DestinationFolder="$(FullModulePath)" />
-    <Copy SourceFiles="@(JsFiles)" DestinationFolder="$(FullModulePath)\Scripts\%(RecursiveDir)" />
+    <Copy SourceFiles="@(JsFiles)" DestinationFolder="$(FullModulePath)\js\%(RecursiveDir)" />
     <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />
