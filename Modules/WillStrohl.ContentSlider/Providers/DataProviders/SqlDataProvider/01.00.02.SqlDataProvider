@@ -16,5 +16,6 @@ Release Notes:
 */
 
 ALTER TABLE {databaseOwner}[{objectQualifier}wns_contentslider] ALTER COLUMN [Link] NVARCHAR(255) NULL;
+GO
 
 /* END OF FILE */
