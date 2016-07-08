@@ -235,6 +235,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\content-slider-icon.png" />
     <Content Include="js\jquery.cycle.min.js" />
     <Content Include="js\jquery.easing.compatibility.js" />
     <Content Include="License.txt" />
@@ -273,6 +274,7 @@
   <ItemGroup>
     <Content Include="Module.Build" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

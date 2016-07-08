@@ -5,6 +5,7 @@
       <description>
         <![CDATA[<p>This module allows you to quickly and easily add the popular "content slider" functionality to your DotNetNuke website. This feature enables the ability to have banner and content dynamically cycle on your DNN web pages. This is completely a client-side solution, not Flash.</p>]]>
       </description>
+      <iconFile>~/DesktopModules/WillStrohl.ContactCollector/Images/content-slider-icon.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>Will Strohl</organization>
