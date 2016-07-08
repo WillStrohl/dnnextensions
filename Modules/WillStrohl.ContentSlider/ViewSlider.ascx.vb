@@ -341,10 +341,6 @@ Namespace WillStrohl.Modules.ContentSlider
                 sb.AppendFormat("fxFn: {0},", Me.Setting_FxFn)
             End If
 
-            If Not String.Equals(Me.Setting_Height, "auto", StringComparison.InvariantCultureIgnoreCase) Then
-                sb.AppendFormat("height: '{0}',", Me.Setting_Height)
-            End If
-
             If Not Me.Setting_ManualTrump Then
                 sb.Append("manualTrump: false,")
             End If
@@ -459,6 +455,10 @@ Namespace WillStrohl.Modules.ContentSlider
 
             If Not String.IsNullOrEmpty(Me.Setting_UpdateActivePagerLink) Then
                 sb.AppendFormat("updateActivePagerLink: {0},", Me.Setting_UpdateActivePagerLink)
+            End If
+
+            If Not String.IsNullOrEmpty(Me.Setting_Height) Then
+                sb.AppendFormat("height: '{0}',", Me.Setting_Height)
             End If
 
             If Not String.IsNullOrEmpty(Me.Setting_Width) Then

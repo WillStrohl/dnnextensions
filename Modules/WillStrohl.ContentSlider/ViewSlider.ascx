@@ -11,9 +11,10 @@
 
         $(document).ready(function () {
             setupDnnSiteSettings();
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
-                setupDnnSiteSettings();
-            });
+        });
+
+        $(window).ready(function() {
+            setupDnnSiteSettings();
         });
 
     } (jQuery, window.Sys));

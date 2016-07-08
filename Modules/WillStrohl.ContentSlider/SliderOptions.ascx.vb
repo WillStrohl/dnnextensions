@@ -184,10 +184,14 @@ Namespace WillStrohl.Modules.ContentSlider
 
                 If Not String.IsNullOrEmpty(Me.txtWidth.Text) Then
                     objModules.UpdateTabModuleSetting(Me.TabModuleId, SETTING_WIDTH_KEY, Me.txtWidth.Text)
+                Else
+                    objModules.UpdateTabModuleSetting(Me.TabModuleId, SETTING_WIDTH_KEY, String.Empty)
                 End If
 
-                If String.Equals(Me.txtHeight.Text, "auto", StringComparison.InvariantCultureIgnoreCase) Then
+                If Not String.IsNullOrEmpty(Me.txtHeight.Text) Then
                     objModules.UpdateTabModuleSetting(Me.TabModuleId, SETTING_HEIGHT_KEY, Me.txtHeight.Text)
+                Else
+                    objModules.UpdateTabModuleSetting(Me.TabModuleId, SETTING_HEIGHT_KEY, "auto")
                 End If
 
                 If Me.chkFit.Checked Then
