@@ -60,12 +60,13 @@ Namespace WillStrohl.Modules.ContentSlider
         Private Const c_Edit As String = "Edit"
         Private Const c_Options As String = "SliderOptions"
         Private Const c_Sliders As String = "Sliders"
+        Private Const c_About As String = "AboutMe"
         Private Const c_MenuItem_Title As String = "Slider.MenuItem.Edit"
         Private Const c_MenuItem_Options As String = "Slider.MenuItem.Options"
         Private Const c_MenuItem_Sliders As String = "Slider.MenuItem.Sliders"
+        Private Const c_MenuItem_About As String = "Slider.MenuItem.About"
         Private Const CYCLE_KEY As String = "jQuery.Plugin.Cycle"
         Private Const EASING_KEY As String = "jQuery.Plugin.Easing"
-        'Private Const SCRIPT_TAG_FORMAT As String = "<script language=""javascript"" type=""text/javascript"" src=""{0}""></script>"
 
         Private p_Sliders As SliderInfoCollection = Nothing
 
@@ -96,37 +97,30 @@ Namespace WillStrohl.Modules.ContentSlider
             End Get
         End Property
 
+        Protected ReadOnly Property CanAppendSlidersAndScript() as Boolean
+            Get
+                Return (Not Sliders Is Nothing AndAlso Sliders.Count > 0)
+            End Get
+        End Property
+
 #End Region
 
 #Region " Event Handlers "
 
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Try
-                ' Cannot ignore on postbacks, because the content will disappear
-                'If Not Page.IsPostBack Then
-                Me.BindData()
-                'End If
+                BindData()
 
-                If Not Me.Setting_ExcludeCycle And Not Page.ClientScript.IsClientScriptBlockRegistered(CYCLE_KEY) Then
+                If Not Setting_ExcludeCycle Then
 
-                    ClientResourceManager.RegisterScript(Page, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js"), FileOrder.Js.jQuery + 1, DnnPageHeaderProvider.DefaultName, CYCLE_KEY, "2.9995")
+                    ClientResourceManager.RegisterScript(Page, String.Concat(ControlPath, "js/jquery.cycle.min.js"), FileOrder.Js.jQuery + 1, DnnPageHeaderProvider.DefaultName, CYCLE_KEY, "2.9995")
 
-                    'Page.ClientScript.RegisterClientScriptBlock( _
-                    '    Me.GetType, _
-                    '    CYCLE_KEY, _
-                    '    String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.cycle.min.js")), _
-                    '    False)
                 End If
 
-                If Not Me.Setting_ExcludeEasing And Not Page.ClientScript.IsClientScriptBlockRegistered(EASING_KEY) Then
+                If Not Setting_ExcludeEasing Then
 
-                    ClientResourceManager.RegisterScript(Page, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js"), FileOrder.Js.jQuery + 2, DnnPageHeaderProvider.DefaultName, EASING_KEY, "1")
+                    ClientResourceManager.RegisterScript(Page, String.Concat(ControlPath, "js/jquery.easing.compatibility.js"), FileOrder.Js.jQuery + 2, DnnPageHeaderProvider.DefaultName, EASING_KEY, "1")
 
-                    'Page.ClientScript.RegisterClientScriptBlock( _
-                    '    Me.GetType, _
-                    '    EASING_KEY, _
-                    '    String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery.easing.compatibility.js")), _
-                    '    False)
                 End If
             Catch exc As Exception ' Module failed to load
                 ProcessModuleLoadException(Me, exc, Me.IsEditable)
@@ -139,17 +133,17 @@ Namespace WillStrohl.Modules.ContentSlider
 
         Private Sub BindData()
 
-            If Not Me.Sliders Is Nothing AndAlso Me.Sliders.Count > 0 Then
+            If CanAppendSlidersAndScript() Then
 
-                Me.AppendSliders()
+                AppendSliders()
 
-                Me.AppendScript()
+                AppendScript()
 
             Else
-                AddModuleMessage(Me, Me.GetLocalizedString("Error.NoSliders"), ModuleMessageType.BlueInfo)
+                AddModuleMessage(Me, GetLocalizedString("Error.NoSliders"), ModuleMessageType.BlueInfo)
 
-                Me.phScript.Visible = False
-                Me.phSlider.Visible = False
+                phScript.Visible = False
+                phSlider.Visible = False
             End If
 
         End Sub
@@ -348,10 +342,6 @@ Namespace WillStrohl.Modules.ContentSlider
                 sb.AppendFormat("fxFn: {0},", Me.Setting_FxFn)
             End If
 
-            If Not String.Equals(Me.Setting_Height, "auto", StringComparison.InvariantCultureIgnoreCase) Then
-                sb.AppendFormat("height: '{0}',", Me.Setting_Height)
-            End If
-
             If Not Me.Setting_ManualTrump Then
                 sb.Append("manualTrump: false,")
             End If
@@ -468,6 +458,10 @@ Namespace WillStrohl.Modules.ContentSlider
                 sb.AppendFormat("updateActivePagerLink: {0},", Me.Setting_UpdateActivePagerLink)
             End If
 
+            If Not String.IsNullOrEmpty(Me.Setting_Height) Then
+                sb.AppendFormat("height: '{0}',", Me.Setting_Height)
+            End If
+
             If Not String.IsNullOrEmpty(Me.Setting_Width) Then
                 sb.AppendFormat("width: '{0}',", Me.Setting_Width)
             End If
@@ -531,6 +525,11 @@ Namespace WillStrohl.Modules.ContentSlider
         Public ReadOnly Property ModuleActions() As DotNetNuke.Entities.Modules.Actions.ModuleActionCollection Implements IActionable.ModuleActions
             Get
                 Dim Actions As New Actions.ModuleActionCollection
+
+                Actions.Add(GetNextActionID, Me.GetLocalizedString(c_MenuItem_About), _
+                    String.Empty, String.Empty, String.Empty, _
+                    EditUrl(String.Empty, String.Empty, c_About), _
+                    False, DotNetNuke.Security.SecurityAccessLevel.Edit, True, False)
 
                 Actions.Add(GetNextActionID, Me.GetLocalizedString(c_MenuItem_Title), _
                     String.Empty, String.Empty, String.Empty, _

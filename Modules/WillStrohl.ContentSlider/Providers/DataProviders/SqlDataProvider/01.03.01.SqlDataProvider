@@ -3,19 +3,18 @@
 INSTALL SQL PROVIDER SCRIPT
 
 Content Slider Module for DotNetNuke
-Version: 01.00.02
+Version: 01.03.01
 Author: Will Strohl
 E-Mail: will.strohl@gmail.com
 Website: http://www.willstrohl.com
 
-Copyright 2011 Will Strohl
+Copyright 2011-2016 Will Strohl
 
 Release Notes:
-  This is just a placeholder.
+  Placeholder.
 
 */
 
-ALTER TABLE {databaseOwner}[{objectQualifier}wns_contentslider] ALTER COLUMN [Link] NVARCHAR(255) NULL;
-GO
+
 
 /* END OF FILE */

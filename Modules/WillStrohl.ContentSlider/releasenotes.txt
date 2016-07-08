@@ -1,4 +1,13 @@
-﻿<h3>Version 01.03.00</h3>
+﻿<h3>Version 01.03.01</h3>
+<p><strong>Date Released:</strong> 07/07/2016</p>
+<ul>
+	<li>Feature: Added module branding icon</li>
+	<li>Bug: Resolved client-side errors that occur with no sliders added</li>
+	<li>Bug: Height and width advanced settings now both work the same way</li>
+	<li>Bug: Resolved issues installing on SQL Azure</li>
+</ul>
+
+<h3>Version 01.03.00</h3>
 <p><strong>Date Released:</strong> 04/12/2016</p>
 <ul>
 	<li>Feature: Updated to support DNN 8</li>

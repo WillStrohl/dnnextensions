@@ -15,25 +15,24 @@ Release Notes:
 
 */
 
-IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'StartDate' AND o.[name] LIKE N'%wns_contentslider')
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{objectQualifier}wns_contentslider' AND COLUMN_NAME = 'StartDate')
 BEGIN
-    ALTER TABLE {databaseOwner}[{objectQualifier}wns_contentslider] ADD [StartDate] DATETIME NULL;
+	ALTER TABLE {databaseOwner}[{objectQualifier}wns_contentslider] ADD [StartDate] DATETIME NULL;
 END
 GO
 
-IF NOT EXISTS (SELECT 1 FROM [dbo].[syscolumns] c JOIN [dbo].[sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'EndDate' AND o.[name] LIKE N'%wns_contentslider')
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{objectQualifier}wns_contentslider' AND COLUMN_NAME = 'EndDate')
 BEGIN
-    ALTER TABLE {databaseOwner}[{objectQualifier}wns_contentslider] ADD [EndDate] DATETIME NULL;
+	ALTER TABLE {databaseOwner}[{objectQualifier}wns_contentslider] ADD [EndDate] DATETIME NULL;
 END
 GO
 
 UPDATE {databaseOwner}[{objectQualifier}wns_contentslider] SET [StartDate] = GETDATE();
 GO
 
-IF EXISTS (SELECT 1 FROM [dbo].[sysindexes] si WHERE si.[name] = N'IX_{objectQualifier}wns_contentslider_moduleid_displayorder_daterange')
-BEGIN
-	DROP INDEX [IX_{objectQualifier}wns_contentslider_moduleid_displayorder_daterange] ON {databaseOwner}[{objectQualifier}wns_contentslider];
-END
+IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}wns_contentslider]') AND name = N'IX_{objectQualifier}wns_contentslider_moduleid_displayorder_daterange')
+	DROP INDEX [IX_{objectQualifier}wns_contentslider_moduleid_displayorder_daterange] ON {databaseOwner}[{objectQualifier}wns_contentslider]
+GO
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}wns_contentslider_moduleid_displayorder_daterange] ON {databaseOwner}[{objectQualifier}wns_contentslider] ([ModuleId],[DisplayOrder],[StartDate],[EndDate]) ON [PRIMARY];

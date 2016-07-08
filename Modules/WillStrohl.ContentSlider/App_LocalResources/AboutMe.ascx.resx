@@ -117,22 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error.NoSliders" xml:space="preserve">
-    <value>No content sliders have been created yet. Please use the Actions Menu to create a slider.</value>
+  <data name="About.Text" xml:space="preserve">
+    <value>About the Content Slider Module</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
-    <value>&lt;p&gt;If you would like help with using this module, or need support, please visit the &lt;a href="http://dnncontentslider.codeplex.com" target="_blank"&gt;Content Slider module home page on codeplex&lt;/a&gt;.&lt;/p&gt;</value>
-  </data>
-  <data name="Slider.MenuItem.About" xml:space="preserve">
+  <data name="ControlTitle_aboutme.Text" xml:space="preserve">
     <value>About this Module</value>
   </data>
-  <data name="Slider.MenuItem.Edit" xml:space="preserve">
-    <value>Add Slider</value>
-  </data>
-  <data name="Slider.MenuItem.Options" xml:space="preserve">
-    <value>Slider Options</value>
-  </data>
-  <data name="Slider.MenuItem.Sliders" xml:space="preserve">
-    <value>Manager Sliders</value>
+  <data name="ThankYou.Text" xml:space="preserve">
+    <value>Thank you for using this module. It was originally released in 2011 and is maintained by Will Strohl. A lot of work goes into each release. If you've gotten any value out of this module, please consider offering a donation using the button below.</value>
   </data>
 </root>
