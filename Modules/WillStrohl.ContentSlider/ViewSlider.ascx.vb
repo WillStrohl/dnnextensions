@@ -60,12 +60,13 @@ Namespace WillStrohl.Modules.ContentSlider
         Private Const c_Edit As String = "Edit"
         Private Const c_Options As String = "SliderOptions"
         Private Const c_Sliders As String = "Sliders"
+        Private Const c_About As String = "AboutMe"
         Private Const c_MenuItem_Title As String = "Slider.MenuItem.Edit"
         Private Const c_MenuItem_Options As String = "Slider.MenuItem.Options"
         Private Const c_MenuItem_Sliders As String = "Slider.MenuItem.Sliders"
+        Private Const c_MenuItem_About As String = "Slider.MenuItem.About"
         Private Const CYCLE_KEY As String = "jQuery.Plugin.Cycle"
         Private Const EASING_KEY As String = "jQuery.Plugin.Easing"
-        'Private Const SCRIPT_TAG_FORMAT As String = "<script language=""javascript"" type=""text/javascript"" src=""{0}""></script>"
 
         Private p_Sliders As SliderInfoCollection = Nothing
 
@@ -524,6 +525,11 @@ Namespace WillStrohl.Modules.ContentSlider
         Public ReadOnly Property ModuleActions() As DotNetNuke.Entities.Modules.Actions.ModuleActionCollection Implements IActionable.ModuleActions
             Get
                 Dim Actions As New Actions.ModuleActionCollection
+
+                Actions.Add(GetNextActionID, Me.GetLocalizedString(c_MenuItem_About), _
+                    String.Empty, String.Empty, String.Empty, _
+                    EditUrl(String.Empty, String.Empty, c_About), _
+                    False, DotNetNuke.Security.SecurityAccessLevel.Edit, True, False)
 
                 Actions.Add(GetNextActionID, Me.GetLocalizedString(c_MenuItem_Title), _
                     String.Empty, String.Empty, String.Empty, _

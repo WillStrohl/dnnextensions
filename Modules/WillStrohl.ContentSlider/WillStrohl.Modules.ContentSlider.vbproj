@@ -175,6 +175,13 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutMe.ascx.designer.vb">
+      <DependentUpon>AboutMe.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AboutMe.ascx.vb">
+      <DependentUpon>AboutMe.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Components\DataProvider.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -235,6 +242,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutMe.ascx" />
     <Content Include="Images\content-slider-icon.png" />
     <Content Include="js\jquery.cycle.min.js" />
     <Content Include="js\jquery.easing.compatibility.js" />
@@ -261,6 +269,7 @@
     <Content Include="Providers\DataProviders\SqlDataProvider\01.02.01.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <Content Include="Providers\DataProviders\SqlDataProvider\01.03.00.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.03.01.SqlDataProvider" />
     <None Include="WillStrohl.ContentSlider.dnn">
       <SubType>Designer</SubType>
     </None>
@@ -274,7 +283,9 @@
   <ItemGroup>
     <Content Include="Module.Build" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="App_LocalResources\AboutMe.ascx.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
