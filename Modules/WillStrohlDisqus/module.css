@@ -15,7 +15,7 @@ fieldset, .wns-fieldset { margin:1.5em 0 0 0; padding:0; }
     fieldset li, .wns-listitem { padding-bottom:1em; list-style:none; line-height:1.6em; }
     .wns-listitem { float:none; clear:both; }
 
-#dnnDisqusSettings, #dnnDisqusCommands { margin: 0 1em 0 1em; }
+#dnnDisqusSettings, #dnnDisqusCommands { margin: 0 1em 0 1em;width: 96%; }
 
 .wns-disqus-comments { display: none; margin: 0;padding: 0; }
 
