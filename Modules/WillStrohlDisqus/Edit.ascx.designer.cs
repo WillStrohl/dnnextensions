@@ -19,7 +19,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblModuleView;
+        protected global::System.Web.UI.UserControl lblModuleView;
         
         /// <summary>
         /// cboModuleView control.
@@ -46,7 +46,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblModuleList;
+        protected global::System.Web.UI.UserControl lblModuleList;
         
         /// <summary>
         /// cboModuleList control.
@@ -82,7 +82,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblDisplayItems;
+        protected global::System.Web.UI.UserControl lblDisplayItems;
         
         /// <summary>
         /// cboDisplayItems control.
@@ -118,7 +118,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblShowModerators;
+        protected global::System.Web.UI.UserControl lblShowModerators;
         
         /// <summary>
         /// chkShowModerators control.
@@ -145,7 +145,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblColorTheme;
+        protected global::System.Web.UI.UserControl lblColorTheme;
         
         /// <summary>
         /// cboColorTheme control.
@@ -181,7 +181,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblDefaultTab;
+        protected global::System.Web.UI.UserControl lblDefaultTab;
         
         /// <summary>
         /// cboDefaultTab control.
@@ -217,7 +217,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblCommentLength;
+        protected global::System.Web.UI.UserControl lblCommentLength;
         
         /// <summary>
         /// txtCommentLength control.
@@ -253,7 +253,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblShowAvatar;
+        protected global::System.Web.UI.UserControl lblShowAvatar;
         
         /// <summary>
         /// chkShowAvatar control.
@@ -280,7 +280,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblAvatarSize;
+        protected global::System.Web.UI.UserControl lblAvatarSize;
         
         /// <summary>
         /// cboAvatarSize control.
@@ -298,7 +298,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblAppName;
+        protected global::System.Web.UI.UserControl lblAppName;
         
         /// <summary>
         /// txtAppName control.
@@ -325,7 +325,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblApiSecret;
+        protected global::System.Web.UI.UserControl lblApiSecret;
         
         /// <summary>
         /// txtApiSecret control.
@@ -352,7 +352,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblRequireDnnLogin;
+        protected global::System.Web.UI.UserControl lblRequireDnnLogin;
         
         /// <summary>
         /// chkRequireDnnLogin control.
@@ -370,7 +370,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblSsoEnabled;
+        protected global::System.Web.UI.UserControl lblSsoEnabled;
         
         /// <summary>
         /// chkSsoEnabled control.
@@ -388,7 +388,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblSsoApiKey;
+        protected global::System.Web.UI.UserControl lblSsoApiKey;
         
         /// <summary>
         /// txtSsoApiKey control.
@@ -406,7 +406,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblDeveloperMode;
+        protected global::System.Web.UI.UserControl lblDeveloperMode;
         
         /// <summary>
         /// chkDeveloperMode control.
@@ -433,7 +433,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblDisqusReceiver;
+        protected global::System.Web.UI.UserControl lblDisqusReceiver;
         
         /// <summary>
         /// lblReceiverFile control.
@@ -460,7 +460,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblSchedule;
+        protected global::System.Web.UI.UserControl lblSchedule;
         
         /// <summary>
         /// chkSchedule control.
