@@ -43,7 +43,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke, Version=7.2.0.607, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DotNetNuke, Version=8.0.0.809, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Website\bin\DotNetNuke.dll</HintPath>
       <Private>False</Private>
@@ -151,6 +151,8 @@
   <ItemGroup>
     <None Include="App_LocalResources\Edit.ascx.resx" />
     <None Include="App_LocalResources\View.ascx.resx" />
+    <Content Include="Images\disqus-module-icon-100x100.png" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\02.01.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\00.00.01.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\01.00.00.SqlDataProvider" />
     <None Include="Providers\DataProviders\SqlDataProvider\01.01.00.SqlDataProvider" />
@@ -175,6 +177,7 @@
   <ItemGroup>
     <Content Include="App_LocalResources\AboutMe.ascx.resx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />

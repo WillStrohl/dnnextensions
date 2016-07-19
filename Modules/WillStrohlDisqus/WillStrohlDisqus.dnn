@@ -1,8 +1,9 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohlDisqus" type="Module" version="02.00.00">
+    <package name="WillStrohlDisqus" type="Module" version="02.01.00">
       <friendlyName>Disqus Comments</friendlyName>
-      <description>A module that allows you to integrate Disqus Comments anywhere on your DotNetNuke website.</description>
+      <description>A module that allows you to integrate Disqus Comments anywhere on your DNN website.</description>
+      <iconFile>~/DesktopModules/WillStrohlDisqus/Images/disqus-module-icon-100x100.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>WillStrohl.com</organization>
@@ -11,13 +12,14 @@
       </owner>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
+      <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="CoreVersion">06.00.00</dependency>
+        <dependency type="CoreVersion">08.00.00</dependency>
       </dependencies>
       <components>
         <component type="Script">
           <scripts>
-            <basePath>DesktopModules\WillStrohl.ContentSlider</basePath>
+            <basePath>DesktopModules\WillStrohlDisqus</basePath>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>00.00.01.SqlDataProvider</name>
@@ -53,23 +55,24 @@
               <name>02.00.00.SqlDataProvider</name>
               <version>02.00.00</version>
             </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>02.01.00.SqlDataProvider</name>
+              <version>02.01.00</version>
+            </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>02.00.00</version>
+              <version>02.01.00</version>
             </script>
           </scripts>
         </component>
         <component type="Assembly">
           <assemblies>
-            <basePath>bin</basePath>
             <assembly>
               <name>WillStrohlDisqus.dll</name>
-              <version>02.00.00</version>
-            </assembly>
-            <assembly>
-              <name>Newtonsoft.Json.dll</name>
-              <version>03.05.00</version>
+              <version>02.01.00</version>
+              <path>bin</path>
             </assembly>
           </assemblies>
         </component>
@@ -108,7 +111,7 @@
                   </moduleControl>
                   <moduleControl>
                     <controlKey>AboutMe</controlKey>
-                    <controlSrc>DesktopModules/WillStrohl.ContentSlider/AboutMe.ascx</controlSrc>
+                    <controlSrc>DesktopModules/WillStrohlDisqus/AboutMe.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <supportsPopUps>True</supportsPopUps>
                     <controlTitle />
@@ -154,6 +157,10 @@
             <file>
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>02.00.00.SqlDataProvider</name>
+            </file>
+            <file>
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>02.01.00.SqlDataProvider</name>
             </file>
             <file>
               <path>Providers\DataProviders\SqlDataProvider</path>

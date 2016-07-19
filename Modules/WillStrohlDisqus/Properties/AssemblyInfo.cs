@@ -19,12 +19,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("Disqus Module for DotNetNuke")]
-[assembly: AssemblyDescription("This module allows you to quickly and easily add Disqus comments to your DotNetNuke website.")]
+[assembly: AssemblyTitle("Disqus Module for DNN")]
+[assembly: AssemblyDescription("This module allows you to quickly and easily add Disqus comments to your DNN website.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("WillStrohl.com")]
+[assembly: AssemblyCompany("Will Strohl")]
 [assembly: AssemblyProduct("http://www.willstrohl.com")]
-[assembly: AssemblyCopyright("Copyright 2011-2012 Will Strohl")]
+[assembly: AssemblyCopyright("Copyright 2011-2016 Will Strohl")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -40,9 +40,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("02.00.00")]
+[assembly: AssemblyVersion("02.01.00")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
 
-[assembly: AssemblyFileVersionAttribute("02.00.00")]
+[assembly: AssemblyFileVersion("02.01.00")]

@@ -6,7 +6,7 @@
     <div class="dnnClear" style="width: 50%; margin: 0 auto;">
         <div class="dnnLeft">
             <p class="DNNAligncenter">
-                <a href="https://github.com/hismightiness/dnnextensions/wiki" class="dnnSecondaryAction"><%=GetLocalizedString("Help") %></a>
+                <a href="https://github.com/hismightiness/dnnextensions/wiki" class="dnnSecondaryAction" target="_blank"><%=GetLocalizedString("Help") %></a>
             </p>
         </div>
         <div class="dnnRight">
