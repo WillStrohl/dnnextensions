@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cmdReturn.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -142,7 +142,7 @@
     <value>Module-Level Settings</value>
   </data>
   <data name="Disqus.AppName.Message" xml:space="preserve">
-    <value>You will need to login to your Disqus account and &lt;a href="http://disqus.com/admin/register/" target="_blank"&gt;register an application&lt;/a&gt; for each website that you use this module on. The process is easy. It takes about 10 seconds for each website.</value>
+    <value>You will need to login to your Disqus account and &lt;a href="http://disqus.com/admin/register/" target="_blank"&gt;register an application&lt;/a&gt; for each website that you use this module on. The process is easy. It takes about 10 seconds for each website.  Then you can &lt;a href="https://disqus.com/api/applications/" target="_blank"&gt;get your secret key&lt;/a&gt; from the Disqus API area.</value>
   </data>
   <data name="lblAppName.Help" xml:space="preserve">
     <value>This is a value that you would have specified in your Disqus Account.</value>

@@ -117,34 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutMe.Text" xml:space="preserve">
-    <value>Support this Module</value>
+  <data name="About.Text" xml:space="preserve">
+    <value>Support the DNN Disqus Module</value>
   </data>
-  <data name="EditModule.Text" xml:space="preserve">
-    <value>Edit Disqus Options</value>
+  <data name="ControlTitle_aboutme.Text" xml:space="preserve">
+    <value>About this Module</value>
   </data>
-  <data name="LoginMessage.Register.Text" xml:space="preserve">
-    <value>&lt;a href="{0}"&gt;Login&lt;/a&gt; or  &lt;a href="{1}"&gt;Register&lt;/a&gt; to add a comment</value>
+  <data name="Help.Text" xml:space="preserve">
+    <value>Be Part of the Team</value>
   </data>
-  <data name="LoginMessage.Text" xml:space="preserve">
-    <value>&lt;a href="{0}"&gt;Login&lt;/a&gt; to add a comment</value>
-  </data>
-  <data name="NoApiSecret.Text" xml:space="preserve">
-    <value>You must specify the Disqus API Secret</value>
-  </data>
-  <data name="NoApplicationName.Text" xml:space="preserve">
-    <value>You must specify the Disqus Application Name for the module.</value>
-  </data>
-  <data name="NoModuleAttached.Text" xml:space="preserve">
-    <value>You cannot use this module until you edit the available options.</value>
-  </data>
-  <data name="PopularThreads.Text" xml:space="preserve">
-    <value>Popular Threads</value>
-  </data>
-  <data name="PoweredBy.Text" xml:space="preserve">
-    <value>Powered By Disqus</value>
-  </data>
-  <data name="RecentComments.Text" xml:space="preserve">
-    <value>Recent Comments</value>
+  <data name="ThankYou.Text" xml:space="preserve">
+    <value>Thank you for using this module. It was originally released in 2011 and is maintained by Will Strohl. A lot of work goes into each release. If you've gotten any value out of this module, please consider offering a donation or participating on the team using the links below.</value>
   </data>
 </root>

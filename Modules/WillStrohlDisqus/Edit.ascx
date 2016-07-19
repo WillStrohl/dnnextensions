@@ -8,13 +8,13 @@
         <ol id="olAlbum" class="wns-list">
             <li class="wns-listitem">
                 <div class="dnnFormItem">
-                    <dnn:label id="lblModuleView" runat="server" ResourceKey="lblModuleView" ControlName="cboModuleView" Suffix=":" />
+                    <dnn:label id="lblModuleView" runat="server" ResourceKey="lblModuleView" ControlName="cboModuleView" Suffix=":" CssClass="dnnFormRequired" />
                     <asp:DropDownList ID="cboModuleView" runat="server" CssClass="NormalTextBox dnnFormRequired" AutoPostBack="true" OnSelectedIndexChanged="CboModuleViewSelectedIndexChanged" ValidationGroup="disqus" /> 
                 </div>
             </li>
             <li id="liModuleList" class="wns-listitem disqus-comments" runat="server">
                 <div class="dnnFormItem">
-                    <dnn:label id="lblModuleList" runat="server" ResourceKey="lblModuleList" ControlName="cboModuleList" Suffix=":" />
+                    <dnn:label id="lblModuleList" runat="server" ResourceKey="lblModuleList" ControlName="cboModuleList" Suffix=":" CssClass="dnnFormRequired" />
                     <asp:DropDownList ID="cboModuleList" runat="server" CssClass="NormalTextBox dnnFormRequired" ValidationGroup="disqus" /> 
                     <asp:RequiredFieldValidator ID="rfvModuleList" runat="server" InitialValue="---" ControlToValidate="cboModuleList" Display="Dynamic" CssClass="dnnFormMessage dnnFormError" ValidationGroup="disqus" />
                 </div>
@@ -79,14 +79,14 @@
             </li>
             <li class="wns-listitem">
                 <div class="dnnFormItem">
-                    <dnn:label id="lblAppName" runat="server" ResourceKey="lblAppName" ControlName="txtAppName" Suffix=":" />
+                    <dnn:label id="lblAppName" runat="server" ResourceKey="lblAppName" ControlName="txtAppName" Suffix=":" CssClass="dnnFormRequired" />
                     <asp:TextBox ID="txtAppName" runat="server" MaxLength="150" CssClass="NormalTextBox dnnFormRequired" ValidationGroup="disqus" /> 
                     <asp:RequiredFieldValidator ID="rfvAppName" runat="server" ControlToValidate="txtAppName" Display="Dynamic" CssClass="dnnFormMessage dnnFormError" ValidationGroup="disqus" />
                 </div>
             </li>
             <li class="wns-listitem">
                 <div class="dnnFormItem">
-                    <dnn:label id="lblApiSecret" runat="server" ResourceKey="lblApiSecret" ControlName="txtApiSecret" Suffix=":" />
+                    <dnn:label id="lblApiSecret" runat="server" ResourceKey="lblApiSecret" ControlName="txtApiSecret" Suffix=":" CssClass="dnnFormRequired" />
                     <asp:TextBox ID="txtApiSecret" runat="server" MaxLength="250" CssClass="NormalTextBox dnnFormRequired" ValidationGroup="disqus" /> 
                     <asp:RequiredFieldValidator ID="rfvApiSecret" runat="server" ControlToValidate="txtApiSecret" Display="Dynamic" CssClass="dnnFormMessage dnnFormError" ValidationGroup="disqus" />
                 </div>

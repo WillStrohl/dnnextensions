@@ -32,21 +32,11 @@ using System;
 
 namespace DotNetNuke.Modules.WillStrohlDisqus
 {
-    [Serializable()]
-    public class DisqusAuthorInfo
+    public partial class AboutMe : WillStrohlDisqusModuleBase
     {
-        public string Username { get; set; }
-        public string About { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
-        public string ProfileUrl { get; set; }
-        public string EmailHash { get; set; }
-        public long Reputation { get; set; }
-        public DisqusAvatarInfo Avatar { get; set; }
-        public bool IsAnonymous { get; set; }
-        public string Location { get; set; }
-        public bool IsPrimary { get; set; }
-        public DateTime JoinedAt { get; set; }
-        public int Id { get; set; }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2012, Will Strohl
+  * Copyright (c) 2011-2016, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
@@ -56,6 +56,8 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
     /// -----------------------------------------------------------------------------
     public partial class View : WillStrohlDisqusModuleBase, IActionable
     {
+        private const string c_EditModule = "EditModule";
+        private const string c_AboutMe = "AboutMe";
 
         #region Private Properties
 
@@ -649,7 +651,10 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
             get
             {
                 ModuleActionCollection Actions = new ModuleActionCollection();
-                Actions.Add(GetNextActionID(), Localization.GetString("EditModule", this.LocalResourceFile), "", "", "", EditUrl(), false, SecurityAccessLevel.Edit, true, false);
+
+                Actions.Add(GetNextActionID(), Localization.GetString(c_AboutMe, LocalResourceFile), string.Empty, string.Empty, string.Empty, EditUrl(string.Empty, string.Empty, c_AboutMe), false, SecurityAccessLevel.Edit, true, false);
+
+                Actions.Add(GetNextActionID(), Localization.GetString(c_EditModule, LocalResourceFile), string.Empty, string.Empty, string.Empty, EditUrl(), false, SecurityAccessLevel.Edit, true, false);
                 return Actions;
             }
         }
