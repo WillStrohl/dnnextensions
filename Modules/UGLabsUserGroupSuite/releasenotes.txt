@@ -1,0 +1,30 @@
+﻿<h3>Version 01.00.02</h3>
+<p><strong>Date Released:</strong> 02/16/2016</p>
+<p>This release applies the following enhancements/updates:</p>
+<ul>
+	<li>111 - Removed unnecessary console logging</li>
+	<li>109 - Style agenda list better</li>
+	<li>107 - Remove volunteer registration message for admins</li>
+	<li>105 - Session sorting order not always correct</li>
+	<li>102 - Bootstrap fonts folder isn't getting packaged</li>
+</ul>
+
+<h3>Version 01.00.01</h3>
+<p><strong>Date Released:</strong> 02/10/2016</p>
+<p>This release applies the following enhancements/updates:</p>
+<ul>
+	<li>101 - Agenda & time slot times aren't loading properly</li>
+	<li>98 - Include span all time slots in the agenda</li>
+	<li>97 - Saving task doesn't update task list quantities</li>
+	<li>96 - Volunteer task list missing some user labels</li>
+	<li>88 - Updating event dates doesn't update as expected</li>
+	<li>74 - Empty sessions page has no content</li>
+	<li>73 - Empty spearkers page has no content</li>
+	<li>71 - Show message when agenda is empty</li>
+</ul>
+
+<h3>Version 01.00.00</h3>
+<p><strong>Date Released:</strong> 02/05/2016</p>
+<ul>
+	<li>Initial Release</li>
+</ul>

@@ -1,0 +1,417 @@
+﻿/*
+
+BEGIN FOREIGN KEY DELETION
+
+*/
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_TermID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_TermID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_GroupID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_GroupID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_MeetingID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingIDs];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SpeakerMeeting_SpeakerID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SpeakerMeeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] DROP CONSTRAINT [FK_{objectQualifier}UG_SpeakerMeeting_SpeakerID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SpeakerMeeting_MeetingID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SpeakerMeeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] DROP CONSTRAINT [FK_{objectQualifier}UG_SpeakerMeeting_MeetingID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SpeakerMeeting_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SpeakerMeeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] DROP CONSTRAINT [FK_{objectQualifier}UG_SpeakerMeeting_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SpeakerMeeting_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SpeakerMeeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] DROP CONSTRAINT [FK_{objectQualifier}UG_SpeakerMeeting_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Attendance_MeetingID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Attendance')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Attendance] DROP CONSTRAINT [FK_{objectQualifier}UG_Attendance_MeetingID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Attendance_MemberID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Attendance')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Attendance] DROP CONSTRAINT [FK_{objectQualifier}UG_Attendance_MemberID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Attendance_MemberID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Attendance')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Attendance] DROP CONSTRAINT [FK_{objectQualifier}UG_Attendance_MemberID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Attendance_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Attendance')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Attendance] DROP CONSTRAINT [FK_{objectQualifier}UG_Attendance_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Material_MeetingID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Material')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Material] DROP CONSTRAINT [FK_{objectQualifier}UG_Material_MeetingID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Material_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Material')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Material] DROP CONSTRAINT [FK_{objectQualifier}UG_Material_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Material_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Material')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Material] DROP CONSTRAINT [FK_{objectQualifier}UG_Material_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_MemberID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_MemberID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_GroupID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_GroupID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_MeetingID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_MeetingID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_GroupID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_GroupID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_PhysicalAddressID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_PhysicalAddressID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_VirtualAddressID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_VirtualAddressID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Speaker_UserID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Speaker] DROP CONSTRAINT [FK_{objectQualifier}UG_Speaker_UserID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Speaker_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Speaker] DROP CONSTRAINT [FK_{objectQualifier}UG_Speaker_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Speaker_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Speaker')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Speaker] DROP CONSTRAINT [FK_{objectQualifier}UG_Speaker_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_VirtualAddress_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_VirtualAddress')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] DROP CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_VirtualAddress_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_VirtualAddress')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] DROP CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Address_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Address')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Address] DROP CONSTRAINT [FK_{objectQualifier}UG_Address_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Address_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Address')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Address] DROP CONSTRAINT [FK_{objectQualifier}UG_Address_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_GroupID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Leader')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_GroupID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_MemberID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Leader')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_MemberID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Leader')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Leader')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Member_GroupID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Member')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Member] DROP CONSTRAINT [FK_{objectQualifier}UG_Member_GroupID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Member_UserID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Member')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Member] DROP CONSTRAINT [FK_{objectQualifier}UG_Member_UserID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Member_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Member')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Member] DROP CONSTRAINT [FK_{objectQualifier}UG_Member_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Member_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Member')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Member] DROP CONSTRAINT [FK_{objectQualifier}UG_Member_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SocialSite_GroupID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SocialSite')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SocialSite] DROP CONSTRAINT [FK_{objectQualifier}UG_SocialSite_GroupID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SocialSite_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SocialSite')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SocialSite] DROP CONSTRAINT [FK_{objectQualifier}UG_SocialSite_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_SocialSite_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_SocialSite')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_SocialSite] DROP CONSTRAINT [FK_{objectQualifier}UG_SocialSite_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Group_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Group')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Group] DROP CONSTRAINT [FK_{objectQualifier}UG_Group_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Group_LanguageID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Group')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Group] DROP CONSTRAINT [FK_{objectQualifier}UG_Group_LanguageID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Group_CreatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Group')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Group] DROP CONSTRAINT [FK_{objectQualifier}UG_Group_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Group_LastUpdatedBy' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Group')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Group] DROP CONSTRAINT [FK_{objectQualifier}UG_Group_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Language_PortalID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Language')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Language] DROP CONSTRAINT [FK_{objectQualifier}UG_Language_PortalID];
+GO
+
+
+/*
+
+BEGIN TABLE DELETION
+
+*/
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Language]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Language];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Group]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Group];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_SocialSite]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_SocialSite];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Member]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Member];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Leader]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Leader];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Address]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Address];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_VirtualAddress]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Speaker]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Speaker];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Meeting]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Meeting];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_MemberActivity]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Material]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Material];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Attendance]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Attendance];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_SpeakerMeeting]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting];
+GO
+
+IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Keyword]') IS NULL
+    DROP TABLE {databaseOwner}[{objectQualifier}UG_Keyword];
+GO
+
+/*
+
+END OF FILE
+
+*/

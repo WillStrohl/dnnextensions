@@ -1,0 +1,234 @@
+﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
+<h2><span ng-show="!codeCamp.RegistrationActive">Potential </span> Event Speakers</h2>
+<div class="container" ng-show="currentUserRegistration != null">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right admin-button-wrapper" ng-show="currentSpeakerSessions.length > 0">
+                <button type="button" class="btn btn-primary" ng-click="openModal('lg')">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Update Speaker Profile
+                </button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="alert alert-success" ng-show="savedSpeaker != null">
+                <h4>Great job!</h4>
+                <p>Thank you for submitting your session(s). We'll be selecting speakers for the event soon.</p>
+            </div>
+            <div class="alert alert-info" ng-show="showSpeakerSubmission">
+                <h4>Want to be a Presenter?</h4>
+                <p>Are you interested in being a speaker? Submit your session(s) and we'll hopefully pick you to speak.</p>
+                <p>
+                    <a class="btn btn-primary" ng-click="openModal('lg')">Submit Session</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-show="!hasSpeakers">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-warning">
+                <h4>Whoops!</h4>
+                <p>There aren't any speakers yet. Please check back again soon!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-show="hasSpeakers">
+    <div class="row">
+        <speaker-cards data="speakers"></speaker-cards>
+    </div>
+</div>
+
+<script type="text/ng-template" id="AddSpeakerModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Speaker Submission</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-lg" ng-form="createSessionsForm">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid }">
+                        <label for="speakerName">Your Name *</label>
+                        <input type="text" name="speakerName" ng-model="speaker.SpeakerName" ng-required="true" class="form-control" placeholder="Your full name" maxlength="150" required ng-trim />
+                        <p class="help-block" ng-show="createSessionsForm.speakerName.$dirty && createSessionsForm.speakerName.$invalid">
+                            Your name is required.
+                        </p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.url.$error.url }">
+                        <label for="url">URL</label>
+                        <input type="url" name="url" ng-model="speaker.URL" class="form-control" placeholder="Your company website" maxlength="255" />
+                        <p class="help-block" ng-show="createSessionsForm.url.$error.url">
+                            Enter a valid website address.
+                        </p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.email.$error.email || (createSessionsForm.email.$dirty && createSessionsForm.email.$invalid) }">
+                        <label for="email">Email *</label>
+                        <input type="email" name="email" ng-model="speaker.Email" class="form-control" placeholder="Your email address" maxlength="256" ng-required="true" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required ng-trim />
+                        <p class="help-block" ng-show="createSessionsForm.email.$dirty && createSessionsForm.email.$invalid">
+                            Your email address is required.
+                        </p>
+                        <p class="help-block" ng-show="createSessionsForm.email.$error.email">
+                            Enter a valid email address.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" name="companyName" ng-model="speaker.CompanyName" class="form-control" placeholder="Your company name" maxlength="100" ng-trim />
+                    </div>
+                    <div class="form-group">
+                        <label for="companyTitle">Your Title</label>
+                        <input type="text" name="companyTitle" ng-model="speaker.CompanyTitle" class="form-control" placeholder="Your job title" maxlength="100" ng-trim />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="avatarUpload">Your Headshot</label>
+                        <div flow-init="{ target: '/DesktopModules/CodeCamp/API/Event/UpdateSpeakerAvatar', singleFile: true }"
+                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                            <div>
+                                <div class="thumbnail" ng-hide="$flow.files.length">
+                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                                </div>
+                                <div class="thumbnail" ng-show="$flow.files.length">
+                                    <img flow-img="$flow.files[0]" />
+                                </div>
+                                <div>
+                                    <md-button class="btn btn-default" flow-btn type="button" flow-attrs="{ accept: 'image/*' }" ng-hide="$flow.files.length">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        Add Photo
+                                    </md-button>
+                                    <div ng-repeat="file in $flow.files">
+                                        {{file.name}} ({{file.size / 1024 | number: 0}} KB)
+                                        <a class="speaker-link" ng-click="file.cancel()" title="Remove Headshot">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid }">
+                        <label for="bio">Biography *</label>
+                        <textarea name="bio" ng-model="speaker.Bio" ng-required="true" class="form-control" placeholder="Your biography" maxlength="1000" required ng-trim></textarea>
+                        <p class="help-block" ng-show="createSessionsForm.bio.$dirty && createSessionsForm.bio.$invalid">
+                            Your biography is required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="checkbox">
+                        <label for="isAuthor">
+                            <input type="checkbox" name="isAuthor" ng-model="speaker.IsAuthor" />Are you an author?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <h4>Session Abstract(s)</h4>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-right">
+                        <a class="btn btn-info" ng-click="AddSession()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            Add Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="session-addition-wrapper" ng-repeat="session in sessions track by $id(session)">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr />
+                        <div class="pull-right" ng-show="SessionIndex(session) > 0">
+                            <a class="btn btn-default" ng-click="ProcessSessionRemoval(this, session)" title="Remove this Session">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['title{{$index}}'].$dirty && createSessionsForm['title{{$index}}'].$invalid }">
+                            <label for="title">Title *</label>
+                            <input type="text" name="title{{$index}}" ng-model="session.Title" ng-required="true" class="form-control" placeholder="Enter a descriptive session title" maxlength="100" required ng-trim />
+                            <p class="help-block" ng-show="createSessionsForm['title{{$index}}'].$dirty && createSessionsForm['title{{$index}}'].$invalid">
+                                Session title is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid }">
+                            <label for="audienceLevel">Experience Level *</label>
+                            <select name="audienceLevel{{$index}}" ng-model="session.AudienceLevel" class="form-control" required>
+                                <option value="0" ng-selected="session.AudienceLevel == '0'">Beginner</option>
+                                <option value="1" ng-selected="session.AudienceLevel == '1'">Intermediate</option>
+                                <option value="2" ng-selected="session.AudienceLevel == '2'">Advanced</option>
+                            </select>
+                            <p class="help-block" ng-show="createSessionsForm['audienceLevel{{$index}}'].$dirty && createSessionsForm['audienceLevel{{$index}}'].$invalid">
+                                Audience level is required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group" ng-class="{ 'has-error error' : createSessionsForm['description{{$index}}'].$dirty && createSessionsForm['description{{$index}}'].$invalid }">
+                            <label for="description">Description *</label>
+                            <textarea name="description{{$index}}" ng-model="session.Description" ng-required="true" class="form-control" placeholder="Full description of your session" maxlength="2000" required ng-trim></textarea>
+                            <p class="help-block" ng-show="createSessionsForm['description{{$index}}'].$dirty && createSessionsForm['description{{$index}}'].$invalid">
+                                Session description is required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-lg">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success btn-block" type="button" ng-disabled="createSessionsForm.$invalid" ng-click="ok()">Save Submission</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="DeleteSessionModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container modal-form-container-sm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Are you sure you want to delete this session?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="container modal-form-container-sm">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success btn-block" type="button" ng-click="ok()">Delete</button>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-block" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

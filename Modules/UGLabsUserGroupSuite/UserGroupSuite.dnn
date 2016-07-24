@@ -1,0 +1,94 @@
+<dotnetnuke type="Package" version="6.0">
+  <packages>
+    <package name="UGLabs.UserGroupSuite" type="Module" version="01.00.00">
+      <friendlyName>UG Labs: User Group Suite Module</friendlyName>
+      <description>This module allows user groups to be created and managed, including meetings, attendees, sponsorship, and more.</description>
+      <iconFile>DesktopModules/UserGroupSuite/Images/user-group-suite-icon.png</iconFile>
+      <owner>
+        <name>Will Strohl</name>
+        <organization>WillStrohl.com</organization>
+        <url>http://www.willstrohl.com</url>
+        <email>will.strohl@gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <azureCompatible>true</azureCompatible>
+      
+      <components>
+
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/UserGroupSuite</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\UserGroupSuite</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+              <version>01.00.00</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>01.00.02</version>
+            </script>
+          </scripts>
+        </component>
+
+        <component type="Module">
+          <desktopModule>
+            <moduleName>User Group Suite</moduleName>
+            <foldername>UserGroupSuite</foldername>
+            <businessControllerClass>DNNCommunity.Modules.UserGroupSuite.Components.FeatureController, DNNCommunity.Modules.UserGroupSuite</businessControllerClass>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>User Group Suite</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/CodeCampUserGroupSuite/View.html</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/UserGroupSuite/Settings.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>User Group Suite Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>DNNCommunity.Modules.UserGroupSuite.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

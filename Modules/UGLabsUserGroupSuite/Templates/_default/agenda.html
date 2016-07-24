@@ -1,0 +1,69 @@
+﻿<div ng-include="'/DesktopModules/CodeCamp/Templates/_default/navigation.html'"></div>
+<h2>Event Agenda</h2>
+<div class="container">
+    <div class="row" ng-show="userCanEdit">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default" ng-click="goToPage('/timeslots')">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Manage Time Slots
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="!hasAgenda">
+        <div class="col-lg-12">
+            <div class="alert alert-warning">
+                <h4>Whoops!</h4>
+                <p>The agenda hasn't been decided upon yet. Please check back again soon!</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="agenda">
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered agenda-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Events</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="eventDay in agenda.EventDays | orderBy: 'TimeStamp'">
+                        <td class="agenda-date" title="{{eventDay.TimeStamp}}" class="active">
+                            <div class="dayofmonth">{{eventDay.Day}}</div>
+                            <div class="dayofweek">{{eventDay.DayName}}</div>
+                            <div class="shortdate text-muted">{{eventDay.MonthName}}, {{eventDay.Year}}</div>
+                        </td>
+                        <td>
+                            <table class="table table-condensed table-bordered agenda-timeblock-table">
+                                <tbody>
+                                <tr ng-repeat="timeSlot in eventDay.TimeSlots | orderBy: 'SortOrder'">
+                                    <td class="agenda-date-column">
+                                        {{timeSlot.BeginTime | amDateFormat: 'hh:mm A'}} - {{timeSlot.EndTime | amDateFormat: 'hh:mm A'}}
+                                    </td>
+                                    <td class="agenda-session-column">
+                                        <div ng-repeat="session in timeSlot.Sessions | orderBy: 'TrackId'">
+                                            <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                                            <div class="col-sm-4">
+                                                <div class="tile" ng-class="classColors[$index % 5]">
+                                                    <span>{{session.Title}}</span> by
+                                                    <span class="agenda-session-speaker" ng-repeat="speaker in session.Speakers | orderBy: 'SpeakerName'">
+                                                        <a href="#/speakers/{{speaker.SpeakerId}}/{{speaker.SpeakerSlug}}">{{speaker.SpeakerName}}</a><span ng-if="session.Speakers > 1">, </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

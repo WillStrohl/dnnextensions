@@ -1,0 +1,67 @@
+﻿<div class="container" ng-controller="aboutController">
+    <div class="row">
+        <div class="col-xs-12" ng-switch="hasCodeCamp">
+            <div class="col-xs-12" ng-switch-when="false">
+                <div class="alert alert-info">
+                    <h4>You're new here!</h4>
+                    <p>You will need to create an event before you can continue.</p>
+                    <p>
+                        <a class="btn btn-primary" href="#/update">Create Event</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12" ng-switch-when="true">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pull-right">
+                            <a class="btn btn-info" href="#/update" ng-show="userCanEdit">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                Edit Event
+                            </a>
+                            <a class="btn btn-primary" href="#/register">
+                                <i class="glyphicon glyphicon-log-in" ng-show="currentUserRegistration == null"></i>
+                                <i class="glyphicon glyphicon-edit" ng-show="currentUserRegistration != null"></i>
+                                <span ng-show="currentUserRegistration == null">Register</span>
+                                <span ng-show="currentUserRegistration != null">Update Registration</span>
+                            </a>
+                        </div>
+                        <h2>{{codeCamp.Title}}</h2>
+                        <div class="event-meta dnnClear">
+                            <span class="glyphicon glyphicon-calendar"></span><span class="event-datespan">From <span class="event-date">{{codeCamp.BeginDate | date: 'MM/dd/yyyy'}}</span> to <span class="event-date">{{codeCamp.EndDate | date: 'MM/dd/yyyy'}}</span></span>
+                        </div>
+                        <div class="event-description dnnClear">
+                            {{codeCamp.Description}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row event-tile-wrapper">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="event-tile-1" ng-click="goToPage('/speakers')">
+                            <a href="#/speakers">Speakers</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="event-tile-2" ng-click="goToPage('/agenda')">
+                            <a href="#/agenda">Agenda</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="event-tile-3" ng-click="goToPage('/tracks')">
+                            <a href="#/tracks">Tracks</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="event-tile-4" ng-click="goToPage('/sessions')">
+                            <a href="#/sessions">Sessions</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="event-tile-5" ng-click="goToPage('/volunteers')">
+                            <a href="#/volunteers">Volunteers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
