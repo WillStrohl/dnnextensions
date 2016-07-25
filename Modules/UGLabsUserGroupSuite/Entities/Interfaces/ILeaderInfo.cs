@@ -32,15 +32,13 @@ using System;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
 {
-    public interface ISpeakerInfo
+    public interface ILeaderInfo
     {
-        int SpeakerID { get; set; }
-        int UserID { get; set; }
-        string SpeakerName { get; set; }
-        string Website { get; set; }
-        string Bio { get; set; }
-        string Email { get; set; }
-        string Avatar { get; set; }
+        int GroupLeaderID { get; set; }
+        int GroupID { get; set; }
+        int MemberID { get; set; }
+        string Title { get; set; }
+        bool IsPrimary { get; set; }
         DateTime CreatedOn { get; set; }
         int CreatedBy { get; set; }
         DateTime LastUpdatedOn { get; set; }

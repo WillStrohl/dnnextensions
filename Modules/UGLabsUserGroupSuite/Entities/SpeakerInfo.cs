@@ -29,63 +29,28 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.Web.Caching;
-using DotNetNuke.Common.Utilities;
+using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
 using DotNetNuke.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp.Entities
+namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    [TableName("wns_CodeCamp_Speaker")]
-    [PrimaryKey("SpeakerId", AutoIncrement = true)]
-    [Cacheable("Speaker", CacheItemPriority.Default, 20)]
-    [Scope("CodeCampId")]
+    [TableName("UG_Speaker")]
+    [PrimaryKey("SpeakerID", AutoIncrement = true)]
+    [Cacheable("UG_Speaker", CacheItemPriority.Default, 20)]
+    [Scope("UserID")]
     public class SpeakerInfo : ISpeakerInfo
     {
-        public int SpeakerId { get; set; }
-
-        public int CodeCampId { get; set; }
-
-        public int? RegistrationId { get; set; }
-
+        public int SpeakerID { get; set; }
+        public int UserID { get; set; }
         public string SpeakerName { get; set; }
-
-        public string CompanyName { get; set; }
-
-        public string CompanyTitle { get; set; }
-
-        public string URL { get; set; }
-
-        public string Email { get; set; }
-
+        public string Website { get; set; }
         public string Bio { get; set; }
-
-        public string IconFile { get; set; }
-
-        public bool IsAuthor { get; set; }
-
-        public int CreatedByUserId { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime CreatedByDate { get; set; }
-
-        public int LastUpdatedByUserId { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime LastUpdatedByDate { get; set; }
-
-        [IgnoreColumn]
-        public List<CustomPropertyInfo> CustomPropertiesObj
-        {
-            get { return JsonHelper.ObjectFromJson<List<CustomPropertyInfo>>(CustomProperties); }
-            set { CustomProperties = value.ToJson(); }
-        }
-
-        public string CustomProperties { get; set; }
-
-        [IgnoreColumn]
-        public List<SessionInfo> Sessions { get; set; }
+        public string Email { get; set; }
+        public string Avatar { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime LastUpdatedOn { get; set; }
+        public int LastUpdatedBy { get; set; }
     }
 }

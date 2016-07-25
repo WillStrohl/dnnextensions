@@ -41,7 +41,7 @@ IF EXISTS (SELECT 1
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_MeetingID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
-    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingIDs];
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingID];
 GO
 
 IF EXISTS (SELECT 1 
@@ -415,7 +415,7 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Group] (
     [CreatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Group_CreatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId]),
-    [LastUpdatedByOn] DATETIME NOT NULL,
+    [LastUpdatedOn] DATETIME NOT NULL,
     [LastUpdatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Group_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
@@ -454,7 +454,7 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_SocialSite] (
     [GroupSocialSiteID] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}UG_SocialSite] PRIMARY KEY CLUSTERED, 
-    [GroupId] INT NOT NULL 
+    [GroupID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_SocialSite_GroupID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]) ON DELETE CASCADE, 
     [SocialID] INT NOT NULL, 
@@ -517,7 +517,7 @@ IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Leader]') IS NULL
 GO
 
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_Leader] (
-    [GroupLeaderId] INT IDENTITY(1,1) 
+    [GroupLeaderID] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}UG_Leader] PRIMARY KEY CLUSTERED, 
     [GroupID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Leader_GroupID] FOREIGN KEY 
@@ -866,7 +866,7 @@ IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_SpeakerMeeting]') IS NULL
 GO
 
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] (
-    [SpeakerMeetingId] INT IDENTITY(1,1) 
+    [SpeakerMeetingID] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}UG_SpeakerMeeting] PRIMARY KEY CLUSTERED, 
     [SpeakerID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_SpeakerMeeting_SpeakerID] FOREIGN KEY 

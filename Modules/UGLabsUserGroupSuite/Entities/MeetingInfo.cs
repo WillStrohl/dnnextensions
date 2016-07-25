@@ -29,21 +29,31 @@
 */
 
 using System;
+using System.Web.Caching;
+using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.ComponentModel.DataAnnotations;
 
-namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
+namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public interface ISpeakerInfo
+    [TableName("UG_Meeting")]
+    [PrimaryKey("MeetingID", AutoIncrement = true)]
+    [Cacheable("UG_Meeting", CacheItemPriority.Default, 20)]
+    [Scope("GroupID")]
+    public class MeetingInfo : IMeetingInfo
     {
-        int SpeakerID { get; set; }
-        int UserID { get; set; }
-        string SpeakerName { get; set; }
-        string Website { get; set; }
-        string Bio { get; set; }
-        string Email { get; set; }
-        string Avatar { get; set; }
-        DateTime CreatedOn { get; set; }
-        int CreatedBy { get; set; }
-        DateTime LastUpdatedOn { get; set; }
-        int LastUpdatedBy { get; set; }
+        public int MeetingID { get; set; }
+        public int GroupID { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime HeldOn { get; set; }
+        public int PhysicalAddressID { get; set; }
+        public int VirtualAddressID { get; set; }
+        public bool IsActive { get; set; }
+        public string Slug { get; set; }
+        public string CustomProperties { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime LastUpdatedOn { get; set; }
+        public int LastUpdatedBy { get; set; }
     }
 }

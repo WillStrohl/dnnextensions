@@ -29,21 +29,24 @@
 */
 
 using System;
+using System.Web.Caching;
+using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.ComponentModel.DataAnnotations;
 
-namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
+namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public interface ISpeakerInfo
+    [TableName("UG_VirtualAddress")]
+    [PrimaryKey("AddressID", AutoIncrement = true)]
+    [Cacheable("UG_VirtualAddress", CacheItemPriority.Default, 20)]
+    [Scope("AddressType")]
+    public class VirtualAddressInfo : IVirtualAddressInfo
     {
-        int SpeakerID { get; set; }
-        int UserID { get; set; }
-        string SpeakerName { get; set; }
-        string Website { get; set; }
-        string Bio { get; set; }
-        string Email { get; set; }
-        string Avatar { get; set; }
-        DateTime CreatedOn { get; set; }
-        int CreatedBy { get; set; }
-        DateTime LastUpdatedOn { get; set; }
-        int LastUpdatedBy { get; set; }
+        public int AddressID { get; set; }
+        public string AddressType { get; set; }
+        public string Description { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime LastUpdatedOn { get; set; }
+        public int LastUpdatedBy { get; set; }
     }
 }

@@ -32,15 +32,14 @@ using System;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
 {
-    public interface ISpeakerInfo
+    public interface IAttendanceInfo
     {
-        int SpeakerID { get; set; }
-        int UserID { get; set; }
-        string SpeakerName { get; set; }
-        string Website { get; set; }
-        string Bio { get; set; }
-        string Email { get; set; }
-        string Avatar { get; set; }
+        int AttendanceID { get; set; }
+        int MeetingID { get; set; }
+        int MemberID { get; set; }
+        bool AttendOnline { get; set; }
+        bool AttendInPerson { get; set; }
+        bool Attended { get; set; }
         DateTime CreatedOn { get; set; }
         int CreatedBy { get; set; }
         DateTime LastUpdatedOn { get; set; }

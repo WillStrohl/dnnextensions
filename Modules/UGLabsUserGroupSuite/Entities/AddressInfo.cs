@@ -29,21 +29,29 @@
 */
 
 using System;
+using System.Web.Caching;
+using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.ComponentModel.DataAnnotations;
 
-namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
+namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public interface ISpeakerInfo
+    [TableName("UG_Address")]
+    [PrimaryKey("AddressID", AutoIncrement = true)]
+    [Cacheable("UG_Address", CacheItemPriority.Default, 20)]
+    [Scope("Nickname")]
+    public class AddressInfo : IAddressInfo
     {
-        int SpeakerID { get; set; }
-        int UserID { get; set; }
-        string SpeakerName { get; set; }
-        string Website { get; set; }
-        string Bio { get; set; }
-        string Email { get; set; }
-        string Avatar { get; set; }
-        DateTime CreatedOn { get; set; }
-        int CreatedBy { get; set; }
-        DateTime LastUpdatedOn { get; set; }
-        int LastUpdatedBy { get; set; }
+        public int AddressID { get; set; }
+        public string Nickname { get; set; }
+        public string Line1 { get; set; }
+        public string Line2 { get; set; }
+        public string City { get; set; }
+        public int RegionID { get; set; }
+        public int CountryID { get; set; }
+        public string PostalCode { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime LastUpdatedOn { get; set; }
+        public int LastUpdatedBy { get; set; }
     }
 }
