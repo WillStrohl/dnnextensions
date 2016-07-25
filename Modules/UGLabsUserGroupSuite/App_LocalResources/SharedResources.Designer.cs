@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
+namespace DNNCommunity.Modules.UserGroupSuite.App_LocalResources {
     using System;
     
     

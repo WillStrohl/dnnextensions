@@ -30,7 +30,7 @@
 
 using DotNetNuke.Web.Api;
 
-namespace WillStrohl.Modules.CodeCamp.Components
+namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
     public class RouteMapper : IServiceRouteMapper
     {

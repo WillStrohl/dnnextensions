@@ -41,7 +41,7 @@ using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Entities;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     // TODO: add validation catches and formal error responses for all end points
 

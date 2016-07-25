@@ -31,7 +31,7 @@
 using System;
 using DotNetNuke.Services.Exceptions;
 
-namespace WillStrohl.Modules.CodeCamp
+namespace DNNCommunity.Modules.UserGroupSuite
 {
     public partial class Settings : CodeCampModuleSettingsBase
     {

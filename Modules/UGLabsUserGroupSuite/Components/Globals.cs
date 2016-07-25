@@ -30,7 +30,7 @@
 
 using System;
 
-namespace WillStrohl.Modules.CodeCamp.Components
+namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
     public class Globals
     {

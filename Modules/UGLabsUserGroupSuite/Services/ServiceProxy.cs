@@ -33,7 +33,7 @@ using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Entities;
 using WillStrohl.Modules.CodeCamp.Tests;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     public class ServiceProxy : ServiceProxyBase
     {

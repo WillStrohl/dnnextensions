@@ -34,7 +34,7 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Security.Membership;
 using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp.Controllers
+namespace DNNCommunity.Modules.UserGroupSuite.Controllers
 {
     public class DnnUserController
     {

@@ -35,7 +35,7 @@ using System.IO;
 using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Services;
 
-namespace WillStrohl.Modules.CodeCamp.Tests
+namespace DNNCommunity.Modules.UserGroupSuite.Tests
 {
     public class ServiceHelper
     {

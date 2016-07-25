@@ -31,7 +31,7 @@
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Localization;
 
-namespace WillStrohl.Modules.CodeCamp
+namespace DNNCommunity.Modules.UserGroupSuite
 {
     public class CodeCampModuleSettingsBase : ModuleSettingsBase
     {

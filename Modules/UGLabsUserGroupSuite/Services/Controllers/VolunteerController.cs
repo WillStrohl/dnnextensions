@@ -41,7 +41,7 @@ using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Entities;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     public partial class EventController
     {

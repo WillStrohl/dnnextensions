@@ -30,7 +30,7 @@
 
 using Newtonsoft.Json.Converters;
 
-namespace WillStrohl.Modules.CodeCamp.Components
+namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
     public class DateTimeConverter : IsoDateTimeConverter
     {

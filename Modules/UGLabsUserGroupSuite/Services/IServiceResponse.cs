@@ -30,7 +30,7 @@
 
 using System.Collections.Generic;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     public interface IServiceResponse
     {

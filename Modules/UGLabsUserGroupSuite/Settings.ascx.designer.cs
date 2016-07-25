@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WillStrohl.Modules.CodeCamp {
+namespace DNNCommunity.Modules.UserGroupSuite {
     
     
     public partial class Settings {

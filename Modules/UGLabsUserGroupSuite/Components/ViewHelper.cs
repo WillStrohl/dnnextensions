@@ -28,7 +28,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-namespace WillStrohl.Modules.CodeCamp.Components
+namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
     public static class ViewHelper
     {

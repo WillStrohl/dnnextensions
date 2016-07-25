@@ -31,7 +31,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     [DataContract]
     [Serializable]

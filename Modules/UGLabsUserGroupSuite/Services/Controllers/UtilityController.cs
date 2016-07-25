@@ -38,7 +38,7 @@ using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     public partial class EventController
     {

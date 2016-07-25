@@ -32,7 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace WillStrohl.Modules.CodeCamp.Services
+namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     [DataContract]
     [Serializable]

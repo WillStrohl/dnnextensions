@@ -33,7 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp.Entities
+namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
     public class VolunteerInfoController
     {
