@@ -33,7 +33,7 @@ using DotNetNuke.Services.Exceptions;
 
 namespace DNNCommunity.Modules.UserGroupSuite
 {
-    public partial class Settings : CodeCampModuleSettingsBase
+    public partial class Settings : UserGroupSuiteSettingsBase
     {
         #region Base Method Implementations
 

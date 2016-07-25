@@ -95,7 +95,7 @@
     </Compile>
     <Compile Include="Components\DateTimeConverter.cs" />
     <Compile Include="Components\FeatureController.cs" />
-    <Compile Include="Components\CodeCampModuleSettingsBase.cs">
+    <Compile Include="Components\UserGroupSuiteModuleSettingsBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Components\Globals.cs" />

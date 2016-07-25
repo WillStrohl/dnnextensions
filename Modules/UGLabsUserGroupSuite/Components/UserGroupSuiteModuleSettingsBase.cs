@@ -33,7 +33,7 @@ using DotNetNuke.Services.Localization;
 
 namespace DNNCommunity.Modules.UserGroupSuite
 {
-    public class CodeCampModuleSettingsBase : ModuleSettingsBase
+    public class UserGroupSuiteSettingsBase : ModuleSettingsBase
     {
         #region Localization
 
