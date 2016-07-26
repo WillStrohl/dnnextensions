@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Web.Caching;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
 using DotNetNuke.ComponentModel.DataAnnotations;
@@ -54,6 +55,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public bool IsActive { get; set; }
         public string Slug { get; set; }
         public string CustomProperties { get; set; }
+        [IgnoreColumn]
+        public List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }

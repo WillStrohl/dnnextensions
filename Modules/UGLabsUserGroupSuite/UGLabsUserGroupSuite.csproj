@@ -117,6 +117,8 @@
     <Compile Include="Controllers\AttendanceInfoController.cs" />
     <Compile Include="Controllers\DnnUserController.cs" />
     <Compile Include="Controllers\AddressInfoController.cs" />
+    <Compile Include="Entities\CustomPropertyInfo.cs" />
+    <Compile Include="Entities\Interfaces\ICustomPropertyInfo.cs" />
     <Compile Include="Entities\MemberInfoRepository.cs" />
     <Compile Include="Entities\VirtualAddressInfoRepository.cs" />
     <Compile Include="Entities\SpeakerMeetingInfoRepository.cs" />
@@ -159,18 +161,8 @@
     <Compile Include="Entities\GroupInfo.cs" />
     <Compile Include="Entities\LanguageInfo.cs" />
     <Compile Include="Entities\Interfaces\ILanguageInfo.cs" />
-    <Compile Include="Services\Controllers\TimeSlotController.cs" />
-    <Compile Include="Services\Controllers\VolunteerTaskController.cs" />
-    <Compile Include="Services\Controllers\VolunteerController.cs" />
-    <Compile Include="Services\Controllers\TrackController.cs" />
-    <Compile Include="Services\Controllers\UtilityController.cs" />
-    <Compile Include="Services\Controllers\SpeakerController.cs" />
-    <Compile Include="Services\Controllers\SessionSpeakerController.cs" />
-    <Compile Include="Services\Controllers\SessionRegistrationController.cs" />
-    <Compile Include="Services\Controllers\SessionController.cs" />
-    <Compile Include="Services\Controllers\RoomController.cs" />
-    <Compile Include="Services\Controllers\RegistrationController.cs" />
-    <Compile Include="Services\Controllers\EventController.cs" />
+    <Compile Include="Services\Controllers\AddressController.cs" />
+    <Compile Include="Services\Controllers\GroupController.cs" />
     <Compile Include="Services\ServiceProxyBase.cs" />
     <Compile Include="Services\IServiceResponse.cs" />
     <Compile Include="Components\JsonHelper.cs" />
@@ -178,7 +170,6 @@
     <Compile Include="Services\ServiceResponse.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\ServiceError.cs" />
-    <Compile Include="Services\Controllers\TestController.cs" />
     <Compile Include="Services\ServiceProxy.cs" />
     <Compile Include="Services\ServiceResponseHelper.cs" />
     <Compile Include="Settings.ascx.cs">

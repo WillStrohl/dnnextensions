@@ -46,7 +46,7 @@
 
         <component type="Module">
           <desktopModule>
-            <moduleName>User Group Suite</moduleName>
+            <moduleName>UserGroupSuite</moduleName>
             <foldername>UserGroupSuite</foldername>
             <businessControllerClass>DNNCommunity.Modules.UserGroupSuite.Components.FeatureController, DNNCommunity.Modules.UserGroupSuite</businessControllerClass>
             <supportedFeatures />
