@@ -36,7 +36,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Components
     {
         public void RegisterRoutes(IMapRoute mapRouteManager)
         {
-            mapRouteManager.MapHttpRoute("CodeCamp", "default", "{controller}/{action}", new[] { "WillStrohl.Modules.CodeCamp.Services" });
+            mapRouteManager.MapHttpRoute("UserGroupSuite", "default", "{controller}/{action}", new[] { "DNNCommunity.Modules.UserGroupSuite.Services" });
         }
     }
 }

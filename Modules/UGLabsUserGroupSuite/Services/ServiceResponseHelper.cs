@@ -55,7 +55,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
             response.Errors.Add(new ServiceError()
             {
                 Code = "UNKNOWN-ERROR",
-                Description = "An unknown error occurred. Check the event viewer or contact your site administrator"
+                Description = "An unknown error occurred. Check the event viewer or contact your site administrator."
             });
         }
 

@@ -32,8 +32,8 @@ using System;
 using System.Text;
 using System.Net;
 using System.IO;
-using WillStrohl.Modules.CodeCamp.Components;
-using WillStrohl.Modules.CodeCamp.Services;
+using DNNCommunity.Modules.UserGroupSuite.Components;
+using DNNCommunity.Modules.UserGroupSuite.Services;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Tests
 {

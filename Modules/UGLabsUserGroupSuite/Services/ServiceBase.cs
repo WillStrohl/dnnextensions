@@ -28,42 +28,51 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using DNNCommunity.Modules.UserGroupSuite.Controllers;
 using DotNetNuke.Web.Api;
-using WillStrohl.Modules.CodeCamp.Entities;
+using DNNCommunity.Modules.UserGroupSuite.Entities;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     public class ServiceBase : DnnApiController
     {
         protected const string SUCCESS_MESSAGE = "SUCCESS";
-        protected const string ERROR_MESSAGE = "An error occurred. Please check the event log or contact your site administrator for more information";
+        protected const string ERROR_MESSAGE = "An error occurred. Please check the event log or contact your site administrator for more information.";
         protected const string NO_FILES = "NO FILES";
 
-        protected CodeCampInfoController CodeCampDataAccess { get; set; }
-        protected RegistrationInfoController RegistrationDataAccess { get; set; }
-        protected RoomInfoController RoomDataAccess { get; set; }
-        protected SessionInfoController SessionDataAccess { get; set; }
-        protected SessionRegistrationInfoController SessionRegistrationDataAccess { get; set; }
-        protected SessionSpeakerInfoController SessionSpeakerDataAccess { get; set; }
+        protected AddressInfoController AddressDataAccess { get; set; }
+        protected AttendanceInfoController AttendanceDataAccess { get; set; }
+        protected DnnUserController DnnUserDataAccess { get; set; }
+        protected GroupInfoController GroupDataAccess { get; set; }
+        protected KeywordInfoController KeywordDataAccess { get; set; }
+        protected LanguageInfoController LanguageDataAccess { get; set; }
+        protected LeaderInfoController LeaderDataAccess { get; set; }
+        protected MaterialInfoController MaterialDataAccess { get; set; }
+        protected MeetingInfoController MeetingDataAccess { get; set; }
+        protected MemberActivityInfoController MemberActivityDataAccess { get; set; }
+        protected MemberInfoController MemberDataAccess { get; set; }
+        protected SocialSiteInfoController SocialSiteDataAccess { get; set; }
         protected SpeakerInfoController SpeakerDataAccess { get; set; }
-        protected TrackInfoController TrackDataAccess { get; set; }
-        protected TimeSlotInfoController TimeSlotDataAccess { get; set; }
-        protected VolunteerInfoController VolunteerDataAccess { get; set; }
-        protected VolunteerTaskInfoController VolunteerTaskDataAccess { get; set; }
+        protected SpeakerMeetingInfoController SpeakerMeetingDataAccess { get; set; }
+        protected VirtualAddressInfoController VirtualAddressDataAccess { get; set; }
 
         public ServiceBase()
         {
-            CodeCampDataAccess = new CodeCampInfoController();
-            RegistrationDataAccess = new RegistrationInfoController();
-            RoomDataAccess = new RoomInfoController();
-            SessionDataAccess = new SessionInfoController();
-            SessionRegistrationDataAccess = new SessionRegistrationInfoController();
-            SessionSpeakerDataAccess = new SessionSpeakerInfoController();
+            AddressDataAccess = new AddressInfoController();
+            AttendanceDataAccess = new AttendanceInfoController();
+            DnnUserDataAccess = new DnnUserController();
+            GroupDataAccess = new GroupInfoController();
+            KeywordDataAccess = new KeywordInfoController();
+            LanguageDataAccess = new LanguageInfoController();
+            LeaderDataAccess = new LeaderInfoController();
+            MaterialDataAccess = new MaterialInfoController();
+            MeetingDataAccess = new MeetingInfoController();
+            MemberActivityDataAccess = new MemberActivityInfoController();
+            MemberDataAccess = new MemberInfoController();
+            SocialSiteDataAccess = new SocialSiteInfoController();
             SpeakerDataAccess = new SpeakerInfoController();
-            TrackDataAccess = new TrackInfoController();
-            TimeSlotDataAccess = new TimeSlotInfoController();
-            VolunteerDataAccess = new VolunteerInfoController();
-            VolunteerTaskDataAccess = new VolunteerTaskInfoController();
+            SpeakerMeetingDataAccess = new SpeakerMeetingInfoController();
+            VirtualAddressDataAccess = new VirtualAddressInfoController();
         }
     }
 }

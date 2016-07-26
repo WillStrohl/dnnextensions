@@ -28,11 +28,6 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System.Collections.Generic;
-using WillStrohl.Modules.CodeCamp.Components;
-using WillStrohl.Modules.CodeCamp.Entities;
-using WillStrohl.Modules.CodeCamp.Tests;
-
 namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
     public class ServiceProxy : ServiceProxyBase
@@ -46,52 +41,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 baseUri += "/";
             }
 
-            fullApiUri = System.IO.Path.Combine(baseUri, "DesktopModules/CodeCamp/API/Event/");
-        }
-
-        public ServiceResponse<string> CreateEvent(CodeCampInfo codeCamp)
-        {
-            var result = new ServiceResponse<string>();
-
-            result = ServiceHelper.PostRequest<ServiceResponse<string>>(fullApiUri + "CreateEvent", codeCamp.ObjectToJson());
-            
-            return result;   
-        }
-
-        public ServiceResponse<List<CodeCampInfo>> GetEvents(int moduleId)
-        {
-            var result = new ServiceResponse<List<CodeCampInfo>>();
-
-            result = ServiceHelper.GetRequest<ServiceResponse<List<CodeCampInfo>>>(fullApiUri + "GetEvents?moduleId=" + moduleId);
-
-            return result;
-        }
-
-        public ServiceResponse<CodeCampInfo> GetEvent(int itemId)
-        {
-            var result = new ServiceResponse<CodeCampInfo>();
-
-            result = ServiceHelper.GetRequest<ServiceResponse<CodeCampInfo>>(fullApiUri + "GetEvent?itemId=" + itemId);
-
-            return result;
-        }
-        
-        public ServiceResponse<string> UpdateEvent(CodeCampInfo codeCamp)
-        {
-            var result = new ServiceResponse<string>();
-
-            result = ServiceHelper.PostRequest<ServiceResponse<string>>(fullApiUri + "UpdateEvent", codeCamp.ObjectToJson());
-
-            return result;
-        }
-
-        public ServiceResponse<string> DeleteEvent(int itemId)
-        {
-            var result = new ServiceResponse<string>();
-
-            result = ServiceHelper.DeleteRequest<ServiceResponse<string>>(fullApiUri + "DeleteEvent?itemId=" + itemId, string.Empty);
-
-            return result;
+            fullApiUri = System.IO.Path.Combine(baseUri, "DesktopModules/UserGroupSuite/API/GroupManagement/");
         }
     }
 }
