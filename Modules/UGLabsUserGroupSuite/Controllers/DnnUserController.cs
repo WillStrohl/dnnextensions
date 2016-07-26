@@ -32,7 +32,7 @@ using System.Linq;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Security.Membership;
-using WillStrohl.Modules.CodeCamp.Components;
+using DNNCommunity.Modules.UserGroupSuite.Components;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Controllers
 {
