@@ -25,6 +25,13 @@ BEGIN FOREIGN KEY CLEANUP
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_TermID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_TermID];
@@ -137,6 +144,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_MemberID' 
     AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_MemberID];
@@ -228,6 +242,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_VirtualAddress_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_VirtualAddress')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] DROP CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_VirtualAddress_CreatedBy' 
     AND TABLE_NAME = N'{objectQualifier}UG_VirtualAddress')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] DROP CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_CreatedBy];
@@ -245,6 +266,13 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Address_CreatedBy' 
     AND TABLE_NAME = N'{objectQualifier}UG_Address')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Address] DROP CONSTRAINT [FK_{objectQualifier}UG_Address_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Address_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Address')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Address] DROP CONSTRAINT [FK_{objectQualifier}UG_Address_ModuleID];
 GO
 
 IF EXISTS (SELECT 1 
@@ -387,6 +415,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Language] (
 );
 GO
 
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Language_GroupLanguageID_PortalID] ON {databaseOwner}[{objectQualifier}UG_Language] ([GroupLanguageID],[PortalID]);
+GO
+
 IF NOT OBJECT_ID('{databaseOwner}[{objectQualifier}UG_Group]') IS NULL
     DROP TABLE {databaseOwner}[{objectQualifier}UG_Group];
 GO
@@ -470,6 +501,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_SocialSite] (
 );
 GO
 
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_SocialSite_GroupSocialSiteID_GroupID] ON {databaseOwner}[{objectQualifier}UG_SocialSite] ([GroupSocialSiteID],[GroupID]);
+GO
+
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_SocialSite_GroupID] ON {databaseOwner}[{objectQualifier}UG_SocialSite] ([GroupID]);
 GO
 
@@ -500,6 +534,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Member] (
         CONSTRAINT [FK_{objectQualifier}UG_Member_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Member_MemberID_UserID] ON {databaseOwner}[{objectQualifier}UG_Member] ([MemberID],[UserID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Member_GroupID] ON {databaseOwner}[{objectQualifier}UG_Member] ([GroupID]);
@@ -539,6 +576,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Leader] (
 );
 GO
 
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Leader_GroupLeaderID_GroupID] ON {databaseOwner}[{objectQualifier}UG_Leader] ([GroupLeaderID],[GroupID]);
+GO
+
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Leader_GroupID] ON {databaseOwner}[{objectQualifier}UG_Leader] ([GroupID]);
 GO
 
@@ -561,7 +601,10 @@ GO
 
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_Address] (
     [AddressID] INT IDENTITY(1,1) 
-        CONSTRAINT [PK_{objectQualifier}UG_Address] PRIMARY KEY CLUSTERED, 
+        CONSTRAINT [PK_{objectQualifier}UG_Address] PRIMARY KEY CLUSTERED,
+	[ModuleID] INT NOT NULL
+        CONSTRAINT [FK_{objectQualifier}UG_Address_ModuleID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE, 
     [Nickname] NVARCHAR(50) NOT NULL, 
     [Line1] NVARCHAR(200) NOT NULL, 
     [Line2] NVARCHAR(200) NULL, 
@@ -578,6 +621,12 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Address] (
         CONSTRAINT [FK_{objectQualifier}UG_Address_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_ModuleID] ON {databaseOwner}[{objectQualifier}UG_Address] ([ModuleID]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_AddressID_ModuleID] ON {databaseOwner}[{objectQualifier}UG_Address] ([AddressID],[ModuleID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_Nickname] ON {databaseOwner}[{objectQualifier}UG_Address] ([Nickname]);
@@ -609,6 +658,9 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] (
     [AddressID] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}UG_VirtualAddress] PRIMARY KEY CLUSTERED, 
+	[ModuleID] INT NOT NULL
+        CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_ModuleID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE,
     [AddressType] NVARCHAR(50) NOT NULL, 
     [Description] NVARCHAR(MAX) NOT NULL, 
     [CreatedOn] DATETIME NOT NULL,
@@ -620,6 +672,12 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] (
         CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_VirtualAddress_AddressID_ModuleID] ON {databaseOwner}[{objectQualifier}UG_VirtualAddress] ([AddressID],[ModuleID]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_VirtualAddress_ModuleID] ON {databaseOwner}[{objectQualifier}UG_VirtualAddress] ([ModuleID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_VirtualAddress_AddressType] ON {databaseOwner}[{objectQualifier}UG_VirtualAddress] ([AddressType]);
@@ -655,6 +713,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Speaker] (
 );
 GO
 
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Speaker_SpeakerID_UserID] ON {databaseOwner}[{objectQualifier}UG_Speaker] ([SpeakerID],[UserID]);
+GO
+
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Speaker_UserID] ON {databaseOwner}[{objectQualifier}UG_Speaker] ([UserID]);
 GO
 
@@ -680,10 +741,10 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Meeting] (
 	[HeldOn] DATETIME NOT NULL, 
 	[PhysicalAddressID] INT NULL
 		CONSTRAINT [FK_{objectQualifier}UG_Meeting_PhysicalAddressID] FOREIGN KEY 
-		REFERENCES {databaseOwner}[{objectQualifier}UG_Address] ([AddressID]) ON DELETE CASCADE, 
+		REFERENCES {databaseOwner}[{objectQualifier}UG_Address] ([AddressID]), 
 	[VirtualAddressID] INT NULL
 		CONSTRAINT [FK_{objectQualifier}UG_Meeting_VirtualAddressID] FOREIGN KEY 
-		REFERENCES {databaseOwner}[{objectQualifier}UG_VirtualAddress] ([AddressID]) ON DELETE CASCADE, 
+		REFERENCES {databaseOwner}[{objectQualifier}UG_VirtualAddress] ([AddressID]), 
 	[IsActive] BIT NOT NULL 
 		CONSTRAINT [DF_{objectQualifier}UG_Meeting_IsActive] DEFAULT((0)), 
 	[Slug] NVARCHAR(255) NOT NULL, 
@@ -697,6 +758,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Meeting] (
         CONSTRAINT [FK_{objectQualifier}UG_Meeting_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Meeting_MeetingID_GroupID] ON {databaseOwner}[{objectQualifier}UG_Meeting] ([MeetingID],[GroupID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Meeting_GroupID] ON {databaseOwner}[{objectQualifier}UG_Meeting] ([GroupID]);
@@ -731,6 +795,9 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] (
     [ActivityID] INT IDENTITY(1,1) 
         CONSTRAINT [PK_{objectQualifier}UG_MemberActivity] PRIMARY KEY CLUSTERED, 
+    [ModuleID] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_ModuleID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE,
     [MemberID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_MemberID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}UG_Member] ([MemberID]),
@@ -751,6 +818,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] (
         CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_MemberActivity_ActivityID_MemberID] ON {databaseOwner}[{objectQualifier}UG_MemberActivity] ([ActivityID],[MemberID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_MemberActivity_MemberID] ON {databaseOwner}[{objectQualifier}UG_MemberActivity] ([MemberID]);
@@ -808,6 +878,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Material] (
 );
 GO
 
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Material_MaterialID_MeetingID] ON {databaseOwner}[{objectQualifier}UG_Material] ([MaterialID],[MeetingID]);
+GO
+
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Material_MeetingID] ON {databaseOwner}[{objectQualifier}UG_Material] ([MeetingID]);
 GO
 
@@ -843,6 +916,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Attendance] (
         CONSTRAINT [FK_{objectQualifier}UG_Attendance_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Attendance_AttendanceID_MeetingID] ON {databaseOwner}[{objectQualifier}UG_Attendance] ([AttendanceID],[MeetingID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Attendance_MeetingID] ON {databaseOwner}[{objectQualifier}UG_Attendance] ([MeetingID]);
@@ -885,6 +961,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] (
 );
 GO
 
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_SpeakerMeeting_SpeakerMeetingID_SpeakerID] ON {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] ([SpeakerMeetingID],[SpeakerID]);
+GO
+
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_SpeakerMeeting_SpeakerID] ON {databaseOwner}[{objectQualifier}UG_SpeakerMeeting] ([SpeakerID]);
 GO
 
@@ -902,12 +981,15 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_Keyword] (
 	[KeywordId] INT IDENTITY(1,1) 
 		CONSTRAINT [PK_{objectQualifier}UG_Keyword] PRIMARY KEY CLUSTERED, 
+    [ModuleId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}UG_Keyword_ModuleID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE,
 	[TermID] INT NOT NULL 
 		CONSTRAINT [FK_{objectQualifier}UG_Keyword_TermID] FOREIGN KEY 
-		REFERENCES {databaseOwner}[{objectQualifier}Taxonomy_Terms] ([TermID]) ON DELETE CASCADE, 
+		REFERENCES {databaseOwner}[{objectQualifier}Taxonomy_Terms] ([TermID]), 
 	[GroupID] INT NULL 
 		CONSTRAINT [FK_{objectQualifier}UG_Keyword_GroupID] FOREIGN KEY 
-		REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]) ON DELETE CASCADE,
+		REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]),
 	[MeetingID] INT NULL 
 		CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingID] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}UG_Meeting] ([MeetingID]),
@@ -920,6 +1002,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Keyword] (
         CONSTRAINT [FK_{objectQualifier}UG_Keyword_LastUpdatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId])
 );
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_KeywordID_ModuleID] ON {databaseOwner}[{objectQualifier}UG_Keyword] ([KeywordID],[ModuleID]);
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_TermID] ON {databaseOwner}[{objectQualifier}UG_Keyword] ([TermID]);

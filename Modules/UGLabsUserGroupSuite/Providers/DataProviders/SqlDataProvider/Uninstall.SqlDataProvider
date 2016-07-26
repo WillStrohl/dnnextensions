@@ -6,6 +6,13 @@ BEGIN FOREIGN KEY DELETION
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_TermID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_TermID];
@@ -22,7 +29,7 @@ IF EXISTS (SELECT 1
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_MeetingID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
-    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingIDs];
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingID];
 GO
 
 IF EXISTS (SELECT 1 
@@ -118,6 +125,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_MemberActivity_MemberID' 
     AND TABLE_NAME = N'{objectQualifier}UG_MemberActivity')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_MemberActivity] DROP CONSTRAINT [FK_{objectQualifier}UG_MemberActivity_MemberID];
@@ -209,6 +223,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_VirtualAddress_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_VirtualAddress')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] DROP CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_VirtualAddress_CreatedBy' 
     AND TABLE_NAME = N'{objectQualifier}UG_VirtualAddress')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] DROP CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_CreatedBy];
@@ -226,6 +247,13 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Address_CreatedBy' 
     AND TABLE_NAME = N'{objectQualifier}UG_Address')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Address] DROP CONSTRAINT [FK_{objectQualifier}UG_Address_CreatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Address_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Address')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Address] DROP CONSTRAINT [FK_{objectQualifier}UG_Address_ModuleID];
 GO
 
 IF EXISTS (SELECT 1 
