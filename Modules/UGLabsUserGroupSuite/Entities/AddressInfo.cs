@@ -38,10 +38,11 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [TableName("UG_Address")]
     [PrimaryKey("AddressID", AutoIncrement = true)]
     [Cacheable("UG_Address", CacheItemPriority.Default, 20)]
-    [Scope("Nickname")]
+    [Scope("ModuleID")]
     public class AddressInfo : IAddressInfo
     {
         public int AddressID { get; set; }
+        public int ModuleID { get; set; }
         public string Nickname { get; set; }
         public string Line1 { get; set; }
         public string Line2 { get; set; }

@@ -29,48 +29,65 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public class RoomInfoController
+    public class MemberInfoRepository
     {
-        private readonly RoomInfoRepository repo = null;
-
-        public RoomInfoController() 
+        public void CreateItem(MemberInfo i)
         {
-            repo = new RoomInfoRepository();
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MemberInfo>();
+                rep.Insert(i);
+            }
         }
 
-        public void CreateItem(RoomInfo i)
+        public void DeleteItem(int itemId, int userID)
         {
-            repo.CreateItem(i);
+            var i = GetItem(itemId, userID);
+            DeleteItem(i);
         }
 
-        public void DeleteItem(int itemId, int codeCampId)
+        public void DeleteItem(MemberInfo i)
         {
-            repo.DeleteItem(itemId, codeCampId);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MemberInfo>();
+                rep.Delete(i);
+            }
         }
 
-        public void DeleteItem(RoomInfo i)
+        public IEnumerable<MemberInfo> GetItems(int userID)
         {
-            repo.DeleteItem(i);
+            IEnumerable<MemberInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MemberInfo>();
+                i = rep.Get(userID);
+            }
+            return i;
         }
 
-        public IEnumerable<RoomInfo> GetItems(int codeCampId)
+        public MemberInfo GetItem(int itemId, int userID)
         {
-            var items = repo.GetItems(codeCampId);
-            return items;
+            MemberInfo i = null;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MemberInfo>();
+                i = rep.GetById(itemId, userID);
+            }
+            return i;
         }
 
-        public RoomInfo GetItem(int itemId, int codeCampId)
+        public void UpdateItem(MemberInfo i)
         {
-            var item = repo.GetItem(itemId, codeCampId);
-            return item;
-        }
-
-        public void UpdateItem(RoomInfo i)
-        {
-            repo.UpdateItem(i);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MemberInfo>();
+                rep.Update(i);
+            }
         }
     }
 }

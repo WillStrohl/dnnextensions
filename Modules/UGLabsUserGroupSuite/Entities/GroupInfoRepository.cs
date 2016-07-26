@@ -29,50 +29,65 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public class TrackInfoController
+    public class GroupInfoRepository
     {
-        private readonly TrackInfoRepository repo = null;
-
-        public TrackInfoController() 
+        public void CreateItem(GroupInfo i)
         {
-            repo = new TrackInfoRepository();
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<GroupInfo>();
+                rep.Insert(i);
+            }
         }
 
-        public void CreateItem(TrackInfo i)
+        public void DeleteItem(int itemId, int moduleID)
         {
-            repo.CreateItem(i);
+            var i = GetItem(itemId, moduleID);
+            DeleteItem(i);
         }
 
-        public void DeleteItem(int itemId, int codeCampId)
+        public void DeleteItem(GroupInfo i)
         {
-            repo.DeleteItem(itemId, codeCampId);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<GroupInfo>();
+                rep.Delete(i);
+            }
         }
 
-        public void DeleteItem(TrackInfo i)
+        public IEnumerable<GroupInfo> GetItems(int moduleID)
         {
-            repo.DeleteItem(i);
+            IEnumerable<GroupInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<GroupInfo>();
+                i = rep.Get(moduleID);
+            }
+            return i;
         }
 
-        public IEnumerable<TrackInfo> GetItems(int codeCampId)
+        public GroupInfo GetItem(int itemId, int moduleID)
         {
-            var items = repo.GetItems(codeCampId);
-
-            return items;
+            GroupInfo i = null;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<GroupInfo>();
+                i = rep.GetById(itemId, moduleID);
+            }
+            return i;
         }
 
-        public TrackInfo GetItem(int itemId, int codeCampId)
+        public void UpdateItem(GroupInfo i)
         {
-            var item = repo.GetItem(itemId, codeCampId);
-
-            return item;
-        }
-
-        public void UpdateItem(TrackInfo i)
-        {
-            repo.UpdateItem(i);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<GroupInfo>();
+                rep.Update(i);
+            }
         }
     }
 }

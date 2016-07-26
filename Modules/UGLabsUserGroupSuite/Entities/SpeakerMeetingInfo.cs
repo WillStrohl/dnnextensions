@@ -38,7 +38,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [TableName("UG_SpeakerMeeting")]
     [PrimaryKey("SpeakerMeetingID", AutoIncrement = true)]
     [Cacheable("UG_SpeakerMeeting", CacheItemPriority.Default, 20)]
-    [Scope("SpeakerID")]
+    [Scope("MeetingID")]
     public class SpeakerMeetingInfo : ISpeakerMeetingInfo
     {
         public int SpeakerMeetingID { get; set; }

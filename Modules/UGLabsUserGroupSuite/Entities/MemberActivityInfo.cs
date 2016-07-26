@@ -38,10 +38,11 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [TableName("UG_MemberActivity")]
     [PrimaryKey("ActivityID", AutoIncrement = true)]
     [Cacheable("UG_MemberActivity", CacheItemPriority.Default, 20)]
-    [Scope("MemberID")]
+    [Scope("ModuleID")]
     public class MemberActivityInfo : IMemberActivityInfo
     {
         public int ActivityID { get; set; }
+        public int ModuleID { get; set; }
         public int MemberID { get; set; }
         public int GroupID { get; set; }
         public int MeetingID { get; set; }

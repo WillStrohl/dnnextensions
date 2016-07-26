@@ -35,6 +35,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     public interface IAddressInfo
     {
         int AddressID { get; set; }
+        int ModuleID { get; set; }
         string Nickname { get; set; }
         string Line1 { get; set; }
         string Line2 { get; set; }

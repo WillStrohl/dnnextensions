@@ -35,6 +35,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     public interface IMemberActivityInfo
     {
         int ActivityID { get; set; }
+        int ModuleID { get; set; }
         int MemberID { get; set; }
         int GroupID { get; set; }
         int MeetingID { get; set; }

@@ -38,7 +38,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [TableName("UG_Member")]
     [PrimaryKey("MemberID", AutoIncrement = true)]
     [Cacheable("UG_Member", CacheItemPriority.Default, 20)]
-    [Scope("GroupID")]
+    [Scope("UserID")]
     public class MemberInfo : IMemberInfo
     {
         public int MemberID { get; set; }

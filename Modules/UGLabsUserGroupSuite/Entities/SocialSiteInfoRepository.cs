@@ -29,54 +29,65 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public class SessionSpeakerInfoController
+    public class SocialSiteInfoRepository
     {
-        private readonly SessionSpeakerInfoRepository repo = null;
-
-        public SessionSpeakerInfoController() 
+        public void CreateItem(SocialSiteInfo i)
         {
-            repo = new SessionSpeakerInfoRepository();
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SocialSiteInfo>();
+                rep.Insert(i);
+            }
         }
 
-        public void CreateItem(SessionSpeakerInfo i)
+        public void DeleteItem(int itemId, int groupID)
         {
-            repo.CreateItem(i);
+            var i = GetItem(itemId, groupID);
+            DeleteItem(i);
         }
 
-        public void DeleteItem(int itemId, int sessionId)
+        public void DeleteItem(SocialSiteInfo i)
         {
-            repo.DeleteItem(itemId, sessionId);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SocialSiteInfo>();
+                rep.Delete(i);
+            }
         }
 
-        public void DeleteItem(SessionSpeakerInfo i)
+        public IEnumerable<SocialSiteInfo> GetItems(int groupID)
         {
-            repo.DeleteItem(i);
+            IEnumerable<SocialSiteInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SocialSiteInfo>();
+                i = rep.Get(groupID);
+            }
+            return i;
         }
 
-        public IEnumerable<SessionSpeakerInfo> GetItems(int sessionId)
+        public SocialSiteInfo GetItem(int itemId, int groupID)
         {
-            var items = repo.GetItems(sessionId);
-            return items;
+            SocialSiteInfo i = null;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SocialSiteInfo>();
+                i = rep.GetById(itemId, groupID);
+            }
+            return i;
         }
 
-        public IEnumerable<SessionSpeakerInfo> GetItemsBySpeakerId(int speakerId)
+        public void UpdateItem(SocialSiteInfo i)
         {
-            var items = repo.GetItemsBySpeakerId(speakerId);
-            return items;
-        }
-
-        public SessionSpeakerInfo GetItem(int itemId, int sessionId)
-        {
-            var item = repo.GetItem(itemId, sessionId);
-            return item;
-        }
-
-        public void UpdateItem(SessionSpeakerInfo i)
-        {
-            repo.UpdateItem(i);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<SocialSiteInfo>();
+                rep.Update(i);
+            }
         }
     }
 }

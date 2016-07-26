@@ -38,10 +38,11 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [TableName("UG_VirtualAddress")]
     [PrimaryKey("AddressID", AutoIncrement = true)]
     [Cacheable("UG_VirtualAddress", CacheItemPriority.Default, 20)]
-    [Scope("AddressType")]
+    [Scope("ModuleID")]
     public class VirtualAddressInfo : IVirtualAddressInfo
     {
         public int AddressID { get; set; }
+        public int ModuleID { get; set; }
         public string AddressType { get; set; }
         public string Description { get; set; }
         public DateTime CreatedOn { get; set; }

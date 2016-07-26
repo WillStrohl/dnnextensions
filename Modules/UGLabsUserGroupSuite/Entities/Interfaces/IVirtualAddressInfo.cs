@@ -35,6 +35,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     public interface IVirtualAddressInfo
     {
         int AddressID { get; set; }
+        int ModuleID { get; set; }
         string AddressType { get; set; }
         string Description { get; set; }
         DateTime CreatedOn { get; set; }

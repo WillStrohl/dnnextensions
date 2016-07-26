@@ -38,10 +38,11 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [TableName("UG_Keyword")]
     [PrimaryKey("KeywordID", AutoIncrement = true)]
     [Cacheable("UG_Keyword", CacheItemPriority.Default, 20)]
-    [Scope("TermID")]
+    [Scope("ModuleID")]
     public class KeywordInfo : IKeywordInfo
     {
         public int KeywordID { get; set; }
+        public int ModuleID { get; set; }
         public int TermID { get; set; }
         public int GroupID { get; set; }
         public int MeetingID { get; set; }

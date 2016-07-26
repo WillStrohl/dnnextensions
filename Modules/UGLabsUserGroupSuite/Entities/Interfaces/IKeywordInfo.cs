@@ -35,6 +35,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     public interface IKeywordInfo
     {
         int KeywordID { get; set; }
+        int ModuleID { get; set; }
         int TermID { get; set; }
         int GroupID { get; set; }
         int MeetingID { get; set; }

@@ -29,56 +29,65 @@
 */
 
 using System.Collections.Generic;
-using System.Linq;
+using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public class RegistrationInfoController
+    public class MaterialInfoRepository
     {
-        private readonly RegistrationInfoRepository repo = null;
-
-        public RegistrationInfoController() 
+        public void CreateItem(MaterialInfo i)
         {
-            repo = new RegistrationInfoRepository();
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MaterialInfo>();
+                rep.Insert(i);
+            }
         }
 
-        public void CreateItem(RegistrationInfo i)
+        public void DeleteItem(int itemId, int meetingID)
         {
-            repo.CreateItem(i);
+            var i = GetItem(itemId, meetingID);
+            DeleteItem(i);
         }
 
-        public void DeleteItem(int itemId, int codeCampId)
+        public void DeleteItem(MaterialInfo i)
         {
-            repo.DeleteItem(itemId, codeCampId);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MaterialInfo>();
+                rep.Delete(i);
+            }
         }
 
-        public void DeleteItem(RegistrationInfo i)
+        public IEnumerable<MaterialInfo> GetItems(int meetingID)
         {
-            repo.DeleteItem(i);
+            IEnumerable<MaterialInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MaterialInfo>();
+                i = rep.Get(meetingID);
+            }
+            return i;
         }
 
-        public IEnumerable<RegistrationInfo> GetItems(int codeCampId)
+        public MaterialInfo GetItem(int itemId, int meetingID)
         {
-            var items = repo.GetItems(codeCampId);
-            return items;
+            MaterialInfo i = null;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MaterialInfo>();
+                i = rep.GetById(itemId, meetingID);
+            }
+            return i;
         }
 
-        public RegistrationInfo GetItem(int itemId, int codeCampId)
+        public void UpdateItem(MaterialInfo i)
         {
-            var item = repo.GetItem(itemId, codeCampId);
-            return item;
-        }
-
-        public void UpdateItem(RegistrationInfo i)
-        {
-            repo.UpdateItem(i);
-        }
-
-        public RegistrationInfo GetItemByUserId(int userId, int codeCampId)
-        {
-            var items = GetItems(codeCampId);
-
-            return items?.FirstOrDefault(r => r.UserId == userId);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<MaterialInfo>();
+                rep.Update(i);
+            }
         }
     }
 }

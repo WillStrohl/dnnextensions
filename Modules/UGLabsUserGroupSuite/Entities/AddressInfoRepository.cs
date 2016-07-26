@@ -29,48 +29,65 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public class SessionRegistrationInfoController
+    public class AddressInfoRepository
     {
-        private readonly SessionRegistrationInfoRepository repo = null;
-
-        public SessionRegistrationInfoController() 
+        public void CreateItem(AddressInfo i)
         {
-            repo = new SessionRegistrationInfoRepository();
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<AddressInfo>();
+                rep.Insert(i);
+            }
         }
 
-        public void CreateItem(SessionRegistrationInfo i)
+        public void DeleteItem(int itemId, int moduleID)
         {
-            repo.CreateItem(i);
+            var i = GetItem(itemId, moduleID);
+            DeleteItem(i);
         }
 
-        public void DeleteItem(int itemId, int sessionId)
+        public void DeleteItem(AddressInfo i)
         {
-            repo.DeleteItem(itemId, sessionId);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<AddressInfo>();
+                rep.Delete(i);
+            }
         }
 
-        public void DeleteItem(SessionRegistrationInfo i)
+        public IEnumerable<AddressInfo> GetItems(int moduleID)
         {
-            repo.DeleteItem(i);
+            IEnumerable<AddressInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<AddressInfo>();
+                i = rep.Get(moduleID);
+            }
+            return i;
         }
 
-        public IEnumerable<SessionRegistrationInfo> GetItems(int sessionId)
+        public AddressInfo GetItem(int itemId, int moduleID)
         {
-            var items = repo.GetItems(sessionId);
-            return items;
+            AddressInfo i = null;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<AddressInfo>();
+                i = rep.GetById(itemId, moduleID);
+            }
+            return i;
         }
 
-        public SessionRegistrationInfo GetItem(int itemId, int sessionId)
+        public void UpdateItem(AddressInfo i)
         {
-            var item = repo.GetItem(itemId, sessionId);
-            return item;
-        }
-
-        public void UpdateItem(SessionRegistrationInfo i)
-        {
-            repo.UpdateItem(i);
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<AddressInfo>();
+                rep.Update(i);
+            }
         }
     }
 }
