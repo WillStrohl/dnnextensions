@@ -49,19 +49,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
     public partial class GroupManagementController
     {
         /// <summary>
-        /// Get all addresses for the module
+        /// Get all keywords for the module
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddresses
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetKeywords
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddresses()
+        public HttpResponseMessage GetKeywords()
         {
             try
             {
-                return GetAddresses(ActiveModule.ModuleID);
+                return GetKeywords(ActiveModule.ModuleID);
             }
             catch (Exception ex)
             {
@@ -71,20 +71,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get all addresses for the module
+        /// Get all keywords for the module
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddresses
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetKeywords
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddresses(int moduleID)
+        public HttpResponseMessage GetKeywords(int moduleID)
         {
             try
             {
-                var addresses = AddressDataAccess.GetItems(moduleID);
-                var response = new ServiceResponse<List<AddressInfo>> { Content = addresses.ToList() };
+                var keywords = KeywordDataAccess.GetItems(moduleID);
+                var response = new ServiceResponse<List<KeywordInfo>> { Content = keywords.ToList() };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -96,19 +96,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get an address
+        /// Get a keyword
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddress
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetKeyword
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddress(int itemId)
+        public HttpResponseMessage GetKeyword(int itemId)
         {
             try
             {
-                return GetAddress(itemId, ActiveModule.ModuleID);
+                return GetKeyword(itemId, ActiveModule.ModuleID);
             }
             catch (Exception ex)
             {
@@ -118,20 +118,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get an address
+        /// Get a keyword
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddress
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetKeyword
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddress(int itemId, int moduleID)
+        public HttpResponseMessage GetKeyword(int itemId, int moduleID)
         {
             try
             {
-                var address = AddressDataAccess.GetItem(itemId, moduleID);
-                var response = new ServiceResponse<AddressInfo> { Content = address };
+                var keyword = KeywordDataAccess.GetItem(itemId, moduleID);
+                var response = new ServiceResponse<KeywordInfo> { Content = keyword };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -143,20 +143,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Delete an address
+        /// Delete a keyword
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteAddress
+        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteKeyword
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteAddress(int itemId)
+        public HttpResponseMessage DeleteKeyword(int itemId)
         {
             try
             {
-                return DeleteAddress(itemId, ActiveModule.ModuleID);
+                return DeleteKeyword(itemId, ActiveModule.ModuleID);
             }
             catch (Exception ex)
             {
@@ -166,20 +166,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Delete an address
+        /// Delete a keyword
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteAddress
+        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteKeyword
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteAddress(int itemId, int moduleID)
+        public HttpResponseMessage DeleteKeyword(int itemId, int moduleID)
         {
             try
             {
-                AddressDataAccess.DeleteItem(itemId, moduleID);
+                KeywordDataAccess.DeleteItem(itemId, moduleID);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
@@ -193,38 +193,38 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Create an address
+        /// Create a keyword
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/CreateAddress
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/CreateKeyword
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage CreateAddress(AddressInfo address)
+        public HttpResponseMessage CreateKeyword(KeywordInfo keyword)
         {
             try
             {
-                var response = new ServiceResponse<AddressInfo>();
+                var response = new ServiceResponse<KeywordInfo>();
 
-                address.CreatedOn = DateTime.Now;
-                address.CreatedBy = UserInfo.UserID;
-                address.LastUpdatedOn = DateTime.Now;
-                address.LastUpdatedBy = UserInfo.UserID;
-                address.ModuleID = ActiveModule.ModuleID;
+                keyword.CreatedOn = DateTime.Now;
+                keyword.CreatedBy = UserInfo.UserID;
+                keyword.LastUpdatedOn = DateTime.Now;
+                keyword.LastUpdatedBy = UserInfo.UserID;
+                keyword.ModuleID = ActiveModule.ModuleID;
 
-                AddressDataAccess.CreateItem(address);
+                KeywordDataAccess.CreateItem(keyword);
 
                 // TODO: Find a more consistent way to do this
-                var addresses = AddressDataAccess.GetItems(address.ModuleID).OrderByDescending(r => r.AddressID);
-                var savedAddress = addresses.FirstOrDefault(r => r.CreatedBy == address.CreatedBy);
+                var keywords = KeywordDataAccess.GetItems(keyword.ModuleID).OrderByDescending(r => r.KeywordID);
+                var savedKeyword = keywords.FirstOrDefault(r => r.CreatedBy == keyword.CreatedBy);
 
-                response.Content = savedAddress;
+                response.Content = savedKeyword;
 
-                if (savedAddress == null)
+                if (savedKeyword == null)
                 {
-                    ServiceResponseHelper<AddressInfo>.AddNoneFoundError("address", ref response);
+                    ServiceResponseHelper<KeywordInfo>.AddNoneFoundError("keyword", ref response);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -237,29 +237,29 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Update an address
+        /// Update a keyword
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UpdateAddress
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UpdateKeyword
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateAddress(AddressInfo address)
+        public HttpResponseMessage UpdateKeyword(KeywordInfo keyword)
         {
             try
             {
-                var originalAddress = AddressDataAccess.GetItem(address.AddressID, address.ModuleID);
+                var originalKeyword = KeywordDataAccess.GetItem(keyword.KeywordID, keyword.ModuleID);
                 // only update the fields that would be updated from the UI to keep the DB clean
-                var updatesToProcess = AddressHasUpdates(ref originalAddress, ref address);
+                var updatesToProcess = KeywordHasUpdates(ref originalKeyword, ref keyword);
                 
                 if (updatesToProcess)
                 {
-                    originalAddress.LastUpdatedOn = DateTime.Now;
-                    originalAddress.LastUpdatedBy = UserInfo.UserID;
+                    originalKeyword.LastUpdatedOn = DateTime.Now;
+                    originalKeyword.LastUpdatedBy = UserInfo.UserID;
 
-                    AddressDataAccess.UpdateItem(originalAddress);
+                    KeywordDataAccess.UpdateItem(originalKeyword);
                 }
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
@@ -275,49 +275,25 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
 
         #region Private Helper Methods
 
-        private bool AddressHasUpdates(ref AddressInfo originalAddress, ref AddressInfo newAddress)
+        private bool KeywordHasUpdates(ref KeywordInfo originalKeyword, ref KeywordInfo newKeyword)
         {
             var updatesToProcess = false;
 
-            if (!string.Equals(originalAddress.Nickname, newAddress.Nickname))
+            if (originalKeyword.TermID != newKeyword.TermID)
             {
-                originalAddress.Nickname = newAddress.Nickname;
+                originalKeyword.TermID = newKeyword.TermID;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.Line1, newAddress.Line1))
+            if (originalKeyword.GroupID != newKeyword.TermID)
             {
-                originalAddress.Line1 = newAddress.Line1;
+                originalKeyword.TermID = newKeyword.TermID;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.Line2, newAddress.Line2))
+            if (originalKeyword.MeetingID != newKeyword.MeetingID)
             {
-                originalAddress.Line2 = newAddress.Line2;
-                updatesToProcess = true;
-            }
-
-            if (!string.Equals(originalAddress.City, newAddress.City))
-            {
-                originalAddress.City = newAddress.City;
-                updatesToProcess = true;
-            }
-
-            if (originalAddress.RegionID != newAddress.RegionID)
-            {
-                originalAddress.RegionID = newAddress.RegionID;
-                updatesToProcess = true;
-            }
-
-            if (originalAddress.CountryID != newAddress.CountryID)
-            {
-                originalAddress.CountryID = newAddress.CountryID;
-                updatesToProcess = true;
-            }
-
-            if (!string.Equals(originalAddress.PostalCode, newAddress.PostalCode))
-            {
-                originalAddress.PostalCode = newAddress.PostalCode;
+                originalKeyword.MeetingID = newKeyword.MeetingID;
                 updatesToProcess = true;
             }
 

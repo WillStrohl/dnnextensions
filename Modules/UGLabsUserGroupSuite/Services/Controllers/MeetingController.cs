@@ -49,42 +49,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
     public partial class GroupManagementController
     {
         /// <summary>
-        /// Get all addresses for the module
+        /// Get all meetings for the group
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddresses
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetMeetings
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddresses()
+        public HttpResponseMessage GetMeetings(int groupID)
         {
             try
             {
-                return GetAddresses(ActiveModule.ModuleID);
-            }
-            catch (Exception ex)
-            {
-                Exceptions.LogException(ex);
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
-            }
-        }
-
-        /// <summary>
-        /// Get all addresses for the module
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddresses
-        /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
-        [HttpGet]
-        public HttpResponseMessage GetAddresses(int moduleID)
-        {
-            try
-            {
-                var addresses = AddressDataAccess.GetItems(moduleID);
-                var response = new ServiceResponse<List<AddressInfo>> { Content = addresses.ToList() };
+                var meetings = MeetingDataAccess.GetItems(groupID);
+                var response = new ServiceResponse<List<MeetingInfo>> { Content = meetings.ToList() };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -96,42 +74,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get an address
+        /// Get a meeting
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddress
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetMeeting
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddress(int itemId)
+        public HttpResponseMessage GetMeeting(int itemId, int groupID)
         {
             try
             {
-                return GetAddress(itemId, ActiveModule.ModuleID);
-            }
-            catch (Exception ex)
-            {
-                Exceptions.LogException(ex);
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
-            }
-        }
-
-        /// <summary>
-        /// Get an address
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddress
-        /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
-        [HttpGet]
-        public HttpResponseMessage GetAddress(int itemId, int moduleID)
-        {
-            try
-            {
-                var address = AddressDataAccess.GetItem(itemId, moduleID);
-                var response = new ServiceResponse<AddressInfo> { Content = address };
+                var meeting = MeetingDataAccess.GetItem(itemId, groupID);
+                var response = new ServiceResponse<MeetingInfo> { Content = meeting };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -143,43 +99,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Delete an address
+        /// Delete a meeting
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteAddress
+        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteMeeting
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteAddress(int itemId)
+        public HttpResponseMessage DeleteMeeting(int itemId, int groupID)
         {
             try
             {
-                return DeleteAddress(itemId, ActiveModule.ModuleID);
-            }
-            catch (Exception ex)
-            {
-                Exceptions.LogException(ex);
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
-            }
-        }
-
-        /// <summary>
-        /// Delete an address
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteAddress
-        /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
-        [ValidateAntiForgeryToken]
-        [HttpDelete]
-        public HttpResponseMessage DeleteAddress(int itemId, int moduleID)
-        {
-            try
-            {
-                AddressDataAccess.DeleteItem(itemId, moduleID);
+                MeetingDataAccess.DeleteItem(itemId, groupID);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
@@ -193,38 +126,37 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Create an address
+        /// Create a meeting
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/CreateAddress
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/CreateMeeting
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage CreateAddress(AddressInfo address)
+        public HttpResponseMessage CreateMeeting(MeetingInfo meeting)
         {
             try
             {
-                var response = new ServiceResponse<AddressInfo>();
+                var response = new ServiceResponse<MeetingInfo>();
 
-                address.CreatedOn = DateTime.Now;
-                address.CreatedBy = UserInfo.UserID;
-                address.LastUpdatedOn = DateTime.Now;
-                address.LastUpdatedBy = UserInfo.UserID;
-                address.ModuleID = ActiveModule.ModuleID;
+                meeting.CreatedOn = DateTime.Now;
+                meeting.CreatedBy = UserInfo.UserID;
+                meeting.LastUpdatedOn = DateTime.Now;
+                meeting.LastUpdatedBy = UserInfo.UserID;
 
-                AddressDataAccess.CreateItem(address);
+                MeetingDataAccess.CreateItem(meeting);
 
                 // TODO: Find a more consistent way to do this
-                var addresses = AddressDataAccess.GetItems(address.ModuleID).OrderByDescending(r => r.AddressID);
-                var savedAddress = addresses.FirstOrDefault(r => r.CreatedBy == address.CreatedBy);
+                var meetings = MeetingDataAccess.GetItems(meeting.GroupID).OrderByDescending(r => r.MeetingID);
+                var savedMeeting = meetings.FirstOrDefault(r => r.CreatedBy == meeting.CreatedBy);
 
-                response.Content = savedAddress;
+                response.Content = savedMeeting;
 
-                if (savedAddress == null)
+                if (savedMeeting == null)
                 {
-                    ServiceResponseHelper<AddressInfo>.AddNoneFoundError("address", ref response);
+                    ServiceResponseHelper<MeetingInfo>.AddNoneFoundError("meeting", ref response);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -237,29 +169,29 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Update an address
+        /// Update a meeting
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UpdateAddress
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UpdateMeeting
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateAddress(AddressInfo address)
+        public HttpResponseMessage UpdateMeeting(MeetingInfo meeting)
         {
             try
             {
-                var originalAddress = AddressDataAccess.GetItem(address.AddressID, address.ModuleID);
+                var originalMeeting = MeetingDataAccess.GetItem(meeting.MeetingID, meeting.GroupID);
                 // only update the fields that would be updated from the UI to keep the DB clean
-                var updatesToProcess = AddressHasUpdates(ref originalAddress, ref address);
+                var updatesToProcess = MeetingHasUpdates(ref originalMeeting, ref meeting);
                 
                 if (updatesToProcess)
                 {
-                    originalAddress.LastUpdatedOn = DateTime.Now;
-                    originalAddress.LastUpdatedBy = UserInfo.UserID;
+                    originalMeeting.LastUpdatedOn = DateTime.Now;
+                    originalMeeting.LastUpdatedBy = UserInfo.UserID;
 
-                    AddressDataAccess.UpdateItem(originalAddress);
+                    MeetingDataAccess.UpdateItem(originalMeeting);
                 }
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
@@ -275,50 +207,96 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
 
         #region Private Helper Methods
 
-        private bool AddressHasUpdates(ref AddressInfo originalAddress, ref AddressInfo newAddress)
+        private bool MeetingHasUpdates(ref MeetingInfo originalMeeting, ref MeetingInfo newMeeting)
         {
             var updatesToProcess = false;
 
-            if (!string.Equals(originalAddress.Nickname, newAddress.Nickname))
+            if (!string.Equals(originalMeeting.Title, newMeeting.Title))
             {
-                originalAddress.Nickname = newAddress.Nickname;
+                originalMeeting.Title = newMeeting.Title;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.Line1, newAddress.Line1))
+            if (!string.Equals(originalMeeting.Description, newMeeting.Description))
             {
-                originalAddress.Line1 = newAddress.Line1;
+                originalMeeting.Description = newMeeting.Description;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.Line2, newAddress.Line2))
+            if (originalMeeting.HeldOn != newMeeting.HeldOn)
             {
-                originalAddress.Line2 = newAddress.Line2;
+                originalMeeting.HeldOn = newMeeting.HeldOn;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.City, newAddress.City))
+            if (originalMeeting.PhysicalAddressID != newMeeting.PhysicalAddressID)
             {
-                originalAddress.City = newAddress.City;
+                originalMeeting.PhysicalAddressID = newMeeting.PhysicalAddressID;
                 updatesToProcess = true;
             }
 
-            if (originalAddress.RegionID != newAddress.RegionID)
+            if (originalMeeting.VirtualAddressID != newMeeting.VirtualAddressID)
             {
-                originalAddress.RegionID = newAddress.RegionID;
+                originalMeeting.VirtualAddressID = newMeeting.VirtualAddressID;
                 updatesToProcess = true;
             }
 
-            if (originalAddress.CountryID != newAddress.CountryID)
+            if (originalMeeting.IsActive != newMeeting.IsActive)
             {
-                originalAddress.CountryID = newAddress.CountryID;
+                originalMeeting.IsActive = newMeeting.IsActive;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.PostalCode, newAddress.PostalCode))
+            if (!string.Equals(originalMeeting.Slug, newMeeting.Slug))
             {
-                originalAddress.PostalCode = newAddress.PostalCode;
+                originalMeeting.Slug = newMeeting.Slug;
                 updatesToProcess = true;
+            }
+
+            if (originalMeeting.CustomProperties != null)
+            {
+                // parse custom properties for updates
+                foreach (var property in originalMeeting.CustomPropertiesObj)
+                {
+                    if (newMeeting.CustomPropertiesObj.Any(p => p.Name == property.Name))
+                    {
+                        // see if the existing property needs to be updated
+                        var prop = newMeeting.CustomPropertiesObj.FirstOrDefault(p => p.Name == property.Name);
+                        if (!string.Equals(prop.Value, property.Value))
+                        {
+                            property.Value = prop.Value;
+                            updatesToProcess = true;
+                        }
+                    }
+                    else
+                    {
+                        // delete the property
+                        newMeeting.CustomPropertiesObj.Remove(property);
+                        updatesToProcess = true;
+                    }
+                }
+            }
+
+            if (newMeeting.CustomPropertiesObj != null)
+            {
+                // add any new properties
+                if (originalMeeting.CustomProperties == null)
+                {
+                    foreach (var property in newMeeting.CustomPropertiesObj)
+                    {
+                        originalMeeting.CustomPropertiesObj.Add(property);
+                        updatesToProcess = true;
+                    }
+                }
+                else
+                {
+                    var meeting = originalMeeting;
+                    foreach (var property in newMeeting.CustomPropertiesObj.Where(property => !meeting.CustomPropertiesObj.Contains(property)))
+                    {
+                        meeting.CustomPropertiesObj.Add(property);
+                        updatesToProcess = true;
+                    }
+                }
             }
 
             return updatesToProcess;

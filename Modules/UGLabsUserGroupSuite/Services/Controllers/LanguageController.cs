@@ -49,19 +49,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
     public partial class GroupManagementController
     {
         /// <summary>
-        /// Get all addresses for the module
+        /// Get all languages for the module
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddresses
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetLanguages
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddresses()
+        public HttpResponseMessage GetLanguages()
         {
             try
             {
-                return GetAddresses(ActiveModule.ModuleID);
+                return GetLanguages(ActiveModule.PortalID);
             }
             catch (Exception ex)
             {
@@ -71,20 +71,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get all addresses for the module
+        /// Get all languages for the module
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddresses
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetLanguages
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddresses(int moduleID)
+        public HttpResponseMessage GetLanguages(int portalID)
         {
             try
             {
-                var addresses = AddressDataAccess.GetItems(moduleID);
-                var response = new ServiceResponse<List<AddressInfo>> { Content = addresses.ToList() };
+                var languages = LanguageDataAccess.GetItems(portalID);
+                var response = new ServiceResponse<List<LanguageInfo>> { Content = languages.ToList() };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -96,19 +96,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get an address
+        /// Get a language
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddress
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetLanguage
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddress(int itemId)
+        public HttpResponseMessage GetLanguage(int itemId)
         {
             try
             {
-                return GetAddress(itemId, ActiveModule.ModuleID);
+                return GetLanguage(itemId, ActiveModule.PortalID);
             }
             catch (Exception ex)
             {
@@ -118,20 +118,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Get an address
+        /// Get a language
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetAddress
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetLanguage
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
-        public HttpResponseMessage GetAddress(int itemId, int moduleID)
+        public HttpResponseMessage GetLanguage(int itemId, int portalID)
         {
             try
             {
-                var address = AddressDataAccess.GetItem(itemId, moduleID);
-                var response = new ServiceResponse<AddressInfo> { Content = address };
+                var language = LanguageDataAccess.GetItem(itemId, portalID);
+                var response = new ServiceResponse<LanguageInfo> { Content = language };
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
@@ -143,20 +143,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Delete an address
+        /// Delete a language
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteAddress
+        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteLanguage
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteAddress(int itemId)
+        public HttpResponseMessage DeleteLanguage(int itemId)
         {
             try
             {
-                return DeleteAddress(itemId, ActiveModule.ModuleID);
+                return DeleteLanguage(itemId, ActiveModule.PortalID);
             }
             catch (Exception ex)
             {
@@ -166,20 +166,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Delete an address
+        /// Delete a language
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteAddress
+        /// DELETE: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/DeleteLanguage
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
         [ValidateAntiForgeryToken]
         [HttpDelete]
-        public HttpResponseMessage DeleteAddress(int itemId, int moduleID)
+        public HttpResponseMessage DeleteLanguage(int itemId, int portalID)
         {
             try
             {
-                AddressDataAccess.DeleteItem(itemId, moduleID);
+                LanguageDataAccess.DeleteItem(itemId, portalID);
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
 
@@ -193,38 +193,34 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Create an address
+        /// Create a language
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/CreateAddress
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/CreateLanguage
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage CreateAddress(AddressInfo address)
+        public HttpResponseMessage CreateLanguage(LanguageInfo language)
         {
             try
             {
-                var response = new ServiceResponse<AddressInfo>();
+                var response = new ServiceResponse<LanguageInfo>();
 
-                address.CreatedOn = DateTime.Now;
-                address.CreatedBy = UserInfo.UserID;
-                address.LastUpdatedOn = DateTime.Now;
-                address.LastUpdatedBy = UserInfo.UserID;
-                address.ModuleID = ActiveModule.ModuleID;
+                language.PortalID = ActiveModule.PortalID;
 
-                AddressDataAccess.CreateItem(address);
+                LanguageDataAccess.CreateItem(language);
 
                 // TODO: Find a more consistent way to do this
-                var addresses = AddressDataAccess.GetItems(address.ModuleID).OrderByDescending(r => r.AddressID);
-                var savedAddress = addresses.FirstOrDefault(r => r.CreatedBy == address.CreatedBy);
+                var languages = LanguageDataAccess.GetItems(language.PortalID).OrderByDescending(r => r.GroupLanguageID);
+                var savedLanguage = languages.FirstOrDefault();
 
-                response.Content = savedAddress;
+                response.Content = savedLanguage;
 
-                if (savedAddress == null)
+                if (savedLanguage == null)
                 {
-                    ServiceResponseHelper<AddressInfo>.AddNoneFoundError("address", ref response);
+                    ServiceResponseHelper<LanguageInfo>.AddNoneFoundError("language", ref response);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -237,29 +233,26 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
-        /// Update an address
+        /// Update a language
         /// </summary>
         /// <returns></returns>
         /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UpdateAddress
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UpdateLanguage
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public HttpResponseMessage UpdateAddress(AddressInfo address)
+        public HttpResponseMessage UpdateLanguage(LanguageInfo language)
         {
             try
             {
-                var originalAddress = AddressDataAccess.GetItem(address.AddressID, address.ModuleID);
+                var originalLanguage = LanguageDataAccess.GetItem(language.GroupLanguageID, language.PortalID);
                 // only update the fields that would be updated from the UI to keep the DB clean
-                var updatesToProcess = AddressHasUpdates(ref originalAddress, ref address);
+                var updatesToProcess = LanguageHasUpdates(ref originalLanguage, ref language);
                 
                 if (updatesToProcess)
                 {
-                    originalAddress.LastUpdatedOn = DateTime.Now;
-                    originalAddress.LastUpdatedBy = UserInfo.UserID;
-
-                    AddressDataAccess.UpdateItem(originalAddress);
+                    LanguageDataAccess.UpdateItem(originalLanguage);
                 }
 
                 var response = new ServiceResponse<string> { Content = SUCCESS_MESSAGE };
@@ -275,49 +268,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
 
         #region Private Helper Methods
 
-        private bool AddressHasUpdates(ref AddressInfo originalAddress, ref AddressInfo newAddress)
+        private bool LanguageHasUpdates(ref LanguageInfo originalLanguage, ref LanguageInfo newLanguage)
         {
             var updatesToProcess = false;
 
-            if (!string.Equals(originalAddress.Nickname, newAddress.Nickname))
+            if (!string.Equals(originalLanguage.Language, newLanguage.Language))
             {
-                originalAddress.Nickname = newAddress.Nickname;
+                originalLanguage.Language = newLanguage.Language;
                 updatesToProcess = true;
             }
 
-            if (!string.Equals(originalAddress.Line1, newAddress.Line1))
+            if (originalLanguage.PortalID != newLanguage.PortalID)
             {
-                originalAddress.Line1 = newAddress.Line1;
-                updatesToProcess = true;
-            }
-
-            if (!string.Equals(originalAddress.Line2, newAddress.Line2))
-            {
-                originalAddress.Line2 = newAddress.Line2;
-                updatesToProcess = true;
-            }
-
-            if (!string.Equals(originalAddress.City, newAddress.City))
-            {
-                originalAddress.City = newAddress.City;
-                updatesToProcess = true;
-            }
-
-            if (originalAddress.RegionID != newAddress.RegionID)
-            {
-                originalAddress.RegionID = newAddress.RegionID;
-                updatesToProcess = true;
-            }
-
-            if (originalAddress.CountryID != newAddress.CountryID)
-            {
-                originalAddress.CountryID = newAddress.CountryID;
-                updatesToProcess = true;
-            }
-
-            if (!string.Equals(originalAddress.PostalCode, newAddress.PostalCode))
-            {
-                originalAddress.PostalCode = newAddress.PostalCode;
+                originalLanguage.PortalID = newLanguage.PortalID;
                 updatesToProcess = true;
             }
 

@@ -29,6 +29,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
 {
@@ -44,6 +45,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         bool IsActive { get; set; }
         string Slug { get; set; }
         string CustomProperties { get; set; }
+        List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
         DateTime CreatedOn { get; set; }
         int CreatedBy { get; set; }
         DateTime LastUpdatedOn { get; set; }
