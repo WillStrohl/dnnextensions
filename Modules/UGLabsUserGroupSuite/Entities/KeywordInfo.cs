@@ -46,6 +46,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public int TermID { get; set; }
         public int GroupID { get; set; }
         public int MeetingID { get; set; }
+        public int SpeakerID { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }

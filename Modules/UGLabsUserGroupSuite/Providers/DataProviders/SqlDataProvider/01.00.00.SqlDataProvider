@@ -995,6 +995,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Keyword] (
 	[MeetingID] INT NULL 
 		CONSTRAINT [FK_{objectQualifier}UG_Keyword_MeetingID] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}UG_Meeting] ([MeetingID]),
+	[SpeakerID] INT NULL 
+		CONSTRAINT [FK_{objectQualifier}UG_Keyword_SpeakerID] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}UG_Speaker] ([SpeakerID]),
     [CreatedOn] DATETIME NOT NULL,
     [CreatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Keyword_CreatedBy] FOREIGN KEY 
@@ -1022,6 +1025,12 @@ CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_MeetingID] ON {databas
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_TermID_MeetingID] ON {databaseOwner}[{objectQualifier}UG_Keyword] ([TermID],[MeetingID]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_SpeakerID] ON {databaseOwner}[{objectQualifier}UG_Keyword] ([SpeakerID]);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_TermID_SpeakerID] ON {databaseOwner}[{objectQualifier}UG_Keyword] ([TermID],[SpeakerID]);
 GO
 
 /*
