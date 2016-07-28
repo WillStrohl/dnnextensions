@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,72 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(SocialSiteInfo i)
         {
+            ValidateSocialSiteObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int groupID)
+        public void DeleteItem(int itemID, int groupID)
         {
-            _repo.DeleteItem(itemId, groupID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("groupID", groupID);
+
+            _repo.DeleteItem(itemID, groupID);
         }
 
         public void DeleteItem(SocialSiteInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.GroupSocialSiteID, "GroupSocialSiteID");
+            Requires.PropertyNotNegative(i.GroupID, "GroupID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<SocialSiteInfo> GetItems(int groupID)
         {
+            Requires.NotNegative("groupID", groupID);
+
             var items = _repo.GetItems(groupID);
             return items;
         }
 
-        public SocialSiteInfo GetItem(int itemId, int groupID)
+        public SocialSiteInfo GetItem(int itemID, int groupID)
         {
-            var item = _repo.GetItem(itemId, groupID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("groupID", groupID);
+
+            var item = _repo.GetItem(itemID, groupID);
             return item;
         }
 
         public void UpdateItem(SocialSiteInfo i)
         {
+            ValidateSocialSiteObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateSocialSiteObject(SocialSiteInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.GroupSocialSiteID, "GroupSocialSiteID");
+            }
+
+            Requires.PropertyNotNegative(i.GroupID, "GroupID");
+            Requires.PropertyNotNegative(i.SocialID, "SocialID");
+            Requires.PropertyNotNullOrEmpty(i.SocialSiteURL, "SocialSiteURL");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+        }
+
+        #endregion
     }
 }

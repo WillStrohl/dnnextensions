@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,71 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(KeywordInfo i)
         {
+            ValidateKeywordObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleID)
+        public void DeleteItem(int itemID, int moduleID)
         {
-            _repo.DeleteItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            _repo.DeleteItem(itemID, moduleID);
         }
 
         public void DeleteItem(KeywordInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.KeywordID, "KeywordID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<KeywordInfo> GetItems(int moduleID)
         {
+            Requires.NotNegative("moduleID", moduleID);
+
             var items = _repo.GetItems(moduleID);
             return items;
         }
 
-        public KeywordInfo GetItem(int itemId, int moduleID)
+        public KeywordInfo GetItem(int itemID, int moduleID)
         {
-            var item = _repo.GetItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            var item = _repo.GetItem(itemID, moduleID);
             return item;
         }
 
         public void UpdateItem(KeywordInfo i)
         {
+            ValidateKeywordObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateKeywordObject(KeywordInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.KeywordID, "KeywordID");
+            }
+
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNegative(i.TermID, "TermID");
+        }
+
+        #endregion
     }
 }

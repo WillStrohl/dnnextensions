@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,79 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(GroupInfo i)
         {
+            ValidateGroupObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleID)
+        public void DeleteItem(int itemID, int moduleID)
         {
-            _repo.DeleteItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            _repo.DeleteItem(itemID, moduleID);
         }
 
         public void DeleteItem(GroupInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.GroupID, "GroupID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<GroupInfo> GetItems(int moduleID)
         {
+            Requires.NotNegative("moduleID", moduleID);
+
             var items = _repo.GetItems(moduleID);
             return items;
         }
 
-        public GroupInfo GetItem(int itemId, int moduleID)
+        public GroupInfo GetItem(int itemID, int moduleID)
         {
-            var item = _repo.GetItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            var item = _repo.GetItem(itemID, moduleID);
             return item;
         }
 
         public void UpdateItem(GroupInfo i)
         {
+            ValidateGroupObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateGroupObject(GroupInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.GroupID, "GroupID");
+            }
+
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+            Requires.PropertyNotNullOrEmpty(i.GroupName, "GroupName");
+            Requires.PropertyNotNullOrEmpty(i.Avatar, "ModuleID");
+            Requires.PropertyNotNullOrEmpty(i.City, "City");
+            Requires.PropertyNotNegative(i.CountryID, "City");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNullOrEmpty(i.Description, "Description");
+            Requires.PropertyNotNegative(i.LanguageID, "LanguageID");
+            Requires.PropertyNotNullOrEmpty(i.Slug, "Slug");
+            Requires.PropertyNotNullOrEmpty(i.Website, "Website");
+            Requires.PropertyNotNullOrEmpty(i.GroupName, "GroupName");
+        }
+
+        #endregion
     }
 }

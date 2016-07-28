@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,73 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(MemberActivityInfo i)
         {
+            ValidateMemberActivityObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleID)
+        public void DeleteItem(int itemID, int moduleID)
         {
-            _repo.DeleteItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            _repo.DeleteItem(itemID, moduleID);
         }
 
         public void DeleteItem(MemberActivityInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.ActivityID, "ActivityID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<MemberActivityInfo> GetItems(int moduleID)
         {
+            Requires.NotNegative("moduleID", moduleID);
+
             var items = _repo.GetItems(moduleID);
             return items;
         }
 
-        public MemberActivityInfo GetItem(int itemId, int moduleID)
+        public MemberActivityInfo GetItem(int itemID, int moduleID)
         {
-            var item = _repo.GetItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            var item = _repo.GetItem(itemID, moduleID);
             return item;
         }
 
         public void UpdateItem(MemberActivityInfo i)
         {
+            ValidateMemberActivityObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateMemberActivityObject(MemberActivityInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.ActivityID, "ActivityID");
+            }
+
+            Requires.PropertyNotNullOrEmpty(i.ActivityType, "ActivityType");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNegative(i.MemberID, "MemberID");
+            Requires.PropertyNotNegative(i.Score, "Score");
+        }
+
+        #endregion
     }
 }

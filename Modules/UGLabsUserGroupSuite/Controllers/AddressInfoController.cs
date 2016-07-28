@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,75 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(AddressInfo i)
         {
+            ValidateAddressObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleID)
+        public void DeleteItem(int itemID, int moduleID)
         {
-            _repo.DeleteItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleId", moduleID);
+
+            _repo.DeleteItem(itemID, moduleID);
         }
 
         public void DeleteItem(AddressInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.AddressID, "AddressID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<AddressInfo> GetItems(int moduleID)
         {
+            Requires.NotNegative("moduleID", moduleID);
+
             var items = _repo.GetItems(moduleID);
             return items;
         }
 
-        public AddressInfo GetItem(int itemId, int moduleID)
+        public AddressInfo GetItem(int itemID, int moduleID)
         {
-            var item = _repo.GetItem(itemId, moduleID);
+            Requires.NotNull("itemID", itemID);
+            Requires.NotNull("moduleID", moduleID);
+
+            var item = _repo.GetItem(itemID, moduleID);
             return item;
         }
 
         public void UpdateItem(AddressInfo i)
         {
+            ValidateAddressObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateAddressObject(AddressInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("address", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.AddressID, "AddressID");
+            }
+
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+            Requires.PropertyNotNullOrEmpty(i.City, "City");
+            Requires.PropertyNotNegative(i.CountryID, "CountryID");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("address.CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("address.LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNullOrEmpty(i.Line1, "Line1");
+            Requires.PropertyNotNullOrEmpty(i.Nickname, "Nickname");
+            Requires.PropertyNotNullOrEmpty(i.Nickname, "Nickname");
+        }
+
+        #endregion
     }
 }

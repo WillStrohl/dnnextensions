@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,72 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(VirtualAddressInfo i)
         {
+            ValidateVirtualAddressObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int moduleID)
+        public void DeleteItem(int itemID, int moduleID)
         {
-            _repo.DeleteItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            _repo.DeleteItem(itemID, moduleID);
         }
 
         public void DeleteItem(VirtualAddressInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.AddressID, "AddressID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<VirtualAddressInfo> GetItems(int moduleID)
         {
+            Requires.NotNegative("moduleID", moduleID);
+
             var items = _repo.GetItems(moduleID);
             return items;
         }
 
-        public VirtualAddressInfo GetItem(int itemId, int moduleID)
+        public VirtualAddressInfo GetItem(int itemID, int moduleID)
         {
-            var item = _repo.GetItem(itemId, moduleID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            var item = _repo.GetItem(itemID, moduleID);
             return item;
         }
 
         public void UpdateItem(VirtualAddressInfo i)
         {
+            ValidateVirtualAddressObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateVirtualAddressObject(VirtualAddressInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.AddressID, "AddressID");
+            }
+
+            Requires.PropertyNotNullOrEmpty(i.AddressType, "AddressType");
+            Requires.PropertyNotNullOrEmpty(i.Description, "Description");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+        }
+
+        #endregion
     }
 }

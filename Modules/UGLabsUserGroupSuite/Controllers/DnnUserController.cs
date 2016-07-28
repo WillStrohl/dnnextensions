@@ -33,11 +33,14 @@ using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Security.Membership;
 using DNNCommunity.Modules.UserGroupSuite.Components;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Controllers
 {
     public class DnnUserController
     {
+        private const string SPACE = " ";
+
         public UserInfo User { get; set; }
 
         public DnnUserController()
@@ -45,10 +48,15 @@ namespace DNNCommunity.Modules.UserGroupSuite.Controllers
             User = new UserInfo();
         }
 
-        public UserCreateStatus CreateNewUser(string firstName, string lastName, string emailAddress, int portalId)
+        public UserCreateStatus CreateNewUser(string firstName, string lastName, string emailAddress, int portalID)
         {
+            Requires.NotNullOrEmpty("firstName", firstName);
+            Requires.NotNullOrEmpty("lastName", lastName);
+            Requires.NotNullOrEmpty("emailAddress", emailAddress);
+            Requires.NotNegative("portalID", portalID);
+
             var ctlPortal = new PortalController();
-            var portalSettings = ctlPortal.GetPortals().Cast<PortalInfo>().FirstOrDefault(p => p.PortalID == portalId);
+            var portalSettings = ctlPortal.GetPortals().Cast<PortalInfo>().FirstOrDefault(p => p.PortalID == portalID);
 
             var user = new UserInfo()
             {
@@ -56,8 +64,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Controllers
                 LastName = lastName,
                 Email = emailAddress,
                 Username = emailAddress,
-                DisplayName = string.Concat(firstName, " ", lastName),
-                PortalID = portalId
+                DisplayName = string.Concat(firstName, SPACE, lastName),
+                PortalID = portalID
             };
 
             user.Profile.PreferredLocale = portalSettings.DefaultLanguage;

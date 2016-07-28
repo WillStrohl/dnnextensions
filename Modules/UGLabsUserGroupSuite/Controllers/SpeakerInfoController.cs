@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,73 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(SpeakerInfo i)
         {
+            ValidateSpeakerObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int userID)
+        public void DeleteItem(int itemID, int userID)
         {
-            _repo.DeleteItem(itemId, userID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("userID", userID);
+
+            _repo.DeleteItem(itemID, userID);
         }
 
         public void DeleteItem(SpeakerInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.SpeakerID, "SpeakerID");
+            Requires.PropertyNotNegative(i.UserID, "UserID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<SpeakerInfo> GetItems(int userID)
         {
+            Requires.NotNegative("userID", userID);
+
             var items = _repo.GetItems(userID);
             return items;
         }
 
-        public SpeakerInfo GetItem(int itemId, int userID)
+        public SpeakerInfo GetItem(int itemID, int userID)
         {
-            var item = _repo.GetItem(itemId, userID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("userID", userID);
+
+            var item = _repo.GetItem(itemID, userID);
             return item;
         }
 
         public void UpdateItem(SpeakerInfo i)
         {
+            ValidateSpeakerObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateSpeakerObject(SpeakerInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.SpeakerID, "SpeakerID");
+            }
+
+            Requires.PropertyNotNegative(i.UserID, "UserID");
+            Requires.PropertyNotNullOrEmpty(i.SpeakerName, "SpeakerName");
+            Requires.PropertyNotNullOrEmpty(i.Bio, "Bio");
+            Requires.PropertyNotNullOrEmpty(i.Email, "Email");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+        }
+
+        #endregion
     }
 }

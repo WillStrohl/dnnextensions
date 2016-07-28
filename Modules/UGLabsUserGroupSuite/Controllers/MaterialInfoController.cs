@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,73 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(MaterialInfo i)
         {
+            ValidateMaterialObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int meetingID)
+        public void DeleteItem(int itemID, int meetingID)
         {
-            _repo.DeleteItem(itemId, meetingID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("meetingID", meetingID);
+
+            _repo.DeleteItem(itemID, meetingID);
         }
 
         public void DeleteItem(MaterialInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.MaterialID, "MaterialID");
+            Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<MaterialInfo> GetItems(int meetingID)
         {
+            Requires.NotNegative("meetingID", meetingID);
+
             var items = _repo.GetItems(meetingID);
             return items;
         }
 
-        public MaterialInfo GetItem(int itemId, int meetingID)
+        public MaterialInfo GetItem(int itemID, int meetingID)
         {
-            var item = _repo.GetItem(itemId, meetingID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("meetingID", meetingID);
+
+            var item = _repo.GetItem(itemID, meetingID);
             return item;
         }
 
         public void UpdateItem(MaterialInfo i)
         {
+            ValidateMaterialObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateMaterialObject(MaterialInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.MaterialID, "MaterialID");
+            }
+
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNullOrEmpty(i.Description, "Description");
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+            Requires.PropertyNotNullOrEmpty(i.Source, "Source");
+            Requires.PropertyNotNullOrEmpty(i.Title, "Title");
+        }
+
+        #endregion
     }
 }

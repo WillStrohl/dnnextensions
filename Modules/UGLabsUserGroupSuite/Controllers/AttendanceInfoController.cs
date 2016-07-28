@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,70 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(AttendanceInfo i)
         {
+            ValidateAttendanceObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int meetingID)
+        public void DeleteItem(int itemID, int meetingID)
         {
-            _repo.DeleteItem(itemId, meetingID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("meetingID", meetingID);
+
+            _repo.DeleteItem(itemID, meetingID);
         }
 
         public void DeleteItem(AttendanceInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.AttendanceID, "AttendanceID");
+            Requires.PropertyNotNegative(i.MeetingID, "meetingID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<AttendanceInfo> GetItems(int meetingID)
         {
+            Requires.NotNegative("meetingID", meetingID);
+
             var items = _repo.GetItems(meetingID);
             return items;
         }
 
-        public AttendanceInfo GetItem(int itemId, int meetingID)
+        public AttendanceInfo GetItem(int itemID, int meetingID)
         {
-            var item = _repo.GetItem(itemId, meetingID);
+            Requires.NotNegative("itemID", itemID);
+
+            var item = _repo.GetItem(itemID, meetingID);
             return item;
         }
 
         public void UpdateItem(AttendanceInfo i)
         {
+            ValidateAttendanceObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateAttendanceObject(AttendanceInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.AttendanceID, "AddressID");
+            }
+
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+            Requires.PropertyNotNegative(i.MemberID, "MemberID");
+        }
+
+        #endregion
     }
 }

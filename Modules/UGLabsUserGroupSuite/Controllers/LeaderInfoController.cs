@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -72,5 +73,27 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         {
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateLeaderObject(LeaderInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.GroupLeaderID, "GroupLeaderID");
+            }
+
+            Requires.PropertyNotNullOrEmpty(i.Title, "Title");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.GroupID, "GroupID");
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNegative(i.MemberID, "MemberID");
+        }
+
+        #endregion
     }
 }

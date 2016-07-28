@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,71 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(SpeakerMeetingInfo i)
         {
+            ValidateSpeakerMeetingObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int meetingID)
+        public void DeleteItem(int itemID, int meetingID)
         {
-            _repo.DeleteItem(itemId, meetingID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("meetingID", meetingID);
+
+            _repo.DeleteItem(itemID, meetingID);
         }
 
         public void DeleteItem(SpeakerMeetingInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.SpeakerMeetingID, "SpeakerMeetingID");
+            Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<SpeakerMeetingInfo> GetItems(int meetingID)
         {
+            Requires.NotNegative("meetingID", meetingID);
+
             var items = _repo.GetItems(meetingID);
             return items;
         }
 
-        public SpeakerMeetingInfo GetItem(int itemId, int meetingID)
+        public SpeakerMeetingInfo GetItem(int itemID, int meetingID)
         {
-            var item = _repo.GetItem(itemId, meetingID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("meetingID", meetingID);
+
+            var item = _repo.GetItem(itemID, meetingID);
             return item;
         }
 
         public void UpdateItem(SpeakerMeetingInfo i)
         {
+            ValidateSpeakerMeetingObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateSpeakerMeetingObject(SpeakerMeetingInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.SpeakerMeetingID, "SpeakerMeetingID");
+            }
+
+            Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+            Requires.PropertyNotNegative(i.SpeakerID, "SpeakerID");
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+        }
+
+        #endregion
     }
 }

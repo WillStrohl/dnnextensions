@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,74 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(MeetingInfo i)
         {
+            ValidateMeetingObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int groupID)
+        public void DeleteItem(int itemID, int groupID)
         {
-            _repo.DeleteItem(itemId, groupID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("groupID", groupID);
+
+            _repo.DeleteItem(itemID, groupID);
         }
 
         public void DeleteItem(MeetingInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+            Requires.PropertyNotNegative(i.GroupID, "GroupID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<MeetingInfo> GetItems(int groupID)
         {
+            Requires.NotNegative("groupID", groupID);
+
             var items = _repo.GetItems(groupID);
             return items;
         }
 
-        public MeetingInfo GetItem(int itemId, int groupID)
+        public MeetingInfo GetItem(int itemID, int groupID)
         {
-            var item = _repo.GetItem(itemId, groupID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("groupID", groupID);
+
+            var item = _repo.GetItem(itemID, groupID);
             return item;
         }
 
         public void UpdateItem(MeetingInfo i)
         {
+            ValidateMeetingObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateMeetingObject(MeetingInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.MeetingID, "MeetingID");
+            }
+
+            Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
+            Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNullOrEmpty(i.Description, "Description");
+            Requires.PropertyNotNegative(i.GroupID, "GroupID");
+            Requires.NotNull("HeldOn", i.HeldOn);
+            Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
+            Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNullOrEmpty(i.Slug, "Slug");
+            Requires.PropertyNotNullOrEmpty(i.Title, "Title");
+        }
+
+        #endregion
     }
 }

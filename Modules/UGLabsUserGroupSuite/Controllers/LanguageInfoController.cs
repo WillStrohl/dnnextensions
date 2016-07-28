@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -43,34 +44,67 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(LanguageInfo i)
         {
+            ValidateLanguageObject(i);
+
             _repo.CreateItem(i);
         }
 
-        public void DeleteItem(int itemId, int portalID)
+        public void DeleteItem(int itemID, int portalID)
         {
-            _repo.DeleteItem(itemId, portalID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("portalID", portalID);
+
+            _repo.DeleteItem(itemID, portalID);
         }
 
         public void DeleteItem(LanguageInfo i)
         {
+            Requires.NotNull("i", i);
+            Requires.PropertyNotNegative(i.GroupLanguageID, "GroupLanguageID");
+            Requires.PropertyNotNegative(i.PortalID, "PortalID");
+
             _repo.DeleteItem(i);
         }
 
         public IEnumerable<LanguageInfo> GetItems(int portalID)
         {
+            Requires.NotNegative("portalID", portalID);
+
             var items = _repo.GetItems(portalID);
             return items;
         }
 
-        public LanguageInfo GetItem(int itemId, int portalID)
+        public LanguageInfo GetItem(int itemID, int portalID)
         {
-            var item = _repo.GetItem(itemId, portalID);
+            Requires.NotNegative("itemID", itemID);
+            Requires.NotNegative("portalID", portalID);
+
+            var item = _repo.GetItem(itemID, portalID);
             return item;
         }
 
         public void UpdateItem(LanguageInfo i)
         {
+            ValidateLanguageObject(i, true);
+
             _repo.UpdateItem(i);
         }
+
+        #region Helper Methods
+
+        private void ValidateLanguageObject(LanguageInfo i, bool checkPrimaryKey = false)
+        {
+            Requires.NotNull("i", i);
+
+            if (checkPrimaryKey)
+            {
+                Requires.PropertyNotNegative(i.GroupLanguageID, "GroupLanguageID");
+            }
+
+            Requires.PropertyNotNullOrEmpty(i.Language, "Language");
+            Requires.PropertyNotNegative(i.PortalID, "PortalID");
+        }
+
+        #endregion
     }
 }
