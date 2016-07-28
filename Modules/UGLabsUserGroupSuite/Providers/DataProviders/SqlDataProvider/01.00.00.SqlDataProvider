@@ -704,6 +704,7 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Speaker] (
 	[Avatar] NVARCHAR(50) NULL,
 	[TravelPreference] INT NOT NULL
 		CONSTRAINT [DF_{objectQualifier}UG_Speaker_TravelPreference] DEFAULT((0)),
+	[Slug] NVARCHAR(100) NOT NULL,
 	[CreatedOn] DATETIME NOT NULL,
     [CreatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Speaker_CreatedBy] FOREIGN KEY 

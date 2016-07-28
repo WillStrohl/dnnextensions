@@ -106,6 +106,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.PropertyNotNullOrEmpty(i.Bio, "Bio");
             Requires.PropertyNotNullOrEmpty(i.Email, "Email");
             Requires.PropertyNotNegative(i.TravelPreference, "TravelPreference");
+            Requires.PropertyNotNullOrEmpty(i.Slug, "Slug");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
             Requires.NotNull("CreatedOn", i.CreatedOn);
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");

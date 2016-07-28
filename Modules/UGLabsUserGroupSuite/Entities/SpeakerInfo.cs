@@ -52,6 +52,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Email = string.Empty;
             Avatar = string.Empty;
             TravelPreference = Null.NullInteger;
+            Slug = string.Empty;
             CreatedOn = DateTime.MinValue;
             CreatedBy = Null.NullInteger;
             LastUpdatedOn = DateTime.MinValue;
@@ -66,6 +67,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public string Email { get; set; }
         public string Avatar { get; set; }
         public int TravelPreference { get; set; }
+        public string Slug { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }
