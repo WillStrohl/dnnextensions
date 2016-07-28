@@ -161,6 +161,12 @@
     <Compile Include="Entities\GroupInfo.cs" />
     <Compile Include="Entities\LanguageInfo.cs" />
     <Compile Include="Entities\Interfaces\ILanguageInfo.cs" />
+    <Compile Include="Services\Controllers\VirtualAddressController.cs" />
+    <Compile Include="Services\Controllers\SpeakerMeetingController.cs" />
+    <Compile Include="Services\Controllers\SpeakerController.cs" />
+    <Compile Include="Services\Controllers\SocialSiteController.cs" />
+    <Compile Include="Services\Controllers\MemberController.cs" />
+    <Compile Include="Services\Controllers\MemberActivityController.cs" />
     <Compile Include="Services\Controllers\MeetingController.cs" />
     <Compile Include="Services\Controllers\MaterialController.cs" />
     <Compile Include="Services\Controllers\LeaderController.cs" />
