@@ -31,6 +31,7 @@
 using System;
 using System.Web.Caching;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -41,6 +42,22 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [Scope("UserID")]
     public class SpeakerInfo : ISpeakerInfo
     {
+        public SpeakerInfo()
+        {
+            SpeakerID = Null.NullInteger;
+            UserID = Null.NullInteger;
+            SpeakerName = string.Empty;
+            Website = string.Empty;
+            Bio = string.Empty;
+            Email = string.Empty;
+            Avatar = string.Empty;
+            TravelPreference = Null.NullInteger;
+            CreatedOn = DateTime.MinValue;
+            CreatedBy = Null.NullInteger;
+            LastUpdatedOn = DateTime.MinValue;
+            LastUpdatedBy = Null.NullInteger;
+        }
+
         public int SpeakerID { get; set; }
         public int UserID { get; set; }
         public string SpeakerName { get; set; }
@@ -48,6 +65,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public string Bio { get; set; }
         public string Email { get; set; }
         public string Avatar { get; set; }
+        public int TravelPreference { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }

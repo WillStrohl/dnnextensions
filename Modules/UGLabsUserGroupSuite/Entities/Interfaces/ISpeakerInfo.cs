@@ -41,6 +41,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         string Bio { get; set; }
         string Email { get; set; }
         string Avatar { get; set; }
+        int TravelPreference { get; set; }
         DateTime CreatedOn { get; set; }
         int CreatedBy { get; set; }
         DateTime LastUpdatedOn { get; set; }

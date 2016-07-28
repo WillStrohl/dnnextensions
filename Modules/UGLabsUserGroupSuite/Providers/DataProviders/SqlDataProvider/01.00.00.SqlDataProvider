@@ -702,6 +702,8 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Speaker] (
     [Bio] NVARCHAR(MAX) NULL,
 	[Email] NVARCHAR(255) NULL,
 	[Avatar] NVARCHAR(50) NULL,
+	[TravelPreference] INT NOT NULL
+		CONSTRAINT [DF_{objectQualifier}UG_Speaker_TravelPreference] DEFAULT((0)),
 	[CreatedOn] DATETIME NOT NULL,
     [CreatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Speaker_CreatedBy] FOREIGN KEY 
