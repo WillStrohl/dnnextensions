@@ -1,7 +1,7 @@
 ﻿(function() {
     "use strict";
 
-    codeCampApp.directive("confirmDelete", confirmDelete);
+    userGroupApp.directive("confirmDelete", confirmDelete);
 
     confirmDelete.$inject = [];
     

@@ -1,6 +1,6 @@
 ﻿"user strict";
 
-codeCampApp.directive('dateFormatter', function (dateFilter, $parse) {
+userGroupApp.directive('dateFormatter', function (dateFilter, $parse) {
     return {
         restrict: 'EAC',
         require: '?ngModel',
@@ -12,7 +12,7 @@ codeCampApp.directive('dateFormatter', function (dateFilter, $parse) {
     }
 });
 
-codeCampApp.directive("dateLowerThan", ["$filter", function ($filter) {
+userGroupApp.directive("dateLowerThan", ["$filter", function ($filter) {
 
     return {
         require: "ngModel",
@@ -40,7 +40,7 @@ codeCampApp.directive("dateLowerThan", ["$filter", function ($filter) {
 
 }]);
 
-codeCampApp.directive("dateGreaterThan", ["$filter", function ($filter) {
+userGroupApp.directive("dateGreaterThan", ["$filter", function ($filter) {
     return {
         require: "ngModel",
         link: function (scope, elm, attrs, ctrl) {

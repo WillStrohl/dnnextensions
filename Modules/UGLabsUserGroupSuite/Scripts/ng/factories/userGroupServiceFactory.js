@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-codeCampApp.factory("codeCampServiceFactory", ["$http", function ($http) {
+userGroupApp.factory("userGroupServiceFactory", ["$http", function ($http) {
 
         var $self = this;
 
@@ -9,7 +9,7 @@ codeCampApp.factory("codeCampServiceFactory", ["$http", function ($http) {
                 if ($.ServicesFramework) {
                     var _sf = $.ServicesFramework(moduleId);
                     $self.ServiceRoot = _sf.getServiceRoot(moduleName);
-                    $self.ServicePath = $self.ServiceRoot + "Event/";
+                    $self.ServicePath = $self.ServiceRoot + "GroupManagement/";
                     $self.Headers = {
                         "ModuleId": moduleId,
                         "TabId": _sf.getTabId(),

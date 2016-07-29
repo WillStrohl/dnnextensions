@@ -39,7 +39,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.00.02</version>
+              <version>01.00.00</version>
             </script>
           </scripts>
         </component>
@@ -57,7 +57,7 @@
                 <moduleControls>
                   <moduleControl>
                     <controlKey />
-                    <controlSrc>DesktopModules/CodeCampUserGroupSuite/View.html</controlSrc>
+                    <controlSrc>DesktopModules/UserGroupSuite/View.html</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>

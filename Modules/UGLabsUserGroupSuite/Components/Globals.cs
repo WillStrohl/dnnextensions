@@ -34,7 +34,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
     public class Globals
     {
-        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/CodeCamp/App_LocalResources/SharedResources.resx";
+        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/UserGroupSuite/App_LocalResources/SharedResources.resx";
 
         public const string VIEW_PATH = "Views/";
         public const string VIEW_EXTENSION = ".ascx";
@@ -42,9 +42,6 @@ namespace DNNCommunity.Modules.UserGroupSuite.Components
         public const string SETTINGS_VIEW = "View";
         public const string SETTINGS_BOOTSTRAP = "Bootstrap";
         public const string SETTINGS_USECDN = "UseCdn";
-
-        public const string VIEW_SETTINGS = "SettingsView";
-        public const string VIEW_CODECAMP = "CodeCampView";
 
         public const string RESPONSE_SUCCESS = "Success";
         public const string RESPONSE_FAILURE = "Failure";
@@ -55,6 +52,6 @@ namespace DNNCommunity.Modules.UserGroupSuite.Components
 
         public const string SPACE = " ";
 
-        public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
+        //public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
     }
 }
