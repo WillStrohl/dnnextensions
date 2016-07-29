@@ -39,6 +39,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_SpeakerID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_SpeakerID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Keyword_GroupID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Keyword')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Keyword] DROP CONSTRAINT [FK_{objectQualifier}UG_Keyword_GroupID];
