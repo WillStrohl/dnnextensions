@@ -37,6 +37,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         int AttendanceID { get; set; }
         int MeetingID { get; set; }
         int MemberID { get; set; }
+        int AttendanceIntent { get; set; }
         bool AttendOnline { get; set; }
         bool AttendInPerson { get; set; }
         bool Attended { get; set; }

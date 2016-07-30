@@ -32,21 +32,19 @@ using System;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
-    public class Globals
+    public class DisplayText : Attribute
     {
-        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/UserGroupSuite/App_LocalResources/SharedResources.resx";
+        public DisplayText(string Text)
+        {
+            this.text = Text;
+        }
 
-        public const string SETTINGS_BOOTSTRAP = "Bootstrap";
-        public const string SETTINGS_USECDN = "UseCdn";
-
-        public const string RESPONSE_SUCCESS = "Success";
-        public const string RESPONSE_FAILURE = "Failure";
-
-        public const string SPACE = " ";
-
-        public const string FORMAT_LOCATION_REGION = "{0}, {1}, {2}";
-        public const string FORMAT_LOCATION_COUNTRY = "{0}, {1}";
-
-        public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
+        private string text;
+        
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
     }
 }

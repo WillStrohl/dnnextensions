@@ -28,25 +28,33 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
+using DotNetNuke.Common;
+using DotNetNuke.Common.Utilities;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
-    public class Globals
+    public static class LocationHelper
     {
-        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/UserGroupSuite/App_LocalResources/SharedResources.resx";
+        public static string GetLocationOutput(string city, int countryID)
+        {
+            return GetLocationOutput(city, Null.NullInteger, countryID);
+        }
 
-        public const string SETTINGS_BOOTSTRAP = "Bootstrap";
-        public const string SETTINGS_USECDN = "UseCdn";
+        public static string GetLocationOutput(string city, int regionID, int countryID)
+        {
+            Requires.NotNullOrEmpty("city", city);
+            Requires.NotNegative("countryID", countryID);
 
-        public const string RESPONSE_SUCCESS = "Success";
-        public const string RESPONSE_FAILURE = "Failure";
+            // TODO: parse region and country codes
+            if (regionID > Null.NullInteger)
+            {
+                return string.Format(Globals.FORMAT_LOCATION_REGION, city, regionID, countryID);
+            }
+            else
+            {
 
-        public const string SPACE = " ";
-
-        public const string FORMAT_LOCATION_REGION = "{0}, {1}, {2}";
-        public const string FORMAT_LOCATION_COUNTRY = "{0}, {1}";
-
-        public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
+                return string.Format(Globals.FORMAT_LOCATION_COUNTRY, city, countryID);
+            }
+        }
     }
 }

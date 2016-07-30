@@ -31,6 +31,7 @@
 using System;
 using System.Web.Caching;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -41,9 +42,25 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [Scope("MeetingID")]
     public class AttendanceInfo : IAttendanceInfo
     {
+        public AttendanceInfo()
+        {
+            AttendanceID = Null.NullInteger;
+            MeetingID = Null.NullInteger;
+            MemberID = Null.NullInteger;
+            AttendanceIntent = 99;
+            AttendOnline = false;
+            AttendInPerson = false;
+            Attended = false;
+            CreatedOn = Null.NullDate;
+            CreatedBy = Null.NullInteger;
+            LastUpdatedOn = Null.NullDate;
+            LastUpdatedBy = Null.NullInteger;
+        }
+
         public int AttendanceID { get; set; }
         public int MeetingID { get; set; }
         public int MemberID { get; set; }
+        public int AttendanceIntent { get; set; }
         public bool AttendOnline { get; set; }
         public bool AttendInPerson { get; set; }
         public bool Attended { get; set; }

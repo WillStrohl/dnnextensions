@@ -40,6 +40,8 @@ using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using DNNCommunity.Modules.UserGroupSuite.Components;
 using DNNCommunity.Modules.UserGroupSuite.Entities;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
@@ -247,7 +249,155 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
             return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
         }
 
+        /// <summary>
+        /// Determines if the current user has joined any groups
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/UserHasGroups
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage UserHasGroups()
+        {
+            try
+            {
+                ServiceResponse<string> response = null;
+
+                if (UserInfo != null && UserInfo.UserID > Null.NullInteger)
+                {
+                    var members = MemberDataAccess.GetItems(UserInfo.UserID);
+                    if (members != null && members.Any())
+                    {
+                        response = new ServiceResponse<string>() { Content = Globals.RESPONSE_SUCCESS };
+                    }
+                    else
+                    {
+                        response = new ServiceResponse<string>() { Content = Globals.RESPONSE_FAILURE };
+                    }
+                }
+                else
+                {
+                    response = new ServiceResponse<string>() { Content = Globals.RESPONSE_FAILURE };
+                    ServiceResponseHelper<string>.AddNoneFoundError("member", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get all groups for the current user
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetGroupsByUser
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetGroupsByUser()
+        {
+            try
+            {
+                ServiceResponse<List<GroupInfo>> response = null;
+
+                if (UserInfo != null && UserInfo.UserID > Null.NullInteger)
+                {
+                    var groups = GroupDataAccess.GetItemsByUser(UserInfo.UserID, ActiveModule.ModuleID);
+
+                    if (groups != null && groups.Any())
+                    {
+                        AddUserContext(ref groups, UserInfo.UserID);
+                        response = new ServiceResponse<List<GroupInfo>>() { Content = groups.ToList() };
+                    }
+                    else
+                    {
+                        response = GetNullGroup();
+                        ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("group", ref response);
+                    }
+                }
+                else
+                {
+                    response = GetNullGroup();
+                    ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("group", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
         #region Private Helper Methods
+
+        private void AddUserContext(ref IEnumerable<GroupInfo> groups, int userID)
+        {
+            foreach (var group in groups)
+            {
+                var nextMeeting = MeetingDataAccess.GetItems(group.GroupID).Where(m => m.HeldOn > DateTime.Now).OrderByDescending(m => m.HeldOn).FirstOrDefault();
+
+                if (nextMeeting != null)
+                {
+                    // when the meeting is taking place
+                    group.NextMeeting = nextMeeting.HeldOn;
+
+                    // where the meeting is taking place
+                    if (nextMeeting.PhysicalAddressID > Null.NullInteger)
+                    {
+                        var nextAddress = AddressDataAccess.GetItem(nextMeeting.PhysicalAddressID, group.ModuleID);
+                        group.Where = LocationHelper.GetLocationOutput(nextAddress.City, nextAddress.RegionID, nextAddress.CountryID);
+                    }
+                    else
+                    {
+                        // there isn't a physical meeting (virtual only)
+                        group.Where = LocationHelper.GetLocationOutput(group.City, group.RegionID, group.CountryID);
+                    }
+
+                    // is the meeting being broadcast?
+                    if (nextMeeting.VirtualAddressID > Null.NullInteger)
+                    {
+                        var broadcast = VirtualAddressDataAccess.GetItem(nextMeeting.VirtualAddressID, group.ModuleID);
+                        group.Streaming = broadcast != null ? ((StreamingService) broadcast.AddressType).ToString() : StreamingService.None.ToString();
+                    }
+                    else
+                    {
+                        group.Streaming = StreamingService.None.ToString();
+                    }
+
+                    // is the current user attending the meeting?
+                    var member = MemberDataAccess.GetItems(userID).FirstOrDefault(m => m.GroupID == group.GroupID);
+                    if (member != null)
+                    {
+                        var attendance = AttendanceDataAccess.GetItems(nextMeeting.MeetingID).FirstOrDefault(a => a.MemberID == member.MemberID);
+                        group.Attending = attendance != null ? ((AttendanceIntent)attendance.AttendanceIntent).ToString() : AttendanceIntent.No.ToString();
+                    }
+                    else
+                    {
+                        group.Attending = AttendanceIntent.No.ToString();
+                    }
+                }
+                else
+                {
+                    // there isn't a meeting scheduled in the future yet
+                    group.NextMeeting = Globals.NULL_DATE;
+                    group.Streaming = StreamingService.None.ToString();
+                    group.Attending = AttendanceIntent.No.ToString();
+                }
+            }
+        }
+
+        private static ServiceResponse<List<GroupInfo>> GetNullGroup()
+        {
+            return new ServiceResponse<List<GroupInfo>>();
+        } 
 
         private bool GroupHasUpdates(ref GroupInfo originalUserGroup, ref GroupInfo newUserGroup)
         {

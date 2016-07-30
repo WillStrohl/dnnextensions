@@ -668,7 +668,8 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_VirtualAddress] (
 	[ModuleID] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_VirtualAddress_ModuleID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE,
-    [AddressType] NVARCHAR(50) NOT NULL, 
+    [AddressType] INT NOT NULL
+		CONSTRAINT [DF_{objectQualifier}UG_VirtualAddress_AddressType] DEFAULT((0)), 
     [Description] NVARCHAR(MAX) NOT NULL, 
     [CreatedOn] DATETIME NOT NULL,
     [CreatedBy] INT NOT NULL
@@ -911,6 +912,8 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Attendance] (
 	[MemberID] INT NOT NULL
 		CONSTRAINT [FK_{objectQualifier}UG_Attendance_MemberID] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}UG_Member] ([MemberID]), 
+	[AttendanceIntent] INT NOT NULL
+		CONSTRAINT [DF_{objectQualifier}UG_Attendance_AttendanceIntent] DEFAULT ((99)),
 	[AttendOnline] BIT NOT NULL 
 		CONSTRAINT [DF_{objectQualifier}UG_Attendance_AttendOnline] DEFAULT((0)),
 	[AttendInPerson] BIT NOT NULL 

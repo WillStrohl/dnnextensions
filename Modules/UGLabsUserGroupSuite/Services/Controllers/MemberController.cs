@@ -43,6 +43,7 @@ using DotNetNuke.Web.Api;
 using DNNCommunity.Modules.UserGroupSuite.Components;
 using DNNCommunity.Modules.UserGroupSuite.Controllers;
 using DNNCommunity.Modules.UserGroupSuite.Entities;
+using DotNetNuke.Common.Utilities;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
@@ -57,12 +58,59 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
         [HttpGet]
+        public HttpResponseMessage GetMembers()
+        {
+            try
+            {
+                if (UserInfo != null && UserInfo.UserID > Null.NullInteger)
+                {
+                    return GetMembers(UserInfo.UserID);
+                }
+                else
+                {
+                    ServiceResponse<List<MemberInfo>> response = null;
+
+                    ServiceResponseHelper<List<MemberInfo>>.AddNoneFoundError("member", ref response);
+
+                    return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+                }
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get all members for the user account
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetMembers
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
         public HttpResponseMessage GetMembers(int userID)
         {
             try
             {
-                var members = MemberDataAccess.GetItems(userID);
-                var response = new ServiceResponse<List<MemberInfo>> { Content = members.ToList() };
+                ServiceResponse<List<MemberInfo>> response = null;
+                List<MemberInfo> members = null;
+
+                if (userID > Null.NullInteger)
+                {
+                    members = MemberDataAccess.GetItems(userID).ToList();
+                }
+
+                if (members != null && members.Any())
+                {
+                    response = new ServiceResponse<List<MemberInfo>>() { Content = members };
+                }
+                else
+                {
+                    ServiceResponseHelper<List<MemberInfo>>.AddNoneFoundError("member", ref response);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

@@ -3,8 +3,31 @@
         <div class="col-xs-12">
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
             <h1>Groups I've Joined</h1>
-            <div class="">
-                TABLE GOES HERE
+            <div class="alert alert-info" ng-show="!userIsLoggedIn">
+                You're not signed in. Please login to see your groups.
+            </div>
+            <div class="alert alert-info" ng-show="userIsLoggedIn && !userHasGroups">
+                <strong>Not cool!</strong> You haven't joined any groups yet. Try <a href="#/search">searching for one or create your own</a>.
+            </div>
+            <div class="" ng-show="userIsLoggedIn && userHasGroups">
+                <div class="table-responsive" ng-show="userGroups.length > 0">
+                    <table class="table table-striped myGroupsTable">
+                        <tr>
+                            <th>Group</th>
+                            <th>Next Meeting</th>
+                            <th>Where</th>
+                            <th>Streaming</th>
+                            <th>Attending</th>
+                        </tr>
+                        <tr ng-repeat="group in userGroups | orderBy: 'NextMeeting'">
+                            <td>{{group.GroupName}}</td>
+                            <td>{{group.NextMeeting}}</td>
+                            <td>{{group.Where}}</td>
+                            <td>{{group.Streaming}}</td>
+                            <td>{{group.Attending}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

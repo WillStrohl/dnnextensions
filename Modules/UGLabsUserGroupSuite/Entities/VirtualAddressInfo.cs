@@ -31,6 +31,7 @@
 using System;
 using System.Web.Caching;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -41,9 +42,21 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [Scope("ModuleID")]
     public class VirtualAddressInfo : IVirtualAddressInfo
     {
+        public VirtualAddressInfo()
+        {
+            AddressID = Null.NullInteger;
+            ModuleID = Null.NullInteger;
+            AddressType = 99;
+            Description = string.Empty;
+            CreatedBy = Null.NullInteger;
+            CreatedOn = Null.NullDate;
+            LastUpdatedBy = Null.NullInteger;
+            LastUpdatedOn = Null.NullDate;
+        }
+
         public int AddressID { get; set; }
         public int ModuleID { get; set; }
-        public string AddressType { get; set; }
+        public int AddressType { get; set; }
         public string Description { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }

@@ -101,7 +101,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
                 Requires.PropertyNotNegative(i.AddressID, "AddressID");
             }
 
-            Requires.PropertyNotNullOrEmpty(i.AddressType, "AddressType");
+            Requires.PropertyNotNegative(i.AddressType, "AddressType");
             Requires.PropertyNotNullOrEmpty(i.Description, "Description");
             Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");

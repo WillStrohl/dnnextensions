@@ -53,5 +53,9 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         int CreatedBy { get; set; }
         DateTime LastUpdatedOn { get; set; }
         int LastUpdatedBy { get; set; }
+        DateTime NextMeeting { get; set; }
+        string Where { get; set; }
+        string Streaming { get; set; }
+        string Attending { get; set; }
     }
 }

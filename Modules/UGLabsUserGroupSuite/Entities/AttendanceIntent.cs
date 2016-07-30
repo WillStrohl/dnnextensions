@@ -28,25 +28,19 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
+using DNNCommunity.Modules.UserGroupSuite.Components;
 
-namespace DNNCommunity.Modules.UserGroupSuite.Components
+namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    public class Globals
+    public enum AttendanceIntent
     {
-        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/UserGroupSuite/App_LocalResources/SharedResources.resx";
-
-        public const string SETTINGS_BOOTSTRAP = "Bootstrap";
-        public const string SETTINGS_USECDN = "UseCdn";
-
-        public const string RESPONSE_SUCCESS = "Success";
-        public const string RESPONSE_FAILURE = "Failure";
-
-        public const string SPACE = " ";
-
-        public const string FORMAT_LOCATION_REGION = "{0}, {1}, {2}";
-        public const string FORMAT_LOCATION_COUNTRY = "{0}, {1}";
-
-        public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
+        [DisplayText("No")]
+        No = 0,
+        [DisplayText("Yes")]
+        Yes = 1,
+        [DisplayText("Maybe")]
+        Maybe = 2,
+        [DisplayText("Other")]
+        Other = 99
     }
 }

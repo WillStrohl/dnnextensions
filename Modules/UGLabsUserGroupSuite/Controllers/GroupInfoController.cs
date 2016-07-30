@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -89,6 +90,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
             _repo.UpdateItem(i);
         }
+
+        public IEnumerable<GroupInfo> GetItemsByUser(int userID, int moduleID)
+        {
+            Requires.NotNegative("userID", userID);
+            Requires.NotNegative("moduleID", moduleID);
+
+            var ctlMember = new MemberInfoController();
+            var members = ctlMember.GetItems(userID);
+
+            var groups = members.Select(member => GetItem(member.GroupID, moduleID)).ToList();
+
+            return groups;
+        } 
 
         #region Helper Methods
 

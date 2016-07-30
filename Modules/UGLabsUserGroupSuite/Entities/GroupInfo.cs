@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Caching;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -42,6 +43,31 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [Scope("ModuleID")]
     public class GroupInfo : IGroupInfo
     {
+        public GroupInfo()
+        {
+            GroupID = Null.NullInteger;
+            ModuleID = Null.NullInteger;
+            GroupName = string.Empty;
+            CountryID = Null.NullInteger;
+            City = string.Empty;
+            LanguageID = Null.NullInteger;
+            Description = string.Empty;
+            Website = string.Empty;
+            Avatar = string.Empty;
+            IsActive = false;
+            Slug = string.Empty;
+            CustomProperties = string.Empty;
+            CustomPropertiesObj = new List<CustomPropertyInfo>();
+            CreatedBy = Null.NullInteger;
+            CreatedOn = Null.NullDate;
+            LastUpdatedOn = Null.NullDate;
+            LastUpdatedBy = Null.NullInteger;
+            NextMeeting = Null.NullDate;
+            Where = string.Empty;
+            Streaming = string.Empty;
+            Attending = string.Empty;
+        }
+
         public int GroupID { get; set; }
         public int ModuleID { get; set; }
         public string GroupName { get; set; }
@@ -61,5 +87,15 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public int CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }
         public int LastUpdatedBy { get; set; }
+
+        /* used for front end views only */
+        [IgnoreColumn]
+        public DateTime NextMeeting { get; set; }
+        [IgnoreColumn]
+        public string Where { get; set; }
+        [IgnoreColumn]
+        public string Streaming { get; set; }
+        [IgnoreColumn]
+        public string Attending { get; set; }
     }
 }

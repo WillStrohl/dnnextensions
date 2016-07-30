@@ -100,6 +100,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
                 Requires.PropertyNotNegative(i.AttendanceID, "AddressID");
             }
 
+            Requires.PropertyNotNegative(i.AttendanceIntent, "AttendanceIntent");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
             Requires.NotNull("CreatedOn", i.CreatedOn);
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");

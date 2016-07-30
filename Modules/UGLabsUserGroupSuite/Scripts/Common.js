@@ -8,6 +8,8 @@ var $momentDayNumberFormat = "DD";
 var $momentMonthFormat = "MMM";
 var $momentYearFormat = "YYYY";
 
+var nullDate = "1/1/1753 12:00:00 AM";
+
 function LogErrors(errors) {
     if (errors) {
         $.each(errors, function (i, error) {
