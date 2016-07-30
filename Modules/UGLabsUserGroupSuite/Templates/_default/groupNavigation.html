@@ -1,0 +1,13 @@
+﻿<div class="container navigation-wrapper" ng-controller="groupNavigationController">
+    <div class="row">
+        <div class="pull-left" role="navigation">
+            <ul class="nav nav-pills">
+                <li role="presentation" ng-class="{ active: isActive('/groups') }"><a href="#/groups">My Groups</a></li>
+                <li role="presentation" ng-class="{ active: isActive('/upcoming-meetings') }"><a href="#/upcoming-meetings">Upcoming Meetings</a></li>
+                <li role="presentation" ng-class="{ active: isActive('/recently-updated') }"><a href="#/recently-updated">Recently Updated</a></li>
+                <li role="presentation" ng-class="{ active: isActive('/in-my-area') }"><a href="#/in-my-area">In My Area</a></li>
+                <li role="presentation" ng-class="{ active: isActive('/search') }"><a href="#/search">Search</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

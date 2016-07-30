@@ -14,6 +14,22 @@ userGroupApp.config(["$routeProvider",
 			templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/groups.html",
 			controller: "groupsController"
 		})
+		.when("/upcoming-meetings", {
+		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/upcomingMeetings.html",
+		    controller: "upcomingMeetingsController"
+		})
+		.when("/recently-updated", {
+		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/recentlyUpdated.html",
+		    controller: "recentlyUpdatedController"
+		})
+		.when("/in-my-area", {
+		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/inMyArea.html",
+		    controller: "inMyAreaController"
+		})
+		.when("/search", {
+		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/search.html",
+		    controller: "searchController"
+		})
 		.otherwise({
 		    redirectTo: "/groups"
 		});

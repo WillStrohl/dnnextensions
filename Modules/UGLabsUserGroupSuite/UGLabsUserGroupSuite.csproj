@@ -235,7 +235,12 @@
     <Content Include="Scripts\ng\angular\angular-route.min.js" />
     <Content Include="Scripts\ng\angular\angular.js" />
     <Content Include="Scripts\ng\angular\angular.min.js" />
+    <Content Include="Scripts\ng\controllers\InMyAreaController.js" />
+    <Content Include="Scripts\ng\controllers\RecentlyUpdatedController.js" />
+    <Content Include="Scripts\ng\controllers\SearchController.js" />
+    <Content Include="Scripts\ng\controllers\UpcomingMeetingsController.js" />
     <Content Include="Scripts\ng\controllers\GroupsController.js" />
+    <Content Include="Scripts\ng\controllers\GroupNavigationController.js" />
     <Content Include="Scripts\ng\directives\confirmDirectives.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\ng\app.js" />
@@ -253,7 +258,12 @@
     <Content Include="Styles\bootstrap\flat\bootstrap-flat-extras.min.css" />
     <Content Include="Styles\bootstrap\flat\bootstrap-flat.css" />
     <Content Include="Styles\bootstrap\flat\bootstrap-flat.min.css" />
+    <Content Include="Templates\_default\inMyArea.html" />
+    <Content Include="Templates\_default\recentlyUpdated.html" />
+    <Content Include="Templates\_default\search.html" />
+    <Content Include="Templates\_default\upcomingMeetings.html" />
     <Content Include="Templates\_default\groups.html" />
+    <Content Include="Templates\_default\groupNavigation.html" />
     <Content Include="View.html" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap.css.map" />
