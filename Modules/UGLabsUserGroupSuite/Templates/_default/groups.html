@@ -1,4 +1,5 @@
-﻿<div class="container" ng-controller="groupsController">
+﻿<!-- BEGIN #/groups -->
+<div class="container" ng-controller="groupsController">
     <div class="row">
         <div class="col-xs-12">
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
@@ -20,7 +21,9 @@
                             <th>Attending</th>
                         </tr>
                         <tr ng-repeat="group in userGroups | orderBy: 'NextMeeting'">
+                            <!-- TODO: Make this a link -->
                             <td>{{group.GroupName}}</td>
+                            <!-- TODO: Make this a link -->
                             <td>{{group.NextMeeting}}</td>
                             <td>{{group.Where}}</td>
                             <td>{{group.Streaming}}</td>
@@ -32,3 +35,4 @@
         </div>
     </div>
 </div>
+<!-- END #/groups -->
