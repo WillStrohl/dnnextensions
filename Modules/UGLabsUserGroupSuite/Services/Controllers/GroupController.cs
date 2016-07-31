@@ -344,7 +344,6 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetUpcomingMeetingCountForGroups
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
-        [ValidateAntiForgeryToken]
         [HttpGet]
         public HttpResponseMessage GetUpcomingMeetingCountForGroups()
         {
@@ -372,7 +371,6 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetUpcomingMeetings
         /// </remarks>
         [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
-        [ValidateAntiForgeryToken]
         [HttpGet]
         public HttpResponseMessage GetUpcomingMeetingsForGroups()
         {
@@ -382,6 +380,36 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 var response = new ServiceResponse<List<GroupInfo>>() { Content = groupsWithUpcomingMeetings };
 
                 if (!groupsWithUpcomingMeetings.Any())
+                {
+                    ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("GroupInfo", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get groups that have recently been updated
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetRecentlyUpdatedGroups
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetRecentlyUpdatedGroups()
+        {
+            try
+            {
+                var groups = GroupDataAccess.GetItems(ActiveModule.ModuleID).OrderByDescending(g => g.LastUpdatedOn).Take(10).ToList();
+                var response = new ServiceResponse<List<GroupInfo>>() { Content = groups };
+
+                if (!groups.Any())
                 {
                     ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("GroupInfo", ref response);
                 }

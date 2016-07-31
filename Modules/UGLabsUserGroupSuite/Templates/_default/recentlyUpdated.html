@@ -2,8 +2,39 @@
 <div class="container" ng-controller="recentlyUpdatedController">
     <div class="row">
         <div class="col-xs-12">
-            <h1>Recently Updated View</h1>
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Recently Updated Groups</h1>
+            <div class="alert alert-info" ng-show="!groupsToShow">
+                <strong>Dang!</strong> We didn't find any recently updated groups. Try <a href="#/search">creating a group of your own</a>.
+            </div>
+            <div class="" ng-show="groupsToShow">
+                <div class="table-responsive" ng-show="groupCount > 0">
+                    <table class="table table-striped recentlyUpdatedTable">
+                        <tr>
+                            <th>Group</th>
+                            <th>Where</th>
+                            <th>Update</th>
+                            <th>Updated</th>
+                            <th>Membership</th>
+                        </tr>
+                        <tr ng-repeat="group in groups | orderBy: '-LastUpdatedOn'">
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.GroupName}}</td>
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.Where}}</td>
+                            <!-- TODO: parse this -->
+                            <td>{{group.LastUpdatedType}}</td>
+                            <td>{{group.LastUpdatedOn}}</td>
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.Membership}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -47,6 +47,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         {
             ValidateGroupObject(i);
 
+            i.LastUpdatedType = (int) GroupUpdateType.New;
+
             _repo.CreateItem(i);
         }
 
@@ -94,6 +96,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         {
             ValidateGroupObject(i, true);
 
+            i.LastUpdatedType = (int) DetermineUpdateType(i);
+
             _repo.UpdateItem(i);
         }
 
@@ -128,6 +132,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.PropertyNotNegative(i.CountryID, "City");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
             Requires.NotNull("CreatedOn", i.CreatedOn);
+            Requires.PropertyNotNegative(i.LastUpdatedType, "LastUpdatedType");
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
             Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
             Requires.PropertyNotNullOrEmpty(i.Description, "Description");
@@ -135,6 +140,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.PropertyNotNullOrEmpty(i.Slug, "Slug");
             Requires.PropertyNotNullOrEmpty(i.Website, "Website");
             Requires.PropertyNotNullOrEmpty(i.GroupName, "GroupName");
+        }
+
+        private GroupUpdateType DetermineUpdateType(GroupInfo updatedGroup)
+        {
+            var originalGroup = GetItem(updatedGroup.GroupID, updatedGroup.ModuleID);
+
+            if (!string.Equals(originalGroup.City, updatedGroup.City) ||
+                originalGroup.RegionID != updatedGroup.RegionID ||
+                originalGroup.CountryID != updatedGroup.CountryID)
+            {
+                return GroupUpdateType.LocationChanged;
+            }
+
+            return GroupUpdateType.Profile;
         }
 
         #endregion

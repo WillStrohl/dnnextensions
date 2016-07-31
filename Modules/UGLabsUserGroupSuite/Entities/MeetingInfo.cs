@@ -31,7 +31,9 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Caching;
+using DNNCommunity.Modules.UserGroupSuite.Components;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -42,8 +44,29 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [Scope("GroupID")]
     public class MeetingInfo : IMeetingInfo
     {
+        public MeetingInfo()
+        {
+            MeetingID = Null.NullInteger;
+            GroupID = Null.NullInteger;
+            ModuleID = Null.NullInteger;
+            Title = string.Empty;
+            Description = string.Empty;
+            HeldOn = Globals.NULL_DATE;
+            PhysicalAddressID = Null.NullInteger;
+            VirtualAddressID = Null.NullInteger;
+            IsActive = false;
+            Slug = string.Empty;
+            CustomProperties = string.Empty;
+            CustomPropertiesObj = new List<CustomPropertyInfo>();
+            CreatedBy = Null.NullInteger;
+            CreatedOn = Globals.NULL_DATE;
+            LastUpdatedBy = Null.NullInteger;
+            LastUpdatedOn = Globals.NULL_DATE;
+        }
+
         public int MeetingID { get; set; }
         public int GroupID { get; set; }
+        public int ModuleID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime HeldOn { get; set; }

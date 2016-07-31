@@ -97,6 +97,7 @@
     <Compile Include="Components\DisplayText.cs" />
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\LocationHelper.cs" />
+    <Compile Include="Entities\GroupUpdateType.cs" />
     <Compile Include="Entities\AttendanceIntent.cs" />
     <Compile Include="Entities\StreamingService.cs" />
     <Compile Include="Components\UserGroupSuiteModuleSettingsBase.cs">

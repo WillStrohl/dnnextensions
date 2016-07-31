@@ -28,8 +28,10 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections.Generic;
 using DotNetNuke.Common;
+using DotNetNuke.Services.Exceptions;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -47,6 +49,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             ValidateMemberObject(i);
 
             _repo.CreateItem(i);
+
+            MarkGroupUpdated(i);
         }
 
         public void DeleteItem(int itemID, int userID)
@@ -103,11 +107,31 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
             Requires.PropertyNotNegative(i.ActivityScore, "ActivityScore");
             Requires.PropertyNotNegative(i.GroupID, "GroupID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
             Requires.PropertyNotNegative(i.UserID, "UserID");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
             Requires.NotNull("CreatedOn", i.CreatedOn);
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
             Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+        }
+
+        private void MarkGroupUpdated(MemberInfo member)
+        {
+            try
+            {
+                var ctlGroup = new GroupInfoController();
+                var group = ctlGroup.GetItem(member.GroupID, member.ModuleID);
+
+                group.LastUpdatedType = (int)GroupUpdateType.NewMembers;
+                group.LastUpdatedBy = member.LastUpdatedBy;
+                group.LastUpdatedOn = member.LastUpdatedOn;
+
+                ctlGroup.UpdateItem(group);
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+            }
         }
 
         #endregion

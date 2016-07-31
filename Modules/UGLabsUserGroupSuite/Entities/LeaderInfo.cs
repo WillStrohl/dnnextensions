@@ -30,7 +30,9 @@
 
 using System;
 using System.Web.Caching;
+using DNNCommunity.Modules.UserGroupSuite.Components;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -41,8 +43,23 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
     [Scope("GroupID")]
     public class LeaderInfo : ILeaderInfo
     {
+        public LeaderInfo()
+        {
+            GroupLeaderID = Null.NullInteger;
+            GroupID = Null.NullInteger;
+            ModuleID = Null.NullInteger;
+            MemberID = Null.NullInteger;
+            Title = string.Empty;
+            IsPrimary = false;
+            CreatedBy = Null.NullInteger;
+            CreatedOn = Globals.NULL_DATE;
+            LastUpdatedBy = Null.NullInteger;
+            LastUpdatedOn = Globals.NULL_DATE;
+        }
+
         public int GroupLeaderID { get; set; }
         public int GroupID { get; set; }
+        public int ModuleID { get; set; }
         public int MemberID { get; set; }
         public string Title { get; set; }
         public bool IsPrimary { get; set; }

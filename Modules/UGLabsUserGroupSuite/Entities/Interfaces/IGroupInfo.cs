@@ -51,6 +51,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
         DateTime CreatedOn { get; set; }
         int CreatedBy { get; set; }
+        int LastUpdatedType { get; set; }
         DateTime LastUpdatedOn { get; set; }
         int LastUpdatedBy { get; set; }
         DateTime NextMeeting { get; set; }

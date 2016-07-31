@@ -60,6 +60,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             CustomPropertiesObj = new List<CustomPropertyInfo>();
             CreatedBy = Null.NullInteger;
             CreatedOn = Null.NullDate;
+            LastUpdatedType = 0;
             LastUpdatedOn = Null.NullDate;
             LastUpdatedBy = Null.NullInteger;
             NextMeeting = Null.NullDate;
@@ -85,6 +86,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public List<CustomPropertyInfo> CustomPropertiesObj { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
+        public int LastUpdatedType { get; set; }
         public DateTime LastUpdatedOn { get; set; }
         public int LastUpdatedBy { get; set; }
 

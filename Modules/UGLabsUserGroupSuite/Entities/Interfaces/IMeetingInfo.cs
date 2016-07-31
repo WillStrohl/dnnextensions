@@ -37,6 +37,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     {
         int MeetingID { get; set; }
         int GroupID { get; set; }
+        int ModuleID { get; set; }
         string Title { get; set; }
         string Description { get; set; }
         DateTime HeldOn { get; set; }

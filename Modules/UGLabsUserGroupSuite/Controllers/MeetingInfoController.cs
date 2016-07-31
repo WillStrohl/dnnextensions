@@ -28,8 +28,11 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections.Generic;
 using DotNetNuke.Common;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Services.Exceptions;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -47,6 +50,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             ValidateMeetingObject(i);
 
             _repo.CreateItem(i);
+
+            MarkGroupUpdated(i);
         }
 
         public void DeleteItem(int itemID, int groupID)
@@ -88,6 +93,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             ValidateMeetingObject(i, true);
 
             _repo.UpdateItem(i);
+
+            MarkGroupUpdated(i);
         }
 
         #region Helper Methods
@@ -108,8 +115,46 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.NotNull("HeldOn", i.HeldOn);
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
             Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
             Requires.PropertyNotNullOrEmpty(i.Slug, "Slug");
             Requires.PropertyNotNullOrEmpty(i.Title, "Title");
+        }
+
+        private void MarkGroupUpdated(MeetingInfo meeting)
+        {
+            try
+            {
+                var ctlGroup = new GroupInfoController();
+                var group = ctlGroup.GetItem(meeting.GroupID, meeting.ModuleID);
+
+                if (meeting.MeetingID == Null.NullInteger)
+                {
+                    group.LastUpdatedType = (int) GroupUpdateType.MeetingAdded;
+                }
+                else
+                {
+                    var originalMeeting = GetItem(meeting.MeetingID, meeting.GroupID);
+
+                    if (originalMeeting.VirtualAddressID != meeting.VirtualAddressID ||
+                        originalMeeting.PhysicalAddressID != meeting.PhysicalAddressID)
+                    {
+                        group.LastUpdatedType = (int) GroupUpdateType.LocationChanged;
+                    }
+                    else
+                    {
+                        group.LastUpdatedType = (int) GroupUpdateType.MeetingUpdated;
+                    }
+                }
+
+                group.LastUpdatedBy = meeting.LastUpdatedBy;
+                group.LastUpdatedOn = meeting.LastUpdatedOn;
+
+                ctlGroup.UpdateItem(group);
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+            }
         }
 
         #endregion

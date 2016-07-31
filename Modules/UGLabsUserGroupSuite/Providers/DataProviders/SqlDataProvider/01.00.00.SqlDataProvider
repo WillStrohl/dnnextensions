@@ -193,6 +193,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Meeting_GroupID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Meeting')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Meeting] DROP CONSTRAINT [FK_{objectQualifier}UG_Meeting_GroupID];
@@ -291,6 +298,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Leader')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_ModuleID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_GroupID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Leader')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_GroupID];
@@ -315,6 +329,13 @@ IF EXISTS (SELECT 1
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_LastUpdatedBy' 
     AND TABLE_NAME = N'{objectQualifier}UG_Leader')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_LastUpdatedBy];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Member_ModuleID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Member')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Member] DROP CONSTRAINT [FK_{objectQualifier}UG_Member_ModuleID];
 GO
 
 IF EXISTS (SELECT 1 
@@ -453,6 +474,8 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Group] (
     [CreatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Group_CreatedBy] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserId]),
+	[LastUpdatedType] INT NOT NULL
+        CONSTRAINT [DF_{objectQualifier}UG_Group_LastUpdatedType] DEFAULT((0)), 
     [LastUpdatedOn] DATETIME NOT NULL,
     [LastUpdatedBy] INT NOT NULL
         CONSTRAINT [FK_{objectQualifier}UG_Group_LastUpdatedBy] FOREIGN KEY 
@@ -528,6 +551,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Member] (
     [GroupId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Member_GroupID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]),
+    [ModuleId] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}UG_Member_ModuleID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]),
     [UserID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Member_UserID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserID]) ON DELETE CASCADE, 
@@ -566,6 +592,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Leader] (
     [GroupID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Leader_GroupID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]) ON DELETE CASCADE, 
+    [ModuleID] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}UG_Leader_ModuleID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]), 
     [MemberID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Leader_MemberID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}UG_Member] ([MemberID]) ON DELETE CASCADE, 
@@ -747,6 +776,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Meeting] (
 	[GroupID] INT NOT NULL 
 		CONSTRAINT [FK_{objectQualifier}UG_Meeting_GroupID] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]) ON DELETE CASCADE, 
+	[ModuleID] INT NOT NULL 
+		CONSTRAINT [FK_{objectQualifier}UG_Meeting_ModuleID] FOREIGN KEY 
+		REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]), 
 	[Title] NVARCHAR(150) NOT NULL, 
 	[Description] NVARCHAR(500) NOT NULL, 
 	[HeldOn] DATETIME NOT NULL, 

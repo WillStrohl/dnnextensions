@@ -36,6 +36,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     {
         int MemberID { get; set; }
         int GroupID { get; set; }
+        int ModuleID { get; set; }
         int UserID { get; set; }
         int ActivityScore { get; set; }
         DateTime CreatedOn { get; set; }

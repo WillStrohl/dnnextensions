@@ -36,6 +36,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
     {
         int GroupLeaderID { get; set; }
         int GroupID { get; set; }
+        int ModuleID { get; set; }
         int MemberID { get; set; }
         string Title { get; set; }
         bool IsPrimary { get; set; }

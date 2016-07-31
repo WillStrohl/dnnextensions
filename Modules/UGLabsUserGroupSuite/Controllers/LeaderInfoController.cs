@@ -28,8 +28,10 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System;
 using System.Collections.Generic;
 using DotNetNuke.Common;
+using DotNetNuke.Services.Exceptions;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -44,7 +46,11 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void CreateItem(LeaderInfo i)
         {
+            ValidateLeaderObject(i);
+
             _repo.CreateItem(i);
+
+            MarkGroupUpdated(i);
         }
 
         public void DeleteItem(int itemId, int groupID)
@@ -71,7 +77,11 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
         public void UpdateItem(LeaderInfo i)
         {
+            ValidateLeaderObject(i, true);
+
             _repo.UpdateItem(i);
+
+            MarkGroupUpdated(i);
         }
 
         #region Helper Methods
@@ -92,6 +102,26 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
             Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
             Requires.PropertyNotNegative(i.MemberID, "MemberID");
+            Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
+        }
+
+        private void MarkGroupUpdated(LeaderInfo leader)
+        {
+            try
+            {
+                var ctlGroup = new GroupInfoController();
+                var group = ctlGroup.GetItem(leader.GroupID, leader.ModuleID);
+
+                group.LastUpdatedType = (int)GroupUpdateType.Leadership;
+                group.LastUpdatedBy = leader.LastUpdatedBy;
+                group.LastUpdatedOn = leader.LastUpdatedOn;
+
+                ctlGroup.UpdateItem(group);
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+            }
         }
 
         #endregion

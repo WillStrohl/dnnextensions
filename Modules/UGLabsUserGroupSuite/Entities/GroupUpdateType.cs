@@ -28,42 +28,29 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
-using System.Web.Caching;
 using DNNCommunity.Modules.UserGroupSuite.Components;
-using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    [TableName("UG_Member")]
-    [PrimaryKey("MemberID", AutoIncrement = true)]
-    [Cacheable("UG_Member", CacheItemPriority.Default, 20)]
-    [Scope("UserID")]
-    public class MemberInfo : IMemberInfo
+    public enum GroupUpdateType
     {
-        public MemberInfo()
-        {
-            MemberID = Null.NullInteger;
-            GroupID = Null.NullInteger;
-            ModuleID = Null.NullInteger;
-            UserID = Null.NullInteger;
-            ActivityScore = Null.NullInteger;
-            CreatedOn = Globals.NULL_DATE;
-            CreatedBy = Null.NullInteger;
-            LastUpdatedBy = Null.NullInteger;
-            LastUpdatedOn = Globals.NULL_DATE;
-        }
-
-        public int MemberID { get; set; }
-        public int GroupID { get; set; }
-        public int ModuleID { get; set; }
-        public int UserID { get; set; }
-        public int ActivityScore { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime LastUpdatedOn { get; set; }
-        public int LastUpdatedBy { get; set; }
+        [DisplayText("New Group")]
+        New = 0,
+        [DisplayText("Profile Updated")]
+        Profile = 1,
+        [DisplayText("Leadership")]
+        Leadership = 2,
+        [DisplayText("New Members")]
+        NewMembers = 3,
+        //[DisplayText("Lost Members")]
+        //LostMembers = 4,
+        [DisplayText("Meeting Added")]
+        MeetingAdded = 5,
+        [DisplayText("Meeting Updated")]
+        MeetingUpdated = 6,
+        [DisplayText("Location Changed")]
+        LocationChanged = 7,
+        [DisplayText("Other")]
+        Other = 99
     }
 }
