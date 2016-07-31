@@ -9,25 +9,27 @@ var userGroupControllers = angular.module("userGroupControllers", []);
 userGroupApp.config(["$routeProvider", 
 	function ($routeProvider) {
 
+	    var fullTemplatePath = templatePath + "/Templates/" + templateFolder + "/";
+
 		$routeProvider
 		.when("/groups", {
-			templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/groups.html",
+		    templateUrl: fullTemplatePath + "groups.html",
 			controller: "groupsController"
 		})
 		.when("/upcoming-meetings", {
-		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/upcomingMeetings.html",
+		    templateUrl: fullTemplatePath + "upcomingMeetings.html",
 		    controller: "upcomingMeetingsController"
 		})
 		.when("/recently-updated", {
-		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/recentlyUpdated.html",
+		    templateUrl: fullTemplatePath + "recentlyUpdated.html",
 		    controller: "recentlyUpdatedController"
 		})
 		.when("/in-my-area", {
-		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/inMyArea.html",
+		    templateUrl: fullTemplatePath + "inMyArea.html",
 		    controller: "inMyAreaController"
 		})
-		.when("/search", {
-		    templateUrl: "/DesktopModules/UserGroupSuite/Templates/_default/search.html",
+		.when("/find-groups", {
+		    templateUrl: fullTemplatePath + "search.html",
 		    controller: "searchController"
 		})
 		.otherwise({
