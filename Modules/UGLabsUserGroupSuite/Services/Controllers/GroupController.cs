@@ -73,7 +73,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 var userGroups = GroupDataAccess.GetItems(ActiveModule.ModuleID);
                 var response = new ServiceResponse<List<GroupInfo>> { Content = userGroups.ToList() };
 
-                if (userGroups == null)
+                if (userGroups == null || !userGroups.Any())
                 {
                     ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("GroupInfo", ref response);
                 }
@@ -325,6 +325,65 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 {
                     response = GetNullGroup();
                     ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("group", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get a count of the total number of meetings that are upcoming
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetUpcomingMeetingCountForGroups
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [ValidateAntiForgeryToken]
+        [HttpGet]
+        public HttpResponseMessage GetUpcomingMeetingCountForGroups()
+        {
+            try
+            {
+                var response = new ServiceResponse<int>();
+                var groupsWithUpcomingMeetings = GroupDataAccess.GetItemsUpcoming().ToList();
+
+                response.Content = groupsWithUpcomingMeetings.Any() ? groupsWithUpcomingMeetings.Count : 0;
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get meetings that are upcoming
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// POST: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetUpcomingMeetings
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [ValidateAntiForgeryToken]
+        [HttpGet]
+        public HttpResponseMessage GetUpcomingMeetingsForGroups()
+        {
+            try
+            {
+                var groupsWithUpcomingMeetings = GroupDataAccess.GetItemsUpcoming().ToList();
+                var response = new ServiceResponse<List<GroupInfo>>() { Content = groupsWithUpcomingMeetings };
+
+                if (!groupsWithUpcomingMeetings.Any())
+                {
+                    ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("GroupInfo", ref response);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());

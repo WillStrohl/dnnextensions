@@ -744,7 +744,7 @@ GO
 CREATE TABLE {databaseOwner}[{objectQualifier}UG_Meeting] (
 	[MeetingID] INT IDENTITY(1,1) 
 		CONSTRAINT [PK_{objectQualifier}UG_Meeting] PRIMARY KEY CLUSTERED, 
-	[GroupId] INT NOT NULL 
+	[GroupID] INT NOT NULL 
 		CONSTRAINT [FK_{objectQualifier}UG_Meeting_GroupID] FOREIGN KEY 
 		REFERENCES {databaseOwner}[{objectQualifier}UG_Group] ([GroupID]) ON DELETE CASCADE, 
 	[Title] NVARCHAR(150) NOT NULL, 
@@ -1042,6 +1042,35 @@ CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_SpeakerID] ON {databas
 GO
 
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Keyword_TermID_SpeakerID] ON {databaseOwner}[{objectQualifier}UG_Keyword] ([TermID],[SpeakerID]);
+GO
+
+/*
+
+BEGIN STORED PROCEDURES CREATION
+
+*/
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UG_GetGroupsWithUpcomingMeetings]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UG_GetGroupsWithUpcomingMeetings];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}UG_GetGroupsWithUpcomingMeetings] 
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT g.* 
+	FROM {databaseOwner}[{objectQualifier}UG_Group] g 
+	WHERE g.[GroupID] IN (
+		SELECT DISTINCT m.[GroupID] 
+		FROM {databaseOwner}[{objectQualifier}UG_Meeting] m 
+		WHERE m.[HeldOn] > GETDATE()
+	);
+END
 GO
 
 /*

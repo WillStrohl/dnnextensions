@@ -38,7 +38,7 @@ userGroupControllers.controller("groupsController", ["$scope", "$routeParams", "
             $scope.userHasGroups = (serviceResponse.Content == "Success");
 
             if ($scope.userHasGroups) {
-                //$scope.LoadMembership();
+                $scope.LoadMembership();
             }
 
             LogErrors(serviceResponse.Errors);

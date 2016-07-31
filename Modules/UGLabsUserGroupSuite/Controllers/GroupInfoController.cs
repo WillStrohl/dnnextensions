@@ -75,6 +75,12 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             return items;
         }
 
+        public IEnumerable<GroupInfo> GetItemsUpcoming()
+        {
+            var items = _repo.GetItemsWithUpcomingMeetings();
+            return items;
+        }
+
         public GroupInfo GetItem(int itemID, int moduleID)
         {
             Requires.NotNegative("itemID", itemID);

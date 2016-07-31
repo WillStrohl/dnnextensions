@@ -34,14 +34,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.UI;
-using DotNetNuke.Entities.Users;
 using DotNetNuke.Security;
-using DotNetNuke.Security.Membership;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using DNNCommunity.Modules.UserGroupSuite.Components;
-using DNNCommunity.Modules.UserGroupSuite.Controllers;
 using DNNCommunity.Modules.UserGroupSuite.Entities;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Services

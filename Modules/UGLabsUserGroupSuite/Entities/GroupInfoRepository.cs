@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Data;
 using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -66,6 +67,16 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             {
                 var rep = ctx.GetRepository<GroupInfo>();
                 i = rep.Get(moduleID);
+            }
+            return i;
+        }
+
+        public IEnumerable<GroupInfo> GetItemsWithUpcomingMeetings()
+        {
+            IEnumerable<GroupInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                i = ctx.ExecuteQuery<GroupInfo>(CommandType.StoredProcedure, "UG_GetGroupsWithUpcomingMeetings");
             }
             return i;
         }

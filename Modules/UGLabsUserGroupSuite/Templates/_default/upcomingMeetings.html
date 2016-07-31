@@ -2,8 +2,39 @@
 <div class="container" ng-controller="upcomingMeetingsController">
     <div class="row">
         <div class="col-xs-12">
-            <h1>Upcoming Meetings View</h1>
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Groups with Upcoming Meetings</h1>
+            <div class="alert alert-info" ng-show="!groupsToShow">
+                <strong>Not cool!</strong> There aren't any upcoming meetings. Try <a href="#/search">creating a group and posting your own</a>.
+            </div>
+            <div class="" ng-show="groupsToShow">
+                <div class="table-responsive" ng-show="groupCount > 0">
+                    <table class="table table-striped upcomingMeetingsTable">
+                        <tr>
+                            <th>Group</th>
+                            <th>Next Meeting</th>
+                            <th>Where</th>
+                            <th>Streaming</th>
+                            <th>Membership</th>
+                        </tr>
+                        <tr ng-repeat="group in groups | orderBy: 'NextMeeting'">
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.GroupName}}</td>
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.NextMeeting}}</td>
+                            <td>{{group.Where}}</td>
+                            <td>{{group.Streaming}}</td>
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.Membership}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <p ng-show="groupsToShow">* Broadcasts can reach capacity, experience technical issues, and sometimes you have to be present to win swag.</p>
         </div>
     </div>
 </div>
