@@ -2,8 +2,48 @@
 <div class="container" ng-controller="inMyAreaController">
     <div class="row">
         <div class="col-xs-12">
-            <h1>In My Area View</h1>
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Groups Near Me</h1>
+            <p>
+                Don't see a group close enough to you? Maybe you should <a href="#/find-groups">try searching</a> for one?
+            </p>
+            <div class="clearfix" ng-show="geoDataFromCookie">
+                <div class="pull-right">
+                    <p>
+                        <a href="#" ng-click="refreshVisitorLocation()" class="btn btn-info btn-sm">Refresh Location</a>
+                    </p>
+                </div>
+            </div>
+            <div class="alert alert-info" ng-show="!groupsToShow">
+                <strong>Dang!</strong> We didn't find any groups in your region. Try <a href="#/find-groups">creating a group</a> of your own.
+            </div>
+            <div class="clearfix" ng-show="groupsToShow">
+                <div class="table-responsive" ng-show="groupCount > 0">
+                    <table class="table table-striped upcomingMeetingsTable">
+                        <tr>
+                            <th>Group</th>
+                            <th>Next Meeting</th>
+                            <th>Where</th>
+                            <th>Streaming</th>
+                            <th>Membership</th>
+                        </tr>
+                        <tr ng-repeat="group in groups | orderBy: 'NextMeeting'">
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.GroupName}}</td>
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.NextMeeting}}</td>
+                            <td>{{group.Where}}</td>
+                            <td>{{group.Streaming}}</td>
+                            <!-- TODO: Make this a link -->
+                            <td>{{group.Membership}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

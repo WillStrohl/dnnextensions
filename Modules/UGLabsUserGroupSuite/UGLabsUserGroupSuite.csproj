@@ -96,7 +96,9 @@
     <Compile Include="Components\DateTimeConverter.cs" />
     <Compile Include="Components\DisplayText.cs" />
     <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\GeoDataHelper.cs" />
     <Compile Include="Components\LocationHelper.cs" />
+    <Compile Include="Entities\FreeGeoIpInfo.cs" />
     <Compile Include="Entities\GroupUpdateType.cs" />
     <Compile Include="Entities\AttendanceIntent.cs" />
     <Compile Include="Entities\StreamingService.cs" />

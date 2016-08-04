@@ -28,6 +28,8 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using System.Net.Http;
+using System.Web;
 using DNNCommunity.Modules.UserGroupSuite.Controllers;
 using DotNetNuke.Web.Api;
 using DNNCommunity.Modules.UserGroupSuite.Entities;
@@ -73,6 +75,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
             SpeakerDataAccess = new SpeakerInfoController();
             SpeakerMeetingDataAccess = new SpeakerMeetingInfoController();
             VirtualAddressDataAccess = new VirtualAddressInfoController();
+        }
+        
+        protected string GetClientIpAddress()
+        {
+            var clientIpAddress = HttpContext.Current != null ? HttpContext.Current.Request.UserHostAddress : string.Empty;
+
+            if (clientIpAddress == "127.0.0.1")
+            {
+                // example IP address to use for testing
+                clientIpAddress = "199.83.131.63";
+                // this is the IP address for the project's official hosting sponsor, AppliedI.Net
+            }
+
+            return clientIpAddress;
         }
     }
 }

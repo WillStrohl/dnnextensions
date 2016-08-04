@@ -2,7 +2,7 @@
 
 $("body").attr("ng-app", "userGroupApp");
 
-var userGroupApp = angular.module("userGroupApp", ["ngRoute", "ngAnimate", "ui.bootstrap", "ui.sortable", "angularMoment", "flow", "userGroupControllers"]);
+var userGroupApp = angular.module("userGroupApp", ["ngRoute", "ngCookies", "ngAnimate", "ui.bootstrap", "ui.sortable", "angularMoment", "flow", "userGroupControllers"]);
 
 var userGroupControllers = angular.module("userGroupControllers", []);
 

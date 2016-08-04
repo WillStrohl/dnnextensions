@@ -31,12 +31,15 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using DNNCommunity.Modules.UserGroupSuite.Components;
+using DNNCommunity.Modules.UserGroupSuite.Entities;
+using DNNCommunity.Modules.UserGroupSuite.Tests;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
@@ -87,6 +90,34 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
             {
                 var currentUserId = UserInfo.UserID;
                 var response = new ServiceResponse<int> { Content = currentUserId };
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Get the geo location data for the current user.  
+        /// Use caching/state on the client side to avoid outages. This endpoint can only be called 10,000 times per day, per requester.
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetCurrentUserGeoData
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetCurrentUserGeoData()
+        {
+            try
+            {
+                var response = new ServiceResponse<FreeGeoIpInfo>();
+                var geoData = GeoDataHelper.GetLocationOutput(GetClientIpAddress());
+
+                response.Content = geoData;
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }
