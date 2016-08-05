@@ -337,6 +337,45 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         }
 
         /// <summary>
+        /// Search for any groups that match the given keyword(s)
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetGroupsByKeyword
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetGroupsByKeyword(string keywords)
+        {
+            try
+            {
+                ServiceResponse<List<GroupInfo>> response = null;
+
+                // TODO: integrate location into the search for prioritization/sorting once country/region is figured out
+                
+                var groups = GroupDataAccess.GetItemsByKeyword(ActiveModule.ModuleID, keywords);
+
+                if (groups != null && groups.Any())
+                {
+                    AddUserContext(ref groups, UserInfo.UserID);
+                    response = new ServiceResponse<List<GroupInfo>>() { Content = groups.ToList() };
+                }
+                else
+                {
+                    response = GetNullGroup();
+                    ServiceResponseHelper<List<GroupInfo>>.AddNoneFoundError("group", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
         /// Get a count of the total number of meetings that are upcoming
         /// </summary>
         /// <returns></returns>

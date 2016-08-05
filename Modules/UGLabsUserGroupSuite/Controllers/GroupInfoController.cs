@@ -30,6 +30,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using DotNetNuke.Common;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -110,6 +111,16 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             var members = ctlMember.GetItems(userID);
 
             var groups = members.Select(member => GetItem(member.GroupID, moduleID)).ToList();
+
+            return groups;
+        }
+
+        public IEnumerable<GroupInfo> GetItemsByKeyword(int moduleID, string keywords)
+        {
+            Requires.NotNegative("moduleID", moduleID);
+            Requires.NotNullOrEmpty("keywords", keywords);
+
+            var groups = _repo.GetItemsByKeyword(moduleID, keywords);
 
             return groups;
         } 

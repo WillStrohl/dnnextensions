@@ -2,9 +2,55 @@
 <div class="container" ng-controller="searchController">
     <div class="row">
         <div class="col-xs-12">
-            <h1>Search View</h1>
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Find a Group</h1>
+            <div class="form-group">
+                <input type="text" name="searchTerms" ng-model="searchTerms" ng-keyup="searchForGroups()" ng-blur="searchForGroups()" ng-minlength="2" ng-model-options="{debounce: 1000}" maxlength="100" class="form-control" placeholder="enter any search term" ng-trim/>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="!groupsToShow">
+        <div class="col-xs-12">
+            <div ng-show="searchTerms.length == 0">
+                <p class="watermark text-center">Waiting to Search...</p>
+            </div>
+            <div ng-show="searchTerms.length > 0 && groupCount == -1">
+                <p class="watermark text-center">Looking for Groups...</p>
+            </div>
+            <div ng-show="searchTerms.length > 0 && groupCount == 0">
+                <div class="dnnFormMessage dnnFormInfo"><strong>Pfft!</strong> We didn't find any groups for <strong>{{searchTerms}}</strong>. Maybe you should try another term?</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="groupsToShow">
+        <div class="table-responsive" ng-show="groupCount > 0">
+            <table class="table table-striped searchGroupsTable">
+                <tr>
+                    <th>Group</th>
+                    <th>Next Meeting</th>
+                    <th>Where</th>
+                    <th>Streaming</th>
+                    <th>Membership</th>
+                </tr>
+                <tr ng-repeat="group in groups | orderBy: 'NextMeeting'">
+                    <!-- TODO: Make this a link -->
+                    <td>{{group.GroupName}}</td>
+                    <!-- TODO: Make this a link -->
+                    <td>{{group.NextMeeting}}</td>
+                    <td>{{group.Where}}</td>
+                    <td>{{group.Streaming}}</td>
+                    <!-- TODO: Make this a link -->
+                    <td>{{group.Membership}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-show="searchTerms.length > 0 && groupCount == 0">
+        <p class="text-center"><button type="button" ng-click="goToPage('/edit-group')" class="btn btn-info">Create &amp; Lead My Own Group</button></p>
     </div>
 </div>
 <!-- END #/find-groups -->

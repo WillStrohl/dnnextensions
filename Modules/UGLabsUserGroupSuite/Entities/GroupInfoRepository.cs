@@ -81,6 +81,16 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             return i;
         }
 
+        public IEnumerable<GroupInfo> GetItemsByKeyword(int moduleID, string keywords)
+        {
+            IEnumerable<GroupInfo> i;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                i = ctx.ExecuteQuery<GroupInfo>(CommandType.StoredProcedure, "UG_GetGroupsByKeyword", moduleID, keywords);
+            }
+            return i;
+        }
+
         public GroupInfo GetItem(int itemId, int moduleID)
         {
             GroupInfo i = null;

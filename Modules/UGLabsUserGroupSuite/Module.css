@@ -10,3 +10,8 @@
 .modal-form-container-lg {
     width: 870px !important;
 }
+
+.watermark {
+    color: #c0c0c0;
+    margin: 3em auto;
+}

@@ -6,10 +6,10 @@ var userGroupApp = angular.module("userGroupApp", ["ngRoute", "ngCookies", "ngAn
 
 var userGroupControllers = angular.module("userGroupControllers", []);
 
+var fullTemplatePath = templatePath + "/Templates/" + templateFolder + "/";
+
 userGroupApp.config(["$routeProvider", 
 	function ($routeProvider) {
-
-	    var fullTemplatePath = templatePath + "/Templates/" + templateFolder + "/";
 
 		$routeProvider
 		.when("/groups", {
@@ -31,6 +31,10 @@ userGroupApp.config(["$routeProvider",
 		.when("/find-groups", {
 		    templateUrl: fullTemplatePath + "search.html",
 		    controller: "searchController"
+		})
+		.when("/edit-group", {
+		    templateUrl: fullTemplatePath + "editGroup.html",
+		    controller: "editGroupController"
 		})
 		.otherwise({
 		    redirectTo: "/groups"

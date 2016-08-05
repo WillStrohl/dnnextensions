@@ -1105,6 +1105,34 @@ BEGIN
 END
 GO
 
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UG_GetGroupsByKeyword]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UG_GetGroupsByKeyword];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}UG_GetGroupsByKeyword] 
+	@ModuleID INT, @Keywords NVARCHAR(100)
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT g.* 
+	FROM {databaseOwner}[{objectQualifier}UG_Group] g 
+	LEFT OUTER JOIN {databaseOwner}[{objectQualifier}UG_Keyword] k ON k.[GroupID] = g.[GroupID] 
+	LEFT OUTER JOIN {databaseOwner}[{objectQualifier}Taxonomy_Terms] t ON t.[TermID] = k.[TermID]
+	WHERE 
+		g.[GroupName] LIKE '%' + @Keywords + '%' 
+		OR g.[City] LIKE '%' + @Keywords + '%'  
+		OR g.[Description] LIKE '%' + @Keywords + '%' 
+		OR g.[Website] LIKE '%' + @Keywords + '%' 
+		OR t.[Name] LIKE '%' + @Keywords + '%' 
+		AND g.[ModuleId] = @ModuleID
+END
+GO
+
 /*
 
 END OF FILE

@@ -12,6 +12,7 @@
 /// <reference path="scripts/ng/angular/angular-resource.js" />
 /// <reference path="scripts/ng/angular/angular-route.js" />
 /// <reference path="scripts/ng/app.js" />
+/// <reference path="scripts/ng/controllers/editgroupcontroller.js" />
 /// <reference path="scripts/ng/controllers/groupnavigationcontroller.js" />
 /// <reference path="Scripts/ng/controllers/GroupsController.js" />
 /// <reference path="scripts/ng/controllers/inmyareacontroller.js" />
