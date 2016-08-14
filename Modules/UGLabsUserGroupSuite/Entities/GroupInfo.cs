@@ -48,7 +48,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             GroupID = Null.NullInteger;
             ModuleID = Null.NullInteger;
             GroupName = string.Empty;
-            CountryID = Null.NullInteger;
+            Country = string.Empty;
             City = string.Empty;
             LanguageID = Null.NullInteger;
             Description = string.Empty;
@@ -72,8 +72,10 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public int GroupID { get; set; }
         public int ModuleID { get; set; }
         public string GroupName { get; set; }
-        public int CountryID { get; set; }
-        public int RegionID { get; set; }
+        public string Country { get; set; }
+        public string CountryCode { get; set; }
+        public string Region { get; set; }
+        public string RegionCode { get; set; }
         public string City { get; set; }
         public int LanguageID { get; set; }
         public string Description { get; set; }

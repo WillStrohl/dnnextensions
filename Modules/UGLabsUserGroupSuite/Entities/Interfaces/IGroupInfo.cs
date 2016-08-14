@@ -38,8 +38,10 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         int GroupID { get; set; }
         int ModuleID { get; set; }
         string GroupName { get; set; }
-        int CountryID { get; set; }
-        int RegionID { get; set; }
+        string Country { get; set; }
+        string CountryCode { get; set; }
+        string Region { get; set; }
+        string RegionCode { get; set; }
         string City { get; set; }
         int LanguageID { get; set; }
         string Description { get; set; }

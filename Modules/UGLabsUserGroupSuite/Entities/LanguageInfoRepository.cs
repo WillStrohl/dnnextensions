@@ -29,6 +29,7 @@
 */
 
 using System.Collections.Generic;
+using System.Data;
 using DotNetNuke.Data;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
@@ -87,6 +88,14 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             {
                 var rep = ctx.GetRepository<LanguageInfo>();
                 rep.Update(i);
+            }
+        }
+
+        public void AddDefaultItems(int portalID)
+        {
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                ctx.Execute(CommandType.StoredProcedure, "UG_AddDefaultLanguages", portalID);
             }
         }
     }

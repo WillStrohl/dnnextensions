@@ -29,45 +29,20 @@
 */
 
 using System;
-using System.Web.Caching;
-using DNNCommunity.Modules.UserGroupSuite.Components;
 using DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.ComponentModel.DataAnnotations;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
-    [TableName("UG_Leader")]
-    [PrimaryKey("GroupLeaderID", AutoIncrement = true)]
-    [Cacheable("UG_Leader", CacheItemPriority.Default, 20)]
-    [Scope("GroupID")]
-    public class LeaderInfo : ILeaderInfo
+    [Serializable]
+    public class ListItemInfo : IListItemInfo
     {
-        public LeaderInfo()
+        public ListItemInfo(string key, string value)
         {
-            GroupLeaderID = Null.NullInteger;
-            GroupID = Null.NullInteger;
-            ModuleID = Null.NullInteger;
-            MemberID = Null.NullInteger;
-            UserID = Null.NullInteger;
-            Title = string.Empty;
-            IsPrimary = false;
-            CreatedBy = Null.NullInteger;
-            CreatedOn = Globals.NULL_DATE;
-            LastUpdatedBy = Null.NullInteger;
-            LastUpdatedOn = Globals.NULL_DATE;
+            Key = key;
+            Value = value;
         }
 
-        public int GroupLeaderID { get; set; }
-        public int GroupID { get; set; }
-        public int ModuleID { get; set; }
-        public int MemberID { get; set; }
-        public int UserID { get; set; }
-        public string Title { get; set; }
-        public bool IsPrimary { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime LastUpdatedOn { get; set; }
-        public int LastUpdatedBy { get; set; }
+        public string Key { get; set; }
+        public string Value { get; set; }
     }
 }

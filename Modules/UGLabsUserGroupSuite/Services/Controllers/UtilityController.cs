@@ -29,6 +29,8 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
@@ -40,6 +42,7 @@ using DotNetNuke.Web.Api;
 using DNNCommunity.Modules.UserGroupSuite.Components;
 using DNNCommunity.Modules.UserGroupSuite.Entities;
 using DNNCommunity.Modules.UserGroupSuite.Tests;
+using DotNetNuke.Common.Utilities;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Services
 {
@@ -118,6 +121,76 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 var geoData = GeoDataHelper.GetLocationOutput(GetClientIpAddress());
 
                 response.Content = geoData;
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Returns all of the available countries for the site
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetCountries
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetCountries()
+        {
+            try
+            {
+                var response = new ServiceResponse<List<ListItemInfo>>();
+                var countries = new List<ListItemInfo>();
+
+                var ctlList = new ListItemInfoController();
+                countries = ctlList.GetCountries(true);
+
+                response.Content = countries;
+
+                if (!countries.Any())
+                {
+                    ServiceResponseHelper<List<ListItemInfo>>.AddNoneFoundError("countries", ref response);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ERROR_MESSAGE);
+            }
+        }
+
+        /// <summary>
+        /// Returns all of the available regions for the given country
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// GET: http://dnndev.me/DesktopModules/UserGroupSuite/API/GroupManagement/GetRegions
+        /// </remarks>
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [HttpGet]
+        public HttpResponseMessage GetRegions(string countryCode)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(countryCode)) throw new ArgumentNullException("countryCode");
+
+                var response = new ServiceResponse<List<ListItemInfo>>();
+                var ctlList = new ListItemInfoController();
+                var regions = ctlList.GetRegions(countryCode, true);
+
+                if (!regions.Any())
+                {
+                    ServiceResponseHelper<List<ListItemInfo>>.AddNoneFoundError("regions", ref response);
+                }
+
+                response.Content = regions;
 
                 return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
             }

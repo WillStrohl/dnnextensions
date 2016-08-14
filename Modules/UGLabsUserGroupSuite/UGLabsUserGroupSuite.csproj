@@ -98,9 +98,12 @@
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\GeoDataHelper.cs" />
     <Compile Include="Components\LocationHelper.cs" />
+    <Compile Include="Controllers\ListItemInfoController.cs" />
     <Compile Include="Entities\FreeGeoIpInfo.cs" />
     <Compile Include="Entities\GroupUpdateType.cs" />
     <Compile Include="Entities\AttendanceIntent.cs" />
+    <Compile Include="Entities\Interfaces\IListItemInfo.cs" />
+    <Compile Include="Entities\ListItemInfo.cs" />
     <Compile Include="Entities\StreamingService.cs" />
     <Compile Include="Components\UserGroupSuiteModuleSettingsBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -236,10 +239,14 @@
     <Content Include="Scripts\ng-flow\ng-flow.min.js" />
     <Content Include="Scripts\ng\angular\angular-animate.js" />
     <Content Include="Scripts\ng\angular\angular-animate.min.js" />
+    <Content Include="Scripts\ng\angular\angular-cookies.js" />
+    <Content Include="Scripts\ng\angular\angular-cookies.min.js" />
     <Content Include="Scripts\ng\angular\angular-resource.js" />
     <Content Include="Scripts\ng\angular\angular-resource.min.js" />
     <Content Include="Scripts\ng\angular\angular-route.js" />
     <Content Include="Scripts\ng\angular\angular-route.min.js" />
+    <Content Include="Scripts\ng\angular\angular-sortable.js" />
+    <Content Include="Scripts\ng\angular\angular-sortable.min.js" />
     <Content Include="Scripts\ng\angular\angular.js" />
     <Content Include="Scripts\ng\angular\angular.min.js" />
     <Content Include="Scripts\ng\controllers\EditGroupController.js" />
@@ -253,6 +260,12 @@
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\ng\app.js" />
     <Content Include="Scripts\ng\directives\dateDirectives.js" />
+    <Content Include="Scripts\ng\directives\ng-tags-input\ng-tags-input.bootstrap.css" />
+    <Content Include="Scripts\ng\directives\ng-tags-input\ng-tags-input.bootstrap.min.css" />
+    <Content Include="Scripts\ng\directives\ng-tags-input\ng-tags-input.css" />
+    <Content Include="Scripts\ng\directives\ng-tags-input\ng-tags-input.js" />
+    <Content Include="Scripts\ng\directives\ng-tags-input\ng-tags-input.min.css" />
+    <Content Include="Scripts\ng\directives\ng-tags-input\ng-tags-input.min.js" />
     <Content Include="Scripts\ng\factories\userGroupServiceFactory.js" />
     <Content Include="Scripts\StackBlur\StackBlur.js" />
     <Content Include="Scripts\StackBlur\StackBlur.min.js" />
@@ -331,6 +344,7 @@
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_tooltip.scss" />
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_typography.scss" />
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_well.scss" />
+    <Content Include="Scripts\ng\angular\angular-cookies.min.js.map" />
     <None Include="_references.js" />
     <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

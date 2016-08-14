@@ -223,27 +223,42 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
         /// </remarks>
         [AllowAnonymous]
         [HttpGet]
-        public HttpResponseMessage UserCanEditGroup(int itemId)
+        public HttpResponseMessage UserCanEditGroup(int itemID)
         {
-            // TODO: Update this to allow other leaders to edit a group
+            if (itemID < Null.NullInteger) itemID = Null.NullInteger;
+
             ServiceResponse<string> response = null;
 
-            if (UserInfo.IsSuperUser || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || ModulePermissionController.HasModulePermission(ActiveModule.ModulePermissions, "Edit"))
+            if (UserInfo == null || UserInfo.UserID == Null.NullInteger)
             {
+                // anonymous users can edit nothing
+                response = new ServiceResponse<string>() {Content = Globals.RESPONSE_FAILURE};
+                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
+            }
+            
+            if (itemID == Null.NullInteger)
+            {
+                // registered users can create a new group
                 response = new ServiceResponse<string>() { Content = Globals.RESPONSE_SUCCESS };
             }
             else
             {
-                var userGroup = GroupDataAccess.GetItem(itemId, ActiveModule.ModuleID);
-
-                if (userGroup != null && userGroup.CreatedBy == UserInfo.UserID || userGroup.LastUpdatedBy == UserInfo.UserID)
+                if (UserInfo.IsSuperUser || UserInfo.IsInRole(PortalSettings.AdministratorRoleName) || ModulePermissionController.HasModulePermission(ActiveModule.ModulePermissions, "Edit"))
                 {
-                    response = new ServiceResponse<string>() {Content = Globals.RESPONSE_SUCCESS };
+                    // admins/superusers can always edit
+                    response = new ServiceResponse<string>() { Content = Globals.RESPONSE_SUCCESS };
                 }
                 else
                 {
-                    response = new ServiceResponse<string>() { Content = Globals.RESPONSE_FAILURE };
+                    // leaders can edit the group they lead
+                    var userGroup = GroupDataAccess.GetItem(itemID, ActiveModule.ModuleID);
+                    var leaders = LeaderDataAccess.GetItems(userGroup.GroupID);
+
+                    response = leaders.Any(l => l.UserID == UserInfo.UserID) ? 
+                        new ServiceResponse<string>() {Content = Globals.RESPONSE_SUCCESS } : 
+                        new ServiceResponse<string>() { Content = Globals.RESPONSE_FAILURE };
                 }
+
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
@@ -479,12 +494,12 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                     if (nextMeeting.PhysicalAddressID > Null.NullInteger)
                     {
                         var nextAddress = AddressDataAccess.GetItem(nextMeeting.PhysicalAddressID, group.ModuleID);
-                        group.Where = LocationHelper.GetLocationOutput(nextAddress.City, nextAddress.RegionID, nextAddress.CountryID);
+                        group.Where = LocationHelper.GetLocationOutput(nextAddress.City, nextAddress.Region, nextAddress.Country);
                     }
                     else
                     {
                         // there isn't a physical meeting (virtual only)
-                        group.Where = LocationHelper.GetLocationOutput(group.City, group.RegionID, group.CountryID);
+                        group.Where = LocationHelper.GetLocationOutput(group.City, group.Region, group.Country);
                     }
 
                     // is the meeting being broadcast?
@@ -535,15 +550,15 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 updatesToProcess = true;
             }
 
-            if (newUserGroup.CountryID != originalUserGroup.CountryID)
+            if (!string.Equals(newUserGroup.Country, originalUserGroup.Country))
             {
-                originalUserGroup.CountryID = newUserGroup.CountryID;
+                originalUserGroup.Country = newUserGroup.Country;
                 updatesToProcess = true;
             }
 
-            if (newUserGroup.RegionID != originalUserGroup.RegionID)
+            if (!string.Equals(newUserGroup.Region, originalUserGroup.Region))
             {
-                originalUserGroup.RegionID = newUserGroup.RegionID;
+                originalUserGroup.Region = newUserGroup.Region;
                 updatesToProcess = true;
             }
 

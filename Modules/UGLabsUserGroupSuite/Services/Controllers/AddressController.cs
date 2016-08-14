@@ -303,15 +303,15 @@ namespace DNNCommunity.Modules.UserGroupSuite.Services
                 updatesToProcess = true;
             }
 
-            if (originalAddress.RegionID != newAddress.RegionID)
+            if (!string.Equals(originalAddress.Region, newAddress.Region))
             {
-                originalAddress.RegionID = newAddress.RegionID;
+                originalAddress.Region = newAddress.Region;
                 updatesToProcess = true;
             }
 
-            if (originalAddress.CountryID != newAddress.CountryID)
+            if (!string.Equals(originalAddress.Country, newAddress.Country))
             {
-                originalAddress.CountryID = newAddress.CountryID;
+                originalAddress.Country = newAddress.Country;
                 updatesToProcess = true;
             }
 

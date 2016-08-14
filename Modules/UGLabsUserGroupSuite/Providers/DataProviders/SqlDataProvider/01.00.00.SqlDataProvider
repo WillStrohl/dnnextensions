@@ -312,6 +312,13 @@ GO
 
 IF EXISTS (SELECT 1 
     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+    WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_UserID' 
+    AND TABLE_NAME = N'{objectQualifier}UG_Leader')
+    ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_UserID];
+GO
+
+IF EXISTS (SELECT 1 
+    FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
     WHERE CONSTRAINT_NAME = N'FK_{objectQualifier}UG_Leader_MemberID' 
     AND TABLE_NAME = N'{objectQualifier}UG_Leader')
     ALTER TABLE {databaseOwner}[{objectQualifier}UG_Leader] DROP CONSTRAINT [FK_{objectQualifier}UG_Leader_MemberID];
@@ -456,9 +463,11 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Group] (
     [ModuleId] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Group_ModuleID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleId]) ON DELETE CASCADE, 
-    [GroupName] NVARCHAR(50) NOT NULL, 
-    [CountryID] INT NOT NULL, 
-    [RegionID] INT NULL, 
+    [GroupName] NVARCHAR(100) NOT NULL, 
+    [CountryCode] NVARCHAR(10) NOT NULL, 
+    [Country] NVARCHAR(100) NOT NULL, 
+    [RegionCode] NVARCHAR(10) NULL, 
+    [Region] NVARCHAR(100) NULL, 
     [City] NVARCHAR(100) NOT NULL, 
     [LanguageID] INT NOT NULL
 		CONSTRAINT [FK_{objectQualifier}UG_Group_LanguageID] FOREIGN KEY 
@@ -492,19 +501,19 @@ GO
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_GroupID_ModuleID_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([GroupID],[ModuleID],[IsActive]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_CountryID_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([CountryID],[IsActive]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_Country_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([Country],[IsActive]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_RegionID_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([RegionID],[IsActive]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_Region_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([Region],[IsActive]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_CountryID_RegionID_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([CountryID],[RegionID],[IsActive]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_Country_Region_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([Country],[Region],[IsActive]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_CountryID_RegionID_City_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([CountryID],[RegionID],[City],[IsActive]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_Country_Region_City_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([Country],[Region],[City],[IsActive]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_CountryID_City_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([CountryID],[City],[IsActive]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Group_Country_City_IsActive] ON {databaseOwner}[{objectQualifier}UG_Group] ([Country],[City],[IsActive]);
 GO
 
 
@@ -598,6 +607,9 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Leader] (
     [MemberID] INT NOT NULL 
         CONSTRAINT [FK_{objectQualifier}UG_Leader_MemberID] FOREIGN KEY 
         REFERENCES {databaseOwner}[{objectQualifier}UG_Member] ([MemberID]) ON DELETE CASCADE, 
+    [UserID] INT NOT NULL 
+        CONSTRAINT [FK_{objectQualifier}UG_Leader_UserID] FOREIGN KEY 
+        REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserID]), 
     [Title] NVARCHAR(50) NOT NULL, 
     [IsPrimary] BIT NOT NULL 
         CONSTRAINT [DF_{objectQualifier}UG_Leader_IsPrimary] DEFAULT((0)),
@@ -645,8 +657,10 @@ CREATE TABLE {databaseOwner}[{objectQualifier}UG_Address] (
     [Line1] NVARCHAR(200) NOT NULL, 
     [Line2] NVARCHAR(200) NULL, 
     [City] NVARCHAR(100) NOT NULL, 
-    [RegionID] INT NULL, 
-    [CountryID] INT NOT NULL, 
+    [Region] NVARCHAR(10) NULL, 
+    [RegionCode] NVARCHAR(100) NULL, 
+    [Country] NVARCHAR(100) NOT NULL, 
+    [CountryCode] NVARCHAR(10) NOT NULL, 
     [PostalCode] NVARCHAR(20) NULL,
     [CreatedOn] DATETIME NOT NULL,
     [CreatedBy] INT NOT NULL
@@ -671,19 +685,19 @@ GO
 CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_AddressID_Nickname] ON {databaseOwner}[{objectQualifier}UG_Address] ([AddressID],[Nickname]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_CountryID] ON {databaseOwner}[{objectQualifier}UG_Address] ([CountryID]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_Country] ON {databaseOwner}[{objectQualifier}UG_Address] ([Country]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_RegionID] ON {databaseOwner}[{objectQualifier}UG_Address] ([RegionID]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_Region] ON {databaseOwner}[{objectQualifier}UG_Address] ([Region]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_CountryID_RegionID] ON {databaseOwner}[{objectQualifier}UG_Address] ([CountryID],[RegionID]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_Country_Region] ON {databaseOwner}[{objectQualifier}UG_Address] ([Country],[Region]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_CountryID_City] ON {databaseOwner}[{objectQualifier}UG_Address] ([CountryID],[City]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_Country_City] ON {databaseOwner}[{objectQualifier}UG_Address] ([Country],[City]);
 GO
 
-CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_CountryID_RegionID_City] ON {databaseOwner}[{objectQualifier}UG_Address] ([CountryID],[RegionID],[City]);
+CREATE NONCLUSTERED INDEX [IX_{objectQualifier}UG_Address_Country_Region_City] ON {databaseOwner}[{objectQualifier}UG_Address] ([Country],[Region],[City]);
 GO
 
 
@@ -1128,8 +1142,36 @@ BEGIN
 		OR g.[City] LIKE '%' + @Keywords + '%'  
 		OR g.[Description] LIKE '%' + @Keywords + '%' 
 		OR g.[Website] LIKE '%' + @Keywords + '%' 
+		OR g.[Country] LIKE '%' + @Keywords + '%' 
+		OR g.[Region] LIKE '%' + @Keywords + '%' 
 		OR t.[Name] LIKE '%' + @Keywords + '%' 
 		AND g.[ModuleId] = @ModuleID
+END
+GO
+
+IF NOT OBJECT_ID(N'{databaseOwner}[{objectQualifier}UG_AddDefaultLanguages]') IS NULL
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}UG_AddDefaultLanguages];
+GO
+
+SET QUOTED_IDENTIFIER ON; 
+GO
+SET ANSI_NULLS ON; 
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}UG_AddDefaultLanguages] 
+	@PortalID INT
+AS 
+BEGIN 
+	SET NOCOUNT ON;
+	IF ((SELECT COUNT(*) FROM {databaseOwner}[{objectQualifier}UG_Language] l WHERE l.[PortalID] = @PortalID) = 0)
+	BEGIN
+		INSERT INTO {databaseOwner}[{objectQualifier}UG_Language] ([Language],[PortalID]) VALUES ('English', @PortalID);
+		INSERT INTO {databaseOwner}[{objectQualifier}UG_Language] ([Language],[PortalID]) VALUES ('German', @PortalID);
+		INSERT INTO {databaseOwner}[{objectQualifier}UG_Language] ([Language],[PortalID]) VALUES ('Dutch', @PortalID);
+		INSERT INTO {databaseOwner}[{objectQualifier}UG_Language] ([Language],[PortalID]) VALUES ('Italian', @PortalID);
+		INSERT INTO {databaseOwner}[{objectQualifier}UG_Language] ([Language],[PortalID]) VALUES ('Spanish', @PortalID);
+		INSERT INTO {databaseOwner}[{objectQualifier}UG_Language] ([Language],[PortalID]) VALUES ('French', @PortalID);
+	END
 END
 GO
 

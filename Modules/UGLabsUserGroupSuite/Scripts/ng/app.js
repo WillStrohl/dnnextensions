@@ -2,7 +2,7 @@
 
 $("body").attr("ng-app", "userGroupApp");
 
-var userGroupApp = angular.module("userGroupApp", ["ngRoute", "ngCookies", "ngAnimate", "ui.bootstrap", "ui.sortable", "angularMoment", "flow", "userGroupControllers"]);
+var userGroupApp = angular.module("userGroupApp", ["ngRoute", "ngCookies", "ngAnimate", "ui.bootstrap", "ui.sortable", "ngTagsInput", "angularMoment", "flow", "userGroupControllers"]);
 
 var userGroupControllers = angular.module("userGroupControllers", []);
 
@@ -33,6 +33,10 @@ userGroupApp.config(["$routeProvider",
 		    controller: "searchController"
 		})
 		.when("/edit-group", {
+		    templateUrl: fullTemplatePath + "editGroup.html",
+		    controller: "editGroupController"
+		})
+		.when("/edit-group/:groupID", {
 		    templateUrl: fullTemplatePath + "editGroup.html",
 		    controller: "editGroupController"
 		})

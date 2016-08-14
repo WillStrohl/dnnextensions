@@ -5,9 +5,179 @@
             <div ng-include="'/DesktopModules/UserGroupSuite/Templates/_default/groupNavigation.html'"></div>
         </div>
     </div>
-    <div class="row">
+    <h1>Update Group</h1>
+    <div class="row" ng-show="!userCanEdit">
         <div class="col-xs-12">
-            <h1>Update Group</h1>
+            <div class="dnnFormMessage dnnFormInfo">
+                <strong>This is embarrassing...</strong> You don't have permission to access this view, or the requested group doesn't exist.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" ng-show="userCanEdit" ng-form="groupForm" ng-controller="editGroupController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" ng-show="HasSuccess">
+                <h4>Well done!</h4>
+                <p>The group was saved succcessfully!</p>
+            </div>
+            <div class="alert alert-danger" ng-show="HasErrors">
+                <h4>Oh snap!</h4>
+                <p>An error occurred. Please try again, or contact the site administrator.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.GroupName.$dirty && groupForm.GroupName.$invalid }">
+                <label for="GroupName">Group Name *</label>
+                <input type="text" name="GroupName" ng-model="group.GroupName" ng-required="true" class="form-control" placeholder="Name of the Group" maxlength="100" required/>
+                <p class="help-block" ng-show="groupForm.GroupName.$dirty && groupForm.GroupName.$invalid">
+                    Group name is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Country.$dirty && groupForm.Country.$invalid }">
+                <label for="Country">Country *</label>
+                <select name="Country" ng-model="selectedCountry" ng-required="true" class="form-control" ng-options="item.Value for item in countries track by item.Key" ng-change="LoadRegions()">
+                    <option value="">Select a Country</option>
+                </select>
+                <p class="help-block" ng-show="groupForm.Country.$dirty && groupForm.Country.$invalid">
+                    Country is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Region.$dirty && groupForm.Region.$invalid }">
+                <label for="Region">Region <span ng-show="hasRegions">*</span></label>
+                <select name="Region" ng-model="selectedRegion" class="form-control" ng-options="item.Value for item in regions track by item.Key" ng-disabled="!hasRegions" ng-required="hasRegions" ng-change="updateRegionSelection()">
+                    <option value="">Select a Region</option>
+                </select>
+                <p class="help-block" ng-show="groupForm.Region.$dirty && groupForm.Region.$invalid">
+                    Region is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.City.$dirty && groupForm.City.$invalid }">
+                <label for="City">City *</label>
+                <input type="text" name="City" ng-model="group.City" ng-required="true" class="form-control" placeholder="City where the group is found" maxlength="100" required/>
+                <p class="help-block" ng-show="groupForm.City.$dirty && groupForm.City.$invalid">
+                    City is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Language.$dirty && groupForm.Language.$invalid }">
+                <label for="Language">Language *</label>
+                <select name="Language" ng-model="group.LanguageID" class="form-control" ng-options="item.Language for item in languages track by item.GroupLanguageID" ng-disabled="!hasLanguages" ng-required="true">
+                    <option value="">Select a Language</option>
+                </select>
+                <p class="help-block" ng-show="groupForm.Language.$dirty && groupForm.Language.$invalid">
+                    Language is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Description.$dirty && groupForm.Description.$invalid }">
+                <label for="Description">Group Description *</label>
+                <textarea name="Description" ng-model="group.Description" ng-required="true" class="form-control" placeholder="Description of the group" maxlength="500" required></textarea>
+                <p class="help-block" ng-show="groupForm.Description.$dirty && groupForm.Description.$invalid">
+                    Description is required.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group">
+                <label for="Keywords">Group Keywords</label>
+                <tags-input ng-model="keywords" placeholder="Keywords for the group" min-tags="1" min-length="3" max-length="25" add-on-blur="false" add-on-space="true" allowed-tags-pattern="^[a-zA-Z0-9\-]+$"></tags-input>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Website.$dirty && groupForm.Website.$invalid }">
+                <label for="Website">Website</label>
+                <input type="url" name="Website" ng-model="group.Website" class="form-control" placeholder="http://usergroupname.org..." maxlength="255"/>
+                <p class="help-block" ng-show="groupForm.Website.$dirty && groupForm.Website.$invalid">
+                    Website URL isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.MeetUp.$dirty && groupForm.MeetUp.$invalid }">
+                <label for="MeetUp">MeetUp Page</label>
+                <input type="url" name="MeetUp" ng-model="group.MeetUp" class="form-control" placeholder="http://meetup.com..." maxlength="255"/>
+                <p class="help-block" ng-show="groupForm.MeetUp.$dirty && groupForm.MeetUp.$invalid">
+                    MeetUp URL isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Twitter.$dirty && groupForm.Twitter.$invalid }">
+                <label for="Twitter">Twitter Handle</label>
+                <input type="text" name="Twitter" ng-model="group.Twitter" class="form-control" placeholder="@handle" maxlength="16" ng-pattern="twitterValidationPattern"/>
+                <p class="help-block" ng-show="groupForm.Twitter.$dirty && groupForm.Twitter.$invalid">
+                    Twitter name isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Facebook.$dirty && groupForm.Facebook.$invalid }">
+                <label for="Facebook">Facebook Page</label>
+                <input type="url" name="Facebook" ng-model="group.Facebook" class="form-control" placeholder="http://facebook.com..." maxlength="255"/>
+                <p class="help-block" ng-show="groupForm.Facebook.$dirty && groupForm.Facebook.$invalid">
+                    Facebook URL isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.LinkedIn.$dirty && groupForm.LinkedIn.$invalid }">
+                <label for="LinkedIn">LinkedIn Page</label>
+                <input type="url" name="LinkedIn" ng-model="group.LinkedIn" class="form-control" placeholder="http://linkedin.com..." maxlength="255"/>
+                <p class="help-block" ng-show="groupForm.LinkedIn.$dirty && groupForm.LinkedIn.$invalid">
+                    LinkedIn URL isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Instagram.$dirty && groupForm.Instagram.$invalid }">
+                <label for="Instagram">Instagram Page</label>
+                <input type="url" name="Instagram" ng-model="group.Instagram" class="form-control" placeholder="http://instagram.com..." maxlength="255"/>
+                <p class="help-block" ng-show="groupForm.Instagram.$dirty && groupForm.Instagram.$invalid">
+                    Instagram URL isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group" ng-class="{ 'has-error error' : groupForm.Pinterest.$dirty && groupForm.Pinterest.$invalid }">
+                <label for="Pinterest">Pinterest Page</label>
+                <input type="url" name="Pinterest" ng-model="group.Pinterest" class="form-control" placeholder="http://pinterest.com..." maxlength="255"/>
+                <p class="help-block" ng-show="groupForm.Pinterest.$dirty && groupForm.Pinterest.$invalid">
+                    Pinterest URL isn't valid.
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group">
+                <label for="Avatar">Group Image</label>
+                <input type="text" name="Avatar" ng-model="group.Avatar" class="form-control" placeholder="http://" maxlength="255"/>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="form-group">
+                <div class="checkbox">
+                    <label for="IsActive">
+                        <input type="checkbox" name="IsActive" id="IsActive" ng-model="group.IsActive"/>
+                        Is Active?
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <button type="button" class="btn btn-success" ng-disabled="groupForm.$invalid" ng-click="updateGroup()">Update</button>
+            <button type="button" class="btn" ng-click="goToPage('/groups')">Cancel</button>
         </div>
     </div>
 </div>

@@ -102,6 +102,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
             Requires.NotNull("LastUpdatedOn", i.LastUpdatedOn);
             Requires.PropertyNotNegative(i.MemberID, "MemberID");
+            Requires.PropertyNotNegative(i.UserID, "UserID");
             Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
         }
 

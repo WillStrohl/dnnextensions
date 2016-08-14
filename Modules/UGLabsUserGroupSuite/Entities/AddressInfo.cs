@@ -47,8 +47,10 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
         public string Line1 { get; set; }
         public string Line2 { get; set; }
         public string City { get; set; }
-        public int RegionID { get; set; }
-        public int CountryID { get; set; }
+        public string Region { get; set; }
+        public string RegionCode { get; set; }
+        public string Country { get; set; }
+        public string CountryCode { get; set; }
         public string PostalCode { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }

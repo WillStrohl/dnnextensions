@@ -30,6 +30,7 @@
 
 using System.Collections.Generic;
 using DotNetNuke.Common;
+using DotNetNuke.Entities.Portals;
 
 namespace DNNCommunity.Modules.UserGroupSuite.Entities
 {
@@ -88,6 +89,19 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             ValidateLanguageObject(i, true);
 
             _repo.UpdateItem(i);
+        }
+
+        public void AddDefaultItems()
+        {
+            var ctlPortal = new PortalController();
+            var portals = ctlPortal.GetPortals();
+
+            if (portals == null) return;
+            
+            foreach (PortalInfo portal in portals)
+            {
+                _repo.AddDefaultItems(portal.PortalID);
+            }
         }
 
         #region Helper Methods

@@ -35,25 +35,25 @@ namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
     public static class LocationHelper
     {
-        public static string GetLocationOutput(string city, int countryID)
+        public static string GetLocationOutput(string city, string country)
         {
-            return GetLocationOutput(city, Null.NullInteger, countryID);
+            return GetLocationOutput(city, string.Empty, country);
         }
 
-        public static string GetLocationOutput(string city, int regionID, int countryID)
+        public static string GetLocationOutput(string city, string region, string country)
         {
             Requires.NotNullOrEmpty("city", city);
-            Requires.NotNegative("countryID", countryID);
+            Requires.NotNullOrEmpty("country", country);
 
             // TODO: parse region and country codes
-            if (regionID > Null.NullInteger)
+            if (!string.IsNullOrEmpty(region))
             {
-                return string.Format(Globals.FORMAT_LOCATION_REGION, city, regionID, countryID);
+                return string.Format(Globals.FORMAT_LOCATION_REGION, city, region, country);
             }
             else
             {
 
-                return string.Format(Globals.FORMAT_LOCATION_COUNTRY, city, countryID);
+                return string.Format(Globals.FORMAT_LOCATION_COUNTRY, city, country);
             }
         }
     }

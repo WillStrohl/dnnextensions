@@ -103,13 +103,13 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
 
             Requires.PropertyNotNegative(i.ModuleID, "ModuleID");
             Requires.PropertyNotNullOrEmpty(i.City, "City");
-            Requires.PropertyNotNegative(i.CountryID, "CountryID");
+            Requires.PropertyNotNullOrEmpty(i.Country, "Country");
+            Requires.PropertyNotNullOrEmpty(i.CountryCode, "CountryCode");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
             Requires.NotNull("address.CreatedOn", i.CreatedOn);
             Requires.PropertyNotNegative(i.LastUpdatedBy, "LastUpdatedBy");
             Requires.NotNull("address.LastUpdatedOn", i.LastUpdatedOn);
             Requires.PropertyNotNullOrEmpty(i.Line1, "Line1");
-            Requires.PropertyNotNullOrEmpty(i.Nickname, "Nickname");
             Requires.PropertyNotNullOrEmpty(i.Nickname, "Nickname");
         }
 

@@ -49,7 +49,9 @@
             <moduleName>UserGroupSuite</moduleName>
             <foldername>UserGroupSuite</foldername>
             <businessControllerClass>DNNCommunity.Modules.UserGroupSuite.Components.FeatureController, DNNCommunity.Modules.UserGroupSuite</businessControllerClass>
-            <supportedFeatures />
+            <supportedFeatures>
+              <supportedFeature type="Upgradeable" />
+            </supportedFeatures>
             <moduleDefinitions>
               <moduleDefinition>
                 <friendlyName>User Group Suite</friendlyName>
@@ -79,6 +81,15 @@
               </moduleDefinition>
             </moduleDefinitions>
           </desktopModule>
+          <eventMessage>
+            <processorType>DotNetNuke.Entities.Modules.EventMessageProcessor, DotNetNuke</processorType>
+            <processorCommand>UpgradeModule</processorCommand>
+            <attributes>
+              <businessControllerClass>DNNCommunity.Modules.UserGroupSuite.Components.FeatureController, DNNCommunity.Modules.UserGroupSuite</businessControllerClass>
+              <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
+              <upgradeVersionsList>01.00.00</upgradeVersionsList>
+            </attributes>
+          </eventMessage>
         </component>
         <component type="Assembly">
           <assemblies>

@@ -140,7 +140,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             Requires.PropertyNotNullOrEmpty(i.GroupName, "GroupName");
             Requires.PropertyNotNullOrEmpty(i.Avatar, "ModuleID");
             Requires.PropertyNotNullOrEmpty(i.City, "City");
-            Requires.PropertyNotNegative(i.CountryID, "City");
+            Requires.PropertyNotNullOrEmpty(i.Country, "Country");
+            Requires.PropertyNotNullOrEmpty(i.CountryCode, "CountryCode");
             Requires.PropertyNotNegative(i.CreatedBy, "CreatedBy");
             Requires.NotNull("CreatedOn", i.CreatedOn);
             Requires.PropertyNotNegative(i.LastUpdatedType, "LastUpdatedType");
@@ -158,8 +159,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities
             var originalGroup = GetItem(updatedGroup.GroupID, updatedGroup.ModuleID);
 
             if (!string.Equals(originalGroup.City, updatedGroup.City) ||
-                originalGroup.RegionID != updatedGroup.RegionID ||
-                originalGroup.CountryID != updatedGroup.CountryID)
+                !string.Equals(originalGroup.Region, updatedGroup.Region) ||
+                !string.Equals(originalGroup.Country, updatedGroup.Country))
             {
                 return GroupUpdateType.LocationChanged;
             }

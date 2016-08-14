@@ -40,8 +40,10 @@ namespace DNNCommunity.Modules.UserGroupSuite.Entities.Interfaces
         string Line1 { get; set; }
         string Line2 { get; set; }
         string City { get; set; }
-        int RegionID { get; set; }
-        int CountryID { get; set; }
+        string Region { get; set; }
+        string RegionCode { get; set; }
+        string Country { get; set; }
+        string CountryCode { get; set; }
         string PostalCode { get; set; }
         DateTime CreatedOn { get; set; }
         int CreatedBy { get; set; }

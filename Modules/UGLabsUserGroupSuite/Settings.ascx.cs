@@ -29,6 +29,7 @@
 */
 
 using System;
+using DNNCommunity.Modules.UserGroupSuite.Entities;
 using DotNetNuke.Services.Exceptions;
 
 namespace DNNCommunity.Modules.UserGroupSuite
@@ -46,6 +47,10 @@ namespace DNNCommunity.Modules.UserGroupSuite
         {
             try
             {
+                // TODO: only enable the Add Languages button when there are portals detected without languages
+                lblAddLanguages.Text = GetLocalizedString("lblAddLanguages");
+                btnAddLanguages.Text = GetLocalizedString("btnAddLanguages");
+
                 if (!Page.IsPostBack)
                 {
                     BindData();
@@ -84,5 +89,12 @@ namespace DNNCommunity.Modules.UserGroupSuite
         }
 
         #endregion
+
+        protected void btnAddLanguages_OnClick(object sender, EventArgs e)
+        {
+            var ctlLanguage = new LanguageInfoController();
+            ctlLanguage.AddDefaultItems();
+            btnAddLanguages.Enabled = false;
+        }
     }
 }

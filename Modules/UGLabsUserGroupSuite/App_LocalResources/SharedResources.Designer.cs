@@ -39,7 +39,7 @@ namespace DNNCommunity.Modules.UserGroupSuite.App_LocalResources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WillStrohl.Modules.CodeCamp.App_LocalResources.SharedResources", typeof(SharedResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DNNCommunity.Modules.UserGroupSuite.App_LocalResources.SharedResources", typeof(SharedResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,20 @@ namespace DNNCommunity.Modules.UserGroupSuite.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to - Choose One -.
+        ///   Looks up a localized string similar to Add to All Sites.
         /// </summary>
-        internal static string ChooseOne_Text {
+        internal static string btnAddLanguages_Text {
             get {
-                return ResourceManager.GetString("ChooseOne.Text", resourceCulture);
+                return ResourceManager.GetString("btnAddLanguages.Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If your theme/skin is including bootstrap (version 3.3.5 or newer), turn this setting off..
+        ///   Looks up a localized string similar to Add Default Languages.
         /// </summary>
-        internal static string lblIncludeBootstrap_Help {
+        internal static string lblAddLanguages_Text {
             get {
-                return ResourceManager.GetString("lblIncludeBootstrap.Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Include Bootstrap?.
-        /// </summary>
-        internal static string lblIncludeBootstrap_Text {
-            get {
-                return ResourceManager.GetString("lblIncludeBootstrap.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Check if you want to use a CDN to load all of the third party scripts and CSS..
-        /// </summary>
-        internal static string lblUseCdn_Help {
-            get {
-                return ResourceManager.GetString("lblUseCdn.Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use CDN.
-        /// </summary>
-        internal static string lblUseCdn_Text {
-            get {
-                return ResourceManager.GetString("lblUseCdn.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose the view that you wish to be loaded into this instance of the module..
-        /// </summary>
-        internal static string lblView_Help {
-            get {
-                return ResourceManager.GetString("lblView.Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Default View.
-        /// </summary>
-        internal static string lblView_Text {
-            get {
-                return ResourceManager.GetString("lblView.Text", resourceCulture);
+                return ResourceManager.GetString("lblAddLanguages.Text", resourceCulture);
             }
         }
         

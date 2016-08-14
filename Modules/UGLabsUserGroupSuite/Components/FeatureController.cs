@@ -28,10 +28,25 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+using DNNCommunity.Modules.UserGroupSuite.Entities;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Entities.Portals;
+
 namespace DNNCommunity.Modules.UserGroupSuite.Components
 {
-    public class FeatureController 
+    public class FeatureController : IUpgradeable
     {
-        
+        public string UpgradeModule(string Version)
+        {
+            if (Version == "01.00.00")
+            {
+                var ctlLanguage = new LanguageInfoController();
+                ctlLanguage.AddDefaultItems();
+
+                return "success";
+            }
+
+            return "true";
+        }
     }
 }

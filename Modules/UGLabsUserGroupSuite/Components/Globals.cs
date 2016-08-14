@@ -48,5 +48,8 @@ namespace DNNCommunity.Modules.UserGroupSuite.Components
         public const string FORMAT_LOCATION_COUNTRY = "{0}, {1}";
 
         public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
+
+        public const string CACHE_KEY_COUNTRY = "UG-Countries";
+        public const string CACHE_KEY_REGION_FORMAT = "UG-Regions-{0}";
     }
 }
