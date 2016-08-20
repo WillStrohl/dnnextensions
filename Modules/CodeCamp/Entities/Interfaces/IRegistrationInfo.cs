@@ -38,7 +38,6 @@ namespace WillStrohl.Modules.CodeCamp.Entities
         int RegistrationId { get; set; }
         int CodeCampId { get; set; }
         int UserId { get; set; }
-        string TwitterHandle { get; set; }
         string ShirtSize { get; set; }
         DateTime RegistrationDate { get; set; }
         bool IsRegistered { get; set; }

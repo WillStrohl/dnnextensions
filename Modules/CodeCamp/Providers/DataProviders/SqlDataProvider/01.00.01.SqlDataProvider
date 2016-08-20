@@ -1,2 +1,0 @@
-﻿ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ADD [TwitterHandle] NVARCHAR(15) NULL ; 
-GO
