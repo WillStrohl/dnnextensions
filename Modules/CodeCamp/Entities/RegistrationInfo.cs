@@ -50,6 +50,8 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public int UserId { get; set; }
 
+        public string TwitterHandle { get; set; }
+
         public string ShirtSize { get; set; }
 
         [JsonConverter(typeof(DateTimeConverter))]
