@@ -264,6 +264,12 @@ namespace WillStrohl.Modules.CodeCamp.Services
 
                 // only update the fields that would be udpdated from the UI to keep the DB clean
 
+                if (originalRegistration.TwitterHandle != registration.TwitterHandle)
+                {
+                    originalRegistration.TwitterHandle = registration.TwitterHandle;
+                    updatesToProcess = true;
+                }
+
                 if (originalRegistration.ShirtSize != registration.ShirtSize)
                 {
                     originalRegistration.ShirtSize = registration.ShirtSize;
