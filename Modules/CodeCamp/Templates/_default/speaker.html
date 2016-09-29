@@ -4,7 +4,7 @@
         <div class="col-lg-2">
             <div class="speaker-avatar-wrapper">
                 <div class="avatar">
-                    <img class="speaker-avatar" src="/DesktopModules/CodeCamp/Images/headshot-placeholder.jpg" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}"/>
+                    <img class="speaker-avatar" ng-src="{{speaker.IconFile == '' && 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image' || speaker.IconFile}}" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}"/>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="session-list-wrapper">
-        <h3>Session(s) By this Speaker</h3>
+        <h3>Session(s) by this Speaker</h3>
         <div ng-repeat="session in speaker.Sessions | orderBy: 'Title'">
             <div class="row session-card">
                 <div class="col-md-5 col-md-offset-2">
