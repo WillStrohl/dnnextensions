@@ -64,6 +64,15 @@ namespace WillStrohl.Modules.CodeCamp.Entities
 
         public string IconFile { get; set; }
 
+        [IgnoreColumn]
+        public string AvatarDataURIData { get; set; }
+
+        [IgnoreColumn]
+        public string AvatarDataURIMime { get; set; }
+
+        [IgnoreColumn]
+        public bool RemoveAvatar { get; set; }
+
         public bool IsAuthor { get; set; }
 
         public int CreatedByUserId { get; set; }

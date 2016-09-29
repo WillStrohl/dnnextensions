@@ -5,7 +5,7 @@
             <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
             <div class="avatar">
                 <a href="#/speakers/{{speaker.SpeakerId}}/{{speaker.SpeakerSlug}}">
-                    <img class="speaker-avatar" src="/DesktopModules/CodeCamp/Images/headshot-placeholder.jpg" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}"/>
+                    <img class="speaker-avatar" ng-src="{{speaker.IconFile == '' && 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image' || speaker.IconFile}}" alt="{{speaker.SpeakerName}}" title="{{speaker.SpeakerName}}"/>
                 </a>
             </div>
             <div class="content">
