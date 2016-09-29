@@ -71,7 +71,7 @@
         <div class="col-xs-6 col-xs-offset-3">
             <div class="form-group" ng-class="{ 'has-error error' : groupForm.Language.$dirty && groupForm.Language.$invalid }">
                 <label for="Language">Language *</label>
-                <select name="Language" ng-model="group.LanguageID" class="form-control" ng-options="item.Language for item in languages track by item.GroupLanguageID" ng-disabled="!hasLanguages" ng-required="true">
+                <select name="Language" ng-model="selectedLanguage" class="form-control" ng-options="item.Language for item in languages track by item.GroupLanguageID" ng-disabled="!hasLanguages" ng-required="true">
                     <option value="">Select a Language</option>
                 </select>
                 <p class="help-block" ng-show="groupForm.Language.$dirty && groupForm.Language.$invalid">

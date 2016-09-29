@@ -21,10 +21,16 @@ userGroupControllers.controller("editGroupController", ["$scope", "$routeParams"
 
     $scope.languages = {};
     $scope.hasLanguages = false;
+    $scope.selectedLanguage = {};
 
-    $scope.keywords = ["DNN", "User-Group"];
+    $scope.keywords = [];
 
     $scope.twitterValidationPattern = "^@[a-zA-Z0-9_]{1,15}$";
+
+    $scope.countriesLoaded = false;
+    $scope.regionsLoaded = false;
+    $scope.languagesLoaded = false;
+    $scope.defaultsLoaded = false;
 
     $scope.LoadData = function() {
         factory.callGetService("GetCurrentUserId")
@@ -118,11 +124,13 @@ userGroupControllers.controller("editGroupController", ["$scope", "$routeParams"
 
                 $scope.countries = serviceResponse.Content;
 
+                $scope.countriesLoaded = true;
+
                 $scope.LoadRegions();
 
-                $scope.PreselectLocation();
-
                 $scope.LoadLanguages();
+
+                $scope.SetDefaults();
 
                 LogErrors(serviceResponse.Errors);
             },
@@ -148,7 +156,9 @@ userGroupControllers.controller("editGroupController", ["$scope", "$routeParams"
 
                         $scope.hasRegions = ($scope.regions != null && $scope.regions.length > 0);
 
-                        $scope.PreselectLocation();
+                        $scope.regionsLoaded = true;
+
+                        $scope.SetDefaults();
 
                         LogErrors(serviceResponse.Errors);
                     },
@@ -169,6 +179,10 @@ userGroupControllers.controller("editGroupController", ["$scope", "$routeParams"
 
                 $scope.hasLanguages = ($scope.languages != null && $scope.languages.length > 0);
 
+                $scope.languagesLoaded = true;
+
+                $scope.SetDefaults();
+
                 LogErrors(serviceResponse.Errors);
             },
                 function (data) {
@@ -177,8 +191,10 @@ userGroupControllers.controller("editGroupController", ["$scope", "$routeParams"
                 });
     }
 
-    $scope.PreselectLocation = function()
-    {
+    $scope.SetDefaults = function() {
+        if ($scope.defaultsLoaded) return;
+        if (!$scope.countriesLoaded || !$scope.regionsLoaded || !$scope.languagesLoaded) return;
+
         if ($scope.groupID == -1) {
             $scope.selectedCountry = { Key: $scope.userGeoData.country_code, Value: $scope.userGeoData.country_name };
 
@@ -187,7 +203,13 @@ userGroupControllers.controller("editGroupController", ["$scope", "$routeParams"
             if ($scope.hasRegions) {
                 $scope.selectedRegion = { Key: $scope.userGeoData.region_code, Value: $scope.userGeoData.region_name };
             }
+
+            $scope.keywords = ["DNN", "User-Group"];
+
+            $scope.selectedLanguage = { Key: 1, Value: "English" };
         }
+
+        $scope.defaultsLoaded = true;
     }
 
     $scope.updateRegionSelection = function() {
