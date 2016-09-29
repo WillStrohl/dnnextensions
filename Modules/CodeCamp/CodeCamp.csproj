@@ -335,6 +335,7 @@
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_tooltip.scss" />
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_typography.scss" />
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_well.scss" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\01.00.03.SqlDataProvider" />
     <None Include="_references.js" />
     <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
