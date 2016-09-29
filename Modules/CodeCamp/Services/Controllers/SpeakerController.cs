@@ -33,15 +33,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Web;
 using System.Web.Http;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Entities;
-using System.Threading.Tasks;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Entities.Portals;
 using System.IO;
@@ -181,7 +178,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var portalId = PortalController.Instance.GetCurrentPortalSettings().PortalId;
+                var portalId = PortalSettings.PortalId;
 
                 var timeStamp = DateTime.Now;
 
@@ -203,20 +200,29 @@ namespace WillStrohl.Modules.CodeCamp.Services
                     // var decodedAvatar = B64Decode(speaker.AvatarDataURIData);
 
                     var fileData = Convert.FromBase64String(speaker.AvatarDataURIData);
-                    var fileType = "png"; //speaker.AvatarDataURIMime;
 
-                    var folderInfo = FolderManager.Instance.GetFolder(portalId: portalId, folderPath: string.Format("CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, speaker.CodeCampId));
+                    // get the folder from the API
+                    var folderInfo = FolderManager.Instance.GetFolder(
+                        portalId: portalId, 
+                        folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
+
                     if (folderInfo == null)
                     {
-                        folderInfo = FolderManager.Instance.AddFolder(portalId: portalId, folderPath: string.Format("CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, speaker.CodeCampId));
+                        // add the folder since it doesn't yet exist
+                        folderInfo = FolderManager.Instance.AddFolder(
+                            portalId: portalId, 
+                            folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
                     }
 
                     IFileInfo fileInfo = null;
                     using (var reader = new MemoryStream(fileData))
                     {
-                        var filename = string.Format("avatar-{0}-{1}.{2}", speaker.SpeakerId, DateTime.Now.ToString("yyyyMMdd-hhmmss"), fileType);
+                        var filename = string.Format(Globals.SPEAKER_AVATAR_FILENAME_FORMAT, speaker.SpeakerId,
+                            DateTime.Now.ToString(Globals.SPEAKER_AVATAR_FILENAME_STAMP_FORMAT),
+                            Globals.SPEAKER_AVATAR_FILEEXTENSION);
+
                         fileInfo = FileManager.Instance.AddFile(folderInfo, filename, reader, true);
-                        speaker.IconFile = "Portals/" + portalId + "/" + fileInfo.RelativePath;
+                        speaker.IconFile = string.Format(Globals.SPEAKER_ICON_FILE_PATH, portalId, fileInfo.RelativePath);
                     }
                     SpeakerDataAccess.UpdateItem(speaker);
                 }
@@ -250,7 +256,7 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
-                var portalId = PortalController.Instance.GetCurrentPortalSettings().PortalId;
+                var portalId = PortalSettings.PortalId;
 
                 var updatesToProcess = false;
                 var originalSpeaker = SpeakerDataAccess.GetItem(speaker.SpeakerId, speaker.CodeCampId);
@@ -300,20 +306,29 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 if (!string.IsNullOrEmpty(speaker.AvatarDataURIData))
                 {
                     var fileData = Convert.FromBase64String(speaker.AvatarDataURIData);
-                    var fileType = "png"; //speaker.AvatarDataURIMime;
 
-                    var folderInfo = FolderManager.Instance.GetFolder(portalId: portalId, folderPath: string.Format("CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, speaker.CodeCampId));
+                    // get the folder from the API
+                    var folderInfo = FolderManager.Instance.GetFolder(
+                        portalId: portalId, 
+                        folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
+
                     if (folderInfo == null)
                     {
-                        folderInfo = FolderManager.Instance.AddFolder(portalId: portalId, folderPath: string.Format("CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, speaker.CodeCampId));
+                        // add the folder since it doesn't yet exist
+                        folderInfo = FolderManager.Instance.AddFolder(
+                            portalId: portalId, 
+                            folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
                     }
 
                     IFileInfo fileInfo = null;
                     using (var reader = new MemoryStream(fileData))
                     {
-                        var filename = string.Format("avatar-{0}-{1}.{2}", speaker.SpeakerId, DateTime.Now.ToString("yyyyMMdd-hhmmss"), fileType);
+                        var filename = string.Format(Globals.SPEAKER_AVATAR_FILENAME_FORMAT, speaker.SpeakerId, 
+                            DateTime.Now.ToString(Globals.SPEAKER_AVATAR_FILENAME_STAMP_FORMAT), 
+                            Globals.SPEAKER_AVATAR_FILEEXTENSION);
+
                         fileInfo = FileManager.Instance.AddFile(folderInfo, filename, reader, true);
-                        speaker.IconFile = "Portals/" + portalId + "/" + fileInfo.RelativePath;
+                        speaker.IconFile = string.Format(Globals.SPEAKER_ICON_FILE_PATH, portalId, fileInfo.RelativePath);
                         originalSpeaker.IconFile = speaker.IconFile;
                     }
 

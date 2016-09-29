@@ -89,9 +89,10 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.currentSpeaker = serviceResponse.Content;
-                $scope.speakerAvatar = $scope.currentSpeaker.IconFile;
-
-                if ($scope.currentSpeaker != null) {
+                if ($scope.currentSpeaker == null) {
+                    $scope.speakerAvatar = "";
+                } else {
+                    $scope.speakerAvatar = $scope.currentSpeaker.IconFile;
                     $scope.getSpeakerSessions();
                 }
 
@@ -403,8 +404,6 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
     }
 
     $scope.uploader = function() {
-        //$scope.$flow.upload();
-        //$scope.processFiles(files);
     }
 }]);
 

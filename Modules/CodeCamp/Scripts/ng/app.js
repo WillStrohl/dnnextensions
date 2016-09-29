@@ -68,25 +68,12 @@ codeCampApp.config(["$routeProvider",
 	}]);
 
 codeCampApp.config(["flowFactoryProvider", function (flowFactoryProvider) {
-    //var $self = this;
-
-    //if ($.ServicesFramework) {
-    //    var _sf = $.ServicesFramework(moduleId);
-    //    $self.ServiceRoot = _sf.getServiceRoot(moduleName);
-    //    $self.ServicePath = $self.ServiceRoot + "Event/";
-    //}
-
     flowFactoryProvider.defaults = {
         target: "/upload",
         permanentErrors: [404, 500, 501],
         maxChunkRetries: 1,
         chunkRetryInterval: 5000,
         simultaneousUploads: 4
-        //headers: {
-        //    "ModuleId": moduleId,
-        //    "TabId": _sf.getTabId(),
-        //    "RequestVerificationToken": _sf.getAntiForgeryValue()
-        //}
     };
     flowFactoryProvider.on("catchAll", function (event) {
         console.log("catchAll", arguments);
