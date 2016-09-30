@@ -1,4 +1,16 @@
-﻿<h3>Version 01.00.02</h3>
+﻿<h3>Version 01.00.03</h3>
+<p><strong>Date Released:</strong> 09/29/2016</p>
+<p>This release applies the following enhancements/updates:</p>
+<ul>
+	<li>85 - Completed speaker headshot/avatar implementation</li>
+	<li>147 - Added Twitter handle to registration</li>
+	<li>155 - Added Twitter button to speaker profiles</li>
+	<li>150 - Fixed bug that "required" the search skin/theme object</li>
+</ul>
+<p><strong>THANK YOU!</strong></p>
+<p>The following community members were instrumental in making this release possible: <a href="http://www.davidpoindexter.net/" target="_blank">David Poindexter</a>, and <a href="http://ralphwilliams.com/" target="_blank">Ralph Williams</a></p>
+
+<h3>Version 01.00.02</h3>
 <p><strong>Date Released:</strong> 02/16/2016</p>
 <p>This release applies the following enhancements/updates:</p>
 <ul>

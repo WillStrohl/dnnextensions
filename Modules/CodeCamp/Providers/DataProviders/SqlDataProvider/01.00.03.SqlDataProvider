@@ -1,2 +1,5 @@
-﻿ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_CodeCamp] ADD [TwitterHandle] NVARCHAR(15) NULL ; 
+﻿IF NOT EXISTS (SELECT 1 FROM {databaseOwner}[{objectQualifier}syscolumns] c JOIN {databaseOwner}[{objectQualifier}sysobjects] o ON c.[id] = o.[id] WHERE c.[name] = N'TwitterHandle' AND o.[name] = '{objectQualifier}wns_CodeCamp_Registration')
+BEGIN
+	ALTER TABLE {databaseOwner}[{objectQualifier}wns_CodeCamp_Registration] ADD [TwitterHandle] NVARCHAR(15) NULL;
+END 
 GO

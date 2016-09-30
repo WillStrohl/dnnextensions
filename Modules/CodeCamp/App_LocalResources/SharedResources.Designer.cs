@@ -61,6 +61,15 @@ namespace WillStrohl.Modules.CodeCamp.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Support This Module.
+        /// </summary>
+        internal static string AboutMe_Text {
+            get {
+                return ResourceManager.GetString("AboutMe.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to - Choose One -.
         /// </summary>
         internal static string ChooseOne_Text {

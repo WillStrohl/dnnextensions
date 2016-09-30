@@ -30,37 +30,13 @@
 
 using System;
 
-namespace WillStrohl.Modules.CodeCamp.Components
+namespace WillStrohl.Modules.CodeCamp
 {
-    public class Globals
+    public partial class AboutMe : CodeCampModuleBase
     {
-        public const string LOCALIZATION_FILE_PATH = "/DesktopModules/CodeCamp/App_LocalResources/SharedResources.resx";
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-        public const string VIEW_PATH = "Views/";
-        public const string VIEW_EXTENSION = ".ascx";
-
-        public const string SETTINGS_VIEW = "View";
-        public const string SETTINGS_BOOTSTRAP = "Bootstrap";
-        public const string SETTINGS_USECDN = "UseCdn";
-
-        public const string VIEW_SETTINGS = "SettingsView";
-        public const string VIEW_CODECAMP = "CodeCampView";
-
-        public const string RESPONSE_SUCCESS = "Success";
-        public const string RESPONSE_FAILURE = "Failure";
-
-        public const string TASKSTATE_OPEN = "open";
-        public const string TASKSTATE_CLOSED = "closed";
-        public const string TASKSTATE_OVERDUE = "overdue";
-
-        public const string SPACE = " ";
-
-        public const string SPEAKER_AVATAR_FOLDER_PATH_FORMAT = "CodeCamps/{0}/SpeakerAvatars/";
-        public const string SPEAKER_AVATAR_FILENAME_FORMAT = "avatar-{0}-{1}.{2}";
-        public const string SPEAKER_AVATAR_FILENAME_STAMP_FORMAT = "yyyyMMdd-hhmmss";
-        public const string SPEAKER_AVATAR_FILEEXTENSION = "png";
-        public const string SPEAKER_ICON_FILE_PATH = "Portals/{0}/{1}";
-
-        public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
+        }
     }
 }
