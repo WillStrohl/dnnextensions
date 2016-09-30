@@ -88,6 +88,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutMe.ascx.cs">
+      <DependentUpon>AboutMe.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutMe.ascx.designer.cs">
+      <DependentUpon>AboutMe.ascx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\SharedResources.Designer.cs">
       <DependentUpon>SharedResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -102,6 +109,9 @@
     <Compile Include="Components\PasswordGenerator.cs" />
     <Compile Include="Components\RouteMapper.cs" />
     <Compile Include="Components\ViewHelper.cs" />
+    <Compile Include="Components\CodeCampModuleBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controllers\DnnUserController.cs" />
     <Compile Include="Controllers\TimeSlotInfoController.cs" />
     <Compile Include="Controllers\VolunteerTaskInfoController.cs" />
@@ -194,6 +204,7 @@
     <Folder Include="Scripts\ng\services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutMe.ascx" />
     <Content Include="Module.css" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.css" />
     <Content Include="Scripts\bootstrap\3.3.5\css\bootstrap-theme.min.css" />
@@ -337,6 +348,7 @@
     <Content Include="Styles\bootstrap\bootflat\scss\bootflat\_well.scss" />
     <Content Include="Providers\DataProviders\SqlDataProvider\01.00.03.SqlDataProvider" />
     <None Include="_references.js" />
+    <Content Include="App_LocalResources\AboutMe.ascx.resx" />
     <EmbeddedResource Include="App_LocalResources\SharedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
