@@ -33,14 +33,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Web;
 using System.Web.Http;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Web.Api;
 using WillStrohl.Modules.CodeCamp.Components;
 using WillStrohl.Modules.CodeCamp.Entities;
+using DotNetNuke.Services.FileSystem;
+using DotNetNuke.Entities.Portals;
+using System.IO;
 
 namespace WillStrohl.Modules.CodeCamp.Services
 {
@@ -177,6 +178,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                var portalId = PortalSettings.PortalId;
+
                 var timeStamp = DateTime.Now;
 
                 speaker.CreatedByDate = timeStamp;
@@ -190,6 +193,39 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 }
 
                 SpeakerDataAccess.CreateItem(speaker);
+
+                if (!string.IsNullOrEmpty(speaker.AvatarDataURIData))
+                {
+                    // NOTE: This is super slow for some reason?
+                    // var decodedAvatar = B64Decode(speaker.AvatarDataURIData);
+
+                    var fileData = Convert.FromBase64String(speaker.AvatarDataURIData);
+
+                    // get the folder from the API
+                    var folderInfo = FolderManager.Instance.GetFolder(
+                        portalId: portalId, 
+                        folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
+
+                    if (folderInfo == null)
+                    {
+                        // add the folder since it doesn't yet exist
+                        folderInfo = FolderManager.Instance.AddFolder(
+                            portalId: portalId, 
+                            folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
+                    }
+
+                    IFileInfo fileInfo = null;
+                    using (var reader = new MemoryStream(fileData))
+                    {
+                        var filename = string.Format(Globals.SPEAKER_AVATAR_FILENAME_FORMAT, speaker.SpeakerId,
+                            DateTime.Now.ToString(Globals.SPEAKER_AVATAR_FILENAME_STAMP_FORMAT),
+                            Globals.SPEAKER_AVATAR_FILEEXTENSION);
+
+                        fileInfo = FileManager.Instance.AddFile(folderInfo, filename, reader, true);
+                        speaker.IconFile = string.Format(Globals.SPEAKER_ICON_FILE_PATH, portalId, fileInfo.RelativePath);
+                    }
+                    SpeakerDataAccess.UpdateItem(speaker);
+                }
 
                 var speakers = SpeakerDataAccess.GetItems(speaker.CodeCampId);
 
@@ -220,6 +256,8 @@ namespace WillStrohl.Modules.CodeCamp.Services
         {
             try
             {
+                var portalId = PortalSettings.PortalId;
+
                 var updatesToProcess = false;
                 var originalSpeaker = SpeakerDataAccess.GetItem(speaker.SpeakerId, speaker.CodeCampId);
 
@@ -262,6 +300,45 @@ namespace WillStrohl.Modules.CodeCamp.Services
                 if (speaker.IsAuthor != originalSpeaker.IsAuthor)
                 {
                     originalSpeaker.IsAuthor = speaker.IsAuthor;
+                    updatesToProcess = true;
+                }
+
+                if (!string.IsNullOrEmpty(speaker.AvatarDataURIData))
+                {
+                    var fileData = Convert.FromBase64String(speaker.AvatarDataURIData);
+
+                    // get the folder from the API
+                    var folderInfo = FolderManager.Instance.GetFolder(
+                        portalId: portalId, 
+                        folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
+
+                    if (folderInfo == null)
+                    {
+                        // add the folder since it doesn't yet exist
+                        folderInfo = FolderManager.Instance.AddFolder(
+                            portalId: portalId, 
+                            folderPath: string.Format(Globals.SPEAKER_AVATAR_FOLDER_PATH_FORMAT, speaker.CodeCampId));
+                    }
+
+                    IFileInfo fileInfo = null;
+                    using (var reader = new MemoryStream(fileData))
+                    {
+                        var filename = string.Format(Globals.SPEAKER_AVATAR_FILENAME_FORMAT, speaker.SpeakerId, 
+                            DateTime.Now.ToString(Globals.SPEAKER_AVATAR_FILENAME_STAMP_FORMAT), 
+                            Globals.SPEAKER_AVATAR_FILEEXTENSION);
+
+                        fileInfo = FileManager.Instance.AddFile(folderInfo, filename, reader, true);
+                        speaker.IconFile = string.Format(Globals.SPEAKER_ICON_FILE_PATH, portalId, fileInfo.RelativePath);
+                        originalSpeaker.IconFile = speaker.IconFile;
+                    }
+
+                    updatesToProcess = true;
+                }
+
+                if (speaker.RemoveAvatar)
+                {
+                    speaker.IconFile = string.Empty;
+                    originalSpeaker.IconFile = speaker.IconFile;
                     updatesToProcess = true;
                 }
 
@@ -328,71 +405,5 @@ namespace WillStrohl.Modules.CodeCamp.Services
             }
         }
 
-        /// <summary>
-        /// Saves a new or updates an existing avatar for a speaker
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks>
-        /// POST: http://dnndev.me/DesktopModules/CodeCamp/API/Event/UpdateSpeakerAvatar
-        /// </remarks>
-        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Edit)]
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        public HttpResponseMessage UpdateSpeakerAvatar(int codeCampId, int speakerId)
-        {
-            try
-            {
-                var result = NO_FILES;
-                var httpRequest = HttpContext.Current.Request;
-
-                if (httpRequest.Files.Count > 0)
-                {
-                    var folderPath = string.Format("~/Portals/{0}/CodeCamps/{1}/SpeakerAvatars/", PortalSettings.PortalId, codeCampId);
-
-                    foreach (string file in httpRequest.Files)
-                    {
-                        var postedFile = httpRequest.Files[file];
-                        var filePath = HttpContext.Current.Server.MapPath(string.Concat(folderPath, postedFile.FileName));
-
-                        // TODO: append "-ORIGINAL" to the file name
-                        // TODO: parse the image and resize as required
-                        // TODO: allow avatars to be cropepd and saved
-                        // TODO: update speaker profile with file id
-
-                        postedFile.SaveAs(filePath);
-                        // NOTE: To store in memory use postedFile.InputStream
-
-                        var folderInfo = DotNetNuke.Services.FileSystem.FolderManager.Instance.GetFolder(PortalSettings.PortalId, folderPath);
-                        var fileExists = DotNetNuke.Services.FileSystem.FileManager.Instance.FileExists(folderInfo, postedFile.FileName);
-
-                        if (fileExists)
-                        {
-                            result = DotNetNuke.Services.FileSystem.FileManager.Instance.GetFile(folderInfo, postedFile.FileName).FileId.ToString();
-
-                            if (!string.IsNullOrEmpty(result))
-                            {
-                                var speaker = SpeakerDataAccess.GetItem(speakerId, codeCampId);
-
-                                if (speaker != null)
-                                {
-                                    speaker.IconFile = result;
-
-                                    SpeakerDataAccess.UpdateItem(speaker);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                var response = new ServiceResponse<string> { Content = result };
-
-                return Request.CreateResponse(HttpStatusCode.OK, response.ObjectToJson());
-            }
-            catch (Exception ex)
-            {
-                Exceptions.LogException(ex);
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.GetBaseException().Message);
-            }
-        }
     }
 }

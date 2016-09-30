@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.CodeCamp" type="Module" version="01.00.02">
+    <package name="WillStrohl.CodeCamp" type="Module" version="01.00.03">
       <friendlyName>Code Camp Events Module</friendlyName>
       <description>A code camp style events module for DNN</description>
       <iconFile>DesktopModules/CodeCamp/Images/codecamp-icon.png</iconFile>
@@ -36,10 +36,15 @@
               <name>01.00.00.SqlDataProvider</name>
               <version>01.00.00</version>
             </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.03.SqlDataProvider</name>
+              <version>01.00.03</version>
+            </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.00.02</version>
+              <version>01.00.03</version>
             </script>
           </scripts>
         </component>
@@ -64,6 +69,16 @@
                     <iconFile />
                     <helpUrl />
                     <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>AboutMe</controlKey>
+                    <controlSrc>DesktopModules/CodeCamp/AboutMe.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Settings</controlKey>

@@ -25,7 +25,7 @@
         <div class="col-md-4 col-lg-4">
             <div class="form-group" ng-class="{ 'has-error error' : registrationForm.firstName.$dirty && registrationForm.firstName.$invalid }">
                 <label for="firstName">First Name *</label>
-                <input type="text" name="firstName" ng-model="userInfo.FirstName" ng-required="true" class="form-control" placeholder="Your first name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required ng-trim/>
+                <input type="text" name="firstName" ng-model="userInfo.FirstName" ng-required="true" class="form-control" placeholder="Your first name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required ng-trim />
                 <p class="help-block" ng-show="registrationForm.firstName.$dirty && registrationForm.firstName.$invalid">
                     Your first name is required.
                 </p>
@@ -34,7 +34,7 @@
         <div class="col-md-4 col-lg-4">
             <div class="form-group" ng-class="{ 'has-error error' : registrationForm.lastName.$dirty && registrationForm.lastName.$invalid }">
                 <label for="lastName">Last Name *</label>
-                <input type="text" name="lastName" ng-model="userInfo.LastName" ng-required="true" class="form-control" placeholder="Your last name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required ng-trim/>
+                <input type="text" name="lastName" ng-model="userInfo.LastName" ng-required="true" class="form-control" placeholder="Your last name" maxlength="50" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" required ng-trim />
                 <p class="help-block" ng-show="registrationForm.lastName.$dirty && registrationForm.lastName.$invalid">
                     Your last name is required.
                 </p>
@@ -43,7 +43,7 @@
         <div class="col-md-4 col-lg-4">
             <div class="form-group" ng-class="{ 'has-error error' : registrationForm.email.$dirty && registrationForm.email.$invalid }">
                 <label for="email">Email Address *</label>
-                <input type="email" name="email" ng-model="userInfo.Email" ng-required="true" class="form-control" placeholder="Your email address" maxlength="256" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required ng-trim/>
+                <input type="email" name="email" ng-model="userInfo.Email" ng-required="true" class="form-control" placeholder="Your email address" maxlength="256" ng-disabled="userInfo.UserID > 0 || RegistrationSuccess" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/" required ng-trim />
                 <p class="help-block" ng-show="registrationForm.email.$error.email">
                     Enter a valid email address.
                 </p>
@@ -51,7 +51,18 @@
         </div>
     </div>
     <div class="row row-btm-adjust">
-        <div class="col-md-6 col-lg-6">
+        <div class="col-md-4 col-lg-4">
+            <div class="form-group" ng-class="{ 'has-error': registrationForm.twitterHandle.$invalid }">
+                <label for="twitterHandle">Twitter Handle</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <strong>@</strong>
+                    </span>
+                    <input type="text" name="twitterHandle" ng-model="registration.TwitterHandle" class="form-control" placeholder="Your Twitter handle" maxlength="15" ng-pattern="/^@?(\w){1,15}$/" ng-trim />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4">
             <label for="shirtSize">Shirt Size *</label>
             <select name="shirtSize" ng-model="registration.ShirtSize" class="form-control" ng-disabled="RegistrationSuccess" required>
                 <option value="XS">Extra Small</option>
@@ -66,10 +77,10 @@
                 Shirt size is required.
             </p>
         </div>
-        <div class="col-md-6 col-lg-6">
+        <div class="col-md-4 col-lg-4">
             <div class="checkbox checkbox-vert-29">
                 <label for="hasDietaryRequirements">
-                    <input type="checkbox" name="hasDietaryRequirements" ng-model="registration.HasDietaryRequirements" ng-disabled="RegistrationSuccess"/>Do you have dietary requirements?
+                    <input type="checkbox" name="hasDietaryRequirements" ng-model="registration.HasDietaryRequirements" ng-disabled="RegistrationSuccess" />Do you have dietary requirements?
                 </label>
             </div>
         </div>

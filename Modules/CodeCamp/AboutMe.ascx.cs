@@ -29,46 +29,14 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Web.Caching;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using WillStrohl.Modules.CodeCamp.Components;
 
-namespace WillStrohl.Modules.CodeCamp.Entities
+namespace WillStrohl.Modules.CodeCamp
 {
-    [TableName("wns_CodeCamp_Registration")]
-    [PrimaryKey("RegistrationId", AutoIncrement = true)]
-    [Cacheable("Registration", CacheItemPriority.Default, 20)]
-    [Scope("CodeCampId")]
-    public class RegistrationInfo : IRegistrationInfo
+    public partial class AboutMe : CodeCampModuleBase
     {
-        public int RegistrationId { get; set; }
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-        public int CodeCampId { get; set; }
-
-        public int UserId { get; set; }
-
-        public string TwitterHandle { get; set; }
-
-        public string ShirtSize { get; set; }
-
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime RegistrationDate { get; set; }
-
-        public bool IsRegistered { get; set; }
-
-        public bool HasDietaryRequirements { get; set; }
-
-        public string Notes { get; set; }
-
-        [IgnoreColumn]
-        public List<CustomPropertyInfo> CustomPropertiesObj {
-            get { return JsonHelper.ObjectFromJson<List<CustomPropertyInfo>>(CustomProperties); }
-            set { CustomProperties = value.ToJson(); }
         }
-
-        public string CustomProperties { get; set; }
     }
 }

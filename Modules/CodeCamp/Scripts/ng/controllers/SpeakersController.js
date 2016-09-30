@@ -89,8 +89,10 @@ codeCampControllers.controller("speakersController", ["$scope", "$routeParams", 
                 var serviceResponse = JSON.parse(fullResult.data);
 
                 $scope.currentSpeaker = serviceResponse.Content;
-
-                if ($scope.currentSpeaker != null) {
+                if ($scope.currentSpeaker == null) {
+                    $scope.speakerAvatar = "";
+                } else {
+                    $scope.speakerAvatar = $scope.currentSpeaker.IconFile;
                     $scope.getSpeakerSessions();
                 }
 
@@ -301,6 +303,37 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
         $uibModalInstance.close($scope.savedSpeaker);
     };
 
+    $scope.processFiles = function (files) {
+        angular.forEach(files, function (flowFile, i) {
+            var fileReader = new FileReader();
+            fileReader.onload = function (event) {
+                $scope.speaker.AvatarDataURIData = dataURItoData(event.target.result);
+                $scope.speaker.AvatarDataURIMime = dataURItoMime(event.target.result);
+                $scope.speakerAvatar = event.target.result;
+                $scope.speaker.RemoveAvatar = false;
+            };
+            fileReader.readAsDataURL(flowFile.file);
+        });
+        $scope.uploader.flow.files = [];
+    }
+
+    $scope.speakerRemoveAvatar = function () {
+        $scope.speaker.RemoveAvatar = true;
+        $scope.speaker.AvatarDataURIData = '';
+        $scope.speaker.AvatarDataURIMime = '';
+        $scope.speaker.IconFile = '';
+        $scope.speakerAvatar = '';
+        $scope.uploader.flow.cancel();
+    }
+
+    function dataURItoData(dataURI) {
+        return dataURI.split(',')[1];
+    }
+
+    function dataURItoMime(dataURI) {
+        return dataURI.split(',')[0].split(':')[1].split(';')[0];
+    }
+
     $scope.saveSession = function (sessionAction, session, sessionSpeakerAction) {
         factory.callPostService(sessionAction, session)
             .success(function (data) {
@@ -371,7 +404,6 @@ codeCampApp.controller("AddSpeakerModalController", ["$scope", "$rootScope", "$u
     }
 
     $scope.uploader = function() {
-        $scope.$flow.upload();
     }
 }]);
 

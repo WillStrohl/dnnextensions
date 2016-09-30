@@ -86,26 +86,30 @@
                 <div class="col-xs-6">
                     <div class="form-group">
                         <label for="avatarUpload">Your Headshot</label>
-                        <div flow-init="{ target: '/DesktopModules/CodeCamp/API/Event/UpdateSpeakerAvatar', singleFile: true }"
-                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+                        <div flow-init
+                             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+                             flow-name="uploader.flow"
+                             flow-files-added="processFiles($files)">
                             <div>
-                                <div class="thumbnail" ng-hide="$flow.files.length">
+                                <div class="thumbnail" ng-hide="$flow.files.length || speakerAvatar != ''">
                                     <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
                                 </div>
-                                <div class="thumbnail" ng-show="$flow.files.length">
-                                    <img flow-img="$flow.files[0]" />
+                                <div class="thumbnail" ng-hide="$flow.files.length || speakerAvatar == ''">
+                                    <img ng-src="{{speakerAvatar}}" alt="{{speaker.SpeakerName}}" class="img-responsive" /><br />
                                 </div>
                                 <div>
-                                    <md-button class="btn btn-default" flow-btn type="button" flow-attrs="{ accept: 'image/*' }" ng-hide="$flow.files.length">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        Add Photo
-                                    </md-button>
-                                    <div ng-repeat="file in $flow.files">
-                                        {{file.name}} ({{file.size / 1024 | number: 0}} KB)
-                                        <a class="speaker-link" ng-click="file.cancel()" title="Remove Headshot">
-                                            <i class="glyphicon glyphicon-remove"></i>
-                                        </a>
+                                    <div class="thumbnail" ng-repeat="file in $flow.files">
+                                        <img flow-img="file" class="img-responsive" />
+                                        {{file.name}} ({{file.size / 1024 | number: 0}} KB)<br />
                                     </div>
+                                    <span class="btn btn-default" flow-btn type="button" flow-attrs="{ accept: 'image/*' }" ng-hide="$flow.files.length || speakerAvatar != ''">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        Add Headshot
+                                    </span>
+                                    <span class="btn btn-default" ng-click="speakerRemoveAvatar()" title="Remove Headshot" ng-show="$flow.files.length || speakerAvatar != ''">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        Remove Headshot
+                                    </span>
                                 </div>
                             </div>
                         </div>

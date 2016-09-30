@@ -55,6 +55,12 @@ namespace WillStrohl.Modules.CodeCamp.Components
 
         public const string SPACE = " ";
 
+        public const string SPEAKER_AVATAR_FOLDER_PATH_FORMAT = "CodeCamps/{0}/SpeakerAvatars/";
+        public const string SPEAKER_AVATAR_FILENAME_FORMAT = "avatar-{0}-{1}.{2}";
+        public const string SPEAKER_AVATAR_FILENAME_STAMP_FORMAT = "yyyyMMdd-hhmmss";
+        public const string SPEAKER_AVATAR_FILEEXTENSION = "png";
+        public const string SPEAKER_ICON_FILE_PATH = "Portals/{0}/{1}";
+
         public static DateTime NULL_DATE => DateTime.Parse("1/1/1753 12:00:00 AM");
     }
 }

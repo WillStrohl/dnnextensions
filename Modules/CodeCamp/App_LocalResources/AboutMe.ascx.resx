@@ -117,34 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblView.Help" xml:space="preserve">
-    <value>Choose the view that you wish to be loaded into this instance of the module.</value>
+  <data name="About.Text" xml:space="preserve">
+    <value>About the Code Camp Events Module</value>
   </data>
-  <data name="lblView.Text" xml:space="preserve">
-    <value>Default View</value>
+  <data name="ControlTitle_aboutme.Text" xml:space="preserve">
+    <value>About this Module</value>
   </data>
-  <data name="ViewSettings.Text" xml:space="preserve">
-    <value>View Settings</value>
-  </data>
-  <data name="ChooseOne.Text" xml:space="preserve">
-    <value>- Choose One -</value>
-  </data>
-  <data name="ViewDefault.Text" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="lblIncludeBootstrap.Help" xml:space="preserve">
-    <value>If your theme/skin is including bootstrap (version 3.3.5 or newer), turn this setting off.</value>
-  </data>
-  <data name="lblIncludeBootstrap.Text" xml:space="preserve">
-    <value>Include Bootstrap?</value>
-  </data>
-  <data name="lblUseCdn.Help" xml:space="preserve">
-    <value>Check if you want to use a CDN to load all of the third party scripts and CSS.</value>
-  </data>
-  <data name="lblUseCdn.Text" xml:space="preserve">
-    <value>Use CDN</value>
-  </data>
-  <data name="AboutMe.Text" xml:space="preserve">
-    <value>Support This Module</value>
+  <data name="ThankYou.Text" xml:space="preserve">
+    <value>Thank you for using this module. It was originally released January 2016 and is maintained by Will Strohl. A lot of work goes into each release. If you've gotten any value out of this module, please consider offering a donation using the button below.</value>
   </data>
 </root>
