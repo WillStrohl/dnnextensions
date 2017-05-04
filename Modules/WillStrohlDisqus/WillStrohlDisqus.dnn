@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohlDisqus" type="Module" version="02.01.00">
+    <package name="WillStrohlDisqus" type="Module" version="02.01.01">
       <friendlyName>Disqus Comments</friendlyName>
       <description>A module that allows you to integrate Disqus Comments anywhere on your DNN website.</description>
       <iconFile>~/DesktopModules/WillStrohlDisqus/Images/disqus-module-icon-100x100.png</iconFile>
@@ -63,7 +63,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>02.01.00</version>
+              <version>02.01.01</version>
             </script>
           </scripts>
         </component>
@@ -71,7 +71,7 @@
           <assemblies>
             <assembly>
               <name>WillStrohlDisqus.dll</name>
-              <version>02.01.00</version>
+              <version>02.01.01</version>
               <path>bin</path>
             </assembly>
           </assemblies>
