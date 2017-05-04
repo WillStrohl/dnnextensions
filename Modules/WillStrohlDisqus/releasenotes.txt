@@ -1,4 +1,10 @@
-﻿<h3>Version 02.01.00</h3>
+﻿<h3>Version 02.01.01</h3>
+<p><strong>Date Released:</strong> 06/04/2017</p>
+<ul>
+	<li>Enhancement: SSL compatibility updates</li>
+</ul>
+
+<h3>Version 02.01.00</h3>
 <p><strong>Date Released:</strong> 07/18/2016</p>
 <ul>
 	<li>Enhancement: Built for DNN 8.0+</li>

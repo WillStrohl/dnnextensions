@@ -341,7 +341,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
             //sb.Append("/* * * DON'T EDIT BELOW THIS LINE * * */");
             AppendToStringBuilder(ref sb, "(function() { ");
             AppendToStringBuilder(ref sb, "var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; ");
-            AppendToStringBuilder(ref sb, "dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js'; ");
+            AppendToStringBuilder(ref sb, "dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; ");
             AppendToStringBuilder(ref sb, "(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); ");
             AppendToStringBuilder(ref sb, "})();");
             AppendToStringBuilder(ref sb, "</script>");
@@ -378,7 +378,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
             string strModerators = (this.ShowModerators) ? strModerators = "0" : strModerators = "1";
             string strUrl =
                 string.Format(
-                    "<script type=\"text/javascript\" src=\"http://{0}.disqus.com/combination_widget.js?num_items={1}&hide_mods={2}&color={3}&default_tab={4}&excerpt_length={5}\"></script>",
+                    "<script type=\"text/javascript\" src=\"//{0}.disqus.com/combination_widget.js?num_items={1}&hide_mods={2}&color={3}&default_tab={4}&excerpt_length={5}\"></script>",
                     DisqusApplicationName, this.DisplayItems, strModerators, this.ColorTheme, this.DefaultTab,
                     this.CommentLength);
 
@@ -416,7 +416,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
             var strHeader = string.Format("<h2 class=\"dsq-widget-title\">{0}</h2>", this.GetLocalizedString("RecentComments.Text"));
             this.AppendToStringBuilder(ref sb, strHeader);
             string strAvatar = (this.ShowAvatar) ? strAvatar = "1" : strAvatar="0";
-            string strUrl = string.Format("<script type=\"text/javascript\" src=\"http://{0}.disqus.com/recent_comments_widget.js?num_items={1}&hide_avatars={2}&avatar_size={3}&excerpt_length={4}\"></script>", DisqusApplicationName, this.DisplayItems, strAvatar, this.AvatarSize, this.CommentLength);
+            string strUrl = string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/recent_comments_widget.js?num_items={1}&hide_avatars={2}&avatar_size={3}&excerpt_length={4}\"></script>", DisqusApplicationName, this.DisplayItems, strAvatar, this.AvatarSize, this.CommentLength);
             this.AppendToStringBuilder(ref sb, strUrl);
             var strPoweredBy = string.Format("</div><a href=\"http://disqus.com/\">{0}</a>", this.GetLocalizedString("PoweredBy.Text"));
             this.AppendToStringBuilder(ref sb, strPoweredBy);
@@ -449,7 +449,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
             this.AppendToStringBuilder(ref sb, "<div id=\"popularthreads\" class=\"dsq-widget\">");
             var strHeader = string.Format("<h2 class=\"dsq-widget-title\">{0}</h2>", this.GetLocalizedString("PopularThreads.Text"));
             this.AppendToStringBuilder(ref sb, strHeader);
-            var strUrl = string.Format("<script type=\"text/javascript\" src=\"http://{0}.disqus.com/popular_threads_widget.js?num_items={1}\"></script>", DisqusApplicationName, this.DisplayItems);
+            var strUrl = string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/popular_threads_widget.js?num_items={1}\"></script>", DisqusApplicationName, this.DisplayItems);
             this.AppendToStringBuilder(ref sb, strUrl);
             var strPoweredBy = string.Format("</div><a href=\"http://disqus.com/\">{0}</a>", this.GetLocalizedString("PoweredBy.Text"));
             this.AppendToStringBuilder(ref sb, strPoweredBy);
@@ -482,7 +482,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
             this.AppendToStringBuilder(ref sb, "<h2 class=\"dsq-widget-title\">Top Commenters</h2>");
             string strModerators = (this.ShowModerators) ? strModerators = "0" : strModerators = "1";
             string strAvatar = (this.ShowAvatar) ? strAvatar = "1" : strAvatar="0";
-            var strUrl = string.Format("<script type=\"text/javascript\" src=\"http://{0}.disqus.com/top_commenters_widget.js?num_items={1}&hide_mods={2}&hide_avatars={3}&avatar_size={4}\"></script>", DisqusApplicationName, this.DisplayItems, strModerators, strAvatar, this.AvatarSize);
+            var strUrl = string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/top_commenters_widget.js?num_items={1}&hide_mods={2}&hide_avatars={3}&avatar_size={4}\"></script>", DisqusApplicationName, this.DisplayItems, strModerators, strAvatar, this.AvatarSize);
             var strPoweredBy = string.Format("</div><a href=\"http://disqus.com/\">{0}</a>", this.GetLocalizedString("PoweredBy.Text"));
             this.AppendToStringBuilder(ref sb, strPoweredBy);
 
@@ -624,7 +624,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
 
         private string ResolveUrl(string path)
         {
-            return string.Format("http://{0}{1}", PortalSettings.PortalAlias.HTTPAlias, path);
+            return string.Format("://{0}{1}", PortalSettings.PortalAlias.HTTPAlias, path);
         }
 
         #endregion
