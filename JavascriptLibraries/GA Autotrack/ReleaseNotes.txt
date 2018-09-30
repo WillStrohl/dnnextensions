@@ -1,0 +1,12 @@
+<h3>Google Analytics Autotrack Javascript Library</h3>
+<h4>Version 02.04.01</h4>
+<p>This release includes the following enhancements and bug fixes:</p>
+<ul>
+    <li>First release of the Google Analytics Autotrack project as a DNN extension.</li>
+</ul>
+<p>For more information about Google Analytics Autotrack, please use the reference links below:</p>
+<ul>
+    <li><a href="https://github.com/googleanalytics/autotrack" target="_blank">Project Home</a></li>
+    <li><a href="https://github.com/googleanalytics/autotrack/blob/master/README.md" target="_blank">Documentation</a></li>
+    <li><a href="https://github.com/googleanalytics/autotrack/blob/master/docs/README.md" target="_blank">Extended Documentation</a></li>
+</ul>
