@@ -1,0 +1,46 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="GoogleAnalytics-Autotrack" type="JavaScript_Library" version="02.04.01" isSystem="false">
+      <friendlyName>Google Analytics Autotrack JavaScript Library</friendlyName>
+      <description>Automatic and enhanced Google Analytics tracking for common user interactions on the web.</description>
+      <iconFile>Icons\Sigma\Extensions_32x32_Standard.png</iconFile>
+      <owner>
+        <name>DNN</name>
+        <organization>Upendo Ventures, LLC</organization>
+        <url>https://upendoventures.com/Support</url>
+        <email>support@upendoventures.com</email>
+      </owner>
+      <license src="License.txt" />
+      <releaseNotes src="ReleaseNotes.txt" />
+      <azureCompatible>true</azureCompatible>
+      <components>
+        <component type="JavaScript_Library">
+          <javaScriptLibrary>
+            <libraryName>GoogleAnalytics-Autotrack</libraryName>
+            <fileName>autotrack.js</fileName>
+            <CDNPath>//cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js</CDNPath>
+          </javaScriptLibrary>
+        </component>
+        <component type="JavaScriptFile">
+          <jsfiles>
+            <libraryFolderName>GoogleAnalytics-Autotrack</libraryFolderName>
+            <jsfile>
+              <name>autotrack.js</name>
+            </jsfile>
+            <jsfile>
+              <name>autotrack.js.map</name>
+            </jsfile>
+          </jsfiles>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>Licenses</basePath>
+            <file>
+              <name>License.txt</name>
+            </file>
+          </files>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
