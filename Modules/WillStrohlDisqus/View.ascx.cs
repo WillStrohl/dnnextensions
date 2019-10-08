@@ -1,5 +1,5 @@
 /*
-  * Copyright (c) 2011-2016, Will Strohl
+  * Copyright (c) 2011-2019, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
@@ -334,7 +334,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
 
             //sb.Append("// The following are highly recommended additional parameters. Remove the slashes in front to use.");
             // need to parse for isolated views in DNN and add them to this identifier
-            string strIdentifier = string.Format("var disqus_identifier = '{0}'; ", ctlModule.CreateUniqueIdentifier(TabId, TabModuleId, PortalSettings.GUID, Request.RawUrl));
+            string strIdentifier = string.Format("var disqus_identifier = '{0}'; ", ctlModule.CreateUniqueIdentifier(TabIdOverride, TabModuleIdOverride, PortalGuidOverride, Request.RawUrl));
             AppendToStringBuilder(ref sb, strIdentifier);
             AppendToStringBuilder(ref sb, "var disqus_url = document.URL; ");
 

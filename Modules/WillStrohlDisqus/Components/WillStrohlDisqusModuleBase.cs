@@ -1,5 +1,5 @@
 /*
-  * Copyright (c) 2011-2016, Will Strohl
+  * Copyright (c) 2011-2019, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
@@ -29,6 +29,7 @@
 */
 
 using System;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Controllers;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Modules.WillStrohlDisqus.Components;
@@ -54,6 +55,9 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
         private bool p_DisqusDeveloperMode = false;
         private bool p_DisqusSsoEnabled = false;
         private string p_DisqusSsoApiKey = string.Empty;
+        private Guid p_PortalGuidOverride = Null.NullGuid;
+        private int p_TabIdOverride = Null.NullInteger;
+        private int p_TabModuleIdOverride = Null.NullInteger;
 
         #endregion
 
@@ -263,6 +267,99 @@ namespace DotNetNuke.Modules.WillStrohlDisqus
                 return p_DisqusSsoApiKey;
             }
             set { p_DisqusSsoApiKey = value; }
+        }
+
+        protected Guid PortalGuidOverride
+        {
+            get
+            {
+                try
+                {
+                    if (p_PortalGuidOverride != Null.NullGuid)
+                    {
+                        return p_PortalGuidOverride;
+                    }
+
+                    var guidSetting = PortalController.GetPortalSetting(FeatureController.SETTING_PORTALGUID_OVERRIDE,
+                        PortalId, Null.NullGuid.ToString());
+
+                    if (guidSetting != null && !string.IsNullOrEmpty(guidSetting) && guidSetting != Null.NullGuid.ToString())
+                    {
+                        Guid.TryParse(guidSetting, out p_PortalGuidOverride);
+                    }
+                    else
+                    {
+                        p_PortalGuidOverride = PortalSettings.GUID;
+                    }
+
+                    return p_PortalGuidOverride;
+                }
+                catch (Exception ex)
+                {
+                    Exceptions.LogException(ex);
+                    return Null.NullGuid;
+                }
+            }
+        }
+
+        protected int TabIdOverride
+        {
+            get
+            {
+                try
+                {
+                    if (p_TabIdOverride > Null.NullInteger)
+                    {
+                        return p_TabIdOverride;
+                    }
+
+                    if (Settings.Contains(FeatureController.SETTING_TABID_OVERRIDE))
+                    {
+                        int.TryParse(Settings[FeatureController.SETTING_TABID_OVERRIDE].ToString(), out p_TabIdOverride);
+                    }
+                    else
+                    {
+                        p_TabIdOverride = TabId;
+                    }
+
+                    return p_TabIdOverride;
+                }
+                catch (Exception ex)
+                {
+                    Exceptions.LogException(ex);
+                    return Null.NullInteger;
+                }
+            }
+        }
+
+        protected int TabModuleIdOverride
+        {
+            get
+            {
+                try
+                {
+                    if (p_TabModuleIdOverride > Null.NullInteger)
+                    {
+                        return p_TabModuleIdOverride;
+                    }
+
+                    if (Settings.Contains(FeatureController.SETTING_TABMODULEID_OVERRIDE))
+                    {
+                        int.TryParse(Settings[FeatureController.SETTING_TABMODULEID_OVERRIDE].ToString(), out p_TabModuleIdOverride);
+                    }
+                    else
+                    {
+                        p_TabModuleIdOverride = TabModuleId;
+                    }
+
+                    return p_TabModuleIdOverride;
+                }
+                catch (Exception ex)
+                {
+                    Exceptions.LogException(ex);
+                    return Null.NullInteger;
+                }
+            }
         }
 
         #endregion

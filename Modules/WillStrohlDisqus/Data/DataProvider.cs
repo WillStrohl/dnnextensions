@@ -1,5 +1,5 @@
 /*
-  * Copyright (c) 2011-2016, Will Strohl
+  * Copyright (c) 2011-2019, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
