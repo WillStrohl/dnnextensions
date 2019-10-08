@@ -1,14 +1,14 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohlDisqus" type="Module" version="02.01.01">
+    <package name="WillStrohlDisqus" type="Module" version="02.01.02">
       <friendlyName>Disqus Comments</friendlyName>
       <description>A module that allows you to integrate Disqus Comments anywhere on your DNN website.</description>
       <iconFile>~/DesktopModules/WillStrohlDisqus/Images/disqus-module-icon-100x100.png</iconFile>
       <owner>
         <name>Will Strohl</name>
-        <organization>WillStrohl.com</organization>
-        <url><![CDATA[<a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a>]]></url>
-        <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+        <organization>Upendo Ventures, LLC</organization>
+        <url><![CDATA[<a href="https://upendoventures.com" target="_blank">https://upendoventures.com</a>]]></url>
+        <email><![CDATA[<a href="mailto:solutions@upendoventures.com" target="_blank">solutions@upendoventures.com</a>]]></email>
       </owner>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
@@ -63,7 +63,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>02.01.01</version>
+              <version>02.01.02</version>
             </script>
           </scripts>
         </component>
@@ -71,7 +71,7 @@
           <assemblies>
             <assembly>
               <name>WillStrohlDisqus.dll</name>
-              <version>02.01.01</version>
+              <version>02.01.02</version>
               <path>bin</path>
             </assembly>
           </assemblies>
@@ -112,6 +112,16 @@
                   <moduleControl>
                     <controlKey>AboutMe</controlKey>
                     <controlSrc>DesktopModules/WillStrohlDisqus/AboutMe.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/WillStrohlDisqus/Settings.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <supportsPopUps>True</supportsPopUps>
                     <controlTitle />

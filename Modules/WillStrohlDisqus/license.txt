@@ -1,4 +1,4 @@
-﻿<p>Copyright (c) 2011-2016, Will Strohl<br />All rights reserved.</p>
+﻿<p>Copyright (c) 2011-2019, Will Strohl<br />All rights reserved.</p>
 <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
 <p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
 <p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>

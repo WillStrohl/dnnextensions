@@ -1,5 +1,5 @@
 /*
-  * Copyright (c) 2011-2016, Will Strohl
+  * Copyright (c) 2011-2019, Will Strohl
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification, 
@@ -30,10 +30,8 @@
 
 using System;
 using System.Collections;
-//using System.Data;
 using System.IO;
 using System.Net;
-//using System.Xml;
 using System.Text.RegularExpressions;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Services.Exceptions;
@@ -46,7 +44,7 @@ namespace DotNetNuke.Modules.WillStrohlDisqus.Components
     /// The Controller class for WillStrohlDisqus
     /// </summary>
     /// -----------------------------------------------------------------------------
-    public sealed class FeatureController /*: IPortable, ISearchable, IUpgradeable*/
+    public sealed class FeatureController
     {
 
         #region Constants
@@ -62,6 +60,10 @@ namespace DotNetNuke.Modules.WillStrohlDisqus.Components
         public const string HOST_SETTING_COMMENT_SCHEDULE = "wnsDisqus-ScheduleEnabled";
 
         private const string DISQUS_TYPE = "DotNetNuke.Modules.WillStrohlDisqus.DisqusInfo, WillStrohlDisqus";
+
+        public const string SETTING_PORTALGUID_OVERRIDE = "PortalGuidOverride";
+        public const string SETTING_TABID_OVERRIDE = "TabIdOverride";
+        public const string SETTING_TABMODULEID_OVERRIDE = "TabModuleIdOverride";
 
         #endregion
 
@@ -263,148 +265,6 @@ namespace DotNetNuke.Modules.WillStrohlDisqus.Components
         }
 
         #endregion
-
-        /*
-        private void ExportToXml(DataTable dtSource)
-        {
-            var objDoc = new XmlDocument();
-            var objRoot = objDoc.CreateElement("root");
-
-            for (int i = 0; i < dtSource.Rows.Count; i++)
-            {
-                try
-                {
-                    var objItem = objDoc.CreateElement("dnnBlogComments");
-                    var dr = dtSource.Rows[i];
-                    for (int j = 0; j < dtSource.Columns.Count; j++)
-                    {
-                        var objAttr = objDoc.CreateAttribute(dtSource.Columns[j].ColumnName);
-                        objAttr.Value = String.Format("{0}", dr[j]);
-                        objItem.Attributes.Append(objAttr);
-                    }
-                    objRoot.AppendChild(objItem);
-                }
-                catch
-                {
-                    // do nothing
-                }
-            }
-            objDoc.AppendChild(objRoot);
-
-            var strFileDate = DateTime.Now.ToString("-yyyyMMddhhmmss");
-
-            this.ResponseWrite(objDoc.InnerXml, string.Format("dnnBlogComments{0}.xml", strFileDate), "text/xml");
-        }
-
-        public void ResponseWrite(string result, string fileName , string contentType)
-        {
-            var response = System.Web.HttpContext.Current.Response;
-
-                var lstByte = System.Text.Encoding.UTF8.GetBytes(result);
-
-                response.ClearHeaders();
-                response.ClearContent();
-                response.ContentType = String.Format("{0}; charset=utf-8", contentType);
-                response.AppendHeader("Content-Disposition", String.Format("attachment; filename=\"{0}\"", fileName));
-                response.AppendHeader("Content-Length", lstByte.Length.ToString());
-                response.BinaryWrite(lstByte);
-                response.Flush();
-                response.End();
-        }
-        */
-
-        /*
-        #region Optional Interfaces
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// ExportModule implements the IPortable ExportModule Interface
-        /// </summary>
-        /// <param name="ModuleID">The Id of the module to be exported</param>
-        /// -----------------------------------------------------------------------------
-        public string ExportModule(int ModuleID)
-        {
-            //string strXML = "";
-
-            //List<WillStrohlDisqusInfo> colWillStrohlDisquss = GetWillStrohlDisquss(ModuleID);
-            //if (colWillStrohlDisquss.Count != 0)
-            //{
-            //    strXML += "<WillStrohlDisquss>";
-
-            //    foreach (WillStrohlDisqusInfo objWillStrohlDisqus in colWillStrohlDisquss)
-            //    {
-            //        strXML += "<WillStrohlDisqus>";
-            //        strXML += "<content>" + DotNetNuke.Common.Utilities.XmlUtils.XMLEncode(objWillStrohlDisqus.Content) + "</content>";
-            //        strXML += "</WillStrohlDisqus>";
-            //    }
-            //    strXML += "</WillStrohlDisquss>";
-            //}
-
-            //return strXML;
-
-            throw new System.NotImplementedException("The method or operation is not implemented.");
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// ImportModule implements the IPortable ImportModule Interface
-        /// </summary>
-        /// <param name="ModuleID">The Id of the module to be imported</param>
-        /// <param name="Content">The content to be imported</param>
-        /// <param name="Version">The version of the module to be imported</param>
-        /// <param name="UserId">The Id of the user performing the import</param>
-        /// -----------------------------------------------------------------------------
-        public void ImportModule(int ModuleID, string Content, string Version, int UserID)
-        {
-            //XmlNode xmlWillStrohlDisquss = DotNetNuke.Common.Globals.GetContent(Content, "WillStrohlDisquss");
-            //foreach (XmlNode xmlWillStrohlDisqus in xmlWillStrohlDisquss.SelectNodes("WillStrohlDisqus"))
-            //{
-            //    WillStrohlDisqusInfo objWillStrohlDisqus = new WillStrohlDisqusInfo();
-            //    objWillStrohlDisqus.ModuleId = ModuleID;
-            //    objWillStrohlDisqus.Content = xmlWillStrohlDisqus.SelectSingleNode("content").InnerText;
-            //    objWillStrohlDisqus.CreatedByUser = UserID;
-            //    AddWillStrohlDisqus(objWillStrohlDisqus);
-            //}
-
-            throw new System.NotImplementedException("The method or operation is not implemented.");
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// GetSearchItems implements the ISearchable Interface
-        /// </summary>
-        /// <param name="ModInfo">The ModuleInfo for the module to be Indexed</param>
-        /// -----------------------------------------------------------------------------
-        public DotNetNuke.Services.Search.SearchItemInfoCollection GetSearchItems(DotNetNuke.Entities.Modules.ModuleInfo ModInfo)
-        {
-            //SearchItemInfoCollection SearchItemCollection = new SearchItemInfoCollection();
-
-            //List<WillStrohlDisqusInfo> colWillStrohlDisquss = GetWillStrohlDisquss(ModInfo.ModuleID);
-
-            //foreach (WillStrohlDisqusInfo objWillStrohlDisqus in colWillStrohlDisquss)
-            //{
-            //    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objWillStrohlDisqus.Content, objWillStrohlDisqus.CreatedByUser, objWillStrohlDisqus.CreatedDate, ModInfo.ModuleID, objWillStrohlDisqus.ItemId.ToString(), objWillStrohlDisqus.Content, "ItemId=" + objWillStrohlDisqus.ItemId.ToString());
-            //    SearchItemCollection.Add(SearchItem);
-            //}
-
-            //return SearchItemCollection;
-
-            throw new System.NotImplementedException("The method or operation is not implemented.");
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// UpgradeModule implements the IUpgradeable Interface
-        /// </summary>
-        /// <param name="Version">The current version of the module</param>
-        /// -----------------------------------------------------------------------------
-        public string UpgradeModule(string Version)
-        {
-            throw new System.NotImplementedException("The method or operation is not implemented.");
-        }
-
-        #endregion
-        */
 
     }
 
