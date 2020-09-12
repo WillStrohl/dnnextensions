@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 The MIT License (MIT)
-Copyright (c) 2014 Will Strohl
+Copyright (c) 2019 Upendo Ventures, LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this 
 software and associated documentation files (the "Software"), to deal in the Software 
@@ -48,16 +48,18 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <CreateItem Include="$(DNNFileName).dnn">
       <Output TaskParameter="Include" ItemName="PackageManifestFiles" />
     </CreateItem>
-    <CreateItem Include="releasenotes.txt;license.txt">
+    <CreateItem Include="License.txt;ReleaseNotes.txt">
       <Output TaskParameter="Include" ItemName="PackageTextFiles" />
     </CreateItem>
 
     <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(PackageTempDir)" />
     <Copy SourceFiles="@(PackageTextFiles)" DestinationFolder="$(PackageTempDir)" />
+    <Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(PackageTempDir)" />
 
     <!-- SKINS -->
     <Copy SourceFiles="@(SkinItem)" DestinationFolder="$(FullSkinPath)\%(RecursiveDir)" />
     <Copy SourceFiles="@(SkinItem)" DestinationFolder="$(PackageSkinTempDir)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(PackageTextFiles)" DestinationFolder="$(PackageSkinTempDir)" />
     <CreateItem Include="$(PackageSkinTempDir)\**\*.*">
       <Output TaskParameter="Include" ItemName="SkinPackageFiles" />
     </CreateItem>
@@ -67,6 +69,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <!-- CONTAINERS -->
     <Copy SourceFiles="@(ContainerItem)" DestinationFolder="$(FullContainerPath)\%(RecursiveDir)" />
     <Copy SourceFiles="@(ContainerItem)" DestinationFolder="$(PackageContainerTempDir)\%(RecursiveDir)" />
+    <Copy SourceFiles="@(PackageTextFiles)" DestinationFolder="$(PackageContainerTempDir)" />
     <CreateItem Include="$(PackageContainerTempDir)\**\*.*">
       <Output TaskParameter="Include" ItemName="ContainerPackageFiles" />
     </CreateItem>
@@ -77,8 +80,8 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <CreateItem Include="$(PackageTempDir)\**\*.*">
       <Output TaskParameter="Include" ItemName="SkinPackageOutput" />
     </CreateItem>
-    <Zip Files="@(SkinPackageOutput)" WorkingDirectory="$(PackageTempDir)" ZipFileName="$(PackageName)_SkinPackage_$(Version).$(Extension)" />
-    <Copy SourceFiles="$(PackageName)_SkinPackage_$(Version).$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
+    <Zip Files="@(SkinPackageOutput)" WorkingDirectory="$(PackageTempDir)" ZipFileName="$(PackageName)_ThemePackage_$(Version).$(Extension)" />
+    <Copy SourceFiles="$(PackageName)_ThemePackage_$(Version).$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
 
     <!-- CLEAN UP -->
     <Delete Files="$(PackageTempDir)\**\*.*" />
@@ -86,7 +89,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <Delete Files="$(PackageContainerTempDir)\**\*.*" />
     <Delete Files="resource-skin.$(Extension)" />
     <Delete Files="resource-container.$(Extension)" />
-    <Delete Files="$(PackageName)_SkinPackage_$(Version).$(Extension)" />
+    <Delete Files="$(PackageName)_ThemePackage_$(Version).$(Extension)" />
     <RemoveDir Directories ="$(PackageTempDir)" />
     <RemoveDir Directories ="$(PackageSkinTempDir)" />
     <RemoveDir Directories ="$(PackageContainerTempDir)" />
