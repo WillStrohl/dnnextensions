@@ -36,7 +36,7 @@
 		<li>Project is now using Nuget references, instead of local references</li>
 		<li>Resolved error with sorting albums and images (<a href="https://github.com/hismightiness/dnnextensions/issues/177" target="_blank">Issue #177</a>)</li>
 	</ul>
-	<p>IMPORTANT NOTE: This module is not suggested to be used with DNN 9.6+ yet.</p>
+	<p class="muy-importante">IMPORTANT NOTE: This module is not suggested to be used with DNN 9.6+ yet.</p>
 
 	<h3>Version 01.12.00</h3>
 	<ul>

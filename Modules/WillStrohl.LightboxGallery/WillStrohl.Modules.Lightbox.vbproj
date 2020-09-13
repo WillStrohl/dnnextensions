@@ -320,6 +320,7 @@
     <Content Include="ChangeImageOrder.ascx" />
     <Content Include="EditImage.ascx" />
     <Content Include="images\arrow-move.png" />
+    <Content Include="images\logo.png" />
     <Content Include="License.txt" />
     <Content Include="Module.css" />
   </ItemGroup>
