@@ -20,16 +20,11 @@
 
 Namespace WillStrohl.Modules.Lightbox
 
-    Public NotInheritable Class ImageInfoMembers
+    Partial Public MustInherit Class AboutMe
+        Inherits WnsPortalModuleBase
 
-        Public Const ImageIdField As String = "ImageId"
-        Public Const LightboxIdField As String = "LightboxId"
-        Public Const FileNameField As String = "FileName"
-        Public Const TitleField As String = "Title"
-        Public Const DescriptionField As String = "Description"
-        Public Const DisplayOrderField As String = "DisplayOrder"
-        Public Const LastUpdatedByField As String = "LastUpdatedBy"
-        Public Const LastUpdatedDateField As String = "LastUpdatedDate"
+        Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        End Sub
 
     End Class
 

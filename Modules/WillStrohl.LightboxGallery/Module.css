@@ -1,10 +1,9 @@
 ﻿/*
 
-Lightbox Gallery Module for DotNetNuke
-Version: 01.10.00
-Website: http://wnslightbox.codeplex.com
+Lightbox Gallery Module for DNN
+Version: 01.14.00
 
-Copyright 2011 Will Strohl
+Copyright Upendo Ventures, LLC
 
 */
 .EditImage, .OrderImage { display:inline; padding-top:0.6em; margin:0px 5px 5px 0px; }
@@ -58,25 +57,32 @@ fieldset, .wns-fieldset { margin:1.5em 0 0 0; padding:0; }
 .wnsExifTitle { text-transform: capitalize; }
     .wnsExifInline { clear: none !important; display: inline !important; }
 
-/* Proposed for theme.css */
-
-#fancybox-outer { position: relative; width: 100%; height: 100%; background: white;
-    -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px;
-    -moz-box-shadow: 0 0 5px 5px grey; -webkit-box-shadow: 0 0 5px 5px grey;
-    box-shadow: 0 0 5px 5px grey;
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #FFF;
+    overflow: auto;
 }
-#fancybox-content { width: 0; height: 0; padding: 0; outline: none; position: relative;
-    overflow: hidden; z-index: 1102; border: 0px solid #red; -webkit-border-radius: 12px;
-    -moz-border-radius: 12px; border-radius: 12px; -moz-box-shadow: 0 0 5px 5px grey;
-    -webkit-box-shadow: 0 0 5px 5px grey; box-shadow: 0 0 5px 5px grey;
-}
-    #fancybox-bg-n { top: -20px; left: 0; width: 100%; background-image: none; }
-    #fancybox-bg-ne { top: -20px;right: -20px; background-image: none; background-position: -40px -162px; }
-    #fancybox-bg-e { top: 0; right: -20px; height: 100%; background-image: none; background-position: -20px 0px; }
-    #fancybox-bg-se { bottom: -20px; right: -20px; background-image: none; background-position: -40px -182px; }
-    #fancybox-bg-s { bottom: -20px; left: 0; width: 100%; background-image: none; background-position: 0px -20px; }
-    #fancybox-bg-sw { bottom: -20px; left: -20px; background-image: none; background-position: -40px -142px; }
-    #fancybox-bg-w { top: 0; left: -20px; height: 100%; background-image: none; }
-    #fancybox-bg-nw { top: -20px; left: -20px; background-image: none; background-position: -40px -122px; }
 
-/* end theme.css */
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: normal;
+    color: #3399FF;
+}
+
+.autocomplete-group {
+    padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+    display: block;
+    border-bottom: 1px solid #000;
+}

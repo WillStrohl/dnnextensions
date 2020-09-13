@@ -1,38 +1,23 @@
 ﻿'
-' Lightbox Gallery Module for DotNetNuke
-' Project Contributors - Will Strohl (http://www.WillStrohl.com), Armand Datema (http://www.schwingsoft.com)
-'
-'Copyright (c) 2009-2016, Will Strohl
-'All rights reserved.
-'
-'Redistribution and use in source and binary forms, with or without modification, are 
-'permitted provided that the following conditions are met:
-'
-'Redistributions of source code must retain the above copyright notice, this list of 
-'conditions and the following disclaimer.
-'
-'Redistributions in binary form must reproduce the above copyright notice, this list 
-'of conditions and the following disclaimer in the documentation and/or other 
-'materials provided with the distribution.
-'
-'Neither the name of Will Strohl, Armand Datema, Lightbox Gallery, nor the names of its contributors may be 
-'used to endorse or promote products derived from this software without specific prior 
-'written permission.
-'
-'THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
-'EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
-'OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT 
-'SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
-'INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED 
-'TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR 
-'BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
-'CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-'ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
-'DAMAGE.
+' Copyright Upendo Ventures, LLC
+' https://upendoventures.com
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+' and associated documentation files (the "Software"), to deal in the Software without restriction,
+' including without limitation the rights to use, copy, modify, merge, publish, distribute,
+' sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all copies or
+' substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+' BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+' NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+' DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF Or IN CONNECTION WITH THE SOFTWARE Or THE USE Or OTHER DEALINGS IN THE SOFTWARE.
 '
 
-Imports DotNetNuke
-Imports DotNetNuke.Services.Exceptions
 Imports DotNetNuke.Services.FileSystem
 Imports DotNetNuke.Security.PortalSecurity
 Imports DotNetNuke.UI.Skins.Skin
@@ -40,6 +25,10 @@ Imports DotNetNuke.UI.Skins.Controls.ModuleMessage
 Imports System.Collections.Generic
 Imports System.Text.RegularExpressions
 Imports System.Web.UI.WebControls
+Imports DotNetNuke.Framework.JavaScriptLibraries
+Imports DotNetNuke.Web.Client
+Imports DotNetNuke.Web.Client.ClientResourceManagement
+Imports DotNetNuke.Web.Client.Providers
 Imports WillStrohl.Modules.Lightbox.LightboxController
 
 Namespace WillStrohl.Modules.Lightbox
@@ -91,6 +80,11 @@ Namespace WillStrohl.Modules.Lightbox
 
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Try
+
+                JavaScript.RequestRegistration(CommonJs.DnnPlugins)
+                ServicesFramework.Instance.RequestAjaxAntiForgerySupport()
+                ClientResourceManager.RegisterScript(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js", FileOrder.Js.DefaultPriority + 1, DnnPageHeaderProvider.DefaultName)
+
                 If Not Me.Page.IsPostBack Then
                     Me.BindData()
                 End If
@@ -160,6 +154,7 @@ Namespace WillStrohl.Modules.Lightbox
                     Me.txtGalleryName.Text = Server.HtmlDecode(objAlbum.GalleryName)
                     Me.txtGalleryDescription.Text = Server.HtmlDecode(objAlbum.GalleryDescription)
                     Me.cboGalleryFolder.Text = Server.HtmlDecode(objAlbum.GalleryFolder)
+                    Me.hdnGalleryFolder.Value = Server.HtmlDecode(objAlbum.GalleryFolder)
                     Me.chkHideTitleDescription.Checked = objAlbum.HideTitleDescription
 
                     Dim objSetting As New SettingInfo
@@ -217,26 +212,6 @@ Namespace WillStrohl.Modules.Lightbox
 
                 End If
 
-                Dim ctlFolder As New FolderController
-                Dim collFolder As IEnumerable(Of IFolderInfo) = FolderManager.Instance.GetFolders(Me.PortalId)
-
-                Dim lstFolder As New List(Of IFolderInfo)
-
-                For Each oFolder As IFolderInfo In collFolder
-                    If Not String.IsNullOrEmpty(oFolder.FolderPath) Then
-                        lstFolder.Add(oFolder)
-                    End If
-                Next
-
-                Me.cboGalleryFolder.AllowCustomText = True
-                Me.cboGalleryFolder.MarkFirstMatch = True
-                Me.cboGalleryFolder.ClearSelection()
-                Me.cboGalleryFolder.Items.Clear()
-                Me.cboGalleryFolder.DataTextField = "FolderPath"
-                Me.cboGalleryFolder.DataValueField = "FolderPath"
-                Me.cboGalleryFolder.DataSource = lstFolder
-                Me.cboGalleryFolder.DataBind()
-
             End If
 
         End Sub
@@ -283,7 +258,7 @@ Namespace WillStrohl.Modules.Lightbox
 
             With oGallery
                 .GalleryDescription = ctlSecurity.InputFilter(Me.txtGalleryDescription.Text, FilterFlag.NoScripting)
-                .GalleryFolder = ctlSecurity.InputFilter(Me.cboGalleryFolder.Text, FilterFlag.NoScripting)
+                .GalleryFolder = ctlSecurity.InputFilter(Me.hdnGalleryFolder.Value, FilterFlag.NoMarkup)
                 .GalleryName = ctlSecurity.InputFilter(Me.txtGalleryName.Text, FilterFlag.NoScripting)
                 .HideTitleDescription = Me.chkHideTitleDescription.Checked
                 .ModuleId = Me.ModuleId

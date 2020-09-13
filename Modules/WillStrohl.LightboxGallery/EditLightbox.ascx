@@ -26,7 +26,7 @@
             <li class="wns-listitem">
                 <div class="dnnFormItem">
                     <dnn:label id="lblGalleryFolder" runat="server" ResourceKey="lblGalleryFolder" ControlName="cboGalleryFolder" Suffix=":" />
-                    <dnn:DnnComboBox ID="cboGalleryFolder" runat="server" MaxHeight="300px" CssClass="wns_RadCombo NormalTextBox dnnFormRequired" DropDownCssClass="NormalTextBox dnnFormRequired" InputCssClass="NormalTextBox dnnFormRequired" /> 
+                    <asp:TextBox runat="server" ID="cboGalleryFolder" MaxLength="255" CssClass="NormalTextBox dnnFormRequired" />
                     <asp:RequiredFieldValidator ID="rfvGalleryFolder" runat="server" ControlToValidate="cboGalleryFolder" Display="Dynamic" CssClass="dnnFormMessage dnnFormError" ValidationGroup="lightbox" />
                 </div>
             </li>
@@ -189,11 +189,44 @@
         <asp:LinkButton ID="cmdCancel" runat="server" CssClass="dnnSecondaryAction" CausesValidation="false" />
     </div>
 </div>
+<asp:HiddenField runat="server" id="hdnGalleryFolder" />
 <script language="javascript" type="text/javascript">/*<![CDATA[*/
     var delText = '<%=Me.GetLocalizedString("Delete.Confirm").Replace("'", "") %>';
+    var moduleId = <%=ModuleId%>;
+    var moduleName = "WillStrohl.LightboxGallery";
+    var controller = "LightboxSvc";
+    var _sf = {};
+    var $app = {};
+    var $cboGalleryFolder = {};
+    var $hdnGalleryFolder = {};
 
     (function ($, Sys) {
         function setupDnnSiteSettings() {
+            $cboGalleryFolder = $("#<%=cboGalleryFolder.ClientID%>");
+            $hdnGalleryFolder = $("#<%=hdnGalleryFolder.ClientID%>");
+
+            if ($.ServicesFramework) {
+                _sf = $.ServicesFramework(moduleId);
+                $app.ServiceRoot = _sf.getServiceRoot(moduleName);
+                $app.ServicePath = $app.ServiceRoot + controller + "/";
+                $app.Headers = {
+                    "ModuleId": moduleId,
+                    "TabId": _sf.getTabId(),
+                    "RequestVerificationToken": _sf.getAntiForgeryValue()
+                };
+            }
+
+            $cboGalleryFolder.devbridgeAutocomplete({
+                serviceUrl: $app.ServicePath + "GetFolders",
+                data: $cboGalleryFolder.val(),
+                onSelect: function (suggestion) {
+                    $hdnGalleryFolder.val(suggestion.data);
+                },
+                ajaxSettings: {
+                    beforeSend: _sf.setModuleHeaders
+                }
+            });
+
             $('#dnnEditEntry').dnnPanels();
 
             /* add a friend confirmation message for when a deletion is requested */

@@ -18,19 +18,19 @@
 ' OUT OF Or IN CONNECTION WITH THE SOFTWARE Or THE USE Or OTHER DEALINGS IN THE SOFTWARE.
 '
 
-Namespace WillStrohl.Modules.Lightbox
+Imports System.Collections.Generic
 
-    Public NotInheritable Class ImageInfoMembers
+Namespace WillStrohl.Modules.Lightbox.Models
 
-        Public Const ImageIdField As String = "ImageId"
-        Public Const LightboxIdField As String = "LightboxId"
-        Public Const FileNameField As String = "FileName"
-        Public Const TitleField As String = "Title"
-        Public Const DescriptionField As String = "Description"
-        Public Const DisplayOrderField As String = "DisplayOrder"
-        Public Const LastUpdatedByField As String = "LastUpdatedBy"
-        Public Const LastUpdatedDateField As String = "LastUpdatedDate"
+    Interface IDdlDataItems
+        Property Query As String
+        Property Suggestions As List(Of DdlDataItem)
+    End Interface
 
-    End Class
+    Interface IDdlDataItem
+        Property ItemName As String
+        Property ItemValue As String
+    End Interface
+
 
 End Namespace
