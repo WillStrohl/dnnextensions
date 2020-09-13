@@ -24,6 +24,13 @@
 		<li>Will Strohl, <a href="https://upendoventures.com/What/Hotcakes-Commerce" target="_blank">Upendo Ventures</a></li>
 	</ul>
 
+	<h3>Version 01.14.00</h3>
+	<ul>
+		<li>Updated to build against DNN 9.6.1 or newer</li>
+		<li>Updated .NET Framework to 4.7.2</li>
+		<li>Removed Telerik</li>
+	</ul>
+
 	<h3>Version 01.13.00</h3>
 	<ul>
 		<li>Updated to build against DNN 9.3.2 or newer</li>
