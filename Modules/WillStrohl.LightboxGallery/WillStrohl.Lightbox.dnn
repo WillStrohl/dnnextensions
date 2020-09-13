@@ -161,6 +161,7 @@
                     <controlKey>Edit</controlKey>
                     <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/EditLightbox.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>False</supportsPopUps>
                     <controlTitle />
                     <controlType>Edit</controlType>
                     <iconFile />
@@ -170,6 +171,7 @@
                     <controlKey>ChangeOrder</controlKey>
                     <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ChangeOrder.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>False</supportsPopUps>
                     <controlTitle />
                     <controlType>Edit</controlType>
                     <iconFile />
@@ -179,6 +181,7 @@
                     <controlKey>EditImage</controlKey>
                     <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/EditImage.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>False</supportsPopUps>
                     <controlTitle />
                     <controlType>Edit</controlType>
                     <iconFile />
@@ -188,6 +191,17 @@
                     <controlKey>ChangeImageOrder</controlKey>
                     <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/ChangeImageOrder.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>False</supportsPopUps>
+                    <controlTitle />
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>AboutMe</controlKey>
+                    <controlSrc>DesktopModules/WillStrohl.LightBoxGallery/AboutMe.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <supportsPopUps>True</supportsPopUps>
                     <controlTitle />
                     <controlType>Edit</controlType>
                     <iconFile />

@@ -237,6 +237,10 @@
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutMe.ascx.vb">
+      <DependentUpon>AboutMe.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Components\DataProvider.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -317,6 +321,7 @@
   <ItemGroup>
     <Content Include="01.13.00.txt" />
     <Content Include="01.12.00.txt" />
+    <Content Include="AboutMe.ascx" />
     <Content Include="ChangeImageOrder.ascx" />
     <Content Include="EditImage.ascx" />
     <Content Include="images\arrow-move.png" />
@@ -379,7 +384,14 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="AboutMe.ascx.resx">
+      <DependentUpon>AboutMe.ascx.vb</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AboutMe.ascx.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
