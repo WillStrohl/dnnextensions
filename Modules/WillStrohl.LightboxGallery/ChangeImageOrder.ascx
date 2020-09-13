@@ -11,36 +11,68 @@
     </div>
 </div>
 <script language="javascript" type="text/javascript">/*<![CDATA[*/
-    var returnUrl = '<%=NavigateUrl%>';
-    var orderUrl = '<%=Me.OrderHandler%>';
-    var order = '';
-    var dlgOptions = {autoOpen: false, draggable: false, modal: true, 'buttons': { '<%=Me.GetLocalizedString("Message.Button.Ok")%>': function() { jQuery(this).dialog('close'); } }};
+    var moduleId = <%=ModuleId%>;
+    var moduleName = "WillStrohl.LightboxGallery";
+    var controller = "LightboxSvc";
+    var _sf = {};
+    var $app = {};
 
-    jQuery(document).ready(function() {
+    var returnUrl = "<%=NavigateUrl%>";
+    var order = "";
+    var dlgOptions = { autoOpen: false, draggable: false, modal: true, "buttons": { "<%=Me.GetLocalizedString("Message.Button.Ok")%>": function () { $(this).dialog("close"); } }};
+
+    $(document).ready(function () {
+        if ($.ServicesFramework) {
+            _sf = $.ServicesFramework(moduleId);
+            $app.ServiceRoot = _sf.getServiceRoot(moduleName);
+            $app.ServicePath = $app.ServiceRoot + controller + "/";
+            $app.Headers = {
+                "ModuleId": moduleId,
+                "TabId": _sf.getTabId(),
+                "RequestVerificationToken": _sf.getAntiForgeryValue()
+            };
+            $app.Model = {};
+        }
     
-        jQuery('#dlgAjaxError').dialog(dlgOptions);
-        jQuery('#dlgSaving').dialog(dlgOptions);
+        $("#dlgAjaxError").dialog(dlgOptions);
+        $("#dlgSaving").dialog(dlgOptions);
 
-        jQuery('#ulOrderImages').sortable({ revert: true });
+        $("#ulOrderImages").sortable({ revert: true });
 
-        jQuery('#lnkSave').live('click', function() {
-            jQuery('#dlgSaving').dialog('open');
+        $("#lnkSave").on("click", function() {
+            $("#dlgSaving").dialog("open");
         
-            order = '';
-            jQuery('#ulOrderImages li').each(function() {
-                order = order + jQuery(this).attr('id') + ',';
+            order = "";
+            jQuery("#ulOrderImages li").each(function() {
+                order = order + jQuery(this).attr("id") + ",";
             });
 
-            jQuery.ajax({ url: orderUrl + '?album=' + encodeURIComponent(<%=Me.LightboxId.ToString%>) + '&order=' + encodeURIComponent(order), cache: false, type: 'POST', dataType: 'text', async: false, success: onSuccessCallback, error: onErrorCallback });
-            
-            return false;
+            $app.Model = {
+                Album: <%=Me.LightboxId.ToString%>,
+                Order: order
+            };
+
+            $.ajax({
+                url: $app.ServicePath + "ImageReorder",
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                beforeSend: _sf.setModuleHeaders,
+                data: JSON.stringify($app.Model),
+                success: function (data, textStatus, jqXHR) {
+                    onSuccessCallback(data, textStatus, jqXHR);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    onErrorCallback(jqXHR, textStatus, errorThrown);
+                }
+            });
         });
         
-        jQuery('#lnkCancel').live('click', function(){ document.location = returnUrl; });
+        $("#lnkCancel").on("click", function(){ document.location = returnUrl; });
 
     });
     
-    function onSuccessCallback(data, textStatus, XMLHttpRequest){ document.location = returnUrl; }
+    function onSuccessCallback(data, textStatus, jqXHR){ document.location = returnUrl; }
     
-    function onErrorCallback(XMLHttpRequest, textStatus, errorThrown) { jQuery('#dlgSaving').dialog('close'); jQuery('#dlgAjaxError').dialog('open'); }
+    function onErrorCallback(jqXHR, textStatus, errorThrown) { $("#dlgSaving").dialog("close"); $("#dlgAjaxError").dialog("open"); }
 /*]]>*/</script>

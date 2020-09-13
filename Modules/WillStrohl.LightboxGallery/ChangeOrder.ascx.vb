@@ -36,41 +36,17 @@ Imports DotNetNuke.UI.Skins.Skin
 Imports DotNetNuke.UI.Skins.Controls.ModuleMessage
 Imports System.Text
 Imports System.Web.UI
+Imports DotNetNuke.Framework.JavaScriptLibraries
+Imports DotNetNuke.Web.Client
+Imports DotNetNuke.Web.Client.ClientResourceManagement
+Imports DotNetNuke.Web.Client.Providers
 Imports WillStrohl.Modules.Lightbox.LightboxController
 
 Namespace WillStrohl.Modules.Lightbox
 
     Partial Public MustInherit Class ChangeOrderView
         Inherits WNSPortalModuleBase
-
-#Region " Private Members "
-
-        Private p_jQueryUIKey As String = "jQuery.ui"
-        Private p_OrderHandler As String = String.Empty
-
-#End Region
-
-#Region " Public Properties "
-
-        Protected ReadOnly Property OrderHandler() As String
-            Get
-                If Not String.IsNullOrEmpty(Me.p_OrderHandler) Then
-                    Return Me.p_OrderHandler
-                End If
-
-                'If Request.IsSecureConnection Then
-                '    Me.p_OrderHandler = String.Concat("https://", Request.Url.Host, Me.ControlPath, "order.ashx")
-                'Else
-                '    Me.p_OrderHandler = String.Concat("http://", Request.Url.Host, Me.ControlPath, "order.ashx")
-                'End If
-                Me.p_OrderHandler = String.Concat(Me.ControlPath, "order.ashx")
-
-                Return Me.p_OrderHandler
-            End Get
-        End Property
-
-#End Region
-
+        
 #Region " Event Handlers "
 
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -81,9 +57,16 @@ Namespace WillStrohl.Modules.Lightbox
 
                 Me.BindData()
 
-                Me.Page.Header.Controls.Add(New LiteralControl(String.Format(STYLESHEET_TAG_FORMAT, String.Concat(Me.ControlPath, "js/fancybox/jquery.fancybox-1.3.4.css"))))
+                JavaScript.RequestRegistration(CommonJs.DnnPlugins)
 
-                Me.Page.Header.Controls.Add(New LiteralControl(String.Format(STYLESHEET_TAG_FORMAT, String.Concat(Me.ControlPath, "js/jquery-ui-1.8.2.css"))))
+                ServicesFramework.Instance.RequestAjaxAntiForgerySupport()
+
+                ClientResourceManager.RegisterScript(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js", FileOrder.Js.DefaultPriority + 1, DnnBodyProvider.DefaultName)
+                ClientResourceManager.RegisterStyleSheet(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css", FileOrder.Css.DefaultPriority + 1, DnnPageHeaderProvider.DefaultName)
+                
+                ClientResourceManager.RegisterScript(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js", FileOrder.Js.DefaultPriority + 2, DnnBodyProvider.DefaultName)
+                ClientResourceManager.RegisterStyleSheet(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css", FileOrder.Css.DefaultPriority + 2, DnnPageHeaderProvider.DefaultName)
+                ClientResourceManager.RegisterStyleSheet(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/theme.min.css", FileOrder.Css.DefaultPriority + 3, DnnPageHeaderProvider.DefaultName)
 
             Catch exc As Exception ' Module failed to load
                 ProcessModuleLoadException(Me, exc, Me.IsEditable)

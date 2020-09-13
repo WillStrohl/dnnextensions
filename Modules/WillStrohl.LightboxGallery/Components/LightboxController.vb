@@ -509,7 +509,7 @@ Namespace WillStrohl.Modules.Lightbox
 
 #Region " ISearchable Implementation "
 
-        Public Function GetSearchItems(ModInfo As ModuleInfo) As Services.Search.SearchItemInfoCollection Implements ISearchable.GetSearchItems
+        Public Function GetSearchItems(ModInfo As ModuleInfo) As SearchItemInfoCollection Implements ISearchable.GetSearchItems
 
             Dim searchItems As New SearchItemInfoCollection
             Dim collLightbox As LightboxInfoCollection = GetLightboxes(ModInfo.ModuleID)
