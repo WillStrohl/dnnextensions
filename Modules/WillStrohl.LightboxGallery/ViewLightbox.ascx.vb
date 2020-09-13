@@ -34,7 +34,6 @@
 Imports DotNetNuke.Entities.Modules
 Imports DotNetNuke.UI.Skins.Skin
 Imports DotNetNuke.UI.Skins.Controls.ModuleMessage
-Imports DotNetNuke.Services.Exceptions
 Imports DotNetNuke.Services.FileSystem
 Imports System.Collections.Generic
 Imports System.Drawing
@@ -42,6 +41,10 @@ Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
 Imports System.Web.UI
+Imports DotNetNuke.Framework.JavaScriptLibraries
+Imports DotNetNuke.Web.Client
+Imports DotNetNuke.Web.Client.ClientResourceManagement
+Imports DotNetNuke.Web.Client.Providers
 Imports WillStrohl.Modules.Lightbox.LightboxController
 
 Namespace WillStrohl.Modules.Lightbox
@@ -60,8 +63,8 @@ Namespace WillStrohl.Modules.Lightbox
         Private Const ERROR_WRAP As String = "<span class=""NormalRed"">{0}</span>"
         Private Const EDIT_IMAGE_PATH As String = "/images/edit.gif"
         Private Const ORDER_IMAGE_PATH As String = "/images/copy.gif"
-        Private Const IMAGE_TEMPLATE As String = "<li class=""listitem""><span class=""wns_lightbox_span""><a class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{4}""><img src=""{2}"" alt=""{3}"" title=""{4}"" class=""wns_lightbox_image"" /></a></span></li> "
-        Private Const IMAGE_EDIT_TEMPLATE As String = "<li class=""listitem editview""><span class=""wns_lightbox_span""><a class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{4}""><img src=""{2}"" alt=""{3}"" title=""{4}"" class=""wns_lightbox_image"" /></a></span><span class=""wns_lightbox_image_edit_wrap""><a href=""{5}"" class=""wns_lightbox_image_edit"">{6}</a></span></li> "
+        Private Const IMAGE_TEMPLATE As String = "<li class=""listitem""><span class=""wns_lightbox_span""><a data-fancybox=""gallery"" data-caption=""{4}"" class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{4}""><img src=""{2}"" alt=""{3}"" title=""{4}"" class=""wns_lightbox_image"" /></a></span></li> "
+        Private Const IMAGE_EDIT_TEMPLATE As String = "<li class=""listitem editview""><span class=""wns_lightbox_span""><a data-fancybox=""gallery"" data-caption=""{4}"" class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{4}""><img src=""{2}"" alt=""{3}"" title=""{4}"" class=""wns_lightbox_image"" /></a></span><span class=""wns_lightbox_image_edit_wrap""><a href=""{5}"" class=""wns_lightbox_image_edit"">{6}</a></span></li> "
         Private Const MAX_IMAGE_HEIGHT As Integer = 100
 
         Private p_Albums As LightboxInfoCollection = Nothing
@@ -138,16 +141,10 @@ Namespace WillStrohl.Modules.Lightbox
                 ' only load the scripts if we need them (when there is 1 or more albums)
                 If Not Me.Albums Is Nothing AndAlso Me.Albums.Count > 0 Then
 
-                    ' Load the Lightbox plugin client script on every page load
-                    If Not Page.ClientScript.IsClientScriptBlockRegistered(LIGHTBOX_KEY) Then
-                        Page.ClientScript.RegisterClientScriptBlock( _
-                            Me.GetType, _
-                            LIGHTBOX_KEY, _
-                            String.Format(SCRIPT_TAG_FORMAT, String.Concat(Me.ControlPath, "js/fancybox/jquery.fancybox-1.3.4.pack.js")), _
-                            False)
-                    End If
+                    JavaScript.RequestRegistration(CommonJs.DnnPlugins)
 
-                    Me.Page.Header.Controls.Add(New LiteralControl(String.Format(STYLESHEET_TAG_FORMAT, String.Concat(Me.ControlPath, "js/fancybox/jquery.fancybox-1.3.4.css"))))
+                    ClientResourceManager.RegisterScript(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js", FileOrder.Js.DefaultPriority + 1, DnnBodyProvider.DefaultName)
+                    ClientResourceManager.RegisterStyleSheet(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css", FileOrder.Css.DefaultPriority + 1, DnnPageHeaderProvider.DefaultName)
 
                 End If
 
