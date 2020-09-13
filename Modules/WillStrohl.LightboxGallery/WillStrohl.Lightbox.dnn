@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Lightbox" type="Module" version="01.13.00">
+    <package name="WillStrohl.Lightbox" type="Module" version="01.14.00">
       <friendlyName>Lightbox Gallery</friendlyName>
       <description>
         <![CDATA[<p>This is a lightbox gallery module, written by Will Strohl. Its original purpose was to highlight a few ways that jQuery can be integrated into DNN. It has since become one of the most popular ways to include image galleries into your DNN website.</p>]]>
@@ -16,7 +16,7 @@
       <releaseNotes src="releasenotes.txt" />
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">09.02.03</dependency>
+        <dependency type="coreversion">09.06.01</dependency>
       </dependencies>
       <components>
         <component type="Script">
@@ -35,7 +35,7 @@
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>01.00.02.SqlDataProvider</name>
-              <version>01.00.02</version>
+              <version>01.00.02</version>S
             </script>
             <script type="Install">
               <path>Providers\DataProviders\SqlDataProvider</path>
@@ -130,7 +130,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.13.00</version>
+              <version>01.14.00</version>
             </script>
           </scripts>
         </component>
@@ -217,7 +217,7 @@
             <attributes>
               <businessControllerClass>WillStrohl.Modules.Lightbox.LightboxController, WillStrohl.Modules.Lightbox</businessControllerClass>
               <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
-              <upgradeVersionsList>01.13.00</upgradeVersionsList>
+              <upgradeVersionsList>01.13.00,01.14.00</upgradeVersionsList>
             </attributes>
           </eventMessage>
         </component>
@@ -225,7 +225,7 @@
           <assemblies>
             <assembly>
               <name>WillStrohl.Modules.Lightbox.dll</name>
-              <version>01.13.00</version>
+              <version>01.14.00</version>
               <path>bin</path>
             </assembly>
             <assembly>
@@ -234,102 +234,6 @@
               <path>bin</path>
             </assembly>
           </assemblies>
-        </component>
-        <component type="File">
-          <files>
-            <basePath>DesktopModules\WillStrohl.LightboxGallery</basePath>
-            <file>
-              <name>WillStrohl.Lightbox.dnn</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.01.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.02.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.03.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.04.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.00.05.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.01.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.01.01.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.02.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.02.01.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.03.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.04.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.04.01.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.05.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.06.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.07.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.08.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.09.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.10.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.11.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>01.12.00.SqlDataProvider</name>
-            </file>
-            <file>
-              <path>Providers\DataProviders\SqlDataProvider</path>
-              <name>Uninstall.SqlDataProvider</name>
-            </file>
-          </files>
         </component>
         <component type="ResourceFile">
           <resourceFiles>

@@ -12,8 +12,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("WillStrohl.Lightbox Gallery Module")> 
 <Assembly: AssemblyDescription("This module integrates the popular lightbox functionality into a DotNetNuke module")> 
 <Assembly: AssemblyCompany("Will Strohl")> 
-<Assembly: AssemblyProduct("http://www.willstrohl.com")> 
-<Assembly: AssemblyCopyright("Copyright 2016 Will Strohl")> 
+<Assembly: AssemblyProduct("https://upendoventures.com")> 
+<Assembly: AssemblyCopyright("Copyright Upendo Ventures, LLC")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: CLSCompliant(True)> 
 
@@ -30,7 +30,7 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("01.12.00")> 
+<Assembly: AssemblyVersion("01.14.00")> 
 
 <Assembly: ComVisibleAttribute(False)> 
-<Assembly: AssemblyFileVersionAttribute("01.12.00")> 
+<Assembly: AssemblyFileVersion("01.14.00")> 
