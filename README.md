@@ -6,6 +6,8 @@ very useful MSBuild scripts.  I've presented this as a topic at DNNCon Palm Beac
 
 You can [read more about this project and view/download the slide deck from my blog](http://www.willstrohl.com/Blog/PostId/731/DNNCon-Presentation-Flexible-Project-Setup-for-Teams-and-Complicated-Applications).
 
+Learn more about DNN CMS at [the official DNN community website](https://dncommunity.org).
+
 ---
 
 ## First... Thank You
