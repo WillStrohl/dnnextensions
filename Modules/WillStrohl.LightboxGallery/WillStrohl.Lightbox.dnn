@@ -1,21 +1,22 @@
 ﻿<dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Lightbox" type="Module" version="01.12.00">
+    <package name="WillStrohl.Lightbox" type="Module" version="01.13.00">
       <friendlyName>Lightbox Gallery</friendlyName>
       <description>
         <![CDATA[<p>This is a lightbox gallery module, written by Will Strohl. Its original purpose was to highlight a few ways that jQuery can be integrated into DNN. It has since become one of the most popular ways to include image galleries into your DNN website.</p>]]>
       </description>
+      <iconFile>DesktopModules/WillStrohl.LightboxGallery/images/logo.png</iconFile>
       <owner>
         <name>Will Strohl</name>
-        <organization>Will Strohl</organization>
+        <organization>Upendo Ventures, LLC</organization>
         <url><![CDATA[<a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a>]]></url>
-        <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+        <email><![CDATA[<a href="me@willstrohl.com" target="_blank">me@willstrohl.com</a>]]></email>
       </owner>
-      <azureCompatible>true</azureCompatible>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
+      <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">08.00.03</dependency>
+        <dependency type="coreversion">09.02.03</dependency>
       </dependencies>
       <components>
         <component type="Script">
@@ -129,7 +130,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>01.12.00</version>
+              <version>01.13.00</version>
             </script>
           </scripts>
         </component>
@@ -202,7 +203,7 @@
             <attributes>
               <businessControllerClass>WillStrohl.Modules.Lightbox.LightboxController, WillStrohl.Modules.Lightbox</businessControllerClass>
               <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
-              <upgradeVersionsList />
+              <upgradeVersionsList>01.13.00</upgradeVersionsList>
             </attributes>
           </eventMessage>
         </component>
@@ -210,7 +211,7 @@
           <assemblies>
             <assembly>
               <name>WillStrohl.Modules.Lightbox.dll</name>
-              <version>01.12.00</version>
+              <version>01.13.00</version>
               <path>bin</path>
             </assembly>
             <assembly>
@@ -325,6 +326,7 @@
           </resourceFiles>
         </component>
         <component type="Cleanup" fileName="01.12.00.txt" version="01.12.00" />
+        <component type="Cleanup" fileName="01.13.00.txt" version="01.13.00" />
       </components>
     </package>
   </packages>

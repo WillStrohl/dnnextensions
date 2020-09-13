@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 The MIT License (MIT)
-Copyright (c) 2014 Will Strohl
+Copyright (c) 2020 Upendo Ventures, LLC
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this 
-software and associated documentation files (the "Software"), to deal in the Software 
-without restriction, including without limitation the rights to use, copy, modify, 
-merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
-permit persons to whom the Software is furnished to do so, subject to the following 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the "Software"), to deal in the Software
+without restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the following
 conditions:
 
-The above copyright notice and this permission notice shall be included in all copies 
+The above copyright notice and this permission notice shall be included in all copies
 or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -29,85 +29,120 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                     XmlFileName="$(DNNFileName).dnn">
       <Output TaskParameter="Value" PropertyName="Version" />
     </XmlRead>
+
+    <ItemGroup>
+      <InstallInclude Include="**\*.ascx" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.asmx" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.css" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.html" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.htm" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.resx" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.aspx" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.js" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.js.map" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.txt"  Exclude="**\obj\**;**\_ReSharper*\**;packages\**;node_modules\**;clientApp\**;readme.txt" />
+      <InstallInclude Include="**\images\**\*.*" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.eot" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.svg" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.ttf" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.woff" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.woff2" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.swf" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.ico" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.json" Exclude="packages\**;node_modules\**;clientApp\**;obj\**" />
+      <InstallInclude Include="**\*.scss" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.cshtml" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.png" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.gif" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.jpeg" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.jpg" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.bmp" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.xml" Exclude="packages\**;node_modules\**;clientApp\**;bin\**" />
+      <InstallInclude Include="**\web.config" Exclude="packages\**;node_modules\**;clientApp\**" />
+    </ItemGroup>
+
     <CreateItem Include="$(DNNFileName).dnn">
       <Output TaskParameter="Include" ItemName="PackageManifestFiles" />
     </CreateItem>
-    <CreateItem Include="*.txt">
-      <Output TaskParameter="Include" ItemName="PackageTextFiles" />
+
+    <CreateItem Include="**\License.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
-    <CreateItem Include="Components\**\*.dll">
-      <Output TaskParameter="Include" ItemName="ComponentReferences" />
+
+    <CreateItem Include="**\ReleaseNotes.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
-    <CreateItem Include="*.asmx;*.ascx;*.css;*.xsl;*.svc;*.xml;*.gif;*.png">
-      <Output TaskParameter="Include" ItemName="PackageSourceFiles" />
+
+    <CreateItem Include="**\$(Version).txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
-    <CreateItem Include="*.config">
-      <Output TaskParameter="Include" ItemName="PackageConfigFiles" />
+
+    <CreateItem Include="**\*.sqldataprovider">
+      <Output TaskParameter="Include" ItemName="SqlDataProviderFiles" />
     </CreateItem>
-    <CreateItem Include="App_LocalResources\*.resx">
-      <Output TaskParameter="Include" ItemName="PackageLocalResourceFiles" />
-    </CreateItem>
-    <CreateItem Include="Documentation\*.txt">
-      <Output TaskParameter="Include" ItemName="PackageDocumentationFiles" />
-    </CreateItem>
-    <CreateItem Include="Providers\DataProviders\SqlDataProvider\*.SqlDataProvider">
-      <Output TaskParameter="Include" ItemName="PackageSqlDataProviderFiles" />
-    </CreateItem>
-    <CreateItem Include="Data\*.SqlDataProvider">
-      <Output TaskParameter="Include" ItemName="PackageDataFiles" />
-    </CreateItem>
-    <CreateItem Include="images\*.*">
-      <Output TaskParameter="Include" ItemName="MyImages" />
-    </CreateItem>
-    <CreateItem Include="js\*.js">
-      <Output TaskParameter="Include" ItemName="MyJsFiles" />
-    </CreateItem>
-    <CreateItem Include="keys\*.*">
-      <Output TaskParameter="Include" ItemName="MyKeys" />
-    </CreateItem>
-    <CreateItem Include="Views\*.ascx">
-      <Output TaskParameter="Include" ItemName="MyViews" />
-    </CreateItem>
-    <CreateItem Include="Views\Controls\*.ascx">
-      <Output TaskParameter="Include" ItemName="MyViewControls" />
-    </CreateItem>
-    <CreateItem Include="RazorHelpers\*.cshtml">
-      <Output TaskParameter="Include" ItemName="MyRazorHelpers" />
-    </CreateItem>
-    <CreateItem Include="Styles\*.css">
-      <Output TaskParameter="Include" ItemName="MyStyles" />
-    </CreateItem>
-    <CreateItem Include="Scripts\*.cshtml;Script\*.js">
-      <Output TaskParameter="Include" ItemName="MyScripts" />
-    </CreateItem>
-    <CreateItem Include="Scripts\Shared\*.cshtml">
-      <Output TaskParameter="Include" ItemName="MySharedScripts" />
-    </CreateItem>
-    <Copy SourceFiles="@(BinInstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin" />
-    <Copy SourceFiles="@(PackageSourceFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageLocalResourceFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\App_LocalResources" />
-    <Copy SourceFiles="@(ComponentReferences)" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin" />
-    <Copy SourceFiles="@(PackageSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Providers\DataProviders\SqlDataProvider" />
-    <Copy SourceFiles="@(PackageDataFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Data" />
+
+    <ItemGroup>
+      <BinInstallInclude Include="$(MSBuildProjectDirectory)\bin\*.dll" Exclude="$(MSBuildProjectDirectory)\bin\DotNetNuke*;$(MSBuildProjectDirectory)\bin\Dnn*;$(MSBuildProjectDirectory)\bin\Telerik*;$(MSBuildProjectDirectory)\bin\System.*;$(MSBuildProjectDirectory)\bin\Microsoft.*;$(MSBuildProjectDirectory)\bin\Newtonsoft.Json.*" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <SymbolsBinInclude Include="$(MSBuildProjectDirectory)\bin\*.pdb" Exclude="$(MSBuildProjectDirectory)\bin\DotNetNuke*;$(MSBuildProjectDirectory)\bin\Dnn*;$(MSBuildProjectDirectory)\bin\Telerik*;$(MSBuildProjectDirectory)\bin\System.*;$(MSBuildProjectDirectory)\bin\Microsoft.*;$(MSBuildProjectDirectory)\bin\Newtonsoft.Json.*" />
+      <SymbolsBinInclude Include="$(MSBuildProjectDirectory)\bin\*.xml" Exclude="$(MSBuildProjectDirectory)\bin\DotNetNuke*;$(MSBuildProjectDirectory)\bin\Dnn*;$(MSBuildProjectDirectory)\bin\Telerik*;$(MSBuildProjectDirectory)\bin\System.*;$(MSBuildProjectDirectory)\bin\Microsoft.*;$(MSBuildProjectDirectory)\bin\Newtonsoft.Json.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(BinInstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageTextFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageConfigFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(PackageDocumentationFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Documentation" />
-    <Copy SourceFiles="@(MyImages)" DestinationFolder="$(MSBuildProjectDirectory)\Package\images" />
-    <Copy SourceFiles="@(MyJsFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\js" />
-    <Copy SourceFiles="@(MyKeys)" DestinationFolder="$(MSBuildProjectDirectory)\Package\keys" />
-    <Copy SourceFiles="@(MyViews)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-    <Copy SourceFiles="@(MyViewControls)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Controls" />
-    <Copy SourceFiles="@(MyScripts)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Scripts" />
-    <Copy SourceFiles="@(MyStyles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Styles" />
-    <Copy SourceFiles="@(MySharedScripts)" DestinationFolder="$(MSBuildProjectDirectory)\Package\Scripts\Shared" />
-    <Copy SourceFiles="@(MyRazorHelpers)" DestinationFolder="$(MSBuildProjectDirectory)\Package\RazorHelpers" />
-    <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
-      <Output TaskParameter="Include" ItemName="OutputContent" />	
+    <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
+    <Copy SourceFiles="@(SqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\%(RecursiveDir)" />
+
+    <!-- create the INSTALL RESOURCES.ZIP file -->
+    <Copy SourceFiles="@(InstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\%(RecursiveDir)" />
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\ResourcesZip\**\*.*">
+      <Output TaskParameter="Include" ItemName="ResourcesContent" />
     </CreateItem>
+
+    <Zip Files="@(ResourcesContent)" WorkingDirectory="$(MSBuildProjectDirectory)\ResourcesZip" ZipFileName="Resources.$(Extension)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(Extension)" DestinationFolder="Package\" />
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
+      <Output TaskParameter="Include" ItemName="OutputContent" />
+    </CreateItem>
+
+    <!-- Create the Install package -->
     <Zip Files="@(OutputContent)" WorkingDirectory="$(MSBuildProjectDirectory)\Package" ZipFileName="$(PackageName)_$(Version)_Install.$(Extension)" />
+
+    <!-- Copy the Install package to the Packages folder -->
     <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Install.$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
+
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\Package" />
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\ResourcesZip" />
+
+    <!-- Symbols Package -->
+    <Copy SourceFiles="@(SymbolsInclude)" DestinationFolder="$(MSBuildProjectDirectory)\Package"/>
+    <Copy SourceFiles="@(SymbolsBinInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\bin"/>
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\ResourcesZip\**\*.*">
+      <Output TaskParameter="Include" ItemName="ResourcesContent" />
+    </CreateItem>
+
+    <Zip Files="@(ResourcesContent)" WorkingDirectory="$(MSBuildProjectDirectory)\ResourcesZip" ZipFileName="Resources.$(Extension)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(Extension)" DestinationFolder="Package\" />
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\Package\**\*.*">
+      <Output TaskParameter="Include" ItemName="OutputSource" />
+    </CreateItem>
+
+    <Zip Files="@(OutputSource)" WorkingDirectory="$(MSBuildProjectDirectory)\Package" ZipFileName="$(PackageName)_$(Version)_Symbols.$(Extension)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Symbols.$(Extension)" DestinationFolder="$(WebsiteInstallPath)" />
+
+    <!-- Clean Up -->
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\Package" />
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\ResourcesZip\bin" />
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\ResourcesZip" />
+
+    <Delete Files="$(MSBuildProjectDirectory)\Resources.Zip" />
     <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Install.$(Extension)" />
-    <RemoveDir Directories ="$(MSBuildProjectDirectory)\Package" />
+    <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)_$(Version)_Symbols.$(Extension)" />
   </Target>
 </Project>
