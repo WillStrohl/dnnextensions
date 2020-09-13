@@ -18,14 +18,18 @@
 ' OUT OF Or IN CONNECTION WITH THE SOFTWARE Or THE USE Or OTHER DEALINGS IN THE SOFTWARE.
 '
 
+Imports System.Collections.Generic
 Imports System.Globalization
+Imports System.Linq
 Imports System.Net
 Imports System.Net.Http
 Imports System.Text.RegularExpressions
 Imports System.Web.Http
 Imports DotNetNuke.Instrumentation
 Imports DotNetNuke.Security
+Imports DotNetNuke.Services.FileSystem
 Imports DotNetNuke.Web.Api
+Imports Newtonsoft.Json
 Imports WillStrohl.Modules.Lightbox.Models
 
 Namespace WillStrohl.Modules.Lightbox.Services
@@ -95,7 +99,7 @@ Namespace WillStrohl.Modules.Lightbox.Services
                 Return Request.CreateResponse(HttpStatusCode.OK, true)
             Catch ex As Exception
                 LogError(ex)
-                Return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "false")
+                Return Request.CreateResponse(HttpStatusCode.InternalServerError)
             End Try
         End Function
 
@@ -119,7 +123,38 @@ Namespace WillStrohl.Modules.Lightbox.Services
                 Return Request.CreateResponse(HttpStatusCode.OK, true)
             Catch ex As Exception
                 LogError(ex)
-                Return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "false")
+                Return Request.CreateResponse(HttpStatusCode.InternalServerError)
+            End Try
+        End Function
+
+        <DnnModuleAuthorize(AccessLevel:=SecurityAccessLevel.Edit)>
+        <ValidateAntiForgeryToken>
+        <HttpGet>
+        Public Function GetFolders(Query As String) As HttpResponseMessage
+            Try
+                Dim collFolder As IEnumerable(Of IFolderInfo) = FolderManager.Instance.GetFolders(PortalSettings.PortalId)
+
+                Dim response As New DdlDataItems
+                response.Query = Query
+                response.Suggestions = new List(Of DdlDataItem)
+
+                For Each folder As IFolderInfo In collFolder
+                    If folder.FolderPath.IndexOf(Query, 0, StringComparison.CurrentCultureIgnoreCase) > -1 Then
+                        Dim rtnFolder = New DdlDataItem
+                        
+                        rtnFolder.ItemName = folder.FolderPath
+                        rtnFolder.ItemValue = folder.FolderPath
+
+                        response.Suggestions.Add(rtnFolder)
+                    End If
+                Next
+
+                Dim toClient As String = JsonConvert.SerializeObject(response)
+
+                Return Request.CreateResponse(HttpStatusCode.OK, toClient)
+            Catch ex As Exception
+                LogError(ex)
+                Return Request.CreateResponse(HttpStatusCode.InternalServerError)
             End Try
         End Function
 

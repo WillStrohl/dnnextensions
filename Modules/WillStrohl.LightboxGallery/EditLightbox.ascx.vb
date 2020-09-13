@@ -25,6 +25,10 @@ Imports DotNetNuke.UI.Skins.Controls.ModuleMessage
 Imports System.Collections.Generic
 Imports System.Text.RegularExpressions
 Imports System.Web.UI.WebControls
+Imports DotNetNuke.Framework.JavaScriptLibraries
+Imports DotNetNuke.Web.Client
+Imports DotNetNuke.Web.Client.ClientResourceManagement
+Imports DotNetNuke.Web.Client.Providers
 Imports WillStrohl.Modules.Lightbox.LightboxController
 
 Namespace WillStrohl.Modules.Lightbox
@@ -76,6 +80,11 @@ Namespace WillStrohl.Modules.Lightbox
 
         Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
             Try
+
+                JavaScript.RequestRegistration(CommonJs.DnnPlugins)
+                ServicesFramework.Instance.RequestAjaxAntiForgerySupport()
+                ClientResourceManager.RegisterScript(Me.Page, "https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js", FileOrder.Js.DefaultPriority + 1, DnnPageHeaderProvider.DefaultName)
+
                 If Not Me.Page.IsPostBack Then
                     Me.BindData()
                 End If
@@ -145,6 +154,7 @@ Namespace WillStrohl.Modules.Lightbox
                     Me.txtGalleryName.Text = Server.HtmlDecode(objAlbum.GalleryName)
                     Me.txtGalleryDescription.Text = Server.HtmlDecode(objAlbum.GalleryDescription)
                     Me.cboGalleryFolder.Text = Server.HtmlDecode(objAlbum.GalleryFolder)
+                    Me.hdnGalleryFolder.Value = Server.HtmlDecode(objAlbum.GalleryFolder)
                     Me.chkHideTitleDescription.Checked = objAlbum.HideTitleDescription
 
                     Dim objSetting As New SettingInfo
@@ -202,26 +212,6 @@ Namespace WillStrohl.Modules.Lightbox
 
                 End If
 
-                Dim ctlFolder As New FolderController
-                Dim collFolder As IEnumerable(Of IFolderInfo) = FolderManager.Instance.GetFolders(Me.PortalId)
-
-                Dim lstFolder As New List(Of IFolderInfo)
-
-                For Each oFolder As IFolderInfo In collFolder
-                    If Not String.IsNullOrEmpty(oFolder.FolderPath) Then
-                        lstFolder.Add(oFolder)
-                    End If
-                Next
-
-                Me.cboGalleryFolder.AllowCustomText = True
-                Me.cboGalleryFolder.MarkFirstMatch = True
-                Me.cboGalleryFolder.ClearSelection()
-                Me.cboGalleryFolder.Items.Clear()
-                Me.cboGalleryFolder.DataTextField = "FolderPath"
-                Me.cboGalleryFolder.DataValueField = "FolderPath"
-                Me.cboGalleryFolder.DataSource = lstFolder
-                Me.cboGalleryFolder.DataBind()
-
             End If
 
         End Sub
@@ -268,7 +258,7 @@ Namespace WillStrohl.Modules.Lightbox
 
             With oGallery
                 .GalleryDescription = ctlSecurity.InputFilter(Me.txtGalleryDescription.Text, FilterFlag.NoScripting)
-                .GalleryFolder = ctlSecurity.InputFilter(Me.cboGalleryFolder.Text, FilterFlag.NoScripting)
+                .GalleryFolder = ctlSecurity.InputFilter(Me.hdnGalleryFolder.Value, FilterFlag.NoMarkup)
                 .GalleryName = ctlSecurity.InputFilter(Me.txtGalleryName.Text, FilterFlag.NoScripting)
                 .HideTitleDescription = Me.chkHideTitleDescription.Checked
                 .ModuleId = Me.ModuleId
