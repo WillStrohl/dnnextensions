@@ -373,9 +373,14 @@ Namespace WillStrohl.Modules.OpenGraph
 
         Public Shared Sub NukeSettings(ByVal PortalId As Integer, ByVal ModuleId As Integer, ByVal TabModuleId As Integer)
 
-            Dim ctlModule As New ModuleController
-            ctlModule.DeleteModuleSettings(ModuleId)
-            ctlModule.DeleteTabModuleSettings(TabModuleId)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_TITLE_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, USE_TABTITLE_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_DESCRIPTION_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, USE_TABDESCRIPTION_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_URL_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, USE_TABURL_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_IMAGE_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_LOCALE_SETTING)
 
             PortalController.DeletePortalSetting(PortalId, OG_SITENAME_SETTING)
             PortalController.DeletePortalSetting(PortalId, USE_PORTALTITLE_SETTING)
