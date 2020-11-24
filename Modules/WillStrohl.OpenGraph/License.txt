@@ -1,6 +1,11 @@
-﻿<div style="width:100%;height:375px;overflow:auto;">
-	<p>Will Strohl (<a href="mailto:will.strohl@gmail.com">will.strohl@gmail.com</a>)<br /><a href="http://www.willstrohl.com" target="_blank">http://www.willstrohl.com</a></p>
-	<p>Copyright (c) 2011-2013, Will Strohl<br />All rights reserved.</p>
+﻿<style>
+	div.uv-install-wrapper h3, div.uv-install-wrapper h4, div.uv-install-wrapper p, div.uv-install-wrapper hr, div.uv-install-wrapper ul { margin-bottom: 0.5em; }
+	div.uv-install-wrapper ul { padding-left: 2em; }
+	.muy-importante { color:red;font-weight:bold; }
+</style>
+<div class="uv-install-wrapper">
+	<p>Upendo Ventures, LLC(<a href="mailto:solutions@upendoventures.com">solutions@upendoventures.com</a>)<br /><a href="https://upendoventures.com" target="_blank">https://upendoventures.com</a></p>
+	<p>Copyright (c) Upendo Ventures, LLC</p>
 	<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
 	<p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
 	<p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>

@@ -1,9 +1,8 @@
 ﻿'
-' Will Strohl (will.strohl@gmail.com)
-' http://www.willstrohl.com
+' Upendo Ventures, LLC (solutions@upendoventures.com)
+' https://upendoventures.com
 '
-'Copyright (c) 2011-2013, Will Strohl
-'All rights reserved.
+'Copyright (c) Upendo Ventures, LLC 
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
 'permitted provided that the following conditions are met:
@@ -50,7 +49,7 @@ Namespace WillStrohl.Modules.OpenGraph
 
         Private mApplication As HttpApplication
         Private Const INVALID_EXTENSION_MATCH_PATTERN As String = "\.(swf|jpg|jpeg|jpe|gif|bmp|png|doc|docx|xls|xlsx|ppt|pptx|pdf|txt|xml|xsl|xsd|css|zip|template|htmtemplate|ico|avi|mpg|mpeg|mp3|wmv|mov|wav|js|axd|htm|html|ashx)$"
-        Private Const INVALID_REQUEST_PATCH_MATCH_PATTERN As String = "(ctl=Edit|mid=\d+|popUp=true|ctl/Edit|mid/\d+|/Admin/|/Host/|/DesktopModules/|/Providers/|/Resources/|\.ashx/)"
+        Private Const INVALID_REQUEST_PATCH_MATCH_PATTERN As String = "(ctl=Edit|mid=\d+|popUp=true|ctl/Edit|mid/\d+|/Admin/|/Host/|/DesktopModules/|/Providers/|/Resources/|\.ashx/|fileticket=)"
         'Private Const REQUEST_POST As String = "POST"
         'Private Const REQUEST_CONTENTTYPE_AJAX As String = "application/json"
         Private Const HEADER_AJAX_KEY As String = "X-MicrosoftAjax"

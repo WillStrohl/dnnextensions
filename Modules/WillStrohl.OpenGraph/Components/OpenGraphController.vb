@@ -1,9 +1,8 @@
 ﻿'
-' Will Strohl (will.strohl@gmail.com)
-' http://www.willstrohl.com
+' Upendo Ventures, LLC (solutions@upendoventures.com)
+' https://upendoventures.com
 '
-'Copyright (c) 2011-2013, Will Strohl
-'All rights reserved.
+'Copyright (c) Upendo Ventures, LLC 
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
 'permitted provided that the following conditions are met:
@@ -373,9 +372,14 @@ Namespace WillStrohl.Modules.OpenGraph
 
         Public Shared Sub NukeSettings(ByVal PortalId As Integer, ByVal ModuleId As Integer, ByVal TabModuleId As Integer)
 
-            Dim ctlModule As New ModuleController
-            ctlModule.DeleteModuleSettings(ModuleId)
-            ctlModule.DeleteTabModuleSettings(TabModuleId)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_TITLE_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, USE_TABTITLE_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_DESCRIPTION_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, USE_TABDESCRIPTION_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_URL_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, USE_TABURL_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_IMAGE_SETTING)
+            ModuleController.Instance.DeleteTabModuleSetting(TabModuleId, OG_LOCALE_SETTING)
 
             PortalController.DeletePortalSetting(PortalId, OG_SITENAME_SETTING)
             PortalController.DeletePortalSetting(PortalId, USE_PORTALTITLE_SETTING)

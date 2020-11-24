@@ -1,9 +1,8 @@
 ﻿'
-' Will Strohl (will.strohl@gmail.com)
-' http://www.willstrohl.com
+' Upendo Ventures, LLC (solutions@upendoventures.com)
+' https://upendoventures.com
 '
-'Copyright (c) 2011-2013, Will Strohl
-'All rights reserved.
+'Copyright (c) Upendo Ventures, LLC 
 '
 'Redistribution and use in source and binary forms, with or without modification, are 
 'permitted provided that the following conditions are met:

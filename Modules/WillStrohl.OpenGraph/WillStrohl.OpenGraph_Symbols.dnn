@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection_Symbols" type="Library" version="03.00.00">
-      <friendlyName>Content Injection Symbols</friendlyName>
+    <package name="WillStrohl.OpenGraph_Symbols" type="Library" version="02.00.00">
+      <friendlyName>Open Graph Protocol Symbols</friendlyName>
       <description>
-        <![CDATA[<p>This is a content injection module, written by Upendo Ventures. Its purpose is to allow you to inject markup into the header, body, and footer of the page.</p>]]>
+        <![CDATA[<p>This module allows you to quickly and easily add the Open Graph Protocol markup to your website. Doing so makes you compatible with sharing content with sites like Facebook.</p>]]>
       </description>
-      <iconFile>DesktopModules/WillStrohl.Injection/Images/logo.png</iconFile>
+      <iconFile>DesktopModules/WillStrohl.OpenGraph/Images/logo.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>Upendo Ventures, LLC</organization>
@@ -17,7 +17,7 @@
       <releaseNotes src="ReleaseNotes.txt" />
       <azureCompatible>True</azureCompatible>
       <dependencies>
-        <dependency type="managedPackage" version="3.0.0">WillStrohl.Injection</dependency>
+        <dependency type="managedPackage" version="2.0.0">WillStrohl.OpenGraph</dependency>
       </dependencies>
       <components>
         <component type="ResourceFile">
