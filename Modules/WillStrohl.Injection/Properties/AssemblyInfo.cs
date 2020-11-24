@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WillStrohl.Injection")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Will Strohl")]
-[assembly: AssemblyProduct("http://www.willstrohl.com")]
-[assembly: AssemblyCopyright("Copyright 2009-2016 Will Strohl")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Upendo Ventures, LLC")]
+[assembly: AssemblyProduct("https://upendoventures.com")]
+[assembly: AssemblyCopyright("Copyright Upendo Ventures, LLC")]
+[assembly: AssemblyTrademark("Upendo Ventures, LLC")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("02.00.02")]
-[assembly: AssemblyFileVersion("02.00.02")]
+[assembly: AssemblyVersion("03.00.00")]
+[assembly: AssemblyFileVersion("03.00.00")]
