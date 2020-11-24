@@ -1,0 +1,1 @@
+﻿DesktopModules/WillStrohl.Injection/Images/injection.png

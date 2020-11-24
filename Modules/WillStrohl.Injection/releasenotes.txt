@@ -1,23 +1,34 @@
-﻿<h3>Version 02.00.02</h3>
-<p><strong>Date Released:</strong> 06/30/2016</p>
-<ul>
-	<li>Feature: Increased minimum supported version to DNN 7.4.2</li>
-	<li>Bug: Fixed Azure installation issue</li>
-</ul>
+﻿<style>
+	div.uv-install-wrapper h3, div.uv-install-wrapper h4, div.uv-install-wrapper p, div.uv-install-wrapper hr, div.uv-install-wrapper ul { margin-bottom: 0.5em; }
+	div.uv-install-wrapper ul { padding-left: 2em; }
+	.muy-importante { color:red;font-weight:bold; }
+</style>
+<div class="uv-install-wrapper">
+	<h3>Version 03.00.00</h3>
+	
+	<p class="muy-importante">The release notes continue after the Sponsors and Code Contributors below.</p>
+	
+	<h3>Sponsors</h3>
+	<p>Open-source is not free. We're so GRATEFUL for the following people/organizations for <a href="https://github.com/sponsors/hismightiness" target="_blank">sponsoring developers</a> to work on this release!</p>
+	<p>Sponsorship is <em>Powered by GitHub Sponsors</em> and ensures that this project lives and thrives. <a href="https://github.com/sponsors/hismightiness" target="_blank">Please consider sponsoring</a> any amount.</p>
+	<p>THANK YOU to the following rockstars!</p>
+	<ul>
+		<li>Adam Bernstein, <a href="https://practicewise.com/" target="_blank">PracticeWise</a></li>
+		<li>Dan Rice, <a href="https://www.puresystems.co.uk/" target="_blank">Pure Systems</a></li>
+		<li>David Poindexter, <a href="https://nvisionative.com/" target="_blank">nvisionative</a></li>
+		<li>Matt Rutledge, <a href="https://beleivekids.com/" target="_blank">Believe Kids</a></li>
+	</ul>
+	
+	<h3>Code Contributors</h3>
+	<p>THANK YOU to the following community members for participating in this release!</p>
+	<ul>
+		<li>Will Strohl, <a href="https://upendoventures.com/What/CMS/DNN" target="_blank">Upendo Ventures</a></li>
+	</ul>
 
-<h3>Version 02.00.01</h3>
-<p><strong>Date Released:</strong> 09/18/2015</p>
-<ul>
-	<li>Bug: Updated a typo in the manifest file that caused exceptions in the event log</li>
-	<li>Bug: Added missing reference to get rid of old SqlDataProvider DLL</li>
-</ul>
-
-<h3>Version 02.00.00</h3>
-<p><strong>Date Released:</strong> 09/06/2015</p>
-<ul>
-	<li>Feature: Specify and use CRM features for JavaScript/CSS files</li>
-	<li>Feature: Display auditing history for injections</li>
-	<li>Feature: Display injection type in grid listing</li>
-	<li>Feature: Converted project to C#</li>
-	<li>Bug: Unable to install in Windows Azure</li>
-</ul>
+	<p><strong>Date Released:</strong> 11/24/2020</p>
+	<ul>
+		<li>Increased minimum supported version to DNN 9.4.0, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
+		<li>Now generating and releasing a Symbols package, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
+		<li>Fixed install/upgrade issue with SQL provider in version 2.0, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>, <a href="https://github.com/MaiklT" target="_blank">@MaiklT</a>, and <a href="https://github.com/moorecreative" target="_blank">@moorecreative</a>!</li>
+	</ul>
+</div>
