@@ -1,15 +1,36 @@
-﻿<div style="width:100%;height:375px;overflow:auto;">
-
-	<h3>Version 01.02.00</h3>
-	<p><strong>Date Released:</strong> 11/07/2012</p>
+﻿<style>
+	div.uv-install-wrapper h3, div.uv-install-wrapper h4, div.uv-install-wrapper p, div.uv-install-wrapper hr, div.uv-install-wrapper ul { margin-bottom: 0.5em; }
+	div.uv-install-wrapper ul { padding-left: 2em; }
+	.muy-importante { color:red;font-weight:bold; }
+</style>
+<div class="uv-install-wrapper">
+	<h2>Open Graph Protocol Module</h2>
+	<h3>Version 02.00.00</h3>
+	
+	<p class="muy-importante">The release notes continue after the Sponsors and Code Contributors below.</p>
+	
+	<h3>Sponsors</h3>
+	<p>Open-source is not free. We're so GRATEFUL for the following people/organizations for <a href="https://github.com/sponsors/hismightiness" target="_blank">sponsoring developers</a> to work on this release!</p>
+	<p>Sponsorship is <em>Powered by GitHub Sponsors</em> and ensures that this project lives and thrives. <a href="https://github.com/sponsors/hismightiness" target="_blank">Please consider sponsoring</a> any amount.</p>
+	<p>THANK YOU to the following rockstars!</p>
 	<ul>
-		<li>ENHANCEMENT: Compatible with DNN 7.0.2 and newer</li>
-		<li>ENHANCEMENT: Added a way to delete all OGP site settings</li>
-		<li>BUG: Fixed issue with homepages without page names</li>
+		<li>Adam Bernstein, <a href="https://practicewise.com/" target="_blank">PracticeWise</a></li>
+		<li>Dan Rice, <a href="https://www.puresystems.co.uk/" target="_blank">Pure Systems</a></li>
+		<li>David Poindexter, <a href="https://nvisionative.com/" target="_blank">nvisionative</a></li>
+		<li>Matt Rutledge, <a href="https://beleivekids.com/" target="_blank">Believe Kids</a></li>
+	</ul>
+	
+	<h3>Code Contributors</h3>
+	<p>THANK YOU to the following community members for participating in this release!</p>
+	<ul>
+		<li>Will Strohl, <a href="https://upendoventures.com/What/CMS/DNN" target="_blank">Upendo Ventures</a></li>
 	</ul>
 
-	<p>For more information about this and previous releases or for 
-		support, please visit the <a href="http://dnnopengraph.codeplex.com" target="_blank">DNN 
-		Open Graph Module</a> website.</p>
-
+	<p><strong>Date Released:</strong> 11/24/2020</p>
+	<ul>
+		<li>Increased minimum supported version to DNN 9.4.0, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
+		<li>Unable to download seemingly unrelated files protected by &quot;file tickets&quot; (<a href="https://github.com/hismightiness/dnnextensions/issues/164" target="_blank">Issue 164</a>), Thanks <a href="https://github.com/bacon1986" target="_blank">@bacon1986</a>!</li>
+		<li>Now generating and releasing a Symbols package, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
+		<li>Removed deprecated DNN API references (DNN 10+ compatible!), Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
+	</ul>
 </div>
