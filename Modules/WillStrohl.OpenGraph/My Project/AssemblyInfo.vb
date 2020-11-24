@@ -11,10 +11,10 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("WillStrohl.OpenGraph Module")> 
 <Assembly: AssemblyDescription("This module allows you to quickly and easily add the open graph protocol to your DotNetNuke site.")> 
-<Assembly: AssemblyCompany("Will Strohl")> 
-<Assembly: AssemblyProduct("http://www.willstrohl.com")> 
-<Assembly: AssemblyCopyright("Copyright 2011-2013 Will Strohl")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyCompany("Upendo Ventures, LLC")> 
+<Assembly: AssemblyProduct("https://upendoventures.com")> 
+<Assembly: AssemblyCopyright("Copyright Upendo Ventures, LLC")> 
+<Assembly: AssemblyTrademark("Upendo Ventures, LLC")> 
 <Assembly: CLSCompliant(True)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
@@ -30,7 +30,7 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("01.02.00")> 
+<Assembly: AssemblyVersion("02.00.00")> 
 
 <Assembly: ComVisibleAttribute(False)> 
-<Assembly: AssemblyFileVersionAttribute("01.02.00")> 
+<Assembly: AssemblyFileVersion("02.00.00")> 
