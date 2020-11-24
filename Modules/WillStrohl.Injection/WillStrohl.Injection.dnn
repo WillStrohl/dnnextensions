@@ -1,22 +1,22 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection" type="Module" version="02.00.02">
+    <package name="WillStrohl.Injection" type="Module" version="03.00.00">
       <friendlyName>Content Injection</friendlyName>
       <description>
-        <![CDATA[<p>This is a content injection module, written by Will Strohl. Its purpose is to allow you to inject markup into the header or footer of the page.</p>]]>
+        <![CDATA[<p>This is a content injection module, written by Upendo Ventures. Its purpose is to allow you to inject markup into the header, body, and footer of the page.</p>]]>
       </description>
-      <iconFile>DesktopModules/WillStrohl.Injection/Images/injection.png</iconFile>
+      <iconFile>DesktopModules/WillStrohl.Injection/Images/logo.png</iconFile>
       <owner>
         <name>Will Strohl</name>
-        <organization>Will Strohl</organization>
-        <url><![CDATA[<a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a>]]></url>
-        <email><![CDATA[<a href="mailto:will.strohl@gmail.com" target="_blank">will.strohl@gmail.com</a>]]></email>
+        <organization>Upendo Ventures, LLC</organization>
+        <url>https://upendoventures.com</url>
+        <email>solutions@upendoventures.com</email>
       </owner>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">07.04.02</dependency>
+        <dependency type="coreversion">09.04.00</dependency>
       </dependencies>
       <components>
         <component type="Script">
@@ -80,7 +80,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>02.00.02</version>
+              <version>03.00.00</version>
             </script>
           </scripts>
         </component>
@@ -126,19 +126,21 @@
             <attributes>
               <businessControllerClass>WillStrohl.Modules.Injection.Components.InjectionController, WillStrohl.Modules.Injection</businessControllerClass>
               <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
-              <upgradeVersionsList />
+              <upgradeVersionsList>03.00.00</upgradeVersionsList>
             </attributes>
           </eventMessage>
         </component>
+
         <component type="Assembly">
           <assemblies>
             <assembly>
               <name>WillStrohl.Modules.Injection.dll</name>
-              <version>02.00.02</version>
+              <version>03.00.00</version>
               <path>bin</path>
             </assembly>
           </assemblies>
         </component>
+
         <component type="ResourceFile">
           <resourceFiles>
             <basePath>DesktopModules\WillStrohl.Injection</basePath>
@@ -147,6 +149,9 @@
             </resourceFile>
           </resourceFiles>
         </component>
+
+        <component type="Cleanup" version="03.00.00" fileName="03.00.00.txt" />
+
       </components>
     </package>
   </packages>
