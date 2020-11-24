@@ -59,6 +59,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       <InstallInclude Include="**\*.bmp" Exclude="packages\**;node_modules\**;clientApp\**" />
       <InstallInclude Include="**\*.xml" Exclude="packages\**;node_modules\**;clientApp\**;bin\**" />
       <InstallInclude Include="**\web.config" Exclude="packages\**;node_modules\**;clientApp\**" />
+      <InstallInclude Include="**\*.xml.resources" Exclude="packages\**;node_modules\**;clientApp\**;Config\ogConfig*.xml.resources;Config\ogSettings*.xml.resources" />
     </ItemGroup>
 
     <CreateItem Include="$(DNNFileName).dnn">
