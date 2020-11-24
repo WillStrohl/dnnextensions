@@ -3,7 +3,10 @@
   <packages>
     <package name="WillStrohl.Injection_Symbols" type="Library" version="03.00.00">
       <friendlyName>Content Injection Symbols</friendlyName>
-      <![CDATA[<p>This is a content injection module, written by Upendo Ventures. Its purpose is to allow you to inject markup into the header, body, and footer of the page.</p>]]>
+      <description>
+        <![CDATA[<p>This is a content injection module, written by Upendo Ventures. Its purpose is to allow you to inject markup into the header, body, and footer of the page.</p>]]>
+      </description>
+      <iconFile>DesktopModules/WillStrohl.Injection/Images/logo.png</iconFile>
       <owner>
         <name>Will Strohl</name>
         <organization>Upendo Ventures, LLC</organization>
