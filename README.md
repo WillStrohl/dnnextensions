@@ -6,7 +6,19 @@ very useful MSBuild scripts.  I've presented this as a topic at DNNCon Palm Beac
 
 You can [read more about this project and view/download the slide deck from my blog](http://www.willstrohl.com/Blog/PostId/731/DNNCon-Presentation-Flexible-Project-Setup-for-Teams-and-Complicated-Applications).
 
-Learn more about DNN CMS at [the official DNN community website](https://dncommunity.org).
+Learn more about DNN CMS at [the official DNN community website](https://dncommunity.org).  
+
+<hr />  
+
+## `Sponsors == (typeOf superHuman) Awesome;`  
+
+> Yes, it's not real code. It's just supposed to be fun. :P
+
+This solution is created and maintained by [Upendo Ventures](https://upendoventures.com/What/CMS/DNN) for the [DNN CMS Community](https://dnncommunity.org). Please consider [sponsoring us](https://github.com/sponsors/UpendoVentures) for this and [the many other open-source efforts we do](https://upendoventures.com/What/CMS/DNN/Extensions).  It's a lot.  :)  
+
+- [Sponsor Us](https://github.com/sponsors/UpendoVentures) (we're grateful at any level 🙏🏽)  
+
+<hr />  
 
 ---
 
