@@ -4,56 +4,88 @@
 	.muy-importante { color:red;font-weight:bold; }
 </style>
 <div class="uv-install-wrapper">
+	<h2>Lightbox Gallery Module for DNN</h2>
+	<hr />
+
+	<div class="dnnClear">
+		<p class="muy-importante">The release notes continue after the Sponsors and Contributors below.</p>
 	
-	<p class="muy-importante">The release notes continue after the Sponsors and Code Contributors below.</p>
+		<h3>Sponsors</h3>
+		<p>Open-source is not free. We're so GRATEFUL for the following people/organizations for <a href="https://github.com/sponsors/UpendoVentures" target="_blank">sponsoring developers</a> to work on this release!</p>
+		<p>Sponsorship is <em>Powered by GitHub Sponsors</em> and ensures that this project lives and thrives. <a href="https://github.com/sponsors/UpendoVentures" target="_blank">Please consider contributing</a> any amount.</p>
+		<p>THANK YOU to the following rockstars!</p>
+		<ul>
+			<li>David Poindexter, <a href="https://nvisionative.com/" target="_blank">nvisionative</a></li>
+			<li>Dan Rice, <a href="https://www.puresystems.co.uk/" target="_blank">Pure Systems</a></li>
+			<li>Matt Rutledge, <a href="https://beleivekids.com/" target="_blank">Believe Kids</a></li>
+			<li>Adam Bernstein, <a href="https://practicewise.com/" target="_blank">PracticeWise</a></li>
+		</ul>
 	
-	<h3>Sponsors</h3>
-	<p>Open-source is not free. We're so GRATEFUL for the following people/organizations for <a href="https://github.com/sponsors/hismightiness" target="_blank">sponsoring developers</a> to work on this release!</p>
-	<p>Sponsorship is <em>Powered by GitHub Sponsors</em> and ensures that this project lives and thrives. <a href="https://github.com/sponsors/hismightiness" target="_blank">Please consider sponsoring</a> any amount.</p>
-	<p>THANK YOU to the following rockstars!</p>
-	<ul>
-		<li>Dan Rice, <a href="https://www.puresystems.co.uk/" target="_blank">Pure Systems</a></li>
-		<li>David Poindexter, <a href="https://nvisionative.com/" target="_blank">nvisionative</a></li>
-		<li>Matt Rutledge, <a href="https://beleivekids.com/" target="_blank">Believe Kids</a></li>
-		<li>Adam Bernstein, <a href="https://practicewise.com/" target="_blank">PracticeWise</a></li>
-	</ul>
+		<h3>Contributors</h3>
+		<p>THANK YOU to the following community members for participating in this release!</p>
+		<ul>
+			<li>Will Strohl, <a href="https://upendoventures.com/How/People/Will-Strohl" target="_blank">Upendo Ventures</a></li>
+			<li>Ariel Blanco, <a href="https://upendoventures.com/What/CMS/DNN/Extensions" target="_blank">Upendo Ventures</a></li>
+		</ul>
 	
-	<h3>Code Contributors</h3>
-	<p>THANK YOU to the following community members for participating in this release!</p>
-	<ul>
-		<li>Will Strohl, <a href="https://upendoventures.com/What/Hotcakes-Commerce" target="_blank">Upendo Ventures</a></li>
-	</ul>
+		<h3><strong>Release Note Prefixes</strong></h3>
+		<p>The following prefixes are defined as:</p>
+		<ul>
+			<li><strong>SI:</strong> Support Inquiry - This issue was reported by a <a href="https://upendoventures.com/Support" target="_blank">support customer</a> and, as such, was prioritized above all other tasks.</li>
+		</ul>
+		<hr />
 
-	<h3>Version 01.14.00</h3>
-	<ul>
-		<li>Updated to build against DNN 9.6.1 or newer</li>
-		<li>Updated .NET Framework to 4.7.2</li>
-		<li>Removed Telerik</li>
-	</ul>
+		<h3>Version 01.15.00</h3>
+		<h4>Enhancements</h4>
+		<ul>
+			<li>Updated to build against DNN Platform 9.10.0. (<a href="https://github.com/WillStrohl/dnnextensions/pulls/227" target="_blank">Issue 227</a>, thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!)</li>
+			<li>Updated to build against .NET Framework 4.7.2. (<a href="https://github.com/WillStrohl/dnnextensions/pulls/227" target="_blank">Issue 227</a>, thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!)</li>
+			<!--
+			<li>SI:  (<a href="https://github.com/WillStrohl/dnnextensions/issues/" target="_blank">Issue </a>, thanks <a href="https://github.com/" target="_blank">@</a>!)</li>
+			-->
+		</ul>
+		<h4>Maintenence &amp Bug Fixes</h4>
+		<ul>
+			<li>Updated the build scripts to work against the latest upendodnn generator build scripts.</li>
+			<!--
+			<li> (<a href="https://github.com/WillStrohl/dnnextensions/issues/" target="_blank">Issue </a>, thanks <a href="https://github.com/" target="_blank">@</a>!)</li>
+			-->
+		</ul>
+		<hr />
 
-	<h3>Version 01.13.00</h3>
-	<ul>
-		<li>Updated to build against DNN 9.3.2 or newer</li>
-		<li>Updated build process to create a symbols package</li>
-		<li>Now using Fancybox 3!</li>
-		<li>Updated all client-side libraries</li>
-		<li>Using a CDN for all third-party client-side libraries</li>
-		<li>Replaced the web handlers with secured Web API web services</li>
-		<li>Updated MSBuild version</li>
-		<li>Project is now using Nuget references, instead of local references</li>
-		<li>Resolved error with sorting albums and images (<a href="https://github.com/hismightiness/dnnextensions/issues/177" target="_blank">Issue #177</a>)</li>
-	</ul>
-	<p class="muy-importante">IMPORTANT NOTE: This module is not suggested to be used with DNN 9.6+ yet.</p>
+		<h3>Version 01.14.00</h3>
+		<ul>
+			<li>Updated to build against DNN 9.6.1 or newer</li>
+			<li>Updated .NET Framework to 4.7.2</li>
+			<li>Removed Telerik</li>
+		</ul>
+		<hr />
 
-	<h3>Version 01.12.00</h3>
-	<ul>
-		<li><strong>Feature: Support long duration cache headers.</strong>  The images are served with a parameter that identifies the server side timestamp.  
-		Copy the supplied cache.config to the folder the images are in AND rename it as web.config.  For IIS 7 and later that will cause IIS to send
-		long duration cache headers for all content in that folder.  BEWARE if you serve that content other than via this module.</li>
-		<li><strong>Feature 125: Support DNN 8.</strong>  This module may now be installed on and works with DNN 8.00.03 and newer.</li>
-		<li>Bug 127: Changing folder name in album settings may cause errors.</li>
-	</ul>
+		<h3>Version 01.13.00</h3>
+		<ul>
+			<li>Updated to build against DNN 9.3.2 or newer</li>
+			<li>Updated build process to create a symbols package</li>
+			<li>Now using Fancybox 3!</li>
+			<li>Updated all client-side libraries</li>
+			<li>Using a CDN for all third-party client-side libraries</li>
+			<li>Replaced the web handlers with secured Web API web services</li>
+			<li>Updated MSBuild version</li>
+			<li>Project is now using Nuget references, instead of local references</li>
+			<li>Resolved error with sorting albums and images (<a href="https://github.com/WillStrohl/dnnextensions/issues/177" target="_blank">Issue #177</a>)</li>
+		</ul>
+		<p class="muy-importante">IMPORTANT NOTE: This module is not suggested to be used with DNN 9.6+ yet.</p>
+		<hr />
 
-	<p>For more information about this and previous releases of this module, <a href="http://hismightiness.github.io/dnnextensions/" target="_blank">visit the project website</a>.</p>
+		<h3>Version 01.12.00</h3>
+		<ul>
+			<li><strong>Feature: Support long duration cache headers.</strong>  The images are served with a parameter that identifies the server side timestamp.  
+			Copy the supplied cache.config to the folder the images are in AND rename it as web.config.  For IIS 7 and later that will cause IIS to send
+			long duration cache headers for all content in that folder.  BEWARE if you serve that content other than via this module.</li>
+			<li><strong>Feature 125: Support DNN 8.</strong>  This module may now be installed on and works with DNN 8.00.03 and newer.</li>
+			<li>Bug 127: Changing folder name in album settings may cause errors.</li>
+		</ul>
 
+		<p>For more information about this and previous releases of this module, <a href="http://hismightiness.github.io/dnnextensions/" target="_blank">visit the project website</a>.</p>
+
+	</div>
 </div>
