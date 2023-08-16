@@ -31,25 +31,25 @@ the following Visual Studio integrations really have saved me TONS of time and h
 years, and gotten me up to speed faster on other people's code more than anything else I've ever 
 tried (even talking to them about it).
 
-[![ReSharper by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_ReSharper.png)](https://www.jetbrains.com/resharper/)
-[![dotPeek by JetBrains](https://github.com/hismightiness/dnnextensions/blob/master/Assets/images/icon_dotPeek.png)](https://www.jetbrains.com/decompiler/)
+[![ReSharper by JetBrains](https://github.com/WillStrohl/dnnextensions/blob/master/Assets/images/icon_ReSharper.png)](https://www.jetbrains.com/resharper/)
+[![dotPeek by JetBrains](https://github.com/WillStrohl/dnnextensions/blob/master/Assets/images/icon_dotPeek.png)](https://www.jetbrains.com/decompiler/)
 
 ---
 
 ## How You Can Help
 
-* [Install and use the extensions (see below)](https://github.com/hismightiness/dnnextensions/wiki/Install-and-Use-the-Extensions)
-* [Create Issues (ideas OR bugs)](https://github.com/hismightiness/dnnextensions/wiki/Create-Issues-or-Ideas)
+* [Install and use the extensions (see below)](https://github.com/WillStrohl/dnnextensions/wiki/Install-and-Use-the-Extensions)
+* [Create Issues (ideas OR bugs)](https://github.com/WillStrohl/dnnextensions/wiki/Create-Issues-or-Ideas)
 * [Write documentation](https://github.com/hismightiness/dnnextensions/wiki/Write-Documentation)
 * [Test Releases](https://github.com/hismightiness/dnnextensions/wiki/Test-Releases)
 * Create UI/UX
-* [Write Code](https://github.com/hismightiness/dnnextensions/wiki/Write-Code)
+* [Write Code](https://github.com/WillStrohl/dnnextensions/wiki/Write-Code)
 * Debug Code
-* [Create a Pull Request](https://github.com/hismightiness/dnnextensions/wiki/Create-a-Pull-Request)
+* [Create a Pull Request](https://github.com/WillStrohl/dnnextensions/wiki/Create-a-Pull-Request)
 
 ## Project Distribution Locations
 
-New releases are going to be posted here, in [the Releases section](https://github.com/hismightiness/dnnextensions/releases). If 
+New releases are going to be posted here, in [the Releases section](https://github.com/WillStrohl/dnnextensions/releases). If 
 you don't see a current release, then you'll find it at the old project location below.
 
 * [oEmbed Wrapper for .Net](https://oembed.codeplex.com/)
@@ -73,4 +73,4 @@ you don't see a current release, then you'll find it at the old project location
 
 ### More Information
 
-For more information about the project, please go to [the project wiki](https://github.com/hismightiness/dnnextensions/wiki).
+For more information about the project, please go to [the project wiki](https://github.com/WillStrohl/dnnextensions/wiki).
