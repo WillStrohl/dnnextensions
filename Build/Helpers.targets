@@ -1,0 +1,129 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="ReplaceFileText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Filename ParameterType="System.String" Required="true" />
+      <MatchExpression ParameterType="System.String" Required="true" />
+      <ReplacementText ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Text.RegularExpressions" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+            File.WriteAllText(
+                Filename,
+                Regex.Replace(File.ReadAllText(Filename), MatchExpression, ReplacementText)
+                );
+          ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  <UsingTask TaskName="ReplaceXmlNodeText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Filename ParameterType="System.String" Required="true" />
+      <XPathNodeSelector ParameterType="System.String" Required="true" />
+      <NewValue ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Reference Include="System.Xml" />
+      <Using Namespace="System" />
+      <Using Namespace="System.Xml" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          var xdoc = new XmlDocument();
+          xdoc.Load(Filename);
+          var nodes = xdoc.SelectNodes(XPathNodeSelector);
+          if(nodes != null)
+          {
+	          foreach (XmlNode node in nodes)
+	          {
+		          node.InnerText = NewValue;
+	          }
+          }
+          xdoc.Save(Filename);
+          ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  <UsingTask TaskName="AppendXmlNodeText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Filename ParameterType="System.String" Required="true" />
+      <XPathNodeSelector ParameterType="System.String" Required="true" />
+      <NewValue ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Reference Include="System.Xml" />
+      <Using Namespace="System" />
+      <Using Namespace="System.Xml" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          var xdoc = new XmlDocument();
+          xdoc.Load(Filename);
+          var nodes = xdoc.SelectNodes(XPathNodeSelector);
+          if(nodes != null)
+          {
+	          foreach (XmlNode node in nodes)
+	          {
+		          node.InnerText = node.InnerText + NewValue;
+	          }
+          }
+          xdoc.Save(Filename);
+          ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  <UsingTask TaskName="ReplaceXmlAttributeValue" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Filename ParameterType="System.String" Required="true" />
+      <XPathAttributeSelector ParameterType="System.String" Required="true" />
+      <NewValue ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Reference Include="System.Xml" />
+      <Using Namespace="System" />
+      <Using Namespace="System.Xml" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          var xdoc = new XmlDocument();
+          xdoc.Load(Filename);
+          var attributes = xdoc.SelectNodes(XPathAttributeSelector);
+          if (attributes != null)
+          {
+	          foreach (XmlAttribute attribute in attributes)
+	          {
+		          attribute.Value = NewValue;
+	          }
+          }
+          xdoc.Save(Filename);
+          ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  <UsingTask TaskName="ToShortVersion" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Version ParameterType="System.String" Required="true" />
+      <ShortVersion ParameterType="System.String" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Core" />
+      <Using Namespace="System" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          ShortVersion = "";
+          foreach (var s in Version.Split('.'))
+          {
+	          if(!string.IsNullOrEmpty(ShortVersion)) ShortVersion += ".";
+	          ShortVersion += s.TrimStart('0');
+            if(ShortVersion.EndsWith(".")) ShortVersion += "0";
+          }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+</Project>
