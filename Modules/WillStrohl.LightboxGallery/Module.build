@@ -3,8 +3,6 @@
     <ModulePath>WillStrohl.LightboxGallery</ModulePath>
     <DNNFileName>WillStrohl.Lightbox</DNNFileName>
     <PackageName>WillStrohl.Lightbox</PackageName>
-  </PropertyGroup>
-  <PropertyGroup>
     <Extension>zip</Extension>
     <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build</BuildScriptsPath>
     <WebsitePath>$(MSBuildProjectDirectory)\..\..\Website</WebsitePath>
@@ -16,37 +14,39 @@
   </Target>
   <Target Name="GetFiles">
     <ItemGroup>
-      <Manifest Include="*.dnn;*.dnn5;*.dnn6" />
+      <Manifest Include="*.dnn;*.dnn5;*.dnn6" Exclude="*_Symbols.dnn" />
       <TextFiles Include="*.txt" Exclude="releasenotes.txt;license.txt" />
-      <SourceFiles Include="*.css;*.htm" />
+      <SourceFiles Include="*.css;*.htm;*.html" />
       <Views Include="*.ascx;" />
       <ResourceFiles Include="App_LocalResources/*.resx" />
       <Images Include="Images/**/*.*" />
       <JsFiles Include="js/**/*.*" />
+      <Styles Include="Styles/**/*.*" />
       <DataProvider Include="Providers/DataProviders/SqlDataProvider/*.SqlDataProvider" />
-      <Resources Include="@(Manifest);@(TextFiles);@(SourceFiles);@(Views);@(ResourceFiles);@(Images);@(JsFiles);@(DataProvider)" />
+      <Resources Include="@(Manifest);@(TextFiles);@(SourceFiles);@(Views);@(ResourceFiles);@(Images);@(JsFiles);@(Styles);@(DataProvider)" />
     </ItemGroup>
   </Target>
   <ItemGroup>
-    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" />
-    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).pdb" />
-    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).xml" />
-    <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\Exif.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <BinInstallInclude Include="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" />
+    <SymbolsInclude Include="$(DNNFileName)_Symbols.dnn" />
+    <SymbolsInclude Include="License.txt" />
+    <SymbolsInclude Include="ReleaseNotes.txt" />
   </ItemGroup>
   <Target Name="CopyBin">
-    <Copy SourceFiles="@(BinSourceInclude)" DestinationFolder="$(WebsitePath)/bin" />
+    <ItemGroup>
+      <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\*.dll" Exclude="$(MSBuildProjectDirectory)\bin\DotNetNuke*;$(MSBuildProjectDirectory)\bin\Telerik*;$(MSBuildProjectDirectory)\bin\System.*;$(MSBuildProjectDirectory)\bin\Microsoft.*;$(MSBuildProjectDirectory)\bin\Newtonsoft.Json.*" />
+      <BinSourceInclude Include="$(MSBuildProjectDirectory)\bin\*.pdb" Exclude="$(MSBuildProjectDirectory)\bin\DotNetNuke*;$(MSBuildProjectDirectory)\bin\Telerik*;$(MSBuildProjectDirectory)\bin\System.*;$(MSBuildProjectDirectory)\bin\Microsoft.*;$(MSBuildProjectDirectory)\bin\Newtonsoft.Json.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(BinSourceInclude)" DestinationFolder="$(WebsitePath)\bin" />
   </Target>
   <Target Name="DebugProject" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Copy SourceFiles="@(Manifest)" DestinationFolder="$(FullModulePath)" />
-    <Copy SourceFiles="@(Views)" DestinationFolder="$(FullModulePath)" />
-    <Copy SourceFiles="@(Images)" DestinationFolder="$(FullModulePath)\Images\%(RecursiveDir)" />
-    <Copy SourceFiles="@(JsFiles)" DestinationFolder="$(FullModulePath)\js\%(RecursiveDir)" />
     <Copy SourceFiles="@(TextFiles)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="$(FullModulePath)" />
-    <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />
+    <Copy SourceFiles="@(Views)" DestinationFolder="$(FullModulePath)" />
     <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(FullModulePath)\App_LocalResources" />
+    <Copy SourceFiles="@(Images)" DestinationFolder="$(FullModulePath)\Images\%(RecursiveDir)" />
+    <Copy SourceFiles="@(JsFiles)" DestinationFolder="$(FullModulePath)\Scripts\%(RecursiveDir)" />
+    <Copy SourceFiles="@(Styles)" DestinationFolder="$(FullModulePath)\Styles\%(RecursiveDir)" />
+    <Copy SourceFiles="@(DataProvider)" DestinationFolder="$(FullModulePath)\Providers\DataProviders\SqlDataProvider" />
   </Target>
 </Project>

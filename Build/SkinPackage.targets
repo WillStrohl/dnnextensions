@@ -22,6 +22,54 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="MSBuild.Community.Tasks.Targets" />
+  <Import Project="$(BuildScriptsPath)\Helpers.Targets" />
+  <Target Name="SetVersion" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <XmlRead Prefix="n"
+             Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
+             XPath="dotnetnuke/packages/package[1]/@version"
+             XmlFileName="$(DNNFileName).dnn">
+      <Output TaskParameter="Value" PropertyName="Version" />
+    </XmlRead>
+
+    <ToShortVersion Version="$(Version)">
+      <Output PropertyName="sVersion" TaskParameter="ShortVersion" />
+    </ToShortVersion>
+
+    <!-- AssemblyInfo -->
+    <ReplaceFileText 
+      Filename="$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs" 
+      MatchExpression="AssemblyVersion\(&quot;[0-9|\\.]%2A&quot;\)" 
+      ReplacementText="AssemblyVersion(&quot;$(Version)&quot;)" />
+    <ReplaceFileText 
+      Filename="$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs" 
+      MatchExpression="AssemblyFileVersion\(&quot;[0-9|\\.]%2A&quot;\)" 
+      ReplacementText="AssemblyFileVersion(&quot;$(Version)&quot;)" />
+
+    <!-- Manifest -->
+    <ReplaceXmlAttributeValue
+      Filename="$(DNNFileName).dnn"
+      XPathAttributeSelector = "/dotnetnuke/packages/package/@version"
+      NewValue="$(Version)" />
+    <ReplaceXmlNodeText
+      Filename="$(DNNFileName).dnn"
+      XPathNodeSelector = "/dotnetnuke/packages/package[@name='$(PackageName)']/components/component[@type='Assembly']/assemblies/assembly/version[../name/text() = '$(AssemblyName).dll']"
+      NewValue="$(Version)" />
+    <ReplaceXmlNodeText
+      Filename="$(DNNFileName).dnn"
+      XPathNodeSelector = "/dotnetnuke/packages/package[@name='$(PackageName)']/components/component[@type='Script']/scripts/script[@type='UnInstall']/version"
+      NewValue="$(Version)" />
+
+    <!-- Symbols Manifest -->
+    <ReplaceXmlAttributeValue
+      Filename="$(DNNFileName)_Symbols.dnn"
+      XPathAttributeSelector = "/dotnetnuke/packages/package/@version"
+      NewValue="$(Version)" />
+    <ReplaceXmlAttributeValue
+      Filename="$(DNNFileName)_Symbols.dnn"
+      XPathAttributeSelector = "/dotnetnuke/packages/package/dependencies/dependency[@type='managedPackage'][text()='$(PackageName)']/@version"
+      NewValue="$(sVersion)" />
+
+  </Target>
   <Target Name="PackageSkin" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <XmlRead Prefix="n"
                     Namespace="http://schemas.microsoft.com/developer/msbuild/2003"

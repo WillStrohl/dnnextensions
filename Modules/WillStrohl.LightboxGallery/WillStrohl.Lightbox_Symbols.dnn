@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Lightbox_Symbols" type="Library" version="01.14.00">
+    <package name="WillStrohl.Lightbox_Symbols" type="Library" version="01.15.00">
       <friendlyName>Lightbox Gallery Symbols</friendlyName>
       <description>
         <![CDATA[<p>This is a lightbox gallery module, written by Will Strohl. Its original purpose was to highlight a few ways that jQuery can be integrated into DNN. It has since become one of the most popular ways to include image galleries into your DNN website.</p>]]>
@@ -10,14 +10,14 @@
       <owner>
         <name>Will Strohl</name>
         <organization>Upendo Ventures, LLC</organization>
-        <url><![CDATA[<a href="http://hismightiness.github.io/dnnextensions/" target="_blank">http://hismightiness.github.io/dnnextensions/</a>]]></url>
-        <email><![CDATA[<a href="me@willstrohl.com" target="_blank">me@willstrohl.com</a>]]></email>
+        <url><![CDATA[<a href="https://upendoventures.com/What/CMS/DNN/Extensions" target="_blank">UpendoVentures.com</a>]]></url>
+        <email><![CDATA[<a href="mailto:solutions@upendoventures.com" target="_blank">solutions@upendoventures</a>]]></email>
       </owner>
       <license src="License.txt" />
       <releaseNotes src="ReleaseNotes.txt" />
       <azureCompatible>True</azureCompatible>
       <dependencies>
-        <dependency type="managedPackage" version="1.14.0">WillStrohl.Lightbox</dependency>
+        <dependency type="managedPackage" version="1.15.0">WillStrohl.Lightbox</dependency>
       </dependencies>
       <components>
         <component type="ResourceFile">
