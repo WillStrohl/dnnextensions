@@ -2,17 +2,7 @@
 
 INSTALL SQL PROVIDER SCRIPT
 
-Injection Module for DotNetNuke
-Version: 1.00.00
-Author: Will Strohl
-E-Mail: will.strohl@gmail.com
-Website: http://www.willstrohl.com
-
-Copyright 2009-2015 Will Strohl
-
-Release Notes:
-  This is the first install script for the module. It creates the initial module 
-  structure.
+Copyright (C) Upendo Ventures, LLC
 
 */
 

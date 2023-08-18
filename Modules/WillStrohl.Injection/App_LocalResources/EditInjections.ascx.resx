@@ -245,7 +245,7 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
     <value>Manage Injection</value>
   </data>
   <data name="lblContent.Help" xml:space="preserve">
-    <value>Enter the content that you want to be injected into the page.</value>
+    <value>Enter the content that you want to be injected into the page. JS/CSS: Any valid local and external file path for your JS/CSS file is acceptable (e.g., a local script, one in a CDN, etc.). HTML: Any valid HTML is acceptable. Please triple-check your HTML before saving/enabling the content injection.</value>
   </data>
   <data name="lblEnabled.Help" xml:space="preserve">
     <value>Choose whether this content injection item should be enabled. If unchecked, the item will not be injected into the page.</value>
@@ -364,6 +364,12 @@ document.write(unescape('%3Cscript language="javascript" type="text/javascript" 
     <value>JavaScript &gt; </value>
   </data>
   <data name="lblAudit.Text" xml:space="preserve">
-    <value>Last updated by &lt;strong&gt;{0}&lt;/strong&gt; on &lt;strong&gt;{1}&lt;/strong&gt;.</value>
+    <value>Last updated by &lt;strong&gt;{0}&lt;/strong&gt; on &lt;strong&gt;{1}&lt;/strong&gt;. </value>
+  </data>
+  <data name="Html.Placeholder" xml:space="preserve">
+    <value>&lt;!-- Enter any valid HTML you wish. --&gt;</value>
+  </data>
+  <data name="Script.Placeholder" xml:space="preserve">
+    <value>/full/path/to/my/script-or-css-file.js</value>
   </data>
 </root>

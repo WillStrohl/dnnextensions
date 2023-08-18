@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection" type="Module" version="03.00.00">
+    <package name="WillStrohl.Injection" type="Module" version="03.01.00">
       <friendlyName>Content Injection</friendlyName>
       <description>
         <![CDATA[<p>This is a content injection module, written by Upendo Ventures. Its purpose is to allow you to inject markup into the header, body, and footer of the page.</p>]]>
@@ -9,14 +9,14 @@
       <owner>
         <name>Will Strohl</name>
         <organization>Upendo Ventures, LLC</organization>
-        <url>https://upendoventures.com</url>
+        <url>https://upendoventures.com/What/CMS/DNN/Extensions</url>
         <email>solutions@upendoventures.com</email>
       </owner>
       <license src="license.txt" />
       <releaseNotes src="releasenotes.txt" />
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">09.04.00</dependency>
+        <dependency type="coreversion">09.10.00</dependency>
       </dependencies>
       <components>
         <component type="Script">
@@ -80,7 +80,7 @@
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>Uninstall.SqlDataProvider</name>
-              <version>03.00.00</version>
+              <version>03.01.00</version>
             </script>
           </scripts>
         </component>
@@ -135,7 +135,7 @@
           <assemblies>
             <assembly>
               <name>WillStrohl.Modules.Injection.dll</name>
-              <version>03.00.00</version>
+              <version>03.01.00</version>
               <path>bin</path>
             </assembly>
           </assemblies>
