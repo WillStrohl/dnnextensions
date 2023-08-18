@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.Injection_Symbols" type="Library" version="03.00.00">
+    <package name="WillStrohl.Injection_Symbols" type="Library" version="03.01.00">
       <friendlyName>Content Injection Symbols</friendlyName>
       <description>
         <![CDATA[<p>This is a content injection module, written by Upendo Ventures. Its purpose is to allow you to inject markup into the header, body, and footer of the page.</p>]]>
@@ -10,14 +10,14 @@
       <owner>
         <name>Will Strohl</name>
         <organization>Upendo Ventures, LLC</organization>
-        <url>https://upendoventures.com</url>
+        <url>https://upendoventures.com/What/CMS/DNN/Extensions</url>
         <email>solutions@upendoventures.com</email>
       </owner>
       <license src="License.txt" />
       <releaseNotes src="ReleaseNotes.txt" />
       <azureCompatible>True</azureCompatible>
       <dependencies>
-        <dependency type="managedPackage" version="3.0.0">WillStrohl.Injection</dependency>
+        <dependency type="managedPackage" version="3.1.0">WillStrohl.Injection</dependency>
       </dependencies>
       <components>
         <component type="ResourceFile">
