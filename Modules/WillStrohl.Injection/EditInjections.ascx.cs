@@ -42,6 +42,8 @@ namespace WillStrohl.Modules.Injection
         private const string c_Command_MoveDown = "MoveDown";
         private const string c_Command_Delete = "Delete";
 
+        private const string Placeholder = "placeholder";
+
         private const string c_Command_Insert = "Insert";
 
         private const string c_True = "True";
@@ -235,6 +237,7 @@ namespace WillStrohl.Modules.Injection
         protected void radType_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             ToggleType();
+            SwitchPlaceholder();
         }
 
         protected void cvContent_OnServerValidate(object source, ServerValidateEventArgs args)
@@ -316,6 +319,7 @@ namespace WillStrohl.Modules.Injection
                 radInject.SelectedIndex = 0;
             }
 
+            SwitchPlaceholder();
         }
 
         private void LocalizeModule()
@@ -415,6 +419,7 @@ namespace WillStrohl.Modules.Injection
             }
 
             ToggleType();
+            SwitchPlaceholder();
         }
 
         private void HandleException(Exception exc)
@@ -438,6 +443,19 @@ namespace WillStrohl.Modules.Injection
             // change the order
             InjectionController ctlModule = new InjectionController();
             ctlModule.ChangeOrder(ItemId, UpDown);
+        }
+
+        private void SwitchPlaceholder()
+        {
+            switch (this.radType.SelectedIndex)
+            {
+                case 0:
+                    this.txtContent.Attributes.Add(Placeholder, LocalizeString("Script.Placeholder"));
+                    return;
+                default:
+                    this.txtContent.Attributes.Add(Placeholder, LocalizeString("Html.Placeholder"));
+                    return;
+            }
         }
 
         #endregion

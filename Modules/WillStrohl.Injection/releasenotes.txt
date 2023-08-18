@@ -40,6 +40,7 @@
 		<ul>
 			<li>Updated to build against DNN Platform 9.10.0. (<a href="https://github.com/WillStrohl/dnnextensions/pulls/237" target="_blank">Issue 237</a>, thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!)</li>
 			<li>Updated to build against .NET Framework 4.8. (<a href="https://github.com/WillStrohl/dnnextensions/pulls/237" target="_blank">Issue 237</a>, thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!)</li>
+			<li>Updated the Edit view to make it more obvious how you should use it for scripts and HTML. (No Issue, thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!)</li>
 			<!--
 			<li>SI:  (<a href="https://github.com/WillStrohl/dnnextensions/issues/" target="_blank">Issue </a>, thanks <a href="https://github.com/" target="_blank">@</a>!)</li>
 			-->
