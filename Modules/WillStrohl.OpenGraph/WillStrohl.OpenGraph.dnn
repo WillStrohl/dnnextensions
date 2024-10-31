@@ -16,7 +16,7 @@
       <releaseNotes src="releasenotes.txt" />
       <azureCompatible>True</azureCompatible>
       <dependencies>
-        <dependency type="coreversion">09.04.00</dependency>
+        <dependency type="coreversion">09.11.00</dependency>
       </dependencies>
       <components>
         <component type="Module">
