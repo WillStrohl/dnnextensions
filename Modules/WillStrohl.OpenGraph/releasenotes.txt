@@ -15,9 +15,9 @@
 	<p>THANK YOU to the following rockstars!</p>
 	<ul>
 		<li>Adam Bernstein, <a href="https://practicewise.com/" target="_blank">PracticeWise</a></li>
-		<li>Dan Rice, <a href="https://www.puresystems.co.uk/" target="_blank">Pure Systems</a></li>
-		<li>David Poindexter, <a href="https://nvisionative.com/" target="_blank">nvisionative</a></li>
-		<li>Matt Rutledge, <a href="https://beleivekids.com/" target="_blank">Believe Kids</a></li>
+		<li>Jeremy Farrance, <a href="https://accuraty.com/" target="_blank">Accuraty</a></li>
+		<li><a href="http://www.rammware.net/" target="_blank">John Ramminger</a></li>
+		<li><em>2 private sponsors</em></li>
 	</ul>
 	
 	<h3>Code Contributors</h3>
