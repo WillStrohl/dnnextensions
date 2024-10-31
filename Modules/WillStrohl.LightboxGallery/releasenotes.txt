@@ -46,7 +46,7 @@
 		<h4>Maintenence &amp Bug Fixes</h4>
 		<ul>
 			<li>Removed `DotNetNuke.Deprecated` from the DLL references. (No Issue) Thanks, <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
-			<li>Resolved bug preventing the setting from showing/hiding titles &amp; descriptions. (No Issue) Thanks, <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
+			<li>Resolved bug preventing the setting from showing/hiding titles &amp; descriptions. (<a href="https://github.com/WillStrohl/dnnextensions/issues/211" target="_blank">Issue 211</a>) Thanks, <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
 			<!--
 			<li> (<a href="https://github.com/WillStrohl/dnnextensions/issues/" target="_blank">Issue </a>, thanks <a href="https://github.com/" target="_blank">@</a>!)</li>
 			-->
