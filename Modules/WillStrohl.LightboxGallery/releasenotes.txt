@@ -15,10 +15,10 @@
 		<p>Sponsorship is <em>Powered by GitHub Sponsors</em> and ensures that this project lives and thrives. <a href="https://github.com/sponsors/UpendoVentures" target="_blank">Please consider contributing</a> any amount.</p>
 		<p>THANK YOU to the following rockstars!</p>
 		<ul>
-			<li>David Poindexter, <a href="https://nvisionative.com/" target="_blank">nvisionative</a></li>
-			<li>Dan Rice, <a href="https://www.puresystems.co.uk/" target="_blank">Pure Systems</a></li>
-			<li>Matt Rutledge, <a href="https://beleivekids.com/" target="_blank">Believe Kids</a></li>
 			<li>Adam Bernstein, <a href="https://practicewise.com/" target="_blank">PracticeWise</a></li>
+			<li>Jeremy Farrance, <a href="https://accuraty.com/" target="_blank">Accuraty</a></li>
+			<li><a href="http://www.rammware.net/" target="_blank">John Ramminger</a></li>
+			<li><em>2 private sponsors</em></li>
 		</ul>
 	
 		<h3>Contributors</h3>
@@ -32,6 +32,24 @@
 		<p>The following prefixes are defined as:</p>
 		<ul>
 			<li><strong>SI:</strong> Support Inquiry - This issue was reported by a <a href="https://upendoventures.com/Support" target="_blank">support customer</a> and, as such, was prioritized above all other tasks.</li>
+		</ul>
+		<hr />
+
+		<h3>Version 01.16.00</h3>
+		<h4>Enhancements</h4>
+		<ul>
+			<li>Updated to build against DNN Platform 9.11.0. (<a href="https://github.com/WillStrohl/dnnextensions/issues/249" target="_blank">Issue 249</a>, thanks <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!)</li>
+			<!--
+			<li>SI:  (<a href="https://github.com/WillStrohl/dnnextensions/issues/" target="_blank">Issue </a>, thanks <a href="https://github.com/" target="_blank">@</a>!)</li>
+			-->
+		</ul>
+		<h4>Maintenence &amp Bug Fixes</h4>
+		<ul>
+			<li>Removed `DotNetNuke.Deprecated` from the DLL references. (No Issue) Thanks, <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
+			<li>Resolved bug preventing the setting from showing/hiding titles &amp; descriptions. (No Issue) Thanks, <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
+			<!--
+			<li> (<a href="https://github.com/WillStrohl/dnnextensions/issues/" target="_blank">Issue </a>, thanks <a href="https://github.com/" target="_blank">@</a>!)</li>
+			-->
 		</ul>
 		<hr />
 
