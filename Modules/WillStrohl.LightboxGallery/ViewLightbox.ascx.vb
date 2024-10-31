@@ -50,8 +50,8 @@ Namespace WillStrohl.Modules.Lightbox
         Private Const ERROR_WRAP As String = "<span class=""NormalRed"">{0}</span>"
         Private Const EDIT_IMAGE_PATH As String = "/images/edit.gif"
         Private Const ORDER_IMAGE_PATH As String = "/images/copy.gif"
-        Private Const IMAGE_TEMPLATE As String = "<li class=""listitem""><span class=""wns_lightbox_span""><a data-fancybox=""gallery"" data-caption=""{4}"" class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{4}""><img src=""{2}"" alt=""{3}"" title=""{4}"" class=""wns_lightbox_image"" /></a></span></li> "
-        Private Const IMAGE_EDIT_TEMPLATE As String = "<li class=""listitem editview""><span class=""wns_lightbox_span""><a data-fancybox=""gallery"" data-caption=""{4}"" class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{4}""><img src=""{2}"" alt=""{3}"" title=""{4}"" class=""wns_lightbox_image"" /></a></span><span class=""wns_lightbox_image_edit_wrap""><a href=""{5}"" class=""wns_lightbox_image_edit"">{6}</a></span></li> "
+        Private Const IMAGE_TEMPLATE As String = "<li class=""listitem""><span class=""wns_lightbox_span""><a data-fancybox=""gallery"" data-caption=""{3}"" class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{3}""><img src=""{2}"" alt=""{3}"" title=""{3}"" class=""wns_lightbox_image"" /></a><p class=""image-description"">{4}</p></span></li>"
+        Private Const IMAGE_EDIT_TEMPLATE As String = "<li class=""listitem editview""><span class=""wns_lightbox_span""><a data-fancybox=""gallery"" data-caption=""{3}"" class=""wns_lightbox_link"" rel=""{0}"" href=""{1}"" title=""{3}""><img src=""{2}"" alt=""{3}"" title=""{3}"" class=""wns_lightbox_image"" /></a><p class=""image-description"">{4}</p></span><span class=""wns_lightbox_image_edit_wrap""><a href=""{5}"" class=""wns_lightbox_image_edit"">{6}</a></span></li>"
         Private Const MAX_IMAGE_HEIGHT As Integer = 100
 
         Private p_Albums As LightboxInfoCollection = Nothing
