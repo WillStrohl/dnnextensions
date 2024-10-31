@@ -5,7 +5,7 @@
 </style>
 <div class="uv-install-wrapper">
 	<h2>Open Graph Protocol Module</h2>
-	<h3>Version 02.00.00</h3>
+	<h3>Version 02.01.00</h3>
 	
 	<p class="muy-importante">The release notes continue after the Sponsors and Code Contributors below.</p>
 	
@@ -24,13 +24,14 @@
 	<p>THANK YOU to the following community members for participating in this release!</p>
 	<ul>
 		<li>Will Strohl, <a href="https://upendoventures.com/What/CMS/DNN" target="_blank">Upendo Ventures</a></li>
+		<li>Alejandro Roman, <a href="https://upendoventures.com/What/CMS/DNN/Extensions" target="_blank">Upendo Ventures</a></li>
 	</ul>
 
-	<p><strong>Date Released:</strong> 11/24/2020</p>
+	<p><strong>Date Released:</strong> 10/31/2024</p>
 	<ul>
-		<li>Increased minimum supported version to DNN 9.4.0, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
-		<li>Unable to download seemingly unrelated files protected by &quot;file tickets&quot; (<a href="https://github.com/hismightiness/dnnextensions/issues/164" target="_blank">Issue 164</a>), Thanks <a href="https://github.com/bacon1986" target="_blank">@bacon1986</a>!</li>
-		<li>Now generating and releasing a Symbols package, Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
-		<li>Removed deprecated DNN API references (DNN 10+ compatible!), Thanks <a href="https://github.com/hismightiness" target="_blank">@hismightiness</a>!</li>
+		<li>ENH: Increased minimum supported version of DNN to DNN Platform 09.11.00, Thanks <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
+		<li>ENH: Increased minimum supported version of NewtonSoft.Json to 13.00.03, Thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!</li>
+		<li>BUG: Caching error message always shows (<a href="https://github.com/hismightiness/dnnextensions/issues/31" target="_blank">Issue 31</a>), Thanks <a href="https://github.com/alejoroman0605" target="_blank">@alejoroman0605</a>!</li>
+		<li>BUG: Updated `DotNetNuke.Web` reference to use Nuget instead of a local reference, Thanks <a href="https://github.com/WillStrohl" target="_blank">@WillStrohl</a>!</li>
 	</ul>
 </div>

@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="6.0">
   <packages>
-    <package name="WillStrohl.OpenGraph" type="Module" version="02.00.00">
+    <package name="WillStrohl.OpenGraph" type="Module" version="02.01.00">
       <friendlyName>Open Graph Protocol</friendlyName>
       <description>
         <![CDATA[<p>This module allows you to quickly and easily add the Open Graph Protocol markup to your website. Doing so makes you compatible with sharing content with sites like Facebook.</p>]]>
@@ -9,7 +9,7 @@
       <owner>
         <name>Will Strohl</name>
         <organization>Upendo Ventures, LLC</organization>
-        <url>https://upendoventures.com</url>
+        <url>https://upendoventures.com/What/CMS/DNN</url>
         <email>solutions@upendoventures.com</email>
       </owner>
       <license src="license.txt" />
@@ -59,7 +59,7 @@
             <attributes>
               <businessControllerClass>WillStrohl.Modules.OpenGraph.OpenGraphController, WillStrohl.Modules.OpenGraph</businessControllerClass>
               <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
-              <upgradeVersionsList>02.00.00</upgradeVersionsList>
+              <upgradeVersionsList>02.00.00,02.01.00</upgradeVersionsList>
             </attributes>
           </eventMessage>
         </component>
@@ -67,7 +67,7 @@
           <assemblies>
             <assembly>
               <name>WillStrohl.Modules.OpenGraph.dll</name>
-              <version>02.00.00</version>
+              <version>02.01.00</version>
               <path>bin</path>
             </assembly>
           </assemblies>
