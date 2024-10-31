@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="EditLightbox.ascx.vb" Inherits="WillStrohl.Modules.Lightbox.EditLightbox" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
-<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web.Deprecated" %>
 <%@ Import Namespace="DotNetNuke.Services.Localization" %>
 <div class="dnnClear">
     <asp:ValidationSummary ID="vsError" runat="server" CssClass="dnnFormMessage dnnFormValidationSummary" DisplayMode="List" ValidationGroup="lightbox" />
