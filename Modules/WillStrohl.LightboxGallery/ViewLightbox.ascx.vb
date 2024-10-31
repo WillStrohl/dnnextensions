@@ -237,19 +237,19 @@ Namespace WillStrohl.Modules.Lightbox
                                 CleanNameForRel(GalleryName), _
                                 GetImageFileUrl(oImage), _
                                 GetImageFileUrl(oImageThumbnail), _
-                                objImage.Title, _
-                                objImage.Description, _
+                                If(oLightbox.HideTitleDescription, String.Empty, objImage.Title), _
+                                If(oLightbox.HideTitleDescription, String.Empty, objImage.Description), _
                                 GetImageEditUrl(objImage), _
                                 Me.GetLocalizedString("ImageEdit.Text") _
                             )
                         Else
-                            sb.AppendFormat( _
-                                IMAGE_TEMPLATE, _
-                                CleanNameForRel(GalleryName), _
-                                GetImageFileUrl(oImage), _
-                                GetImageFileUrl(oImageThumbnail), _
-                                objImage.Title, _
-                                objImage.Description _
+                            sb.AppendFormat(
+                                IMAGE_TEMPLATE,
+                                CleanNameForRel(GalleryName),
+                                GetImageFileUrl(oImage),
+                                GetImageFileUrl(oImageThumbnail),
+                                If(oLightbox.HideTitleDescription, String.Empty, objImage.Title),
+                                If(oLightbox.HideTitleDescription, String.Empty, objImage.Description)
                             )
                         End If
 
